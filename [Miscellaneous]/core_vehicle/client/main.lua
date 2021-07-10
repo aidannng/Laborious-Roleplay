@@ -222,8 +222,34 @@ Citizen.CreateThread(
 
 										if repairInstall then
 											Citizen.Wait(Config.EngineInstallTime)
+                                            exports['mythic_progbar']:Progress({
+                                                name = "unique_action_name",
+                                                duration = Config.EngineInstallTime,
+                                                label = 'Searching Vehicle',
+                                                useWhileDead = true,
+                                                canCancel = false,
+                                                controlDisables = {
+                                                    disableMovement = true,
+                                                    disableCarMovement = true,
+                                                    disableMouse = false,
+                                                    disableCombat = true,
+                                                },
+                                            })
 										else
 											Citizen.Wait(Config.EngineRepairTime)
+                                            exports['mythic_progbar']:Progress({
+                                                name = "unique_action_name",
+                                                duration = Config.EngineRepairTime,
+                                                label = 'Searching Vehicle',
+                                                useWhileDead = true,
+                                                canCancel = false,
+                                                controlDisables = {
+                                                    disableMovement = true,
+                                                    disableCarMovement = true,
+                                                    disableMouse = false,
+                                                    disableCombat = true,
+                                                },
+                                            })
 										end
 
 										ClearPedTasks(ped)
@@ -828,6 +854,15 @@ Citizen.CreateThread(
 											currentVehicleParts[repairPartType].health = 100.0
 											SetVehicleEngineHealth(currentVehicle, 1000.0)
 										end
+
+                                        local veh = ESX.Game.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
+                                        SetVehicleTyreFixed(veh, 0)
+                                        SetVehicleTyreFixed(veh, 1)
+                                        SetVehicleTyreFixed(veh, 2)
+                                        SetVehicleTyreFixed(veh, 3)
+                                        SetVehicleTyreFixed(veh, 4)
+                                        SetVehicleTyreFixed(veh, 5)
+
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
 									else
@@ -871,6 +906,15 @@ Citizen.CreateThread(
 											currentVehicleParts[repairPartType].health = 100.0
 											SetVehicleEngineHealth(currentVehicle, 1000.0)
 										end
+
+                                        local veh = ESX.Game.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
+                                        SetVehicleTyreFixed(veh, 0)
+                                        SetVehicleTyreFixed(veh, 1)
+                                        SetVehicleTyreFixed(veh, 2)
+                                        SetVehicleTyreFixed(veh, 3)
+                                        SetVehicleTyreFixed(veh, 4)
+                                        SetVehicleTyreFixed(veh, 5)
+
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
 									else
@@ -914,6 +958,18 @@ Citizen.CreateThread(
 											currentVehicleParts[repairPartType].health = 100.0
 											SetVehicleEngineHealth(currentVehicle, 1000.0)
 										end
+
+                                        local veh = ESX.Game.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
+                                        SetVehicleTyreFixed(veh, 0)
+                                        SetVehicleTyreFixed(veh, 1)
+                                        SetVehicleTyreFixed(veh, 2)
+                                        SetVehicleTyreFixed(veh, 3)
+                                        SetVehicleTyreFixed(veh, 4)
+                                        SetVehicleTyreFixed(veh, 5)
+
+										saveVehicleData(currentPlate)
+										SendTextMessage(Config.Text["mechanic_action_complete"])
+
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
 									else
@@ -957,6 +1013,18 @@ Citizen.CreateThread(
 											currentVehicleParts[repairPartType].health = 100.0
 											SetVehicleEngineHealth(currentVehicle, 1000.0)
 										end
+
+                                        local veh = ESX.Game.GetClosestVehicle(GetEntityCoords(PlayerPedId()))
+                                        SetVehicleTyreFixed(veh, 0)
+                                        SetVehicleTyreFixed(veh, 1)
+                                        SetVehicleTyreFixed(veh, 2)
+                                        SetVehicleTyreFixed(veh, 3)
+                                        SetVehicleTyreFixed(veh, 4)
+                                        SetVehicleTyreFixed(veh, 5)
+
+										saveVehicleData(currentPlate)
+										SendTextMessage(Config.Text["mechanic_action_complete"])
+
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
 									else
@@ -1412,7 +1480,7 @@ Citizen.CreateThread(
     function()
         while true do
 		
-            Citizen.Wait(Config.SetWaitTimeBeforeLoadHud)
+            Citizen.Wait(200)
             local ped = PlayerPedId()
             local veh = GetVehiclePedIsIn(ped)
             local seat = 0
@@ -1438,7 +1506,7 @@ Citizen.CreateThread(
                     }
                 )
                 	
-                    currentPlate = GetVehicleNumberPlateText(veh)
+                    currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
 
                     currentVehicle = veh
 
@@ -1631,7 +1699,7 @@ Citizen.CreateThread(
                         SetVehicleLightTrailEnabled(currentVehicle, false)
                         TriggerServerEvent("core_vehicle:syncNitro", false, false, false)
                         StopGameplayCamShaking(true)
-                        SetTransitionTimecycleModifier("default", 0.35)
+                        --SetTransitionTimecycleModifier("default", 0.35)
                         nitroActive = false
 
                         if not currentVehicleParts["turbo"] then
@@ -1644,12 +1712,12 @@ Citizen.CreateThread(
                                 if IsControlPressed(0, 71) then
                                     SetVehicleHandlingFloat(currentVehicle, "CHandlingData", "fDriveInertia", 2.0)
                                     SetVehicleBoostActive(currentVehicle, true)
-                                    SetVehicleLightTrailEnabled(currentVehicle, true)
+                                    --SetVehicleLightTrailEnabled(currentVehicle, true)
                                     TriggerServerEvent("core_vehicle:syncNitro", true, false, false)
-                                     StopScreenEffect("RaceTurbo")
+                                    StopScreenEffect("RaceTurbo")
                                 StartScreenEffect("RaceTurbo", 0, false)
-                                SetTimecycleModifier("rply_motionblur")
-                                ShakeGameplayCam("SKY_DIVING_SHAKE", 0.25)
+                                --SetTimecycleModifier("rply_motionblur")
+                                --ShakeGameplayCam("SKY_DIVING_SHAKE", 0.25)
                                 else
                                     SetVehicleNitroPurgeEnabled(currentVehicle, true)
                                     TriggerServerEvent("core_vehicle:syncNitro", false, true, false)
@@ -1755,6 +1823,12 @@ AddEventHandler(
         SendTextMessage(msg)
     end
 )
+
+RegisterNetEvent("local:inspect")
+AddEventHandler("local:inspect", function()
+    TriggerServerEvent('checktoolbox')
+end)
+
 
 
 RegisterNetEvent("mechanic:inspect")
@@ -2371,9 +2445,8 @@ RegisterNUICallback(
     end
 )
 
-RegisterCommand(
-    Config.BearHandsAccessCommand,
-    function()
+RegisterNetEvent("inspect:hands")
+AddEventHandler("inspect:hands", function()
         local ped = PlayerPedId()
         local coords = GetEntityCoords(ped)
         local veh, dst = ESX.Game.GetClosestVehicle(coords)
@@ -2387,10 +2460,10 @@ RegisterCommand(
             if GetVehicleDoorAngleRatio(veh, 4) ~= 0 then
                 local plate = GetVehicleNumberPlateText(veh)
                 currentVehicle = veh
-                currentPlate = GetVehicleNumberPlateText(veh)
-                TriggerServerEvent("core_vehicle:getVehicleHandling", plate)
+                currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
+                TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(plate, "%s+", ""))
 
-                TriggerServerEvent("core_vehicle:getVehicleParts", plate)
+                TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(plate, "%s+", ""))
                 Citizen.Wait(300)
                 local parts = {}
 
@@ -2471,10 +2544,10 @@ RegisterCommand(
 		else -- If no Hood go ahead without open it
 		local plate = GetVehicleNumberPlateText(veh)
                 currentVehicle = veh
-                currentPlate = GetVehicleNumberPlateText(veh)
-                TriggerServerEvent("core_vehicle:getVehicleHandling", plate)
+                currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
+                TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(plate, "%s+", ""))
 
-                TriggerServerEvent("core_vehicle:getVehicleParts", plate)
+                TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(plate, "%s+", ""))
                 Citizen.Wait(300)
                 local parts = {}
 
@@ -2560,6 +2633,8 @@ RegisterCommand(
     end
 )
 
+
+
 RegisterNetEvent("core_vehicle:getVehicleParts_c")
 AddEventHandler(
     "core_vehicle:getVehicleParts_c",
@@ -2604,6 +2679,10 @@ AddEventHandler(
                 handling["fTractionCurveMax"] = 0
                 handling["fTractionCurveMin"] = 0
             end
+
+             handling["tires_width"] = GetVehicleWheelWidth(currentVehicle)
+             handling["tires_size"] = GetVehicleWheelSize(currentVehicle)
+               
 
             TriggerServerEvent("core_vehicle:setVehicleHandling", plate, handling)
             currentVehicleHandling = handling
@@ -2722,6 +2801,9 @@ function setTires(veh)
         "fTractionCurveMin",
         currentVehicleHandling["fTractionCurveMin"] + traction
     )
+
+    SetVehicleWheelWidth(veh,currentVehicleHandling['tires_width'] + tires.width)
+    SetVehicleWheelSize(veh,currentVehicleHandling['tires_size'] + tires.size)
 
 
 
@@ -3046,3 +3128,236 @@ function toggleEngine()
     end
 end
 --]]
+
+
+
+
+
+
+-- CRAFTIN WORK BENCHES --
+
+exports['labrp_Eye']:AddBoxZone("BenchV1", vector3(-346.6813, -111.2703, 38.84473), 0.72, 3.95, {
+    name="BenchV1",
+    debugPoly=false,
+    heading=250.0,
+    minZ=38.5,
+    maxZ=39.0
+}, 
+{
+    options = {
+        {
+            event = "mechanic:crafting",
+            icon = "fas fa-tools",
+            label = "Crafting Bench",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+exports['labrp_Eye']:AddBoxZone("BenchV2", vector3(-322.2066, -146.4527, 38.84473), 0.72, 3.95, {
+    name="BenchV2",
+    debugPoly=false,
+    heading=250.0,
+    minZ=38.5,
+    maxZ=39.0
+}, 
+{
+    options = {
+        {
+            event = "mechanic:crafting",
+            icon = "fas fa-tools",
+            label = "Crafting Bench",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+exports['labrp_Eye']:AddBoxZone("BenchV3", vector3(-310.2725, -113.644, 38.84473), 0.72, 3.95, {
+    name="BenchV3",
+    debugPoly=false,
+    heading=250.0,
+    minZ=38.5,
+    maxZ=39.0
+}, 
+{
+    options = {
+        {
+            event = "mechanic:crafting",
+            icon = "fas fa-tools",
+            label = "Crafting Bench",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+exports['labrp_Eye']:AddBoxZone("BenchV4", vector3(-339.0461, -90.09231, 38.84473), 0.72, 3.95, {
+    name="BenchV4",
+    debugPoly=false,
+    heading=340.0,
+    minZ=38.5,
+    maxZ=39.0
+}, 
+{
+    options = {
+        {
+            event = "mechanic:crafting",
+            icon = "fas fa-tools",
+            label = "Crafting Bench",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+exports['labrp_Eye']:AddBoxZone("BenchV5", vector3(-367.1472, -79.85934, 38.84473), 0.72, 3.95, {
+    name="BenchV5",
+    debugPoly=false,
+    heading=340.0,
+    minZ=38.5,
+    maxZ=39.0
+}, 
+{
+    options = {
+        {
+            event = "mechanic:crafting",
+            icon = "fas fa-tools",
+            label = "Crafting Bench",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})--  -341.5253, -163.0417, 46.68567
+
+exports['labrp_Eye']:AddBoxZone("ToggleDuty", vector3(-341.4521, -162.978, 45.68567), 1.02, 0.80, {
+    name="ToggleDuty",
+    debugPoly=false,
+    heading=180.0,
+    minZ=44.0,
+    maxZ=45.8
+}, 
+{
+    options = {
+        {
+            event = "mechsign",
+            icon = "fas fa-tools",
+            label = "Sign On/Off",
+        },
+        {
+            event = "personallocker",
+            icon = "fas fa-tools",
+            label = "Open Locker",
+        },
+    },
+    job = {"all"},
+    distance = 1.6
+})
+
+RegisterNetEvent('personallocker')
+AddEventHandler('personallocker', function()
+    exports['linden_inventory']:OpenStash({ id = 'Employee Locker', slots = 10, job = 'mechanic', owner = true})
+end)---319.1209, -137.7231, 40.19849
+
+
+exports['labrp_Eye']:AddBoxZone("StorageV1", vector3(-319.1209, -137.7231, 38.84473), 0.72, 3.75, {
+    name="StorageV1",
+    debugPoly=false,
+    heading=250.0,
+    minZ=38.0,
+    maxZ=39.5
+}, 
+{
+    options = {
+        {
+            event = "storageV1",
+            icon = "fas fa-tools",
+            label = "Storage",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+RegisterNetEvent('storageV1')
+AddEventHandler('storageV1', function()
+    exports['linden_inventory']:OpenStash({ id = 'Mechanic Storage - 1', slots = 30, job = 'mechanic', owner = false})
+end)
+
+exports['labrp_Eye']:AddBoxZone("StorageV2", vector3(-316.4176, -130.6418, 38.84473), 0.72, 3.75, {
+    name="StorageV2",
+    debugPoly=false,
+    heading=250.0,
+    minZ=38.0,
+    maxZ=40.0
+}, 
+{
+    options = {
+        {
+            event = "storageV2",
+            icon = "fas fa-tools",
+            label = "Storage",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+RegisterNetEvent('storageV2')
+AddEventHandler('storageV2', function()
+    exports['linden_inventory']:OpenStash({ id = 'Mechanic Storage - 2', slots = 30, job = 'mechanic', owner = false})
+end)
+
+exports['labrp_Eye']:AddBoxZone("StorageV3", vector3(-308.6242, -109.2132, 38.84473), 0.72, 3.05, {
+    name="StorageV3",
+    debugPoly=false,
+    heading=250.0,
+    minZ=38.0,
+    maxZ=40.0
+}, 
+{
+    options = {
+        {
+            event = "storageV3",
+            icon = "fas fa-tools",
+            label = "Storage",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+RegisterNetEvent('storageV3')
+AddEventHandler('storageV3', function()
+    exports['linden_inventory']:OpenStash({ id = 'Mechanic Storage - 3', slots = 30, job = 'mechanic', owner = false})
+end)
+
+RegisterNetEvent('mechsign')
+AddEventHandler('mechsign', function()
+    TriggerServerEvent('mechduty:onoff')
+end)
+
+exports['labrp_Eye']:AddBoxZone("StorageV4", vector3(-353.4725, -129.8769, 38.84473), 0.72, 3.05, {
+    name="StorageV4",
+    debugPoly=false,
+    heading=250.0,
+    minZ=38.0,
+    maxZ=40.0
+}, 
+{
+    options = {
+        {
+            event = "storageV4",
+            icon = "fas fa-tools",
+            label = "Storage",
+        },
+    },
+    job = {"mechanic"},
+    distance = 1.6
+})
+
+RegisterNetEvent('storageV4')
+AddEventHandler('storageV4', function()
+    exports['linden_inventory']:OpenStash({ id = 'Mechanic Storage - 4', slots = 30, job = 'mechanic', owner = false})
+end)
