@@ -315,4 +315,5 @@ AddEventHandler("endtestdrive", function(plate)
     MySQL.Async.execute("UPDATE cardealer_vehicles SET test_drive = false WHERE plate = @plate", {['@plate'] = plate})
     
     TriggerClientEvent("pdm:despawnvehicle", src, -26.2022, -1083.02, 26.78613)
+    TriggerClientEvent("pdm:refreshstocklist", src)
 end)
