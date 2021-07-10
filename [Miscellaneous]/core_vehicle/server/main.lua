@@ -160,7 +160,7 @@ AddEventHandler(
                     }
 
                     MySQL.Async.execute(
-                        "REPLACE INTO vehicle_parts (plate, parts) values(@plate, @parts)",
+                        "INSERT INTO vehicle_parts (plate, parts) values(@plate, @parts)",
                         {["@parts"] = json.encode(defaultParts), ["@plate"] = plate},
                         function()
                         end
