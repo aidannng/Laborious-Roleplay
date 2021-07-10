@@ -639,14 +639,23 @@ AddEventHandler('houseRobberies:attempt', function()
     --local finished = taskBar(4000,math.random(5,15))
     if finished ~= 100 then
       exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
+      local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
+      local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
+      TriggerServerEvent('wf-alerts:svNotify', dispatchData)
     else
-        local finished2 = exports["reload-skillbar"]:taskBar(1750,math.random(5,15))
+        local finished2 = exports["reload-skillbar"]:taskBar(1250,math.random(5,15))
         if finished2 ~= 100 then
           exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
+          local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
+          local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
+          TriggerServerEvent('wf-alerts:svNotify', dispatchData)
         else
             local finished3 = exports["reload-skillbar"]:taskBar(6500,math.random(5,15))
             if finished3 ~= 100 then
                 exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
+                local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
+                local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
+                TriggerServerEvent('wf-alerts:svNotify', dispatchData)
             else
               TriggerEvent('lockpickAnimation')
               --exports["t0sic_loadingbar"]:StartDelayedFunction("Lockpicking Property", 12000, function()
@@ -852,7 +861,21 @@ Citizen.CreateThread(function()
       end
 
       --exports["t0sic_loadingbar"]:StartDelayedFunction("Searching "..myRobbableItems[i]['name'], 20000, function()
-      exports["cn-taskbar"]:taskBar(20000, "Searching "..myRobbableItems[i]['name'])  
+      --exports["cn-taskbar"]:taskBar(20000, "Searching "..myRobbableItems[i]['name'])
+      exports['mythic_progbar']:Progress({
+        name = "unique_action_name",
+        duration = 12000,
+        label = "Searching "..myRobbableItems[i]['name'],
+        useWhileDead = true,
+        canCancel = false,
+        controlDisables = {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        },
+      })
+      Citizen.Wait(12000)
       TriggerServerEvent('houseRobberies:searchItem')
      end
     end
@@ -880,7 +903,6 @@ Citizen.CreateThread(function()
       calledin = true
       if not isAgro then
        agroNPC()
-       TriggerEvent('police:houseRobbery')
       end
      end
     end

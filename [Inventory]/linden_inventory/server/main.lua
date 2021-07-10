@@ -1026,22 +1026,31 @@ end, true, {help = 'set account money', validate = true, arguments = {
 	{name = 'playerId', help = 'player id', type = 'player'},
 	{name = 'account', help = 'valid account name', type = 'string'},
 	{name = 'amount', help = 'amount to set', type = 'number'}
-}})
+}}) ]]
 
 local OpenStash = function(xPlayer, data, custom)
 	local type = custom or 'stash'
 	TriggerEvent('linden_inventory:openInventory', type, {owner = data.owner, id = data.name or data.id, label = data.label, slots = data.slots, coords = data.coords, job = data.job, grade = data.grade }, xPlayer)
-end ]]
+end 
 exports('OpenStash', OpenStash)
 
-ESX.RegisterCommand('evidence', 'user', function(xPlayer, args, showError)
+RegisterCommand("evidence", function(source, args, rawCommand)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.job.name == "police" then
+		local evidence = tonumber(args[1])
+		local stash = {id = 'evidence-'..evidence, label = 'Police Evidence (#'..evidence..')', slots = Config.PlayerSlots, job = 'police', coords = Config.PoliceEvidence, grade = 0}
+		OpenStash(xPlayer, stash)
+	end
+end)
+
+--[[ ESX.RegisterCommand('evidence', 'user', function(xPlayer, args, showError)
 	if xPlayer.job.name == 'police' then
 		local stash = {id = 'evidence-'..args.evidence, label = 'Police Evidence (#'..args.evidence..')', slots = Config.PlayerSlots, job = 'police', coords = Config.PoliceEvidence, grade = 2}
 		OpenStash(xPlayer, stash)
 	end
 end, true, {help = 'open police evidence', validate = true, arguments = {
 	{name = 'evidence', help = 'number', type = 'number'}
-}})
+}})  ]]
 
 ESX.RegisterCommand('clearevidence', 'user', function(xPlayer, args, showError)
 	if xPlayer.job.name == 'police' and xPlayer.job.grade_name == 'boss' then

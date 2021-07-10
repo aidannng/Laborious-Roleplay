@@ -149,7 +149,7 @@ Citizen.CreateThread(function()
         AddTargetModel(pawnshop, {
         options = {
         {
-            event = "pawnshop",
+            event = "openpawnshop",
             icon = "fas fa-briefcase",
             label = "Pawnshop",
         },

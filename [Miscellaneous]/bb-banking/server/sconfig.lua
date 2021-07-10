@@ -19,6 +19,6 @@ BBBankingCore['config'] = {
     ['nui'] = {
         ['enableCustomColor']       = true,  -- Do not touch for now
         ['customColor']             = 'green',  -- Available - [lightblue, red, green, yellow, blue]
-        ['logo']                    = 'https://aidan.iodine.gg/0c0gc.png' -- Bank logo [818x482 recommended]
+        ['logo']                    = 'https://i.iodine.gg/0c0gc.png' -- Bank logo [818x482 recommended]
     }
 }

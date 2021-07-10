@@ -16,6 +16,25 @@ AddEventHandler('linden_inventory:sandwich', function(item, wait, cb)
 	end)
 end)
 
+AddEventHandler('linden_inventory:donut', function(item, wait, cb)
+	cb(true)
+	SetTimeout(wait, function()
+		if not cancelled then
+			TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You ate a donut', length = 2500})
+		end
+	end)
+end)
+
+AddEventHandler('linden_inventory:cookie', function(item, wait, cb)
+	cb(true)
+	SetTimeout(wait, function()
+		if not cancelled then
+			TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You ate a cookie', length = 2500})
+		end
+	end)
+end)
+
+
 AddEventHandler('linden_inventory:water', function(item, wait, cb)
 	cb(true)
 	SetTimeout(wait, function()
@@ -30,6 +49,15 @@ AddEventHandler('linden_inventory:cola', function(item, wait, cb)
 	SetTimeout(wait, function()
 		if not cancelled then
 			TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You drank some delicious eCola', length = 2500})
+		end
+	end)
+end)
+
+AddEventHandler('linden_inventory:energydrink', function(item, wait, cb)
+	cb(true)
+	SetTimeout(wait, function()
+		if not cancelled then
+			TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You drank an energy drink', length = 2500})
 		end
 	end)
 end)

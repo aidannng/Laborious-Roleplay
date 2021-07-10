@@ -50,8 +50,8 @@ DefaultJobsInJobCenter = { -- Jobs that can be added by going to the job center.
 	{job = 'garbage', label = "Garbage", icon = "fas fa-trash", description = "You collect garbage & clean the streets of Los Santos!"},
 	{job = 'busdriver', label = "Bus Driver", icon = "fas fa-bus", description = "Drive your own custom bus routes around the city!"},
 	{job = 'tow', label = "Tow", icon = "fas fa-wrench", description = "Tow some vehicles parked illegally"},
-	{job = 'trucker', label = "Trucking", icon = "fas fa-truck", description = "You drive your Truck statewide and deliver items!"}
-
+	{job = 'trucker', label = "Trucking", icon = "fas fa-truck", description = "You drive your Truck statewide and deliver items!"},
+	{job = 'mail', label = "Mail Delivery", icon = "fas fa-mail-bulk", description = "Be a helpful citizen and deliver mail around the county!"},
 },
 
 
@@ -78,6 +78,6 @@ Text = {
 
 function SendTextMessage(msg)
 
-		exports['mythic_notify']:SendAlert('inform', msg)
+	exports['mythic_notify']:SendAlert('inform', msg)
 
 end

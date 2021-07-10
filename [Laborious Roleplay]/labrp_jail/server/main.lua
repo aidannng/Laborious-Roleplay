@@ -33,20 +33,24 @@ end, true, {help = 'Unjail a player', validate = true, arguments = {
 
 RegisterCommand("jail", function(source, args, rawCommand)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.job.name == police then
-		TriggerEvent('esx_jail:sendToJail', args.playerId, args.time * 60)
+	if xPlayer.job.name == "police" then
+		local tarPlayer = ESX.GetPlayerFromId(args[1])
+		local playerId = tonumber(args[1])
+		local time = tonumber(args[2])
+		TriggerEvent('esx_jail:sendToJail', playerId, time * 60)
 	else 
-		print("not a cop")
+		TriggerClientEvent('chat:addMessage', xPlayer.source, {template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;"> ^*[^4LABRP^0] You are not a cop! </div>',}); 
 	end
 end)
 
 RegisterCommand("unjail", function(source, args, rawCommand)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.job.name == police then
+	if xPlayer.job.name == "police" then
 		local tarPlayer = ESX.GetPlayerFromId(args[1])
 		local targetId = tonumber(args[1])
-		local xTarget = ESX.GetPlayerFromId(targetId)
 		unjailPlayer(targetId)
+	else 
+		TriggerClientEvent('chat:addMessage', xPlayer.source, {template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;"> ^*[^4LABRP^0] You are not a cop! </div>',}); 
 	end
 end)
 

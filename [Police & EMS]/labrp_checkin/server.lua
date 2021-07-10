@@ -13,6 +13,7 @@ RegisterServerEvent('esx_checkin:takeMoney')
 AddEventHandler('esx_checkin:takeMoney', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeAccountMoney('bank', 500)
+	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You\'ve been charged $500', })
 end)
 
 
