@@ -1,0 +1,91 @@
+body {
+    background: none !important;
+}
+
+#container {
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    position: fixed;
+    top: 47%;
+    left: 88%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(84, 96, 125);
+    border:2px solid rgb(44, 50, 66);
+    width: 350px;
+    border-radius: 7px;
+}
+
+.text-center{
+    margin-left:20%;
+}
+
+.logo{
+    width:50px;
+    height:50px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.accordion {
+    border:2px solid rgb(44, 50, 66);
+    border-radius: 7px;
+}
+
+.accordion-item {
+    border:2px solid rgb(108,123,158)!important;
+    border-radius: 5px!important;
+}
+
+.accordion-button {
+    background-color: rgb(171,192,245)!important;
+    color:rgb(84, 96, 125)!important;
+    padding:.5em 1.25rem!important;
+}
+
+.accordion-button:not(.collapsed){
+    color:rgb(84, 96, 125)!important;
+}
+
+.accordion-button:focus {
+    outline: none!important;
+    box-shadow: none!important;
+}
+
+.accordion-body{
+    background-color: rgb(217,227,251);
+}
+
+.float-right{
+    float:right;
+}
+
+.display-inline{
+    display:inline;
+}
+
+.display-block{
+    display:block;
+}
+
+.display-inline-block{
+    display:inline-block;
+}
+
+.margin-0{
+    margin:0px !important;
+}
+
+.color{
+    height:30px;
+    width:30px;
+    margin-right:5px;
+    border:solid 1px black;
+    display:inline-block;
+    border-radius:3px;
+}
+
+.color:hover{
+    border:1px solid lightblue;
+    cursor:pointer;
+}

@@ -1,0 +1,57 @@
+body {
+    /*background-color: transparent;*/
+    margin:0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    /*opacity: 0.0;*/
+}
+.container {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    width: 375px;
+    height: 210px;
+    border-radius: 20px;
+    background-color: rgba(28, 28, 28, 0.62);
+    border: 2px solid #088EFF;
+    transition: 0.1s;
+    transition-timing-function: ease-out;
+}
+.content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-gap: 5px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.overlay {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-image: url("carbon.jpg");
+    background-size: 90px;
+    border-radius: 20px;
+    opacity: 0.25;
+    filter: contrast(25%);
+}
+.slot {
+	background-color: rgba(0, 0, 0, 0.2);
+	outline: 1px solid rgba(33, 33, 33, 0);
+	border-radius: 12px;
+}
+
+.slot:hover {
+    background-color: rgba(226, 245, 245, 0);
+    box-shadow: 0 0 5px rgb(75, 122, 184) inset;	
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    align-self: center;
+}

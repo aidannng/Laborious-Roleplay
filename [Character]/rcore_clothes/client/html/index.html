@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./style.css">
+<!--    <link rel="stylesheet" href="./style-dark.css">-->
+
+    <script src="nui://game/ui/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/07db3c916b.js" crossorigin="anonymous"></script>
+    <script src="./notify.min.js"></script>
+    <script src="./vue.min.js"></script>
+</head>
+<body style="background: transparent;">
+<div id="app" style="z-index:1!important;">
+    <div class="row panel-row" v-if="visible">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel">
+                        <div class="title-container">
+                            <h5 class="title" style="padding-bottom: 20px;">{{trans.title}}</h5>
+                            <p v-if="trans.subtitle !== undefined && trans.subtitle.length > 0">{{trans.subtitle}}</p>
+                        </div>
+                        <div class="panel-content" style="text-align: left;">
+                            <div v-for="(comp, it) in components" class="row"
+                                 style="padding-top:10px; text-align: center">
+                                <div class="col-sm-4 component-name text-left">{{comp.label}}</div>
+                                <div class="col-sm-8">
+                                    <div class="d-inline-flex justify-content-center align-items-center">
+                                        <div @click="minusTen(comp, it)" class="round d-flex justify-content-center">
+                                            <svg class="align-self-center" width="20" height="16" viewBox="0 0 20 16"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8.66651 1.33342L1.99984 8.00008L8.6665 14.6667"
+                                                      stroke="#3498DB" stroke-width="2.66667" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M18 1.33342L11.3333 8.00008L18 14.6667" stroke="#3498DB"
+                                                      stroke-width="2.66667" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div @click="minus(comp, it)" class="round d-flex justify-content-center">
+                                            <svg class="align-self-center" width="13" height="22" viewBox="0 0 13 22"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M11 20.3333L1.66667 10.9999L11 1.66658" stroke="#3498DB"
+                                                      stroke-width="2.66667" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div class="current d-flex justify-content-center">
+                                            <input @change="change(comp, it, comp.current)" type="number" class="flex-fill p-2" v-model.lazy="comp.current" value="0">
+                                        </div>
+                                        <div class="max d-flex justify-content-center">
+                                            <span class="flex-fill p-2">
+                                                 /{{comp.to}}
+                                            </span>
+                                        </div>
+                                        <div @click="plus(comp, it)" class="round d-flex justify-content-center">
+                                            <svg class="align-self-center" width="13" height="22" viewBox="0 0 13 22"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M2 1.66675L11.3333 11.0001L2 20.3334" stroke="#3498DB"
+                                                      stroke-width="2.66667" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <div @click="plusTen(comp, it)" class="round d-flex justify-content-center">
+                                            <svg class="align-self-center" width="20" height="16" viewBox="0 0 20 16"
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M11.3335 14.6666L18.0002 7.99992L11.3335 1.33325"
+                                                      stroke="#3498DB" stroke-width="2.66667" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                                <path d="M2 14.6666L8.66667 7.99992L2 1.33325" stroke="#3498DB"
+                                                      stroke-width="2.66667" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div style="margin-top:40px;" class="row">
+                                    <div class="col-sm-6" v-if="paid">
+                                        <button @click="buy" class="btn btn-success" style="width:100%;">{{trans.buy}}
+                                            {{price}}$
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-6" v-if="paid">
+                                        <button @click="close" class="btn btn-danger" style="width:100%;">
+                                            {{trans.cancel}}
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-6" v-if="!paid" style="margin: auto;">
+                                        <button @click="buy" class="btn btn-success" style="width:100%;">{{trans.getFree}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="panel w-100 pt-2 pb-2 turn d-inline-flex justify-content-center align-items-center">
+
+                        <div class="mr-5">
+                            <button style="color:white;" @click="leftRotate()" class="arrow">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.3332 10.0001L9.99984 1.66675L1.6665 10.0001" stroke="#3498DB"
+                                          stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M28.3333 28.3334H16.6667C14.8986 28.3334 13.2029 27.631 11.9526 26.3808C10.7024 25.1306 10 23.4349 10 21.6667V1.66675"
+                                          stroke="#3498DB" stroke-width="3.33333" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="justify-content-center">{{trans.rotate}}</div>
+                        <div class="ml-5">
+                            <button style="color:white;" @click="rightRotate()" class="arrow">
+                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.6665 10.0001L19.9998 1.66675L28.3332 10.0001" stroke="#3498DB"
+                                          stroke-width="3.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M1.6665 28.3334H13.3332C15.1013 28.3334 16.797 27.631 18.0472 26.3808C19.2975 25.1306 19.9998 23.4349 19.9998 21.6667V1.66675"
+                                          stroke="#3498DB" stroke-width="3.33333" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="saveOutfit" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{trans.save.title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{trans.save.desc}}
+
+                    <hr>
+                    <h5 v-if="outfits.length > 0">{{trans.save.saved}}</h5>
+                    <p style="color:#4c4c4c; font-size: 12px;" v-if="outfits.length > 0">{{trans.save.saved_desc}}</p>
+                    <span @click="selectOutfit(outfit.label)" v-for="outfit in outfits"
+                          class="badge badge-info">{{outfit.label}}</span>
+                    <div v-if="outfits.length > 0" class="mb-3"></div>
+                    <div class="form-group mt-2">
+                        <input type="text" id="label" v-bind:placeholder="trans.save.placeholder" required
+                               class="custom-control form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" @click="save()" class="btn btn-success pl-5 pr-5">{{trans.save.save}}</button>
+                        <button type="button" @click="dontSave()" class="btn btn-danger">{{trans.save.dontSave}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="paymentType" tabindex="-1" style="color: #2C3E50;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{trans.payment.title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{trans.payment.desc}}
+                    <div class="row m-5">
+                        <div class="col-6 text-center">
+                            <a @click="selectPayment('cash')">
+                                <div class="cash-container h-100">
+                                    <h5>{{trans.payment.cash}}</h5>
+                                    <svg width="48" height="80" viewBox="0 0 48 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 3.3335V76.6668" stroke="#3498DB" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M40.6667 16.6665H15.6667C12.5725 16.6665 9.60501 17.8957 7.41709 20.0836C5.22916 22.2715 4 25.239 4 28.3332C4 31.4274 5.22916 34.3948 7.41709 36.5827C9.60501 38.7707 12.5725 39.9998 15.6667 39.9998H32.3333C35.4275 39.9998 38.395 41.229 40.5829 43.4169C42.7708 45.6048 44 48.5723 44 51.6665C44 54.7607 42.7708 57.7282 40.5829 59.9161C38.395 62.104 35.4275 63.3332 32.3333 63.3332H4" stroke="#3498DB" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 text-center">
+                            <a @click="selectPayment('bank')">
+                                <div class="cash-container h-100">
+                                    <h5>{{trans.payment.card}}</h5>
+                                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M70.0002 3.3335H10.0002C6.31826 3.3335 3.3335 6.31826 3.3335 10.0002V50.0002C3.3335 53.6821 6.31826 56.6668 10.0002 56.6668H70.0002C73.6821 56.6668 76.6668 53.6821 76.6668 50.0002V10.0002C76.6668 6.31826 73.6821 3.3335 70.0002 3.3335Z" stroke="#3498DB" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.3335 23.3335H76.6668" stroke="#3498DB" stroke-width="6.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>

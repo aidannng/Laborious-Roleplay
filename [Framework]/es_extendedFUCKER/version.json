@@ -1,0 +1,5 @@
+{
+	"version": "linden-legacy",
+	"commit" : "1.3.0",
+	"changelog": "Multicharacter support; improved spawning and skin loading; minor fixes and optimisation"
+}

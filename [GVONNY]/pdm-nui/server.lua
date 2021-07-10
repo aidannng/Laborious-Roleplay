@@ -1,0 +1,287 @@
+ESX = nil
+
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(10)
+    end
+end)
+
+RegisterServerEvent("getallvehicles")
+AddEventHandler("getallvehicles", function()
+    local src = source
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+    local jobgrade = tonumber(xPlayer.job.grade)
+
+    if(job == 'cardealer' and jobgrade == 5) then
+        MySQL.Async.fetchAll("SELECT DISTINCT(category) FROM vehicles ORDER BY category", {} ,function(result)
+            if(#result > 0) then
+                for x=1,#result,1 do 
+                    TriggerClientEvent("pdm:purchaselist", src, result[x].category, x)
+
+                    MySQL.Async.fetchAll("SELECT name, model, price, category FROM vehicles WHERE category = @category AND stock > 0", {['@category'] = result[x].category} ,function(result2)
+                        for y=1, #result2,1 do
+                            TriggerClientEvent('pdm:addtopurchaselist', src, result2[y].category, result2[y].model, result2[y].name, result2[y].price)
+                        end
+                    end)
+                end
+            end
+        end)
+    end
+end)
+
+RegisterServerEvent("purchase")
+AddEventHandler("purchase", function(model, price, plate)
+    print("buying car for PDM")
+    local src = source
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+    local jobgrade = tonumber(xPlayer.job.grade)
+    if(job == "cardealer" and jobgrade == 5) then 
+        MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {} ,function(result)
+            local balance = result[1].money - price
+
+            MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+        end)
+
+        MySQL.Async.fetchAll("SELECT stock FROM vehicles WHERE model = @model", {['@model'] = model}, function(result2)
+            local stock = tonumber(result2[1].stock)
+            if(stock > 0) then
+                stock = stock - 1
+            end
+
+            local markup = tonumber(price) * (1 + tonumber(.4))
+        
+            MySQL.Async.execute("UPDATE vehicles SET stock = @stock WHERE model = @model", {['@stock'] = stock, ['@model'] = model})
+            MySQL.Async.execute("INSERT INTO cardealer_vehicles SET plate = @plate, price = @price", {['@plate'] = plate, ['@price'] = markup})
+        end)
+    end
+end)
+
+RegisterServerEvent('pdmbuy')
+AddEventHandler('pdmbuy', function(props, stats, model)
+    local src = source
+    MySQL.Async.execute("INSERT INTO bbvehicles (identifier, plate, model, props, stats, state) VALUES ('PDM', '"..props.plate.."', '"..model.."', '"..json.encode(props).."', '"..stats.."', 'PDM')")
+end)
+
+RegisterServerEvent("getallstock")
+AddEventHandler("getallstock", function()
+    print("getting stock")
+    local src = source
+
+    local canshowcar = false
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+    local jobgrade = tonumber(xPlayer.job.grade)
+
+    if(job == 'cardealer' and jobgrade > 0) then
+        canshowcar = true
+    end
+
+    MySQL.Async.fetchAll("SELECT a.plate, a.price, c.name FROM cardealer_vehicles a, bbvehicles b, vehicles c WHERE a.plate = b.plate AND b.model = c.model ORDER BY c.name", {} ,function(result)
+        if(#result>0) then
+            for x=1,#result,1 do 
+                local plate = result[x].plate
+                local price = result[x].price
+                local finance = price * .25
+                local name = result[x].name
+                TriggerClientEvent("pdm:addtostocklist", src, name, plate, price, canshowcar, finance)
+            end 
+        end
+    end)
+end)
+
+RegisterServerEvent("getvehiclemodels")
+AddEventHandler("getvehiclemodels", function(category)
+    local src = source
+    MySQL.Async.fetchAll("SELECT name, model FROM vehicles WHERE category = @category ORDER BY name", {['@category'] = category},function(result)
+        if(#result>0) then
+            for x=1,#result,1 do
+                local name = result[x].name
+                local model = result[x].model
+                TriggerClientEvent("pdm:addtomodeldropdown", src, model, name)
+            end
+        end
+    end)
+end)
+
+RegisterServerEvent("getshowroom")
+AddEventHandler("getshowroom", function()
+    local src = source
+    MySQL.Async.fetchAll("SELECT a.slot_id as slot_id, a.plate as plate, c.name as name FROM pdm_showroom a, bbvehicles b, vehicles c WHERE a.plate = b.plate and b.model = c.model ORDER BY slot_id", {} ,function(result)
+        if(#result ~= nil) then
+            for x=1,#result,1 do
+                local slot_id = result[x].slot_id
+                local plate = result[x].plate
+                local name = result[x].name
+                TriggerClientEvent("pdm:addtoshowroomlist", src, slot_id, plate, name)
+            end
+        end
+    end)
+end)
+
+RegisterServerEvent("removefromshowroom")
+AddEventHandler("removefromshowroom", function(slotid)
+    local src = source
+    MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slotid})
+    TriggerClientEvent("pdm:refreshshowroom", src)
+
+    MySQL.Async.fetchAll("SELECT x, y, z, slot_id, plate FROM pdm_showroom WHERE slot_id = @slot",{['@slot']=slotid}, function(result)
+        local slot = result[1].slot_id
+        local x = result[1].x
+        local y = result[1].y
+        local z = result[1].z
+
+        MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
+        
+        TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+    end)
+end)
+
+RegisterServerEvent("movetoshowroom")
+AddEventHandler("movetoshowroom", function(slotid, plate)
+    local src = source
+    local oldslot
+
+    --check if any slots have the plate already in the showroom
+    MySQL.Async.fetchAll("SELECT x, y, z, slot_id, plate FROM pdm_showroom WHERE plate = @plate",{['@plate']=plate}, function(result)
+        --if plate is already in showroom
+        if(result ~= nil and #result>0) then
+            local slot = result[1].slot_id
+            oldslot = slot
+            local x = result[1].x
+            local y = result[1].y
+            local z = result[1].z
+            
+            --if new plate is the same as the plate
+            if(plate == result[1].plate) then
+                MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
+                TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+            end
+        end
+
+        MySQL.Async.execute("UPDATE pdm_showroom SET plate = @plate WHERE slot_id = @slotid", {['@plate']= plate, ['@slotid'] = slotid})
+
+        --gets new spawn slot info
+        MySQL.Async.fetchAll("SELECT a.slot_id, a.x, a.y, a.z, a.plate, a.rotation, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid AND b.plate = @plate",{['@slotid'] = slotid, ['@plate'] = plate}, function(result2)
+            if(result2 ~= nil and #result2>0) then
+                local x = result2[1].x
+                local y = result2[1].y
+                local z = result2[1].z
+                local model = result2[1].model
+                local slot = result2[1].slot_id
+                local rotation = result2[1].rotation
+                
+                if(result2[1].plate ~= nil) then
+                    MySQL.Async.execute("UPDATE pdm_showroom SET plate = @plate WHERE slot_id = @slotid", {['@plate']= plate, ['@slotid'] = slot})
+                    TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+                end
+                TriggerClientEvent("pdm:spawnvehicle", src, x, y, z, model, plate, rotation)
+            end
+        end)
+    end)
+end)
+
+RegisterServerEvent("createbill")
+AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
+    local src = source
+    local creator = ESX.GetPlayerFromId(src)
+    local ower = ESX.GetPlayerFromId(luckynumber)
+
+    if(ower ~= nil) then
+        MySQL.Async.fetchAll("SELECT a.id, b.model FROM cardealer_vehicles a, bbvehicles b WHERE a.plate = @plate and b.plate = @plate", {['@plate'] = plate}, function(result)
+            if(result ~= nil) then
+                local model = result[1].model
+                print(model)
+                if(tonumber(termlength) > 0) then
+                    local downpayment = math.floor(tonumber(price) *.25);
+                    price = price - downpayment
+            
+                    local cash = math.floor(tonumber(ower.getInventoryItem('money').count))
+                    print(cash)
+            
+                    if(cash >= downpayment) then
+                        local termamount = price / termlength
+            
+                        MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'society', 'society_cardealer', 'Vehicle Purchase', @price, @termlength, @termamount, '0', @haspaid, '14', '0')",{
+                            ['@ower'] = ower.identifier,
+                            ['@biller'] = creator.identifier,
+                            ['@price'] = price,
+                            ['@termlength'] = termlength,
+                            ['@haspaid'] = false,
+                            ['@termamount'] = termamount,
+                        })
+            
+                        ower.removeInventoryItem('money', downpayment)
+            
+                        MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
+                            local balance = result[1].money
+                            balance = balance + downpayment
+            
+                            MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+                        end)
+                        print(plate)
+                        MySQL.Async.execute("UPDATE bbvehicles SET identifier = @identifier, state = 'unknown' WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
+                        MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
+                        MySQL.Async.fetchAll("SELECT slot_id, x, y, z FROM pdm_showroom WHERE plate = @plate", {['@plate'] = plate}, function(result2)
+                            if(result2~= nil) then
+                                local slot = result2[1].slot_id
+                                local x = result2[1].x
+                                local y = result2[1].y
+                                local z = result2[1].z
+
+                                MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE plate = @plate", {['@plate'] = plate})
+                                TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+                            end
+                        end)    
+
+                        --give new owner keys
+
+                        MySQL.Async.fetchAll("SELECT model FROM bbvehicles WHERE plate = @plate",{['@plate'] = plate}, function(vehicle)
+                            if(vehicle ~= nil) then
+                                local model = vehicle[1].model
+
+                                TriggerClientEvent("pdm:spawnvehicleinback", src, model, plate)
+                            end
+                        end)
+                        
+                        
+                        TriggerClientEvent("pdm:refreshbilllist", src)
+                    else
+                        TriggerClientEvent("pdm:billerror", src, "Customer has insufficient funds")
+                    end
+                else
+
+                end
+            else
+                TriggerClientEvent("pdm:billerror", src, "Plate is not registered in stock")
+            end
+        end)
+    else
+        TriggerClientEvent("pdm:billerror", src, "Lucky number is not in city")
+    end
+end)
+
+RegisterServerEvent("getbills")
+AddEventHandler("getbills", function()
+    local src = source
+    MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'society_cardealer' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0",{}, function(result2)
+        if(result2 ~= nil and #result2>0) then
+            for x=1,#result2,1 do
+
+                local firstname = result2[x].firstname
+                local lastname = result2[x].lastname
+                local employeefirstname = result2[x].employeefirstname
+                local employeelastname = result2[x].employeelastname
+                local amount = result2[x].amount
+                local termlength = result2[x].term_length
+                local daysoverdue = result2[x].days_overdue
+
+                TriggerClientEvent("pdm:addtobillinglist", src, firstname, lastname, employeefirstname, employeelastname, amount, termlength, daysoverdue)
+            end
+        end
+    end)
+end)

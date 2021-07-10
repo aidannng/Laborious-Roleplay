@@ -1,0 +1,58 @@
+{
+	/* -- Drive Menu -- */
+	"MainMenuHeader": "Bus",
+	"MainMenuDescription": "Choisir une action",
+	"DriveMenuHeader": "Commencer une tournée",
+	"DriveMenuDescription": "Sélectionner une route",
+	"RouteEditorName": "Modifier une route",
+	"RouteEditorDescription": "Editer ou créer une routes",
+	"RouteItemDescription": "Conduire %name% - Temps estimé: %time%min",
+	"RouteMenuHeader": "Conduire %name%",
+	"RouteMenuDescription": "Configurer votre tournée %name%",
+	"RouteMenuBusItemName": "Selectionner un bus",
+	"RouteMenuBusItemDescription": "Selection ton bus",
+	"RouteMenuRoundTripItemName": "Aller-retour",
+	"RouteMenuRoundTripItemDescription": "Conduir d'un point A-B à un point B-A",
+	"RouteMenuInvertedItemName": "Inverser",
+	"RouteMenuInvertedItemDescription": "Tournée inversé B-A",
+	"RouteMenuDriveItemName": "Conduire maintenant",
+	"RouteMenuDriveItemDescription": "Commencer la tournée",
+	"OpenMenuText": "Appuyer sur ~INPUT_CONTEXT~ pour ouvrir le menu.",
+	/* -- Drive Menu -- */
+
+	/* -- Spawning -- */
+	"NoSpawnAvailable": "Aucun arrêt approprié n'a pu être trouvé!",
+	/* -- Spawning -- */
+
+	/* -- Hotkey Info -- */
+	"FrontDoorInfo": "Appuyer sur %key% pour ouvrir/fermer la porte avant.",
+	"BackDoorInfo": "Appuyer sur %key% pour ouvrir/fermer la porte arrière.",
+	"AnnounceInfo": "Appuyer sur %key% pour annoncer le prochain arrêt.",
+	/* -- Hotkey Info -- */
+
+	/* -- Stops -- */
+	"NextStop": "Prochain arrêt: %name%",
+	"LastStop": "Dernier arrêt: %name%",
+	"PassengerWantsToLeave": "Un passager souhaite descendre au prochain arrêt.",
+	"SkipStop": "Appuyer sur %key% pour passer cet arrêt",
+	"WaitForEnteringPassengers": "Veuillez attendre que les passagers montent dans le bus.",
+	"WaitForLeavingPassengers": "Veuillez attendre que les passagers descendent du bus.",
+	"CloseDoors": "Appuyer %frontkey%/%backkey% pour fermer toutes les portes",
+	"RouteFinished": "Vous avez terminé votre tournée! Retournez au dépôt.",
+	"ReturnBus": "Appuyer sur ~INPUT_CONTEXT~ pour garer le bus",
+	"AnnouncementDelay": "Vous devez attendre que l'annonce soit terminée pour la déclencher",
+	/* -- Stops -- */
+
+	/* -- After Return -- */
+	"FirstSentence": "Vous avez terminé votre tournée.",
+	"Earnings": "Vous avez reçu %money%$ pour votre tournée.",
+	"Passengers": "Vous avez eu un total de %passengers% passengers.",
+	/* -- After Return -- */
+
+	/* -- Cancellation -- */
+	"RouteCancelled": "Il semblerait que vous ayez annuler votre route ou que votre bus soit détruit!",
+	"BusDeleted": "Votre bus a été ramener au dépos !",
+	"GetIntoYourBus": "Rejoignez votre bus.",
+	"UntilDeletionTimerText": "avant que votre bus ne retourne au dépôt."
+	/* -- Cancellation -- */
+}

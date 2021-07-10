@@ -1,0 +1,58 @@
+{
+	/* -- Drive Menu -- */
+	"MainMenuHeader": "Bus Driver Pro",
+	"MainMenuDescription": "Aktion wählen",
+	"DriveMenuHeader": "Route fahren",
+	"DriveMenuDescription": "Bitte wähle eine Route aus",
+	"RouteEditorName": "Routen Editor",
+	"RouteEditorDescription": "Erstelle oder Bearbeite Routen",
+	"RouteItemDescription": "Route %name% fahren - Vorraussichtliche Dauer: %time%min",
+	"RouteMenuHeader": "Route %name% fahren",
+	"RouteMenuDescription": "Fahrtenkonfiguration auf Route %name%",
+	"RouteMenuBusItemName": "Bus wählen",
+	"RouteMenuBusItemDescription": "Bitte wähle den Bus, den du fahren möchtest",
+	"RouteMenuRoundTripItemName": "Rundfahrt",
+	"RouteMenuRoundTripItemDescription": "Fahre die Route im Rundfahrt-Modus",
+	"RouteMenuInvertedItemName": "Invertiert",
+	"RouteMenuInvertedItemDescription": "Fahre die Route andersherum",
+	"RouteMenuDriveItemName": "Fahrt beginnen",
+	"RouteMenuDriveItemDescription": "Beginne die Fahrt",
+	"OpenMenuText": "Drücke ~INPUT_CONTEXT~ um das Bus Menü zu öffnen",
+	/* -- Drive Menu -- */
+
+	/* -- Spawning -- */
+	"NoSpawnAvailable": "Es konnte kein Einstiegspunkt gefunden werden!",
+	/* -- Spawning -- */
+
+	/* -- Hotkey Info -- */
+	"FrontDoorInfo": "Drücke %key% um die vordere Tür zu öffnen/schließen.",
+	"BackDoorInfo": "Drücke %key% um die hintere Tür zu öffnen/schließen.",
+	"AnnounceInfo": "Drücke %key% um die nächste Haltestelle anzukündigen.",
+	/* -- Hotkey Info -- */
+
+	/* -- Stops -- */
+	"NextStop": "Nächster Halt: %name%",
+	"LastStop": "Letzter Halt: %name%",
+	"PassengerWantsToLeave": "Ein Fahrgast möchte an der nächsten Haltestelle aussteigen",
+	"SkipStop": "Drücke %key% um diese Haltestelle zu überspringen",
+	"WaitForEnteringPassengers": "Warte bis alle Fahrgäste eingestiegen sind",
+	"WaitForLeavingPassengers": "Warte bis alle Fahrgäste ausgestiegen sind",
+	"CloseDoors": "Drücke %frontkey%/%backkey% um die Türen zu schließen",
+	"RouteFinished": "Du hast deine Fahrt beendet. Kehre zum Betriebshof zurück",
+	"ReturnBus": "Drücke ~INPUT_CONTEXT~ um den Bus zurückzugeben",
+	"AnnouncementDelay": "Bitte warte einen Moment bevor du die nächste Ankündigung abspielst",
+	/* -- Stops -- */
+
+	/* -- After Return -- */
+	"FirstSentence": "Du hast deine Fahrt beendet.",
+	"Earnings": "Du hast %money%$ verdient.",
+	"Passengers": "Du hast %passengers% Fahrgäste befördert.",
+	/* -- After Return -- */
+
+	/* -- Cancellation -- */
+	"RouteCancelled": "Deine Fahrt wurde abgebrochen!",
+	"BusDeleted": "Dein Bus wurde gelöscht!",
+	"GetIntoYourBus": "Bitte kehre in deinen Bus zurück.",
+	"UntilDeletionTimerText": "bis dein Bus gelöscht wird."
+	/* -- Cancellation -- */
+}

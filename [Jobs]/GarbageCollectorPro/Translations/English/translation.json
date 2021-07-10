@@ -1,0 +1,37 @@
+{
+	/* -- Menu -- */
+	"MainMenuHeader": "GarbageCollectorPro",
+	"MainMenuDescription": "Select action",
+	"DriveMenuHeader": "Drive Route",
+	"DriveMenuDescription": "Select garbage route",
+	"RouteEditorName": "Route Editor",
+	"RouteEditorDescription": "Open the route editor",
+	"RouteItemDescription": "Collect garbage on %name% - Estimated time is %time%min",
+	"RouteMenuHeader": "Collect on %name%",
+	"RouteMenuDescription": "Configure your tour on %name%",
+	"RouteMenuCarItemName": "Garbage vehicle",
+	"RouteMenuCarItemDescription": "Select garbage vehicle",
+	"RouteMenuDriveItemName": "Start garbage collection tour",
+	"RouteMenuDriveItemDescription": "Start your collection tour",
+	/* -- Menu -- */
+
+	/* -- Notifications -- */
+	"NoSpawnAvailable": "There is no suitable spawn point available.",
+	"RouteCancelled": "It looks like you cancelled your route.",
+	"Delivered": "Proceed to the next stop.",
+	"RouteFinished": "You have finished your route. Drive back to the depot.",
+	"PressToGrab": "Press ~INPUT_CONTEXT~ to grab the garbage bin.",
+	"Grabbed": "You grabbed the garbage bin.",
+	"PutInTruck": "Press ~INPUT_CONTEXT~ to put the garbage in the truck.",
+	"PutGarbageIn": "You put the garbage in the truck.",
+	"PlaceGarbageBin": "Press ~INPUT_CONTEXT~ to place the garbage bin on the ground.",
+	"EndingLine1": "You finished your route.",
+	"EndingLine2": "You emptied %stops% garbage bins.",
+	"EndingLine3": "You earned %dollar%$.",
+	/* -- Notifications -- */
+
+	/* -- Misc -- */
+	"DeliveryStopBlipName": "Collection stop",
+	"OpenMenu": "Press ~INPUT_CONTEXT~ to open the menu.",
+	/* -- Misc -- */
+}

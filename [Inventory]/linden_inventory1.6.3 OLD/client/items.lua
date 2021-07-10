@@ -1,0 +1,102 @@
+AddEventHandler('linden_inventory:burger', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You ate a delicious burger', length = 2500})
+end)
+
+AddEventHandler('linden_inventory:water', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You drank some refreshing water', length = 2500})
+end)
+
+AddEventHandler('linden_inventory:cola', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You drank some delicious eCola', length = 2500})
+end)
+
+AddEventHandler('linden_inventory:hotwheelpack', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	--exports["cn-taskbar"]:taskbar(1000, "Opening Pack...")
+	exports["cn-taskbar"]:taskBar(1000, "Opening Pack...")
+	Citizen.Wait(1000)
+	TriggerServerEvent('labrp_hotwheels:hotwheelpack')
+	print('triggered')
+end)
+
+AddEventHandler('jointuse', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	TriggerEvent('animation:Weed') --('animation:Cancel')
+	Citizen.Wait(10)
+	TriggerEvent('animation:Cancel')
+	SetPlayerMaxArmour(playerID, 25)
+	SetPedArmour(ESX.PlayerData.ped, 25)
+end)
+
+AddEventHandler('linden_inventory:bandage', function(item, wait, cb)
+	local maxHealth = 200
+	local health = GetEntityHealth(ESX.PlayerData.ped)
+	if health < maxHealth then
+		cb(true)
+		Citizen.Wait(wait)
+		local newHealth = math.min(maxHealth, math.floor(health + maxHealth / 16))
+		SetEntityHealth(ESX.PlayerData.ped, newHealth)
+		TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You feel better already', length = 2500})
+	else cb(false) end
+end)
+
+
+AddEventHandler('linden_inventory:ifak', function(item, wait, cb)
+    cb(true)
+    Citizen.Wait(wait)
+    local playerPed = GetPlayerPed(-1)
+    local health = GetEntityHealth(playerPed)
+    local addHealth = math.random(10,15)
+    local newHealth = addHealth + health
+    Citizen.Wait(2500)
+    SetEntityHealth(playerPed, newHealth)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'Get back to work soldier!', length = 2500})
+end)
+
+
+AddEventHandler('linden_inventory:armour', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	SetPlayerMaxArmour(playerID, 100)
+	SetPedArmour(ESX.PlayerData.ped, 50)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'Some added protection!', length = 2500})
+end)
+
+AddEventHandler('linden_inventory:pdarmour', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	SetPlayerMaxArmour(playerID, 100)
+	SetPedArmour(ESX.PlayerData.ped, 100)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You feel unstoppable!', length = 2500})
+end)
+
+AddEventHandler('condom', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	exports["cn-taskbar"]:taskBar(3000, "Using Condom")
+	Citizen.Wait(3000)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = '+100 Always Wear Protection', length = 2500})
+	SetPlayerMaxArmour(playerID, 100)
+	SetPedArmour(ESX.PlayerData.ped, 100)
+	Citizen.Wait(5000)
+	TriggerEvent('mythic_notify:client:SendAlert', {type = 'error', text = "-100 Armour You don't last long", length = 2500})
+	SetPlayerMaxArmour(playerID, 0)
+	SetPedArmour(ESX.PlayerData.ped, 0)
+end)
+
+AddEventHandler('greenlaptop', function(item, wait, cb)
+	cb(true)
+	Citizen.Wait(wait)
+	TriggerEvent('checkLegionFleeca')
+end)
+
+
+--jointuse

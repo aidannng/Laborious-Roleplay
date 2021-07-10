@@ -1,0 +1,162 @@
+{
+	/* -- Verification -- */
+	"TransactionID": "tbx-64716621a52513-6555be",
+	/* -- Verification -- */
+
+	/* -- OneSync -- */
+	"EnableOneSyncSupport": true,
+	/* -- OneSync -- */
+
+	/* -- Doors -- */
+	"FrontDoorKey":174,
+	"RearDoorKey":174,
+	/* -- Doors -- */
+
+	/* -- Skipping -- */
+	"EnableSkipping": false,
+	"SkipStopKey":47,
+	/* -- Skipping -- */
+
+	/* -- Indicators -- */
+	"EnableIndicators": false,
+	"LeftIndicatorKey": 174,
+	"RightIndicatorKey": 175,
+	"WarningLightsKey": 173,
+	/* -- Indicators -- */
+	
+	/* -- Announcement -- */
+	"EnableManualAnnouncement": true,
+	"ManualAnnouncementKey":348,
+	"EnableManualAnnouncementDelay": true,
+	"ManualAnnouncementDelay":5000, /*Delay in ms*/
+	/* -- Announcement -- */
+
+	/* -- Features -- */
+	"EnableStopRequestSound": true,
+	"EnableHotkeyInfo": true,
+	/* -- Features -- */
+
+	/* -- Depot Blip -- */
+	"EnableDepotBlip": true,
+	"DepotBlipSprite": 513,
+	"DepotBlipColor": 0,
+	"DepotBlipSize": 1.0,
+	"DepotBlipName": "Bus Depot",
+	/* -- Depot Blip -- */
+
+	/* -- Depot Marker -- */
+	"EnableDepotMarker": true,
+	"DepotMarkerColorRed": 10,
+	"DepotMarkerColorGreen": 0,
+	"DepotMarkerColorBlue": 255,
+	"DepotMarkerSize": 5,
+	"DepotMarkerHeight": 1,
+	"DepotMarkerType": 1,
+	/* -- Depot Marker -- */
+
+	/* -- Commands -- */
+	"EnableCancelCommand": true,
+	"CancelCommand": "cancelRoute",
+	"EnableDriveCommand": false,
+	"DriveCommand": "false",
+	"EnableShowStopsCommand": true,
+	"ShowStopsCommand": "showStops",
+	/* -- Commands -- */
+
+	/* -- Bus left timeout -- */
+	"EnableBusLeftTimeout": true,
+	"BusLeftTimeout": 60,
+	/* -- Bus left timeout -- */
+
+	/* -- Positions -- */
+	"Depot":{
+		"X":463.61,
+		"Y":-647.7,
+		"Z":27.24
+	},
+	"StartPoint":{
+		"X":435.9,
+		"Y":-645.52,
+		"Z":27.74
+	},
+	/* -- Positions -- */
+
+	/* -- ESX -- */
+	"EnableESX": true,
+	"EnableQBCore": false,
+	"ChargeSecurityDeposit": true,
+	"SecurityDepositAmount": 1000,
+	"RestrictToJob": true,
+	"Job": "busdriver",
+	"RestrictBlipToJob": true,
+	"EnablePayout": true,
+	"InitialPayment": 650,
+	"PerPassengerPayment": 5,
+	"AddToBank": false,
+	"SharedObjectEventName": "esx:getSharedObject",
+	"QBCoreSharedObjectEventName": "QBCore:GetObject",
+	/* -- ESX -- */
+
+	/* -- Route Editor -- */
+	"RestrictRouteEditorToJobRank": false,
+	"RouteEditorJobRank": 11,
+	"RestrictRouteEditorToPermission": true,
+	"RouteEditorPermission": "busdriverpro.editor",
+	/* -- Route Editor -- */
+	
+	/* -- Controls -- */
+	"ControlMapping": {
+	51:"INPUT_CONTEXT",
+	54:"INPUT_CONTEXT",
+	174:"INPUT_CELLPHONE_LEFT",
+	175:"INPUT_CELLPHONE_RIGHT",
+	173:"INPUT_CELLPHONE_DOWN",
+	47:"INPUT_DETONATE",
+	108:"INPUT_VEH_FLY_ROLL_LEFT_ONLY",
+	112:"INPUT_VEH_FLY_PITCH_DOWN_ONLY",
+	27:"INPUT_PHONE",
+	249:"INPUT_PUSH_TO_TALK",
+	348:"INPUT_MAP_POI"
+	},
+	/* -- Controls -- */
+	
+	/* -- Spawn Points -- */
+	"SpawnPoints": [
+			{
+				"X":424.89,
+				"Y":-644.77,
+				"Z":27.5
+			},
+			{
+				"X":425.82,
+				"Y":-609.14,
+				"Z":27.5
+			},
+			{
+				"X":454.02,
+				"Y":-580.07,
+				"Z":27.5
+			},
+			{
+				"X":471.22,
+				"Y":-582.55,
+				"Z":27.5
+			},
+			{
+				"X":467.57,
+				"Y":-603.4,
+				"Z":27.5
+			},
+			{
+				"X":460.1,
+				"Y":-631.03,
+				"Z":27.5
+			},
+			{
+				"X":462.73,
+				"Y":-655.33,
+				"Z":26.78
+			}
+	]
+	/* -- Spawn Points -- */	
+}

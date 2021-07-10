@@ -1,0 +1,599 @@
+<html>
+<head>
+    <link rel="stylesheet" href="reset.css" type="text/css">
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script src="jquery-3.4.1.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="./index.js" type="text/javascript"></script>
+</head>
+<body style="z-index: -1;">
+    <div id="container">
+        <div>
+            <img class="logo" src="img/logo_transparent.png" />
+            <h2 class="display-inline-block text-center">Mechanic Crafting</h2>
+            <button type="button" id="close" aria-label="Close" class="display-inline-block float-right" style="margin-top:5px">
+                <span aria-hidden="true"><i class="fa fa-times" style="color:black"></i></span>
+            </button>
+        </div>
+        <div>
+            <div class="accordion" id="resparyAccordian">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Materials
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:iron">
+                                <img src="img/iron.png">
+                                <div class="image-caption caption">
+                                  <h6>Iron</h6>
+                                  <p>2 Scrap Metal</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:nutsandbolts">
+                                <img src="img/nuts_and_bolts.png">
+                                <div class="image-caption caption">
+                                    <h6>Nuts & Bolts</h6>
+                                    <p>1 Scrap Metal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Parts
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:piston">
+                                <img src="img/piston.png">
+                                <div class="image-caption caption">
+                                    <h6>Piston</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:crankshaft">
+                                <img src="img/crankshaft.png">
+                                <div class="image-caption caption">
+                                    <h6>Crankshaft</h6>
+                                    <p>2 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:block">
+                                <img src="img/engine_block.png">
+                                <div class="image-caption caption">
+                                    <h6>Engine Block</h6>
+                                    <p>3 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:aluminumblock">
+                                <img src="img/aluminum_engine_block.png">
+                                <div class="image-caption caption">
+                                    <h6>Aluminum Engine Block</h6>
+                                    <p>10 Aluminum</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:head">
+                                <img src="img/head.png">
+                                <div class="image-caption caption">
+                                    <h6>Engine Head</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:highflowhead">
+                                <img src="img/high_flow_head.png">
+                                <div class="image-caption caption">
+                                    <h6>High Flow Engine Head</h6>
+                                    <p>2 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:spring">
+                                <img src="img/spring.png">
+                                <div class="image-caption caption">
+                                    <h6>Spring</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:loweringspring">
+                                <img src="img/lowering_spring.png">
+                                <div class="image-caption caption">
+                                    <h6>Lowering Spring</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:strut">
+                                <img src="img/strut.png">
+                                <div class="image-caption caption">
+                                    <h6>Strut</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:racestrut">
+                                <img src="img/race_strut.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Strut</h6>
+                                    <p>2 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:brakepad">
+                                <img src="img/brake_pad.png">
+                                <div class="image-caption caption">
+                                    <h6>Brake Pad</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:racebrakepad">
+                                <img src="img/race_brake_pad.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Brake Pad</h6>
+                                    <p>2 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:rotor">
+                                <img src="img/rotor.png" id="craft:rotor">
+                                <div class="image-caption caption">
+                                    <h6>Rotor</h6>
+                                    <p>2 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container"  id="craft:racerotor">
+                                <img src="img/race_rotor.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Rotor</h6>
+                                    <p>3 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:transmissiongear">
+                                <img src="img/transmission_gear.png">
+                                <div class="image-caption caption">
+                                    <h6>Transmission Gear</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Turbos
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:singleturbo">
+                                <img src="img/single_turbo.png">
+                                <div class="image-caption caption">
+                                    <h6>Single Turbo</h6>
+                                    <p>5 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:bigsingleturbo">
+                                <img src="img/big_single_turbo.png">
+                                <div class="image-caption caption">
+                                    <h6>Big Single Turbo</h6>
+                                    <p>7 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:twinturbo">
+                                <img src="img/twin_turbo.png">
+                                <div class="image-caption caption">
+                                    <h6>Twin Turbo</h6>
+                                    <p>10 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:racetwinturbo">
+                                <img src="img/race_twin_turbo.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Twin Turbo</h6>
+                                    <p>12 Iron</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            NOS
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:nos">
+                                <img src="img/nos.png">
+                                <div class="image-caption caption">
+                                    <h6>NOS</h6>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Transmission
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:stocktransmission">
+                                <img src="img/stock_transmission.png">
+                                <div class="image-caption caption">
+                                    <h6>Stock Transmission</h6>
+                                    <p>5 Trans Gears<br>1 Stock Oil</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:streettransmissionrwd">
+                                <img src="img/street_transmission.png">
+                                <div class="image-caption caption">
+                                    <h6>Street Trans (RWD)</h6>
+                                    <p>5 Trans Gears<br>1 Shell Oil</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:streettransmissionfwd">
+                                <img src="img/street_transmission_fwd.png">
+                                <div class="image-caption caption">
+                                    <h6>Street Trans (FWD)</h6>
+                                    <p>5 Trans Gears<br>1 Shell Oil</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:streettransmission4wd">
+                                <img src="img/street_transmission_4wd.png">
+                                <div class="image-caption caption">
+                                    <h6>Street Trans (AWD)</h6>
+                                    <p>5 Trans Gears<br>1 Shell Oil</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:racetransmissionrwd">
+                                <img src="img/race_transmission.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Trans (RWD)</h6>
+                                    <p>5 Trans Gears<br>1 Amsoil</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:racetransmissionfwd">
+                                <img src="img/race_transmission_fwd.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Trans (FWD)</h6>
+                                    <p>5 Trans Gears<br>1 Amsoil</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:racetransmission4wd">
+                                <img src="img/race_transmission_4wd.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Trans (AWD)</h6>
+                                    <p>5 Trans Gears<br>1 Amsoil</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Suspension
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:stocksuspension">
+                                <img src="img/stock_suspension.png">
+                                <div class="image-caption caption">
+                                    <h6>Stock Suspension</h6>
+                                    <p>4 Springs <br>4 Stuts</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:loweringsprings">
+                                <img src="img/lowering_springs.png">
+                                <div class="image-caption caption">
+                                    <h6>Lowering Springs</h6>
+                                    <p>4 Lowering Springs <br>4 Stuts</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:coilovers">
+                                <img src="img/coil_overs.png">
+                                <div class="image-caption caption">
+                                    <h6>Coil Overs</h6>
+                                    <p>4 Springs <br>4 Race Stuts</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:racecoilovers">
+                                <img src="img/race_coil_overs.png">
+                                <div class="image-caption caption">
+                                    <h6>Race Coil Overs</h6>
+                                    <p>4 Lowering Springs <br>4 Race Struts</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:stancedcoilovers">
+                                <img src="img/stanced_coil_overs.png">
+                                <div class="image-caption caption">
+                                    <h6>Stanced Coil Overs</h6>
+                                    <p>4 Lowering Springs <br>4 Race Struts</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:liftedcoilovers">
+                                <img src="img/lifted_coil_overs.png">
+                                <div class="image-caption caption">
+                                    <h6>Lifted Coil Overs</h6>
+                                    <p>4 Springs <br>4 Race Stuts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            Oil
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:stockoil">
+                                <img src="img/stock_oil.png">
+                                <div class="image-caption caption">
+                                    <h6>Stock Oil x2</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:shelloil">
+                                <img src="img/shell_oil.png">
+                                <div class="image-caption caption">
+                                    <h6>Shell</h6>
+                                    <p>1 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:mobile1">
+                                <img src="img/mobile1_oil.png">
+                                <div class="image-caption caption">
+                                    <h6>Mobile 1</h6>
+                                    <p>2 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:amsoil">
+                                <img src="img/amsoil_oil.png">
+                                <div class="image-caption caption">
+                                    <h6>Amsoil</h6>
+                                    <p>4 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:royalpurple">
+                                <img src="img/royal_purple_oil.png">
+                                <div class="image-caption caption">
+                                    <h6>Royal Purple</h6>
+                                    <p>3 Iron</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            Engines
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:stockengine">
+                                <img src="img/stock_engine.png">
+                                <div class="image-caption caption">
+                                    <h6>Stock Engine</h6>
+                                    <p>4 Pistons <br>1 Crankshaft <br>1 Engine Block <br>1 Engine Head</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:tunedengine">
+                                <img src="img/tuned_engine.png">
+                                <div class="image-caption caption">
+                                    <h6>Tuned Stock Engine</h6>
+                                    <p>6 Pistons <br>1 Crankshaft <br>1 Engine Block <br>2 High Flow Heads</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:fullboltonengine">
+                                <img src="img/full_bolt_on_engine.png">
+                                <div class="image-caption caption">
+                                    <h6>Full Bolt On Engine</h6>
+                                    <p>6 Pistons <br>1 Crankshaft <br>1 Engine Block <br>2 Engine Heads</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:k20">
+                                <img src="img/k20a.png">
+                                <div class="image-caption caption">
+                                    <h6>Honda K20</h6>
+                                    <p>Need recipe</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:rb26">
+                                <img src="img/rb26.png">
+                                <div class="image-caption caption">
+                                    <h6>Nissan RB 26</h6>
+                                    <p>Need recipe</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:13b">
+                                <img src="img/rotary7.png">
+                                <div class="image-caption caption">
+                                    <h6>Mazda 13b</h6>
+                                    <p>Need recipe</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:2jz">
+                                <img src="img/2jzengine.png">
+                                <div class="image-caption caption">
+                                    <h6>Toyota 2JZ</h6>
+                                    <p>6 Pistons <br>1 Crankshaft <br>1 Engine Block <br>1 High Flow Head</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:amgv8">
+                                <img src="img/amgv8.png">
+                                <div class="image-caption caption">
+                                    <h6>AMG V8</h6>
+                                    <p>8 Pistons <br>1 Crankshaft <br>1 Engine Block <br>2 High Flow Heads</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:chevylt5">
+                                <img src="img/chevylt5.png">
+                                <div class="image-caption caption">
+                                    <h6>Chevy LT5</h6>
+                                    <p>Need recipe</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:lambov10">
+                                <img src="img/lambov10.png">
+                                <div class="image-caption caption">
+                                    <h6>Lambo V10</h6>
+                                    <p>10 Pistons <br>1 Crankshaft <br>1 Engine Block <br>2 High Flow Heads</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingNine">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                            Tires
+                        </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:stocktires">
+                                <img src="img/stock_tires.png">
+                                <div class="image-caption caption">
+                                    <h6>Stock Tires</h6>
+                                    <p>8 Rubber</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:michelintires">
+                                <img src="img/michelin_tires.png">
+                                <div class="image-caption caption">
+                                    <h6>Michelin</h6>
+                                    <p>10 Rubber</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:pirellitires">
+                                <img src="img/pirelli_tires.png">
+                                <div class="image-caption caption">
+                                    <h6>Pirelli</h6>
+                                    <p>12 Rubber</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:hankooktires">
+                                <img src="img/hankook_tires.png">
+                                <div class="image-caption caption">
+                                    <h6>Hankook</h6>
+                                    <p>15 Rubber</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:dunloptires">
+                                <img src="img/dunlop_tires.png">
+                                <div class="image-caption caption">
+                                    <h6>Dunlop</h6>
+                                    <p>10 Rubber</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:falkentires">
+                                <img src="img/falken_tires.png">
+                                <div class="image-caption caption">
+                                    <h6>Falken</h6>
+                                    <p>8 Rubber</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:nittotires">
+                                <img src="img/nitto_tires.png">
+                                <div class="image-caption caption">
+                                    <h6>Nitto</h6>
+                                    <p>18 Rubber</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                            Brakes
+                        </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:stockbrakes">
+                                <img src="img/stock_brakes.png">
+                                <div class="image-caption caption">
+                                    <h6>Stock Brakes</h6>
+                                    <p>4 Rotors <br>8 Brake Pads</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:upgradedbrakepads">
+                                <img src="img/upgraded_brake_pads.png">
+                                <div class="image-caption caption">
+                                    <h6>Upgraded Brakes</h6>
+                                    <p>4 Rotors <br>8 Race Brake Pads</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:brembobrakes">
+                                <img src="img/brembo_brakes.png">
+                                <div class="image-caption caption">
+                                    <h6>Brembo</h6>
+                                    <p>4 Race Rotors <br>8 Race Brake Pads</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:wilwoodbrakes">
+                                <img src="img/wilwood_brakes.png">
+                                <div class="image-caption caption">
+                                    <h6>Wilwood</h6>
+                                    <p>4 Race Rotors <br>8 Race Brake Pads</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEleven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                            Sparkplugs
+                        </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#resparyAccordian">
+                        <div class="accordion-body">
+                            <div class="image-container" id="craft:stocksparkplugs">
+                                <img src="img/stock_sparkplugs.png">
+                                <div class="image-caption caption">
+                                    <h6>Stock Sparkplugs</h6>
+                                    <p>2 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:ngksparkplugs">
+                                <img src="img/ngk_sparkplugs.png">
+                                <div class="image-caption caption">
+                                    <h6>NGK</h6>
+                                    <p>4 Iron</p>
+                                </div>
+                            </div>
+                            <div class="image-container" id="craft:championsparkplugs">
+                                <img src="img/champion_sparkplugs.png">
+                                <div class="image-caption caption">
+                                    <h6>Champion</h6>
+                                    <p>3 Iron</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
