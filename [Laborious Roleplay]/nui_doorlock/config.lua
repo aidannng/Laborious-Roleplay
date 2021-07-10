@@ -2446,3 +2446,117 @@ table.insert(Config.DoorList, {
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 	-- autoLock = 1000
 })
+
+-- PDM Garage Door
+table.insert(Config.DoorList, {
+	garage = true,
+	locked = true,
+	slides = 6.0,
+	objHeading = 249.87759399414,
+	objCoords = vector3(-30.25878, -1081.206, 27.34126),
+	authorizedJobs = { ['cardealer']=0 },
+	maxDistance = 6.0,
+	lockpick = false,
+	audioRemote = false,
+	objHash = 30769481,
+	fixText = false,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- PDM Gate 1
+table.insert(Config.DoorList, {
+	garage = false,
+	locked = true,
+	slides = true,
+	objHeading = 69.04231262207,
+	objCoords = vector3(-54.30577, -1072.079, 26.22492),
+	authorizedJobs = { ['cardealer']=0 },
+	maxDistance = 6.0,
+	lockpick = false,
+	audioRemote = false,
+	objHash = -1603817716,
+	fixText = false,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- PDM Roof Access
+table.insert(Config.DoorList, {
+	garage = false,
+	locked = true,
+	slides = false,
+	objHeading = 339.98190307617,
+	objCoords = vector3(-16.9447, -1088.15, 26.97222),
+	authorizedJobs = { ['cardealer']=0 },
+	maxDistance = 2.0,
+	lockpick = false,
+	audioRemote = false,
+	objHash = -2023754432,
+	fixText = false,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- PDM Office Door
+table.insert(Config.DoorList, {
+	lockpick = false,
+	authorizedJobs = { ['cardealer']=0 },
+	locked = true,
+	slides = false,
+	audioRemote = false,
+	doors = {
+		{objHash = 100848840, objHeading = 339.98190307617, objCoords = vector3(-15.68395, -1096.12, 27.28802)},
+		{objHash = -2050436002, objHeading = 339.98190307617, objCoords = vector3(-17.70018, -1095.386, 27.28802)}
+ },
+	maxDistance = 2.5,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- PDM Office Door Outside
+table.insert(Config.DoorList, {
+	garage = false,
+	locked = true,
+	slides = false,
+	objHeading = 340.2995300293,
+	objCoords = vector3(-21.81986, -1109.336, 27.03891),
+	authorizedJobs = { ['cardealer']=0 },
+	maxDistance = 2.0,
+	lockpick = false,
+	audioRemote = false,
+	objHash = 1901183774,
+	fixText = false,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- PDM Office Gate Access
+table.insert(Config.DoorList, {
+	garage = false,
+	locked = true,
+	slides = true,
+	objHeading = 186.00743103027,
+	objCoords = vector3(-24.3913, -1120.205, 25.94434),
+	lockpick = false,
+	authorizedJobs = { ['cardealer']=0 },
+	maxDistance = 6.0,
+	audioRemote = false,
+	fixText = false,
+	objHash = -1603817716,
+	items = { 'cardealer' },		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})

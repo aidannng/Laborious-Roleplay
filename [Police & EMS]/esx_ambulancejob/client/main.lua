@@ -156,12 +156,14 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(500)
+        Citizen.Wait(0)
         if isDead then
-			DisableControlAction(0, 32, true)
-			DisableControlAction(0, 33, true)
-			DisableControlAction(0, 34, true)
-			DisableControlAction(0, 35, true)
+			DisableAllControlActions(0)
+			EnableControlAction(0, 1, true)
+			EnableControlAction(0, 2, true)
+			EnableControlAction(0, 288, true)
+			EnableControlAction(0, 245, true)
+			EnableControlAction(0, 145, true)
         end
     end
 end)

@@ -18,18 +18,37 @@ AddEventHandler('esx:playerDropped', function(playerId, reason)
 end)
 
 
-ESX.RegisterCommand('jail', 'admin', function(xPlayer, args, showError)
+--[[ ESX.RegisterCommand('jail', 'police', function(xPlayer, args, showError)
 	TriggerEvent('esx_jail:sendToJail', args.playerId, args.time * 60)
 end, true, {help = 'Jail a player', validate = true, arguments = {
 	{name = 'playerId', help = 'player id', type = 'playerId'},
 	{name = 'time', help = 'jail time in minutes', type = 'number'}
-}})
+}}) 
 
 ESX.RegisterCommand('unjail', 'admin', function(xPlayer, args, showError)
 	unjailPlayer(args.playerId)
 end, true, {help = 'Unjail a player', validate = true, arguments = {
 	{name = 'playerId', help = 'player id', type = 'playerId'}
-}})
+}}) ]]
+
+RegisterCommand("jail", function(source, args, rawCommand)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.job.name == police then
+		TriggerEvent('esx_jail:sendToJail', args.playerId, args.time * 60)
+	else 
+		print("not a cop")
+	end
+end)
+
+RegisterCommand("unjail", function(source, args, rawCommand)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.job.name == police then
+		local tarPlayer = ESX.GetPlayerFromId(args[1])
+		local targetId = tonumber(args[1])
+		local xTarget = ESX.GetPlayerFromId(targetId)
+		unjailPlayer(targetId)
+	end
+end)
 
 RegisterNetEvent('esx_jail:sendToJail')
 AddEventHandler('esx_jail:sendToJail', function(playerId, jailTime, quiet)

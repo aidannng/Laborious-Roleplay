@@ -15702,7 +15702,7 @@ var Color;
 (function (Color) {
   Color["Default"] = "\x1B[0m";
   Color["Error"] = "\x1B[31m";
-  Color["Success"] = "";
+  Color["Success"] = "\x1B[32m";
   Color["Warning"] = "\x1B[33m";
   Color["Info"] = "\x1B[36m";
 })(Color || (Color = {}));
@@ -15957,7 +15957,7 @@ class logger_Logger {
     this.log(msg, {
       color: Color.Success,
       output: this.getOutputDestination(logger_logLevel.Success),
-      level: '',
+      level: 'SUCCESS',
       ...options
     });
   }
@@ -16205,7 +16205,7 @@ const server_config = { ...defaultCfg,
   ...utility_getConfig()
 };
 const server_server = new server(server_config, {
-  tag: '^4Laborious Roleplay^0'
+  tag: 'mysql-async'
 });
 let isReady = false;
 global.exports('is_ready', () => isReady);

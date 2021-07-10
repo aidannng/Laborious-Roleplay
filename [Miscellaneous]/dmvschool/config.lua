@@ -6,9 +6,9 @@ Config.Locale          = 'en'
 
 Config.Prices = {
 	dmv         = 500,
-	drive       = 2500,
-	drive_bike  = 3000,
-	drive_truck = 5000
+	drive       = 50,
+	drive_bike  = 75,
+	drive_truck = 100
 }
 
 Config.VehicleModels = {

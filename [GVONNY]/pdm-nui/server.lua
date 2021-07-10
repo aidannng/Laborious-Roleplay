@@ -34,7 +34,6 @@ end)
 
 RegisterServerEvent("purchase")
 AddEventHandler("purchase", function(model, price, plate)
-    print("buying car for PDM")
     local src = source
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -69,7 +68,6 @@ end)
 
 RegisterServerEvent("getallstock")
 AddEventHandler("getallstock", function()
-    print("getting stock")
     local src = source
 
     local canshowcar = false
@@ -195,13 +193,11 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
         MySQL.Async.fetchAll("SELECT a.id, b.model FROM cardealer_vehicles a, bbvehicles b WHERE a.plate = @plate and b.plate = @plate", {['@plate'] = plate}, function(result)
             if(result ~= nil) then
                 local model = result[1].model
-                print(model)
                 if(tonumber(termlength) > 0) then
                     local downpayment = math.floor(tonumber(price) *.25);
                     price = price - downpayment
             
                     local cash = math.floor(tonumber(ower.getInventoryItem('money').count))
-                    print(cash)
             
                     if(cash >= downpayment) then
                         local termamount = price / termlength
@@ -223,11 +219,10 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
             
                             MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
                         end)
-                        print(plate)
                         MySQL.Async.execute("UPDATE bbvehicles SET identifier = @identifier, state = 'unknown' WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
                         MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
                         MySQL.Async.fetchAll("SELECT slot_id, x, y, z FROM pdm_showroom WHERE plate = @plate", {['@plate'] = plate}, function(result2)
-                            if(result2~= nil) then
+                            if(result2 ~= nil and #result2 > 0) then
                                 local slot = result2[1].slot_id
                                 local x = result2[1].x
                                 local y = result2[1].y
@@ -240,11 +235,23 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
 
                         --give new owner keys
 
-                        MySQL.Async.fetchAll("SELECT model FROM bbvehicles WHERE plate = @plate",{['@plate'] = plate}, function(vehicle)
+                        MySQL.Async.fetchAll("SELECT model, plate FROM bbvehicles WHERE plate = @plate",{['@plate'] = plate}, function(vehicle)
                             if(vehicle ~= nil) then
                                 local model = vehicle[1].model
+                                local plate = vehicle[1].plate
 
-                                TriggerClientEvent("pdm:spawnvehicleinback", src, model, plate)
+                                TriggerClientEvent("vehicleshop.spawnVehicle", ower.source, model, plate)
+
+                                --TriggerClientEvent("pdm:spawnvehicleinback", src, model, plate)
+
+
+                                --[[ local hash = GetHashKey(model)
+                                local newvehicle = CreateVehicle(hash, -27.28351, -1082.123, 23.98613, 40.0, 1, 1)
+                                SetVehicleNumberPlateText(newvehicle, plate)
+                                TriggerClientEvent("bb-garages:client:insertOwnedVehicle", ower.source, plate, newvehicle)
+                                TriggerClientEvent("vehiclekeys:client:SetOwner", ower.source, plate, newvehicle)
+                                DeleteEntity(newvehicle)
+                                TriggerClientEvent("pdm:despawnvehicle", src, -17.63077, -1079.776, 23.98613) ]]
                             end
                         end)
                         
@@ -264,6 +271,9 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
         TriggerClientEvent("pdm:billerror", src, "Lucky number is not in city")
     end
 end)
+
+--this is a comment
+
 
 RegisterServerEvent("getbills")
 AddEventHandler("getbills", function()

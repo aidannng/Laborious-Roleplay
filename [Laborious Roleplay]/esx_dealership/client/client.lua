@@ -311,7 +311,8 @@ end)
 
 
 RegisterNetEvent('vehicleshop.spawnVehicle')
-AddEventHandler('vehicleshop.spawnVehicle', function(model, plate)    
+AddEventHandler('vehicleshop.spawnVehicle', function(model, plate)  
+    print("spawning vehicle")  
     local hash = GetHashKey(model)
 
     lastPlayerCoords = GetEntityCoords(PlayerPedId())
@@ -323,13 +324,13 @@ AddEventHandler('vehicleshop.spawnVehicle', function(model, plate)
         end
     end
     
-    local vehicleBuy = CreateVehicle(hash, -11.87, -1080.87, 25.71, 132.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    local vehicleBuy = CreateVehicle(hash, -26.2022, -1083.02, 26.78613, 50.0, 1, 1)
+    --SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
     
     SetVehicleNumberPlateText(vehicleBuy, plate)
     local vehicleProps = ESX.Game.GetVehicleProperties(vehicleBuy)
     local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleBuy)))
-    TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
+    --TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
     TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
     TriggerEvent('bb-garages:client:insertOwnedVehicle', plate, vehicleBuy)
     --ESX.Game.DeleteVehicle(vehicleBuy)

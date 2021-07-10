@@ -23,7 +23,7 @@ Config.RemoveItemsAfterRPDeath    = false
 Config.EarlyRespawnFine           = false
 Config.EarlyRespawnFineAmount     = 5000
 
-Config.RespawnPoint = {coords = vector3(322.022, -584.4791, 43.2821), heading = 48.5}
+Config.RespawnPoint = {coords = vector3(323.43, 0584.94, 43.28), heading = 48.5}
 
 Config.Hospitals = {
 

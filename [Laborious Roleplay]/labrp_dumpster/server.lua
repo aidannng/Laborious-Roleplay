@@ -51,19 +51,16 @@ AddEventHandler('stv:giveDumpsterReward', function()
     xPlayer.addMoney(item.quantity)
     --TriggerClientEvent('chatMessage', source, 'You found $'..item.quantity)
     --TriggerClientEvent('notification', source, 'You found $'..item.quantity)
-    TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You found $'..item.quantity, })
    elseif item.isWeapon and not gotID[item.id] then
     gotID[item.id] = true
     xPlayer.addWeapon(item.id, 50)
     --TriggerClientEvent('chatMessage', source, 'You found a '..item.name)
     --TriggerClientEvent('notification', source, 'Item Added!', 2)
-    TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
    elseif not gotID[item.id] then
     gotID[item.id] = true
     xPlayer.addInventoryItem(item.id, item.quantity)
     --TriggerClientEvent('chatMessage', source, 'You have found '..item.quantity..'x '..item.name)
     --TriggerClientEvent('notification', source, 'Item Added!', 2)
-    TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
    end
   end
  end

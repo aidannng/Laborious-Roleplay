@@ -180,7 +180,7 @@ OpenStorage = function(instance)
         end, instance)
     elseif Config.Inventory == "linden" then
         ESX.TriggerServerCallback("loaf_motel:get_weight", function(_, max, owner)
-            exports['linden_inventory']:OpenStash({owner = owner, id = instance, label = "Apartment Storage", slots = max or 500})
+            exports['linden_inventory']:OpenStash({owner = owner, id = instance, label = "Apartment Storage", slots = 40})
         end, instance)
     end
 end

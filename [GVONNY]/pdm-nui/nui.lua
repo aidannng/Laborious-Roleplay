@@ -29,7 +29,6 @@ end)
 
 RegisterNetEvent("pdm:addtostocklist")
 AddEventHandler("pdm:addtostocklist", function(a, b, c, d, f)
-    print("adding to stock list")
     SendNUIMessage({
 		stockmodel=a,
         plate=b,
@@ -103,25 +102,19 @@ end)
 RegisterNetEvent("pdm:despawnvehicle")
 AddEventHandler("pdm:despawnvehicle", function(x, y, z)
     coords = vector3(x,y,z)
-    print(coords)
     local slotvehicle = ESX.Game.GetClosestVehicle(coords)
-
     local vehicle =  ESX.Game.DeleteVehicle(slotvehicle)
 end)
-
 
 RegisterNetEvent("pdm:spawnvehicle")
 AddEventHandler("pdm:spawnvehicle", function(a, b, c, d, f, g)
     local hash = GetHashKey(d)
-
     if not HasModelLoaded(hash) then
         RequestModel(hash)
         while not HasModelLoaded(hash) do
             Citizen.Wait(10)
         end
     end
-
-    print(g / 1.0)
     g = g / 1.0
     local vehicle = CreateVehicle(hash, a, b, c, g, 1, 1)
     SetVehicleNumberPlateText(vehicle, f)
@@ -140,7 +133,7 @@ AddEventHandler("pdm:spawnvehicleinback", function(d, f)
             Citizen.Wait(10)
         end
     end
-
+    
     local vehicle = CreateVehicle(hash, -44.82, -1083.1, 26.7, 60.0, 1, 1)
     SetVehicleNumberPlateText(vehicle, f)
     --TriggerEvent('bb-garages:client:insertOwnedVehicle', f, vehicle)
@@ -153,8 +146,6 @@ end)
 
 RegisterNetEvent("pdm:menu")
 AddEventHandler("pdm:menu", function()
-    print("loading menu")
-    TriggerServerEvent("getallstock")
     SetDisplay(not display)
 end)
 

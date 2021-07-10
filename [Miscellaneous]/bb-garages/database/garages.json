@@ -2,7 +2,7 @@
     "Legion Square Garage":{
        "payment":{
           "onetime":true,
-          "price":115
+          "price":300
        },
        "blip":{
           "enable":true,
@@ -1017,7 +1017,7 @@
     "Alta Street Garage":{
        "payment":{
           "onetime":true,
-          "price":115
+          "price":300
        },
        "blip":{
           "enable":true,
@@ -1449,7 +1449,7 @@
     "Alta Garage":{
        "payment":{
           "onetime":true,
-          "price":115
+          "price":300
        },
        "blip":{
           "enable":true,
@@ -1688,7 +1688,7 @@
     "Elgin Avenue Garage":{
        "payment":{
           "onetime":true,
-          "price":115
+          "price":300
        },
        "blip":{
           "enable":true,
@@ -2138,7 +2138,7 @@
     "Stadium Garage":{
        "payment":{
           "onetime":true,
-          "price":115
+          "price":300
        },
        "blip":{
           "enable":true,

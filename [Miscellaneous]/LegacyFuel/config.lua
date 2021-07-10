@@ -17,8 +17,8 @@ Config.DisableKeys = {0, 22, 23, 24, 29, 30, 31, 37, 44, 56, 82, 140, 166, 167, 
 Config.EnableHUD = false
 
 -- Configure blips here. Turn both to false to disable blips all together.
-Config.ShowNearestGasStationOnly = true
-Config.ShowAllGasStations = false
+Config.ShowNearestGasStationOnly = false
+Config.ShowAllGasStations = true
 
 -- Modify the fuel-cost here, using a multiplier value. Setting the value to 2.0 would cause a doubled increase.
 Config.CostMultiplier = 1.0
@@ -56,8 +56,15 @@ Config.PumpModels = {
 
 -- Blacklist certain vehicles. Use names or hashes. https://wiki.gtanet.work/index.php?title=Vehicle_Models
 Config.Blacklist = {
-	--"Adder",
-	--276773164
+	"bus",
+	"airbus",
+	"coach",
+	"trash",
+	"trash2",
+	"hauler",
+	"phantom",
+	"packer",
+	"phantom3",
 }
 
 -- Do you want the HUD removed from showing in blacklisted vehicles?
@@ -65,28 +72,28 @@ Config.RemoveHUDForBlacklistedVehicle = true
 
 -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
 Config.Classes = {
-	[0] = 1.0, -- Compacts
-	[1] = 1.0, -- Sedans
-	[2] = 1.0, -- SUVs
-	[3] = 1.0, -- Coupes
-	[4] = 1.0, -- Muscle
-	[5] = 1.0, -- Sports Classics
-	[6] = 1.0, -- Sports
-	[7] = 1.0, -- Super
-	[8] = 1.0, -- Motorcycles
-	[9] = 1.0, -- Off-road
-	[10] = 1.0, -- Industrial
-	[11] = 1.0, -- Utility
-	[12] = 1.0, -- Vans
+	[0] = 0.6, -- Compacts
+	[1] = 0.6, -- Sedans
+	[2] = 0.6, -- SUVs
+	[3] = 0.6, -- Coupes
+	[4] = 0.6, -- Muscle
+	[5] = 0.6, -- Sports Classics
+	[6] = 0.6, -- Sports
+	[7] = 0.6, -- Super
+	[8] = 0.6, -- Motorcycles
+	[9] = 0.6, -- Off-road
+	[10] = 0.6, -- Industrial
+	[11] = 0.6, -- Utility
+	[12] = 0.6, -- Vans
 	[13] = 0.0, -- Cycles
-	[14] = 1.0, -- Boats
-	[15] = 1.0, -- Helicopters
-	[16] = 1.0, -- Planes
-	[17] = 1.0, -- Service
-	[18] = 1.0, -- Emergency
-	[19] = 1.0, -- Military
-	[20] = 1.0, -- Commercial
-	[21] = 1.0, -- Trains
+	[14] = 0.6, -- Boats
+	[15] = 0.6, -- Helicopters
+	[16] = 0.6, -- Planes
+	[17] = 0.6, -- Service
+	[18] = 0.6, -- Emergency
+	[19] = 0.6, -- Military
+	[20] = 0.6, -- Commercial
+	[21] = 0.6, -- Trains
 }
 
 -- The left part is at percentage RPM, and the right is how much fuel (divided by 10) you want to remove from the tank every second
