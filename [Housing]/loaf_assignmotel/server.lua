@@ -3,10 +3,6 @@ TriggerEvent("esx:getSharedObject", function(obj)
     ESX = obj 
 end)
 
-MySQL.ready(function()
-    MySQL.Async.execute("ALTER TABLE `users` ADD COLUMN IF NOT EXISTS `got_motel` BOOLEAN NOT NULL DEFAULT FALSE")
-end)
-
 RegisterNetEvent("loaf_assignmotel:loaded_character")
 AddEventHandler("loaf_assignmotel:loaded_character", function()
     local xPlayer = ESX.GetPlayerFromId(source)

@@ -7,6 +7,8 @@ local discord_webhook = {url = "https://discord.com/api/webhooks/863176051592658
 
 RegisterCommand("report", function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
+    local playerId = tonumber(source)
+    local theId = ESX.GetPlayerFromId(playerId)
     --local args = table.concat(args, " ")
    
     if (#args > 0) then
@@ -31,11 +33,11 @@ RegisterCommand("report", function(source, args, rawCommand)
                 PerformHttpRequest(discord_webhook.url, 
 				function(err, text, header) end, 
 				'POST', 
-				json.encode({username = "LABRP | Staff Logs", content = "`NEW REPORT:` **" .. xPlayer.getName() .. "**(" .. xPlayer.getIdentifier() .. ") has made a new report!", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+				json.encode({username = "LABRP | Staff Logs", content = "`NEW REPORT:` **" .. xPlayer.getName() .. "**(" .. xPlayer.getIdentifier() .. ") The report ID is: **" .. maxnumber .. "**. The user's ID is: **" .. playerId .. "** The reason for the report was: **" .. reportreason .. "** ", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
 
             end)
             if havePermission(xPlayer, {'juniormoderator', 'communityhelper'}) then
-                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'A new report has been submitted', })
+                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'A new report has been submitted. Please check the server report logs in the Discord for more information', length = 6000})
         end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'Please enter a reason for the report', })

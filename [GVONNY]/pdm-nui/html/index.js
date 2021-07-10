@@ -59,11 +59,31 @@ $(function () {
         }));
     }); 
 
+    $("#stock").on("click", ".end-testdrive", function (){
+        var plate = $(this).data('plate');
+        $.post('http://pdm-nui/endtestdrive', JSON.stringify({
+            plate:plate,
+        }));
+    }); 
+
     $(".showroom-slot").on("click", ".remove-showroom", function (){
         var id = $(this).data('slot');
         $('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
 
         $.post('http://pdm-nui/removefromshowroom', JSON.stringify({
+            showroomslot:id,
+        }));
+    }); 
+
+    $(".showroom-slot").on("click", ".test-drive", function (){
+        var id = $(this).data('slot');
+        $('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
+
+        $.post('http://pdm-nui/removefromshowroom', JSON.stringify({
+            showroomslot:id,
+        }));
+
+        $.post('http://pdm-nui/spawntestdrive', JSON.stringify({
             showroomslot:id,
         }));
     }); 
@@ -175,6 +195,19 @@ $(function () {
                 $('#showroom-header').html('');
             }
 
+            if(item.testdrive)
+            {
+                str = str + "<td class=\"text-align-center\">" +
+                                "<button class=\"btn margin-left-10 end-testdrive\" data-plate=\""+ item.plate +"\">End Test Drive</button>" + 
+                            "</td>";
+                $('#testdrive-header').html('Test Drives');
+            }
+            else
+            {
+                str = str + "<td></td>";
+                $('#testdrive-header').html('');
+            }
+
             str = str + "</tr>";
 
             $('#stock').append(str);
@@ -183,9 +216,16 @@ $(function () {
         //showroom tab
         if(item.showroomslot != null)
         {
+            var str = "<span><strong>"+ item.showroomslot +". </strong></span><span>"+ item.showroommodel +"</span><span class=\"margin-left-10pct\">"+ item.showroomplate +"</span><span class=\"margin-left-10pct\"><button class=\"btn remove-showroom\" data-slot="+ item.showroomslot +">Remove from floor</button></span>";
+
+            if(item.cantestdrive)
+            {
+                str = str + "<span class=\"margin-left-10pct\"><button class=\"btn test-drive\" data-slot="+ item.showroomslot +">Test Drive</button></span>"
+            }
+
             var id = item.showroomslot;
             $('#slot-' + id).empty();
-            $('#slot-' + id).append("<span><strong>"+ item.showroomslot +". </strong></span><span>"+ item.showroommodel +"</span><span class=\"margin-left-10pct\">"+ item.showroomplate +"</span><span class=\"margin-left-10pct\"><button class=\"btn remove-showroom\" data-slot="+ item.showroomslot +">Remove from floor</button></span>")
+            $('#slot-' + id).append(str)
         }
         else
         {
@@ -197,13 +237,6 @@ $(function () {
         }
 
         //billing tab
-        if (item.carddeclined) {
-            $('#card-declined').html("Card declined");
-        }
-        else {
-            $('#card-declined').empty();
-        }
-
         if(item.firstname != null)
         {
             $('#bills').append(

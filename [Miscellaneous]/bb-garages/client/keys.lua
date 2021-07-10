@@ -240,7 +240,7 @@ function LockVehicle()
                         if vehLockStatus == 1 then
                             Citizen.Wait(750)
                             ClearPedTasks(GetPlayerPed(-1))
-                            TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "lock", 0.3)
+                            TriggerServerEvent("InteractSound_CL:PlayWithinDistance", 5, "lock", 0.3)
                             SetVehicleDoorsLocked(veh, 2)
                             if(GetVehicleDoorLockStatus(veh) == 2)then
                                 TriggerEvent(BBGarages.Config['settings']['notification'], "Vehicle locked!")
@@ -250,7 +250,7 @@ function LockVehicle()
                         else
                             Citizen.Wait(750)
                             ClearPedTasks(GetPlayerPed(-1))
-                            TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "unlock", 0.3)
+                            TriggerServerEvent("InteractSound_CL:PlayWithinDistance", 5, "unlock", 0.3)
                             SetVehicleDoorsLocked(veh, 1)
                             if(GetVehicleDoorLockStatus(veh) == 1)then
                                 TriggerEvent(BBGarages.Config['settings']['notification'], "Vehicle unlocked!")
@@ -310,7 +310,7 @@ function LockpickDoor(isAdvanced)
                 if math.random(1, 100) <= 90 then
                     TriggerEvent("debug", 'Lockpick: Success', 'success')
                     TriggerEvent(BBGarages.Config['settings']['notification'], "Door open!")
-                    TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "unlock", 0.3)
+                    TriggerServerEvent("InteractSound_CL:PlayWithinDistance", 5, "unlock", 0.3)
                     SetVehicleDoorsLocked(vehicle, 0)
                     SetVehicleDoorsLockedForAllPlayers(vehicle, false)
                 else

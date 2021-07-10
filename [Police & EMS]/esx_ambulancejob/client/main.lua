@@ -164,6 +164,8 @@ Citizen.CreateThread(function()
 			EnableControlAction(0, 288, true)
 			EnableControlAction(0, 245, true)
 			EnableControlAction(0, 145, true)
+			EnableControlAction(0, 38, true)
+			EnableControlAction(0, 23, true)
         end
     end
 end)

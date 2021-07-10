@@ -28,13 +28,14 @@ AddEventHandler("pdm:addtopurchaselist", function(a, b, c, d)
 end)
 
 RegisterNetEvent("pdm:addtostocklist")
-AddEventHandler("pdm:addtostocklist", function(a, b, c, d, f)
+AddEventHandler("pdm:addtostocklist", function(a, b, c, d, f, g)
     SendNUIMessage({
 		stockmodel=a,
         plate=b,
         resellprice=c,
         canshowcar=d,
-        finance=f
+        finance=f,
+        testdrive=g,
 	})
 end)
 
@@ -54,24 +55,18 @@ AddEventHandler('pdm:addtomodeldropdown', function(a, b)
 end)
 
 RegisterNetEvent('pdm:addtoshowroomlist')
-AddEventHandler('pdm:addtoshowroomlist', function(a, b, c)
+AddEventHandler('pdm:addtoshowroomlist', function(a, b, c, d)
     SendNUIMessage({
 		showroomslot=a,
         showroomplate=b,
         showroommodel=c,
+        cantestdrive=d,
 	})
 end)
 
 RegisterNetEvent("pdm:refreshshowroom")
 AddEventHandler("pdm:refreshshowroom", function()
     TriggerServerEvent("getshowroom")
-end)
-
-RegisterNetEvent("pdm:carddeclined")
-AddEventHandler("pdm:carddeclined", function()
-    SendNUIMessage({
-		carddeclined=true,
-	})
 end)
 
 RegisterNetEvent("pdm:addtobillinglist")
@@ -121,32 +116,40 @@ AddEventHandler("pdm:spawnvehicle", function(a, b, c, d, f, g)
     FreezeEntityPosition(vehicle, 1)
     SetVehicleDoorsLocked(vehicle, 3)
     SetEntityInvincible(vehicle, 1);
+    TriggerEvent("vehiclekeys:client:SetOwner", f, vehicle)
 end)
 
-RegisterNetEvent("pdm:spawnvehicleinback")
-AddEventHandler("pdm:spawnvehicleinback", function(d, f)
+RegisterNetEvent("pdm:spawntestdrive")
+AddEventHandler("pdm:spawntestdrive", function(a, b, c, d, f, g)
     local hash = GetHashKey(d)
-
     if not HasModelLoaded(hash) then
         RequestModel(hash)
         while not HasModelLoaded(hash) do
             Citizen.Wait(10)
         end
     end
-    
-    local vehicle = CreateVehicle(hash, -44.82, -1083.1, 26.7, 60.0, 1, 1)
+    g = g / 1.0
+    local vehicle = CreateVehicle(hash, a, b, c, g, 1, 1)
     SetVehicleNumberPlateText(vehicle, f)
-    --TriggerEvent('bb-garages:client:insertOwnedVehicle', f, vehicle)
+    TriggerEvent("vehiclekeys:client:SetOwner", f, vehicle)
 end)
 
-RegisterCommand("pdm", function()
+
+--[[ RegisterCommand("pdm", function()
     TriggerEvent("pdm:menu")
-end)
-
+end) ]]
 
 RegisterNetEvent("pdm:menu")
 AddEventHandler("pdm:menu", function()
     SetDisplay(not display)
+end)
+
+RegisterNUICallback("endtestdrive", function(data)
+    TriggerServerEvent("endtestdrive", data.plate)
+end)
+
+RegisterNUICallback("spawntestdrive", function(data)
+    TriggerServerEvent("spawntestdrive", data.showroomslot)
 end)
 
 RegisterNUICallback("getbills", function(data)

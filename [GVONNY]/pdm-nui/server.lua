@@ -55,7 +55,7 @@ AddEventHandler("purchase", function(model, price, plate)
             local markup = tonumber(price) * (1 + tonumber(.4))
         
             MySQL.Async.execute("UPDATE vehicles SET stock = @stock WHERE model = @model", {['@stock'] = stock, ['@model'] = model})
-            MySQL.Async.execute("INSERT INTO cardealer_vehicles SET plate = @plate, price = @price", {['@plate'] = plate, ['@price'] = markup})
+            MySQL.Async.execute("INSERT INTO cardealer_vehicles SET plate = @plate, price = @price, test_drive = false", {['@plate'] = plate, ['@price'] = markup})
         end)
     end
 end)
@@ -79,14 +79,16 @@ AddEventHandler("getallstock", function()
         canshowcar = true
     end
 
-    MySQL.Async.fetchAll("SELECT a.plate, a.price, c.name FROM cardealer_vehicles a, bbvehicles b, vehicles c WHERE a.plate = b.plate AND b.model = c.model ORDER BY c.name", {} ,function(result)
+    MySQL.Async.fetchAll("SELECT a.plate, a.price, a.test_drive, c.name FROM cardealer_vehicles a, bbvehicles b, vehicles c WHERE a.plate = b.plate AND b.model = c.model ORDER BY c.name", {} ,function(result)
         if(#result>0) then
             for x=1,#result,1 do 
                 local plate = result[x].plate
                 local price = result[x].price
                 local finance = price * .25
                 local name = result[x].name
-                TriggerClientEvent("pdm:addtostocklist", src, name, plate, price, canshowcar, finance)
+                local testdrive = result[x].test_drive
+
+                TriggerClientEvent("pdm:addtostocklist", src, name, plate, price, canshowcar, finance, testdrive)
             end 
         end
     end)
@@ -109,13 +111,23 @@ end)
 RegisterServerEvent("getshowroom")
 AddEventHandler("getshowroom", function()
     local src = source
+    local cantestdrive = false
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+    local jobgrade = tonumber(xPlayer.job.grade)
+
+    if(job == "cardealer" and jobgrade > 0) then
+        cantestdrive = true
+    end
+
     MySQL.Async.fetchAll("SELECT a.slot_id as slot_id, a.plate as plate, c.name as name FROM pdm_showroom a, bbvehicles b, vehicles c WHERE a.plate = b.plate and b.model = c.model ORDER BY slot_id", {} ,function(result)
         if(#result ~= nil) then
             for x=1,#result,1 do
                 local slot_id = result[x].slot_id
                 local plate = result[x].plate
                 local name = result[x].name
-                TriggerClientEvent("pdm:addtoshowroomlist", src, slot_id, plate, name)
+                TriggerClientEvent("pdm:addtoshowroomlist", src, slot_id, plate, name, cantestdrive)
             end
         end
     end)
@@ -241,17 +253,6 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                                 local plate = vehicle[1].plate
 
                                 TriggerClientEvent("vehicleshop.spawnVehicle", ower.source, model, plate)
-
-                                --TriggerClientEvent("pdm:spawnvehicleinback", src, model, plate)
-
-
-                                --[[ local hash = GetHashKey(model)
-                                local newvehicle = CreateVehicle(hash, -27.28351, -1082.123, 23.98613, 40.0, 1, 1)
-                                SetVehicleNumberPlateText(newvehicle, plate)
-                                TriggerClientEvent("bb-garages:client:insertOwnedVehicle", ower.source, plate, newvehicle)
-                                TriggerClientEvent("vehiclekeys:client:SetOwner", ower.source, plate, newvehicle)
-                                DeleteEntity(newvehicle)
-                                TriggerClientEvent("pdm:despawnvehicle", src, -17.63077, -1079.776, 23.98613) ]]
                             end
                         end)
                         
@@ -272,9 +273,6 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
     end
 end)
 
---this is a comment
-
-
 RegisterServerEvent("getbills")
 AddEventHandler("getbills", function()
     local src = source
@@ -294,4 +292,27 @@ AddEventHandler("getbills", function()
             end
         end
     end)
+end)
+
+RegisterServerEvent("spawntestdrive")
+AddEventHandler("spawntestdrive", function(slot)
+    local src = source
+    MySQL.Async.fetchAll("SELECT a.plate, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid and a.plate = b.plate",{['@slotid'] = slot}, function(result2)
+        if(result2 ~= nil and #result2>0) then
+            local model = result2[1].model
+            local plate = result2[1].plate
+
+            MySQL.Async.execute("UPDATE cardealer_vehicles SET test_drive = true WHERE plate = @plate", {['@plate'] = plate})
+            
+            TriggerClientEvent("pdm:spawntestdrive", src, -26.2022, -1083.02, 26.78613, model, plate, 50.0)
+        end
+    end)
+end)
+
+RegisterServerEvent("endtestdrive")
+AddEventHandler("endtestdrive", function(plate)
+    local src = source
+    MySQL.Async.execute("UPDATE cardealer_vehicles SET test_drive = false WHERE plate = @plate", {['@plate'] = plate})
+    
+    TriggerClientEvent("pdm:despawnvehicle", src, -26.2022, -1083.02, 26.78613)
 end)

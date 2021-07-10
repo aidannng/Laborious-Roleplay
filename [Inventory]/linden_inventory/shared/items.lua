@@ -77,6 +77,20 @@ Items = {
 		}
 	},
 
+	['cookie'] = {
+		label = 'Cookie',
+		weight = 300,
+		stack = true,
+		close = true,
+		client = {
+			status = { hunger = 200000 },
+			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+			prop = { model = 'prop_cs_burger_01', pos = { x = 0.020000000000004, y = 0.020000000000004, y = -0.020000000000004}, rot = { x = 0.0, y = 0.0, y = 0.0} },
+			usetime = 2500,
+			event = true,
+		}
+	},
+
 	['cola'] = {
 		label = 'Cola',
 		weight = 400,
