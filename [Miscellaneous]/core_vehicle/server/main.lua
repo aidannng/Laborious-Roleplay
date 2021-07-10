@@ -7,6 +7,23 @@ TriggerEvent(
     end
 )
 
+RegisterServerEvent('checktoolbox')
+AddEventHandler('checktoolbox', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local toolbox = xPlayer.getInventoryItem('toolbox').count
+    local mechanic_toolbox = xPlayer.getInventoryItem('mechanic_tools').count
+
+    if mechanic_toolbox > 0 then
+        print("mechanic tools")
+        TriggerClientEvent("core_vehicle:toolUsed", source, "mechanic_tools")
+    elseif toolbox > 0 then
+        print("toolbox")
+        TriggerClientEvent("core_vehicle:toolUsed", source, "toolbox")
+    else
+        TriggerClientEvent("inspect:hands", source)
+    end
+end)
+
 local VehicleHandling = {}
 
 RegisterServerEvent("core_vehicle:canInstall")
@@ -22,7 +39,7 @@ AddEventHandler(
             xPlayer.removeInventoryItem(part, 1)
             TriggerClientEvent("core_vehicle:startInstall", src, partType, part)
         else
-            TriggerClientEvent("core_vehicle:SendTextMessage", src, Config.Text["not_enough"])
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Config.Text["not_enough"], })
         end
     end
 )
@@ -98,7 +115,7 @@ AddEventHandler(
             end
             TriggerClientEvent("core_vehicle:startRepair", src, partType, part, returnable)
         else
-            TriggerClientEvent("core_vehicle:SendTextMessage", src, Config.Text["not_enough"])
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Config.Text["not_enough"], })
         end
     end
 )
@@ -160,7 +177,7 @@ AddEventHandler(
                     }
 
                     MySQL.Async.execute(
-                        "INSERT INTO vehicle_parts (plate, parts) values(@plate, @parts)",
+                        "REPLACE INTO vehicle_parts (plate, parts) values(@plate, @parts)",
                         {["@parts"] = json.encode(defaultParts), ["@plate"] = plate},
                         function()
                         end
@@ -182,7 +199,7 @@ AddEventHandler(
 
         MySQL.Async.execute(
             "UPDATE `vehicle_parts` SET `parts`= @parts WHERE `plate` = @plate",
-            {["@parts"] = parts, ["@plate"] = plate},
+            {["@parts"] = parts, ["@plate"] = plate },
             function()
             end
         )
@@ -218,8 +235,8 @@ AddEventHandler(
 )
 
 -- Get Vehicle Owned Status:
---[[ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb, plate)
-    MySQL.Async.fetchAll("SELECT * FROM owned_vehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
+ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb, plate)
+    MySQL.Async.fetchAll("SELECT * FROM bbvehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
         if Config.OnlyOwnedVehicles then
         if #data > 0 then
             cb(true)
@@ -229,21 +246,5 @@ AddEventHandler(
     else
             cb(true)
     end
-    end)
-end)--]]
-
--- Get Vehicle Owned Status:
-ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb, plate)
-	local xPlayer = ESX.GetPlayerFromId(source)
-    MySQL.Async.fetchAll("SELECT * FROM bbvehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
-        if Config.OnlyOwnedVehicles then
-			if(data[1] ~= nil) then
-				cb(true)
-			else
-				cb(false)
-			end
-		else
-            cb(true)
-		end
     end)
 end)
