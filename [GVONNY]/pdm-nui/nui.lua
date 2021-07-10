@@ -134,6 +134,14 @@ AddEventHandler("pdm:spawntestdrive", function(a, b, c, d, f, g)
     TriggerEvent("vehiclekeys:client:SetOwner", f, vehicle)
 end)
 
+RegisterNetEvent("pdm:refreshstocklist")
+AddEventHandler("pdm:refreshstocklist", function()
+    SendNUIMessage({
+		clearstocklist=true,
+	})
+    TriggerServerEvent("getallstock")
+end)
+
 
 --[[ RegisterCommand("pdm", function()
     TriggerEvent("pdm:menu")

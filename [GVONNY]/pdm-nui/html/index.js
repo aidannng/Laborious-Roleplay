@@ -171,7 +171,6 @@ $(function () {
         //stock tab
         if(item.stockmodel != null)
         {
-            console.log(item.stockmodel)
             var str = "<tr>" +
                 "<td class=\"text-align-center\">" + item.stockmodel + "</td>" +
                 "<td class=\"text-align-center\">" + item.plate + "</td>" +
@@ -200,7 +199,7 @@ $(function () {
                 str = str + "<td class=\"text-align-center\">" +
                                 "<button class=\"btn margin-left-10 end-testdrive\" data-plate=\""+ item.plate +"\">End Test Drive</button>" + 
                             "</td>";
-                $('#testdrive-header').html('Test Drives');
+                $('#testdrive-header').html("<strong>Test Drives</strong>");
             }
             else
             {
@@ -211,6 +210,11 @@ $(function () {
             str = str + "</tr>";
 
             $('#stock').append(str);
+        }
+
+        if(item.clearstocklist)
+        {
+            $('#stock').empty();
         }
 
         //showroom tab
