@@ -5,6 +5,9 @@ local Blacklisted = {
       [`g_m_y_lost_02`] = true,
       [`g_m_y_lost_03`] = true,
       [`g_f_y_lost_01`] = true,
+      [`s_m_y_prisoner_01`] = true,
+      [`s_m_y_prismuscl_01`] = true,
+      [`u_m_y_prisoner_01`] = true,
     },
     Vehicles = {},
     Props = {}

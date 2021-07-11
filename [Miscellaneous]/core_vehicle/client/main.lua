@@ -222,34 +222,8 @@ Citizen.CreateThread(
 
 										if repairInstall then
 											Citizen.Wait(Config.EngineInstallTime)
-                                            exports['mythic_progbar']:Progress({
-                                                name = "unique_action_name",
-                                                duration = Config.EngineInstallTime,
-                                                label = 'Searching Vehicle',
-                                                useWhileDead = true,
-                                                canCancel = false,
-                                                controlDisables = {
-                                                    disableMovement = true,
-                                                    disableCarMovement = true,
-                                                    disableMouse = false,
-                                                    disableCombat = true,
-                                                },
-                                            })
 										else
 											Citizen.Wait(Config.EngineRepairTime)
-                                            exports['mythic_progbar']:Progress({
-                                                name = "unique_action_name",
-                                                duration = Config.EngineRepairTime,
-                                                label = 'Searching Vehicle',
-                                                useWhileDead = true,
-                                                canCancel = false,
-                                                controlDisables = {
-                                                    disableMovement = true,
-                                                    disableCarMovement = true,
-                                                    disableMouse = false,
-                                                    disableCombat = true,
-                                                },
-                                            })
 										end
 
 										ClearPedTasks(ped)
@@ -2802,8 +2776,8 @@ function setTires(veh)
         currentVehicleHandling["fTractionCurveMin"] + traction
     )
 
-    SetVehicleWheelWidth(veh,currentVehicleHandling['tires_width'] + tires.width)
-    SetVehicleWheelSize(veh,currentVehicleHandling['tires_size'] + tires.size)
+    --SetVehicleWheelWidth(veh,currentVehicleHandling['tires_width'] + tires.width)
+    --SetVehicleWheelSize(veh,currentVehicleHandling['tires_size'] + tires.size)
 
 
 

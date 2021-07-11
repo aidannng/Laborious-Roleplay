@@ -7,19 +7,39 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterServerEvent("search")
-AddEventHandler("search", function()
+RegisterServerEvent("buymaterial")
+AddEventHandler("buymaterial", function(part, price, amount)
+    print(part)
+    print(price)
+    print(amount)
+
     local src = source
-    MySQL.Async.fetchAll("SELECT plate FROM bbvehicles", {} ,function(result)
-        if(#result > 0) then
-            results = result[1].plate .. ","
-            for x=2,#result do 
-                results = results .. result[x].plate .. ","
+    local xPlayer = ESX.GetPlayerFromId(src)
+    local job = xPlayer.job.name
+    local jobgrade = tonumber(xPlayer.job.grade)
+
+    if(job == "mechanic" and jobgrade > 2) then
+        local total = tonumber(price) * tonumber(amount)
+
+        MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {} ,function(balance)
+            if(balance ~= nil and #balance > 0) then
+                local balance  = balance[1].money
+
+                if(balance >= total) then
+                    xPlayer.addInventoryItem(part, tonumber(amount))
+                    balance = balance - total
+
+                    TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Items purchased', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+                    MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+                else
+                    TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'error', text = "Not enough money in account", })
+                end
+
+
+                TriggerClientEvent('addplates', src, results)
             end
-            TriggerClientEvent('addplates', src, results)
-        else
-            print("no results")
-            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'No results' })
-        end
-    end)
+        end)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'error', text = 'You can not buy materials' })
+    end
 end)

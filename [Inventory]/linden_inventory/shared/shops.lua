@@ -110,7 +110,6 @@ Config.Shops = {
 	{ type = Config.YouTool, coords = vector3(-11.14, 6499.56, 30.50) }, --  -680.3,5838.8,16.31
 
 	{ type = Config.Hunting, coords = vector3(-679.2, 5837.6, 17.3), name = 'Hunting Store' }, --  Prison  1777.411, 2564.967, 45.65784
-	{ type = Config.Prison, coords = vector3(1777.411, 2564.967, 45.65784), name = 'Prison Shelf' },
 
 	{ coords = vector3(2557.458,  382.282, 108.622), name = '24/7'},
 	{ coords = vector3(-3038.939, 585.954, 7.908), name = '24/7'},

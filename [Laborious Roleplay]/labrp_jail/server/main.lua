@@ -72,10 +72,10 @@ AddEventHandler('esx_jail:sendToJail', function(playerId, jailTime, quiet)
 
 				if not quiet then
 					--TriggerClientEvent('chat:addMessage', -1, {args = {_U('judge'), _U('jailed_msg', xPlayer.getName(), ESX.Math.Round(jailTime / 60))}, color = {147, 196, 109}})
-					TriggerClientEvent('chat:addMessage', -1, {
-						template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;"> ^*^3[JUDGE] ^0{0} </div>',
+					TriggerClientEvent('chat:addMessage', xPlayer.source, {
+						template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;"> ^*[^3LABRP^0] {0} </div>',
 						args = { xPlayer.getName()..' was jailed for '..ESX.Math.Round(jailTime / 60)..' Months'}
-					}); 
+					});
 				end
 			end)
 

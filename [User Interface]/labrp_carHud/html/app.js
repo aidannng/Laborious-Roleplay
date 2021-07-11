@@ -283,15 +283,8 @@ window.onload = function () {
 					else if (speedPercentage > 75) { speedometerCircle.classList.add('seventyfive'); }
 
 					document.querySelector('#progress-speed svg circle.speed').style.strokeDashoffset = data.nail;
-					saferInnerHTML(document.querySelector('#vehicle-speed span'), data.speed);
-
-
-
-
-
-
-
-
+					saferInnerHTML(document.querySelector('#vehicle-speed span'), Math.round(data.speed));
+					
 					if ( (data.seatbelt.status == true) && (vehicleSeatbelt.classList.contains('on') == false) ) {
 						vehicleSeatbelt.classList.remove('off');
 						vehicleSeatbelt.classList.add('on');
@@ -305,22 +298,10 @@ window.onload = function () {
 						eventCallback.sound('sounds/seatbelt-unbuckle.ogg', { volume: '0.50' });
 					}
 
-
-
-
-
-
-
-
-
-
 					if (vehicleCruiser.classList.contains(data.cruiser) == false) {
 						vehicleCruiser.classList.remove('on','off');
 						vehicleCruiser.classList.add(data.cruiser);
 					}
-
-
-
 
 					if (data.siren == true) { document.querySelector('#vehicle-gear').classList.add('pulsing'); }
 					else { document.querySelector('#vehicle-gear').classList.remove('pulsing'); }

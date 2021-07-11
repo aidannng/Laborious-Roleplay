@@ -1,4 +1,4 @@
- Config = {}
+Config = {}
 
 Config.ESX = true
 
@@ -266,14 +266,9 @@ Citizen.CreateThread(function()
             icon = "fas fa-wrench",
             label = "Get Tow Truck",
         },
-        {
-            event = "return_lsc",
-            icon = "fas fa-wrench",
-            label = "Return Tow Truck",
         },
-        },
-        job = {"all"},
-        distance = 4.5
+        job = {"mechanic"},
+        distance = 1.5
     })
 
     local lsc_mech = {
@@ -408,11 +403,9 @@ AddEventHandler('dealership', function()
     TriggerEvent('dealership:open')
 end)
 
-local lsctruckcount = 0
 RegisterNetEvent('lsc_twotruck')
 AddEventHandler('lsc_twotruck', function()  
     TriggerServerEvent('checklsckeys')
-    lsctruckcount = 1
 end)
 
 
@@ -630,6 +623,7 @@ end)
 
 -- LSC CUSTOMS TOW TRUCK RENTAL --
 
+local lsctruck = 1
 
 RegisterNetEvent('spawnlsctruck')
 AddEventHandler('spawnlsctruck', function()
@@ -643,25 +637,25 @@ AddEventHandler('spawnlsctruck', function()
     end
     local vehicleBuy = CreateVehicle(hash, -365.8681, -85.41099, 39.0022, 250.00, 1, 1)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    lsctruck = GetHashKey(vehicleBuy)
+    print(lsctruck)
     Citizen.Wait(1000)
     TriggerServerEvent('Aidan_isCool:giveKeys')
 end)
 
 RegisterNetEvent('return_lsc')
 AddEventHandler('return_lsc', function()
-    local towhash = GetHashKey("20ramrbc")
-    if not HasModelLoaded(towhash) then
-        RequestModel(towhash)
-        while not HasModelLoaded(towhash) do
-            Citizen.Wait(10)
-        end
-    end
     local current = GetVehiclePedIsIn(PlayerPedId(), false)
     local hash = GetHashKey(current)
-    if hash == 1328214065 then
-        print('poggers')
+    if hash == lsctruck then
+        print('correct truck')
+        exports['mythic_notify']:SendAlert('inform', 'Truck Returned') 
+        TriggerServerEvent('returnLSCKeys')
+        DeleteVehicle(current)
+        lsctruck = 1
     else
-        print(current)
+        print('invalid truck')
+        exports['mythic_notify']:SendAlert('error', 'This truck ain\'t the same bitch') 
     end
 
     --    TriggerServerEvent('returnLSCKeys')

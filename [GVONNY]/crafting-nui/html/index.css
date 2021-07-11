@@ -14,6 +14,7 @@ body {
     border:2px solid rgb(44, 50, 66);
     width: 695px;
     border-radius: 7px;
+    display:none;
 
 }
 
@@ -136,4 +137,22 @@ img {
 .image-caption h6 {
     font-size:12px;
     margin-bottom:3px;
+}
+
+.btn {
+    background-color: rgb(217,227,251)!important;
+    border: 2px solid rgb(44, 50, 66)!important;
+    color: rgb(44, 50, 66)!important;
+    margin-bottom:6px!important;
+}
+
+.btn:hover {
+    background-color: rgb(108,123,158)!important;
+    border-color: rgb(217,227,251)!important;
+    color:rgb(217,227,251)!important;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none!important;
 }

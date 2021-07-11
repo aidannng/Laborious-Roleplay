@@ -155,7 +155,6 @@ AddEventHandler('checklsckeys', function()
     local keys = xPlayer.getInventoryItem('mechanic_truck_key').count
 
     if keys > 0 then
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have keys', })
         TriggerClientEvent('spawnlsctruck', source)
         xPlayer.removeInventoryItem('mechanic_truck_key', 1)
     else
@@ -169,14 +168,7 @@ end)
 RegisterNetEvent('returnLSCKeys')
 AddEventHandler('returnLSCKeys', function()
     local xPlayer = ESX.GetPlayerFromId(source)
-    local hash = GetEntityModel(closecar)
-    local closecar = ESX.Game.GetClosestVehicle(coords, modelFilter)
-    
-
-    if hash == "20ramrbc" then
-        print("This player is using the male freemode model.")
-        xPlayer.addInventoryItem('mechanic_truck_key', 1)
-    end
+    xPlayer.addInventoryItem('mechanic_truck_key', 1)
 end)
 
 

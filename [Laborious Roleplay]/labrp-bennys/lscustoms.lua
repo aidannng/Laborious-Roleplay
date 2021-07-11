@@ -87,18 +87,6 @@ end
 isPlyInBennys = false
 
 
-Citizen.CreateThread(function() 
-    local plyPed = GetPlayerPed(-1)
-    local sleep = 200
-    if IsPedInAnyVehicle(plyPed, false) then
-		if bennysMenuEnable == true then
-			exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "Benny's")
-		else
-			exports['cd_drawtextui']:HideInteraction()
-		end
-    end
-end)
-
 Citizen.CreateThread(function()
     exports["PolyZone"]:AddBoxZone("bennys", vector3(-32.61098, -1053.244, 28.38684), 8.0, 8.0, {
         name="bennys",
@@ -122,12 +110,34 @@ AddEventHandler('bt-polyzone:exit', function(name)
 end)
 
 
+--[[if IsPedInAnyVehicle(PlayerPedId(), false) and bennysMenuEnable == true then
+			exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "Benny's")
+		else
+			exports['cd_drawtextui']:HideInteraction()
+		end]]
+Citizen.CreateThread(function()  ---32.61098, -1053.244, 28.38684
+	while true do
+		local ped = GetPlayerPed(-1)
+		local pos = GetEntityCoords(ped)
+		local dist = GetDistanceBetweenCoords(pos.x, pos.y, pos.z, -32.61098, -1053.244, 28.38684, true)
+		if IsPedInAnyVehicle(PlayerPedId(), false) and dist <= 5 then
+			exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "Benny's")
+		end
+		if dist > 5.1 and dist < 10.0 then 
+			exports['cd_drawtextui']:HideInteraction()
+		end
+		Citizen.Wait(200)
+	end
+end)
+
+
 
 
 function enterLocation(locationsPos)
     local plyPed = GetPlayerPed(-1)
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
     local isMotorcycle = false
+	disableControls()
 
     SetVehicleModKit(plyVeh, 0)
     SetEntityCoords(plyVeh, locationsPos)
@@ -276,6 +286,25 @@ local function DriveInGarage()
 
 	if DoesEntityExist(veh) then
 		--Set menu title
+		if IsControlJustReleased(1, 172) then --Key: Arrow U
+			PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+		end
+	
+		if IsControlJustReleased(1, 173) then --Key: Arrow Down
+			PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+		end
+	
+		if IsControlJustReleased(1, 176) then --Key: Enter
+			PlaySoundFrontend(-1, "OK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+		end
+	
+		if IsControlJustReleased(1, 177) then --Key: Backspace
+			PlaySoundFrontend(-1, "NO", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+		end
+	
+		if IsControlJustReleased(1, 191) then --Key: Backspace
+			TriggerEvent("InteractSound_CL:PlayOnOne", "impactdrill", 0.2)
+		end
 		if currentgarage == 4 or currentgarage == 5 then
 			LSCMenu:setTitle("Beeker's Garage")
 			LSCMenu.title_sprite = "shopui_title_carmod2"
@@ -1232,8 +1261,8 @@ end
 local blips = {
     -- Example {title="", colour=, id=, x=, y=, z=},
 
-     {title="Los Santos Customs", colour=5, id=544, x = -348.2769, y = -117.2967, z = 39.0022}, --   -348.2769, -117.2967, 39.0022
-	 {title="Benny's Customs", colour=5, id=544, x = -348.2769, y = -117.2967, z = 39.0022},
+     {title="LS Customs", colour=5, id=544, x = -348.2769, y = -117.2967, z = 39.0022}, --   -348.2769, -117.2967, 39.0022
+	 {title="Bennys", colour=5, id=544, x = -36.31648, y = -1051.371, z = 28.38684},
   }
       
 Citizen.CreateThread(function()
@@ -1242,7 +1271,27 @@ Citizen.CreateThread(function()
       info.blip = AddBlipForCoord(info.x, info.y, info.z)
       SetBlipSprite(info.blip, info.id)
       SetBlipDisplay(info.blip, 4)
-      SetBlipScale(info.blip, 1.0)
+      SetBlipScale(info.blip, 0.8)
+      SetBlipColour(info.blip, info.colour)
+      SetBlipAsShortRange(info.blip, true)
+	  BeginTextCommandSetBlipName("STRING")
+      AddTextComponentString(info.title)
+      EndTextCommandSetBlipName(info.blip)
+    end
+end)
+
+local blips2 = {
+    -- Example {title="", colour=, id=, x=, y=, z=},
+	 {title="Bennys", colour=5, id=446, x = -36.31648, y = -1051.371, z = 28.38684},
+  }
+
+Citizen.CreateThread(function()
+
+    for _, info in pairs(blips2) do
+      info.blip = AddBlipForCoord(info.x, info.y, info.z)
+      SetBlipSprite(info.blip, info.id)
+      SetBlipDisplay(info.blip, 4)
+      SetBlipScale(info.blip, 0.8)
       SetBlipColour(info.blip, info.colour)
       SetBlipAsShortRange(info.blip, true)
 	  BeginTextCommandSetBlipName("STRING")

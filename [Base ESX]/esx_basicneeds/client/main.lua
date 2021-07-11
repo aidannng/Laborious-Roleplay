@@ -10,8 +10,8 @@ Citizen.CreateThread(function()
 end)
 
 AddEventHandler('esx_basicneeds:resetStatus', function()
-	TriggerEvent('esx_status:set', 'hunger', 500000)
-	TriggerEvent('esx_status:set', 'thirst', 500000)
+	TriggerEvent('esx_status:set', 'hunger', 1000000)
+	TriggerEvent('esx_status:set', 'thirst', 1000000)
 	TriggerEvent('esx_status:set', 'stress', 100000)
 end)
 

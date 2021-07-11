@@ -16,16 +16,147 @@
     <div id="container">
         <div>
             <img class="logo" src="img/logo_transparent.png" />
-            <h2 class="display-inline-block text-center">Vehicles</h2>
-            <button type="button" id="close" aria-label="Close" class="display-inline-block float-right" style="margin-top:5px">
+            <h2 class="display-inline-block text-center">LSC Database</h2>
+            <button type="button" id="close" aria-label="Close" class="btn display-inline-block float-right" style="margin-top:5px">
                 <span aria-hidden="true"><i class="fa fa-times" style="color:black"></i></span>
             </button>
         </div>
-        <div>
-            <button id="getvehicles">Get Vehicles</button>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+                <button class="nav-link" id="nav-jobs-tab" data-bs-toggle="tab" data-bs-target="#nav-jobs" type="button" role="tab" aria-controls="nav-jobs" aria-selected="false">Jobs</button>
+                <button class="nav-link" id="nav-bills-tab" data-bs-toggle="tab" data-bs-target="#nav-bills" type="button" role="tab" aria-controls="nav-bills" aria-selected="false">Bills</button>
+                <button class="nav-link" id="nav-stock-tab" data-bs-toggle="tab" data-bs-target="#nav-stock" type="button" role="tab" aria-controls="nav-stock" aria-selected="false">Stock</button>
+                <button class="nav-link" id="nav-purchase-tab" data-bs-toggle="tab" data-bs-target="#nav-purchase" type="button" role="tab" aria-controls="nav-purchase" aria-selected="false">Purchase</button>
+                <button class="nav-link" id="nav-boss-tab" data-bs-toggle="tab" data-bs-target="#nav-boss" type="button" role="tab" aria-controls="nav-boss" aria-selected="false">Boss</button>
+
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
+            <div class="tab-pane fade" id="nav-jobs" role="tabpanel" aria-labelledby="nav-jobs-tab">
+                <br>
+                <div id="stock-content" class="overflow-auto">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-align-center"><strong>Part</strong></th>
+                                <th class="text-align-center"><strong>Amount</strong></th>
+                                <th class="text-align-center"><strong>Price</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody id="jobs">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-bills" role="tabpanel" aria-labelledby="nav-bills-tab">
+                <br>
+                <div class="accordio" id="billform">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button style="padding-left:15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                -= Click to create bill =-
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#billform">
+                            <div class="accordion-body create-bill">
+
+                                <div class="width-50pct display-inline-block">
+                                    <span>Lucky Number:</span>
+                                    <input type="number" min="0" class="display-inline-block" id="luckyNumber"/>
+                                </div>
+                                <div class="width-50pct display-inline-block">
+                                    <span style="margin-left:20px;">Purchase Price:</span>
+                                    <input type="number" min="0" class="display-inline-block" id="purchasePrice"/>
+                                </div>
+                                <div class="width-50pct display-inline-block">
+                                    <span style="margin-left:20px;margin-right:18px;">Term Length:</span>
+                                    <input type="number" min="0" class="display-inline-block" id="termLength"/>
+                                </div>
+                                <br>
+                                <span id="error" class="margin-left-10" style="margin-bottom:8px;"></span>
+                                <button id="create-bill" class="btn col-1 margin-top">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div id="bill-content" class="overflow-auto">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Bill Recipient</th>
+                                <th>Employee</th>
+                                <th>Amount Owed</th>
+                                <th>Remaining Terms</th>
+                                <th>Days Overdue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bills">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-stock" role="tabpanel" aria-labelledby="nav-stock-tab">
+                <br>
+                <div id="stock-content" class="overflow-auto">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-align-center"><strong>Model</strong></th>
+                                <th class="text-align-center"><strong>Plate</strong></th>
+                                <th class="text-align-center"><strong>Price</strong></th>
+                                <th class="text-align-center"><strong>Finance</strong></th>
+                                <th id="showroom-header" class="text-align-center"></th>
+                                <th id="testdrive-header" class="text-align-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="stock">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-purchase" role="tabpanel" aria-labelledby="nav-purchase-tab">
+                <br>
+                <div id="stock-content" class="overflow-auto">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-align-center"><strong>Part</strong></th>
+                                <th class="text-align-center"><strong>Amount</strong></th>
+                                <th class="text-align-center"><strong>Price</strong></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="purchase">
+                            <tr>
+                                <td class="text-align-center">Scrap Metal</td>
+                                <td class="text-align-center"><input type="number" id="scrapCount" min="1"/></td>
+                                <td class="text-align-center">$5 / Per</td>
+                                <td class="text-align-center"><button class="btn" id="buyScrap" data-price="5">Buy</button></td>
+                            </tr>
+                            <tr>
+                                <td class="text-align-center">Aluminum</td>
+                                <td class="text-align-center"><input type="number" id="aluminumCount" min="1"/></td>
+                                <td class="text-align-center">$10 / Per</td>
+                                <td class="text-align-center"><button class="btn" id="buyAluminum" data-price="10">Buy</button></td>
+                            </tr>
+                            <tr>
+                                <td class="text-align-center">Rubber</td>
+                                <td class="text-align-center"><input type="number" id="rubberCount" min="1"/></td>
+                                <td class="text-align-center">$5 / Per</td>
+                                <td class="text-align-center"><button class="btn" id="buyRubber" data-price="5">Buy</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
-        <div id="plates"></div>
 
         <!--#region Accorion-->
         <!-- <div class="accordion" id="resparyAccordian">

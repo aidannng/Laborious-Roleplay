@@ -253,7 +253,7 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         height = 0,
         traction = -0.8,
-        durability = 30.0,
+        durability = 75.0,
         repair = {
             ['spring'] = {amount = 4, label = "Springs", reusable = false},
             ['strut'] = {amount = 5, label = "Struts", reusable = false}
@@ -265,7 +265,7 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         height = -0.03,
         traction = -0.75,
-        durability = 40.0,
+        durability = 60.0,
         repair = {
             ['spring'] = {amount = 4, label = "Springs", reusable = false},
             ['strut'] = {amount = 4, label = "Struts", reusable = false}
@@ -277,7 +277,7 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         height = -0.06,
         traction = -0.75,
-        durability = 45.0,
+        durability = 70.0,
         repair = {
             ['spring'] = {amount = 4, label = "Springs", reusable = false},
             ['race_strut'] = {amount = 4, label = "Race Struts", reusable = false}
@@ -289,7 +289,7 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         height = -0.08,
         traction = -0.75,
-        durability = 50.0,
+        durability = 65.0,
         repair = {
             ['Lowering_spring'] = {amount = 4, label = "Lowering Springs", reusable = false},
             ['race_strut'] = {amount = 4, label = "Race Struts", reusable = false}
@@ -301,7 +301,7 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         height = -0.1,
         traction = -0.7,
-        durability = 25.0,
+        durability = 50.0,
         repair = {
             ['lowering_spring'] = {amount = 4, label = "Lowering Springs", reusable = false},
             ['race_strut'] = {amount = 4, label = "Race Struts", reusable = false}
@@ -313,7 +313,7 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         height = 0.5,
         traction = -0.75,
-        durability = 35.0,
+        durability = 60.0,
         repair = {
             ['spring'] = {amount = 4, label = "Springs", reusable = false},
             ['race_strut'] = {amount = 4, label = "Race Struts", reusable = false}
@@ -327,25 +327,25 @@ Config = {
     ['stock_oil'] = {
         label = "OEM", 
         usability = {exclusive = {}, vehicletypes = {}},
-        durability = 25.0,
+        durability = 60.0,
     },
     
     ['mobile1_oil'] = {
         label = "Mobile 1", 
         usability = {exclusive = {}, vehicletypes = {}},
-        durability = 30.0,
+        durability = 50.0,
     },
     
     ['amsoil_oil'] = {
         label = "Amsoil", 
         usability = {exclusive = {}, vehicletypes = {}},
-        durability = 40.0,
+        durability = 75.0,
     },
     
     ['royal_purple_oil'] = {
         label = "Royal Purple", 
         usability = {exclusive = {}, vehicletypes = {}},
-        durability = 35.0,
+        durability = 70.0,
     }
     
     },
@@ -357,7 +357,7 @@ Config = {
     ['stock_engine'] = {
         label = "OEM", 
         power = 0.0,
-        durability = 85.0,
+        durability = 95.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT",
         repair = {
@@ -368,7 +368,7 @@ Config = {
 
     ['k20a'] = {
         label = "Honda K20", 
-        power = 3.0,
+        power = 6.0,
         durability = 90.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "k20a", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
@@ -380,8 +380,8 @@ Config = {
     
     ['amgv8'] = {
         label = "AMG V8", 
-        power = 6.0,
-        durability = 80.0,
+        power = 7.0,
+        durability = 85.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "brabus850", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -404,7 +404,7 @@ Config = {
 
     ['rb26'] = {
         label = "Nissan RB 26", 
-        power = 5.5,
+        power = 7.0,
         durability = 80.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "rb26dett", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
@@ -416,7 +416,7 @@ Config = {
     
     ['chevylt5'] = {
         label = "Chevy LT5 S/C", 
-        power = 6.5,
+        power = 8.0,
         durability = 90.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "predatorv8", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
@@ -428,8 +428,8 @@ Config = {
 
     ['rotary7'] = {
         label = "Mazda 13b", 
-        power = 4.0,
-        durability = 70.0,
+        power = 6.0,
+        durability = 80.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "rotary7", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -440,8 +440,8 @@ Config = {
 
     ['full_bolt_on_engine'] = {
         label = "Full Bolt On", 
-        power = 8.0,
-        durability = 70.0,
+        power = 11.0,
+        durability = 85.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -452,8 +452,8 @@ Config = {
 
     ['tuned_engine'] = {
         label = "Tuned OEM", 
-        power = 5.0,
-        durability = 80.0,
+        power = 8.0,
+        durability = 90.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -464,8 +464,8 @@ Config = {
 
     ['lambov10'] = {
         label = "Lambo V10", 
-        power = 12.0,
-        durability = 75.0,
+        power = 22.0,
+        durability = 85.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "lambov10", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -482,23 +482,21 @@ Config = {
         label = "OEM", 
         usability = {exclusive = {}, vehicletypes = {}},
         traction = 0.0,
-        width = 0.5,
-        size = 0.2,
         lowspeedtraction = 0.0,
-        durability = 30.0,
+        durability = 60.0,
         repair = {
             ['rubber'] = {amount = 4, label = "Rubber", reusable = false}
         }
+        --[[ width = 0.5,
+        size = 0.1, ]]
     },
     
     ['michelin_tires'] = {
         label = "Michelin", 
         usability = {exclusive = {}, vehicletypes = {}},
         traction = 0.8,
-        width = 0.5,
-        size = 0.2,
         lowspeedtraction = 0.0,
-        durability = 35.0,
+        durability = 70.0,
         repair = {
             ['rubber'] = {amount = 5, label = "Rubber", reusable = false}
         }
@@ -508,10 +506,8 @@ Config = {
         label = "Pirelli", 
         usability = {exclusive = {}, vehicletypes = {}},
         traction = 0.65,
-        width = 0.5,
-        size = 0.2,
         lowspeedtraction = 0.0,
-        durability = 40.0,
+        durability = 80.0,
         repair = {
             ['rubber'] = {amount = 6, label = "Rubber", reusable = false}
         }
@@ -521,10 +517,8 @@ Config = {
         label = "Hankook", 
         usability = {exclusive = {}, vehicletypes = {}},
         traction = 0.25,
-        width = 0.5,
-        size = 0.2,
         lowspeedtraction = 0.0,
-        durability = 50.0,
+        durability = 90.0,
         repair = {
             ['rubber'] = {amount = 8, label = "Rubber", reusable = false}
         }
@@ -534,10 +528,8 @@ Config = {
         label = "Dunlop", 
         usability = {exclusive = {}, vehicletypes = {}},
         traction = 0.5,
-        width = 0.5,
-        size = 0.2,
         lowspeedtraction = 0.0,
-        durability = 40.0,
+        durability = 80.0,
         repair = {
             ['rubber'] = {amount = 5, label = "Rubber", reusable = false}
         }
@@ -547,10 +539,8 @@ Config = {
         label = "Falken", 
         usability = {exclusive = {}, vehicletypes = {}},
         traction = 0.75,
-        width = 0.5,
-        size = 0.2,
         lowspeedtraction = 0.0,
-        durability = 25.0,
+        durability = 50.0,
         repair = {
             ['rubber'] = {amount = 8, label = "Rubber", reusable = false}
         }
@@ -560,8 +550,6 @@ Config = {
         label = "Nitto", 
         usability = {exclusive = {}, vehicletypes = {}},
         traction = 0.0,
-        width = 0.5,
-        size = 0.2,
         lowspeedtraction = 1.0,
         durability = 5.0,
         repair = {
@@ -578,7 +566,7 @@ Config = {
         label = "OEM", 
         usability = {exclusive = {}, vehicletypes = {}},
         power = 1.0,
-        durability = 25.0,
+        durability = 40.0,
         repair = {
             ['rotor'] = {amount = 4, label = "Rotors", reusable = false},
             ['brake_pad'] = {amount = 4, label = "Brake Pads", reusable = false}
@@ -589,7 +577,7 @@ Config = {
         label = "Upgraded Brakes", 
         usability = {exclusive = {}, vehicletypes = {}},
         power = 1.4,
-        durability = 30.0,
+        durability = 55.0,
         repair = {
             ['rotor'] = {amount = 4, label = "Rotors", reusable = false},
             ['race_brake_pad'] = {amount = 4, label = "Race Pads", reusable = false}
@@ -600,7 +588,7 @@ Config = {
         label = "Brembo", 
         usability = {exclusive = {}, vehicletypes = {}},
         power = 1.75,
-        durability = 40.0,
+        durability = 60.0,
         repair = {
             ['rotor'] = {amount = 5, label = "Rotors", reusable = false},
             ['race_brake_pad'] = {amount = 4, label = "Race Pads", reusable = false},
@@ -612,7 +600,7 @@ Config = {
         label = "Wilwood", 
         usability = {exclusive = {}, vehicletypes = {}},
         power = 2.0,
-        durability = 45.0,
+        durability = 70.0,
         repair = {
             ['rotor'] = {amount = 5, label = "Rotors", reusable = false},
             ['race_brake_pad'] = {amount = 4, label = "Race Pads", reusable = false},
@@ -627,7 +615,7 @@ Config = {
         ['stock_sparkplugs'] = {
             label = "OEM", 
             usability = {exclusive = {}, vehicletypes = {}}, 
-            durability = 30.0, -- (IMPORTANT) Enter value from 0 to 100. 100 means that the part will never break
+            durability = 50.0, -- (IMPORTANT) Enter value from 0 to 100. 100 means that the part will never break
             startbreak = 5.0, -- the health set when the engine starts to switch of random. At < 1 health the engine wont start again. Values from 1-100 are allowed
             minfail = 10000, -- min time when engine turns off in ms
             maxfail = 50000, -- max time when engine turns off in ms
@@ -636,7 +624,7 @@ Config = {
         ['ngk_sparkplugs'] = {
             label = "NGK", 
             usability = {exclusive = {}, vehicletypes = {}}, 
-            durability = 50.0, -- (IMPORTANT) Enter value from 0 to 100. 100 means that the part will never break
+            durability = 65.0, -- (IMPORTANT) Enter value from 0 to 100. 100 means that the part will never break
             startbreak = 8.0, -- the health set when the engine starts to switch of random. At < 1 health the engine wont start again. Values from 1-100 are allowed
             minfail = 20000, -- min time when engine turns off in ms
             maxfail = 35000, -- max time when engine turns off in ms
@@ -645,7 +633,7 @@ Config = {
         ['champion_sparkplugs'] = {
             label = "Champion", 
             usability = {exclusive = {}, vehicletypes = {}}, 
-            durability = 40.0, -- (IMPORTANT) Enter value from 0 to 100. 100 means that the part will never break
+            durability = 60.0, -- (IMPORTANT) Enter value from 0 to 100. 100 means that the part will never break
             startbreak = 6.0, -- the health set when the engine starts to switch of random. At < 1 health the engine wont start again. Values from 1-100 are allowed
             minfail = 15000, -- min time when engine turns off in ms
             maxfail = 30000, -- max time when engine turns off in ms

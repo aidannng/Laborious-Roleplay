@@ -70,7 +70,7 @@ AddEventHandler("loaf_motel:spawn_motel", function(instance)
                     DrawTxt3D(wardrobe, Strings["open_wardrobe"])
 
                     if IsControlJustReleased(0, Config.Options.Control) then
-                        exports['mythic_notify']:SendAlert('error', 'This feauture is Work In progress and will work soon!') 
+                        TriggerEvent("rcore_clothes:openOutfits")
                     end
                 end
 
