@@ -45,6 +45,7 @@ AddEventHandler("updatebill", function(billID, billAmount)
                 local name = accounts[x].name
                 if(name == 'bank') then
                     local balance = tonumber(accounts[x].money)
+                    print(balance)
 
                     if(balance >= tonumber(billAmount)) then
                         xPlayer.removeAccountMoney(name, tonumber(billAmount))
@@ -75,18 +76,27 @@ AddEventHandler("updatebill", function(billID, billAmount)
                         if(tonumber(currenttermamount) == tonumber(billAmount)) then
                             currenttermlength = currenttermlength - 1
                             if(currenttermamount - billAmount >= 0) then
-                                currenttermamount = newamount / currenttermlength
+                                if(currenttermlength == 0) then
+                                    currenttermamount = newamount
+                                else
+                                    currenttermamount = newamount / currenttermlength
+                                end
+                            else
+                                currenttermamount = 0
                             end
+
+
                             MySQL.Async.execute("UPDATE billing SET amount = @amount, term_length = @termlength, term_amount = @termamount, term_days_left = '14', days_overdue = '0', term_payment = '0' WHERE id = @id", {['@amount'] = newamount, ['@id'] = billID, ['@termlength'] = currenttermlength, ['@termamount'] = currenttermamount})
                         else
                             currenttermamount = currenttermamount - billAmount
                             currenttermpayment = currenttermpayment + billAmount
 
+
                             MySQL.Async.execute("UPDATE billing SET amount = @amount, term_length = @termlength, term_amount = @termamount, term_payment = @termpayment WHERE id = @id", {['@amount'] = newamount, ['@id'] = billID, ['@termlength'] = currenttermlength, ['@termamount'] = currenttermamount, ['@termpayment'] = currenttermpayment})
                         end
                         PerformHttpRequest(discord_webhook.url, function(err, text, header) end, 'POST', json.encode({username = "LABRP | Staff Logs", content = "**" .. xPlayer.getName() .. "**(" .. xPlayer.identifier .. ") has payed **$" .. billAmount .. "** of their bill from **" .. result[1].sender .. "** with a total of **$" .. newamount .. "** remaining",avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'})             
                     else
-                        TriggerClientEvent("billing:error", src, "Value entered is greater than what is owed.")
+                        TriggerClientEvent("billing:error", src, "Not enough funds.")
                     end
                 end
             end

@@ -994,7 +994,7 @@
           
        ],
        "blip":{
-          "enable":true,
+          "enable":false,
           "type":"garage",
           "coords":{
              "y":-123.76173400878906,

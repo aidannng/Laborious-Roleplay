@@ -37,7 +37,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-    exports["PolyZone"]:AddBoxZone("pdm", vector3(-45.70549, -1097.67, 26.3648), 50.0, 25.0, {
+    exports["PolyZone"]:AddBoxZone("pdm", vector3(-31.50329, -1096.721, 26.3648), 50.0, 50.0, {
         name="pdm",
         heading=70,
         debugPoly=false,
@@ -68,11 +68,32 @@ Citizen.CreateThread(function()
     })
 end)
 
+Citizen.CreateThread(function()
+    exports["PolyZone"]:AddBoxZone("lscustomreturntruck", vector3(-366, -85.16044, 39.0022), 11.5, 6.0, {
+        name="lscustomreturntruck",
+        heading=70,
+        debugPoly=false,
+    })
+end)
+
 local bennysMenuEnable = false
 local pdheliMenu = false
 local returntowtruck = false
 local impoundtow = false
 local pdmbills = false
+local lscustomtowtruck = false
+
+AddEventHandler('bt-polyzone:enter', function(name)
+    if name == "lscustomreturntruck" then
+        lscustomtowtruck = true
+    end
+end)
+
+AddEventHandler('bt-polyzone:exit', function(name)
+    if name == "lscustomreturntruck" then
+        lscustomtowtruck = false
+    end
+end)
 
 AddEventHandler('bt-polyzone:enter', function(name)
     if name == "bennys" then
@@ -144,7 +165,7 @@ rootMenuConfig =  {
         fuck = exports["esx_ambulancejob"]:GetDeath()
             return not fuck
         end,
-        subMenus = {"general:flipvehicle", "general:keysgive", "general:housekeys", "general:Rob", "general:checkvehicle", "general:wallet", "general:bills"} --escort:player
+        subMenus = {"general:flipvehicle", "general:keysgive", "general:housekeys", "general:Rob", "general:checkvehicle", "general:wallet", "general:bills", "general:escort"} --escort:player
     },
     {
         id = "police-action",
@@ -158,7 +179,7 @@ rootMenuConfig =  {
                 return true
             end
         end,
-        subMenus = {"police:gsr", "police:impound", "police:mdt", "general:escort", "police:hardcuff", "police:softcuff"}
+        subMenus = {"police:gsr", "police:impound", "police:mdt", "general:escort", "police:hardcuff", "police:softcuff", "police:search"}
     },
     {
         id = "vehicle",
@@ -184,6 +205,20 @@ rootMenuConfig =  {
             PlayerData = ESX.GetPlayerData()
             fuck = exports["esx_ambulancejob"]:GetDeath()
              if bennysMenuEnable == true then
+                 return true
+             end
+         end,
+    },
+    {
+        id = "lsscustomtruck",
+        displayName = "Return Truck",
+        icon = "#police-vehicle",
+        functionName = "lsccustomtruck",
+        enableMenu = function()
+        local ped = PlayerPedId()
+            PlayerData = ESX.GetPlayerData()
+            fuck = exports["esx_ambulancejob"]:GetDeath() --return_lsc
+             if not fuck and PlayerData.job.name == "mechanic" and lscustomtowtruck == true then
                  return true
              end
          end,
@@ -313,7 +348,7 @@ rootMenuConfig =  {
                 return true
             end
         end,
-        subMenus = { "mechanic:mech", "mechanic:repair", "mechanic:hood", "mechanic:respray" }
+        subMenus = { "mechanic:mech", "mechanic:repair", "mechanic:hood", "mechanic:menu" }
     },
 }
 
@@ -479,11 +514,11 @@ newSubMenus = {
         icon = "#police-vehicle",
         functionName = "mechanic:hood"
     },
-   --[[  ['mechanic:respray'] = {
-        title = "Respray",
-        icon = "#police-vehicle",
-        functionName = "mechanic:respray"
-    }, ]]
+   ['mechanic:menu'] = {
+        title = "Customs Tablet",
+        icon = "#general-check-vehicle",
+        functionName = "mechanic:customs"
+    },
     ['k9:spawn'] = {
         title = "Summon",
         icon = "#k9-spawn",
@@ -685,14 +720,19 @@ newSubMenus = {
         functionName = "openmdt"
     },
     ['police:hardcuff'] = {
-        title = "Cuff/Uncuff",
+        title = "Cuff",
         icon = "#cuffs-cuff",
         functionName = "hardcuff"
     },
     ['police:softcuff'] = {
-        title = "Soft Cuff/Uncuff",
+        title = "Soft Cuff",
         icon = "#cuffs-cuff",
         functionName = "softcuff"
+    },
+    ['police:search'] = {
+        title = "Search Person",
+        icon = "#police-action-gsr",
+        functionName = "police:searchperson"
     },
 --[[     ['police:toggleradar'] = {
         title = "Toggle Radar",
@@ -1082,4 +1122,19 @@ end)
 RegisterNetEvent('putinvehicle:steve')
 AddEventHandler('putinvehicle:steve', function()
     TriggerEvent('putinvehicle:target')
+end)
+
+RegisterNetEvent('putinvehicle:steve')
+AddEventHandler('putinvehicle:steve', function()
+    TriggerEvent('putinvehicle:target')
+end)
+
+RegisterNetEvent('police:searchperson')
+AddEventHandler('police:searchperson', function()
+    exports['linden_inventory']:OpenTargetInventory()
+end)
+
+RegisterNetEvent('lsccustomtruck')
+AddEventHandler('lsccustomtruck', function()
+    TriggerEvent('return_lsc')
 end)

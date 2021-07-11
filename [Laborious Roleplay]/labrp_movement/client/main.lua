@@ -177,7 +177,7 @@ AddEventHandler('carry:syncMe', function()
 	local playerPed = GetPlayerPed(-1)
 
 	--TriggerEvent('notification', 'Press E to release carry.')
-	exports['mythic_notify']:SendAlert('inform', 'Press E to release carry.')
+	exports['mythic_notify']:SendAlert('inform', 'Press G to release carry.')
 
 	carrying = true
 
@@ -187,7 +187,7 @@ AddEventHandler('carry:syncMe', function()
 			TaskPlayAnim(playerPed, "missfinale_c2mcs_1", "fin_c2_mcs_1_camman", 1.0, 1.0, -1, 50, 0, 0, 0, 0)
 		end
 
-		if IsControlJustPressed(0, 38) then
+		if IsControlJustPressed(0, 47) then
 			carrying = false
 			ClearPedSecondaryTask(GetPlayerPed(-1))
 			DetachEntity(GetPlayerPed(-1), true, false)
@@ -280,12 +280,12 @@ AddEventHandler('escort:syncMe', function()
 	local playerPed = GetPlayerPed(-1)
 
 	--TriggerEvent('notification', 'Press E to release carry.')
-	exports['mythic_notify']:SendAlert('inform', 'Press E to release escort.')
+	exports['mythic_notify']:SendAlert('inform', 'Press G to release escort.')
 
 	escort = true
 
 	while escort do
-		if IsControlJustPressed(0, 38) then
+		if IsControlJustPressed(0, 47) then
 			escort = false
 			ClearPedSecondaryTask(GetPlayerPed(-1))
 			DetachEntity(GetPlayerPed(-1), true, false)

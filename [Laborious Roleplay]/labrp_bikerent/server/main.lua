@@ -184,6 +184,12 @@ AddEventHandler('refundbike', function()
 	xPlayer.addMoney(refundvalue)
 end)
 
+RegisterServerEvent('refundbeach')
+AddEventHandler('refundbeach', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	xPlayer.addMoney(refundvalue)
+end)
+
 local refundvalue = 0
  --refundtowtruck
 

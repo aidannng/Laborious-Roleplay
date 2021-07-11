@@ -13,8 +13,46 @@ $(function () {
         }
     }
 
-    $('#plates').empty();
     display(false)
+
+    $("#buyScrap").click(function () {
+        var part = 'scrapmetal';
+        var price = 5;
+        var amount = $('#scrapCount').val();
+        $.post('http://customs-nui/buymaterial', JSON.stringify({
+            part:part,
+            price:price,
+            amount:amount,
+        }));
+        
+        var amount = $('#scrapCount').val('');
+    });
+
+    $("#buyAluminum").click(function () {
+        var part = 'aluminum';
+        var price = 10;
+        var amount = $('#aluminumCount').val();
+        $.post('http://customs-nui/buymaterial', JSON.stringify({
+            part:part,
+            price:price,
+            amount:amount,
+        }));
+        var amount = $('#aluminumCount').val('');
+    });
+
+
+    $("#buyRubber").click(function () {
+        var part = 'rubber';
+        var price = 5;
+        var amount = $('#rubberCount').val();
+        $.post('http://customs-nui/buymaterial', JSON.stringify({
+            part:part,
+            price:price,
+            amount:amount,
+        }));
+        var amount = $('#rubberCount').val('');
+    });
+
 
     window.addEventListener('message', function (event) {
         var item = event.data;
@@ -62,5 +100,17 @@ $(function () {
 		$('.accordion-collapse').each(function(){
             $(this).addClass('collapse').removeClass('show')
         });
+
+        $('.nav-link').each(function(){
+            $(this).removeClass('active').attr('aria-selected', 'false')
+        })
+
+        $('.tab-pane').each(function(){
+            $(this).removeClass('active').removeClass('show');
+        })
+
+        $('#nav-home').addClass('active').addClass('show');
+
+        $('#nav-home-tab').addClass('active').attr('aria-selected', 'true');
     }
 })

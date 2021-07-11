@@ -31,7 +31,7 @@ Config = {
 			MSG_CONNECTED = 'You are up! You are being connected now :)',
 			MSG_DISCORD_REQUIRED = 'Your Discord was not detected... You are required to have Discord to play on this server...',
 			MSG_STEAM_REQUIRED = 'Your Steam was not detected... You are required to have Steam to play on this server...',
-			MSG_NOT_WHITELISTED = 'SERVER IS CURRENTLY DOWN FOR MAINTENANCE. https://labrp.statuspage.io/incidents/r6dtjtt2s5d6',
+			MSG_NOT_WHITELISTED = 'You either do not have Discord synced with FiveM or you are not in our Discord! Join our Discord to play or for support now @ discord.gg/labrp',
 			--MSG_NOT_WHITELISTED = 'The LABRP Server is currently open to Beta Testers only. Public Release date is not known at this time! https://discord.labrp.net',
 		},
 	},

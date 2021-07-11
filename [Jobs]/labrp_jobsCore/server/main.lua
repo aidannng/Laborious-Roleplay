@@ -169,9 +169,9 @@ AddEventHandler(
     account.addMoney( tonumber(amount))
 end)
             xPlayer.removeAccountMoney("bank", tonumber(amount))
-            TriggerClientEvent("core_jobutilities:sendMessage", src, Config.Text["action_success"])
+            TriggerClientEvent("core_jobutilities:sendMessage", src, 'You have deposited $' .. amount .. ' from your bank into your fund')
         else
-            TriggerClientEvent("core_jobutilities:sendMessage", src, Config.Text["insufficent_balance"])
+            TriggerClientEvent("core_jobutilities:sendMessage", src, 'You do not have $' .. amount .. ' in your bank to place into your fund!')
         end
     end
 )
@@ -243,15 +243,15 @@ AddEventHandler(
                     if tonumber(balance) >= tonumber(amount) then
 
                         TriggerEvent('esx_addonaccount:getSharedAccount', 'society_' .. job, function(account)
-    account.removeMoney( tonumber(amount))
-end)
+                            account.removeMoney( tonumber(amount))
+                        end)
 
                     
                                 xPlayer.addAccountMoney("bank", tonumber(amount))
                            
-                        TriggerClientEvent("core_jobutilities:sendMessage", src, Config.Text["action_success"])
+                        TriggerClientEvent("core_jobutilities:sendMessage", src, 'You have wihdrew $' .. amount .. ' from your fund to your bank account')
                     else
-                        TriggerClientEvent("core_jobutilities:sendMessage", src, Config.Text["insufficent_balance"])
+                        TriggerClientEvent("core_jobutilities:sendMessage", src, 'Your fund does not have $' .. amount .. '!')
                     end
                 else
                     TriggerClientEvent("core_jobutilities:sendMessage", src, Config.Text["action_unsuccessful"])

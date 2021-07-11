@@ -23,12 +23,12 @@ AddEventHandler("addplates", function(results)
 	})
 end)
 
-RegisterCommand("customs", function(source)
+--[[ RegisterCommand("customs", function(source)
     TriggerEvent('mechanic:customs')
-end)
+end) ]]
 
-RegisterNUICallback("event", function(data)
-    TriggerServerEvent("search")
+RegisterNUICallback("buymaterial", function(data)
+    TriggerServerEvent("buymaterial", data.part, data.price, data.amount)
 end)
 
 RegisterNUICallback("error", function(data)
