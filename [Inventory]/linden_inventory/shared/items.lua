@@ -371,8 +371,8 @@ Items = {
 		}
 	},
 
-	['lockpick'] = {
-		label = 'Lockpick',
+	['advancedlockpick'] = {
+		label = 'Advanced Lockpick',
 		weight = 1000,
 		close = true,
 		client = {

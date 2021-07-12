@@ -38,7 +38,7 @@ AddEventHandler('openpawnshop', function()
     exports['br-menu']:AddButton("Aluminium" , "$35 - $45" ,'sellaluminium' ,'' , 'menutwo')
     exports['br-menu']:AddButton("Copper" , "$25 - $35" ,'sellcopper' ,'' , 'menutwo')
     exports['br-menu']:AddButton("Rubber" , "$25 - $35" ,'sellrubber' ,'' , 'menutwo')
-    exports['br-menu']:AddButton("Electronis" , "$45 - $60" ,'sellelectronics' ,'' , 'menutwo')
+    exports['br-menu']:AddButton("Electronics" , "$45 - $60" ,'sellelectronics' ,'' , 'menutwo')
     exports['br-menu']:SubMenu("Materials" , "Rubber | Copper | Aluminium | Scrap Metal" , "menutwo" )
 
     exports['br-menu']:SubMenu("Coming Soon..." , "👀" ,'' ,'' , '')
@@ -114,3 +114,43 @@ AddEventHandler('sellelectronics', function()
     TriggerServerEvent('pawnshop:sellelectronics')
 end)
 
+
+
+exports['labrp_Eye']:AddBoxZone("smallcrafting", vector3(2514.356, 4215.771, 39.02417), 1.7, 0.9, {
+	name="smallcrafting",
+	heading=55,
+	debugPoly=false,
+	minZ=38.55,
+	maxZ=40.05
+    }, {
+        options = {
+            {
+                event = 'smallcrafting',
+                icon = 'fas fa-hammer',
+                label = 'Crafting Bench'
+            },
+
+        },
+        job = {"all"},
+        distance = 2.5
+    })
+
+
+RegisterNetEvent('smallcrafting')
+AddEventHandler('smallcrafting', function()
+    exports['br-menu']:SetTitle("Small Crafting")    
+    
+    exports['br-menu']:AddButton("Advanced Lockpick" , "Materials : 5 Scrap Metal" ,'craftadlock' ,'' , 'menutwo')
+    exports['br-menu']:AddButton("Casio Watch" , "Materials : 2 Batteries | 5 Plastic" ,'craftcasio' ,'' , 'menutwo')
+    
+end)
+
+RegisterNetEvent('craftadlock')
+AddEventHandler('craftadlock', function()
+    TriggerServerEvent('craft:adlock')
+end)
+
+RegisterNetEvent('craftcasio')
+AddEventHandler('craftcasio', function()
+    TriggerServerEvent('craft:casio')
+end)

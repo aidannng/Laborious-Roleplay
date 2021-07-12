@@ -350,7 +350,7 @@ function RemoveItemsAfterRPDeath()
 			}
 
 			--ESX.SetPlayerData('loadout', {})
-			TriggerServerEvent('clearinventory')
+			--TriggerServerEvent('clearinventory')
 			RespawnPed(PlayerPedId(), formattedCoords, Config.RespawnPoint.heading)
 
 			StopScreenEffect('DeathFailOut')
@@ -385,28 +385,45 @@ AddEventHandler('esx:onPlayerDeath', function(data)
 	OnPlayerDeath()
 end)
 
+local isCheckIn = false
+
+RegisterNetEvent('checkinReviveCheck')
+AddEventHandler('checkinReviveCheck', function()
+	isCheckIn = true
+end)
+
 RegisterNetEvent('esx_ambulancejob:revive')
 AddEventHandler('esx_ambulancejob:revive', function()
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 	TriggerServerEvent('esx_ambulancejob:setDeathStatus', false)
 
-	DoScreenFadeOut(800)
+	if isCheckIn == true then
+		local formattedCoords = {
+			x = ESX.Math.Round(coords.x, 1),
+			y = ESX.Math.Round(coords.y, 1),
+			z = ESX.Math.Round(coords.z, 1)
+		}
+	
+		RespawnPed(playerPed, formattedCoords, 0.0)
+		Citizen.Wait(1000)
+		isCheckIn = false
+	else
+		DoScreenFadeOut(800)
 
-	while not IsScreenFadedOut() do
-		Citizen.Wait(50)
+		while not IsScreenFadedOut() do
+			Citizen.Wait(50)
+		end
+
+		local formattedCoords = {
+			x = ESX.Math.Round(coords.x, 1),
+			y = ESX.Math.Round(coords.y, 1),
+			z = ESX.Math.Round(coords.z, 1)
+		}
+
+		RespawnPed(playerPed, formattedCoords, 0.0)
+		DoScreenFadeIn(800)
 	end
-
-	local formattedCoords = {
-		x = ESX.Math.Round(coords.x, 1),
-		y = ESX.Math.Round(coords.y, 1),
-		z = ESX.Math.Round(coords.z, 1)
-	}
-
-	RespawnPed(playerPed, formattedCoords, 0.0)
-
-	StopScreenEffect('DeathFailOut')
-	DoScreenFadeIn(800)
 end)
 
 
