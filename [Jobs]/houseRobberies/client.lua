@@ -1115,7 +1115,7 @@ function buildBasicHouse(generator)
  FreezeEntityPosition(basket8,true)
  FreezeEntityPosition(basket9,true)
 
- if math.random(1, 10) >= 6 then
+ if math.random(1, 10) >= 8 then
   CreateSafe(generator.x+6.2,generator.y+4.52972300,generator.z+1.32609800)
  end
 

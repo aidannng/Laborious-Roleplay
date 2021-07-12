@@ -182,11 +182,3 @@ Citizen.CreateThread(function()
 	TriggerEvent('chat:addSuggestion', '/openinv', 'Opens a players inventory', {{ name="ID", help="Insert Player ID that should have their inventory opened"}})
 
 end)
-
-RegisterCommand("changeskin", function()
-	TriggerEvent('esx_skin:openSaveableMenu')
-end)
-
-RegisterCommand("saveskin", function()
-	TriggerEvent('esx_skin:requestSaveSkin')
-end)

@@ -8,7 +8,7 @@ local robbableItems = {
  [6] = {chance = 5, id = '5ct_gold_chain', name = '5CT Gold Chain (P)', quantity = 1}, -- rare
  [7] = {chance = 6, id = '8ct_gold_chain', name = '8CT Gold Chain (P)', quantity = 1}, -- rare
  [8] = {chance = 8, id = '10ct_gold_chain', name = '10CT Gold Chain (P)', quantity = 1}, -- rare
- [9] = {chance = 8, id = 'drill_bit', name = 'Drill Bit', quantity = 1}, -- rare
+ [9] = {chance = 8, id = 'advancedlockpick', name = 'Advanced Lockpick', quantity = 1}, -- rare
  [10] = {chance = 3, id = 'sunglasses', name = 'Oakley Sunglasses (P)', quantity = 1}, -- rare
  [11] = {chance = 4, id = 'gameboy', name = 'Gameboy (P)', quantity = 1}, -- rare
  [12] = {chance = 3, id = 'casio_watch', name = 'Casio Watch (P)', quantity = 1}, -- rare
@@ -58,7 +58,7 @@ RegisterServerEvent('houseRobberies:giveMoney')
 AddEventHandler('houseRobberies:giveMoney', function()
  local source = tonumber(source)
  local xPlayer = ESX.GetPlayerFromId(source)
- local cash = math.random(500, 3000)
+ local cash = math.random(500, 1750)
  xPlayer.addMoney(cash)
  --TriggerClientEvent('chatMessage', source, '^4You have found $'..cash)
  --TriggerClientEvent('notification', source, 'You found $'..cash)
