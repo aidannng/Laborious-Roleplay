@@ -116,7 +116,7 @@ Config = {
         power = 8.0,
         durability = 65.0,
         repair = {
-            ['iron'] = {amount = 5, label = "Iron", reusable = false}
+            ['iron'] = {amount = 2, label = "Iron", reusable = false}
         }
     },
     
@@ -126,7 +126,7 @@ Config = {
         power = 12.0,
         durability = 60.0,
         repair = {
-            ['iron'] = {amount = 5, label = "Iron", reusable = false}
+            ['iron'] = {amount = 3, label = "Iron", reusable = false}
         }
     },
     
@@ -136,7 +136,7 @@ Config = {
         power = 18.0,
         durability = 55.0,
         repair = {
-            ['iron'] = {amount = 5, label = "Iron", reusable = false}
+            ['iron'] = {amount = 4, label = "Iron", reusable = false}
         }
     },
     
@@ -146,7 +146,7 @@ Config = {
         power = 22.0,
         durability = 50.0,
         repair = {
-            ['iron'] = {amount = 5, label = "Iron", reusable = false}
+            ['iron'] = {amount = 6, label = "Iron", reusable = false}
         }
     }
     
@@ -157,11 +157,25 @@ Config = {
     Nitros = { -- Nitro affect vehicle power and increases vehicle wear during usage
     
     ['nos'] = {
-        label = "NOS", 
+        label = "NOS +10/10s", 
         usability = {exclusive = {}, vehicletypes = {}},
         power = 10.0,
         durability = 10.0 -- Here enter seconds until nitro will run out
-    }
+    },
+
+    ['nos'] = {
+        label = "NOS +2/40s", 
+        usability = {exclusive = {}, vehicletypes = {}},
+        power = 2.0,
+        durability = 40.0 -- Here enter seconds until nitro will run out
+    },
+
+    ['nos'] = {
+        label = "NOS +7/20s", 
+        usability = {exclusive = {}, vehicletypes = {}},
+        power = 7.0,
+        durability = 20.0 -- Here enter seconds until nitro will run out
+    },
     
     },
     
@@ -172,9 +186,9 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 0.9,
         drivingwheels = 'DEFAULT',
-        durability = 50.0,
+        durability = 90.0,
         repair = {
-            ['transmission_gear'] = {amount = 1, label = "Iron", reusable = false}
+            ['transmission_gear'] = {amount = 2, label = "Trans Gears", reusable = false}
         }
     },
     
@@ -183,9 +197,9 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 9.0,
         drivingwheels = 'RWD',
-        durability = 35.0,
+        durability = 70.0,
         repair = {
-            ['transmission_gear'] = {amount = 1, label = "Iron", reusable = false}
+            ['transmission_gear'] = {amount = 4, label = "Trans Gears", reusable = false}
         }
     },
     
@@ -194,9 +208,9 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 9.0,
         drivingwheels = 'AWD', -- FWD RWD AWD
-        durability = 35.0,
+        durability = 70.0,
         repair = {
-            ['transmission_gear'] = {amount = 1, label = "Iron", reusable = false}
+            ['transmission_gear'] = {amount = 4, label = "Trans Gears", reusable = false}
         }
     },
     
@@ -205,9 +219,9 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 9.0,
         drivingwheels = 'FWD', -- FWD RWD 4WD
-        durability = 35.0,
+        durability = 70.0,
         repair = {
-            ['transmission_gear'] = {amount = 1, label = "Iron", reusable = false}
+            ['transmission_gear'] = {amount = 4, label = "Trans Gears", reusable = false}
         }
     },
     
@@ -216,9 +230,9 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 4.0,
         drivingwheels = 'RWD',
-        durability = 45.0,
+        durability = 80.0,
         repair = {
-            ['transmission_gear'] = {amount = 1, label = "Iron", reusable = false}
+            ['transmission_gear'] = {amount = 3, label = "Trans Gears", reusable = false}
         }
     },
     
@@ -227,9 +241,9 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 4.0,
         drivingwheels = 'AWD', -- FWD RWD AWD
-        durability = 45.0,
+        durability = 80.0,
         repair = {
-            ['transmission_gear'] = {amount = 1, label = "Iron", reusable = false}
+            ['transmission_gear'] = {amount = 3, label = "Trans Gears", reusable = false}
         }
     },
     
@@ -238,9 +252,20 @@ Config = {
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 4.0,
         drivingwheels = 'FWD', -- FWD RWD 4WD
-        durability = 45.0,
+        durability = 80.0,
         repair = {
-            ['transmission_gear'] = {amount = 1, label = "Iron", reusable = false}
+            ['transmission_gear'] = {amount = 3, label = "Trans Gears", reusable = false}
+        }
+    },
+
+    ['police_transmission'] = {
+        label = "Street RWD", 
+        usability = {exclusive = {}, vehicletypes = {}},
+        shiftingtime = 4.0,
+        drivingwheels = 'RWD',
+        durability = 100.0,
+        repair = {
+            ['transmission_gear'] = {amount = 4, label = "Iron", reusable = false}
         }
     }
     
@@ -468,6 +493,18 @@ Config = {
         durability = 85.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "lambov10", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
+        repair = {
+            ['iron'] = {amount = 10, label = "Iron", reusable = false},
+            ['piston'] = {amount = 6, label = "Piston", reusable = false}
+        }
+    },
+
+    ['police_engine'] = {
+        label = "OEM", 
+        power = 11.0,
+        durability = 100.0,
+        usability = {exclusive = {}, vehicletypes = {}},
+        sound = "DEFAULT",
         repair = {
             ['iron'] = {amount = 10, label = "Iron", reusable = false},
             ['piston'] = {amount = 6, label = "Piston", reusable = false}

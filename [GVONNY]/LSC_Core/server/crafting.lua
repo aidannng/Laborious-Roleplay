@@ -472,6 +472,26 @@ AddEventHandler('craft:lambov10', function()
     end
 end)
 
+RegisterServerEvent('craft:pdengine')
+AddEventHandler('craft:pdengine', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('engine_block').count
+    local headCount = xPlayer.getInventoryItem('head').count
+
+    if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        xPlayer.removeInventoryItem('piston', 6)
+        xPlayer.removeInventoryItem('crankshaft', 1)
+        xPlayer.removeInventoryItem('engine_block', 1)
+        xPlayer.removeInventoryItem('head', 2)
+        xPlayer.addInventoryItem('police_engine', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+    end
+end)
+
 --############################
 --##       SUSPENSION       ##
 --############################
@@ -818,6 +838,22 @@ AddEventHandler('craft:racetransmissionrwd', function()
     end
 end)
 
+RegisterServerEvent('craft:policetransmission')
+AddEventHandler('craft:policetransmission', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local gearCount = xPlayer.getInventoryItem('transmission_gear').count
+    local oilCount = xPlayer.getInventoryItem('shell_oil').count
+
+    if (gearCount > 4 and oilCount > 0) then
+        xPlayer.removeInventoryItem('transmission_gear', 5)
+        xPlayer.removeInventoryItem('shell_oil', 1)
+        xPlayer.addInventoryItem('police_transmission', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+    end
+end)
+
 --###########################
 --##          OIL          ##
 --###########################
@@ -933,6 +969,48 @@ AddEventHandler('craft:championsparkplugs', function()
     if ironCount > 2 then
         xPlayer.removeInventoryItem('iron', 3)
         xPlayer.addInventoryItem('champion_sparkplugs', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:toolbox')
+AddEventHandler('craft:toolbox', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local ironCount = xPlayer.getInventoryItem('iron').count
+
+    if ironCount > 1 then
+        xPlayer.removeInventoryItem('iron', 2)
+        xPlayer.addInventoryItem('toolbox', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:mechanictools')
+AddEventHandler('craft:mechanictools', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local ironCount = xPlayer.getInventoryItem('iron').count
+
+    if ironCount > 2 then
+        xPlayer.removeInventoryItem('iron', 3)
+        xPlayer.addInventoryItem('mechanic_tools', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:advancedlockpick')
+AddEventHandler('craft:advancedlockpick', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local ironCount = xPlayer.getInventoryItem('iron').count
+
+    if ironCount > 4 then
+        xPlayer.removeInventoryItem('iron', 5)
+        xPlayer.addInventoryItem('advancedlockpick', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end

@@ -15,7 +15,7 @@ mumbleConfig = {
 	micClickOn = true, -- Is click sound on active
 	micClickOff = true, -- Is click sound off active
 	micClickVolume = 0.1, -- How loud a mic click is
-	radioClickMaxChannel = 100, -- Set the max amount of radio channels that will have local radio clicks enabled
+	radioClickMaxChannel = 999, -- Set the max amount of radio channels that will have local radio clicks enabled
 	controls = { -- Change default key binds
 		proximity = {
 			key = 20, -- Z
@@ -34,7 +34,7 @@ mumbleConfig = {
 		[2] = "LEO Tac 2",
 		[3] = "EMS Tac 1",
 		[4] = "EMS Tac 2",
-		[500] = "Hurr Durr 500 Hurr Durr",
+		[999] = "Hurr Durr 500 Hurr Durr",
 	},
 	callChannelNames = { -- Add named call channels (Defaults to [channel number])
 

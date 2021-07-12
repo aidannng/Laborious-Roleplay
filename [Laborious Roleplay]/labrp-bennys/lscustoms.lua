@@ -21,23 +21,23 @@ function disableControls()
     DisableControlAction(1, 35, true) --Key: D
 
     if IsDisabledControlJustReleased(1, 172) then --Key: Arrow U
-        PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+        TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     end
 
     if IsDisabledControlJustReleased(1, 173) then --Key: Arrow Down
-        PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+        TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     end
 
     if IsDisabledControlJustReleased(1, 176) then --Key: Enter
-        PlaySoundFrontend(-1, "OK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+        TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     end
 
     if IsDisabledControlJustReleased(1, 177) then --Key: Backspace
-        PlaySoundFrontend(-1, "NO", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1)
+        TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     end
 
 	if IsDisabledControlJustReleased(1, 191) then --Key: Backspace
-    	TriggerEvent("InteractSound_CL:PlayOnOne", "impactdrill", 0.2)
+    	TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     end
 end
 
