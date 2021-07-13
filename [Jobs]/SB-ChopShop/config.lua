@@ -1,35 +1,36 @@
 Config = {}
 
 
-Config.ChopExtreme = {
-	[1] = 'Adder',    
-	[2] = 'Tezeract',   
-	[3] = 'Infernus',	
-	[4] = 'Zentorno',	
-	[5] = 'Tempesta',	
-}
-
-Config.ChopHigh = {
-	[1] = 'Voltic',    
-	[2] = 'Tyrus',   
-	[3] = 'Buffalo',	
-	[4] = 'Stretch',	
-	[5] = 'SultanRS',	
-}
-
-Config.ChopMed = {
-	[1] = 'Sentinel',    
-	[2] = 'Primo',   
-	[3] = 'MiniVan',	
-	[4] = 'Granger',	
-	[5] = 'Dubsta',	
-}
-
-Config.ChopLow = {
+Config.ChopCars = {
 	[1] = 'Buccaneer',    
 	[2] = 'Akuma',   
 	[3] = 'Asea',	
 	[4] = 'Tailgater',	
-	[5] = 'Dukes',	
+	[5] = 'Dukes',
+	[6] = 'Schafter',
+	[7] = 'Bullet',
+	[8] = 'F620',
+	[9] = 'Carbonizzare',
+	[10] = 'Comet',
+	[11] = 'Banshee',
+	[12] = 'Coquette',
+	[13] = 'Sentinel',
+	[14] = 'Dubsta',
+	[15] = 'Infernus',
+	[16] = 'Feltzer',
+	[17] = 'Jackal',
+	[18] = 'Rocoto',
+	[19] = 'Serrano',
+	[20] = 'Schwartzer',
 }
 
+Config.SpawnCar = {
+    [1] = {x = -462.2505, y = -2758.444, z = 5.993408},
+	[2] = {x = -1073.591, y = -1654.035, z = 4.460083},
+	[3] = {x = -1101.521, y = 360.989, z = 68.53992},
+	[4] = {x = -134.5978, y = 903.2308, z = 235.7744},
+	[5] = {x = 484.8264, y = -1098.04, z = 29.19556},
+	[6] = {x = -671.1429, y = -752.4791, z = 26.43225},
+	[7] = {x = 713.6044, y = -894.6857, z = 23.71936},
+	[8] = {x = -696.6857, y = -1105.556, z = 14.51941},
+}

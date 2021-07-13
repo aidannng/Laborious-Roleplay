@@ -193,10 +193,12 @@ AddEventHandler("movetoshowroom", function(slotid, plate)
             
             --if new plate is the same as the plate
             if(plate == result[1].plate) then
-                MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
-                --print("this vehicle is already in a slot")
-                --print("despawn vehicle from current slot")
-                TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+                TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "There is a vehicle on the floor already", })
+
+                --MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
+                ----print("this vehicle is already in a slot")
+                ----print("despawn vehicle from current slot")
+                --TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
             end
         end
     end)
@@ -210,16 +212,19 @@ AddEventHandler("movetoshowroom", function(slotid, plate)
             local model = result2[1].model
             local slot = result2[1].slot_id
             local rotation = result2[1].rotation
+            
             if(result2[1].plate ~= nil) then
+                --print(slot .. ". " .. result2[1].plate)
                 --print("there is a different car in the new slot already")
-                --print("despawn vehicle from new slot")
-                TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+                TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "There is a vehicle in that slot already", })
+            else
+                MySQL.Async.execute("UPDATE pdm_showroom SET plate = @plate WHERE slot_id = @slotid", {['@plate']= plate, ['@slotid'] = slotid})
+                --print("loading new car in selected slot")
+                --print("spawn vehicle in showroom")
+                --print("========================================")
+                TriggerClientEvent("pdm:spawnvehicle", src, x, y, z, model, plate, rotation)
             end
-            MySQL.Async.execute("UPDATE pdm_showroom SET plate = @plate WHERE slot_id = @slotid", {['@plate']= plate, ['@slotid'] = slotid})
-            --print("loading new car in selected slot")
-            --print("spawn vehicle in showroom")
-            --print("========================================")
-            TriggerClientEvent("pdm:spawnvehicle", src, x, y, z, model, plate, rotation)
+           
         end
     end)
 end)

@@ -7,59 +7,22 @@ local s = 'Scrap'
 local e = 'electronics'
 local payment = {}
 
-RegisterCommand('ChopList', function(source, args)
-	TriggerClientEvent('SB-GetList', source)
-end)
-
-RegisterServerEvent('SB-ChopLow')
-AddEventHandler('SB-ChopLow', function()
-	local src = source
+RegisterServerEvent('givechoppaper')
+AddEventHandler('givechoppaper', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer == xPlayer then
-		xPlayer.addInventoryItem(p, math.random(2, 6))
-		xPlayer.addInventoryItem(s, math.random(3, 8))
-		xPlayer.addInventoryItem(e, math.random(1, 3))
-		payment = math.random(100, 300) 
-		xPlayer.addMoney(payment)
-	end
-end)
 
-RegisterServerEvent('SB-ChopMed')
-AddEventHandler('SB-ChopMed', function()
-	local src = source
-	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer == xPlayer then
-		xPlayer.addInventoryItem(p, math.random(3, 8))
-		xPlayer.addInventoryItem(s, math.random(4, 10))
-		xPlayer.addInventoryItem(e, math.random(2, 5))
-		payment = math.random(200, 400) 
-		xPlayer.addMoney(payment)
-	end
-end)
+	car = Config.ChopCars[math.random(1, #Config.ChopCars)]
+	xPlayer.addInventoryItem('papers', 1, {type='Find and Steal this car:', description=car})
+	TriggerClientEvent('CarPapers', source, car)
+end) --choppayout
 
-RegisterServerEvent('SB-ChopHigh')
-AddEventHandler('SB-ChopHigh', function()
-	local src = source
+RegisterServerEvent('choppayout')
+AddEventHandler('choppayout', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer == xPlayer then
-		xPlayer.addInventoryItem(p, math.random(4, 10))
-		xPlayer.addInventoryItem(s, math.random(5, 12))
-		xPlayer.addInventoryItem(e, math.random(3, 7))
-		payment = math.random(300, 500) 
-		xPlayer.addMoney(payment)
-	end
-end)
+	local payout = math.random(2, 10)
 
-RegisterServerEvent('SB-ChopExtreme')
-AddEventHandler('SB-ChopExtreme', function()
-	local src = source
-	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer == xPlayer then
-		xPlayer.addInventoryItem(p, math.random(6, 15))
-		xPlayer.addInventoryItem(s, math.random(7, 17))
-		xPlayer.addInventoryItem(e, math.random(5, 13))
-		payment = math.random(400, 600) 
-		xPlayer.addMoney(payment)
-	end
+	xPlayer.addInventoryItem('scrapmetal', payout)
+	xPlayer.addInventoryItem('black_money', math.random(300, 700))
+	TriggerClientEvent('resetchop', source)
 end)
 

@@ -21,6 +21,13 @@ Items = {
 		close = true,
 	},
 
+	['papers'] = {
+		label = 'Chop List',
+		weight = 200,
+		stack = false,
+		close = true,
+	},
+
 	['burger'] = {
 		label = 'Burger',
 		weight = 350,
@@ -218,6 +225,18 @@ Items = {
 			consume = 0,
 			usetime = 0,
 			event = 'radio:use'
+		}
+	},
+
+	['fishingrod'] = {
+		label = 'Fishing Rod',
+		weight = 1500,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'fishing:fishstart'
 		}
 	},
 
@@ -465,6 +484,17 @@ Items = {
 		weight = 2500,
 		stack = false,
 		close = true,
+	},
+
+	['binoculars'] = {
+		label = 'Binoculars',
+		weight = 300,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'binoculars:Activate'
+		}
 	},
 	
 }
