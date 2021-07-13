@@ -468,6 +468,7 @@ local Keys = {
 }
 
 local keybindEnabled = true -- When enabled, binocular are available by keybind
+local binocularKey = Keys["."]
 local storeBinoclarKey = Keys["BACKSPACE"]
 
 --THREADS--
@@ -480,7 +481,7 @@ Citizen.CreateThread(function()
 		local lPed = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(lPed)
 
-		if binoculars or (keybindEnabled and IsControlJustReleased(1, binocularKey)) then
+		if binoculars then
 			binoculars = true
 			if not ( IsPedSittingInAnyVehicle( lPed ) ) then
 				Citizen.CreateThread(function()
@@ -510,7 +511,7 @@ Citizen.CreateThread(function()
 			SetCamFov(cam, fov)
 			RenderScriptCams(true, false, 0, 1, 0)
 			PushScaleformMovieFunction(scaleform, "SET_CAM_LOGO")
-			PushScaleformMovieFunctionParameterInt(0) -- 0 for nothing, 1 for LSPD logo
+			PushScaleformMovieFunctionParameterInt(1) -- 0 for nothing, 1 for LSPD logo
 			PopScaleformMovieFunctionVoid()
 
 			while binoculars and not IsEntityDead(lPed) and (GetVehiclePedIsIn(lPed) == vehicle) and true do
