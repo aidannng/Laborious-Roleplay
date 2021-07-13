@@ -1,4 +1,4 @@
-local clearGSR = 15 -- minutes
+local clearGSR = 45 -- minutes
 local shotRecently = false
 
 RegisterCommand("cleargsr", function(source, args, raw)

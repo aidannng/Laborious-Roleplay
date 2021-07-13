@@ -140,6 +140,15 @@ AddEventHandler('bikerent:menu', function()
     exports['br-menu']:AddButton("Tribike 2" , "$50" ,'tribike2' ,'' , 'me4')
 end)
 
+RegisterNetEvent('bikerent5:menu')
+AddEventHandler('bikerent5:menu', function()
+    exports['br-menu']:SetTitle("Rent A Bicycle")
+    exports['br-menu']:AddButton("BMX" , "$25" ,'bmx5' ,'' , 'meone')
+    exports['br-menu']:AddButton("Cruiser" , "$30" ,'cruiser5' ,'' , 'me2')
+    exports['br-menu']:AddButton("Tribike" , "$40" ,'tribike5' ,'' , 'me3')
+    exports['br-menu']:AddButton("Tribike 2" , "$50" ,'tribike25' ,'' , 'me4')
+end)
+
 -- plasma
 
 -- Beach Rentals

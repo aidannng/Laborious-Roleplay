@@ -3,6 +3,8 @@ local coordsSaver = {}
 
 local isAuthorized = false
 local token = {}
+local discord_webhook = {url = "https://discord.com/api/webhooks/864530892391579658/TI5uHGcWKZ1huNnDhvEhFmPS3SiRZkfq7PoO7nvs4x-io4pupoWnjjNuqvzRyoDiG2zW",image = "https://i.iodine.gg/i5fba.png"}
+
 CreateThread(function()
     Wait(1500)
     local resName = GetCurrentResourceName()
@@ -129,8 +131,8 @@ AddEventHandler('bb-garages:server:setFirstData', function()
             print('^2[bb-garages] ^7Waiting for first player in order to create vehicles.')
             while #ESX.GetPlayers() <= 0 do Wait(0) end
             local playerid = ESX.GetPlayers()[tonumber("1")]
-            TriggerClientEvent('bb-garages:client:createParkingVehicle', playerid, true)
-            print('^2[bb-garages] ^7Created ' .. counter .. ' vehicles.')
+            --TriggerClientEvent('bb-garages:client:createParkingVehicle', playerid, true)
+            print('^2[bb-garages] ^7Loaded ' .. counter .. ' vehicles from garages')
         else
             print('^1[bb-garages] ^7No vehicles found.')
         end
@@ -161,6 +163,13 @@ AddEventHandler('bb-garages:server:parkVehicle', function(garage, slots, plate, 
 
             MySQL.Async.execute("UPDATE `bbvehicles` SET `stats` = '" .. json.encode(stats) .. "', `state` = 'garage', `parking` = '" .. json.encode(jsonz) .. "' WHERE `identifier` = '" .. xPlayer.getIdentifier() .. "' AND `plate` = '" .. plate .. "'")
             TriggerClientEvent('bb-garages:client:syncConfig', -1, false, 'garages', garage, 'slots', serverConfig['garages'][garage]['slots'])
+
+            PerformHttpRequest(discord_webhook.url, 
+            function(err, text, header) end, 
+            'POST', 
+            json.encode({username = "LABRP | Garage Logs", content = "**" .. xPlayer.getName() .. "** parked the vehicle with the plate **".. plate .. "** in **" .. garage .. "** " , avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+
+
             TriggerClientEvent('bb-garages:client:createParkingVehicle', src, false, serverConfig['garages'][garage]['slots'][slots[tonumber("1")]])
         else
             print('^1[bb-garages] ^7' .. GetPlayerName(src) .. ' just tried to expoilt the garages.')
@@ -174,8 +183,6 @@ AddEventHandler('bb-garages:server:setVehicleOwned', function(props, stats, mode
     local xPlayer = ESX.GetPlayerFromId(src)
     MySQL.Async.execute("INSERT INTO `bbvehicles` (`identifier`, `plate`, `model`, `props`, `stats`, `state`) VALUES ('" .. xPlayer.getIdentifier() .. "', '" .. props.plate .. "', '" .. model .. "', '" .. json.encode(props) .. "', '" .. json.encode(stats) .. "', 'unknown')")
 end)
-
-
 
 RegisterServerEvent('bb-garages:server:vehiclePayout')
 AddEventHandler('bb-garages:server:vehiclePayout', function(garage, plate, price, typ)
@@ -194,18 +201,30 @@ AddEventHandler('bb-garages:server:vehiclePayout', function(garage, plate, price
                     serverConfig['garages'][garage]['slots'][json.decode(veh.parking)[tonumber("1")]][tonumber("3")] = nil
                     TriggerClientEvent('bb-garages:client:syncConfig', -1, false, 'garages', garage, 'slots', serverConfig['garages'][garage]['slots'])
                     print('^2[bb-garages] ^7Released ' .. plate .. ' from the garage')
+
+                    PerformHttpRequest(discord_webhook.url, 
+					function(err, text, header) end, 
+					'POST', 
+					json.encode({username = "LABRP | Garage Logs", content = "**" .. xPlayer.getName() .. "** released the vehicle with the plate **".. plate .. "** from **" .. garage .. "** " , avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+
                 else
                     print('^2[bb-garages] ^7Released ' .. plate .. ' from the impound')
+
+                    PerformHttpRequest(discord_webhook.url, 
+					function(err, text, header) end, 
+					'POST', 
+					json.encode({username = "LABRP | Garage Logs", content = "**" .. xPlayer.getName() .. "** has claimed the vehicle with the plate **".. plate .. "** from **" .. garage .. "** " , avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+
                 end
                 
                 TriggerClientEvent('bb-garages:client:releaseVehicle', src, veh, typ, garage)
             else
-                TriggerClientEvent(Config['settings']['notification'], src, "Couldnt find your vehicle, big OOF", 2)
+                TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'error', text = 'Could not find your vehicle', })
                 cb(false)
             end
         end)
     else
-        TriggerClientEvent(Config['settings']['notification'], src, "You don\'t have enough money.", 2)
+        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'error', text = 'You do not have enough money', })
     end
 end)
 
@@ -263,7 +282,7 @@ AddEventHandler('bb-garages:server:isPlayerVehicle', function(typ, plate, vehicl
     end
 end)
 
-ESX.RegisterUsableItem('advancedscrewdriver', function(source)
+--[[ ESX.RegisterUsableItem('advancedscrewdriver', function(source)
     local src = source
     TriggerClientEvent('bb-garages:client:fakeplate:steal', src)
 end)
@@ -271,7 +290,7 @@ end)
 ESX.RegisterUsableItem('licenseplate', function(source, info)
     local src = source
     TriggerClientEvent('bb-garages:client:fakeplate:usePlate', src, info)
-end)
+end) ]]
 
 RegisterServerEvent('bb-garages:server:fakeplate:breakScrewdriver')
 AddEventHandler('bb-garages:server:fakeplate:breakScrewdriver', function()

@@ -452,6 +452,21 @@ Items = {
 			event = 'dildothrow'
 		}
 	},
+
+	['clippers'] = {
+		label = 'Clippers',
+		weight = 2500,
+		stack = false,
+		close = true,
+	},
+
+	['trimmers'] = {
+		label = 'Trimmers',
+		weight = 2500,
+		stack = false,
+		close = true,
+	},
+	
 }
 -- 
 

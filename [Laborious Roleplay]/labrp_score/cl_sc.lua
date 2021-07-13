@@ -109,6 +109,8 @@ Citizen.CreateThread(function()
                 TaskPlayAnim(player, "amb@medic@standing@timeofdeath@exit", "exit", 0.1, 1.0, 1.0, 48, 0, 0, 0, 0)
                 TriggerEvent("destroyProp")
                 TriggerEvent("destroyProp69")
+                Citizen.Wait(500)
+                ClearPedTasks(player)
             end
         end
         Citizen.Wait(0)
