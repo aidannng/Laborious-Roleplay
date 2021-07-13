@@ -503,9 +503,9 @@ AddEventHandler('craft:stockbrakes', function()
     local rotorCount = xPlayer.getInventoryItem('rotor').count
     local padCount = xPlayer.getInventoryItem('brake_pad').count
 
-    if (rotorCount > 3 and padCount > 3) then
+    if (rotorCount > 3 and padCount > 7) then
         xPlayer.removeInventoryItem('rotor', 4)
-        xPlayer.removeInventoryItem('brake_pad', 4)
+        xPlayer.removeInventoryItem('brake_pad', 8)
         xPlayer.addInventoryItem('stock_brakes', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
@@ -519,9 +519,9 @@ AddEventHandler('craft:upgradedbrakepads', function()
     local rotorCount = xPlayer.getInventoryItem('rotor').count
     local padCount = xPlayer.getInventoryItem('race_brake_pad').count
 
-    if (rotorCount > 3 and padCount > 3) then
+    if (rotorCount > 3 and padCount > 7) then
         xPlayer.removeInventoryItem('rotor', 4)
-        xPlayer.removeInventoryItem('race_brake_pad', 4)
+        xPlayer.removeInventoryItem('race_brake_pad', 8)
         xPlayer.addInventoryItem('upgraded_brake_pads', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
@@ -535,9 +535,9 @@ AddEventHandler('craft:brembobrakes', function()
     local rotorCount = xPlayer.getInventoryItem('race_rotor').count
     local padCount = xPlayer.getInventoryItem('race_brake_pad').count
 
-    if (rotorCount > 3 and padCount > 3) then
+    if (rotorCount > 3 and padCount > 7) then
         xPlayer.removeInventoryItem('race_rotor', 4)
-        xPlayer.removeInventoryItem('race_brake_pad', 4)
+        xPlayer.removeInventoryItem('race_brake_pad', 8)
         xPlayer.addInventoryItem('brembo_brakes', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
@@ -551,9 +551,9 @@ AddEventHandler('craft:wilwoodbrakes', function()
     local rotorCount = xPlayer.getInventoryItem('race_rotor').count
     local padCount = xPlayer.getInventoryItem('race_brake_pad').count
 
-    if (rotorCount > 3 and padCount > 3) then
+    if (rotorCount > 3 and padCount > 7) then
         xPlayer.removeInventoryItem('race_rotor', 4)
-        xPlayer.removeInventoryItem('race_brake_pad', 4)
+        xPlayer.removeInventoryItem('race_brake_pad', 8)
         xPlayer.addInventoryItem('wilwood_brakes', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })

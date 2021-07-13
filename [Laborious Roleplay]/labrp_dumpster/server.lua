@@ -22,7 +22,7 @@ local dumpsterItems = {
     [11] = {chance = 2, id = 'fishingrod', name = 'Fishing Rod', quantity = 1, limit = 10},
     [12] = {chance = 7, id = 'cartire', name = 'Car Tire', quantity = 1, limit = 4},
     [13] = {chance = 8, id = 'weddingring', name = 'Wedding Ring', quantity = 1, limit = 10},
-    [14] = {chance = 7, id = 'advancedlockpick', name = 'Advanced Lockpick', quantity = 1, limit = 15},
+    [14] = {chance = 7, id = 'lockpick', name = 'Lockpick', quantity = 1, limit = 15},
     [15] = {chance = 2, id = 'burger', name = 'Burger', quantity = 1, limit = 10}
    }
 
