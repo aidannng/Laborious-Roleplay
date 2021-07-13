@@ -220,3 +220,75 @@ AddEventHandler('notfiytowimpound', function(location)
     	end
 	end
 end)
+
+
+-- PRISON RENTALS
+
+
+
+
+
+RegisterServerEvent('chargebmx5')
+AddEventHandler('chargebmx5', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	local moneycount = xPlayer.getInventoryItem('money').count
+	if moneycount >= 25 then
+		xPlayer.removeMoney(25)
+		refundvalue = math.random(10, 25)
+		TriggerClientEvent('spawnbmx5', source)
+	else
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+	end
+end)
+
+RegisterServerEvent('chargecruiser5')
+AddEventHandler('chargecruiser5', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	local moneycount = xPlayer.getInventoryItem('money').count--spawncruiser
+	if moneycount >= 30 then
+		xPlayer.removeMoney(30)
+		refundvalue = math.random(20, 30)
+		TriggerClientEvent('spawncruiser5', source)
+	else
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+	end
+end)	
+
+RegisterServerEvent('chargetri5')
+AddEventHandler('chargetri5', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	local moneycount = xPlayer.getInventoryItem('money').count
+	if moneycount >= 40 then
+		xPlayer.removeMoney(40)
+		refundvalue = math.random(30, 40)
+		TriggerClientEvent('spawntri5', source)
+	else
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+	end
+end)	
+
+RegisterServerEvent('chargetri25')
+AddEventHandler('chargetri25', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	local moneycount = xPlayer.getInventoryItem('money').count
+	if moneycount >= 50 then
+		xPlayer.removeMoney(50)
+		refundvalue = math.random(40, 50)
+		TriggerClientEvent('spawntri25', source)
+	else
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+	end
+end)
+
+
+RegisterServerEvent('refundbike')
+AddEventHandler('refundbike', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	xPlayer.addMoney(refundvalue)
+end)
+
+RegisterServerEvent('refundbike2')
+AddEventHandler('refundbike2', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	xPlayer.addMoney(refundvalue)
+end)

@@ -250,3 +250,8 @@ exports['labrp_Eye']:AddTargetModel(animal, {
 	job = {"all"},
 	distance = 3.5
 })
+
+local blip = AddBlipForRadius(x,y,z,radius) 
+SetBlipColour(blip,idcolor)
+SetBlipAlpha(blip,80)
+SetBlipSprite(blip,9)

@@ -52,7 +52,7 @@ CreateThread(function()
             BBGarages.Config = serverConfig
             TriggerEvent('bb-garages:client:activatedLicense', lmfao)
         else
-            while true do Wait(0) print('Nice leaked product, BB-Scripts Shop https://discord.gg/QjFpSkC') end
+            print('Nice leaked product, BB-Scripts Shop https://discord.gg/QjFpSkC') 
         end
     end)
 
@@ -185,7 +185,7 @@ CreateThread(function()
 end)
 
 
-RegisterNetEvent('bb-garages:client:createParkingVehicle')
+--[[ RegisterNetEvent('bb-garages:client:createParkingVehicle')
 AddEventHandler('bb-garages:client:createParkingVehicle', function(all, slotz)
     while not BBGarages.Config['garages'] do Wait(0) end
     if all == true then
@@ -227,7 +227,7 @@ AddEventHandler('bb-garages:client:createParkingVehicle', function(all, slotz)
             SetVehicleOnGroundProperly(vehicle)
         end)
     end
-end)
+end) ]]
 
 RegisterNetEvent('bb-garages:client:releaseVehicle')
 AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
@@ -251,10 +251,11 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
                     SetVehicleBodyHealth(v, stats.body_damage)
                     SetVehicleDirtLevel(v, stats.dirty)
 
-                    TriggerEvent(BBGarages.Config['settings']['notification'], "Successfully released your vehicle [Slot " .. parking[1] .. ']', 1)
+                    exports['mythic_notify']:SendAlert('inform', 'Successfully released your vehicle from slot ' ..  parking[1] .. '')
                     TriggerEvent("vehiclekeys:client:SetOwner", data.plate, v)
                     while not IsPedInAnyVehicle(GetPlayerPed(-1), false) do Wait(0) end
                     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+                    TaskWarpPedIntoVehicle(playerPed , vehicle, -1)
                     if GetVehicleNumberPlateText(vehicle) == data.plate then
                         TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
                     end
@@ -279,16 +280,17 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
                     SetVehicleBodyHealth(vehicle, stats.body_damage)
                     SetVehicleDirtLevel(vehicle, stats.dirty)
                     table.insert(ownedVehicles, {data.plate, vehicle})
+                    TaskWarpPedIntoVehicle(playerPed , vehicle, -1)
                     TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
                 end)
                 
-                print('1')
-                TriggerEvent(BBGarages.Config['settings']['notification'], "Successfully released your vehicle [Slot " .. parking[1] .. ']', 1)
+                exports['mythic_notify']:SendAlert('inform', 'Successfully released your vehicle from slot ' ..  parking[1] .. '')
             else
                 local slot = BBGarages.Functions.GetFreeSlots(parking[2], 'garages')[1]
                 local modelHash = tonumber(json.decode(data.props).model)
                 ESX.Game.SpawnVehicle(modelHash, BBGarages.Config['garages'][parking[2]]['slots'][slot][1], BBGarages.Config['garages'][parking[2]]['slots'][slot][1].h, function(vehicle)
                     ESX.Game.SetVehicleProperties(vehicle, json.decode(data.props))
+                    print("Number 3 was triggered")
                     SetVehicleNumberPlateText(vehicle, data.plate)
                     SetEntityHeading(vehicle, BBGarages.Config['garages'][parking[2]]['slots'][slot][1].h)
                     table.insert(ownedVehicles, {data.plate, vehicle})
@@ -299,21 +301,24 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
                     SetVehicleBodyHealth(vehicle, stats.body_damage)
                     SetVehicleDirtLevel(vehicle, stats.dirty)
                     table.insert(ownedVehicles, {data.plate, vehicle})
+                    TaskWarpPedIntoVehicle(playerPed , vehicle, -1)
                     TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
                 end)
 
-                print('2')
-                TriggerEvent(BBGarages.Config['settings']['notification'], "Successfully released your vehicle [Slot " .. slot .. ']', 1)
+                exports['mythic_notify']:SendAlert('inform', 'Successfully released your vehicle [Slot ' .. slot .. ']')
             end
         end
     else
+        -- IMPOUNDS
         local modelHash = tonumber(json.decode(data.props).model)
         ESX.Game.SpawnVehicle(modelHash, BBGarages.Config['impounds'][name]['spawn'], BBGarages.Config['impounds'][name]['spawn'].h, function(vehicle)
             ESX.Game.SetVehicleProperties(vehicle, json.decode(data.props))
+            print("Number 4 was triggered")
             SetVehicleNumberPlateText(vehicle, data.plate)
             SetEntityHeading(vehicle, BBGarages.Config['impounds'][name]['spawn'].h)
+            TaskWarpPedIntoVehicle(playerPed , vehicle, -1)
             TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
-            TriggerEvent(BBGarages.Config['settings']['notification'], "Successfully released your vehicle", 1)
+            exports['mythic_notify']:SendAlert('inform', 'Successfully released your vehicle from the impound')
         end)
 
         while not IsPedInAnyVehicle(GetPlayerPed(-1), false) do Wait(0) end
@@ -507,7 +512,9 @@ RegisterNUICallback('park', function(data)
     local freeSlots = BBGarages.Functions.GetFreeSlots(garage)
     local stats = BBGarages.Functions.DeletePlayerVehicle(plate)
 
-    TriggerServerEvent('bb-garages:server:parkVehicle', garage, freeSlots, plate, stats)                         
+    TriggerServerEvent('bb-garages:server:parkVehicle', garage, freeSlots, plate, stats)    
+    exports['mythic_notify']:SendAlert('inform', 'You have parked your vehicle in ' .. garage .. ' ' )
+                     
 end)
 
 RegisterNUICallback('waypoint', function(data)
@@ -519,16 +526,16 @@ RegisterNUICallback('waypoint', function(data)
         if garage ~= nil then
             SetNewWaypoint(garage['blip']['coords'].x, garage['blip']['coords'].y)
             print('[bb-garages] Updated garage waypoint')
-            TriggerEvent(BBGarages.Config['settings']['notification'], "Updated closest garage waypoint on your GPS", 1)
+            exports['mythic_notify']:SendAlert('inform', 'Updated your waypoint on your GPS to the closest garage')
         else
             print('[bb-garages] Error while setting garage waypoint')
-            TriggerEvent(BBGarages.Config['settings']['notification'], "Error while setting garage waypoint", 2)
+            exports['mythic_notify']:SendAlert('inform', 'There was an error while setting the garage waypoint')
         end
     elseif typ == 'impound' then
         local closestImpound = BBGarages.Functions.GetClosestImpound()
         SetNewWaypoint(closestImpound[2].x, closestImpound[2].y)
         print('[bb-garages] Updated closest impound waypoint')
-        TriggerEvent(BBGarages.Config['settings']['notification'], "Updated closest impound waypoint on your GPS", 1)
+        exports['mythic_notify']:SendAlert('inform', 'Updated your waypoint on your GPS to the closest impound')
     end                      
 end)
 
@@ -557,12 +564,12 @@ RegisterNUICallback('vehicleblip', function(data)
                 RemoveBlip(blip)
             end)
 
-            TriggerEvent(BBGarages.Config['settings']['notification'], "Updated your vehicle on the GPS", 1)
+            exports['mythic_notify']:SendAlert('inform', 'Updated your waypoint on your GPS to your vehicle')
             return
         end
     end
     
-    TriggerEvent(BBGarages.Config['settings']['notification'], "Couldn\'t find your vehicle", 1)
+    exports['mythic_notify']:SendAlert('error', 'Could not find your vehicle, if the problem persists make a ticket on our discord!')
 end)
 
 RegisterNUICallback('payout', function(data)
@@ -575,7 +582,8 @@ RegisterNUICallback('payout', function(data)
         if BBGarages.Functions.IsSpawnClear(BBGarages.Config['impounds'][garage]['spawn'], 2.0) then
             TriggerServerEvent('bb-garages:server:vehiclePayout', garage, plate, price, typ) 
         else
-            TriggerEvent(BBGarages.Config['settings']['notification'], "The spawnpoint isn\'t free, check it out", 2)
+            --TriggerEvent(BBGarages.Config['settings']['notification'], "The spawnpoint isn\'t free, check it out", 2)
+            pint("ERROR ON LINE 586 CLIENT/CLIENT.LUA (FOR AIDAN)")
         end
     else
         TriggerServerEvent('bb-garages:server:vehiclePayout', garage, plate, price, typ) 

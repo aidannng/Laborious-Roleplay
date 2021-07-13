@@ -2,7 +2,7 @@ Config = {}
 
 Config.RestrictedChannels = 10 -- channels that are encrypted (EMS, Fire and police can be included there) if we give eg 10, channels from 1 - 10 will be encrypted
 
-Config.MaxFrequency = 500
+Config.MaxFrequency = 999
 
 Config.messages = {
   ['not_on_radio'] = 'You are not connected to a signal',
@@ -64,7 +64,7 @@ radioConfig = {
         Current = 1, -- Don't touch
         CurrentIndex = 1, -- Don't touch
         Min = 1, -- Minimum frequency
-        Max = 800, -- Max number of frequencies
+        Max = 999, -- Max number of frequencies
         List = {}, -- Frequency list, Don't touch
         Access = {}, -- List of freqencies a player has access to
     },

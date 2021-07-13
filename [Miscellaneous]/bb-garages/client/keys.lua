@@ -125,18 +125,18 @@ AddEventHandler('vehiclekeys:client:GiveKeys', function()
     local latestveh = getVehicleInDirection(coordA, coordB)
     
     if latestveh == nil or not DoesEntityExist(latestveh) then
-        TriggerEvent(BBGarages.Config['settings']['notification'], "Vehicle not found!", 'error')
+        exports['mythic_notify']:SendAlert('error', 'Vehicle not found')
         return
     end
     
     ESX.TriggerServerCallback('vehiclekeys:CheckHasKey', function(hasKey)
         if not hasKey then
-            TriggerEvent(BBGarages.Config['settings']['notification'], "No keys for target vehicle!", 'error')
+            exports['mythic_notify']:SendAlert('inform', 'You do not have the keys to this vehicle')
             return
         end
 
         if #(GetEntityCoords(latestveh) - GetEntityCoords(PlayerPedId(), 0)) > 5 then
-            TriggerEvent(BBGarages.Config['settings']['notification'], "You are to far away from the vehicle!", 'error')
+            exports['mythic_notify']:SendAlert('error', 'You are too far away from the vehicle')
             return
         end
         
@@ -144,7 +144,7 @@ AddEventHandler('vehiclekeys:client:GiveKeys', function()
         if(distance ~= -1 and distance < 5) then
             TriggerServerEvent('vehiclekeys:server:GiveVehicleKeys', GetVehicleNumberPlateText(latestveh), GetPlayerServerId(t))
         else
-            TriggerEvent(BBGarages.Config['settings']['notification'], "No player near you!", 'error')
+            exports['mythic_notify']:SendAlert('error', 'There is no one near you')
         end
     end, GetVehicleNumberPlateText(latestveh))
 end)
@@ -240,22 +240,22 @@ function LockVehicle()
                         if vehLockStatus == 1 then
                             Citizen.Wait(750)
                             ClearPedTasks(GetPlayerPed(-1))
-                            TriggerServerEvent("InteractSound_CL:PlayWithinDistance", 5, "lock", 0.3)
+                            TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 0.5, 'lock', 1.0)
                             SetVehicleDoorsLocked(veh, 2)
                             if(GetVehicleDoorLockStatus(veh) == 2)then
-                                TriggerEvent(BBGarages.Config['settings']['notification'], "Vehicle locked!")
+                                exports['mythic_notify']:SendAlert('inform', 'Vehicle Lockd')
                             else
-                                TriggerEvent(BBGarages.Config['settings']['notification'], "Something is wrong with the locking system!")
+                                --exports['mythic_notify']:SendAlert('inform', 'Updated your waypoint on your GPS to your vehicle')
                             end
                         else
                             Citizen.Wait(750)
                             ClearPedTasks(GetPlayerPed(-1))
-                            TriggerServerEvent("InteractSound_CL:PlayWithinDistance", 5, "unlock", 0.3)
+                            TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 0.5, 'unlock', 0.5)
                             SetVehicleDoorsLocked(veh, 1)
                             if(GetVehicleDoorLockStatus(veh) == 1)then
-                                TriggerEvent(BBGarages.Config['settings']['notification'], "Vehicle unlocked!")
+                                exports['mythic_notify']:SendAlert('inform', 'Vehicle Unlocked')
                             else
-                                TriggerEvent(BBGarages.Config['settings']['notification'], "Something is wrong with the locking system!")
+                                --exports['mythic_notify']:SendAlert('inform', 'Updated your waypoint on your GPS to your vehicle')
                             end
                         end
                     
@@ -277,10 +277,10 @@ function LockVehicle()
                         end
                     end
                 else
-                    TriggerEvent(BBGarages.Config['settings']['notification'], 'You can\'t use open your vehicle while its parked', 'error')
+                    exports['mythic_notify']:SendAlert('error', 'You cannot use your vehicle while it is parked')
                 end
             else
-                TriggerEvent(BBGarages.Config['settings']['notification'], 'You don\'t have the keys to this vehicle..', 'error')
+                exports['mythic_notify']:SendAlert('error', 'You do not have the keys to this vehicle')
             end
         end, plate, veh)
     end
@@ -309,18 +309,18 @@ function LockpickDoor(isAdvanced)
                 IsHotwiring = false
                 if math.random(1, 100) <= 90 then
                     TriggerEvent("debug", 'Lockpick: Success', 'success')
-                    TriggerEvent(BBGarages.Config['settings']['notification'], "Door open!")
+                    --TriggerEvent(BBGarages.Config['settings']['notification'], "Door open!")
                     TriggerServerEvent("InteractSound_CL:PlayWithinDistance", 5, "unlock", 0.3)
                     SetVehicleDoorsLocked(vehicle, 0)
                     SetVehicleDoorsLockedForAllPlayers(vehicle, false)
                 else
-                    TriggerEvent(BBGarages.Config['settings']['notification'], "Failed!", 2)
+                    --TriggerEvent(BBGarages.Config['settings']['notification'], "Failed!", 2)
                     TriggerEvent("debug", 'Lockpick: Failed', 'error')
                 end
             end
         end
     else
-        TriggerEvent(BBGarages.Config['settings']['notification'], 'You can\'t use lockpick on parked vehicles..', 'error')
+        --TriggerEvent(BBGarages.Config['settings']['notification'], 'You can\'t use lockpick on parked vehicles..', 'error')
     end
 end
 
@@ -347,7 +347,7 @@ function Search()
         local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
 
         if vehicleSearched[GetVehicleNumberPlateText(vehicle)] then
-            TriggerEvent(BBGarages.Config['settings']['notification'], 'You have already searched this vehicle.', 2)
+            exports['mythic_notify']:SendAlert('error', 'You have already searched this vehicle')
             return
         end
 
@@ -372,7 +372,7 @@ function Search()
         if (math.random(0, 100) < 10) then
             HasKey = true
             TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle))
-            TriggerEvent(BBGarages.Config['settings']['notification'], "You have found the keys to the vehicle!")
+            exports['mythic_notify']:SendAlert('inform', 'You found the keys while seraching the vehicle!')
             TriggerEvent("debug", 'Keys: Found', 'success')
         else
             HasKey = false
@@ -386,10 +386,10 @@ function LockPickVeh()
     if not HasKey then 
         local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
 
-        if vehicleSearched[GetVehicleNumberPlateText(vehicle)] then
-            TriggerEvent(BBGarages.Config['settings']['notification'], 'You have already searched this vehicle.', 2)
-            return
-        end
+        --if vehicleSearched[GetVehicleNumberPlateText(vehicle)] then
+            --exports['mythic_notify']:SendAlert('error', 'You have already searched this vehicle')
+            --return
+        --end
 
         ESX.TriggerServerCallback('vehiclekeys:server:hasitem', function(data)
             if data then
@@ -428,8 +428,9 @@ function Hotwire()
         local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
         local isParked = isParked(GetVehicleNumberPlateText(vehicle))
         if not isParked then
+            
             if vehicleHotwired[GetVehicleNumberPlateText(vehicle)] then
-                TriggerEvent(BBGarages.Config['settings']['notification'], "You can not work out this hotwire.", 2)
+                exports['mythic_notify']:SendAlert('inform', 'This vehicle has already been hot-wired') 
                 return
             end
 
@@ -457,16 +458,16 @@ function Hotwire()
             if (math.random(0, 100) < 20) then
                 HasKey = true
                 TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle))
-                TriggerEvent(BBGarages.Config['settings']['notification'], "Hotwire succeeded!")
+                exports['mythic_notify']:SendAlert('inform', 'Hotwire succeeded!') 
             else
                 TriggerEvent('dispatch:lockpick', vehicle)
                 HasKey = false
                 SetVehicleEngineOn(veh, false, false, true)
-                TriggerEvent(BBGarages.Config['settings']['notification'], "Hotwire failed!", 2)
+                exports['mythic_notify']:SendAlert('error', 'Hotwire failed!') 
             end
             IsHotwiring = false
         else
-            TriggerEvent(BBGarages.Config['settings']['notification'], 'You can\'t use lockpick on parked vehicles..', 'error')
+            exports['mythic_notify']:SendAlert('error', 'You cannot use a lockpick on a locked/parked vehicle!') 
         end
     end
 end

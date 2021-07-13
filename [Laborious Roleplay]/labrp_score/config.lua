@@ -1,3 +1,3 @@
 Config = {}
 
-Config.Button = 303 -- U by default
+Config.Button = 301 -- U by default

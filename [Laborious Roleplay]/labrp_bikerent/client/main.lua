@@ -46,7 +46,7 @@ AddEventHandler('spawnbmx', function()
             Citizen.Wait(10)
         end
     end
-    local vehicleBuy = CreateVehicle(hash, -203.4462, -1007.209, 29.14502, 90.00, 1, 1)
+    local vehicleBuy = CreateVehicle(hash, -243.2044, -990.4879, 29.27991, 200.00, 1, 1)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
     Citizen.Wait(1000)
     TriggerServerEvent('Aidan_isCool:giveKeys')
@@ -68,7 +68,7 @@ AddEventHandler('spawncruiser', function()
             Citizen.Wait(10)
         end
     end
-    local vehicleBuy = CreateVehicle(hash, -203.4462, -1007.209, 29.14502, 90.00, 1, 1)
+    local vehicleBuy = CreateVehicle(hash, -243.2044, -990.4879, 29.27991, 200.00, 1, 1)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
     Citizen.Wait(1000)
     TriggerServerEvent('Aidan_isCool:giveKeys')
@@ -91,7 +91,7 @@ AddEventHandler('spawntri', function()
             Citizen.Wait(10)
         end
     end
-    local vehicleBuy = CreateVehicle(hash, -203.4462, -1007.209, 29.14502, 90.00, 1, 1)
+    local vehicleBuy = CreateVehicle(hash, -243.2044, -990.4879, 29.27991, 200.00, 1, 1)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
     Citizen.Wait(1000)
     TriggerServerEvent('Aidan_isCool:giveKeys')
@@ -112,7 +112,7 @@ AddEventHandler('spawntri2', function()
             Citizen.Wait(10)
         end
     end
-    local vehicleBuy = CreateVehicle(hash, -203.4462, -1007.209, 29.14502, 90.00, 1, 1)
+    local vehicleBuy = CreateVehicle(hash, -243.2044, -990.4879, 29.27991, 200.00, 1, 1)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
     Citizen.Wait(1000)
     TriggerServerEvent('Aidan_isCool:giveKeys')
@@ -244,6 +244,130 @@ end)
 
 --    -192.5934, -1161.798, 23.66882
 
+-- Prison Rentals
+
+local bmx5 = false
+local cruiser5 = false
+local fixter5 = false
+local scorcher5 = false
+local tribike5 = false
+local tribike25 = false
+local tribike35 = false
+
+RegisterNetEvent('bmx5')
+AddEventHandler('bmx5', function()
+    TriggerServerEvent('chargebmx5')
+end)
+
+RegisterNetEvent('spawnbmx5')
+AddEventHandler('spawnbmx5', function()
+    local hash = GetHashKey("bmx")
+        
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    local vehicleBuy = CreateVehicle(hash, 1886.927, 2589.508, 45.65784, 200.00, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    Citizen.Wait(1000)
+    TriggerServerEvent('Aidan_isCool:giveKeys')
+end)
+
+
+RegisterNetEvent('cruiser5')
+AddEventHandler('cruiser5', function()
+    TriggerServerEvent("chargecruiser5")
+end)
+
+RegisterNetEvent('spawncruiser5')
+AddEventHandler('spawncruiser5', function()
+    local hash = GetHashKey("cruiser")
+        
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    local vehicleBuy = CreateVehicle(hash, 1886.927, 2589.508, 45.65784, 200.00, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    Citizen.Wait(1000)
+    TriggerServerEvent('Aidan_isCool:giveKeys')
+end)
+
+
+
+RegisterNetEvent('tribike5')
+AddEventHandler('tribike5', function()
+    TriggerServerEvent("chargetri5")
+end)
+
+RegisterNetEvent('spawntri5')
+AddEventHandler('spawntri5', function()
+    local hash = GetHashKey("tribike")
+        
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    local vehicleBuy = CreateVehicle(hash, 1886.927, 2589.508, 45.65784, 200.00, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    Citizen.Wait(1000)
+    TriggerServerEvent('Aidan_isCool:giveKeys')
+end)
+
+RegisterNetEvent('tribike25')
+AddEventHandler('tribike25', function()
+    TriggerServerEvent("chargetri25")
+end)
+
+RegisterNetEvent('spawntri25')
+AddEventHandler('spawntri25', function()
+    local hash = GetHashKey("tribike2")
+        
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    local vehicleBuy = CreateVehicle(hash, 1886.927, 2589.508, 45.65784, 200.00, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    Citizen.Wait(1000)
+    TriggerServerEvent('Aidan_isCool:giveKeys')
+end)
+
+
+local refundcount = 0 
+
+RegisterNetEvent('deletebike2')
+AddEventHandler('deletebike2', function()
+    local xPlayer = ESX.GetPlayerData()
+   
+    refundcount = refundcount + 1
+    local bicis = GetVehiclePedIsIn(PlayerPedId(),true)
+    local refundbike = false
+    if refundcount <= 1 then
+        if IsPedInAnyVehicle(PlayerPedId(), false) then
+            exports['mythic_notify']:SendAlert('inform', "You have returned your bike")
+            refundcount = false
+            SetEntityAsMissionEntity(bicis, true, true)
+            TaskLeaveVehicle(PlayerPedId(), vbicis, 0)
+            Wait(2000)
+            DeleteVehicle(bicis) --refundbike
+            TriggerServerEvent("refundbike2")
+        else
+            exports['mythic_notify']:SendAlert('error', 'You do not have a bike to return')
+        end
+    end
+    refundcount = 0
+end)
+
+
 Citizen.CreateThread(function()
     local shopKeeps = {
 		`u_m_m_bikehire_01`
@@ -267,13 +391,37 @@ Citizen.CreateThread(function()
     })
 end)
 
+Citizen.CreateThread(function()
+    local shopKeeps = {
+		`u_m_y_sbike`
+    }
+
+    exports['labrp_Eye']:AddTargetModel(shopKeeps, {
+        options = {
+            {
+                event = 'bikerent5:menu',
+                icon = 'fas fa-bicycle',
+                label = "Open cycles menu"
+            },
+            {
+                event = 'deletebike2',
+                icon = 'fas fa-exchange-alt',
+                label = "Return Bike"
+            },
+        },
+        job = {'all'},
+        distance = 2.0
+    })
+end)
+
 
 
 
 local blips = {
     -- Example {title="", colour=, id=, x=, y=, z=},
 
-     {title="Bike Rental", colour=47, id=357, x = -205.6088, y = -1006.536, z = 29.14502}, -- -205.6088, -1006.207, 29.14502
+     {title="Bike Rental", colour=47, id=348, x = -251.7407, y = -980.53, z = 30.21502}, -- -251.7407, -980.53, 30.21502
+     {title="Prison Bike Rental", colour=47, id=348, x = 1887.996, y = 2592.989, z = 45.65784}, -- 1887.996 2592.989 45.65784
      {title="Tow Yard", colour=62, id=67, x = -209.3407, y = -1174.193, z = 23.02856},---209.3407, -1174.193, 23.02856
      {title="Beach Rentals", colour=47, id=410, x = -1609.292, y = -1121.301, z = 2.471802}, -- -1609.292, -1121.301, 2.471802
      {title="Dirt Rentals", colour=47, id=376, x = 1123.569, y = 2114.611, z = 55.46448}, -- 1123.569, 2114.611, 55.46448
