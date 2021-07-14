@@ -280,51 +280,6 @@ end)
     --exports['mythic_notify']:SendAlert('inform', 'You bought ' .. ordernote)
 
 
-
----VENDING MACHINES---
-Citizen.CreateThread(function()
-    local vendingMachine = {
-        -654402915,
-        -1034034125,
-    }
-
-    exports['labrp_Eye']:AddTargetModel(vendingMachine, {
-        options = {
-            {
-                event = 'vendingmachine',
-                icon = 'fas fa-pizza-slice',
-                label = "Open Vending Machine"
-            },
-        },
-        job = {'all'},
-        distance = 2.0
-    })
-end)
-
-RegisterNetEvent('vendingmachine')
-AddEventHandler('vendingmachine', function()
-    exports['br-menu']:SetTitle("Vending Machine")
-    exports['br-menu']:AddButton("Sandwich" , "$30" ,'vendingburger' ,'' , 'menuone')
-    exports['br-menu']:AddButton("ECola" , "$45" ,'vendingecola' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Small Condom" , "$1" ,'vendingcondom' ,'' , 'menuone')
-end)
-
-RegisterNetEvent('vendingcondom')
-AddEventHandler('vendingcondom', function()
-    TriggerServerEvent('chargecondom')
-end)
-
-RegisterNetEvent('vendingecola')
-AddEventHandler('vendingecola', function()
-    TriggerServerEvent('chargeecola')
-end)
-
-RegisterNetEvent('vendingburger')
-AddEventHandler('vendingburger', function()
-    TriggerServerEvent('chargeburger')
-end)
-
-
 RegisterNetEvent("staszek-receipts:createReceipt")
 AddEventHandler("staszek-receipts:createReceipt", function()
     local bill = exports["nh-keyboard"]:KeyboardInput({

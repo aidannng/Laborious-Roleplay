@@ -77,6 +77,7 @@ Config = {
         ['oil'] = true,
         ['nitro'] = true,
         ['tires'] = true,
+        ['brakes'] = true,
         ['sparkplugs'] = true
     },
     
@@ -86,6 +87,8 @@ Config = {
         ['tires'] = true,
         ['brakes'] = true,
         ['suspension'] = true,
+        ['engine'] = true,
+        ['transmission'] = true,
         ['sparkplugs'] = true
     },
     
@@ -113,7 +116,7 @@ Config = {
     ['single_turbo'] = {
         label = "Single Turbo", 
         usability = {exclusive = {}, vehicletypes = {}}, 
-        power = 8.0,
+        power = 7.0,
         durability = 65.0,
         repair = {
             ['iron'] = {amount = 2, label = "Iron", reusable = false}
@@ -123,7 +126,7 @@ Config = {
     ['big_single_turbo'] = {
         label = "Big Single Turbo", 
         usability = {exclusive = {}, vehicletypes = {}}, 
-        power = 12.0,
+        power = 10.0,
         durability = 60.0,
         repair = {
             ['iron'] = {amount = 3, label = "Iron", reusable = false}
@@ -133,7 +136,7 @@ Config = {
     ['twin_turbo'] = {
         label = "Twin Turbo", 
         usability = {exclusive = {}, vehicletypes = {}}, 
-        power = 18.0,
+        power = 15.0,
         durability = 55.0,
         repair = {
             ['iron'] = {amount = 4, label = "Iron", reusable = false}
@@ -143,7 +146,7 @@ Config = {
     ['race_twin_turbo'] = {
         label = "Race Twin Turbo", 
         usability = {exclusive = {}, vehicletypes = {}}, 
-        power = 22.0,
+        power = 20.0,
         durability = 50.0,
         repair = {
             ['iron'] = {amount = 6, label = "Iron", reusable = false}
@@ -259,7 +262,7 @@ Config = {
     },
 
     ['police_transmission'] = {
-        label = "Street RWD", 
+        label = "Police Trans", 
         usability = {exclusive = {}, vehicletypes = {}},
         shiftingtime = 4.0,
         drivingwheels = 'RWD',
@@ -465,7 +468,7 @@ Config = {
 
     ['full_bolt_on_engine'] = {
         label = "Full Bolt On", 
-        power = 11.0,
+        power = 8.0,
         durability = 85.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
@@ -477,7 +480,7 @@ Config = {
 
     ['tuned_engine'] = {
         label = "Tuned OEM", 
-        power = 8.0,
+        power = 6.0,
         durability = 90.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
@@ -500,8 +503,8 @@ Config = {
     },
 
     ['police_engine'] = {
-        label = "OEM", 
-        power = 11.0,
+        label = "Police Engine", 
+        power = 10.0,
         durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT",

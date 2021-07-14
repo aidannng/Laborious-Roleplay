@@ -159,6 +159,32 @@ Citizen.CreateThread(function()
     
 end)
 
+Citizen.CreateThread(function()
+        
+    
+    
+    exports['labrp_Eye']:AddBoxZone("FbiArm", vector3(125.4176, -733.1208, 242.1436), 3.0, 0.8, {
+    name="FBIArmoury",
+    heading=165,
+    debugPoly=true,
+    minZ=242.14,
+    maxZ=242.50
+    }, {
+        options = {
+            {
+                event = "linden_inventory:openPoliceArmouryInventory",
+                icon = "far fa-clipboard",
+                label = "FBI Armoury",
+            },
+        },
+        job = {"fbi"},
+        distance = 1.5
+    })
+
+
+    
+end)
+
 AddEventHandler('linden_inventory:openPoliceArmouryInventory', function()
     for i = 1, #Config.Shops, 1 do
         for k,v in pairs(Config.Shops[i].type) do

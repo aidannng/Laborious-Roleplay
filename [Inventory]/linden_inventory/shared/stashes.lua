@@ -11,6 +11,8 @@ Config.Stashes = {
 	{ coords = vector3(1399.635, 1139.71, 114.3209), slots = 60, name = 'Mafia Gang Storage', owner = false, job = 'mafia' }, -- Mafia Gang Storage
 	{ coords = vector3(976.9055, -103.6615, 74.8418), slots = 60, name = 'Big Dogs Gang Storage', owner = false, job = 'bigdogs' }, -- The Big Dogs Storage
 	{ coords = vector3(-1347.864, -1053.086, 3.853516), slots = 60, name = 'Black Mafia Family Gang Storage', owner = false, job = 'bmf' }, -- BMF Storage
+	{ coords = vector3(125.9868, -1947.732, 15.21021), slots = 60, name = 'ESB Leadership Storage', owner = true, job = 'ballas' }, -- ESB Leader Storage
+	{ coords = vector3(127.3055, -1949.459, 15.26086), slots = 60, name = 'ESB Gang Storage', owner = false, job = 'ballas' }, -- ESB Storage
 }
 
 

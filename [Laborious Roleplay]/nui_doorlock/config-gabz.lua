@@ -10,7 +10,7 @@ Config.DoorList = {
 ------------------------------------------
 	-- gabz_mrpd	FRONT DOORS
 	{
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = false,
 		maxDistance = 2.0,
 		doors = {
@@ -22,7 +22,7 @@ Config.DoorList = {
 	
 	-- gabz_mrpd	NORTH DOORS
 	{
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 2.0,
 		doors = {
@@ -34,7 +34,7 @@ Config.DoorList = {
 
 	-- gabz_mrpd	SOUTH DOORS
 	{
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 2.0,
 		doors = {
@@ -63,7 +63,7 @@ Config.DoorList = {
 		objHash = -96679321,
 		objHeading = 180.0,
 		objCoords = vector3(440.5201, -986.2335, 30.82319),
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 2.0,
 	},
@@ -73,7 +73,7 @@ Config.DoorList = {
 		objHash = 1830360419,
 		objHeading = 269.78,
 		objCoords = vector3(464.1591, -974.6656, 26.3707),
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 2.0,
 		fixText = true
@@ -84,7 +84,7 @@ Config.DoorList = {
 		objHash = 1830360419,
 		objHeading = 89.87,
 		objCoords = vector3(464.1566, -997.5093, 26.3707),
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 2.0,
 		fixText = true
@@ -95,7 +95,7 @@ Config.DoorList = {
 		objHash = 2130672747,
 		objHeading = 0.0,
 		objCoords = vector3(431.4119, -1000.772, 26.69661),
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 6,
 		garage = true,
@@ -108,7 +108,7 @@ Config.DoorList = {
 		objHash = 2130672747,
 		objHeading = 0.0,
 		objCoords = vector3(452.3005, -1000.772, 26.69661),
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 6,
 		garage = true,
@@ -121,7 +121,7 @@ Config.DoorList = {
 		objHash = -1603817716,
 		objHeading = 90.0,
 		objCoords = vector3(488.8948, -1017.212, 27.14935),
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 6,
 		slides = true,
@@ -130,7 +130,7 @@ Config.DoorList = {
 
 	-- gabz_mrpd	BACK DOORS
 	{
-		authorizedJobs = { ['police']=0, ['offpolice']=0 },
+		authorizedJobs = { ['police']=0, ['offpolice']=0, ['fbi']=0 },
 		locked = true,
 		maxDistance = 2.0,
 		doors = {

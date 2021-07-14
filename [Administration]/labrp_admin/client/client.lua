@@ -180,5 +180,6 @@ Citizen.CreateThread(function()
 	TriggerEvent('chat:addSuggestion', '/closereport', 'Closes open reports', {{ name="ID", help="Report ID" },{ name="Reason", help="Close Reason" }})	
 	TriggerEvent('chat:addSuggestion', '/transfervehicle', 'Transfers vehicle to someone else', {{ name="ID", help="Players ID you want to give the vehicle to" },{ name="Plate", help="The plate of the vehicle you want to transfer" }})	
 	TriggerEvent('chat:addSuggestion', '/openinv', 'Opens a players inventory', {{ name="ID", help="Insert Player ID that should have their inventory opened"}})
+	TriggerEvent('chat:addSuggestion', '/ooc', 'Talk in out-of-character chat', {{ name="Message", help="Your message that will be sent to global OOC chat!"}})
 
 end)

@@ -155,9 +155,9 @@ AddEventHandler('chatMessage', function(source, name, msg)
 		if not dontSend then
 			--TriggerClientEvent('chatMessage', -1, roleStr .. name .. "^7: " .. finalMessage)
 			if sendBlockMessages then 
-				sendMsg(roleStr .. name .. " ", finalMessage, -1); 
+				--sendMsg(roleStr .. name .. " ", finalMessage, -1); 
 			else 
-				TriggerClientEvent('chatMessage', -1, roleStr .. name .. "^7: " .. finalMessage);
+				--TriggerClientEvent('chatMessage', -1, roleStr .. name .. "^7: " .. finalMessage);
 			end 
 		end
 	end
@@ -254,9 +254,9 @@ AddEventHandler('chatMessage', function(source, name, msg)
 		if not dontSend then
 			--TriggerClientEvent('chatMessage', -1, roleStr .. name .. "^7: " .. finalMessage)
 			if (sendBlockMessages) then 
-				sendMsg(roleStr .. name .. " ", finalMessage, -1); 
+				--sendMsg(roleStr .. name .. " ", finalMessage, -1); 
 			else
-				TriggerClientEvent('chatMessage', -1, roleStr .. name .. "^7: " .. finalMessage);
+				--TriggerClientEvent('chatMessage', -1, roleStr .. name .. "^7: " .. finalMessage);
 			end 
 		end
 	elseif has_value(inStaffChat, GetPlayerIdentifiers(source)[1]) and not string.find(args[1], "/") and not (chatNotEnabled[src] ~= nil) then
@@ -267,6 +267,23 @@ AddEventHandler('chatMessage', function(source, name, msg)
 		--print("It gets here 1")
 	end
 end)
+
+RegisterCommand("ooc", function(source, args, rawCommand)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local playerId = source
+
+	local msg = ""
+	for x=1,#args do
+		msg = msg .. " " .. args[x]
+	end
+
+	TriggerClientEvent('chat:addMessage', -1, {
+		template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.7); border-radius: 3px;">^*^4{0} ^0(^4ID: {1}^0) <br> ^*^0OOC: {2} </div>',
+		args = { xPlayer.getName(), playerId, msg  }
+	});
+
+end)
+
 RegisterNetEvent('Print:PrintDebug')
 AddEventHandler('Print:PrintDebug', function(msg)
 	print(msg)

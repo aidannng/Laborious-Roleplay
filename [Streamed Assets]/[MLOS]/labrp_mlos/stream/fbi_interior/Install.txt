@@ -1,0 +1,13 @@
+- Open OpenIV, Enable Edit Mode and go to the following directory :
+
+GTAV\Mods\x64h.rpf\x64\levels\gta5\interiors\
+
+-Drag and Drop the contents of the (33) folder into (v_int_33.rpf)
+
+-Drag and Drop the contents of the (48) folder into (v_int_48.rpf)
+
+-Drag and Drop the contents of the (73) folder into (v_int_73.rpf)
+
+-Drag and Drop the contents of the (74) folder into (v_int_74.rpf)
+
+That's It!.

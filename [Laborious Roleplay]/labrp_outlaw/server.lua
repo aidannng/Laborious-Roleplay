@@ -46,25 +46,25 @@ end
 
 local dispatchCodes = {
 
-	melee = { displayCode = '10-10', description = _U('melee'), isImportant = 0, recipientList = {'police'},
+	melee = { displayCode = '10-10', description = _U('melee'), isImportant = 0, recipientList = {'police', 'fbi'},
 	blipSprite = 652, blipColour = 84, blipScale = 1.5 },
 
-	officerdown = {displayCode = '10-13A', description = _U('officerdown'), isImportant = 1, recipientList = {'police', 'ambulance'},
+	officerdown = {displayCode = '10-13A', description = _U('officerdown'), isImportant = 1, recipientList = {'police', 'ambulance', 'fbi'},
 	blipSprite = 653, blipColour = 84, blipScale = 1.5, infoM = 'fa-portrait'},
 
-	persondown = {displayCode = '10-52', description = _U('persondown'), isImportant = 0, recipientList = {'police', 'ambulance'},
+	persondown = {displayCode = '10-52', description = _U('persondown'), isImportant = 0, recipientList = {'police', 'ambulance', 'fbi'},
 	blipSprite = 153, blipColour = 84, blipScale = 1.5, infoM = 'fa-portrait'},
 
-	autotheft = {displayCode = '10-16', description = _U('autotheft'), isImportant = 0, recipientList = {'police'},
+	autotheft = {displayCode = '10-16', description = _U('autotheft'), isImportant = 0, recipientList = {'police', 'fbi'},
 	blipSprite = 651, blipColour = 84, blipScale = 1.5, infoM = 'fa-car', infoM2 = 'fa-palette' },
 
-	speeding = {displayCode = '10-66', description = _U('speeding'), isImportant = 0, recipientList = {'police'},
+	speeding = {displayCode = '10-66', description = _U('speeding'), isImportant = 0, recipientList = {'police', 'fbi'},
 	blipSprite = 650, blipColour = 84, blipScale = 1.5, infoM = 'fa-car', infoM2 = 'fa-palette' },
 
-	shooting = { displayCode = '10-13', description = _U('shooting'), isImportant = 0, recipientList = {'police'},
+	shooting = { displayCode = '10-13', description = _U('shooting'), isImportant = 0, recipientList = {'police', 'fbi'},
 	blipSprite = 648, blipColour = 84, blipScale = 1.5 },
 
-	driveby = { displayCode = '10-13', description = _U('driveby'), isImportant = 0, recipientList = {'police'},
+	driveby = { displayCode = '10-13', description = _U('driveby'), isImportant = 0, recipientList = {'police', 'fbi'},
 	blipSprite = 649, blipColour = 84, blipScale = 1.5, infoM = 'fa-car', infoM2 = 'fa-palette' },
 }
 

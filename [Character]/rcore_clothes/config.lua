@@ -70,6 +70,7 @@ Config.ChangePoint = {
         vector3(-342.6593, -160.4044, 44.57947), -- LSC
         vector3(1399.345, 1164, 114.3209), -- Mafia
         vector3(986.2154, -133.7275, 78.88574), -- Big Dogs
+        vector3(128.5714, -755.8417, 242.1436), -- FBI
     }
 }
 Config.Stores = {

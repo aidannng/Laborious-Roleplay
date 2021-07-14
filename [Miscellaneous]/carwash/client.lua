@@ -45,7 +45,7 @@ Citizen.CreateThread(function()
                 price = pricePreFormat - 0.01
                 if price >= 1.0 then
                     SetTextComponentFormat("STRING")
-                    AddTextComponentString('Press E to eash your vehicle')
+                    AddTextComponentString('Press E to wash your vehicle')
                     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
                     if IsControlJustReleased(0, 350) then
                         TriggerServerEvent('labrp_carwash:checkMoney', price)

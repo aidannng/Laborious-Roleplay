@@ -3,7 +3,7 @@ local playersInJail = {}
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-AddEventHandler('esx:playerLoaded', function(playerId, xPlayer)
+--[[ AddEventHandler('esx:playerLoaded', function(playerId, xPlayer)
 	MySQL.Async.fetchAll('SELECT jail_time FROM users WHERE identifier = @identifier', {
 		['@identifier'] = xPlayer.identifier
 	}, function(result)
@@ -11,7 +11,7 @@ AddEventHandler('esx:playerLoaded', function(playerId, xPlayer)
 			TriggerEvent('esx_jail:sendToJail', xPlayer.source, result[1].jail_time, true)
 		end
 	end)
-end)
+end) ]]
 
 AddEventHandler('esx:playerDropped', function(playerId, reason)
 	playersInJail[playerId] = nil

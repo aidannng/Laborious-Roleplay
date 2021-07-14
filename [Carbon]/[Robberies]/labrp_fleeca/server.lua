@@ -16,7 +16,7 @@ end)
 RegisterServerEvent('powerblackout')
 AddEventHandler('powerblackout', function()
     local xPlayer = ESX.GetPlayerFromId(source)
-    TriggerClientEvent('blackout', -1)
+    ExecuteCommand('blackout')
     TriggerClientEvent('chat:addMessage',-1 , {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(70, 130, 180,0.5); border-radius: 3px;">^*[LS Water & Power]: Power Outage at LS Water & Power!</div>',
     });

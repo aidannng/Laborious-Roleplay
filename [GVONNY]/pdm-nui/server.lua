@@ -193,40 +193,41 @@ AddEventHandler("movetoshowroom", function(slotid, plate)
             
             --if new plate is the same as the plate
             if(plate == result[1].plate) then
-                TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "There is a vehicle on the floor already", })
+                TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "This vehicle is on the floor already", })
 
                 --MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
-                ----print("this vehicle is already in a slot")
-                ----print("despawn vehicle from current slot")
+                --print("this vehicle is already in a slot")
+                --print("despawn vehicle from current slot")
                 --TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
-            end
-        end
-    end)
-
-    --gets new spawn slot info
-    MySQL.Async.fetchAll("SELECT a.slot_id, a.x, a.y, a.z, a.plate, a.rotation, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid AND b.plate = @plate",{['@slotid'] = slotid, ['@plate'] = plate}, function(result2)
-        if(result2 ~= nil and #result2>0) then
-            local x = result2[1].x
-            local y = result2[1].y
-            local z = result2[1].z
-            local model = result2[1].model
-            local slot = result2[1].slot_id
-            local rotation = result2[1].rotation
-            
-            if(result2[1].plate ~= nil) then
-                --print(slot .. ". " .. result2[1].plate)
-                --print("there is a different car in the new slot already")
-                TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "There is a vehicle in that slot already", })
             else
-                MySQL.Async.execute("UPDATE pdm_showroom SET plate = @plate WHERE slot_id = @slotid", {['@plate']= plate, ['@slotid'] = slotid})
-                --print("loading new car in selected slot")
-                --print("spawn vehicle in showroom")
-                --print("========================================")
-                TriggerClientEvent("pdm:spawnvehicle", src, x, y, z, model, plate, rotation)
+                print("doing this")
             end
-           
+        else
+            TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'inform', text = "vehicle is not on the floor", })
+            MySQL.Async.fetchAll("SELECT a.slot_id, a.x, a.y, a.z, a.plate, a.rotation, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid AND b.plate = @plate",{['@slotid'] = slotid, ['@plate'] = plate}, function(result2)
+                if(result2 ~= nil and #result2>0) then
+                    local x = result2[1].x
+                    local y = result2[1].y
+                    local z = result2[1].z
+                    local model = result2[1].model
+                    local slot = result2[1].slot_id
+                    local rotation = result2[1].rotation
+                    
+                    if(result2[1].plate ~= nil) then
+                        --print(slot .. ". " .. result2[1].plate)
+                        --print("there is a different car in the new slot already")
+                        TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "There is a vehicle in that slot already", })
+                    else
+                        MySQL.Async.execute("UPDATE pdm_showroom SET plate = @plate WHERE slot_id = @slotid", {['@plate']= plate, ['@slotid'] = slotid})
+                        --print("loading new car in selected slot")
+                        --print("spawn vehicle in showroom")
+                        --print("========================================")
+                        TriggerClientEvent("pdm:spawnvehicle", src, x, y, z, model, plate, rotation)
+                    end
+                end
+            end)
         end
-    end)
+    end)    
 end)
 
 RegisterServerEvent("createbill")

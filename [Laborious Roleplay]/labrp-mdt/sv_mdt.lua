@@ -3,11 +3,16 @@ local call_index = 0
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+local countingJobs = {
+    ['police'] = true,
+    ['fbi'] = true
+};
+
 RegisterServerEvent("mdt:hotKeyOpen")
 AddEventHandler("mdt:hotKeyOpen", function()
 	local usource = source
     local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer.job.name == 'police' then
+    if countingJobs[xPlayer.job.name] then
     	MySQL.Async.fetchAll("SELECT * FROM (SELECT * FROM `mdt_reports` ORDER BY `id` DESC LIMIT 3) sub ORDER BY `id` DESC", {}, function(reports)
     		for r = 1, #reports do
     			reports[r].charges = json.decode(reports[r].charges)
@@ -357,7 +362,7 @@ RegisterServerEvent("mdt:performVehicleSearchInFront")
 AddEventHandler("mdt:performVehicleSearchInFront", function(query)
 	local usource = source
 	local xPlayer = ESX.GetPlayerFromId(usource)
-    if xPlayer.job.name == 'police' then
+    if countingJobs[xPlayer.job.name] then
     	MySQL.Async.fetchAll("SELECT * FROM (SELECT * FROM `mdt_reports` ORDER BY `id` DESC LIMIT 3) sub ORDER BY `id` DESC", {}, function(reports)
     		for r = 1, #reports do
     			reports[r].charges = json.decode(reports[r].charges)
@@ -502,7 +507,7 @@ AddEventHandler("mdt:newCall", function(details, caller, coords)
 	for i= 1, #xPlayers do
 		local source = xPlayers[i]
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if xPlayer.job.name == 'police' then
+		if countingJobs[xPlayer.job.name] then
 			TriggerClientEvent("mdt:newCall", source, details, caller, coords, call_index)
 		end-- '#05b5f9', ['color'] = '#FFFFFF' }
 	end
@@ -516,7 +521,7 @@ AddEventHandler("mdt:attachToCall", function(index)
 	for i= 1, #xPlayers do
 		local source = xPlayers[i]
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if xPlayer.job.name == 'police' then
+		if countingJobs[xPlayer.job.name] then
 			TriggerClientEvent("mdt:newCallAttach", source, index, charname)
 		end
 	end
@@ -531,7 +536,7 @@ AddEventHandler("mdt:detachFromCall", function(index)
 	for i= 1, #xPlayers do
 		local source = xPlayers[i]
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if xPlayer.job.name == 'police' then
+		if countingJobs[xPlayer.job.name] then
 			TriggerClientEvent("mdt:newCallDetach", source, index, charname)
 		end
 	end
@@ -545,7 +550,7 @@ AddEventHandler("mdt:editCall", function(index, details)
 	for i= 1, #xPlayers do
 		local source = xPlayers[i]
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if xPlayer.job.name == 'police' then
+		if countingJobs[xPlayer.job.name] then
 			TriggerClientEvent("mdt:editCall", source, index, details)
 		end
 	end
@@ -559,7 +564,7 @@ AddEventHandler("mdt:deleteCall", function(index)
 	for i= 1, #xPlayers do
 		local source = xPlayers[i]
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if xPlayer.job.name == 'police' then
+		if countingJobs[xPlayer.job.name] then
 			TriggerClientEvent("mdt:deleteCall", source, index)
 		end
 	end
