@@ -58,6 +58,13 @@ AddEventHandler("updatebill", function(billID, billAmount)
                 
                                 MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
                             end)
+                        elseif(target == 'society_police') then
+                            MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_police'", {}, function(result)
+                                local balance = result[1].money
+                                balance = balance + billAmount
+                
+                                MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_police'", {['@money'] = balance})
+                            end)
                         else
                             local xPlayers = ESX.GetPlayers()
                             for i=1, #xPlayers, 1 do

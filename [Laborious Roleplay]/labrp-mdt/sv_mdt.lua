@@ -282,6 +282,39 @@ AddEventHandler("mdt:submitNewReport", function(data)
 	local usource = source
 	local author = GetCharacterName(source)
 	charges = json.encode(data.charges)
+	local fines = json.decode(charges)
+	local amount = 0
+	for k in pairs(fines) do
+		MySQL.Async.fetchAll("SELECT amount FROM fine_types WHERE label = @label", {['@label'] = k}, function(fine)
+			if(fine ~= nil and #fine > 0) then
+				amount = amount + tonumber(fine[1].amount)
+				print(amount)
+			end
+		end)
+	end
+	Citizen.Wait(500)
+
+	local xPlayer = ESX.GetPlayerFromId(usource)
+	print(xPlayer.identifier)
+
+	local billid = ''
+	MySQL.Async.fetchAll("SELECT identifier FROM users WHERE id = @id", {['@id'] = data.char_id}, function(user)
+		if(user ~= nil and #user > 0) then
+			billid = user[1].identifier
+		end	
+	end)
+
+	Citizen.Wait(500)
+	MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'society', 'society_police', 'Fine', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
+		['@ower'] = billid,
+		['@biller'] = xPlayer.identifier,
+		['@price'] = amount,
+		['@termlength'] = 1,
+		['@haspaid'] = false,
+		['@termamount'] = amount,
+	})
+
+
 	data.date = os.date('%m-%d-%Y %H:%M:%S', os.time())
 	MySQL.Async.insert('INSERT INTO `mdt_reports` (`char_id`, `title`, `incident`, `charges`, `author`, `name`, `date`) VALUES (@id, @title, @incident, @charges, @author, @name, @date)', {
 		['@id']  = data.char_id,

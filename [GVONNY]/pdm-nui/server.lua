@@ -64,7 +64,7 @@ AddEventHandler("purchase", function(model, price, plate)
                 stock = stock - 1
             end
 
-            local markup = tonumber(price) * (1 + tonumber(.4))
+            local markup = tonumber(price) * (1 + tonumber(.6))
         
             MySQL.Async.execute("UPDATE vehicles SET stock = @stock WHERE model = @model", {['@stock'] = stock, ['@model'] = model})
             MySQL.Async.execute("INSERT INTO cardealer_vehicles SET plate = @plate, price = @price, test_drive = false", {['@plate'] = plate, ['@price'] = markup})
@@ -203,7 +203,7 @@ AddEventHandler("movetoshowroom", function(slotid, plate)
                 print("doing this")
             end
         else
-            TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'inform', text = "vehicle is not on the floor", })
+            --TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'inform', text = "vehicle is not on the floor", })
             MySQL.Async.fetchAll("SELECT a.slot_id, a.x, a.y, a.z, a.plate, a.rotation, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid AND b.plate = @plate",{['@slotid'] = slotid, ['@plate'] = plate}, function(result2)
                 if(result2 ~= nil and #result2>0) then
                     local x = result2[1].x
@@ -249,7 +249,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                     if(cash >= downpayment) then
                         local termamount = price / termlength
             
-                        MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'society', 'society_cardealer', 'Vehicle Purchase', @price, @termlength, @termamount, '0', @haspaid, '14', '0')",{
+                        MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'society', 'society_cardealer', 'Vehicle Purchase', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
                             ['@ower'] = ower.identifier,
                             ['@biller'] = creator.identifier,
                             ['@price'] = price,

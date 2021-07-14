@@ -370,6 +370,11 @@ p {
 	text-align: center;
 	transition: 0.2s ease-in-out all;
 	border: 0;
+	border-radius: 100px;
+	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
+	border-style: solid;
+	border-width: 2px;
+	border-color: #088EFF; /* Second Pill | Outside */
 }
 
 .use {
@@ -378,15 +383,17 @@ p {
 	margin: 0 auto;
 	height: 40px;
 	width: 150px;
-	background-color:rgba(12, 12, 12, 0.35);
-	outline: 1px solid rgba(33, 33, 33, 0);
+	background-color:rgba(24, 24, 24, 0.62);
 	outline-offset: -1px;
 	color: white;
 	text-align: center;
 	transition: 0.2s ease-in-out all;
 	line-height: 40px;
-	border: 0;
-	border-radius: 12px;
+	border-radius: 100px;
+	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
+	border-style: solid;
+	border-width: 2px;
+	border-color: #088EFF; /* Second Pill | Outside */
 }
 
 .give {
@@ -396,7 +403,7 @@ p {
 	height: 40px;
 	width: 150px;
 	top: 35%;
-	background-color:rgba(12, 12, 12, 0.35);
+	background-color:rgba(24, 24, 24, 0.62);
 	outline: 1px solid rgba(33, 33, 33, 0);
 	outline-offset: -1px;
 	color: white;
@@ -404,7 +411,11 @@ p {
 	transition: 0.2s ease-in-out all;
 	line-height: 40px;
 	border: 0;
-	border-radius: 12px;
+	border-radius: 100px;
+	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
+	border-style: solid;
+	border-width: 2px;
+	border-color: #088EFF; /* Second Pill | Outside */
 }
 
 .give:hover, .use:hover, .close:hover, .inv-option-item:hover {
@@ -425,7 +436,11 @@ p {
 	outline-offset: -1px;
 	transition: 0.2s ease-in-out all;
 	border: 0;
-	border-radius: 12px;
+	border-radius: 100px;
+	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
+	border-style: solid;
+	border-width: 2px;
+	border-color: #088EFF; /* Second Pill | Outside */
 }
 
 /* scrollbar Hsn*/

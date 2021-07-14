@@ -12,6 +12,10 @@ local voiceTarget = 2
 local vehicleTargets = {}
 local wasPlayerInVehicle = false
 
+local SpeakingVolume = 1.0
+function SetRadioVolume(v) SpeakingVolume = v end
+exports("SetRadioVolume", SetRadioVolume)
+
 -- Functions
 function SetVoiceData(key, value, target)
 	TriggerServerEvent("mumble:SetVoiceData", key, value, target)

@@ -15,7 +15,7 @@ body {
     width: 1300px;
     height:1000px;
     border-radius: 7px;
-    display:none;
+    /*display:none;*/
 }
 
 .nav-link{
@@ -132,7 +132,6 @@ select{
 .accordion-body{
     background-color: rgb(217,227,251);
     color:rgb(84, 96, 125)!important;
-    height:350px
 }
 
 .width-50pct{

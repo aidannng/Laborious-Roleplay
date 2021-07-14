@@ -1,22 +1,29 @@
-resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'
+---@diagnostic disable: undefined-global
+fx_version "adamant"
+game "gta5"
+
+name "sm-radio"
+description "A radio for mumble-voip"
+author "VacEx"
+version "1.2"
 
 client_script {
-  'client/client.lua',
-  'client/animation.lua',
-  'config.lua'
+  'config.lua',
+  'client.lua'
 }
 
 server_script {
-  'server/server.lua',
-  'config.lua'
+  'config.lua',
+  'server.lua'
 }
 
-ui_page('html/ui.html')
+ui_page('html/index.html')
 
 files {
-    'html/ui.html',
-    'html/js/script.js',
-    'html/css/style.css',
-    'html/img/cursor.png',
-    'html/img/radio.png'
+    'html/index.html',
+    'html/script.js',
+    'html/style.css',
+    'html/assets/radio_on.png',
+    'html/assets/radio_off.png',
+    'html/assets/click.mp3'
 }
