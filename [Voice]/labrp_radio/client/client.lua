@@ -57,7 +57,7 @@ RegisterNUICallback('joinRadio', function(data, cb)
   -- if tonumber(data.channel) <= Config.MaxFrequency then
     if tonumber(data.channel) ~= tonumber(getPlayerRadioChannel) then
       if tonumber(data.channel) <= Config.RestrictedChannels then
-        if(PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' or PlayerData.job.name == 'doctor') then
+        if(PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' or PlayerData.job.name == 'fbi') then
           exports["mumble-voip"]:SetRadioChannel(0)
           exports["mumble-voip"]:SetRadioChannel(tonumber(data.channel))
           exports["mumble-voip"]:SetMumbleProperty("radioEnabled", true)
