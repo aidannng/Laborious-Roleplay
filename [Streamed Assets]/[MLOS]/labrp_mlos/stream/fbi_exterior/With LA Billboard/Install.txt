@@ -1,0 +1,24 @@
+
+IMPORTANT!! You have to install (Without LA Billboard first) !!
+----------------------------------------------------------------
+
+
+- Open OpenIV, Enable Edit Mode and go to the following directory :
+
+GTAV\Mods\update\x64\dlcpacks\LA_Billboard_P1\dlc.rpf\x64\textures.rpf\
+
+Drag and Drop (Replace) the .ydr and .ydd (10 FILES) files in this folder into OpenIV.
+
+-----------
+
+- In the same directory you'll find a file called ( dt1_lod_03_04_05_11_children.ytd ), Open it!
+
+Drag and Drop (Replace) the .dds file given in my ( dt1_lod_03_04_05_11_children.ytd ) folder into the .ytd file you just opened..
+
+
+
+
+DONE!!
+--------------
+
+

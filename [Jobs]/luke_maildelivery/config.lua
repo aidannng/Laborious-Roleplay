@@ -1,6 +1,6 @@
 Config = {}
 
-Config.EnableVersionCheck = true -- If set to true you will get a print in console when your resource is out of date
+Config.EnableVersionCheck = false -- If set to true you will get a print in console when your resource is out of date
 Config.VersionCheckInterval = 60 -- in minutes
 
 -- PolyZone zones

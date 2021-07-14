@@ -216,6 +216,18 @@ Items = {
 		}
 	},
 
+	['warrant'] = {
+		label = 'Police Warrant',
+		weight = 750,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'show:warrant'
+		}
+	},
+
 	['radio'] = {
 		label = 'Radio',
 		weight = 650,
@@ -362,7 +374,7 @@ Items = {
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'policegoggles:toggleThermal'
+			event = 'policegoggles:toggleThermnl'
 		}
 	},
 

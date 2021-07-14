@@ -26,3 +26,9 @@ AddEventHandler('choppayout', function()
 	TriggerClientEvent('resetchop', source)
 end)
 
+RegisterServerEvent('removepapers')
+AddEventHandler('removepapers', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeInventoryItem('papers', 1)
+end)
+

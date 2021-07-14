@@ -11,6 +11,12 @@ Citizen.CreateThread(function()
     end
 end)
 
+
+local countingJobs = {
+    ['police'] = true,
+    ['fbi'] = true
+};
+
  
 local isJudge = false
 local fuck = exports["esx_ambulancejob"]:GetDeath()
@@ -175,7 +181,7 @@ rootMenuConfig =  {
            local ped = PlayerPedId()
            PlayerData = ESX.GetPlayerData()
            fuck = exports["esx_ambulancejob"]:GetDeath()
-            if PlayerData.job.name == "police" and not fuck then
+           if countingJobs[PlayerData.job.name] and not fuck then
                 return true
             end
         end,
@@ -232,7 +238,7 @@ rootMenuConfig =  {
         local ped = PlayerPedId()
             PlayerData = ESX.GetPlayerData()
             fuck = exports["esx_ambulancejob"]:GetDeath()
-             if PlayerData.job.name == "police" and pdheliMenu == true then
+            if countingJobs[PlayerData.job.name] and pdheliMenu == true then
                  return true
              end
          end,
@@ -288,7 +294,7 @@ rootMenuConfig =  {
         local ped = PlayerPedId()
             PlayerData = ESX.GetPlayerData()
             fuck = exports["esx_ambulancejob"]:GetDeath()
-            if PlayerData.job.name == "police" and fuck then
+            if countingJobs[PlayerData.job.name] and fuck then
                return true
             end
         end,
@@ -356,7 +362,7 @@ newSubMenus = {
     ['general:keysgive'] = {
         title = "Give Keys",
         icon = "#general-keys-give",
-        functionName = "vehiclekeys:client:GiveKeys"
+        functionName = "vehiclekeys:client:gimmie"
     },
     ['general:housekeys'] = {
         title = "Property Keys",

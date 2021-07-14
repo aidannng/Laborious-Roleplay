@@ -16,8 +16,6 @@ end)
 
 RegisterNetEvent("addplates")
 AddEventHandler("addplates", function(results)
-    print("got to client")
-    print(results)
     SendNUIMessage({
 		plates=results,
 	})

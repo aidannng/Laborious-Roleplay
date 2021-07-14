@@ -472,8 +472,8 @@ AddEventHandler('craft:lambov10', function()
     end
 end)
 
-RegisterServerEvent('craft:pdengine')
-AddEventHandler('craft:pdengine', function()
+RegisterServerEvent('craft:policeengine')
+AddEventHandler('craft:policeengine', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
     local pistonCount = xPlayer.getInventoryItem('piston').count

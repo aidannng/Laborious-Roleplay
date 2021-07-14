@@ -68,18 +68,18 @@ Config.Hunting = {
 Config.PoliceArmoury = {
 	name = 'Police Armoury',
 	inventory = {
-		{ name = 'WEAPON_COMBATPISTOL', price = 250, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 		--{ name = 'WEAPON_CARBINERIFLE', price = 20, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 		--{ name = 'WEAPON_HEAVYPISTOL', price = 15, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 		--{ name = 'WEAPON_CARBINERIFLE_MK2', price = 25, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		{ name = 'WEAPON_STUNGUN', price = 125, metadata = { registered = true, serial = 'POL'} },
+		{ name = 'WEAPON_STUNGUN', price = 100, metadata = { registered = true, serial = 'POL'} },
 		{ name = 'ammo-9', price = 1, },
 		--{ name = 'ammo-rifle', price = 10, },
 		{ name = 'WEAPON_FLASHLIGHT', price = 50 },
 		{ name = 'WEAPON_NIGHTSTICK', price = 50 },
 		{ name = 'pdarmour', price = 75, },
 		{ name = 'ifak', price = 50, },
-		{ name = 'radio', price = 200 },
+		{ name = 'radio', price = 50 },
 	}
 }
 
@@ -128,7 +128,8 @@ Config.Shops = {
 
 	
 	{ type = Config.PoliceArmoury, job = 'police', coords = vector3(481.5428, -995.6307, 30.67834) },
+	{ type = Config.PoliceArmoury, job = 'fbi', coords = vector3(123.9429, -733.0681, 242.1436) },
+
 	{ type = Config.EMSStore, job = 'ambulance', coords = vector3(306.7516, -601.8066, 43.2821) },
 
-	{ type = Config.BlackMarketArms, coords = vector3(309.09, -913.75, 56.46), currency = 'black_money' },
 }

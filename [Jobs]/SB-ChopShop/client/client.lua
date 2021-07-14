@@ -39,6 +39,13 @@ AddEventHandler('ChopCarPaper', function()
                 disableMouse = false,
                 disableCombat = true,
             },
+            animation = {
+                animDict = "missheistdockssetup1clipboard@idle_a",
+                anim = "idle_a",
+            },
+            prop = {
+                model = "prop_fib_clipboard",
+            }
         })
 	    Citizen.Wait(10000)
         ClearPedTasks(PlayerPedId(-1))
@@ -71,7 +78,7 @@ AddEventHandler('CarPapers', function(car)
     end
     ChopSpawn = CreateVehicle(hash, spawncar.x, spawncar.y, spawncar.z, 1, 1)
            
-    zoneblip = AddBlipForRadius(spawncar.x, spawncar.y, spawncar.z, 250.0)
+    zoneblip = AddBlipForRadius(spawncar.x+math.random(25, 75), spawncar.y+math.random(25, 75), spawncar.z, 250.0)
     SetBlipSprite(zoneblip,9)
     SetBlipColour(zoneblip,3)
     SetBlipAlpha(zoneblip,75)
@@ -117,6 +124,7 @@ Citizen.CreateThread(function()
         if IsControlPressed(0, 38) then
             TriggerEvent('EnterChopVehicle')
             poggg = false
+            TriggerServerEvent('removepapers')
         end
         Citizen.Wait(0)
     end
@@ -128,7 +136,7 @@ AddEventHandler('EnterChopVehicle', function()
     exports['mythic_progbar']:Progress({
         name = "unique_action_name",
         duration = 30000,
-        label = 'Getting Chop Papers',
+        label = 'Chopping Vehicle',
         useWhileDead = true,
         canCancel = false,
         controlDisables = {
@@ -137,13 +145,6 @@ AddEventHandler('EnterChopVehicle', function()
             disableMouse = false,
             disableCombat = true,
         },
-        animation = {
-            animDict = "missheistdockssetup1clipboard@idle_a",
-            anim = "idle_a",
-        },
-        prop = {
-            model = "prop_fib_clipboard",
-        }
     })
     Citizen.Wait(30000)
     DeleteEntity(current)

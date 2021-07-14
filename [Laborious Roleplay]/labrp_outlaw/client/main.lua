@@ -12,7 +12,7 @@ function refreshPlayerWhitelisted()
 	if not ESX.PlayerData then return false end
 	if not ESX.PlayerData.job then return false end
 	if Config.Debug then return true end
-	for k,v in ipairs({'police','ambulance'}) do
+	for k,v in ipairs({'police','ambulance','fbi'}) do
 		if v == ESX.PlayerData.job.name then
 			return true
 		end

@@ -20,7 +20,10 @@ BossMenuLocations = {
 	{coords = vector3(-22.28571, -1101.732, 26.36487), job = "cardealer", label = "PDM"},
 	{coords = vector3(1398.066, 1153.055, 114.3209), job = "mafia", label = "Mafia"},
 	{coords = vector3(990.1055, -136.3648, 74.06665), job = "bigdogs", label = "Big Dogs"},
-	{coords = vector3(-1351.886, -1054.932, 3.853516), job = "bmf", label = "Black Mafia Family"}
+	{coords = vector3(-1351.886, -1054.932, 3.853516), job = "bmf", label = "Black Mafia Family"},
+	{coords = vector3(123.5077, -1944.738, 15.21021), job = "ballas", label = "East Side Ballas"},
+	{coords = vector3(108.0264, -750.5011, 242.1436), job = "fbi", label = "FBI"}  
+  
 },
 
 
@@ -39,6 +42,10 @@ BossMenuUsers = {
 	['chief'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['asstchief'] = {canWithdraw = false, canDeposit = false, canHire = true, canRank = true, canFire = true, canBonus = false},
 	['bmfboss'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['don'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['og'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['pimp'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['director'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 },
 
 

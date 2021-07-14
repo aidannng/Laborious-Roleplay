@@ -15,9 +15,24 @@ local NeededAttempts, SucceededAttempts, FailedAttemps = 0, 0, 0
 local vehicleSearched, vehicleHotwired = {}, {}
 
 
+RegisterNetEvent("vehiclekeys:client:gimmie")
+AddEventHandler("vehiclekeys:client:gimmie", function()
+    local plate = GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true))
+    if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
+        if not HasKey then  
+            exports['mythic_notify']:SendAlert('error', 'You do not have the keys to this vehicle')
+        else
+            TriggerServerEvent("vehiclekeys:server:givePeopleKeys", plate)
+            exports['mythic_notify']:SendAlert('inform', 'You have given the keys to x')
+        end
+    else
+        exports['mythic_notify']:SendAlert('error', 'You are not in a vehicle')
+    end
+end)     
+
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(5)
+        Citizen.Wait(0)
 
         if ESX ~= nil then
             if IsPedInAnyVehicle(GetPlayerPed(-1), false) and GetPedInVehicleSeat(GetVehiclePedIsIn(GetPlayerPed(-1), true), -1) == GetPlayerPed(-1) then
@@ -82,7 +97,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-Citizen.CreateThread(function()
+--[[ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(7)
         if not IsRobbing and ESX ~= nil then
@@ -101,7 +116,7 @@ Citizen.CreateThread(function()
 
         end
     end
-end)
+end) ]]
 
 RegisterNetEvent('vehiclekeys:client:SetOwner')
 AddEventHandler('vehiclekeys:client:SetOwner', function(plate, vehicle)
@@ -125,13 +140,13 @@ AddEventHandler('vehiclekeys:client:GiveKeys', function()
     local latestveh = getVehicleInDirection(coordA, coordB)
     
     if latestveh == nil or not DoesEntityExist(latestveh) then
-        exports['mythic_notify']:SendAlert('error', 'Vehicle not found')
+        exports['mythic_notify']:SendAlert('error', 'No vehicle nearby')
         return
     end
     
     ESX.TriggerServerCallback('vehiclekeys:CheckHasKey', function(hasKey)
         if not hasKey then
-            exports['mythic_notify']:SendAlert('inform', 'You do not have the keys to this vehicle')
+            exports['mythic_notify']:SendAlert('error', 'You do not have the keys to this vehicle')
             return
         end
 
@@ -240,17 +255,17 @@ function LockVehicle()
                         if vehLockStatus == 1 then
                             Citizen.Wait(750)
                             ClearPedTasks(GetPlayerPed(-1))
-                            TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 0.5, 'lock', 1.0)
+                            TriggerEvent('InteractSound_CL:PlayOnOne', 'lock', 0.5)
                             SetVehicleDoorsLocked(veh, 2)
                             if(GetVehicleDoorLockStatus(veh) == 2)then
-                                exports['mythic_notify']:SendAlert('inform', 'Vehicle Lockd')
+                                exports['mythic_notify']:SendAlert('inform', 'Vehicle Locked')
                             else
                                 --exports['mythic_notify']:SendAlert('inform', 'Updated your waypoint on your GPS to your vehicle')
                             end
                         else
                             Citizen.Wait(750)
                             ClearPedTasks(GetPlayerPed(-1))
-                            TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 0.5, 'unlock', 0.5)
+                            TriggerEvent('InteractSound_CL:PlayOnOne', 'unlock', 0.3)
                             SetVehicleDoorsLocked(veh, 1)
                             if(GetVehicleDoorLockStatus(veh) == 1)then
                                 exports['mythic_notify']:SendAlert('inform', 'Vehicle Unlocked')
@@ -286,62 +301,6 @@ function LockVehicle()
     end
 end
 
-local openingDoor = false
-function LockpickDoor(isAdvanced)
-    local vehicle = ESX.Game.GetClosestVehicle()
-    local isParked = isParked(GetVehicleNumberPlateText(vehicle))
-    if vehicle ~= nil and vehicle ~= 0 and not isParked then
-        local vehpos = GetEntityCoords(vehicle)
-        local pos = GetEntityCoords(GetPlayerPed(-1))
-        if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, vehpos.x, vehpos.y, vehpos.z, true) < 1.5 then
-            local vehLockStatus = GetVehicleDoorLockStatus(vehicle)
-            if (vehLockStatus > 1) then
-                local lockpickTime = math.random(15000, 30000)
-                if isAdvanced then
-                    lockpickTime = math.ceil(lockpickTime*0.5)
-                end
-                LockpickDoorAnim(lockpickTime)
-                IsHotwiring = true
-                SetVehicleAlarm(vehicle, true)
-                SetVehicleAlarmTimeLeft(vehicle, lockpickTime)
-                openingDoor = false
-                StopAnimTask(GetPlayerPed(-1), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 1.0)
-                IsHotwiring = false
-                if math.random(1, 100) <= 90 then
-                    TriggerEvent("debug", 'Lockpick: Success', 'success')
-                    --TriggerEvent(BBGarages.Config['settings']['notification'], "Door open!")
-                    TriggerServerEvent("InteractSound_CL:PlayWithinDistance", 5, "unlock", 0.3)
-                    SetVehicleDoorsLocked(vehicle, 0)
-                    SetVehicleDoorsLockedForAllPlayers(vehicle, false)
-                else
-                    --TriggerEvent(BBGarages.Config['settings']['notification'], "Failed!", 2)
-                    TriggerEvent("debug", 'Lockpick: Failed', 'error')
-                end
-            end
-        end
-    else
-        --TriggerEvent(BBGarages.Config['settings']['notification'], 'You can\'t use lockpick on parked vehicles..', 'error')
-    end
-end
-
-function LockpickDoorAnim(time)
-    time = time / 1000
-    loadAnimDict("veh@break_in@0h@p_m_one@")
-    TaskPlayAnim(GetPlayerPed(-1), "veh@break_in@0h@p_m_one@", "low_force_entry_ds" ,3.0, 3.0, -1, 16, 0, false, false, false)
-    openingDoor = true
-    Citizen.CreateThread(function()
-        while openingDoor do
-            TaskPlayAnim(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
-            Citizen.Wait(1000)
-            time = time - 1
-            if time <= 0 then
-                openingDoor = false
-                StopAnimTask(GetPlayerPed(-1), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 1.0)
-            end
-        end
-    end)
-end
-
 function Search()
     if not HasKey then 
         local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
@@ -359,7 +318,7 @@ function Search()
             duration = searchTime,
             label = 'Searching Vehicle',
             useWhileDead = true,
-            canCancel = false,
+            canCancel = true,
             controlDisables = {
                 disableMovement = true,
                 disableCarMovement = true,
@@ -372,7 +331,7 @@ function Search()
         if (math.random(0, 100) < 10) then
             HasKey = true
             TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle))
-            exports['mythic_notify']:SendAlert('inform', 'You found the keys while seraching the vehicle!')
+            exports['mythic_notify']:SendAlert('inform', 'You found the keys while searching the vehicle!')
             TriggerEvent("debug", 'Keys: Found', 'success')
         else
             HasKey = false
@@ -380,16 +339,11 @@ function Search()
         end
         IsHotwiring = false
     end
-end
+end    
 
 function LockPickVeh()
     if not HasKey then 
         local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
-
-        --if vehicleSearched[GetVehicleNumberPlateText(vehicle)] then
-            --exports['mythic_notify']:SendAlert('error', 'You have already searched this vehicle')
-            --return
-        --end
 
         ESX.TriggerServerCallback('vehiclekeys:server:hasitem', function(data)
             if data then
