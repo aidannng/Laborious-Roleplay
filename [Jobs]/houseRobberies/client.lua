@@ -639,21 +639,21 @@ AddEventHandler('houseRobberies:attempt', function()
     --local finished = taskBar(4000,math.random(5,15))
     if finished ~= 100 then
       exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
-      local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
+      local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
       local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
       TriggerServerEvent('wf-alerts:svNotify', dispatchData)
     else
         local finished2 = exports["reload-skillbar"]:taskBar(1250,math.random(5,15))
         if finished2 ~= 100 then
           exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
-          local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
+          local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
           local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
           TriggerServerEvent('wf-alerts:svNotify', dispatchData)
         else
             local finished3 = exports["reload-skillbar"]:taskBar(6500,math.random(5,15))
             if finished3 ~= 100 then
                 exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
-                local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
+                local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
                 local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
                 TriggerServerEvent('wf-alerts:svNotify', dispatchData)
             else

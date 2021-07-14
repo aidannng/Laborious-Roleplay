@@ -78,7 +78,7 @@ AddEventHandler('FleecaRobberies:attempt', function()
             disableCombat = true,
         },
     })
-    local data = {displayCode = '10-68', description = 'Fleeca Robbery', isImportant = 1, recipientList = {'police'}, length = '15000', infoM = 'fas fa-university', info = 'Fleeca Robbery'}
+    local data = {displayCode = '10-68', description = 'Fleeca Robbery', isImportant = 1, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-university', info = 'Fleeca Robbery'}
     local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
     TriggerServerEvent('wf-alerts:svNotify', dispatchData)
     Citizen.Wait(8000)
@@ -354,12 +354,12 @@ AddEventHandler('PowerStation:attempt', function()
             Citizen.Wait(10000)--120000 = 2 mins
             TriggerServerEvent('powerblackout')
             --TriggerEvent('esx_holdupbank:opendoors')
-            local data = {displayCode = '10-68', description = 'LS Power Station', isImportant = 1, recipientList = {'police'}, length = '15000', infoM = 'fas fa-broadcast-tower', info = 'Disturbance at LS Power Station'}
+            local data = {displayCode = '10-68', description = 'LS Power Station', isImportant = 1, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-broadcast-tower', info = 'Disturbance at LS Power Station'}
             local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
             TriggerServerEvent('wf-alerts:svNotify', dispatchData)
         else
             exports['mythic_notify']:SendAlert('error', 'This hack is too complicated?!')
-            local data = {displayCode = '10-68', description = 'LS Power Station', isImportant = 1, recipientList = {'police'}, length = '15000', infoM = 'fas fa-broadcast-tower', info = 'Disturbance at LS Power Station'}
+            local data = {displayCode = '10-68', description = 'LS Power Station', isImportant = 1, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-broadcast-tower', info = 'Disturbance at LS Power Station'}
             local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
             TriggerServerEvent('wf-alerts:svNotify', dispatchData)
         end
@@ -394,7 +394,7 @@ AddEventHandler("startHack", function()
         for id,v in pairs(StoreRobberies) do
             if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) <= 2.5 then
                 TriggerEvent('storecooldown')
-                local data = {displayCode = '10-68', description = 'Store Robbery', isImportant = 1, recipientList = {'police'}, length = '15000', infoM = 'fas fa-cash-register', info = 'Store Robbery'} --
+                local data = {displayCode = '10-68', description = 'Store Robbery', isImportant = 1, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-cash-register', info = 'Store Robbery'} --
                 local dispatchData = {dispatchData = data, caller = 'Security System', coords = playerCoords}
                 TriggerServerEvent('wf-alerts:svNotify', dispatchData)
                 exports['mythic_progbar']:Progress({
