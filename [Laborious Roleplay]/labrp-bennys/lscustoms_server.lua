@@ -17,27 +17,11 @@ AddEventHandler("LSC:buttonSelected", function(name, button)
 	end
 end)
 
-
-RegisterServerEvent('esx_lscustom:refreshOwnedVehicle')
-AddEventHandler('esx_lscustom:refreshOwnedVehicle', function(vehicleProps)
+RegisterServerEvent("chargerepair")
+AddEventHandler("chargerepair", function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-
-	MySQL.Async.fetchAll('SELECT props FROM bbvehicles WHERE plate = @plate', {
-		['@plate'] = vehicleProps.plate
-	}, function(result)
-		if result[1] then
-			local vehicle = json.decode(result[1].props)
-
-			if vehicleProps.model == vehicle.model then
-				MySQL.Async.execute('UPDATE bbvehicles SET props = @props WHERE plate = @plate', {
-					['@plate'] = vehicleProps.plate,
-					['@props'] = json.encode(vehicleProps)
-				})
-			else
-				print(('esx_lscustom: %s attempted to upgrade vehicle with mismatching vehicle model!'):format(xPlayer.identifier))
-			end
-		end
-	end)
+	local money = 550
+	xPlayer.removeAccountMoney('bank', 550)
 end)
 
 RegisterServerEvent("LSC:finished")

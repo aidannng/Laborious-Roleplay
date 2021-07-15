@@ -87,3 +87,23 @@ AddEventHandler('deleteboomboxitem', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.removeInventoryItem('boombox', 1)
 end)
+
+
+
+
+RegisterServerEvent('checkstorecops')
+AddEventHandler('checkstorecops', function()
+    local xPlayers = ESX.GetExtendedPlayers()
+    local cops = 0
+    for _, xPlayer in pairs(xPlayers) do
+        if xPlayer.job.name == 'police' then
+            cops = cops + 1
+        end
+    end
+
+    if cops >= 3 then
+        TriggerClientEvent('doHack', source)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'System Currently Down!'})
+    end
+end)

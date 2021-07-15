@@ -48,6 +48,14 @@ Citizen.CreateThread(function()
         heading=70,
         debugPoly=false,
     })
+end)--450.1846, -975.8373, 25.6908, 90.0
+
+Citizen.CreateThread(function()
+    exports["PolyZone"]:AddBoxZone("pdVehExtras", vector3(450.1846, -975.8373, 25.6908), 10.0, 4.0, {
+        name="pdVehExtras",
+        heading=90.0,
+        debugPoly=false,
+    })
 end)
 
 Citizen.CreateThread(function()
@@ -88,6 +96,7 @@ local returntowtruck = false
 local impoundtow = false
 local pdmbills = false
 local lscustomtowtruck = false
+local pdVehicleExtras = false
 
 AddEventHandler('bt-polyzone:enter', function(name)
     if name == "lscustomreturntruck" then
@@ -98,6 +107,18 @@ end)
 AddEventHandler('bt-polyzone:exit', function(name)
     if name == "lscustomreturntruck" then
         lscustomtowtruck = false
+    end
+end)
+
+AddEventHandler('bt-polyzone:enter', function(name)
+    if name == "pdVehExtras" then
+        pdVehicleExtras = true
+    end
+end)
+
+AddEventHandler('bt-polyzone:exit', function(name)
+    if name == "pdVehExtras" then
+        pdVehicleExtras = false
     end
 end)
 
@@ -225,6 +246,20 @@ rootMenuConfig =  {
             PlayerData = ESX.GetPlayerData()
             fuck = exports["esx_ambulancejob"]:GetDeath() --return_lsc
              if not fuck and PlayerData.job.name == "mechanic" and lscustomtowtruck == true then
+                 return true
+             end
+         end,
+    },
+    {
+        id = "pdvehicleextras",
+        displayName = "Vehicle/Extra's",
+        icon = "#police-vehicle",
+        functionName = "pdvehicleextras",
+        enableMenu = function()
+        local ped = PlayerPedId()
+            PlayerData = ESX.GetPlayerData()
+            fuck = exports["esx_ambulancejob"]:GetDeath() --return_lsc
+             if not fuck and PlayerData.job.name == "police" and pdVehicleExtras == true then
                  return true
              end
          end,
@@ -362,7 +397,7 @@ newSubMenus = {
     ['general:keysgive'] = {
         title = "Give Keys",
         icon = "#general-keys-give",
-        functionName = "vehiclekeys:client:gimmie"
+        functionName = "vehiclekeys:client:GiveKeys"
     },
     ['general:housekeys'] = {
         title = "Property Keys",
@@ -1143,4 +1178,9 @@ end)
 RegisterNetEvent('lsccustomtruck')
 AddEventHandler('lsccustomtruck', function()
     TriggerEvent('return_lsc')
+end)
+
+RegisterNetEvent('pdvehicleextras')
+AddEventHandler('pdvehicleextras', function()
+    TriggerEvent('openpdextras')
 end)

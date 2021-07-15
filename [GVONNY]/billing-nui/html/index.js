@@ -31,12 +31,16 @@ $(function () {
             {
                 str = str + "<td>LSPD</td>"
             }
+            else if(item.target == "society_mechanic")
+            {
+                str = str + "<td>LS Customs</td>"
+            }
             else
             {
                 str = str + "<td>" + item.firstname + " " + item.lastname + "</td>"
             }
 
-            str = str + "<td>" + item.label + "</td><td class=\"text-align-center\">$" + item.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td class=\"text-align-center\">"+ item.termlength +"</td><td class=\"text-align-center\">"+ item.termdaysleft +"</td><td id=\""+ item.id +"-amount\" class=\"text-align-center\">$"+ item.termamount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') +"</td></tr>";
+            str = str + "<td>" + item.label + "</td><td class=\"text-align-center\">$" + item.amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + "</td><td class=\"text-align-center\">"+ item.termlength +"</td><td class=\"text-align-center\">"+ item.termdaysleft +"</td><td id=\""+ item.id +"-amount\" class=\"text-align-center\" data-amount=\""+ item.termamount +"\">$"+ item.termamount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') +"</td></tr>";
 
             $('#bills').append(str);
         }
@@ -63,7 +67,8 @@ $(function () {
 
             if(exists)
             {
-                var amount = parseInt($('#' + billID + '-amount').html());
+                var id = billID + '-amount'
+                var amount = parseInt($('#' + id).data('amount'));
                 if(billAmount <= amount)
                 {
                     $('#bills').empty();

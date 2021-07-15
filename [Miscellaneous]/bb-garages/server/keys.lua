@@ -46,12 +46,24 @@ AddEventHandler('vehiclekeys:server:SetVehicleOwner', function(plate, vehicle)
     end
 end)
 
+
+RegisterServerEvent("vehiclekeys:server:givePeopleKeys")
+AddEventHandler("vehiclekeys:server:givePeopleKeys", function(source, plate)
+    local xPlayer = ESX.GetPlayerFromId(source)
+
+    MySQL.Async.execute("INSERT into vehicle_keys (identifier, plate) VALUES (@identifier,@plate)", {
+        ['@identifier'] = "AIDAN",
+        ['@plate'] = plate,
+        }) 
+end)
+
+
 RegisterServerEvent('vehiclekeys:server:GiveVehicleKeys')
 AddEventHandler('vehiclekeys:server:GiveVehicleKeys', function(plate, target)
     local src = source
     local Player =  ESX.GetPlayerFromId(src)
     if CheckOwner(plate, Player.getIdentifier()) then
-        if  ESX.GetPlayerFromId(target) ~= nil then
+        if ESX.GetPlayerFromId(target) ~= nil then
             TriggerClientEvent('vehiclekeys:client:SetOwner', target, plate)
             TriggerClientEvent(Config['settings']['notification'], src, "You just gave keys to your vehicles!")
             TriggerClientEvent(Config['settings']['notification'], target, "You just received keys to a vehicle!")

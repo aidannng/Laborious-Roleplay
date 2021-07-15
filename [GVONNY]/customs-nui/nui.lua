@@ -14,16 +14,44 @@ AddEventHandler("mechanic:customs", function()
     SetDisplay(not display)
 end)
 
-RegisterNetEvent("addplates")
-AddEventHandler("addplates", function(results)
+RegisterNetEvent("lsc:billerror")
+AddEventHandler("lsc:billerror", function(a)
     SendNUIMessage({
-		plates=results,
+		error=a,
 	})
 end)
+
+RegisterNetEvent("lsc:addtobillinglist")
+AddEventHandler("lsc:addtobillinglist", function(a,b,c,d,e,f,g)
+    SendNUIMessage({
+		firstname=a,
+        lastname=b,
+        employeefirstname=c,
+        employeelastname=d,
+        amount=e,
+        termlength=f,
+        daysoverdue=g,
+	})
+end)
+
+RegisterNetEvent("lsc:refreshbilling")
+AddEventHandler("lsc:refreshbilling", function(a)
+    TriggerServerEvent("getlscbills")
+end)
+
+
 
 --[[ RegisterCommand("customs", function(source)
     TriggerEvent('mechanic:customs')
 end) ]]
+
+RegisterNUICallback("getlscbills", function(data)
+	TriggerServerEvent("getlscbills")
+end)
+
+RegisterNUICallback("createbill", function(data)
+	TriggerServerEvent("lsccreatebill", data.luckyNumber, data.purchasePrice, data.termLength)
+end)
 
 RegisterNUICallback("buymaterial", function(data)
     TriggerServerEvent("buymaterial", data.part, data.price, data.amount)

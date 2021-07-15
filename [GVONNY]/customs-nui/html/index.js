@@ -1,10 +1,5 @@
 $(function () {
-    $('#getvehicles').click(function(){
-        $.post('http://customs-nui/event', JSON.stringify({}));
-        return
-    });
-
-
+    display(false)
     function display(bool) {
         if (bool) {
             $("#container").show();
@@ -12,8 +7,38 @@ $(function () {
             $("#container").hide();
         }
     }
+    
 
-    display(false)
+    $('#create-bill').click(function(){
+        var luckyNumber = $('#luckyNumber').val();
+        var purchasePrice = $('#purchasePrice').val();
+        var termLength = $('#termLength').val();
+        if(luckyNumber != '' && purchasePrice != '' && termLength != '')
+        {
+            $('#error').empty();
+            $('#bills').empty();
+
+            $('#luckyNumber').val('');
+            $('#purchasePrice').val('');
+            $('#termLength').val('');
+            
+            $.post('http://customs-nui/createbill', JSON.stringify({
+                luckyNumber:luckyNumber,
+                purchasePrice: purchasePrice,
+                termLength: termLength,
+            }));
+        }
+        else
+        {
+            $('#error').html("Please fill out all values");
+        }
+    })
+
+    $('#nav-bills-tab').click(function(){
+        $('#bills').empty();
+        $.post('http://customs-nui/getlscbills', JSON.stringify({}));
+    })
+
 
     $("#buyScrap").click(function () {
         var part = 'scrapmetal';
@@ -65,15 +90,23 @@ $(function () {
             }
         }
         
-        if(item.plates != null)
+        if(item.error != null)
         {
-            var plates = item.plates.split(',')
-            for (i = 0; i < plates.length; ++i) {
-                $('#plates').append("<p>" + plates[i] + "</p>");
-            }
-            
+            $('#error').html(item.error)
         }
-        
+
+        if(item.firstname != null)
+        {
+            $('#bills').append(
+                "<tr>" +
+                    "<td>" + item.firstname + " " + item.lastname + "</td>" +
+                    "<td>" + item.employeefirstname + " " + item.employeelastname + "</td>" +
+                    "<td>" + item.amount + "</td>" +
+                    "<td>" + item.termlength + "</td>" +
+                    "<td>" + item.daysoverdue + "</td>" +
+                "</tr>"
+            );
+        }
     })
     // if the person uses the escape key, it will exit the resource
     document.onkeyup = function (data) {

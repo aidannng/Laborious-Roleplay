@@ -4,6 +4,11 @@ if Config.EnableESXService then
 	end
 end
 
+local countingJobs = {
+    ['police'] = true,
+    ['fbi'] = true
+};
+
 TriggerEvent('esx_phone:registerNumber', 'police', _U('alert_police'), true, true)
 TriggerEvent('esx_society:registerSociety', 'police', 'Police', 'society_police', 'society_police', 'society_police', {type = 'public'})
 
@@ -74,7 +79,7 @@ RegisterNetEvent('esx_policejob:handcuff')
 AddEventHandler('esx_policejob:handcuff', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if xPlayer.job.name == 'police' then
+	if countingJobs[xPlayer.job.name] then
 		TriggerClientEvent('esx_policejob:handcuff', target)
 	else
 		print(('esx_policejob: %s attempted to handcuff a player (not cop)!'):format(xPlayer.identifier))
@@ -85,7 +90,7 @@ RegisterNetEvent('esx_policejob:softcufff')
 AddEventHandler('esx_policejob:softcufff', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if xPlayer.job.name == 'police' then
+	if countingJobs[xPlayer.job.name] then
 		TriggerClientEvent('esx_policejob:softcuff', target)
 	else
 		print(('esx_policejob: %s attempted to handcuff a player (not cop)!'):format(xPlayer.identifier))
@@ -96,7 +101,7 @@ RegisterNetEvent('esx_policejob:drag')
 AddEventHandler('esx_policejob:drag', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if xPlayer.job.name == 'police' then
+	if countingJobs[xPlayer.job.name] then
 		TriggerClientEvent('esx_policejob:drag', target, source)
 	else
 		print(('esx_policejob: %s attempted to drag (not cop)!'):format(xPlayer.identifier))
@@ -107,7 +112,7 @@ RegisterNetEvent('esx_policejob:putInVehicle')
 AddEventHandler('esx_policejob:putInVehicle', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if xPlayer.job.name == 'police' then
+	if countingJobs[xPlayer.job.name] then
 		TriggerClientEvent('esx_policejob:putInVehicle', target)
 	else
 		print(('esx_policejob: %s attempted to put in vehicle (not cop)!'):format(xPlayer.identifier))
@@ -118,7 +123,7 @@ RegisterNetEvent('esx_policejob:OutVehicle')
 AddEventHandler('esx_policejob:OutVehicle', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if xPlayer.job.name == 'police' then
+	if countingJobs[xPlayer.job.name] then
 		TriggerClientEvent('esx_policejob:OutVehicle', target)
 	else
 		print(('esx_policejob: %s attempted to drag out from vehicle (not cop)!'):format(xPlayer.identifier))

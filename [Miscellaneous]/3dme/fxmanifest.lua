@@ -1,10 +1,22 @@
-fx_version 'cerulean'
+fx_version 'bodacious'
 game 'gta5'
 
-author 'Elio'
-description '/me command but it\'s 3D printed'
-version '3.0'
+ui_page "html/index.html"
 
-shared_script 'config.lua'
-client_script 'client.lua'
-server_script 'server.lua'
+
+shared_scripts {
+	'config.lua'
+}
+
+client_scripts {
+ 'client.lua'
+}
+
+server_scripts {
+ 'server.lua'
+}
+
+
+files {
+ 'html/*',
+}
