@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
+
+.me-container{
+  width: 100%;
+  max-width: 190px; /* Will be AT MOST 320px wide */
+  word-wrap: normal;
+  text-size-adjust: auto;
+  height: auto;
+  margin: 50px auto;
+  background: rgba(24, 24, 24, 0.62);
+  padding: 5px;
+  text-align: center;
+  font-weight: 900;
+  font-family: 'Ubuntu';
+  font-size: 12px;
+  color: #fff;
+  display:flex;
+  border-style: solid;
+	border-color: #088EFF;
+  border-width: 2px; 
+  box-shadow: 0px 5px 5px rgba(28, 28, 28, 0.48);
+  position: relative; 
+  bottom: 18px; 
+  border-radius: 100px;
+}
+
+.text-container {
+ padding: 5px;
+ padding-left: 15px;
+ font-family: 'Ubuntu';
+
+}

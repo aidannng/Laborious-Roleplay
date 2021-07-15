@@ -386,9 +386,15 @@ AddEventHandler("nolockpick", function()
     exports['mythic_notify']:SendAlert('error', "You don't have the right tool?!")
 end)
 
+local enoughCops = false
 
 RegisterNetEvent("startHack")
 AddEventHandler("startHack", function()
+    TriggerServerEvent('checkstorecops')
+end)
+
+RegisterNetEvent("doHack")
+AddEventHandler("doHack", function()
     local playerCoords = GetEntityCoords(PlayerPedId(), true)
     if cooldown == false then
         for id,v in pairs(StoreRobberies) do
@@ -399,7 +405,7 @@ AddEventHandler("startHack", function()
                 TriggerServerEvent('wf-alerts:svNotify', dispatchData)
                 exports['mythic_progbar']:Progress({
                     name = "unique_action_name",
-                    duration = 10000,
+                    duration = 35000,
                     label = 'Cracking Safe',
                     useWhileDead = true,
                     canCancel = false,
@@ -414,13 +420,13 @@ AddEventHandler("startHack", function()
                         anim = "idle_a",
                     },
                 })
-                Citizen.Wait(10000)
+                Citizen.Wait(35000)
                 exports["memorygame"]:thermiteminigame(10, 300, 3, 10,
                 function() -- success
                     exports['mythic_notify']:SendAlert('success', "Nice Job!")
                     exports['mythic_progbar']:Progress({
                         name = "unique_action_name",
-                        duration = 15000,
+                        duration = 40000,
                         label = 'Grabbing Money',
                         useWhileDead = true,
                         canCancel = false,
@@ -435,7 +441,7 @@ AddEventHandler("startHack", function()
                             anim = "put_cash_into_bag_loop",
                         },
                     })
-                    Citizen.Wait(15000)
+                    Citizen.Wait(40000)
                     ClearPedTasks(PlayerPedId())
                     TriggerServerEvent('GiveSafeReward')
                 end,
@@ -455,7 +461,7 @@ end)
 RegisterNetEvent('storecooldown')
 AddEventHandler('storecooldown', function()
     cooldown = true
-    local timer = 10 * 60000
+    local timer = 30 * 60000
 
     while timer > 0 do
         Wait(1000)

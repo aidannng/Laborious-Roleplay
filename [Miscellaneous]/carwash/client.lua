@@ -74,7 +74,7 @@ Citizen.CreateThread(function()
             SetBlipScale(blip, Config.BlipScale)
             SetBlipSprite(blip, Config.BlipSprite)
             BeginTextCommandSetBlipName('STRING')
-            AddTextComponentString('Car_Wash')
+            AddTextComponentString('Car Wash')
             EndTextCommandSetBlipName(blip)
         end
     end

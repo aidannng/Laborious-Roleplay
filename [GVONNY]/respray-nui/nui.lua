@@ -9,9 +9,9 @@ end)
 
 local display = false
 
-RegisterCommand("respray", function(source)
+--[[ RegisterCommand("respray", function(source)
     TriggerEvent("mechanic:respray")
-end)
+end) ]]
 
 RegisterNetEvent("mechanic:respray")
 AddEventHandler("mechanic:respray", function()

@@ -1303,3 +1303,193 @@ end)
 ---33.52,-1053.19,28.40
 
 
+RegisterNetEvent('openpdextras')
+AddEventHandler('openpdextras', function()
+	TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "MRPD Vehicle Menu",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Repair Vehicle",
+            txt = "Repair your vehicle - $550",
+            params = {
+                event = "repairvehicle",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Extra's",
+            txt = "Enable/Disable Extra's",
+            params = {
+                event = "getextras",
+                args = {
+                    number = 2,
+                    id = 3
+                }
+            }
+        },
+		{
+            id = 4,
+            header = "Livery's",
+            txt = "Enable/Disable Livery's",
+            params = {
+                event = "getlivery",
+                args = {
+                    number = 3,
+                    id = 4
+                }
+            }
+        },
+    })
+end)
+
+AddEventHandler('getlivery',function()
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Vehicle Livery's",
+            txt = ""
+        },
+		{
+			id = 2,
+			header = "Unmarked",
+			txt = "No Livery",
+			params = {
+				event = "setlivery",
+				args = {
+					number = 1,
+					id = 2
+				}
+			}
+		},
+		{
+			id = 3,
+			header = "LSPD",
+			txt = "Los Santos Police Department",
+			params = {
+				event = "setlivery2",
+				args = {
+					number = 2,
+					id = 3
+				}
+			}
+		},
+		{
+			id = 4,
+			header = "SAST",
+			txt = "San Andreas State Trooper",
+			params = {
+				event = "setlivery3",
+				args = {
+					number = 3,
+					id = 4
+				}
+			}
+		}
+	})
+end) 
+
+AddEventHandler('getextras',function()
+    local sendMenu = {}
+    table.insert(sendMenu,{
+        id = 1,
+        header = "Vehicle Extras",
+        txt = ""
+    })
+    for i=1,14,1 do     
+        local vehicle = GetVehiclePedIsIn(PlayerPedId())
+        if DoesExtraExist(vehicle,i) then 
+            local extraStatus = IsVehicleExtraTurnedOn(vehicle,i)
+            if extraStatus == 1 then extraStatus = "ON" else extraStatus = "OFF" end
+            table.insert(sendMenu,{
+                id = #sendMenu+1,
+                header = "Toggle Extra "..i..": "..extraStatus,
+                txt = "",
+                params = { 
+                    event = "toggleextra",
+                    args = {
+                        vehicle = vehicle,
+                        extra = i
+                    }
+                }
+            })
+        end
+    end 
+    table.insert(sendMenu,{
+        id = #sendMenu+1,
+        header = "Cancel",
+        txt = "",
+        params = { 
+            event = "fakeevent",
+            args = {}
+        }
+    })
+    TriggerEvent('nh-context:sendMenu', sendMenu)
+end)
+
+AddEventHandler('toggleextra',function(data)
+    local extraStatus = IsVehicleExtraTurnedOn(data.vehicle,data.extra)
+    if extraStatus == 1 then 
+        SetVehicleExtra(data.vehicle, data.extra, 1)
+		local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+		myCar = ESX.Game.GetVehicleProperties(vehicle)
+    else 
+        SetVehicleExtra(data.vehicle, data.extra, 0)
+    end
+	TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
+    TriggerEvent('getextras')
+end)
+
+AddEventHandler('setlivery',function()
+	local vehicle = GetVehiclePedIsIn(PlayerPedId())
+	SetVehicleLivery(vehicle, 1)
+	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+	myCar = ESX.Game.GetVehicleProperties(vehicle)
+	TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
+end)
+
+AddEventHandler('setlivery2',function()
+	local vehicle = GetVehiclePedIsIn(PlayerPedId())
+	SetVehicleLivery(vehicle, 2)
+	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+	myCar = ESX.Game.GetVehicleProperties(vehicle)
+	TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
+end)
+
+AddEventHandler('setlivery3',function()
+	local vehicle = GetVehiclePedIsIn(PlayerPedId())
+	SetVehicleLivery(vehicle, 3)
+	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+	myCar = ESX.Game.GetVehicleProperties(vehicle)
+	TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
+end)
+
+--repairvehicle
+
+AddEventHandler('repairvehicle',function()
+	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+	exports['mythic_progbar']:Progress({
+		name = "unique_action_name",
+		duration = 6000,
+		label = 'Repairing Vehicle',
+		useWhileDead = true,
+		canCancel = false,
+		controlDisables = {
+			disableMovement = true,
+			disableCarMovement = true,
+			disableMouse = false,
+			disableCombat = true,
+		},
+	})
+	Citizen.Wait(6000)
+	TriggerServerEvent('chargerepair')
+	SetVehicleFixed(vehicle)
+	TriggerEvent('InteractSound_CL:PlayOnOne', 'impactdrill', 0.1)
+end)

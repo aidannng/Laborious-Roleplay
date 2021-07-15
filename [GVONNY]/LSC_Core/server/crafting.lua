@@ -25,6 +25,20 @@ AddEventHandler('craft:iron', function()
     end
 end)
 
+RegisterServerEvent('craft:rubber')
+AddEventHandler('craft:rubber', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local scrapCount = xPlayer.getInventoryItem('cartire').count
+
+    if scrapCount > 0 then
+        xPlayer.removeInventoryItem('cartire', 1)
+        xPlayer.addInventoryItem('rubber', 5)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have a car tire", })
+    end
+end)
+
 RegisterServerEvent('craft:piston')
 AddEventHandler('craft:piston', function()
 

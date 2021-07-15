@@ -46,8 +46,8 @@ Config.SaltychatFolderName = 'saltychat'
 
 -- Voice Chat [only 1 can be true]
 Config.TokoVoip = false
-Config.PMAVoice = false
-Config.MumbleVoip = true
+Config.PMAVoice = true
+Config.MumbleVoip = false
 Config.SaltyChat = false
 
 -- Wallpaper

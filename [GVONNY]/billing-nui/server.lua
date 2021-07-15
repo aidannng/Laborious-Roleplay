@@ -25,8 +25,8 @@ AddEventHandler("getmybills", function()
                 local lastname = result[x].lastname
                 local termlength = result[x].term_length
                 local termamount = result[x].term_amount
-                local termdaysleft = math.ceil(tonumber(result[x].term_days_left) / 2)
-                local daysoverdue= math.ceil(tonumber(result[x].days_overdue) / 2)
+                local termdaysleft = math.ceil(tonumber(result[x].term_days_left) / 4)
+                local daysoverdue= math.ceil(tonumber(result[x].days_overdue) / 4)
 
                 TriggerClientEvent('billing:createbillingrow', src, billid, sender, label, amount, firstname, lastname, target, termlength, termamount, termdaysleft, daysoverdue)
             end
@@ -48,7 +48,8 @@ AddEventHandler("updatebill", function(billID, billAmount)
                     print(balance)
 
                     if(balance >= tonumber(billAmount)) then
-                        xPlayer.removeAccountMoney(name, tonumber(billAmount))
+                        xPlayer.removeAccountMoney('bank', tonumber(billAmount))
+                        print(xPlayer.getAccount(name))
 
                         local target = result[1].target 
                         if(target == 'society_cardealer') then
@@ -64,6 +65,13 @@ AddEventHandler("updatebill", function(billID, billAmount)
                                 balance = balance + billAmount
                 
                                 MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_police'", {['@money'] = balance})
+                            end)
+                        elseif(target == 'society_mechanic') then
+                            MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
+                                local balance = result[1].money
+                                balance = balance + billAmount
+                
+                                MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
                             end)
                         else
                             local xPlayers = ESX.GetPlayers()

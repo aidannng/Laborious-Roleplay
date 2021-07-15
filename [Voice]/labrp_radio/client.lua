@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-global
-local mumble = exports["mumble-voip"]
+local pma = exports["pma-voice"]
 local notify = exports['mythic_notify']
 local currentChannel = 0
 local hasRadio = false
@@ -21,13 +21,15 @@ end
     if not hasRadio then return end
     SetDisplay(true)
 end, false)
-RegisterKeyMapping("radio", "Open or close the radio", "keyboard", Config.DefaultOpenKey) ]]
+RegisterKeyMapping("radio", "Open or close the radio", "keyboard", Config.DefaultOpenKey)
+ ]]
 
 RegisterNetEvent("radio:use")
 AddEventHandler("radio:use", function()
     if not hasRadio then return end
     SetDisplay(true)
-end, false)
+end)
+
 
 RegisterNUICallback('close', function()
     SetDisplay(false)
@@ -53,7 +55,7 @@ RegisterNUICallback('joinChannel', function(data)
         notify:SendAlert("inform", "Attempting to connect to encrypted channel "..channel..".")
         for i,v in pairs(restricted) do
             if PlayerData.job.name == v.job and channel >= v.min and channel <= v.max then
-                mumble:SetRadioChannel(channel)
+                pma:setRadioChannel(channel)
                 notify:SendAlert("success", "Connected to encrypted channel "..channel..".")
                 currentChannel = channel
                 break
@@ -63,14 +65,14 @@ RegisterNUICallback('joinChannel', function(data)
             end
         end
     else
-        mumble:SetRadioChannel(channel)
+        pma:setRadioChannel(channel)
         notify:SendAlert("inform", "Connected to channel "..channel..".")
         currentChannel = channel
     end
 end)
 
 RegisterNUICallback('leaveChannel', function()
-    mumble:SetRadioChannel(0)
+    pma:setRadioChannel(0)
     currentChannel = 0
 
     notify:SendAlert("inform", "Radio turned off.")
@@ -78,19 +80,22 @@ end)
 
 RegisterNUICallback('setVolume', function(data)
     for i,v in pairs(GetActivePlayers()) do
-        mumble:SetRadioVolume(data.volume)
+        pma:setRadioVolume(data.volume)
     end
 end)
 
+pma:setRadioVolume(0.99)
 RegisterNetEvent("radioCount")
 AddEventHandler("radioCount", function(count)
     if hasRadio and count ~= 0 or not hasRadio and count == 0 then return end
 	
 	if count == 0 then
-        mumble:SetRadioChannel(0)
+	    pma:setVoiceProperty("radioEnabled", false)
+        pma:setRadioChannel(0)
 		hasRadio = false
     else
-        mumble:SetRadioChannel(currentChannel)
+	    pma:setVoiceProperty("radioEnabled", true)
+        pma:setRadioChannel(currentChannel)
 		hasRadio = true
     end
 end)

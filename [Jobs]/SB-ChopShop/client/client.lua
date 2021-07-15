@@ -91,13 +91,14 @@ end)
 local pog = false
 local pogg = false
 local poggg = false
+local closetoVehicle = false
 
 Citizen.CreateThread(function()
     while not pog do
         local current = GetVehiclePedIsIn(PlayerPedId(), false)
         local hash = GetHashKey(current)
         local newHash = GetHashKey(ChopSpawn)
-        if missionProgress and hash == newHash then
+        if closetoVehicle and hash == newHash then
             exports['mythic_notify']:SendAlert('inform', 'Now delivery this to my warehouse at the docks!')
             pog = true
             RemoveBlip(zoneblip)

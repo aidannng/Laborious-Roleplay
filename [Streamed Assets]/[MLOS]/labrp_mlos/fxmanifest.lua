@@ -3,8 +3,7 @@ game 'gta5'
 this_is_a_map 'yes'
 
 client_scripts {
-	"bigdogs.lua",
-	"casino.lua" 
+	"bigdogs.lua"
 }
 
 --data_file 'INTERIOR_PROXY_ORDER_FILE' 'interiorproxies.meta'

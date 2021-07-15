@@ -13,6 +13,7 @@ files {
     "ui/main.css",
     "ui/styles/police.css",
     "ui/badges/police.png",
+    "ui/badges/fbi.png",
     "ui/footer.png",
     "ui/mugshot.png"
 }

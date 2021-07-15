@@ -99,6 +99,8 @@ AddEventHandler("pdm:despawnvehicle", function(x, y, z)
     coords = vector3(x,y,z)
     local slotvehicle = ESX.Game.GetClosestVehicle(coords)
     local vehicle =  ESX.Game.DeleteVehicle(slotvehicle)
+
+    
 end)
 
 RegisterNetEvent("pdm:spawnvehicle")
@@ -216,8 +218,6 @@ RegisterNUICallback("purchase", function(data)
 
     TriggerServerEvent('pdmbuy', vehicleProps, "{\"damage\":10,\"fuel\":98}", data.model)
 end)
-
-
 
 RegisterNUICallback("error", function(data)
 	SetDisplay(false)

@@ -1338,6 +1338,20 @@ Citizen.CreateThread(function()
 	end
 end)
 
+-- Create blips FBI BLIP
+Citizen.CreateThread(function()
+	local blip = AddBlipForCoord(vector3(103.0549, -744.1319, 45.74219))
+	SetBlipAsShortRange(blip, true)
+	SetBlipColour(blip, 43)
+	SetBlipDisplay(blip, 4)
+	SetBlipScale(blip, 1.2)
+	SetBlipSprite(blip, 60)
+	
+	BeginTextCommandSetBlipName('STRING')
+	AddTextComponentString('Federal Bureau of Investigation')
+	EndTextCommandSetBlipName(blip)
+end)
+
 -- Draw markers and more
 Citizen.CreateThread(function()
 	while true do
