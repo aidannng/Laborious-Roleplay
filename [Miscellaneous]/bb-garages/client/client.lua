@@ -401,14 +401,14 @@ AddEventHandler('bb-garages:client:fakeplate:usePlate', function(data)
     end
 end)
 
-RegisterCommand('setowned', function()
+--[[ RegisterCommand('setowned', function()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
     local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
     local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)))
     TriggerEvent("vehiclekeys:client:SetOwner", vehicleProps.plate, vehicle)
 	TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
 	TriggerEvent('bb-garages:client:insertOwnedVehicle', vehicleProps.plate, vehicle)
-end) 
+end)  ]]
 
 RegisterNetEvent('bb-garages:client:insertOwnedVehicle')
 AddEventHandler('bb-garages:client:insertOwnedVehicle', function(g, v)
