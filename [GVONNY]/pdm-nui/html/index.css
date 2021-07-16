@@ -31,6 +31,7 @@ body {
 input{
     border:2px solid rgb(44, 50, 66);
     margin-left:5%;
+    margin-right:5%;
 }
 
 .btn {
@@ -73,6 +74,10 @@ input{
 
 .margin-left-10 {
     margin-left: 10px;
+}
+
+.margin-left-5 {
+    margin-left: 5px;
 }
 
 #stock-content {
@@ -152,7 +157,7 @@ select{
 .create-bill{
     background-color: rgb(217,227,251);
     color:rgb(84, 96, 125)!important;
-    height:200px!important;
+    height:220px!important;
 }
 
 .text-align-center{

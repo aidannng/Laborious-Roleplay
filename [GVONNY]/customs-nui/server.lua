@@ -84,7 +84,7 @@ AddEventHandler("lsccreatebill", function(luckynumber, price, termlength)
                 --[[PerformHttpRequest(discord_webhook.url, 
                 function(err, text, header) end, 
                 'POST', 
-                json.encode({username = "LABRP | PDM Logs", content = "**" .. creator.getName() .. "**(".. creator.identifier .. ") has made a new bill for **" .. ower.getName() .. "**(" .. ower.identifier .. ") for a total of **$" .. price .. "** ", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) ]]            
+                json.encode({username = "LABRP | lsc Logs", content = "**" .. creator.getName() .. "**(".. creator.identifier .. ") has made a new bill for **" .. ower.getName() .. "**(" .. ower.identifier .. ") for a total of **$" .. price .. "** ", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) ]]            
             else
                 TriggerClientEvent("lsc:billerror", src, "Customer has insufficient funds")
             end
@@ -111,7 +111,6 @@ end)
 
 RegisterServerEvent("getlscbills")
 AddEventHandler("getlscbills", function()
-    print("getting lsc bills")
     local src = source
     MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'society_mechanic' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0",{}, function(bills)
         if(bills ~= nil and #bills>0) then
@@ -128,5 +127,126 @@ AddEventHandler("getlscbills", function()
                 TriggerClientEvent("lsc:addtobillinglist", src, firstname, lastname, employeefirstname, employeelastname, amount, termlength, daysoverdue)
             end
         end
+    end)
+end)
+
+RegisterServerEvent("lscgetbossinfo")
+AddEventHandler("lscgetbossinfo", function()
+    local src = source
+    local isowner = false
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+    local jobgrade = tonumber(xPlayer.job.grade)
+
+    if(job == "mechanic" and jobgrade > 2) then
+        isowner = true
+    end
+
+    local balance = 0
+    Citizen.Wait(50)
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(money)
+        if(money and #money > 0) then
+            balance = money[1].money
+        end
+    end)
+    Citizen.Wait(50)
+    MySQL.Async.fetchAll("SELECT a.grade, b.firstname, b.lastname, b.identifier FROM job_grades a, users b WHERE a.job_name = 'mechanic' and b.job = 'mechanic' and b.job_grade = a.grade ORDER BY a.grade", {}, function(employees)
+        if(employees and #employees > 0) then
+            for x=1,#employees,1 do
+                TriggerClientEvent("lsc:addemployeetolist", src, employees[x].grade, employees[x].firstname, employees[x].lastname, employees[x].identifier, isowner, balance)
+            end
+        end
+    end)
+end)
+
+RegisterServerEvent("lscpromote")
+AddEventHandler("lscpromote", function(identifier, grade)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    local newgrade = tonumber(grade) + 1
+    if(newgrade < 5) then
+        if(xPlayer ~= nil) then
+            xPlayer.setJob('cardealer', newgrade)
+        end
+        MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
+    else
+        TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "You can not promote past owner", })
+    end
+end)
+
+RegisterServerEvent("lscdemote")
+AddEventHandler("lscdemote", function(identifier, grade)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    local newgrade = tonumber(grade) - 1
+    if(newgrade > -1) then
+        if(xPlayer ~= nil) then
+            xPlayer.setJob('cardealer', newgrade)
+        end
+        MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
+    else
+        TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "You must fire this person", })
+    end
+end)
+
+RegisterServerEvent("lschire")
+AddEventHandler("lschire", function(luckynumber)
+    local xPlayer = ESX.GetPlayerFromId(luckynumber)
+    if(xPlayer ~= nil) then
+        xPlayer.setJob('cardealer', 0)
+    end
+    print(xPlayer.identifier)
+    MySQL.Async.execute("UPDATE users SET job = 'cardealer', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = xPlayer.identifier})
+end)
+
+RegisterServerEvent("lscfire")
+AddEventHandler("lscfire", function(identifier)
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    local newgrade = grade
+    if(xPlayer ~= nil) then
+        xPlayer.setJob('unemployed', 0)
+        MySQL.Async.execute("UPDATE users SET job = 'unemployed', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = identifier})
+    else
+        TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "Player is not in city", })
+    end
+end)
+
+RegisterServerEvent("lscpay")
+AddEventHandler("lscpay", function(identifier, amount)
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    xPlayer.addAccountMoney('bank', tonumber(amount))
+
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
+        local balance = result[1].money
+        balance = balance - amount
+
+        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+    end)
+end)
+
+RegisterServerEvent("lscdeposit")
+AddEventHandler("lscdeposit", function(amount)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.removeAccountMoney('bank', tonumber(amount))
+
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
+        local balance = result[1].money
+        balance = balance + amount
+
+        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+    end)
+end)
+
+RegisterServerEvent("lscwithdraw")
+AddEventHandler("lscwithdraw", function(amount)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.addAccountMoney('bank', tonumber(amount))
+
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
+        local balance = result[1].money
+        balance = balance - amount
+
+        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
     end)
 end)

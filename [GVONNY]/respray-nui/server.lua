@@ -15,7 +15,6 @@ AddEventHandler('esx_lscustom:refreshOwnedVehicle', function(vehicleProps)
 		['@plate'] = vehicleProps.plate
 	}, function(result)
 		if result[1] then
-			local vehicle = json.decode(result[1].vehicle)
 
 			local hash = GetHashKey(result[1].model)
 			if vehicleProps.model == hash then

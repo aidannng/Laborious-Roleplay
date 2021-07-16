@@ -28,7 +28,7 @@
                 <button class="nav-link" id="nav-purchase-tab" data-bs-toggle="tab" data-bs-target="#nav-purchase" type="button" role="tab" aria-controls="nav-purchase" aria-selected="false">Purchase</button>
                 <button class="nav-link" id="nav-bills-tab" data-bs-toggle="tab" data-bs-target="#nav-bills" type="button" role="tab" aria-controls="nav-bills" aria-selected="false">Bills</button>
                 <button class="nav-link" id="nav-stock-tab" data-bs-toggle="tab" data-bs-target="#nav-stock" type="button" role="tab" aria-controls="nav-stock" aria-selected="false">Stock</button>
-                <button class="nav-link" id="nav-boss-tab" data-bs-toggle="tab" data-bs-target="#nav-boss" type="button" role="tab" aria-controls="nav-boss" aria-selected="false">Boss</button>
+                <button class="nav-link" id="nav-boss-tab" data-bs-toggle="tab" data-bs-target="#nav-boss" type="button" role="tab" aria-controls="nav-boss" aria-selected="false">Management</button>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -587,6 +587,116 @@
                         <tbody id="stock">
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-boss" role="tabpanel" aria-labelledby="nav-boss-tab">
+                <br>
+                <div id="owner-info" class="roster-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Account Balance</th>
+                                <th>Withdraw/Deposit</th>
+                                <th>Hire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="account-balance"></td>
+                                <td>
+                                    <input type="number" placeholder="Amount" id="bankamount"/>
+                                    <button class="btn" id="withdraw">Withdraw</button>
+                                    <button class="btn" id="deposit">Deposit</button>
+                                </td>
+                                <td>
+                                    <input type="number" placeholder="Lucky Number" id="hireNumber"/>
+                                    <button class="btn" id="hire">Hire</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <div class="management-container overflow-auto">
+                    <div class="roster-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-3">Owner</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="grade-4" class="employee">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="roster-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-3">CEO</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="grade-3" class="employee">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="roster-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-3">Head Mechanic</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="grade-2" class="employee">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="roster-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-3">Mechanic</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="grade-1" class="employee">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="roster-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-3">Tow Driver</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="grade-0" class="employee">
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -20,28 +20,298 @@ AddEventHandler('esx:setJob', function(job)
 end)
 
 
+
 RegisterNetEvent('openpawnshop')
 AddEventHandler('openpawnshop', function()
-    exports['br-menu']:SetTitle("Pawnshop")
+	TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Pawnshop",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Jewellery",
+            txt = "Rings | Chain's | Watch's",
+            params = {
+                event = "pawnshop:jewellery",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Materials",
+            txt = "Rubber | Copper | Aluminium | Scrap Metal",
+            params = {
+                event = "pawnshop:material",
+                args = {
+                    number = 2,
+                    id = 3
+                }
+            }
+        },
+        {
+            id = 4,
+            header = "Electronic's",
+            txt = "Apple Phone | Nokia | Samsung | Electronic's",
+            params = {
+                event = "pawnshop:electronic",
+                args = {
+                    number = 3,
+                    id = 4
+                }
+            }
+        },
+    })
+end)
 
-    exports['br-menu']:AddButton("Casio Watch" , "$30 - $70" ,'sellcasio' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Wedding Ring" , "$150 - $280" ,'sellwring' ,'' , 'menuone')
-    exports['br-menu']:AddButton("2CT Chain" , "$70 - $95" ,'sell2chain' ,'' , 'menuone')
-    exports['br-menu']:AddButton("5CT Chain" , "$100 - $125" ,'sell5chain' ,'' , 'menuone')
-    exports['br-menu']:AddButton("8CT Chain" , "$140 - $190" ,'sell8chain' ,'' , 'menuone')
-    exports['br-menu']:AddButton("10CT Chain" , "$250 - $400" ,'sell10chain' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Rolex" , "$700 - $1500" ,'sellrolex' ,'' , 'menuone')
-    exports['br-menu']:SubMenu("Jewellery" , "Rings | Chain's | Watch's" , "menuone" )
+AddEventHandler('pawnshop:jewellery',function()
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Jewellery",
+            txt = ""
+        },
+		{
+			id = 2,
+			header = "Casio Watch",
+			txt = "$30 - $70",
+			params = {
+				event = "sellcasio",
+				args = {
+					number = 1,
+					id = 2
+				}
+			}
+		},
+		{
+			id = 3,
+			header = "Wedding Ring",
+			txt = "$150 - $280",
+			params = {
+				event = "sellwring",
+				args = {
+					number = 2,
+					id = 3
+				}
+			}
+		},
+		{
+			id = 4,
+			header = "2CT Chain",
+			txt = "$70 - $95",
+			params = {
+				event = "sell2chain",
+				args = {
+					number = 3,
+					id = 4
+				}
+			}
+		},
+        {
+			id = 5,
+			header = "5CT Chain",
+			txt = "$100 - $125",
+			params = {
+				event = "sell5chain",
+				args = {
+					number = 4,
+					id = 5
+				}
+			}
+		},
+        {
+			id = 6,
+			header = "8CT Chain",
+			txt = "$140 - $190",
+			params = {
+				event = "sell8chain",
+				args = {
+					number = 5,
+					id = 6
+				}
+			}
+		},
+        {
+			id = 7,
+			header = "10CT Chain",
+			txt = "$250 - $400",
+			params = {
+				event = "sell10chain",
+				args = {
+					number = 6,
+					id = 7
+				}
+			}
+		},
+        {
+			id = 8,
+			header = "Rolex",
+			txt = "$700 - $1500",
+			params = {
+				event = "sellrolex",
+				args = {
+					number = 7,
+					id = 8
+				}
+			}
+		},
+        {
+			id = 9,
+			header = "Go Back",
+			txt = "",
+			params = {
+				event = "openpawnshop",
+				args = {
+					number = 8,
+					id = 9
+				}
+			}
+		}
+	})
+end)
 
+AddEventHandler('pawnshop:material',function()
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Materials",
+            txt = ""
+        },
+		{
+			id = 2,
+			header = "Scrap Metal",
+			txt = "$45 - $60",
+			params = {
+				event = "sellscrap",
+				args = {
+					number = 1,
+					id = 2
+				}
+			}
+		},
+		{
+			id = 3,
+			header = "Aluminium",
+			txt = "$35 - $45",
+			params = {
+				event = "sellaluminium",
+				args = {
+					number = 2,
+					id = 3
+				}
+			}
+		},
+		{
+			id = 4,
+			header = "Copper",
+			txt = "$25 - $35",
+			params = {
+				event = "sellcopper",
+				args = {
+					number = 3,
+					id = 4
+				}
+			}
+		},
+        {
+			id = 5,
+			header = "Rubber",
+			txt = "$25 - $35",
+			params = {
+				event = "sellrubber",
+				args = {
+					number = 4,
+					id = 5
+				}
+			}
+		},
+        {
+			id = 6,
+			header = "Go Back",
+			txt = "",
+			params = {
+				event = "openpawnshop",
+				args = {
+					number = 5,
+					id = 6
+				}
+			}
+		}
+	})
+end)
 
-    exports['br-menu']:AddButton("Scrap Metal" , "$45 - $60" ,'sellscrap' ,'' , 'menutwo')
-    exports['br-menu']:AddButton("Aluminium" , "$35 - $45" ,'sellaluminium' ,'' , 'menutwo')
-    exports['br-menu']:AddButton("Copper" , "$25 - $35" ,'sellcopper' ,'' , 'menutwo')
-    exports['br-menu']:AddButton("Rubber" , "$25 - $35" ,'sellrubber' ,'' , 'menutwo')
-    exports['br-menu']:AddButton("Electronics" , "$45 - $60" ,'sellelectronics' ,'' , 'menutwo')
-    exports['br-menu']:SubMenu("Materials" , "Rubber | Copper | Aluminium | Scrap Metal" , "menutwo" )
-
-    exports['br-menu']:SubMenu("Coming Soon..." , "👀" ,'' ,'' , '')
+AddEventHandler('pawnshop:electronic',function()
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Electronic's",
+            txt = ""
+        },
+		{
+			id = 2,
+			header = "Apple Phone",
+			txt = "$175 - $300",
+			params = {
+				event = "selliphone",
+				args = {
+					number = 1,
+					id = 2
+				}
+			}
+		},
+		{
+			id = 3,
+			header = "Nokia",
+			txt = "$25 - $40",
+			params = {
+				event = "sellnokia",
+				args = {
+					number = 2,
+					id = 3
+				}
+			}
+		},
+		{
+			id = 4,
+			header = "Samsung S8",
+			txt = "$150 - $220",
+			params = {
+				event = "sellsamsung",
+				args = {
+					number = 3,
+					id = 4
+				}
+			}
+		},
+        {
+			id = 5,
+			header = "Electronic",
+			txt = "$45 - $70",
+			params = {
+				event = "sellelectronic",
+				args = {
+					number = 4,
+					id = 5
+				}
+			}
+		},
+        {
+			id = 6,
+			header = "Go Back",
+			txt = "",
+			params = {
+				event = "openpawnshop",
+				args = {
+					number = 5,
+					id = 6
+				}
+			}
+		}
+	})
 end)
 
 
@@ -81,6 +351,24 @@ end)
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
     TriggerServerEvent('pawnshop:sellrolex')
+end)
+
+RegisterNetEvent('selliphone')
+AddEventHandler('selliphone', function()
+    TriggerServerEvent('pawnshop:selliphone')
+end)
+
+RegisterNetEvent('sellnokia')
+AddEventHandler('sellnokia', function()
+    TriggerServerEvent('pawnshop:sellnokia')
+end)
+RegisterNetEvent('sellsamsung')
+AddEventHandler('sellsamsung', function()
+    TriggerServerEvent('pawnshop:sellsamsung')
+end)
+RegisterNetEvent('sellelectronic')
+AddEventHandler('sellelectronic', function()
+    TriggerServerEvent('pawnshop:sellelectronic')
 end)
 
 

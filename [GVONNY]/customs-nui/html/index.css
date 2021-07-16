@@ -66,12 +66,22 @@ input{
     color:rgb(44, 50, 66)!important;
 }
 
+.roster-content {
+    border:2px solid rgb(44, 50, 66);
+    background-color: rgb(217,227,251)!important;
+    border-radius: 5px;
+}
+
 .margin-left-10pct{
     margin-left:10%;
 }
 
 .margin-left-10 {
     margin-left: 10px;
+}
+
+.margin-left-5 {
+    margin-left: 5px;
 }
 
 #stock-content {

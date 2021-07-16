@@ -1,5 +1,6 @@
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+local discord_webhook = {url = "https://discord.com/api/webhooks/861474902493495317/oTnEfRLpSViVKPOTQQ8Rsas9dCUTKrgGrzJ7s7w3rnTAbc42wVQKrVUyf43ap71_WKvf",image = "https://i.iodine.gg/i5fba.png"}
 
 RegisterServerEvent('checkadvancedlockpick')
 AddEventHandler('checkadvancedlockpick', function()
@@ -20,6 +21,11 @@ AddEventHandler('powerblackout', function()
     TriggerClientEvent('chat:addMessage',-1 , {
         template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(70, 130, 180,0.5); border-radius: 3px;">^*[LS Water & Power]: Power Outage at LS Water & Power!</div>',
     });
+
+    PerformHttpRequest(discord_webhook.url, function(err, text, header) end, 'POST', 
+	json.encode({username = "LABRP | Robbery Logs", content = "**" .. xPlayer.getName() .. "**(".. xPlayer.identifier .. ") has started a water & power blackout", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+
+
 end)--[LS Water & Power]: Power Outage at LS Water & Power!
 
 RegisterServerEvent('GiveSafeReward')

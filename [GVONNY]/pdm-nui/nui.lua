@@ -191,7 +191,34 @@ RegisterNUICallback("endtestdrive", function(data)
     else
         exports['mythic_notify']:SendAlert('error', 'You are not standing by that vehicle')
     end
+end)
 
+RegisterNUICallback("pdmwithdraw", function(data)
+    TriggerServerEvent("pdmwithdraw", data.amount)
+end)
+
+RegisterNUICallback("pdmdeposit", function(data)
+    TriggerServerEvent("pdmdeposit", data.amount)
+end)
+
+RegisterNUICallback("pdmpay", function(data)
+    TriggerServerEvent("pdmpay", data.identifier, data.amount)
+end)
+
+RegisterNUICallback("pdmpromote", function(data)
+    TriggerServerEvent("pdmpromote", data.identifier, data.grade)
+end)
+
+RegisterNUICallback("pdmdemote", function(data)
+    TriggerServerEvent("pdmdemote", data.identifier, data.grade)
+end)
+
+RegisterNUICallback("pdmfire", function(data)
+    TriggerServerEvent("pdmfire", data.identifier)
+end)
+
+RegisterNUICallback("pdmhire", function(data)
+    TriggerServerEvent("pdmhire", data.luckynumber)
 end)
 
 RegisterNUICallback("getbossinfo", function(data)

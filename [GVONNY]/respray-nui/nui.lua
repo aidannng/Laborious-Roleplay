@@ -72,10 +72,17 @@ AddEventHandler("respray:interior", function(type, color)
     local xPlayer = PlayerPedId()
     
     local vehicleID = GetVehiclePedIsIn(xPlayer, false)
+    print(vehicleID)
+    local props = ESX.Game.GetVehicleProperties(vehicleID)
 
     if vehicleID ~= 0 then
         SetVehicleInteriorColor(vehicleID, color)
-        local props = ESX.Game.GetVehicleProperties(vehicleID)
+        props = ESX.Game.GetVehicleProperties(vehicleID)
+        for key,value in pairs(props) do
+            if(key == "modTrimB" or key == "modTrimA") then
+                props[key] = color
+            end
+        end
         TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
