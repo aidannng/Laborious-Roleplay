@@ -2748,3 +2748,21 @@ table.insert(Config.DoorList, {
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 	-- autoLock = 1000
 })
+
+-- FBI Elevator
+table.insert(Config.DoorList, {
+	authorizedJobs = { ['fbi']=7 },
+	audioRemote = false,
+	slides = false,
+	doors = {
+		{objHash = -1225363909, objHeading = 339.85760498047, objCoords = vector3(137.7594, -763.9288, 44.75291)},
+		{objHash = 1219957182, objHeading = 339.99993896484, objCoords = vector3(139.1689, -764.4418, 44.75182)}
+ },
+	maxDistance = 0.1,
+	lockpick = false,
+	locked = true,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})

@@ -135,7 +135,7 @@ AddEventHandler('wf-alerts:svNotify911', function(message, caller, coords)
 		pData.displayCode = '911'
 		if caller == _U('caller_unknown') then pData.dispatchMessage = _U('unknown_caller') else
 		pData.dispatchMessage = _U('call_from') .. caller end
-		pData.recipientList = {'police', 'ambulance'}
+		pData.recipientList = {'police', 'ambulance', 'fbi'}
 		pData.length = 13000
 		pData.infoM = 'fa-phone'
 		pData.info = message

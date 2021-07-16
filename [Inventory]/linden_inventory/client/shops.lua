@@ -159,6 +159,68 @@ Citizen.CreateThread(function()
     
 end)
 
+RegisterNetEvent("fbi:Lift")
+AddEventHandler("fbi:Lift", function()
+    exports['br-menu']:SetTitle("FBI Lift")
+    exports['br-menu']:AddButton("Floor 49" , "Communications/Main Offices" ,'fbi:Lift:f49' ,true ,"menuone")
+    exports['br-menu']:AddButton("Floor 01" , "Main Lobby" ,'fbi:Lift:f01' ,true ,"menuone")
+    exports['br-menu']:AddButton("Floor -1" , "FBI Car Park" ,'fbi:Lift:f01' ,true ,"menuone")
+end)
+
+RegisterNetEvent("fbi:Lift:f49")
+AddEventHandler("fbi:Lift:f49", function()
+    local ped = PlayerPedId()
+    SetEntityCoords(ped, 136.2725 , -761.5516 , 242.1436 ) 
+end)
+
+RegisterNetEvent("fbi:Lift:f01")
+AddEventHandler("fbi:Lift:f01", function()    
+    local ped = PlayerPedId()
+    SetEntityCoords(ped, 136.2725 , -760.5516 , 45.1436 ) 
+end) 
+
+Citizen.CreateThread(function()
+    exports['labrp_Eye']:AddBoxZone("FBILift1", vector3(136.6022, -763.0417, 45.74219), 1.0, 0.8, {
+    name="FBILift1",
+    heading=90,
+    debugPoly=false,
+    minZ=45.7,
+    maxZ=46.6
+    }, {
+        options = {
+            {
+                event = "fbi:Lift",
+                icon = "far fa-clipboard",
+                label = "Use Elevator",
+            },
+        },
+        job = {"all"},
+        distance = 1.5
+    })   
+end)
+
+Citizen.CreateThread(function()
+    exports['labrp_Eye']:AddBoxZone("FBILift49", vector3(136.6681, -763.0549, 242.1436), 1.0, 0.8, {
+    name="FBILift49",
+    heading=90,
+    debugPoly=false,
+    minZ=242.1, 
+    maxZ=243.0
+    }, {
+        options = {
+            {
+                event = "fbi:Lift",
+                icon = "far fa-clipboard",
+                label = "Use Elevator",
+            },
+        },
+        job = {"all"},
+        distance = 1.5
+    })   
+end)
+
+
+
 Citizen.CreateThread(function()
         
     

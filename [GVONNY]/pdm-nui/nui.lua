@@ -95,12 +95,11 @@ AddEventHandler("pdm:billerror", function(a)
 end)
 
 RegisterNetEvent("pdm:despawnvehicle")
-AddEventHandler("pdm:despawnvehicle", function(x, y, z)
-    coords = vector3(x,y,z)
-    local slotvehicle = ESX.Game.GetClosestVehicle(coords)
-    local vehicle =  ESX.Game.DeleteVehicle(slotvehicle)
-
-    
+AddEventHandler("pdm:despawnvehicle", function(slot)
+    SendNUIMessage({
+		clearshowroomslot=true,
+        slot=slot,
+	})
 end)
 
 RegisterNetEvent("pdm:spawnvehicle")
@@ -144,6 +143,18 @@ AddEventHandler("pdm:refreshstocklist", function()
     TriggerServerEvent("getallstock")
 end)
 
+RegisterNetEvent("pdm:addemployeetolist")
+AddEventHandler("pdm:addemployeetolist", function(a, b, c, d, f, g)
+    SendNUIMessage({
+		jobgrade=a,
+        employeefirstname=b,
+        employeelastname=c,
+        identifier=d,
+        isowner=f,
+        balance=g,
+	})
+end)
+
 
 --[[ RegisterCommand("pdm", function()
     TriggerEvent("pdm:menu")
@@ -155,7 +166,36 @@ AddEventHandler("pdm:menu", function()
 end)
 
 RegisterNUICallback("endtestdrive", function(data)
-    TriggerServerEvent("endtestdrive", data.plate)
+    local showroomplate = data.plate
+    local playerPed = PlayerPedId()
+
+    local vehicle = ESX.Game.GetVehicleInDirection()
+    if IsPedInAnyVehicle(ESX.PlayerData.ped, true) then
+        vehicle = GetVehiclePedIsIn(ESX.PlayerData.ped, false)
+    end
+
+
+    if DoesEntityExist(vehicle) then
+        local plate = GetVehicleNumberPlateText(vehicle)
+        local playerPed = PlayerPedId()
+        print(showroomplate == plate)
+        if(showroomplate == plate) then
+            print("plates match start removing vehicle")
+            TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+            Citizen.Wait(500)
+            local temp = DeleteVehicle(vehicle)
+            TriggerServerEvent("endtestdrive", data.plate)
+        else
+            exports['mythic_notify']:SendAlert('error', 'You are not standing by that vehicle')
+        end
+    else
+        exports['mythic_notify']:SendAlert('error', 'You are not standing by that vehicle')
+    end
+
+end)
+
+RegisterNUICallback("getbossinfo", function(data)
+    TriggerServerEvent("pdmgetbossinfo")
 end)
 
 RegisterNUICallback("spawntestdrive", function(data)
@@ -175,7 +215,30 @@ RegisterNUICallback("movetoshowroom", function(data)
 end)
 
 RegisterNUICallback("removefromshowroom", function(data)
-    TriggerServerEvent("removefromshowroom", data.showroomslot)
+    local showroomplate = data.showroomplate
+    local showroomslot = data.showroomslot
+    local playerPed = PlayerPedId()
+
+    local vehicle = ESX.Game.GetVehicleInDirection()
+    if IsPedInAnyVehicle(ESX.PlayerData.ped, true) then
+        vehicle = GetVehiclePedIsIn(ESX.PlayerData.ped, false)
+    end
+
+
+    if DoesEntityExist(vehicle) then
+        local plate = GetVehicleNumberPlateText(vehicle)
+        if(showroomplate == plate) then
+            print("plates match start removing vehicle")
+            TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+            Citizen.Wait(500)
+            local temp = DeleteVehicle(vehicle)
+            TriggerServerEvent("removefromshowroom", showroomslot)
+        else
+            exports['mythic_notify']:SendAlert('error', 'You are not standing by that vehicle')
+        end
+    else
+        exports['mythic_notify']:SendAlert('error', 'You are not standing by that vehicle')
+    end
 end)
 
 RegisterNUICallback("getshowroom", function(data)

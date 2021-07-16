@@ -1552,19 +1552,20 @@ Citizen.CreateThread(
 
                 --ENGINE WEAR
                 if currentVehicleParts["engine"].health <= 0 then
-                    SetVehicleEngineHealth(currentVehicle, -4000)
+                    --SetVehicleEngineHealth(currentVehicle, -4000)
+                    print("VEHICLE ENGINE HEALTH = 0, CLIENT LINE 1555, IF <= 0")
+                    print("VEHICLE ENGINE HEALTH = 0, CLIENT LINE 1555, IF <= 0")
+                    print("VEHICLE ENGINE HEALTH = 0, CLIENT LINE 1555, IF <= 0")
+                    print("VEHICLE ENGINE HEALTH = 0, CLIENT LINE 1555, IF <= 0")
                 else
                     if currentVehicleParts["engine"].health < 30 then
                         checkEngine = true
+                        print("ENGINE HEALTH LOWER THEN 30 (LINE 1556) ON THE ELSE")
                     end
 
                     currentVehicleParts["engine"].health = GetVehicleEngineHealth(currentVehicle) / 10
-                    SetVehicleEngineHealth(
-                        currentVehicle,
-                        (currentVehicleParts["engine"].health * 10) -
-                            ((100 - Config.Engines[currentVehicleParts["engine"].type].durability) *
-                                ((kmh / (currentWear / 2)) + (rpm / (currentWear))))
-                    )
+                    print("ELSE WAS TRIGGERED ( THE / 10 )")
+                    --SetVehicleEngineHealth(currentVehicle,(currentVehicleParts["engine"].health * 10) -((100 - Config.Engines[currentVehicleParts["engine"].type].durability) *((kmh / (currentWear / 2)) + (rpm / (currentWear)))))
                 end
 
                 --TIRE WEAR

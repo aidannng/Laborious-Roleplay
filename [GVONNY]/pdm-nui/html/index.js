@@ -28,6 +28,14 @@ $(function () {
         $.post('http://pdm-nui/getbills', JSON.stringify({}));
     });
 
+    $('#nav-boss-tab').click(function(){
+        for(var x = 0; x < 6; x++)
+        {
+            $('#grade-' + x).empty();
+        }
+        $.post('http://pdm-nui/getbossinfo', JSON.stringify({}));
+    });
+
 
     $('#categories').change(function(){
         var category = $(this).val().toLowerCase();
@@ -68,19 +76,23 @@ $(function () {
 
     $(".showroom-slot").on("click", ".remove-showroom", function (){
         var id = $(this).data('slot');
-        $('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
+        var plate = $(this).data('plate');
+        //$('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
 
         $.post('http://pdm-nui/removefromshowroom', JSON.stringify({
             showroomslot:id,
+            showroomplate:plate,
         }));
     }); 
 
     $(".showroom-slot").on("click", ".test-drive", function (){
         var id = $(this).data('slot');
-        $('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
+        var plate = $(this).data('plate');
+        //$('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
 
         $.post('http://pdm-nui/removefromshowroom', JSON.stringify({
             showroomslot:id,
+            showroomplate:plate,
         }));
 
         $.post('http://pdm-nui/spawntestdrive', JSON.stringify({
@@ -220,11 +232,11 @@ $(function () {
         //showroom tab
         if(item.showroomslot != null)
         {
-            var str = "<span><strong>"+ item.showroomslot +". </strong></span><span>"+ item.showroommodel +"</span><span class=\"margin-left-10pct\">"+ item.showroomplate +"</span><span class=\"margin-left-10pct\"><button class=\"btn remove-showroom\" data-slot="+ item.showroomslot +">Remove from floor</button></span>";
+            var str = "<span><strong>"+ item.showroomslot +". </strong></span><span>"+ item.showroommodel +"</span><span class=\"margin-left-10pct\">"+ item.showroomplate +"</span><span class=\"margin-left-10pct\"><button class=\"btn remove-showroom\" data-slot="+ item.showroomslot +" data-plate="+ item.showroomplate +">Remove from floor</button></span>";
 
             if(item.cantestdrive)
             {
-                str = str + "<span class=\"margin-left-10pct\"><button class=\"btn test-drive\" data-slot="+ item.showroomslot +">Test Drive</button></span>"
+                str = str + "<span class=\"margin-left-10pct\"><button class=\"btn test-drive\" data-slot="+ item.showroomslot +" data-plate="+ item.showroomplate +">Test Drive</button></span>"
             }
 
             var id = item.showroomslot;
@@ -257,6 +269,42 @@ $(function () {
         if(item.error != null)
         {
             $('#error').html(item.error)
+        }
+
+        if(item.clearshowroomslot)
+        {
+            var id = item.slot
+            $('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
+        }
+
+        if(item.jobgrade != null)
+        {
+            var id = item.jobgrade;
+            console.log(id)
+
+            var str = "<tr id=\""+ item.identifier +"\"><td>"+ item.employeefirstname + " " + item.employeelastname +"</td>";
+
+            if(item.isowner)
+            {
+                str = str + "<td><input type=\"number\" placeholder=\"Amount\" id=\"pay-amount\"/><button class=\"btn pay\">Pay</button></td>" +
+                            "<td><button class=\"btn promote\" data-identifier=\""+ item.identifier +"\">Promote</button><button class=\"btn demote\" data-identifier=\""+ item.identifier +"\">Demote</button></td>"
+            }
+
+            str = str + "</tr>";
+            $('#grade-' + id).append(str)
+            
+            if(item.isowner)
+            {
+                console.log("is owner")
+                console.log(item.balance)
+                $('#account-balance').empty().html("$" + item.balance.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+                $('#owner-info').attr('hidden', false);
+            }
+            else
+            {
+                console.log("not owner")
+                $('#owner-info').attr('hidden', true);
+            }
         }
     })
     // if the person uses the escape key, it will exit the resource

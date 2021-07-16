@@ -228,6 +228,18 @@ Items = {
 		}
 	},
 
+	['spikestrips'] = {
+		label = 'Spike Strips',
+		weight = 2500,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'placespikes'
+		}
+	},
+
 	['radio'] = {
 		label = 'Radio',
 		weight = 650,

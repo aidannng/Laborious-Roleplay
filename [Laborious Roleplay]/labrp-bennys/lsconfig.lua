@@ -77,616 +77,583 @@ LSC_Config.prices = {}
 LSC_Config.prices = {
 
 ------Window tint------
-	windowtint = {
-		{ name = "Pure Black", tint = 1, price = 500},
-		{ name = "Darksmoke", tint = 2, price = 500},
-		{ name = "Lightsmoke", tint = 3, price = 500},
-		{ name = "Limo", tint = 4, price = 500},
-		{ name = "Green", tint = 5, price = 500},
-	},
+windowtint = {
+	{ name = "Pure Black", tint = 1, price =350},
+	{ name = "Darksmoke", tint = 2, price = 300},
+	{ name = "Lightsmoke", tint = 3, price = 250},
+	{ name = "Limo", tint = 4, price = 200},
+	{ name = "Green", tint = 5, price = 200},
+},
 
 -------Respray--------
 ----Primary color---
-	--Chrome 
-	chrome = {
-		colors = {
-			{name = "Chrome", colorindex = 120}
-		},
-		price = 500
+--Chrome 
+chrome = {
+	colors = {
+		{name = "Chrome", colorindex = 120}
 	},
-	--Classic 
-	classic = {
-		colors = colors,
-		price = 250
-	},
-	--Matte 
-	matte = {
-		colors = mattecolors,
-		price = 250
-	},
-	--Metallic 
-	metallic = {
-		colors = colors,
-		price = 250
-	},
-	--Metals 
-	metal = {
-		colors = metalcolors,
-		price = 250
-	},
+	price = 1000
+},
+--Classic 
+classic = {
+	colors = colors,
+	price = 100
+},
+--Matte 
+matte = {
+	colors = mattecolors,
+	price = 100
+},
+--Metallic 
+metallic = {
+	colors = colors,
+	price = 100
+},
+--Metals 
+metal = {
+	colors = metalcolors,
+	price = 100
+},
 
 ----Secondary color---
-	--Chrome 
-	chrome2 = {
-		colors = {
-			{name = "Chrome", colorindex = 120}
-		},
-		price = 250
+--Chrome 
+chrome2 = {
+	colors = {
+		{name = "Chrome", colorindex = 120}
 	},
-	--Classic 
-	classic2 = {
-		colors = colors,
-		price = 250
-	},
-	--Matte 
-	matte2 = {
-		colors = mattecolors,
-		price = 250
-	},
-	--Metallic 
-	metallic2 = {
-		colors = colors,
-		price = 250
-	},
-	--Metals 
-	metal2 = {
-		colors = metalcolors,
-		price = 250
-	},
+	price = 1000
+},
+--Classic 
+classic2 = {
+	colors = colors,
+	price = 100
+},
+--Matte 
+matte2 = {
+	colors = mattecolors,
+	price = 100
+},
+--Metallic 
+metallic2 = {
+	colors = colors,
+	price = 100
+},
+--Metals 
+metal2 = {
+	colors = metalcolors,
+	price = 100
+},
 
 ------Neon layout------
-	neonlayout = {
-		{name = "Front,Back and Sides", price = 500},
-	},
-	--Neon color
-	neoncolor = {
-		{ name = "White", neon = {255,255,255}, price = 500},
-		{ name = "Blue", neon = {0,0,255}, price = 500},
-		{ name = "Electric Blue", neon = {0,150,255}, price = 500},
-		{ name = "Mint Green", neon = {50,255,155}, price = 500},
-		{ name = "Lime Green", neon = {0,255,0}, price = 500},
-		{ name = "Yellow", neon = {255,255,0}, price = 500},
-		{ name = "Golden Shower", neon = {204,204,0}, price = 500},
-		{ name = "Orange", neon = {255,128,0}, price = 500},
-		{ name = "Red", neon = {255,0,0}, price = 500},
-		{ name = "Pony Pink", neon = {255,102,255}, price = 500},
-		{ name = "Hot Pink",neon = {255,0,255}, price = 500},
-		{ name = "Purple", neon = {153,0,153}, price = 500},
-		{ name = "Brown", neon = {139,69,19}, price = 500},
-	},
-	
+neonlayout = {
+	{name = "Front,Back and Sides", price = 500},
+},
+--Neon color
+neoncolor = {
+	{ name = "White", neon = {255,255,255}, price = 150},
+	{ name = "Blue", neon = {0,0,255}, price = 150},
+	{ name = "Electric Blue", neon = {0,150,255}, price = 150},
+	{ name = "Mint Green", neon = {50,255,155}, price = 150},
+	{ name = "Lime Green", neon = {0,255,0}, price = 150},
+	{ name = "Yellow", neon = {255,255,0}, price = 150},
+	{ name = "Golden Shower", neon = {204,204,0}, price = 150},
+	{ name = "Orange", neon = {255,128,0}, price = 150},
+	{ name = "Red", neon = {255,0,0}, price = 150},
+	{ name = "Pony Pink", neon = {255,102,255}, price = 150},
+	{ name = "Hot Pink",neon = {255,0,255}, price = 150},
+	{ name = "Purple", neon = {153,0,153}, price = 150},
+	{ name = "Brown", neon = {139,69,19}, price = 150},
+},
+
 --------Plates---------
-	plates = {
-		{ name = "Blue on White 1", plateindex = 0, price = 150},
-		{ name = "Blue On White 2", plateindex = 3, price = 150},
-		{ name = "Blue On White 3", plateindex = 4, price = 150},
-		{ name = "Yellow on Blue", plateindex = 2, price = 150},
-		{ name = "Yellow on Black", plateindex = 1, price = 150},
-	},
-	
+plates = {
+	{ name = "Blue on White 1", plateindex = 0, price = 150},
+	{ name = "Blue On White 2", plateindex = 3, price = 150},
+	{ name = "Blue On White 3", plateindex = 4, price = 150},
+	{ name = "Yellow on Blue", plateindex = 2, price = 150},
+	{ name = "Yellow on Black", plateindex = 1, price = 150},
+},
+
 --------Wheels--------
 ----Wheel accessories----
-	wheelaccessories = {
-		{ name = "Stock Tires", price = 1500},
-		{ name = "Custom Tires", price = 1500},
-		{ name = "White Tire Smoke",smokecolor = {254,254,254}, price = 1500},
-		{ name = "Black Tire Smoke", smokecolor = {1,1,1}, price = 1500},
-		{ name = "BLue Tire Smoke", smokecolor = {0,150,255}, price = 1500},
-		{ name = "Yellow Tire Smoke", smokecolor = {255,255,50}, price = 1500},
-		{ name = "Orange Tire Smoke", smokecolor = {255,153,51}, price = 1500},
-		{ name = "Red Tire Smoke", smokecolor = {255,10,10}, price = 1500},
-		{ name = "Green Tire Smoke", smokecolor = {10,255,10}, price = 1500},
-		{ name = "Purple Tire Smoke", smokecolor = {153,10,153}, price = 1500},
-		{ name = "Pink Tire Smoke", smokecolor = {255,102,178}, price = 1500},
-		{ name = "Gray Tire Smoke",smokecolor = {128,128,128}, price = 1500},
-	},
+wheelaccessories = {
+	{ name = "Stock Tires", price = 700},
+	{ name = "Custom Tires", price = 1000},
+	{ name = "White Tire Smoke",smokecolor = {254,254,254}, price = 1000},
+	{ name = "Black Tire Smoke", smokecolor = {1,1,1}, price = 300},
+	{ name = "BLue Tire Smoke", smokecolor = {0,150,255}, price = 300},
+	{ name = "Yellow Tire Smoke", smokecolor = {255,255,50}, price = 300},
+	{ name = "Orange Tire Smoke", smokecolor = {255,153,51}, price = 300},
+	{ name = "Red Tire Smoke", smokecolor = {255,10,10}, price = 300},
+	{ name = "Green Tire Smoke", smokecolor = {10,255,10}, price = 300},
+	{ name = "Purple Tire Smoke", smokecolor = {153,10,153}, price = 300},
+	{ name = "Pink Tire Smoke", smokecolor = {255,102,178}, price = 300},
+	{ name = "Gray Tire Smoke",smokecolor = {128,128,128}, price = 300},
+},
 
 ----Wheel color----
-	wheelcolor = {
-		colors = colors,
-		price = 500,
-	},
+wheelcolor = {
+	colors = colors,
+	price = 200,
+},
+
 
 ----Front wheel (Bikes)----
-	frontwheel = {
-		{name = "Stock", wtype = 6, mod = -1, price = 500},
-		{name = "Speedway", wtype = 6, mod = 0, price = 500},
-		{name = "Streetspecial", wtype = 6, mod = 1, price = 500},
-		{name = "Racer", wtype = 6, mod = 2, price = 500},
-		{name = "Trackstar", wtype = 6, mod = 3, price = 500},
-		{name = "Overlord", wtype = 6, mod = 4, price = 500},
-		{name = "Trident", wtype = 6, mod = 5, price = 500},
-		{name = "Triplethreat", wtype = 6, mod = 6, price = 500},
-		{name = "Stilleto", wtype = 6, mod = 7, price = 500},
-		{name = "Wires", wtype = 6, mod = 8, price = 500},
-		{name = "Bobber", wtype = 6, mod = 9, price = 500},
-		{name = "Solidus", wtype = 6, mod = 10, price = 500},
-		{name = "Iceshield", wtype = 6, mod = 11, price = 500},
-		{name = "Loops", wtype = 6, mod = 12, price = 500},
-	},
+frontwheel = {
+	{name = "Stock", wtype = 6, mod = -1, price = 200},
+	{name = "Speedway", wtype = 6, mod = 0, price = 300},
+
+{name = "Streetspecial", wtype = 6, mod = 1, price = 300},
+	{name = "Racer", wtype = 6, mod = 2, price = 300},
+	{name = "Trackstar", wtype = 6, mod = 3, price = 300},
+	{name = "Overlord", wtype = 6, mod = 4, price = 300},
+	{name = "Trident", wtype = 6, mod = 5, price = 300},
+	{name = "Triplethreat", wtype = 6, mod = 6, price = 300},
+	{name = "Stilleto", wtype = 6, mod = 7, price = 300},
+	{name = "Wires", wtype = 6, mod = 8, price = 300},
+	{name = "Bobber", wtype = 6, mod = 9, price = 300},
+	{name = "Solidus", wtype = 6, mod = 10, price = 300},
+	{name = "Iceshield", wtype = 6, mod = 11, price = 300},
+	{name = "Loops", wtype = 6, mod = 12, price = 300},
+},
 
 ----Back wheel (Bikes)-----
-	backwheel = {
-		{name = "Stock", wtype = 6, mod = -1, price = 500},
-		{name = "Speedway", wtype = 6, mod = 0, price = 500},
-		{name = "Streetspecial", wtype = 6, mod = 1, price = 500},
-		{name = "Racer", wtype = 6, mod = 2, price = 500},
-		{name = "Trackstar", wtype = 6, mod = 3, price = 500},
-		{name = "Overlord", wtype = 6, mod = 4, price = 500},
-		{name = "Trident", wtype = 6, mod = 5, price = 500},
-		{name = "Triplethreat", wtype = 6, mod = 6, price = 500},
-		{name = "Stilleto", wtype = 6, mod = 7, price = 500},
-		{name = "Wires", wtype = 6, mod = 8, price = 500},
-		{name = "Bobber", wtype = 6, mod = 9, price = 500},
-		{name = "Solidus", wtype = 6, mod = 10, price = 500},
-		{name = "Iceshield", wtype = 6, mod = 11, price = 500},
-		{name = "Loops", wtype = 6, mod = 12, price = 500},
-	},
+backwheel = {
+	{name = "Stock", wtype = 6, mod = -1, price = 300},
+	{name = "Speedway", wtype = 6, mod = 0, price = 300},
+	{name = "Streetspecial", wtype = 6, mod = 1, price = 300},
+	{name = "Racer", wtype = 6, mod = 2, price = 300},
+	{name = "Trackstar", wtype = 6, mod = 3, price = 300},
+	{name = "Overlord", wtype = 6, mod = 4, price = 300},
+	{name = "Trident", wtype = 6, mod = 5, price = 300},
+	{name = "Triplethreat", wtype = 6, mod = 6, price = 300},
+	{name = "Stilleto", wtype = 6, mod = 7, price = 300},
+	{name = "Wires", wtype = 6, mod = 8, price = 300},
+	{name = "Bobber", wtype = 6, mod = 9, price = 300},
+	{name = "Solidus", wtype = 6, mod = 10, price = 300},
+	{name = "Iceshield", wtype = 6, mod = 11, price = 300},
+	{name = "Loops", wtype = 6, mod = 12, price = 300},
+},
 
 ----Sport wheels-----
-	sportwheels = {
-		{name = "Stock", wtype = 0, mod = -1, price = 500},
-		{name = "Inferno", wtype = 0, mod = 0, price = 500},
-		{name = "Deepfive", wtype = 0, mod = 1, price = 500},
-		{name = "Lozspeed", wtype = 0, mod = 2, price = 500},
-		{name = "Diamondcut", wtype = 0, mod = 3, price = 500},
-		{name = "Chrono", wtype = 0, mod = 4, price = 500},
-		{name = "Feroccirr", wtype = 0, mod = 5, price = 500},
-		{name = "Fiftynine", wtype = 0, mod = 6, price = 500},
-		{name = "Mercie", wtype = 0, mod = 7, price = 500},
-		{name = "Syntheticz", wtype = 0, mod = 8, price = 500},
-		{name = "Organictyped", wtype = 0, mod = 9, price = 500},
-		{name = "Endov1", wtype = 0, mod = 10, price = 500},
-		{name = "Duper7", wtype = 0, mod = 11, price = 500},
-		{name = "Uzer", wtype = 0, mod = 12, price = 500},
-		{name = "Groundride", wtype = 0, mod = 13, price = 500},
-		{name = "Spacer", wtype = 0, mod = 14, price = 500},
-		{name = "Venum", wtype = 0, mod = 15, price = 500},
-		{name = "Cosmo", wtype = 0, mod = 16, price = 500},
-		{name = "Dashvip", wtype = 0, mod = 17, price = 500},
-		{name = "Icekid", wtype = 0, mod = 18, price = 500},
-		{name = "Ruffeld", wtype = 0, mod = 19, price = 500},
-		{name = "Wangenmaster", wtype = 0, mod = 20, price = 500},
-		{name = "Superfive", wtype = 0, mod = 21, price = 500},
-		{name = "Endov2", wtype = 0, mod = 22, price = 500},
-		{name = "Slitsix", wtype = 0, mod = 23, price = 500},
-	},
+sportwheels = {
+	{name = "Stock", wtype = 0, mod = -1, price = 300},
+	{name = "Inferno", wtype = 0, mod = 0, price = 300},
+	{name = "Deepfive", wtype = 0, mod = 1, price = 300},
+	{name = "Lozspeed", wtype = 0, mod = 2, price = 300},
+	{name = "Diamondcut", wtype = 0, mod = 3, price = 300},
+	{name = "Chrono", wtype = 0, mod = 4, price = 300},
+	{name = "Feroccirr", wtype = 0, mod = 5, price = 300},
+	{name = "Fiftynine", wtype = 0, mod = 6, price = 300},
+	{name = "Mercie", wtype = 0, mod = 7, price = 300},
+	{name = "Syntheticz", wtype = 0, mod = 8, price = 300},
+	{name = "Organictyped", wtype = 0, mod = 9, price = 300},
+	{name = "Endov1", wtype = 0, mod = 10, price = 300},
+	{name = "Duper7", wtype = 0, mod = 11, price = 300},
+	{name = "Uzer", wtype = 0, mod = 12, price = 300},
+	{name = "Groundride", wtype = 0, mod = 13, price = 300},
+	{name = "Spacer", wtype = 0, mod = 14, price = 300},
+	{name = "Venum", wtype = 0, mod = 15, price = 300},
+	{name = "Cosmo", wtype = 0, mod = 16, price = 300},
+	{name = "Dashvip", wtype = 0, mod = 17, price = 300},
+	{name = "Icekid", wtype = 0, mod = 18, price = 300},
+	{name = "Ruffeld", wtype = 0, mod = 19, price = 300},
+	{name = "Wangenmaster", wtype = 0, mod = 20, price = 300},
+	{name = "Superfive", wtype = 0, mod = 21, price = 300},
+	{name = "Endov2", wtype = 0, mod = 22, price = 300},
+	{name = "Slitsix", wtype = 0, mod = 23, price = 300},
+},
 -----Suv wheels------
-	suvwheels = {
-		{name = "Stock", wtype = 3, mod = -1, price = 500},
-		{name = "Vip", wtype = 3, mod = 0, price = 500},
-		{name = "Benefactor", wtype = 3, mod = 1, price = 500},
-		{name = "Cosmo", wtype = 3, mod = 2, price = 500},
-		{name = "Bippu", wtype = 3, mod = 3, price = 500},
-		{name = "Royalsix", wtype = 3, mod = 4, price = 500},
-		{name = "Fagorme", wtype = 3, mod = 5, price = 500},
-		{name = "Deluxe", wtype = 3, mod = 6, price = 500},
-		{name = "Icedout", wtype = 3, mod = 7, price = 500},
-		{name = "Cognscenti", wtype = 3, mod = 8, price = 500},
-		{name = "Lozspeedten", wtype = 3, mod = 9, price = 500},
-		{name = "Supernova", wtype = 3, mod = 10, price = 500},
-		{name = "Obeyrs", wtype = 3, mod = 11, price = 500},
-		{name = "Lozspeedballer", wtype = 3, mod = 12, price = 500},
-		{name = "Extra vaganzo", wtype = 3, mod = 13, price = 500},
-		{name = "Splitsix", wtype = 3, mod = 14, price = 500},
-		{name = "Empowered", wtype = 3, mod = 15, price = 500},
-		{name = "Sunrise", wtype = 3, mod = 16, price = 500},
-		{name = "Dashvip", wtype = 3, mod = 17, price = 500},
-		{name = "Cutter", wtype = 3, mod = 18, price = 500},
-	},
------Offroad wheels-----
-	offroadwheels = {
-		{name = "Stock", wtype = 4, mod = -1, price = 500},
-		{name = "Raider", wtype = 4, mod = 0, price = 500},
-		{name = "Mudslinger", wtype = 4, modtype = 23, wtype = 4, mod = 1, price = 500},
-		{name = "Nevis", wtype = 4, mod = 2, price = 500},
-		{name = "Cairngorm", wtype = 4, mod = 3, price = 500},
-		{name = "Amazon", wtype = 4, mod = 4, price = 500},
-		{name = "Challenger", wtype = 4, mod = 5, price = 500},
-		{name = "Dunebasher", wtype = 4, mod = 6, price = 500},
-		{name = "Fivestar", wtype = 4, mod = 7, price = 500},
-		{name = "Rockcrawler", wtype = 4, mod = 8, price = 500},
-		{name = "Milspecsteelie", wtype = 4, mod = 9, price = 500},
-	},
+suvwheels = {
+	{name = "Stock", wtype = 3, mod = -1, price = 300},
+	{name = "Vip", wtype = 3, mod = 0, price = 300},
+	{name = "Benefactor", wtype = 3, mod = 1, price = 300},
+	{name = "Cosmo", wtype = 3, mod = 2, price = 300},
+	{name = "Bippu", wtype = 3, mod = 3, price = 300},
+	{name = "Royalsix", wtype = 3, mod = 4, price = 300},
+	{name = "Fagorme", wtype = 3, mod = 5, price = 300},
+	{name = "Deluxe", wtype = 3, mod = 6, price = 300},
+	{name = "Icedout", wtype = 3, mod = 7, price = 300},
+	{name = "Cognscenti", wtype = 3, mod = 8, price = 300},
+	{name = "Lozspeedten", wtype = 3, mod = 9, price = 300},
+	{name = "Supernova", wtype = 3, mod = 10, price = 300},
+	{name = "Obeyrs", wtype = 3, mod = 11, price = 300},
+	{name = "Lozspeedballer", wtype = 3, mod = 12, price = 300},
+	{name = "Extra vaganzo", wtype = 3, mod = 13, price = 300},
+	{name = "Splitsix", wtype = 3, mod = 14, price = 300},
+	{name = "Empowered", wtype = 3, mod = 15, price = 300},
+	{name = "Sunrise", wtype = 3, mod = 16, price = 300},
+	{name = "Dashvip", wtype = 3, mod = 17, price = 300},
+	{name = "Cutter", wtype = 3, mod = 18, price = 300},
+},
+
+----Offroad wheels-----
+offroadwheels = {
+	{name = "Stock", wtype = 4, mod = -1, price = 300},
+	{name = "Raider", wtype = 4, mod = 0, price = 300},
+	{name = "Mudslinger", wtype = 4, modtype = 23, wtype = 4, mod = 1, price = 300},
+	{name = "Nevis", wtype = 4, mod = 2, price = 300},
+	{name = "Cairngorm", wtype = 4, mod = 3, price = 300},
+	{name = "Amazon", wtype = 4, mod = 4, price = 300},
+	{name = "Challenger", wtype = 4, mod = 5, price = 300},
+	{name = "Dunebasher", wtype = 4, mod = 6, price = 300},
+	{name = "Fivestar", wtype = 4, mod = 7, price = 300},
+	{name = "Rockcrawler", wtype = 4, mod = 8, price = 300},
+	{name = "Milspecsteelie", wtype = 4, mod = 9, price = 300},
+},
+
 -----Tuner wheels------
-	tunerwheels = {
-		{name = "Stock", wtype = 5, mod = -1, price = 500},
-		{name = "Cosmo", wtype = 5, mod = 0, price = 500},
-		{name = "Supermesh", wtype = 5, mod = 1, price = 500},
-		{name = "Outsider", wtype = 5, mod = 2, price = 500},
-		{name = "Rollas", wtype = 5, mod = 3, price = 500},
-		{name = "Driffmeister", wtype = 5, mod = 4, price = 500},
-		{name = "Slicer", wtype = 5, mod = 5, price = 500},
-		{name = "Elquatro", wtype = 5, mod = 6, price = 500},
-		{name = "Dubbed", wtype = 5, mod = 7, price = 500},
-		{name = "Fivestar", wtype = 5, mod = 8, price = 500},
-		{name = "Slideways", wtype = 5, mod = 9, price = 500},
-		{name = "Apex", wtype = 5, mod = 10, price = 500},
-		{name = "Stancedeg", wtype = 5, mod = 11, price = 500},
-		{name = "Countersteer", wtype = 5, mod = 12, price = 500},
-		{name = "Endov1", wtype = 5, mod = 13, price = 500},
-		{name = "Endov2dish", wtype = 5, mod = 14, price = 500},
-		{name = "Guppez", wtype = 5, mod = 15, price = 500},
-		{name = "Chokadori", wtype = 5, mod = 16, price = 500},
-		{name = "Chicane", wtype = 5, mod = 17, price = 500},
-		{name = "Saisoku", wtype = 5, mod = 18, price = 500},
-		{name = "Dishedeight", wtype = 5, mod = 19, price = 500},
-		{name = "Fujiwara", wtype = 5, mod = 20, price = 500},
-		{name = "Zokusha", wtype = 5, mod = 21, price = 500},
-		{name = "Battlevill", wtype = 5, mod = 22, price = 500},
-		{name = "Rallymaster", wtype = 5, mod = 23, price = 500},
-	},
+tunerwheels = {
+	{name = "Stock", wtype = 5, mod = -1, price = 300},
+	{name = "Cosmo", wtype = 5, mod = 0, price = 300},
+	{name = "Supermesh", wtype = 5, mod = 1, price = 300},
+	{name = "Outsider", wtype = 5, mod = 2, price = 300},
+	{name = "Rollas", wtype = 5, mod = 3, price = 300},
+	{name = "Driffmeister", wtype = 5, mod = 4, price = 300},
+	{name = "Slicer", wtype = 5, mod = 5, price = 300},
+	{name = "Elquatro", wtype = 5, mod = 6, price = 300},
+	{name = "Dubbed", wtype = 5, mod = 7, price = 300},
+	{name = "Fivestar", wtype = 5, mod = 8, price = 300},
+	{name = "Slideways", wtype = 5, mod = 9, price = 300},
+	{name = "Apex", wtype = 5, mod = 10, price = 300},
+	{name = "Stancedeg", wtype = 5, mod = 11, price = 300},
+	{name = "Countersteer", wtype = 5, mod = 12, price = 300},
+	{name = "Endov1", wtype = 5, mod = 13, price = 300},
+	{name = "Endov2dish", wtype = 5, mod = 14, price = 300},
+	{name = "Guppez", wtype = 5, mod = 15, price = 300},
+	{name = "Chokadori", wtype = 5, mod = 16, price = 300},
+	{name = "Chicane", wtype = 5, mod = 17, price = 300},
+	{name = "Saisoku", wtype = 5, mod = 18, price = 300},
+	{name = "Dishedeight", wtype = 5, mod = 19, price = 300},
+	{name = "Fujiwara", wtype = 5, mod = 20, price = 300},
+	{name = "Zokusha", wtype = 5, mod = 21, price = 300},
+	{name = "Battlevill", wtype = 5, mod = 22, price = 300},
+	{name = "Rallymaster", wtype = 5, mod = 23, price = 300},
+},
 -----Highend wheels------
-	highendwheels = {
-		{name = "Stock", wtype = 7, mod = -1, price = 500},
-		{name = "Shadow", wtype = 7, mod = 0, price = 500},
-		{name = "Hyper", wtype = 7, mod = 1, price = 500},
-		{name = "Blade", wtype = 7, mod = 2, price = 500},
-		{name = "Diamond", wtype = 7, mod = 3, price = 500},
-		{name = "Supagee", wtype = 7, mod = 4, price = 500},
-		{name = "Chromaticz", wtype = 7, mod = 5, price = 500},
-		{name = "Merciechlip", wtype = 7, mod = 6, price = 500},
-		{name = "Obeyrs", wtype = 7, mod = 7, price = 500},
-		{name = "Gtchrome", wtype = 7, mod = 8, price = 500},
-		{name = "Cheetahr", wtype = 7, mod = 9, price = 500},
-		{name = "Solar", wtype = 7, mod = 10, price = 500},
-		{name = "Splitten", wtype = 7, mod = 11, price = 500},
-		{name = "Dashvip", wtype = 7, mod = 12, price = 500},
-		{name = "Lozspeedten", wtype = 7, mod = 13, price = 500},
-		{name = "Carboninferno", wtype = 7, mod = 14, price = 500},
-		{name = "Carbonshadow", wtype = 7, mod = 15, price = 500},
-		{name = "Carbonz", wtype = 7, mod = 16, price = 500},
-		{name = "Carbonsolar", wtype = 7, mod = 17, price = 500},
-		{name = "Carboncheetahr", wtype = 7, mod = 18, price = 500},
-		{name = "Carbonsracer", wtype = 7, mod = 19, price = 500},
-	},
+highendwheels = {
+	{name = "Stock", wtype = 7, mod = -1, price = 300},
+	{name = "Shadow", wtype = 7, mod = 0, price = 300},
+	{name = "Hyper", wtype = 7, mod = 1, price = 300},
+	{name = "Blade", wtype = 7, mod = 2, price = 300},
+	{name = "Diamond", wtype = 7, mod = 3, price = 300},
+	{name = "Supagee", wtype = 7, mod = 4, price = 300},
+	{name = "Chromaticz", wtype = 7, mod = 5, price = 300},
+	{name = "Merciechlip", wtype = 7, mod = 6, price = 300},
+	{name = "Obeyrs", wtype = 7, mod = 7, price = 300},
+	{name = "Gtchrome", wtype = 7, mod = 8, price = 300},
+	{name = "Cheetahr", wtype = 7, mod = 9, price = 300},
+	{name = "Solar", wtype = 7, mod = 10, price = 300},
+	{name = "Splitten", wtype = 7, mod = 11, price = 300},
+	{name = "Dashvip", wtype = 7, mod = 12, price = 300},
+	{name = "Lozspeedten", wtype = 7, mod = 13, price = 300},
+	{name = "Carboninferno", wtype = 7, mod = 14, price = 300},
+	{name = "Carbonshadow", wtype = 7, mod = 15, price = 300},
+	{name = "Carbonz", wtype = 7, mod = 16, price = 300},
+	{name = "Carbonsolar", wtype = 7, mod = 17, price = 300},
+	{name = "Carboncheetahr", wtype = 7, mod = 18, price = 300},
+	{name = "Carbonsracer", wtype = 7, mod = 19, price = 300},
+},
+
 -----Lowrider wheels------
-	lowriderwheels = {
-		{name = "Stock", wtype = 2, mod = -1, price = 500},
-		{name = "Flare", wtype = 2, mod = 0, price = 500},
-		{name = "Wired", wtype = 2, mod = 1, price = 500},
-		{name = "Triplegolds", wtype = 2, mod = 2, price = 500},
-		{name = "Bigworm", wtype = 2, mod = 3, price = 500},
-		{name = "Sevenfives", wtype = 2, mod = 4, price = 500},
-		{name = "Splitsix", wtype = 2, mod = 5, price = 500},
-		{name = "Freshmesh", wtype = 2, mod = 6, price = 500},
-		{name = "Leadsled", wtype = 2, mod = 7, price = 500},
-		{name = "Turbine", wtype = 2, mod = 8, price = 500},
-		{name = "Superfin", wtype = 2, mod = 9, price = 500},
-		{name = "Classicrod", wtype = 2, mod = 10, price = 500},
-		{name = "Dollar", wtype = 2, mod = 11, price = 500},
-		{name = "Dukes", wtype = 2, mod = 12, price = 500},
-		{name = "Lowfive", wtype = 2, mod = 13, price = 500},
-		{name = "Gooch", wtype = 2, mod = 14, price = 500},
-	},
+lowriderwheels = {
+	{name = "Stock", wtype = 2, mod = -1, price = 300},
+	{name = "Flare", wtype = 2, mod = 0, price = 300},
+	{name = "Wired", wtype = 2, mod = 1, price = 300},
+	{name = "Triplegolds", wtype = 2, mod = 2, price = 300},
+	{name = "Bigworm", wtype = 2, mod = 3, price = 300},
+	{name = "Sevenfives", wtype = 2, mod = 4, price = 300},
+	{name = "Splitsix", wtype = 2, mod = 5, price = 300},
+	{name = "Freshmesh", wtype = 2, mod = 6, price = 300},
+	{name = "Leadsled", wtype = 2, mod = 7, price = 300},
+	{name = "Turbine", wtype = 2, mod = 8, price = 300},
+	{name = "Superfin", wtype = 2, mod = 9, price = 300},
+	{name = "Classicrod", wtype = 2, mod = 10, price = 300},
+	{name = "Dollar", wtype = 2, mod = 11, price = 300},
+	{name = "Dukes", wtype = 2, mod = 12, price = 300},
+	{name = "Lowfive", wtype = 2, mod = 13, price = 300},
+	{name = "Gooch", wtype = 2, mod = 14, price = 300},
+},
 -----Muscle wheels-----
-	musclewheels = {
-		{name = "Stock", wtype = 1, mod = -1, price = 500},
-		{name = "Classicfive", wtype = 1, mod = 0, price = 500},
-		{name = "Dukes", wtype = 1, mod = 1, price = 500},
-		{name = "Musclefreak", wtype = 1, mod = 2, price = 500},
-		{name = "Kracka", wtype = 1, mod = 3, price = 500},
-		{name = "Azrea", wtype = 1, mod = 4, price = 500},
-		{name = "Mecha", wtype = 1, mod = 5, price = 500},
-		{name = "Blacktop", wtype = 1, mod = 6, price = 500},
-		{name = "Dragspl", wtype = 1, mod = 7, price = 500},
-		{name = "Revolver", wtype = 1, mod = 8, price = 500},
-		{name = "Classicrod", wtype = 1, mod = 9, price = 500},
-		{name = "Spooner", wtype = 1, mod = 10, price = 500},
-		{name = "Fivestar", wtype = 1, mod = 11, price = 500},
-		{name = "Oldschool", wtype = 1, mod = 12, price = 500},
-		{name = "Eljefe", wtype = 1, mod = 13, price = 500},
-		{name = "Dodman", wtype = 1, mod = 14, price = 500},
-		{name = "Sixgun", wtype = 1, mod = 15, price = 500},
-		{name = "Mercenary", wtype = 1, mod = 16, price = 500},
-	},
+musclewheels = {
+	{name = "Stock", wtype = 1, mod = -1, price = 300},
+	{name = "Classicfive", wtype = 1, mod = 0, price = 300},
+	{name = "Dukes", wtype = 1, mod = 1, price = 300},
+	{name = "Musclefreak", wtype = 1, mod = 2, price = 300},
+	{name = "Kracka", wtype = 1, mod = 3, price = 300},
+	{name = "Azrea", wtype = 1, mod = 4, price = 300},
+	{name = "Mecha", wtype = 1, mod = 5, price = 300},
+	{name = "Blacktop", wtype = 1, mod = 6, price = 300},
+	{name = "Dragspl", wtype = 1, mod = 7, price = 300},
+	{name = "Revolver", wtype = 1, mod = 8, price = 300},
+	{name = "Classicrod", wtype = 1, mod = 9, price = 300},
+	{name = "Spooner", wtype = 1, mod = 10, price = 300},
+	{name = "Fivestar", wtype = 1, mod = 11, price = 300},
+	{name = "Oldschool", wtype = 1, mod = 12, price = 300},
+	{name = "Eljefe", wtype = 1, mod = 13, price = 300},
+	{name = "Dodman", wtype = 1, mod = 14, price = 300},
+	{name = "Sixgun", wtype = 1, mod = 15, price = 300},
+	{name = "Mercenary", wtype = 1, mod = 16, price = 300},
+},
+
 	
----------Trim color--------
-	trim = {
-		colors = colors,
-		price = 250
-	},
-	
+--------Trim color--------
+trim = {
+	colors = colors,
+	price = 150
+},
+
 ----------Mods-----------
-	mods = {
-	
+mods = {
+
 ----------Liveries--------
-	[48] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
-	
+[48] = {
+	startprice = 500,
+	increaseby = 0
+},
+
 ----------Windows--------
-	[46] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
-	
+[46] = {
+	startprice = 200,
+	increaseby = 50
+},
+
 ----------Tank--------
-	[45] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
-	
+[45] = {
+	startprice = 2000,
+	increaseby = 1000
+},
+
 ----------Trim--------
-	[44] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
-	
+[44] = {
+	startprice = 100,
+	increaseby = 0
+},
+
 ----------Aerials--------
-	[43] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
+[43] = {
+	startprice = 100,
+	increaseby = 0
+},
 
 ----------Arch cover--------
-	[42] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
+[42] = {
+	startprice = 200,
+	increaseby = 0
+},
 
 ----------Struts--------
-	[41] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
-	
+[41] = {
+	startprice = 100,
+	increaseby = 0
+},
+
 ----------Air filter--------
-	[40] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
-	
+[40] = {
+	startprice = 100,
+	increaseby = 0
+},
+
 ----------Engine block--------
-	[39] = {
-		startprice = 2000,
-		increaseby = 1000
-	},
+[39] = {
+	startprice = 100,
+	increaseby = 0
+},
 
 ----------Hydraulics--------
-	[38] = {
-		startprice = 5000,
-		increaseby = 2500
-	},
-	
+[38] = {
+	startprice = 500,
+	increaseby = 500
+
+},
 ----------Trunk--------
-	[37] = {
-		startprice = 5000,
-		increaseby = 1250
-	},
+[37] = {
+	startprice = 200,
+	increaseby = 200
+},
 
 ----------Speakers--------
-	[36] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
+[36] = {
+	startprice = 200,
+	increaseby = 200
+},
 
 ----------Plaques--------
-	[35] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
+[35] = {
+	startprice = 100,
+	increaseby = 100
+},
+
 ----------Shift leavers--------
-	[34] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
+[34] = {
+	startprice = 100,
+	increaseby = 100
+},
+
 ----------Steeringwheel--------
-	[33] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
+[33] = {
+	startprice = 150,
+	increaseby = 150
+},
+
 ----------Seats--------
-	[32] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
+[32] = {
+	startprice = 300,
+	increaseby = 200
+},
+
 ----------Door speaker--------
-	[31] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
+[31] = {
+	startprice = 300,
+	increaseby = 200
+},
 
 ----------Dial--------
-	[30] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
+[30] = {
+	startprice = 100,
+	increaseby = 100
+},
 ----------Dashboard--------
-	[29] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
-----------Ornaments--------
-	[28] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
-----------Trim--------
-	[27] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
-----------Vanity plates--------
-	[26] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
-----------Plate holder--------
-	[25] = {
-		startprice = 2000,
-		increaseby = 1250
-	},
-	
----------Headlights---------
-	[22] = {
-		{name = "Stock Lights", mod = 0, price = 0},
-		{name = "Xenon Lights", mod = 1, price = 250},
-	},
-	
-----------Turbo---------
-	[18] = {
-		{ name = "None", mod = 0, price = 0},
-		{ name = "Turbo Tuning", mod = 1, price = 10000},
-	},
-	
------------Armor-------------
-	-- [16] = {
-	-- 	{name = "Armor Upgrade 20%",modtype = 16, mod = 0, price = 10000},
-	-- 	{name = "Armor Upgrade 40%",modtype = 16, mod = 1, price = 250000},
-	-- 	{name = "Armor Upgrade 60%",modtype = 16, mod = 2, price = 500000},
-	-- 	{name = "Armor Upgrade 80%",modtype = 16, mod = 3, price = 750000},
-	-- 	{name = "Armor Upgrade 100%",modtype = 16, mod = 4, price = 1000000},
-	-- },
+[29] = {
+	startprice = 200,
+	increaseby = 200
+},
 
----------Suspension-----------
-	[15] = {
-		{name = "Lowered Suspension",mod = 0, price = 500},
-		{name = "Street Suspension",mod = 1, price = 1000},
-		{name = "Sport Suspension",mod = 2, price = 2000},
-		{name = "Competition Suspension",mod = 3, price = 3000},
-	},
+----------Ornaments--------
+[28] = {
+	startprice = 100,
+	increaseby = 100
+},
+
+----------Trim--------
+[27] = {
+	startprice = 100,
+	increaseby = 100
+},
+
+----------Vanity plates--------
+[26] = {
+	startprice = 100,
+	increaseby = 100
+},
+
+----------Plate holder--------
+[25] = {
+	startprice = 100,
+	increaseby = 100
+},
+
+---------Headlights---------
+[22] = {
+	{name = "Stock Lights", mod = 0, price = 0},
+	{name = "Xenon Lights", mod = 1, price = 200},
+},
+
+----------Turbo---------
+[18] = {
+	{ name = "None", mod = 0, price = 0},
+	{ name = "Turbo Tuning", mod = 1, price = 1000},
+},
 
 -----------Horn----------
-	[14] = {
-		{name = "Truck Horn", mod = 0, price = 500},
-		{name = "Police Horn", mod = 1, price = 500},
-		{name = "Clown Horn", mod = 2, price = 500},
-		{name = "Musical Horn 1", mod = 3, price = 500},
-		{name = "Musical Horn 2", mod = 4, price = 500},
-		{name = "Musical Horn 3", mod = 5, price = 500},
-		{name = "Musical Horn 4", mod = 6, price = 500},
-		{name = "Musical Horn 5", mod = 7, price = 500},
-		{name = "Sadtrombone Horn", mod = 8, price = 500},
-		{name = "Calssical Horn 1", mod = 9, price = 500},
-		{name = "Calssical Horn 2", mod = 10, price = 500},
-		{name = "Calssical Horn 3", mod = 11, price = 500},
-		{name = "Calssical Horn 4", mod = 12, price = 500},
-		{name = "Calssical Horn 5", mod = 13, price = 500},
-		{name = "Calssical Horn 6", mod = 14, price = 500},
-		{name = "Calssical Horn 7", mod = 15, price = 500},
-		{name = "Scaledo Horn", mod = 16, price = 500},
-		{name = "Scalere Horn", mod = 17, price = 500},
-		{name = "Scalemi Horn", mod = 18, price = 500},
-		{name = "Scalefa Horn", mod = 19, price = 500},
-		{name = "Scalesol Horn", mod = 20, price = 500},
-		{name = "Scalela Horn", mod = 21, price = 500},
-		{name = "Scaleti Horn", mod = 22, price = 500},
-		{name = "Scaledo Horn High", mod = 23, price = 500},
-		{name = "Jazz Horn 1", mod = 25, price = 500},
-		{name = "Jazz Horn 2", mod = 26, price = 500},
-		{name = "Jazz Horn 3", mod = 27, price = 500},
-		{name = "Jazzloop Horn", mod = 28, price = 500},
-		{name = "Starspangban Horn 1", mod = 29, price = 500},
-		{name = "Starspangban Horn 2", mod = 30, price = 500},
-		{name = "Starspangban Horn 3", mod = 31, price = 500},
-		{name = "Starspangban Horn 4", mod = 32, price = 500},
-		{name = "Classicalloop Horn 1", mod = 33, price = 500},
-		{name = "Classicalloop Horn 2", mod = 34, price = 500},
-		{name = "Classicalloop Horn 3", mod = 35, price = 500},
-	},
-
-----------Transmission---------
-	[13] = {
-		{name = "Street Transmission", mod = 0, price = 5000},
-		{name = "Sports Transmission", mod = 1, price = 10000},
-		{name = "Race Transmission", mod = 2, price = 15000},
-	},
-	
------------Brakes-------------
-	[12] = {
-		{name = "Street Brakes", mod = 0, price = 5000},
-		{name = "Sport Brakes", mod = 1, price = 10000},
-		{name = "Race Brakes", mod = 2, price = 15000},
-	},
-	
-------------Engine----------
-	[11] = {
-		{name = "EMS Upgrade, Level 2", mod = 0, price = 15000},
-		{name = "EMS Upgrade, Level 3", mod = 1, price = 30000},
-		{name = "EMS Upgrade, Level 4", mod = 2, price = 45000},
-	},
-	
+[14] = {
+	{name = "Truck Horn", mod = 0, price = 100},
+	{name = "Police Horn", mod = 1, price = 100},
+	{name = "Clown Horn", mod = 2, price = 100},
+	{name = "Musical Horn 1", mod = 3, price = 100},
+	{name = "Musical Horn 2", mod = 4, price = 100},
+	{name = "Musical Horn 3", mod = 5, price = 100},
+	{name = "Musical Horn 4", mod = 6, price = 100},
+	{name = "Musical Horn 5", mod = 7, price = 100},
+	{name = "Sadtrombone Horn", mod = 8, price = 100},
+	{name = "Calssical Horn 1", mod = 9, price = 100},
+	{name = "Calssical Horn 2", mod = 10, price = 100},
+	{name = "Calssical Horn 3", mod = 11, price = 100},
+	{name = "Calssical Horn 4", mod = 12, price = 100},
+	{name = "Calssical Horn 5", mod = 13, price = 100},
+	{name = "Calssical Horn 6", mod = 14, price = 100},
+	{name = "Calssical Horn 7", mod = 15, price = 100},
+	{name = "Scaledo Horn", mod = 16, price = 100},
+	{name = "Scalere Horn", mod = 17, price = 100},
+	{name = "Scalemi Horn", mod = 18, price = 100},
+	{name = "Scalefa Horn", mod = 19, price = 100},
+	{name = "Scalesol Horn", mod = 20, price = 100},
+	{name = "Scalela Horn", mod = 21, price = 100},
+	{name = "Scaleti Horn", mod = 22, price = 100},
+	{name = "Scaledo Horn High", mod = 23, price = 100},
+	{name = "Jazz Horn 1", mod = 25, price = 100},
+	{name = "Jazz Horn 2", mod = 26, price = 100},
+	{name = "Jazz Horn 3", mod = 27, price = 100},
+	{name = "Jazzloop Horn", mod = 28, price = 100},
+	{name = "Starspangban Horn 1", mod = 29, price = 100},
+	{name = "Starspangban Horn 2", mod = 30, price = 100},
+	{name = "Starspangban Horn 3", mod = 31, price = 100},
+	{name = "Starspangban Horn 4", mod = 32, price = 100},
+	{name = "Classicalloop Horn 1", mod = 33, price = 100},
+	{name = "Classicalloop Horn 2", mod = 34, price = 100},
+	{name = "Classicalloop Horn 3", mod = 35, price = 100},
+},
 -------------Roof----------
-	[10] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[10] = {
+	startprice = 200,
+	increaseby = 200
+},
+
 ------------Fenders---------
-	[8] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[8] = {
+	startprice = 200,
+	increaseby = 100
+},
+
 ------------Hood----------
-	[7] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[7] = {
+	startprice = 200,
+	increaseby = 200
+},
+
 ----------Grille----------
-	[6] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[6] = {
+	startprice = 100,
+	increaseby = 200
+},
+
 ----------Roll cage----------
-	[5] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[5] = {
+	startprice = 100,
+	increaseby = 200
+},
+
 ----------Exhaust----------
-	[4] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[4] = {
+	startprice = 200,
+	increaseby = 100
+},
+
 ----------Skirts----------
-	[3] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[3] = {
+	startprice = 200,
+	increaseby = 100
+},
+
 -----------Rear bumpers----------
-	[2] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[2] = {
+	startprice = 200,
+	increaseby = 100
+},
+
 ----------Front bumpers----------
-	[1] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	
+[1] = {
+	startprice = 200,
+	increaseby = 100
+},
+
 ----------Spoiler----------
-	[0] = {
-		startprice = 500,
-		increaseby = 500
-	},
-	}
-	
+[0] = {
+	startprice = 200,
+	increaseby = 100
+},
+}
+
 }
 
 ------Model Blacklist--------

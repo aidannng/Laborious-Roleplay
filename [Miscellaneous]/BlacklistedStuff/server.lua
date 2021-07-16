@@ -19,7 +19,12 @@ local Blacklisted = {
       [`g_f_y_families_01`] = true,
       [`g_f_y_vagos_01`] = true,
     },
-    Vehicles = {},
+    Vehicles = {
+        [`blimp`] = true,
+        [`cargobob`] = true,
+        [`ambulance`] = true,
+        [`buzzard`] = true,       
+    },
     Props = {}
   }
   
