@@ -413,13 +413,86 @@ end)
 
 RegisterNetEvent('PoliceDealership')--pd:heli
 AddEventHandler('PoliceDealership', function()
-    exports['br-menu']:SetTitle("Police Dealership")
-    exports['br-menu']:AddButton("Crown Victoria" , "$20,000" ,'buycvpi' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Ford Taurus" , "$45,000" ,'buyfpis' ,'' , 'menuone')
-    exports['br-menu']:AddButton("2014 Tahoe" , "$55,500 (Off-Road)" ,'buytahoe' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Dodge RAM" , "$30,000 (Off-Road)" ,'buyram' ,'' , 'menuone')
-    exports['br-menu']:AddButton("BMW Motorcycle" , "$65,000 (Motor)" ,'buybmw' ,'' , 'menuone')
-    exports['br-menu']:AddButton("2018 Charger" , "$80,000" ,'buycharg' ,'' , 'menuone')
+
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Police Dealership",
+            txt = ""
+        },
+		{
+			id = 2,
+			header = "Crown Victoria",
+			txt = "$20,000",
+			params = {
+				event = "buycvpi",
+				args = {
+					number = 1,
+					id = 2
+				}
+			}
+		},
+		{
+			id = 3,
+			header = "Ford Taurus",
+			txt = "$45,000",
+			params = {
+				event = "buyfpis",
+				args = {
+					number = 2,
+					id = 3
+				}
+			}
+		},
+		{
+			id = 4,
+			header = "2014 Tahoe",
+			txt = "$55,500 (Off-Road)",
+			params = {
+				event = "buytahoe",
+				args = {
+					number = 3,
+					id = 4
+				}
+			}
+		},
+        {
+			id = 5,
+			header = "Dodge RAM",
+			txt = "$30,000 (Off-Road)",
+			params = {
+				event = "buyram",
+				args = {
+					number = 4,
+					id = 5
+				}
+			}
+		},
+        {
+			id = 6,
+			header = "BMW Motorcycle",
+			txt = "$65,000 (Motor)",
+			params = {
+				event = "buybmw",
+				args = {
+					number = 5,
+					id = 6
+				}
+			}
+		},
+        {
+			id = 7,
+			header = "2018 Charger",
+			txt = "$80,000",
+			params = {
+				event = "buycharg",
+				args = {
+					number = 6,
+					id = 7
+				}
+			}
+		}
+	})
 end)
 
 RegisterNetEvent('pd:heli')--pd:heli

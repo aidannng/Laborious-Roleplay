@@ -382,6 +382,84 @@ end)
 
 
 
+
+
+
+RegisterServerEvent('pawnshop:selliphone')
+AddEventHandler('pawnshop:selliphone', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local RubberQuantity = xPlayer.getInventoryItem('apple_iphone').count
+    local RubberPrice = math.random(175, 300)
+    
+    if RubberQuantity >= 1 then
+        local quality = 1
+        xPlayer.addMoney(quality * RubberPrice * RubberQuantity)
+        xPlayer.removeInventoryItem('scrapmetal', RubberQuantity)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have sold ' .. RubberQuantity .. ' Apple Iphone and earned $' .. RubberPrice * RubberQuantity .. '.', length = 10000})
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'You have no Apple Iphone to sell!', length = 5000})
+    end
+end)
+
+RegisterServerEvent('pawnshop:sellnokia')
+AddEventHandler('pawnshop:sellnokia', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local RubberQuantity = xPlayer.getInventoryItem('nokia_phone').count
+    local RubberPrice = math.random(25, 40)
+    
+    if RubberQuantity >= 1 then
+        local quality = 1
+        xPlayer.addMoney(quality * RubberPrice * RubberQuantity)
+        xPlayer.removeInventoryItem('scrapmetal', RubberQuantity)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have sold ' .. RubberQuantity .. ' Nokia and earned $' .. RubberPrice * RubberQuantity .. '.', length = 10000})
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'You have no Nokia to sell!', length = 5000})
+    end
+end)
+
+RegisterServerEvent('pawnshop:sellsamsung')
+AddEventHandler('pawnshop:sellsamsung', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local RubberQuantity = xPlayer.getInventoryItem('samsung_s8').count
+    local RubberPrice = math.random(150, 220)
+    
+    if RubberQuantity >= 1 then
+        local quality = 1
+        xPlayer.addMoney(quality * RubberPrice * RubberQuantity)
+        xPlayer.removeInventoryItem('scrapmetal', RubberQuantity)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have sold ' .. RubberQuantity .. ' Samsung S8 and earned $' .. RubberPrice * RubberQuantity .. '.', length = 10000})
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'You have no Samsung S8 to sell!', length = 5000})
+    end
+end)
+
+RegisterServerEvent('pawnshop:sellelectronic')
+AddEventHandler('pawnshop:sellelectronic', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local RubberQuantity = xPlayer.getInventoryItem('electronics').count
+    local RubberPrice = math.random(45, 70)
+    
+    if RubberQuantity >= 1 then
+        local quality = 1
+        xPlayer.addMoney(quality * RubberPrice * RubberQuantity)
+        xPlayer.removeInventoryItem('scrapmetal', RubberQuantity)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have sold ' .. RubberQuantity .. ' Electronics and earned $' .. RubberPrice * RubberQuantity .. '.', length = 10000})
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'You have no Electronics to sell!', length = 5000})
+    end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
 RegisterServerEvent('craft:adlock')
 AddEventHandler('craft:adlock', function()
     math.randomseed(os.time())

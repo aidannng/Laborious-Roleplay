@@ -1657,18 +1657,24 @@ AddEventHandler('pickupspike', function()
 	TriggerServerEvent('pickupspike')
 end)
 
-local spikestrip = {
-	`p_ld_stinger_s`
-}
 
-exports['labrp_Eye']:AddTargetModel(spikestrip, {
-	options = {
-		{
-			event = 'pickupspike',
-			icon = 'fas fa-plus',
-			label = 'Pickup Spike Strip'
-		},
-	},
-	job = {'all'},
-	distance = 3.0
-})
+Citizen.CreateThread(function()
+	while true do
+		local spikestrip = {
+			`p_ld_stinger_s`
+		}
+
+		exports['labrp_Eye']:AddTargetModel(spikestrip, {
+			options = {
+				{
+					event = 'pickupspike',
+					icon = 'fas fa-plus',
+					label = 'Pickup Spike Strip'
+				},
+			},
+			job = {'all'},
+			distance = 3.0
+		})
+		Citizen.Wait(1000)
+	end
+end)

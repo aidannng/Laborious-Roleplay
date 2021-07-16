@@ -40,10 +40,54 @@ AddEventHandler("lsc:refreshbilling", function(a)
 end)
 
 
+RegisterNetEvent("lsc:addemployeetolist")
+AddEventHandler("lsc:addemployeetolist", function(a, b, c, d, f, g)
+    SendNUIMessage({
+		jobgrade=a,
+        employeefirstname=b,
+        employeelastname=c,
+        identifier=d,
+        isowner=f,
+        balance=g,
+	})
+end)
+
 
 --[[ RegisterCommand("customs", function(source)
     TriggerEvent('mechanic:customs')
 end) ]]
+
+RegisterNUICallback("lscwithdraw", function(data)
+    TriggerServerEvent("lscwithdraw", data.amount)
+end)
+
+RegisterNUICallback("lscdeposit", function(data)
+    TriggerServerEvent("lscdeposit", data.amount)
+end)
+
+RegisterNUICallback("lscpay", function(data)
+    TriggerServerEvent("lscpay", data.identifier, data.amount)
+end)
+
+RegisterNUICallback("lscpromote", function(data)
+    TriggerServerEvent("lscpromote", data.identifier, data.grade)
+end)
+
+RegisterNUICallback("lscdemote", function(data)
+    TriggerServerEvent("lscdemote", data.identifier, data.grade)
+end)
+
+RegisterNUICallback("lscfire", function(data)
+    TriggerServerEvent("lscfire", data.identifier)
+end)
+
+RegisterNUICallback("lschire", function(data)
+    TriggerServerEvent("lschire", data.luckynumber)
+end)
+
+RegisterNUICallback("getbossinfo", function(data)
+	TriggerServerEvent("lscgetbossinfo")
+end)
 
 RegisterNUICallback("getlscbills", function(data)
 	TriggerServerEvent("getlscbills")

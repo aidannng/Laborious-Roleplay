@@ -77,7 +77,6 @@ $(function () {
     $(".showroom-slot").on("click", ".remove-showroom", function (){
         var id = $(this).data('slot');
         var plate = $(this).data('plate');
-        //$('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
 
         $.post('http://pdm-nui/removefromshowroom', JSON.stringify({
             showroomslot:id,
@@ -88,7 +87,6 @@ $(function () {
     $(".showroom-slot").on("click", ".test-drive", function (){
         var id = $(this).data('slot');
         var plate = $(this).data('plate');
-        //$('#slot-' + id).empty().html("<span><strong>"+ id +". </strong></span>")
 
         $.post('http://pdm-nui/removefromshowroom', JSON.stringify({
             showroomslot:id,
@@ -99,6 +97,86 @@ $(function () {
             showroomslot:id,
         }));
     }); 
+
+    $('.employee').on('click', '.promote', function(){
+        var identifier = $(this).data('identifier');
+        var grade = $(this).data('grade');
+
+        $.post('http://pdm-nui/pdmpromote', JSON.stringify({
+            identifier:identifier,
+            grade:grade,
+        }));
+
+        resetManagement()
+    });
+
+    $('.employee').on('click', '.demote', function(){
+        var identifier = $(this).data('identifier');
+        var grade = $(this).data('grade');
+
+        $.post('http://pdm-nui/pdmdemote', JSON.stringify({
+            identifier:identifier,
+            grade:grade,
+        }));
+
+        resetManagement()
+    });
+
+    $('.employee').on('click', '.fire', function(){
+        var identifier = $(this).data('identifier');
+
+        $.post('http://pdm-nui/pdmfire', JSON.stringify({
+            identifier:identifier,
+        }));
+
+        resetManagement()
+    });
+
+    $('.employee').on('click', '.pay', function(){
+        var identifier = $(this).data('identifier');
+        var amount = $(this).prev().val();
+        $.post('http://pdm-nui/pdmpay', JSON.stringify({
+            identifier:identifier,
+            amount:amount
+        }));
+        $(this).prev().val('');
+        resetManagement()
+    });
+
+    $('#hire').click(function(){
+        var id = $('#hireNumber').val();
+        $('#hireNumber').val('');
+        $.post('http://pdm-nui/pdmhire', JSON.stringify({
+            luckynumber:id,
+        }));
+        resetManagement()
+    })
+
+    $('#deposit').click(function(){
+        var amount = $('#bankamount').val();
+        $.post('http://pdm-nui/pdmdeposit', JSON.stringify({
+            amount:amount,
+        }));
+        resetManagement()
+    })
+
+    $('#withdraw').click(function(){
+        var amount = $('#bankamount').val();
+        $.post('http://pdm-nui/pdmwithdraw', JSON.stringify({
+            amount:amount,
+        }));
+        resetManagement()
+    })
+
+    function resetManagement()
+    {
+        $('#bankamount').val('');
+        for(var x = 0; x < 6; x++)
+        {
+            $('#grade-' + x).empty();
+        }
+        $.post('http://pdm-nui/getbossinfo', JSON.stringify({}));
+    }
 
     $('#create-bill').click(function () {
         var luckyNumber = $('#luckyNumber').val();
@@ -127,6 +205,7 @@ $(function () {
             $('#error').html("Please fill out all values");
         }
     });
+
 
     window.addEventListener('message', function (event) {
         var item = event.data;
@@ -286,8 +365,13 @@ $(function () {
 
             if(item.isowner)
             {
-                str = str + "<td><input type=\"number\" placeholder=\"Amount\" id=\"pay-amount\"/><button class=\"btn pay\">Pay</button></td>" +
-                            "<td><button class=\"btn promote\" data-identifier=\""+ item.identifier +"\">Promote</button><button class=\"btn demote\" data-identifier=\""+ item.identifier +"\">Demote</button></td>"
+                str = str + "<td><input type=\"number\" placeholder=\"Amount\" id=\"pay-"+ item.identifier +"\"/><button class=\"btn pay margin-left-5\" data-identifier=\""+ item.identifier +"\">Pay</button></td>" +
+                            "<td><button class=\"btn promote margin-left-5\" data-grade=\""+ item.jobgrade +"\" data-identifier=\""+ item.identifier +"\">Promote</button><button class=\"btn demote margin-left-5\" data-grade=\""+ item.jobgrade +"\" data-identifier=\""+ item.identifier +"\">Demote</button></td>" +
+                            "<td><button class=\"btn fire margin-left-5\" data-identifier=\""+ item.identifier +"\">Fire</button></td>"
+            }
+            else
+            {
+                str = str + "<td></td><td></td><td></td>";
             }
 
             str = str + "</tr>";

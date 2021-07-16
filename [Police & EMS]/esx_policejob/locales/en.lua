@@ -146,7 +146,7 @@ Locales['en'] = {
   ['police_stock'] = 'police Stock',
   -- Misc
   ['remove_prop'] = 'press ~INPUT_CONTEXT~ to delete the object',
-  ['map_blip'] = 'Los Santos Police Department',
+  ['map_blip'] = 'Mission Row Police Department',
   ['unrestrained_timer'] = 'you feel your handcuffs slowly losing grip and fading away.',
   -- Notifications
   ['alert_police'] = 'police alert',

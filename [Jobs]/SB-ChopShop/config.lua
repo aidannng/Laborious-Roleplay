@@ -7,21 +7,6 @@ Config.ChopCars = {
 	[3] = 'Asea',	
 	[4] = 'Tailgater',	
 	[5] = 'Dukes',
-	[6] = 'Schafter',
-	[7] = 'Bullet',
-	[8] = 'F620',
-	[9] = 'Carbonizzare',
-	[10] = 'Comet',
-	[11] = 'Banshee',
-	[12] = 'Coquette',
-	[13] = 'Sentinel',
-	[14] = 'Dubsta',
-	[15] = 'Infernus',
-	[16] = 'Feltzer',
-	[17] = 'Jackal',
-	[18] = 'Rocoto',
-	[19] = 'Serrano',
-	[20] = 'Schwartzer',
 }
 
 Config.SpawnCar = {

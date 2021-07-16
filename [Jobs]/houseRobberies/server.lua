@@ -31,6 +31,8 @@ local robbableItems = {
  [29] = {chance = 8, id = 'electronics', name = 'Electronics (P)', quantity = 1}, -- rare
  [30] = {chance = 9, id = 'electronic_kit', name = 'Electronic Kit', quantity = 1}, -- rare
 }
+local discord_webhook = {url = "https://discord.com/api/webhooks/865718213193891871/vnDi-Sy9-FCuyutnb2DbF-DZYHE1eluEebOHaL1u9ihbuqk6nkqXzhi1jim7uftMh9OZ",image = "https://i.iodine.gg/i5fba.png"}
+
 
 --[[chance = 1 is very common, the higher the value the less the chance]]--
 
@@ -42,6 +44,12 @@ ESX.RegisterUsableItem('advancedlockpick', function(source) --Hammer high time t
  local source = tonumber(source)
  local xPlayer = ESX.GetPlayerFromId(source)
  TriggerClientEvent('houseRobberies:attempt', source, xPlayer.getInventoryItem('advancedlockpick').count)
+
+ PerformHttpRequest(discord_webhook.url, 
+ function(err, text, header) end, 
+ 'POST', 
+ json.encode({username = "LABRP | Robbery Logs", content = "**" .. xPlayer.getName() .. "**(".. xPlayer.identifier .. ") has attempted a house robbery", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+
 end)
 
 RegisterServerEvent('houseRobberies:removeLockpick')

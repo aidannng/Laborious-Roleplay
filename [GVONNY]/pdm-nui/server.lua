@@ -279,7 +279,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
 
                                 MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE plate = @plate", {['@plate'] = plate})
                                 --print("removing car from showroom on purchase")
-                                TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+                                --TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
                             end
                         end)
 
@@ -328,7 +328,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
 
                                 MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE plate = @plate", {['@plate'] = plate})
                                 --print("removing car from showroom on purchase")
-                                TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+                                --TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
                             end
                         end)
 
@@ -344,6 +344,11 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                         end)
 
                         TriggerClientEvent("pdm:refreshbilllist", src)
+                        PerformHttpRequest(discord_webhook.url, 
+                        function(err, text, header) end, 
+                        'POST', 
+                        json.encode({username = "LABRP | PDM Logs", content = "**" .. creator.getName() .. "**(".. creator.identifier .. ") has sold a **" .. model ..  "** with the plate **" .. plate .. "** in full to **" .. ower.getName() .. "**(" .. ower.identifier .. ")", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+
                     else
                         TriggerClientEvent("pdm:billerror", src, "Customer has insufficient funds")
                     end
@@ -422,17 +427,109 @@ AddEventHandler("pdmgetbossinfo", function()
     end
 
     local balance = 0
+    Citizen.Wait(50)
     MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(money)
         if(money and #money > 0) then
             balance = money[1].money
         end
     end)
-
+    Citizen.Wait(50)
     MySQL.Async.fetchAll("SELECT a.grade, b.firstname, b.lastname, b.identifier FROM job_grades a, users b WHERE a.job_name = 'cardealer' and b.job = 'cardealer' and b.job_grade = a.grade ORDER BY a.grade", {}, function(employees)
         if(employees and #employees > 0) then
             for x=1,#employees,1 do
                 TriggerClientEvent("pdm:addemployeetolist", src, employees[x].grade, employees[x].firstname, employees[x].lastname, employees[x].identifier, isowner, balance)
             end
         end
+    end)
+end)
+
+RegisterServerEvent("pdmpromote")
+AddEventHandler("pdmpromote", function(identifier, grade)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    local newgrade = tonumber(grade) + 1
+    if(newgrade < 6) then
+        if(xPlayer ~= nil) then
+            xPlayer.setJob('cardealer', newgrade)
+        end
+        MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
+    else
+        TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "You can not promote past owner", })
+    end
+end)
+
+RegisterServerEvent("pdmdemote")
+AddEventHandler("pdmdemote", function(identifier, grade)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    local newgrade = tonumber(grade) - 1
+    if(newgrade > -1) then
+        if(xPlayer ~= nil) then
+            xPlayer.setJob('cardealer', newgrade)
+        end
+        MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
+    else
+        TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "You must fire this person", })
+    end
+end)
+
+RegisterServerEvent("pdmhire")
+AddEventHandler("pdmhire", function(luckynumber)
+    local xPlayer = ESX.GetPlayerFromId(luckynumber)
+    if(xPlayer ~= nil) then
+        xPlayer.setJob('cardealer', 0)
+    end
+    print(xPlayer.identifier)
+    MySQL.Async.execute("UPDATE users SET job = 'cardealer', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = xPlayer.identifier})
+end)
+
+RegisterServerEvent("pdmfire")
+AddEventHandler("pdmfire", function(identifier)
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    local newgrade = grade
+    if(xPlayer ~= nil) then
+        xPlayer.setJob('unemployed', 0)
+        MySQL.Async.execute("UPDATE users SET job = 'unemployed', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = identifier})
+    else
+        TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "Player is not in city", })
+    end
+end)
+
+RegisterServerEvent("pdmpay")
+AddEventHandler("pdmpay", function(identifier, amount)
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    xPlayer.addAccountMoney('bank', tonumber(amount))
+
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
+        local balance = result[1].money
+        balance = balance - amount
+
+        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+    end)
+end)
+
+RegisterServerEvent("pdmdeposit")
+AddEventHandler("pdmdeposit", function(amount)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.removeAccountMoney('bank', tonumber(amount))
+
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
+        local balance = result[1].money
+        balance = balance + amount
+
+        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+    end)
+end)
+
+RegisterServerEvent("pdmwithdraw")
+AddEventHandler("pdmwithdraw", function(amount)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.addAccountMoney('bank', tonumber(amount))
+
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
+        local balance = result[1].money
+        balance = balance - amount
+
+        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
     end)
 end)
