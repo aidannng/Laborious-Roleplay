@@ -17,7 +17,8 @@ AddEventHandler('esx_lscustom:refreshOwnedVehicle', function(vehicleProps)
 		if result[1] then
 			local vehicle = json.decode(result[1].vehicle)
 
-			if vehicleProps.model == result[1].model then
+			local hash = GetHashKey(result[1].model)
+			if vehicleProps.model == hash then
 				MySQL.Async.execute('UPDATE bbvehicles SET props = @props WHERE plate = @plate', {
 					['@plate'] = vehicleProps.plate,
 					['@props'] = json.encode(vehicleProps)
