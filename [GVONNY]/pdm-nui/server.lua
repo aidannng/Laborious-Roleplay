@@ -159,16 +159,17 @@ AddEventHandler("removefromshowroom", function(slotid)
 
     MySQL.Async.fetchAll("SELECT x, y, z, slot_id, plate FROM pdm_showroom WHERE slot_id = @slot",{['@slot']=slotid}, function(result)
         local slot = result[1].slot_id
-        local x = result[1].x
-        local y = result[1].y
-        local z = result[1].z
+        --local x = result[1].x
+        --local y = result[1].y
+        --local z = result[1].z
 
         MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
         
         --print("plain remove from showroom")
         --print("server trigger despawn vehicle from showroom")
         --print("============================================")
-        TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+        --TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
+        TriggerClientEvent("pdm:despawnvehicle", src, slot)
     end)
 end)
 
@@ -403,6 +404,35 @@ AddEventHandler("endtestdrive", function(plate)
     
     --print("despawn vehicle in back of garage from test drive")
     --print("=================================================")
-    TriggerClientEvent("pdm:despawnvehicle", src, -26.2022, -1083.02, 26.78613)
+    --TriggerClientEvent("pdm:despawnvehicle", src, -26.2022, -1083.02, 26.78613)
     TriggerClientEvent("pdm:refreshstocklist", src)
+end)
+
+RegisterServerEvent("pdmgetbossinfo")
+AddEventHandler("pdmgetbossinfo", function()
+    local src = source
+    local isowner = false
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+    local jobgrade = tonumber(xPlayer.job.grade)
+
+    if(job == "cardealer" and jobgrade > 4) then
+        isowner = true
+    end
+
+    local balance = 0
+    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(money)
+        if(money and #money > 0) then
+            balance = money[1].money
+        end
+    end)
+
+    MySQL.Async.fetchAll("SELECT a.grade, b.firstname, b.lastname, b.identifier FROM job_grades a, users b WHERE a.job_name = 'cardealer' and b.job = 'cardealer' and b.job_grade = a.grade ORDER BY a.grade", {}, function(employees)
+        if(employees and #employees > 0) then
+            for x=1,#employees,1 do
+                TriggerClientEvent("pdm:addemployeetolist", src, employees[x].grade, employees[x].firstname, employees[x].lastname, employees[x].identifier, isowner, balance)
+            end
+        end
+    end)
 end)

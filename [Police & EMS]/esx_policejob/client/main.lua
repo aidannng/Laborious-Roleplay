@@ -1004,12 +1004,6 @@ end)
 AddEventHandler('esx_policejob:hasEnteredEntityZone', function(entity)
 	local playerPed = PlayerPedId()
 
-	if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' and IsPedOnFoot(playerPed) then
-		CurrentAction     = 'remove_entity'
-		CurrentActionMsg  = _U('remove_prop')
-		CurrentActionData = {entity = entity}
-	end
-
 	if GetEntityModel(entity) == GetHashKey('p_ld_stinger_s') then
 		local playerPed = PlayerPedId()
 		local coords    = GetEntityCoords(playerPed)
@@ -1638,3 +1632,43 @@ function ImpoundVehicle(vehicle)
 	ESX.ShowNotification(_U('impound_successful'))
 	currentTask.busy = false
 end
+
+RegisterNetEvent('placespikes')
+AddEventHandler('placespikes', function()
+	local playerPed = PlayerPedId()
+	local coords, forward = GetEntityCoords(playerPed), GetEntityForwardVector(playerPed)
+	local objectCoords = (coords + forward * 1.75)
+	TriggerEvent('randPickupAnim')
+	Citizen.Wait(1000)
+	ESX.Game.SpawnObject('p_ld_stinger_s', objectCoords, function(obj)
+		SetEntityHeading(obj, GetEntityHeading(playerPed))
+		PlaceObjectOnGroundProperly(obj)
+	end)
+	TriggerServerEvent('removespike')
+end)
+
+RegisterNetEvent('pickupspike')
+AddEventHandler('pickupspike', function()
+	local playerPed = PlayerPedId()
+	local coords, forward = GetEntityCoords(playerPed), GetEntityForwardVector(playerPed)
+	local objectCoords = (coords + forward * 1.0)
+	local object = GetClosestObjectOfType(coords, 3.0, GetHashKey('p_ld_stinger_s'), false, false, false)
+	DeleteEntity(object)
+	TriggerServerEvent('pickupspike')
+end)
+
+local spikestrip = {
+	`p_ld_stinger_s`
+}
+
+exports['labrp_Eye']:AddTargetModel(spikestrip, {
+	options = {
+		{
+			event = 'pickupspike',
+			icon = 'fas fa-plus',
+			label = 'Pickup Spike Strip'
+		},
+	},
+	job = {'all'},
+	distance = 3.0
+})

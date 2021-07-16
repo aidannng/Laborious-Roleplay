@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -36,27 +38,27 @@ body::-webkit-scrollbar {
     width: auto;
     max-width: 45%;
     height: 10%;
-    background: #222831;
+    background: #000000;
     margin: auto;
     position: relative;
     top: 10%;
     margin-top: 0.5rem;
     overflow: hidden;
     padding: 0.45rem;
-    border-radius: 0.3rem;
+    border-radius: 0.15rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 0.0rem 0.0rem 0.1rem 0.05rem #000000;
+    opacity: 0.85;
 }
 
 .button:hover{
-    background-color: #30475e;
+    background-color: #385b88;
 }
 
 .button > .txt {
     color: rgb(232, 229, 229);
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 0.8rem;
     overflow: hidden;
     font-weight: 300;
@@ -71,7 +73,7 @@ body::-webkit-scrollbar {
     justify-content: left;
     overflow: wrap;
     color:  rgb(232, 229, 229);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 0.9rem;
     overflow: hidden;
     font-weight: 500;

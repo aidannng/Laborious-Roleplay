@@ -44,7 +44,7 @@ Config.Ammunation = {
 		scale = 0.6
 	}, inventory = {
 		{ name = 'WEAPON_PISTOL', price = 1500, metadata = { registered = true }, license = 'weapon' },
-		{ name = 'WEAPON_SNSPISTOL', price = 1250, metadata = { registered = true }, license = 'weapon' },
+		{ name = 'WEAPON_PISTOL_MK2', price = 1250, metadata = { registered = true }, license = 'weapon' },
 		{ name = 'ammo-9', price = 5, },
 		{ name = 'WEAPON_BAT', price = 100 },
 		{ name = 'WEAPON_KNIFE', price = 250 },
@@ -80,6 +80,7 @@ Config.PoliceArmoury = {
 		{ name = 'pdarmour', price = 75, },
 		{ name = 'ifak', price = 50, },
 		{ name = 'radio', price = 50 },
+		{ name = 'spikestrips', price = 150 },
 	}
 }
 

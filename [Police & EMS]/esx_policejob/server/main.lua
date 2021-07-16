@@ -506,3 +506,15 @@ AddEventHandler('onResourceStop', function(resource)
 		TriggerEvent('esx_phone:removeNumber', 'police')
 	end
 end)
+
+RegisterNetEvent('removespike')
+AddEventHandler('removespike', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.removeInventoryItem('spikestrips', 1)
+end)
+
+RegisterNetEvent('pickupspike')
+AddEventHandler('pickupspike', function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	xPlayer.addInventoryItem('spikestrips', 1)
+end)

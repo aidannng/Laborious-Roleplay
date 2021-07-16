@@ -89,6 +89,15 @@ input{
     border-radius: 5px;
 }
 
+.roster-content {
+    border:2px solid rgb(44, 50, 66);
+    background-color: rgb(217,227,251)!important;
+    border-radius: 5px;
+}
+
+.management-container{
+    height:660px;
+}
 
 select{
     margin-top:5px;

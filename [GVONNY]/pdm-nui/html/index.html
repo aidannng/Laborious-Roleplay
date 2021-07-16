@@ -28,7 +28,7 @@
                 <button class="nav-link" id="nav-showroom-tab" data-bs-toggle="tab" data-bs-target="#nav-showroom" type="button" role="tab" aria-controls="nav-showroom" aria-selected="false">Showroom</button>
                 <button class="nav-link" id="nav-purchase-tab" data-bs-toggle="tab" data-bs-target="#nav-purchase" type="button" role="tab" aria-controls="nav-purchase" aria-selected="false">Purchase</button>
                 <button class="nav-link" id="nav-bills-tab" data-bs-toggle="tab" data-bs-target="#nav-bills" type="button" role="tab" aria-controls="nav-bills" aria-selected="false">Bills</button>
-                <button class="nav-link" id="nav-boss-tab" data-bs-toggle="tab" data-bs-target="#nav-boss" type="button" role="tab" aria-controls="nav-boss" aria-selected="false">Boss</button>
+                <button class="nav-link" id="nav-boss-tab" data-bs-toggle="tab" data-bs-target="#nav-boss" type="button" role="tab" aria-controls="nav-boss" aria-selected="false">Management</button>
 
             </div>
           </nav>
@@ -137,7 +137,115 @@
                         </table>
                     </div>
                 </div>
-          </div>
+                <div class="tab-pane fade" id="nav-boss" role="tabpanel" aria-labelledby="nav-boss-tab">
+                    <br>
+                    <div id="owner-info" class="roster-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Account Balance</th>
+                                    <th>Withdraw/Deposit</th>
+                                    <th>Hire</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="account-balance"></td>
+                                    <td>
+                                        <input type="number" placeholder="Amount"/>
+                                        <button class="btn" id="withdraw">Withdraw</button>
+                                        <button class="btn" id="deposit">Deposit</button>
+                                    </td>
+                                    <td>
+                                        <input type="number" placeholder="Lucky Number"/>
+                                        <button class="btn" id="hire">Hire</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="management-container overflow-auto">
+                        <div class="roster-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Owner</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grade-5">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="roster-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Manager</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grade-4">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="roster-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Floor Supervisor</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grade-3">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="roster-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Senior Sales</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grade-2">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="roster-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Junior Sales</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grade-1">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="roster-content">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Reception</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grade-0">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!--#region Accorion-->
         <!-- <div class="accordion" id="resparyAccordian">
             <div class="accordion-item">
