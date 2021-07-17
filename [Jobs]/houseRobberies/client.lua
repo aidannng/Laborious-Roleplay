@@ -618,6 +618,11 @@ end)
 
 RegisterNetEvent('houseRobberies:attempt')
 AddEventHandler('houseRobberies:attempt', function()
+  TriggerServerEvent('checkhousecops')
+end)
+
+RegisterNetEvent('house:attempt')
+AddEventHandler('house:attempt', function()
  if isRobbing and DoesEntityExist(safe) then
   local playerCoords = GetEntityCoords(PlayerPedId(), true)
   if GetDistanceBetweenCoords(playerCoords, safepos.x, safepos.y, safepos.z, true) <= 3.0 then

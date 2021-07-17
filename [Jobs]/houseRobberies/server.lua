@@ -107,3 +107,21 @@ AddEventHandler('houseRobberies:searchItem', function()
   end
  end
 end)
+
+RegisterServerEvent('checkhousecops')
+AddEventHandler('checkhousecops', function()
+    local xPlayers = ESX.GetExtendedPlayers()
+    local cops = 0
+    for _, xPlayer in pairs(xPlayers) do
+        if xPlayer.job.name == 'police' then
+            cops = cops + 1
+        end
+    end
+
+    print('check cops: '..cops)
+    if cops >= 2 then
+        TriggerClientEvent('house:attempt', source)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'Take the L!'})
+    end
+end)

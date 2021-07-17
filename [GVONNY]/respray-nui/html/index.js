@@ -119,16 +119,18 @@ $(function () {
     })
 
     $('.interior').click(function(){
-        var id = this.id;
-        var typeID = 2
-
-        var color = $(this).data("color");
         var colorID = $(this).data("color-id");
-        var rbg = $(this).data("rgb");
 
         $.post('http://respray-nui/interior', JSON.stringify({
             color: colorID,
-            type: typeID
+        }));
+    })
+
+    $('.trim').click(function(){
+        var colorID = $(this).data("color-id");
+
+        $.post('http://respray-nui/trim', JSON.stringify({
+            color: colorID,
         }));
     })
 
@@ -142,7 +144,6 @@ $(function () {
 
         $.post('http://respray-nui/wheel', JSON.stringify({
             color: colorID,
-            type: typeID
         }));
     })
 })

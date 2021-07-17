@@ -1043,6 +1043,15 @@ RegisterCommand("evidence", function(source, args, rawCommand)
 	end
 end)
 
+RegisterCommand("evidencefbi", function(source, args, rawCommand)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.job.name == "fbi" then
+		local evidence = tonumber(args[1])
+		local stash = {id = 'FBI-evidence-'..evidence, label = 'FBI Evidence (#'..evidence..')', slots = 40, job = 'fbi', coords = Config.FbiEvidence, grade = 0}
+		OpenStash(xPlayer, stash)
+	end
+end)
+
 --[[ ESX.RegisterCommand('evidence', 'user', function(xPlayer, args, showError)
 	if xPlayer.job.name == 'police' then
 		local stash = {id = 'evidence-'..args.evidence, label = 'Police Evidence (#'..args.evidence..')', slots = Config.PlayerSlots, job = 'police', coords = Config.PoliceEvidence, grade = 2}
