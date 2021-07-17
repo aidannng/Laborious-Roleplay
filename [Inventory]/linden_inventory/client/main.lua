@@ -165,6 +165,8 @@ OpenTargetInventory = function(target)
 		if targetPlayer ~= -1 and targetDistance <= 1.5 then
 			if CanOpenTarget(GetPlayerPed(targetPlayer)) or ESX.PlayerData.job.name == 'police' then
 				TriggerServerEvent('linden_inventory:openTargetInventory', GetPlayerServerId(targetPlayer))
+			elseif CanOpenTarget(GetPlayerPed(targetPlayer)) or ESX.PlayerData.job.name == 'fbi' then
+				TriggerServerEvent('linden_inventory:openTargetInventory', GetPlayerServerId(targetPlayer))
 			else
 				TriggerEvent('mythic_notify:client:SendAlert', {type = 'error', text = _U('inventory_cannot_open_other'), length = 2500})
 			end
@@ -475,6 +477,10 @@ DrawWeapon = function(item)
 	if ESX.PlayerData.job.name == 'police' then
 		loadAnimDict('reaction@intimidation@cop@unarmed')
 		TaskPlayAnimAdvanced(ESX.PlayerData.ped, 'reaction@intimidation@cop@unarmed', 'intro', GetEntityCoords(ESX.PlayerData.ped, true), 0, 0, GetEntityHeading(ESX.PlayerData.ped), 8.0, 3.0, -1, 50, 1, 0, 0)
+	elseif ESX.PlayerData.job.name == 'fbi' then
+		loadAnimDict('reaction@intimidation@cop@unarmed')
+		TaskPlayAnimAdvanced(ESX.PlayerData.ped, 'reaction@intimidation@cop@unarmed', 'intro', GetEntityCoords(ESX.PlayerData.ped, true), 0, 0, GetEntityHeading(ESX.PlayerData.ped), 8.0, 3.0, -1, 50, 1, 0, 0)
+	
 	else
 		loadAnimDict('reaction@intimidation@1h')
 		TaskPlayAnimAdvanced(ESX.PlayerData.ped, 'reaction@intimidation@1h', 'intro', GetEntityCoords(ESX.PlayerData.ped, true), 0, 0, GetEntityHeading(ESX.PlayerData.ped), 8.0, 3.0, -1, 50, 0, 0, 0)
@@ -806,6 +812,9 @@ TriggerLoops = function()
 							if (ESX.PlayerData.job.name == 'police' and dist > 1.8) or not CanOpenTarget(ped) then
 								TriggerEvent('linden_inventory:closeInventory')
 								TriggerEvent('mythic_notify:client:SendAlert', {type = 'error', text = _U('inventory_lost_access'), length = 2500})
+							elseif (ESX.PlayerData.job.name == 'fbi' and dist > 1.8) or not CanOpenTarget(ped) then
+								TriggerEvent('linden_inventory:closeInventory')
+								TriggerEvent('mythic_notify:client:SendAlert', {type = 'error', text = _U('inventory_lost_access'), length = 2500})
 							end
 						else
 							TaskTurnPedToFaceCoord(ESX.PlayerData.ped, playerCoords)
@@ -1018,6 +1027,11 @@ RegisterCommand('steal', function() RobTargetInventory() end)
 
 RegisterCommand('weapondetails', function()
 	if currentWeapon and ESX.PlayerData.job.name == 'police' then
+		local msg
+		if currentWeapon.metadata.registered then msg = _U('weapon_registered', currentWeapon.label, currentWeapon.metadata.serial, currentWeapon.metadata.registered)
+		else msg = _U('weapon_unregistered', currentWeapon.label) end
+		TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = msg, length = 8000})
+	elseif currentWeapon and ESX.PlayerData.job.name == 'fbi' then
 		local msg
 		if currentWeapon.metadata.registered then msg = _U('weapon_registered', currentWeapon.label, currentWeapon.metadata.serial, currentWeapon.metadata.registered)
 		else msg = _U('weapon_unregistered', currentWeapon.label) end

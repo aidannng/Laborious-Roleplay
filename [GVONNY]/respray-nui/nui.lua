@@ -9,9 +9,26 @@ end)
 
 local display = false
 
---[[ RegisterCommand("respray", function(source)
+RegisterCommand("respray", function(source)
     TriggerEvent("mechanic:respray")
-end) ]]
+end)
+
+RegisterCommand("gettrim", function(source)
+    local xPlayer = PlayerPedId()
+    
+    local vehicleID = GetVehiclePedIsIn(xPlayer, false)
+    local props = ESX.Game.GetVehicleProperties(vehicleID)
+
+    if vehicleID ~= 0 then
+        props = ESX.Game.GetVehicleProperties(vehicleID)
+        for key,value in pairs(props) do
+            if(key == "modTrimA") then
+                print(key, value)
+            end
+        end
+        --TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
+    end
+end)
 
 RegisterNetEvent("mechanic:respray")
 AddEventHandler("mechanic:respray", function()
@@ -67,7 +84,7 @@ AddEventHandler("respray:pearl", function(type, color)
 end)
 
 RegisterNetEvent("respray:interior")
-AddEventHandler("respray:interior", function(type, color)
+AddEventHandler("respray:interior", function(color)
 
     local xPlayer = PlayerPedId()
     
@@ -79,10 +96,32 @@ AddEventHandler("respray:interior", function(type, color)
         SetVehicleInteriorColor(vehicleID, color)
         props = ESX.Game.GetVehicleProperties(vehicleID)
         for key,value in pairs(props) do
-            if(key == "modTrimB" or key == "modTrimA") then
+            if(key == "modTrimA") then
                 props[key] = color
             end
         end
+        TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
+    end
+end)
+
+RegisterNetEvent("respray:trim")
+AddEventHandler("respray:trim", function(color)
+
+    local xPlayer = PlayerPedId()
+    
+    local vehicleID = GetVehiclePedIsIn(xPlayer, false)
+    print(vehicleID)
+    local props = ESX.Game.GetVehicleProperties(vehicleID)
+
+    if vehicleID ~= 0 then
+        SetVehicleModKit(vehicleID, 0)
+        props = ESX.Game.GetVehicleProperties(vehicleID)
+        for key,value in pairs(props) do
+            if(key == "modTrimB") then
+                props[key] = color
+            end
+        end
+        ESX.Game.SetVehicleProperties(vehicleID, props)
         TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
@@ -139,7 +178,15 @@ end)
 
 RegisterNUICallback("interior", function(data)
     if CheckIfInVehicle() then
-        TriggerEvent("respray:interior", data.type, data.color)
+        TriggerEvent("respray:interior", data.color)
+    else
+        exports['mythic_notify']:SendAlert('error', 'Must be inside the vehicle.') 
+    end
+end)
+
+RegisterNUICallback("trim", function(data)
+    if CheckIfInVehicle() then
+        TriggerEvent("respray:trim", data.color)
     else
         exports['mythic_notify']:SendAlert('error', 'Must be inside the vehicle.') 
     end

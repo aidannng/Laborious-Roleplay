@@ -510,6 +510,14 @@ Items = {
 		close = true,
 	},
 
+
+	['g6card'] = {
+		label = 'Gruppe 6 Card',
+		weight = 2500,
+		stack = false,
+		close = true,
+	},
+
 	['binoculars'] = {
 		label = 'Binoculars',
 		weight = 300,

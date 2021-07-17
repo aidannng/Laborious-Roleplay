@@ -1,4 +1,6 @@
 Config.PoliceEvidence = vector3(474.2242, -990.7516, 26.2638) -- /evidence # while near this point
+Config.FbiEvidence = vector3(143.789, -764.5319, 242.1436) -- /evidence # while near this point
+
 
 Config.Stashes = {
 	--{ coords = vector3(474.2242, -990.7516, 26.2638), slots = 70, name = 'Police Evidence', job = 'police' }, --using command instead

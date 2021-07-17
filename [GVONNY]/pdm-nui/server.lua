@@ -347,7 +347,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                         PerformHttpRequest(discord_webhook.url, 
                         function(err, text, header) end, 
                         'POST', 
-                        json.encode({username = "LABRP | PDM Logs", content = "**" .. creator.getName() .. "**(".. creator.identifier .. ") has sold a **" .. model ..  "** with the plate **" .. plate .. "** in full to **" .. ower.getName() .. "**(" .. ower.identifier .. ")", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
+                        json.encode({username = "LABRP | PDM Logs", content = "**" .. creator.getName() .. "**(".. creator.identifier .. ") has sold a **" .. model ..  "** for $**".. price .."** with the plate **" .. plate .. "** in full to **" .. ower.getName() .. "**(" .. ower.identifier .. ")", avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
 
                     else
                         TriggerClientEvent("pdm:billerror", src, "Customer has insufficient funds")

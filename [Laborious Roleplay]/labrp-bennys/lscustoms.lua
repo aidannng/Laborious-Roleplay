@@ -1,4 +1,11 @@
+ESX = nil
 
+Citizen.CreateThread(function()
+    while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(10)
+	end
+end)
 
 local bennyLocationTuner = vector3(1174.73, 2640, 37.76)
 local bennyLocationImport = vector3(936.62, -970.79, 39.05)
@@ -763,7 +770,22 @@ AddEventHandler("LSC:buttonSelected", function(name, button, canpurchase)
 	elseif mname == "liveries" or mname == "hydraulics" or mname == "horn" or mname == "tank" or mname == "ornaments" or  mname == "arch cover" or mname == "aerials" or mname == "roof scoops" or mname == "doors" or mname == "roll cage" or mname == "engine block" or mname == "cam cover" or mname == "strut brace" or mname == "trim design" or mname == "ormnametns" or mname == "dashboard" or mname == "dials" or mname == "seats" or mname == "steering wheels" or mname == "plate holder" or mname == "vanity plates" or mname == "shifter leavers" or mname == "plaques" or mname == "speakers" or mname == "trunk" or mname == "armor" or mname == "suspension" or mname == "transmission" or mname == "brakes" or mname == "engine tunes" or mname == "roof" or mname == "hood" or mname == "grille" or mname == "roll cage" or mname == "exhausts" or mname == "skirts" or mname == "rear bumpers" or mname == "front bumpers" or mname == "spoiler" then
 		if button.name == "Stock" or button.purchased or CanPurchase(price, canpurchase)then
 			myveh.mods[button.modtype].mod = button.mod
+			print(button.modtype)
+			print(button.mod)
+
+			props = ESX.Game.GetVehicleProperties(veh)
+			for key,value in pairs(props) do
+				if(key == "modLivery") then
+					props[key] = button.mod
+				end
+				if(key == "modTrimA") then
+					print(key, value)
+					SetVehicleInteriorColor(veh, props[key])
+				end
+			end
+			ESX.Game.SetVehicleProperties(veh, props)
 			SetVehicleMod(veh,button.modtype,button.mod)
+			TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
 		end
 	elseif mname == "fenders" then
 		if button.name == "Stock" or button.purchased or CanPurchase(price, canpurchase)then
@@ -1149,6 +1171,7 @@ end
 
 --Show notifications and return if item can be purchased
 function CanPurchase(price, canpurchase)
+	print("can purchase")
 	if canpurchase then
 		if LSCMenu.currentmenu == "main" then
 			LSCMenu:showNotification("Your vehicle has been repaired.")
@@ -1156,6 +1179,16 @@ function CanPurchase(price, canpurchase)
 			LSCMenu:showNotification("Item purchased.")
 			local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
 			myCar = ESX.Game.GetVehicleProperties(vehicle)
+
+			TriggerServerEvent("getInteriorColor", myCar.plate)
+			--[[ ESX.TriggerServerCallback('vehicleGetInterior', function(colorID)
+				print("colorID: "..colorID)
+			end, myCar.plate)
+			for key,value in pairs(myCar) do
+				if(key == "modTrimA") then
+					print(key, value)
+				end
+			end ]]
 			TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
 		end
 		return true
@@ -1448,6 +1481,7 @@ AddEventHandler('toggleextra',function(data)
 end)
 
 AddEventHandler('setlivery',function()
+	print('setlivery')
 	local vehicle = GetVehiclePedIsIn(PlayerPedId())
 	SetVehicleLivery(vehicle, 1)
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -1456,6 +1490,7 @@ AddEventHandler('setlivery',function()
 end)
 
 AddEventHandler('setlivery2',function()
+	print('setlivery2')
 	local vehicle = GetVehiclePedIsIn(PlayerPedId())
 	SetVehicleLivery(vehicle, 2)
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
@@ -1464,6 +1499,7 @@ AddEventHandler('setlivery2',function()
 end)
 
 AddEventHandler('setlivery3',function()
+	print('setlivery3')
 	local vehicle = GetVehiclePedIsIn(PlayerPedId())
 	SetVehicleLivery(vehicle, 3)
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
