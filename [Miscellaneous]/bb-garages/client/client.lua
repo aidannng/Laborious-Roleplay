@@ -255,6 +255,16 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
                     TriggerEvent("vehiclekeys:client:SetOwner", data.plate, v)
                     while not IsPedInAnyVehicle(GetPlayerPed(-1), false) do Wait(0) end
                     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+                    SetVehicleInteriorColor(vehicle, tonumber(json.decode(data.props).modTrimA))
+                    SetVehicleLivery(vehicle, tonumber(json.decode(data.props).livery))
+                    ESX.Game.SetVehicleProperties(vehicle,json.decode(data.props))
+                    SetVehicleModKit(vehicle,0)
+                    if(json.decode(data.props).modBackWheels > -1) then
+                        SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),true)
+                    else
+                        SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),false)
+                    end
+
                     TaskWarpPedIntoVehicle(playerPed , vehicle, -1)
                     if GetVehicleNumberPlateText(vehicle) == data.plate then
                         TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
@@ -270,7 +280,17 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
             if BBGarages.Functions.IsSpawnClear(BBGarages.Config['garages'][parking[2]]['slots'][tonumber(parking[1])][1], 2.0) then
                 ESX.Game.SpawnVehicle(modelHash, BBGarages.Config['garages'][parking[2]]['slots'][tonumber(parking[1])][1], BBGarages.Config['garages'][parking[2]]['slots'][tonumber(parking[1])][1].h, function(vehicle)
                     ESX.Game.SetVehicleProperties(vehicle, json.decode(data.props))
+                    SetVehicleModKit(vehicle,0)
+                    if(json.decode(data.props).modBackWheels > -1) then
+                        SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),true)
+                    else
+                        SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),false)
+                    end
+                    print("Number 2 was triggered")
                     SetVehicleNumberPlateText(vehicle, data.plate)
+                    SetVehicleInteriorColor(vehicle, tonumber(json.decode(data.props).modTrimA))
+                    SetVehicleLivery(vehicle, tonumber(json.decode(data.props).livery))
+
                     SetEntityHeading(vehicle, BBGarages.Config['garages'][parking[2]]['slots'][tonumber(parking[1])][1].h)
                     table.insert(ownedVehicles, {data.plate, vehicle})
 
@@ -290,8 +310,17 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
                 local modelHash = tonumber(json.decode(data.props).model)
                 ESX.Game.SpawnVehicle(modelHash, BBGarages.Config['garages'][parking[2]]['slots'][slot][1], BBGarages.Config['garages'][parking[2]]['slots'][slot][1].h, function(vehicle)
                     ESX.Game.SetVehicleProperties(vehicle, json.decode(data.props))
+                    SetVehicleModKit(vehicle,0)
+                    if(json.decode(data.props).modBackWheels > -1) then
+                        SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),true)
+                    else
+                        SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),false)
+                    end
                     print("Number 3 was triggered")
                     SetVehicleNumberPlateText(vehicle, data.plate)
+                    SetVehicleInteriorColor(vehicle, tonumber(json.decode(data.props).modTrimA))
+                    SetVehicleLivery(vehicle, tonumber(json.decode(data.props).livery))
+
                     SetEntityHeading(vehicle, BBGarages.Config['garages'][parking[2]]['slots'][slot][1].h)
                     table.insert(ownedVehicles, {data.plate, vehicle})
 
@@ -313,8 +342,17 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
         local modelHash = tonumber(json.decode(data.props).model)
         ESX.Game.SpawnVehicle(modelHash, BBGarages.Config['impounds'][name]['spawn'], BBGarages.Config['impounds'][name]['spawn'].h, function(vehicle)
             ESX.Game.SetVehicleProperties(vehicle, json.decode(data.props))
+            SetVehicleModKit(vehicle,0)
+            if(json.decode(data.props).modBackWheels > -1) then
+                SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),true)
+            else
+                SetVehicleMod(vehicle,24,tonumber(json.decode(data.props).modBackWheels),false)
+            end
             print("Number 4 was triggered")
             SetVehicleNumberPlateText(vehicle, data.plate)
+            SetVehicleInteriorColor(vehicle, tonumber(json.decode(data.props).modTrimA))
+            SetVehicleLivery(vehicle, tonumber(json.decode(data.props).livery))
+
             SetEntityHeading(vehicle, BBGarages.Config['impounds'][name]['spawn'].h)
             TaskWarpPedIntoVehicle(playerPed , vehicle, -1)
             TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)

@@ -278,7 +278,7 @@ AddEventHandler('craft:stocksuspension', function()
         xPlayer.removeInventoryItem('strut', 4)
         xPlayer.addInventoryItem('stock_suspension', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -294,7 +294,7 @@ AddEventHandler('craft:loweringsprings', function()
         xPlayer.removeInventoryItem('strut', 4)
         xPlayer.addInventoryItem('lowering_spring', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -310,7 +310,7 @@ AddEventHandler('craft:coilovers', function()
         xPlayer.removeInventoryItem('race_strut', 4)
         xPlayer.addInventoryItem('coil_overs', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -326,7 +326,7 @@ AddEventHandler('craft:racecoilovers', function()
         xPlayer.removeInventoryItem('race_strut', 4)
         xPlayer.addInventoryItem('race_coil_overs', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -342,7 +342,7 @@ AddEventHandler('craft:stancedcoilovers', function()
         xPlayer.removeInventoryItem('race_strut', 4)
         xPlayer.addInventoryItem('stanced_coil_overs', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -358,7 +358,23 @@ AddEventHandler('craft:liftedcoilovers', function()
         xPlayer.removeInventoryItem('race_strut', 4)
         xPlayer.addInventoryItem('lifted_coil_overs', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:liftedcoilovers2')
+AddEventHandler('craft:liftedcoilovers2', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local springCount = xPlayer.getInventoryItem('spring').count
+    local strutCount = xPlayer.getInventoryItem('race_strut').count
+
+    if (springCount > 3 and strutCount > 3) then
+        xPlayer.removeInventoryItem('spring', 4)
+        xPlayer.removeInventoryItem('race_strut', 4)
+        xPlayer.addInventoryItem('lifted_coil_overs2', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -382,7 +398,7 @@ AddEventHandler('craft:stockengine', function()
         xPlayer.removeInventoryItem('head', 1)
         xPlayer.addInventoryItem('stock_engine', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -402,7 +418,7 @@ AddEventHandler('craft:fullboltonengine', function()
         xPlayer.removeInventoryItem('head', 2)
         xPlayer.addInventoryItem('full_bolt_on_engine', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -422,7 +438,7 @@ AddEventHandler('craft:tunedengine', function()
         xPlayer.removeInventoryItem('high_flow_head', 2)
         xPlayer.addInventoryItem('tuned_engine', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -442,7 +458,7 @@ AddEventHandler('craft:2jz', function()
         xPlayer.removeInventoryItem('high_flow_head', 1)
         xPlayer.addInventoryItem('2jzengine', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -462,7 +478,7 @@ AddEventHandler('craft:amgv8', function()
         xPlayer.removeInventoryItem('high_flow_head', 2)
         xPlayer.addInventoryItem('amgv8', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -482,7 +498,7 @@ AddEventHandler('craft:lambov10', function()
         xPlayer.removeInventoryItem('high_flow_head', 2)
         xPlayer.addInventoryItem('lambov10', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -502,7 +518,7 @@ AddEventHandler('craft:policeengine', function()
         xPlayer.removeInventoryItem('head', 2)
         xPlayer.addInventoryItem('police_engine', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -522,7 +538,7 @@ AddEventHandler('craft:stockbrakes', function()
         xPlayer.removeInventoryItem('brake_pad', 8)
         xPlayer.addInventoryItem('stock_brakes', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -538,7 +554,7 @@ AddEventHandler('craft:upgradedbrakepads', function()
         xPlayer.removeInventoryItem('race_brake_pad', 8)
         xPlayer.addInventoryItem('upgraded_brake_pads', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -554,7 +570,7 @@ AddEventHandler('craft:brembobrakes', function()
         xPlayer.removeInventoryItem('race_brake_pad', 8)
         xPlayer.addInventoryItem('brembo_brakes', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -570,7 +586,7 @@ AddEventHandler('craft:wilwoodbrakes', function()
         xPlayer.removeInventoryItem('race_brake_pad', 8)
         xPlayer.addInventoryItem('wilwood_brakes', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -752,7 +768,7 @@ AddEventHandler('craft:stocktransmission', function()
         xPlayer.removeInventoryItem('stock_oil', 1)
         xPlayer.addInventoryItem('stock_transmission', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -768,7 +784,7 @@ AddEventHandler('craft:streettransmissionfwd', function()
         xPlayer.removeInventoryItem('shell_oil', 1)
         xPlayer.addInventoryItem('street_transmission_fwd', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -784,7 +800,7 @@ AddEventHandler('craft:streettransmission4wd', function()
         xPlayer.removeInventoryItem('shell_oil', 1)
         xPlayer.addInventoryItem('street_transmission_4wd', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -800,7 +816,7 @@ AddEventHandler('craft:streettransmissionrwd', function()
         xPlayer.removeInventoryItem('shell_oil', 1)
         xPlayer.addInventoryItem('street_transmission', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -816,7 +832,7 @@ AddEventHandler('craft:racetransmissionfwd', function()
         xPlayer.removeInventoryItem('amsoil_oil', 1)
         xPlayer.addInventoryItem('race_transmission_fwd', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -832,7 +848,7 @@ AddEventHandler('craft:racetransmission4wd', function()
         xPlayer.removeInventoryItem('amsoil_oil', 1)
         xPlayer.addInventoryItem('race_transmission_4wd', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -848,7 +864,7 @@ AddEventHandler('craft:racetransmissionrwd', function()
         xPlayer.removeInventoryItem('amsoil_oil', 1)
         xPlayer.addInventoryItem('race_transmission', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -864,7 +880,7 @@ AddEventHandler('craft:policetransmission', function()
         xPlayer.removeInventoryItem('shell_oil', 1)
         xPlayer.addInventoryItem('police_transmission', 1)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough to craft item", })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
 end)
 
@@ -1025,6 +1041,48 @@ AddEventHandler('craft:advancedlockpick', function()
     if ironCount > 4 then
         xPlayer.removeInventoryItem('iron', 5)
         xPlayer.addInventoryItem('advancedlockpick', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:nos')
+AddEventHandler('craft:nos', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 9 then
+        xPlayer.removeInventoryItem('iron', 10)
+        xPlayer.addInventoryItem('nos', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:nos2')
+AddEventHandler('craft:nos', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 6 then
+        xPlayer.removeInventoryItem('iron', 7)
+        xPlayer.addInventoryItem('nos2', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:nos3')
+AddEventHandler('craft:nos', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 3 then
+        xPlayer.removeInventoryItem('iron', 4)
+        xPlayer.addInventoryItem('nos3', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end

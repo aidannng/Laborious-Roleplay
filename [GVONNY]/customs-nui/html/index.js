@@ -110,6 +110,18 @@ $(function () {
         resetManagement()
     });
 
+    $('.employee').on('click', '.refresh', function(){
+        var identifier = $(this).data('identifier');
+        var grade = $(this).data('grade');
+
+        $.post('http://customs-nui/lscrefresh', JSON.stringify({
+            identifier:identifier,
+            grade:grade,
+        }));
+
+        resetManagement()
+    });
+
     $('.employee').on('click', '.fire', function(){
         var identifier = $(this).data('identifier');
 
@@ -201,7 +213,7 @@ $(function () {
             var id = item.jobgrade;
             console.log(id)
 
-            var str = "<tr id=\""+ item.identifier +"\"><td>"+ item.employeefirstname + " " + item.employeelastname +"</td>";
+            var str = "<tr id=\""+ item.identifier +"\"><td>"+ item.employeefirstname + " " + item.employeelastname +"</td><td><button class=\"btn refresh margin-left-5\" data-grade=\""+ item.jobgrade +"\" data-identifier=\""+ item.identifier +"\">Refresh</button></td>";
 
             if(item.isowner)
             {

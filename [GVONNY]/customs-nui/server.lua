@@ -160,6 +160,19 @@ AddEventHandler("lscgetbossinfo", function()
     end)
 end)
 
+RegisterServerEvent("lscrefresh")
+AddEventHandler("lscrefresh", function(identifier, grade)
+    print(identifier)
+    print(grade)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    if(xPlayer ~= nil) then
+        xPlayer.setJob('mechanic', grade)
+        MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = grade, ['@identifier'] = identifier})
+        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Job refreshed', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+    end
+end)
+
 RegisterServerEvent("lscpromote")
 AddEventHandler("lscpromote", function(identifier, grade)
     local src = source
@@ -167,7 +180,7 @@ AddEventHandler("lscpromote", function(identifier, grade)
     local newgrade = tonumber(grade) + 1
     if(newgrade < 5) then
         if(xPlayer ~= nil) then
-            xPlayer.setJob('cardealer', newgrade)
+            xPlayer.setJob('mechanic', newgrade)
         end
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
     else
@@ -182,7 +195,7 @@ AddEventHandler("lscdemote", function(identifier, grade)
     local newgrade = tonumber(grade) - 1
     if(newgrade > -1) then
         if(xPlayer ~= nil) then
-            xPlayer.setJob('cardealer', newgrade)
+            xPlayer.setJob('mechanic', newgrade)
         end
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
     else
@@ -194,7 +207,7 @@ RegisterServerEvent("lschire")
 AddEventHandler("lschire", function(luckynumber)
     local xPlayer = ESX.GetPlayerFromId(luckynumber)
     if(xPlayer ~= nil) then
-        xPlayer.setJob('cardealer', 0)
+        xPlayer.setJob('mechanic', 0)
     end
     print(xPlayer.identifier)
     MySQL.Async.execute("UPDATE users SET job = 'cardealer', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = xPlayer.identifier})

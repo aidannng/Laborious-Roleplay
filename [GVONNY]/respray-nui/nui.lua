@@ -26,7 +26,6 @@ RegisterCommand("gettrim", function(source)
                 print(key, value)
             end
         end
-        --TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
 
@@ -89,7 +88,6 @@ AddEventHandler("respray:interior", function(color)
     local xPlayer = PlayerPedId()
     
     local vehicleID = GetVehiclePedIsIn(xPlayer, false)
-    print(vehicleID)
     local props = ESX.Game.GetVehicleProperties(vehicleID)
 
     if vehicleID ~= 0 then
@@ -110,7 +108,6 @@ AddEventHandler("respray:trim", function(color)
     local xPlayer = PlayerPedId()
     
     local vehicleID = GetVehiclePedIsIn(xPlayer, false)
-    print(vehicleID)
     local props = ESX.Game.GetVehicleProperties(vehicleID)
 
     if vehicleID ~= 0 then
@@ -127,7 +124,7 @@ AddEventHandler("respray:trim", function(color)
 end)
 
 RegisterNetEvent("respray:wheel")
-AddEventHandler("respray:wheel", function(type, color)
+AddEventHandler("respray:wheel", function(color)
 
     local xPlayer = PlayerPedId()
     
@@ -194,7 +191,7 @@ end)
 
 RegisterNUICallback("wheel", function(data)
     if CheckIfInVehicle() then
-        TriggerEvent("respray:wheel", data.type, data.color)
+        TriggerEvent("respray:wheel", data.color)
     else
         exports['mythic_notify']:SendAlert('error', 'Must be inside the vehicle.') 
     end

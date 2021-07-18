@@ -6,7 +6,7 @@
     <Item>
       <modelName>JEEP</modelName> <!--2018 Jeep Grand Cherokee TrackHawk made by Zeakor Designs-->
       <txdName>JEEP</txdName>
-      <handlingId>toros</handlingId>
+      <handlingId>GAUNTLET4</handlingId>
       <gameName>JEEP</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
@@ -15,7 +15,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>SCHAFTER3</audioNameHash>
+      <audioNameHash>BTYPE2</audioNameHash>
       <layout>LAYOUT_STANDARD</layout>
       <coverBoundOffsets>POLICE_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
