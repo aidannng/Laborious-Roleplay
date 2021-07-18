@@ -166,20 +166,20 @@ Config = {
         durability = 10.0 -- Here enter seconds until nitro will run out
     },
 
-    ['nos'] = {
-        label = "NOS +2/40s", 
-        usability = {exclusive = {}, vehicletypes = {}},
-        power = 2.0,
-        durability = 40.0 -- Here enter seconds until nitro will run out
-    },
-
-    ['nos'] = {
+    ['nos2'] = {
         label = "NOS +7/20s", 
         usability = {exclusive = {}, vehicletypes = {}},
         power = 7.0,
         durability = 20.0 -- Here enter seconds until nitro will run out
     },
-    
+
+    ['nos3'] = {
+        label = "NOS +2/40s", 
+        usability = {exclusive = {}, vehicletypes = {}},
+        power = 2.0,
+        durability = 40.0 -- Here enter seconds until nitro will run out
+    }
+
     },
     
     Transmissions = {
@@ -337,9 +337,21 @@ Config = {
     },
     
     ['lifted_coil_overs'] = {
-        label = "Lifted Coils", 
+        label = "1' Lift", 
         usability = {exclusive = {}, vehicletypes = {}},
-        height = 0.5,
+        height = 0.37,
+        traction = -0.75,
+        durability = 60.0,
+        repair = {
+            ['spring'] = {amount = 4, label = "Springs", reusable = false},
+            ['race_strut'] = {amount = 4, label = "Race Struts", reusable = false}
+        }
+    },
+
+    ['lifted_coil_overs2'] = {
+        label = "6\" Lift", 
+        usability = {exclusive = {}, vehicletypes = {}},
+        height = 0.15,
         traction = -0.75,
         durability = 60.0,
         repair = {

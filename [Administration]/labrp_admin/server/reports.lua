@@ -37,7 +37,13 @@ RegisterCommand("report", function(source, args, rawCommand)
 
             end)
             if havePermission(xPlayer, {'juniormoderator', 'communityhelper'}) then
-                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'A new report has been submitted. Please check the server report logs in the Discord for more information', length = 6000})
+                TriggerClientEvent('chat:addMessage',xPlayer.source , {
+                    template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(255,0,0,0.5); border-radius: 3px;">[^4LABRP^0] ^1A NEW REPORT HAS BEEN SUBMITTED </div>',
+                });
+                Citizen.Wait(500)
+                TriggerClientEvent('chat:addMessage',xPlayer.source , {
+                    template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(255,0,0,0.5); border-radius: 3px;">[^4LABRP^0] ^1A NEW REPORT HAS BEEN SUBMITTED </div>',
+                });           
         end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'Please enter a reason for the report', })

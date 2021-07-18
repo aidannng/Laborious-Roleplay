@@ -135,12 +135,7 @@ $(function () {
     })
 
     $('.wheel').click(function(){
-        var id = this.id;
-        var typeID = 1
-
-        var color = $(this).data("color");
         var colorID = $(this).data("color-id");
-        var rbg = $(this).data("rgb");
 
         $.post('http://respray-nui/wheel', JSON.stringify({
             color: colorID,

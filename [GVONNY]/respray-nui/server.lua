@@ -1,28 +1,35 @@
 ESX = nil
 
-Citizen.CreateThread(function()
-    while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(10)
-	end
-end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
 
 ESX.RegisterServerCallback('vehicleGetInterior', function(source, cb, plate)
 	MySQL.Async.fetchAll('SELECT props FROM bbvehicles WHERE plate = @plate', {['@plate'] = plate}, function(result)
 		if result[1] then
-			local props = result[1].props
+			local props = json.decode(result[1].props)
+			print("getting props from database")
 			for key,value in pairs(props) do
 				if(key == "modTrimA") then
 					print(key, value)
-					cb(props[key])
+				end
+				if(key == "modBackWheels") then
+					print(key, value)
+				end
+				if(key == "modLivery") then
+					print(key, livery)
+				end
+				if(key == "modFrontWheels") then
+					print(key, value)
 				end
 			end
+			cb(props)
 		else
 			print("no plate found")
-			cb(-1)
+			cb(nil)
 		end
 	end)
 end)
+
 
 RegisterServerEvent('esx_lscustom:refreshOwnedVehicle')
 AddEventHandler('esx_lscustom:refreshOwnedVehicle', function(vehicleProps)
@@ -32,12 +39,20 @@ AddEventHandler('esx_lscustom:refreshOwnedVehicle', function(vehicleProps)
 		['@plate'] = vehicleProps.plate
 	}, function(result)
 		if result[1] then
-			print("updating vehicle")
 			local hash = GetHashKey(result[1].model)
 			if vehicleProps.model == hash then
 				print("updating database")
 				for key,value in pairs(vehicleProps) do
 					if(key == "modTrimA") then
+						print(key, value)
+					end
+					if(key == "modLivery") then
+						print(key, value)
+					end
+					if(key == "modBackWheels") then
+						print(key, value)
+					end
+					if(key == "modFrontWheels") then
 						print(key, value)
 					end
 				end
@@ -56,10 +71,11 @@ RegisterServerEvent("getInteriorColor")
 AddEventHandler("getInteriorColor", function(plate)
 	MySQL.Async.fetchAll('SELECT props FROM bbvehicles WHERE plate = @plate', {['@plate'] = plate}, function(result)
 		if result[1] then
-			local props = result[1].props
+			local props = json.decode(result[1].props)
 			for key,value in pairs(props) do
 				if(key == "modTrimA") then
 					print(key, value)
+
 				end
 			end
 		else
