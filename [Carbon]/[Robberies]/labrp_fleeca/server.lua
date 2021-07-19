@@ -35,7 +35,7 @@ AddEventHandler('GiveSafeReward', function()
     local moneypayout = math.random(1000, 5000)
     local jewels = math.random(1, 10)
     local jewelsamount = math.random(1, 4)
-    local laptopchance = math.random(1, 100000)
+    local laptopchance = math.random(1, 10)
 
     if jewels >= 8 then
         xPlayer.addInventoryItem('10ct_gold_chain', 1)
@@ -51,9 +51,9 @@ AddEventHandler('GiveSafeReward', function()
     xPlayer.addInventoryItem('money', moneypayout)
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got $'..moneypayout, length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
 
-    if laptopchance >= 99999 then
-        xPlayer.addInventoryItem('greenlaptop', 1)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You found a Green Laptop', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+    if laptopchance >= 9 then
+        xPlayer.addInventoryItem('g6card', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You found a Gruppe 6 Card', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
     end
 
 end)

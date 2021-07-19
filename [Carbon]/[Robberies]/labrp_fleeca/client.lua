@@ -427,7 +427,7 @@ AddEventHandler("doHack", function()
                     exports['mythic_progbar']:Progress({
                         name = "unique_action_name",
                         duration = 40000,
-                        label = 'Grabbing Money',
+                        label = 'Grabbing Items',
                         useWhileDead = true,
                         canCancel = false,
                         controlDisables = {

@@ -31,16 +31,16 @@ end
 local Logs = {}
 
 local Discord = {
-	bag		 = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
-	drop	 = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
-	dumpster = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
-	glovebox = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
-	player	 = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
-	stash	 = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
-	trunk	 = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
+	bag		 = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
+	drop	 = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
+	dumpster = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
+	glovebox = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
+	player	 = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
+	stash	 = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
+	trunk	 = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
 
 	-- Set types of shops to be logged in the buyitem event
-	shop	 = "https://discordapp.com/api/webhooks/860254599348617267/56UWdSkz39BROTEi6PG1TPLgXvvQeVf7-2SeDIabfGQFgsd6GbUD9yHULtbXFIIIHcCz",
+	shop	 = "https://discord.com/api/webhooks/866817054501634079/KbUPlPJxxqWg8kXPeb9EitLaqcjL20BDiclxlmfZmVDuZquF6QChMsplLo2TXKEbFNK0",
 }
 
 local Webhook = function(type, output, identifier)

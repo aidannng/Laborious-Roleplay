@@ -450,13 +450,8 @@ end)
 
 RegisterNetEvent("lsc:openmenu")
 AddEventHandler("lsc:openmenu", function()
-	lsMenuIsShowed = true
-
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-	FreezeEntityPosition(vehicle, true)
-
 	myCar = ESX.Game.GetVehicleProperties(vehicle)
-
 	local playerPed = GetPlayerPed()
 
 	ESX.TriggerServerCallback('lsc:getcash', function(balance)
@@ -466,8 +461,11 @@ AddEventHandler("lsc:openmenu", function()
 				GetAction({value = 'main'})
 				TriggerEvent("vehcontrol:repair")
 				TriggerServerEvent("lsc:chargerepair")
+				FreezeEntityPosition(vehicle, true)
+				lsMenuIsShowed = true
 			else
 				exports['mythic_notify']:SendAlert('error', 'You do not have enough cash to repair')
+				lsMenuIsShowed = false
 			end
 		end
 	end, playerPed)
