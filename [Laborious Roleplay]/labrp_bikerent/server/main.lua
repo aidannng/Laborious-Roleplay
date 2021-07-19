@@ -280,13 +280,6 @@ AddEventHandler('chargetri25', function()
 	end
 end)
 
-
-RegisterServerEvent('refundbike')
-AddEventHandler('refundbike', function()
-	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
-	xPlayer.addMoney(refundvalue)
-end)
-
 RegisterServerEvent('refundbike2')
 AddEventHandler('refundbike2', function()
 	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
