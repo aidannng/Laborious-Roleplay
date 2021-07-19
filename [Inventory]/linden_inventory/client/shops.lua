@@ -234,7 +234,7 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-                event = "linden_inventory:openPoliceArmouryInventory",
+                event = "linden_inventory:openFBIArmouryInventory",
                 icon = "far fa-clipboard",
                 label = "FBI Armoury",
             },
@@ -251,6 +251,19 @@ AddEventHandler('linden_inventory:openPoliceArmouryInventory', function()
     for i = 1, #Config.Shops, 1 do
         for k,v in pairs(Config.Shops[i].type) do
             if Config.Shops[i].type['name'] == 'Police Armoury' then
+                if #(GetEntityCoords(PlayerPedId()) - Config.Shops[i].coords) <= 1.8 then
+                    OpenShop(i)
+                    break
+                end
+            end
+        end
+    end
+end)
+
+AddEventHandler('linden_inventory:openFBIArmouryInventory', function()
+    for i = 1, #Config.Shops, 1 do
+        for k,v in pairs(Config.Shops[i].type) do
+            if Config.Shops[i].type['name'] == 'FBI Armoury' then
                 if #(GetEntityCoords(PlayerPedId()) - Config.Shops[i].coords) <= 1.8 then
                     OpenShop(i)
                     break

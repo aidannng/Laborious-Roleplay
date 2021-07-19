@@ -37,20 +37,6 @@ AddEventHandler('esx_lscustom:installMod', function()
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
 	myCar = ESX.Game.GetVehicleProperties(vehicle)
 	myCar.modTrimA = GetVehicleInteriorColor(vehicle)
-	print(myCar.modTrimA)
-
-	--[[ ESX.TriggerServerCallback('vehicleGetInterior', function(props)
-		if(props ~= nil) then
-			print(props.modTrimA)
-			myCar.modTrimA = props.modTrimA
-			ESX.Game.SetVehicleProperties(vehcile, props)
-			for key,value in pairs(myCar) do
-				if(key == "modTrimA") then
-					myCar[key] = props.modTrimA
-				end
-			end
-		end
-	end, myCar.plate) ]]
 
 	Citizen.Wait(1000)
 
@@ -471,8 +457,20 @@ AddEventHandler("lsc:openmenu", function()
 
 	myCar = ESX.Game.GetVehicleProperties(vehicle)
 
-	ESX.UI.Menu.CloseAll()
-	GetAction({value = 'main'})
+	local playerPed = GetPlayerPed()
+
+	ESX.TriggerServerCallback('lsc:getcash', function(balance)
+		if(balance ~= nil) then
+			if(balance >= 250) then
+				ESX.UI.Menu.CloseAll()
+				GetAction({value = 'main'})
+				TriggerEvent("vehcontrol:repair")
+				TriggerServerEvent("lsc:chargerepair")
+			else
+				exports['mythic_notify']:SendAlert('error', 'You do not have enough cash to repair')
+			end
+		end
+	end, playerPed)
 end)
 
 RegisterNetEvent("lsc:closemenu")

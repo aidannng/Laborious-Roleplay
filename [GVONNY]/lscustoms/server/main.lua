@@ -82,3 +82,15 @@ ESX.RegisterServerCallback('esx_lscustom:getVehiclesPrices', function(source, cb
 		cb(Vehicles)
 	end
 end)
+
+ESX.RegisterServerCallback('lsc:getcash', function(source, cb, player)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local cash = xPlayer.getMoney()
+	cb(cash)
+end)
+
+RegisterServerEvent("lsc:chargerepair")
+AddEventHandler("lsc:chargerepair", function()
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local cash = xPlayer.removeMoney(250)
+end)
