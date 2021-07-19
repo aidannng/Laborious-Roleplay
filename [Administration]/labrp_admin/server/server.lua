@@ -502,7 +502,7 @@ end, false)
  RegisterCommand("dv", function(source, args, rawCommand)    -- /dv        deletes a vehicle
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper'}) then
 			xPlayer.triggerEvent('esx:deleteVehicle', args[1])
 		end
 	end
