@@ -186,7 +186,7 @@ CreateThread(function()
 end)
 
 
---[[ RegisterNetEvent('bb-garages:client:createParkingVehicle')
+RegisterNetEvent('bb-garages:client:createParkingVehicle')
 AddEventHandler('bb-garages:client:createParkingVehicle', function(all, slotz)
     while not BBGarages.Config['garages'] do Wait(0) end
     if all == true then
@@ -200,9 +200,10 @@ AddEventHandler('bb-garages:client:createParkingVehicle', function(all, slotz)
                         
                         ESX.Game.SpawnVehicle(slot[3].model, slot[1], slot[1].h, function(vehicle)
                             ESX.Game.SetVehicleProperties(vehicle, slot[3].props)
+                            SetVehicleNumberPlateText(vehicle, slot[3].plate)
                             SetEntityAsMissionEntity(vehicle, true, true)
-			                SetEntityInvincible(vehicle, true)
-			                FreezeEntityPosition(vehicle, true)
+                            SetEntityInvincible(vehicle, true)
+                            FreezeEntityPosition(vehicle, true)
                             SetVehicleDoorsLocked(vehicle, 2)
                             SetEntityHeading(vehicle, slot[1].h)
                             Wait(10)
@@ -216,9 +217,9 @@ AddEventHandler('bb-garages:client:createParkingVehicle', function(all, slotz)
         if tonumber(slotz[3].model) then
             slotz[3].model = tonumber(slotz[3].model)
         end
-
         ESX.Game.SpawnVehicle(slotz[3].model, slotz[1], slotz[1].h, function(vehicle)
             ESX.Game.SetVehicleProperties(vehicle, slotz[3].props)
+            SetVehicleNumberPlateText(vehicle, slotz[3].plate)
             SetEntityAsMissionEntity(vehicle, true, true)
             SetEntityInvincible(vehicle, true)
             FreezeEntityPosition(vehicle, true)
@@ -228,7 +229,7 @@ AddEventHandler('bb-garages:client:createParkingVehicle', function(all, slotz)
             SetVehicleOnGroundProperly(vehicle)
         end)
     end
-end) ]]
+end) 
 
 RegisterNetEvent('bb-garages:client:releaseVehicle')
 AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
