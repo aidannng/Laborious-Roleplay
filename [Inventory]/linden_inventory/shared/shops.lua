@@ -44,7 +44,7 @@ Config.Ammunation = {
 		scale = 0.6
 	}, inventory = {
 		{ name = 'WEAPON_PISTOL', price = 1500, metadata = { registered = true }, license = 'weapon' },
-		{ name = 'WEAPON_PISTOL_MK2', price = 1250, metadata = { registered = true }, license = 'weapon' },
+		{ name = 'WEAPON_SNSPISTOL', price = 1250, metadata = { registered = true }, license = 'weapon' },
 		{ name = 'ammo-9', price = 5, },
 		{ name = 'WEAPON_BAT', price = 100 },
 		{ name = 'WEAPON_KNIFE', price = 250 },
@@ -77,6 +77,26 @@ Config.PoliceArmoury = {
 		--{ name = 'ammo-rifle', price = 10, },
 		{ name = 'WEAPON_FLASHLIGHT', price = 50 },
 		{ name = 'WEAPON_NIGHTSTICK', price = 50 },
+		{ name = 'pdarmour', price = 75, },
+		{ name = 'ifak', price = 50, },
+		{ name = 'radio', price = 50 },
+		{ name = 'spikestrips', price = 150 },
+	}
+}
+
+Config.FBIArmoury = {
+	name = 'FBI Armoury',
+	inventory = {
+		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		--{ name = 'WEAPON_CARBINERIFLE', price = 20, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_HEAVYPISTOL', price = 15, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_CARBINERIFLE_MK2', price = 250, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_STUNGUN', price = 100, metadata = { registered = true, serial = 'POL'} },
+		{ name = 'ammo-9', price = 1, },
+		{ name = 'ammo-rifle', price = 10, },
+		{ name = 'WEAPON_FLASHLIGHT', price = 50 },
+		{ name = 'WEAPON_NIGHTSTICK', price = 50 },
+		{ name = 'WEAPON_FLASHBANG', price = 75 },
 		{ name = 'pdarmour', price = 75, },
 		{ name = 'ifak', price = 50, },
 		{ name = 'radio', price = 50 },
@@ -129,7 +149,7 @@ Config.Shops = {
 
 	
 	{ type = Config.PoliceArmoury, job = 'police', coords = vector3(481.5428, -995.6307, 30.67834) },
-	{ type = Config.PoliceArmoury, job = 'fbi', coords = vector3(123.9429, -733.0681, 242.1436) },
+	{ type = Config.FBIArmoury, job = 'fbi', coords = vector3(123.9429, -733.0681, 242.1436) },
 
 	{ type = Config.EMSStore, job = 'ambulance', coords = vector3(306.7516, -601.8066, 43.2821) },
 

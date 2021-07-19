@@ -518,6 +518,13 @@ Items = {
 		close = true,
 	},
 
+	['greenusb'] = {
+		label = 'Green Laptop USB',
+		weight = 2500,
+		stack = false,
+		close = true,
+	},
+
 	['binoculars'] = {
 		label = 'Binoculars',
 		weight = 300,

@@ -40,7 +40,7 @@ BossMenuUsers = {
 	['mafiaboss'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['bigdogspresident'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['chief'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
-	['asstchief'] = {canWithdraw = false, canDeposit = false, canHire = true, canRank = true, canFire = true, canBonus = false},
+	['asstchief'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = false},
 	['bmfboss'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['don'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['og'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},

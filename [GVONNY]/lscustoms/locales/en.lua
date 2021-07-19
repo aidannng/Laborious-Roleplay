@@ -203,7 +203,7 @@ Locales['en'] = {
   ['turbo'] = 'turbo',
   ['no_turbo'] = 'no turbo',
 -- Cosmetics
-  ['cosmetics'] = 'cosmetics',
+  ['extras'] = 'extras',
   -- Body Parts
   ['bodyparts'] = 'body Parts',
   ['leftfender'] = 'left fender',
