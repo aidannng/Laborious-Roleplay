@@ -114,7 +114,7 @@ AddEventHandler('pawnshop:jewellery',function()
         {
 			id = 5,
 			header = "5CT Chain",
-			txt = "$100 - $125",
+			txt = "$200 - $250",
 			params = {
 				event = "sell5chain",
 				args = {
@@ -126,7 +126,7 @@ AddEventHandler('pawnshop:jewellery',function()
         {
 			id = 6,
 			header = "8CT Chain",
-			txt = "$140 - $190",
+			txt = "$275 - $350",
 			params = {
 				event = "sell8chain",
 				args = {
@@ -138,7 +138,7 @@ AddEventHandler('pawnshop:jewellery',function()
         {
 			id = 7,
 			header = "10CT Chain",
-			txt = "$250 - $400",
+			txt = "$400 - $650",
 			params = {
 				event = "sell10chain",
 				args = {
@@ -150,7 +150,7 @@ AddEventHandler('pawnshop:jewellery',function()
         {
 			id = 8,
 			header = "Rolex",
-			txt = "$700 - $1500",
+			txt = "$700 - $2000",
 			params = {
 				event = "sellrolex",
 				args = {

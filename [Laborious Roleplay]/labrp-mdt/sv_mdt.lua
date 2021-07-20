@@ -305,7 +305,7 @@ AddEventHandler("mdt:submitNewReport", function(data)
 	end)
 
 	Citizen.Wait(500)
-	MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'society', 'society_police', 'Fine', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
+	MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'fine', 'police', 'Fine', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
 		['@ower'] = billid,
 		['@biller'] = xPlayer.identifier,
 		['@price'] = amount,

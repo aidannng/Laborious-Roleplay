@@ -1031,6 +1031,11 @@ AddEventHandler("isJudge", function()
     isJudge = true
 end)
 
+RegisterNetEvent("wallett")
+AddEventHandler("wallett", function()
+    ExecuteCommand("wallet")
+end)
+
 RegisterNetEvent("isJudgeOff")
 AddEventHandler("isJudgeOff", function()
     isJudge = false

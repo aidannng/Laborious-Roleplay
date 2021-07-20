@@ -53,7 +53,6 @@ BBBankingCore['functions'] = {
     end,
 
     OpenNui = function(message)
-        print('reached here')
         ESX.TriggerServerCallback('bb-banking:server:getPlayerData', function(playerData)
             while not playerData do Wait(0) end
 

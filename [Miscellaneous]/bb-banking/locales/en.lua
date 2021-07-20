@@ -100,6 +100,35 @@ Locales = {
             bank = 'Banking Menu',
             atm = 'ATM Menu'
         },
+
+        -- v1.2.0 UPDATE
+        activeC = 'ACTIVE',
+        disabledC = 'DISABLED',
+        createC = 'CREATE',
+        unknownC = 'UNKNOWN',
+        confirmC = 'CONFIRM',
+        Cisdisabled = 'Card is disabled',
+        Cinvalidpin = 'Invalid Pin',
+        Callfields = 'Please fill all the fields',
+        Cerrfunds = 'Insufficient account funds',
+        Cerrcfunds = 'Insufficient cash funds',
+        Cerrcpfunds = 'Insufficient crypto funds',
+        Cerreno = 'Not enough cash',
+        Cerramount = 'Wrong amount',
+        Cerrid = 'ID Cannot be blank',
+
+        jobsSalaryManagment = 'Salary Managment',
+        jobsTable = {
+            'Rank',
+            'Name',
+            'Salary',
+        },
+        jobsSave = 'Save Changes',
+        jobsBalance = 'Total Balance',
+        jobsCards = 'Active Cards',
+        jobsT = 'Job',
+        jobsAccount = 'Account',
+        jobCards = 'Job Cards',
     },
 
     Server = {
@@ -116,5 +145,19 @@ Locales = {
         sATM_ERR_IBAN = 'Wrong IBAN',
         sATM_ERR_LIMIT = 'You passed the Daily Limit',
         sATM_ERR_AMOUNT = 'Wrong amount',
+
+        -- v1.2.0 UPDATE
+        sCupdated = 'Updated credit card',
+        sCAalready = 'Card is already activated',
+        sCDalready = 'Card is already disabled',
+        sCRsuccess = 'Removed Credit Card',
+        sCerr = 'Couldn\'t make changes',
+        sCCsuccess = 'Successfully created new card',
+        sTerr = 'Could not transfer the money',
+        sCGtoid = 'Gave card to ID ',
+
+        sJobWithdrawn = '$ Withdrawn from the job account.',
+        sJobERR_PERMS = 'No permissions to do this action.',
+        sJobUpdatedSalarys = 'Updated salarys successfully',
     }
 }

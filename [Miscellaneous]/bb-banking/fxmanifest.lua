@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'barbaroNNs Scripts'
 description 'https://discord.barbaronn.shop/'
-version '1.0.5'
+version '1.2.0'
 
 client_scripts {
     'locales/en.lua',
@@ -19,12 +19,15 @@ server_scripts {
 
     'server/sconfig.lua',
     'server/sfuncs.lua',
-    'server/smain.lua'
+    'server/smain.lua',
 }
 
 ui_page 'nui/index.html'
 file 'nui/index.html'
 
 server_exports {
-    'RegisterNewAction'
+    'RegisterNewAction',
+    'AddJobMoney',
+    'RemoveJobMoney',
+    'GetJobMoney',
 }

@@ -397,7 +397,7 @@ Config = {
     ['stock_engine'] = {
         label = "OEM", 
         power = 0.0,
-        durability = 95.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT",
         repair = {
@@ -409,7 +409,7 @@ Config = {
     ['k20a'] = {
         label = "Honda K20", 
         power = 6.0,
-        durability = 90.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "k20a", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -421,7 +421,7 @@ Config = {
     ['amgv8'] = {
         label = "AMG V8", 
         power = 7.0,
-        durability = 85.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "brabus850", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -433,7 +433,7 @@ Config = {
     ['2jzengine'] = {
         label = "Toyota 2JZ", 
         power = 5.0,
-        durability = 85.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "toysupmk4", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -445,7 +445,7 @@ Config = {
     ['rb26'] = {
         label = "Nissan RB 26", 
         power = 7.0,
-        durability = 80.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "rb26dett", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -457,7 +457,7 @@ Config = {
     ['chevylt5'] = {
         label = "Chevy LT5 S/C", 
         power = 8.0,
-        durability = 90.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "predatorv8", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -469,7 +469,7 @@ Config = {
     ['rotary7'] = {
         label = "Mazda 13b", 
         power = 6.0,
-        durability = 80.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "rotary7", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -481,7 +481,7 @@ Config = {
     ['full_bolt_on_engine'] = {
         label = "Full Bolt On", 
         power = 8.0,
-        durability = 85.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -493,7 +493,7 @@ Config = {
     ['tuned_engine'] = {
         label = "Tuned OEM", 
         power = 6.0,
-        durability = 90.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "DEFAULT", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
@@ -505,9 +505,21 @@ Config = {
     ['lambov10'] = {
         label = "Lambo V10", 
         power = 22.0,
-        durability = 85.0,
+        durability = 100.0,
         usability = {exclusive = {}, vehicletypes = {}},
         sound = "lambov10", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
+        repair = {
+            ['iron'] = {amount = 10, label = "Iron", reusable = false},
+            ['piston'] = {amount = 6, label = "Piston", reusable = false}
+        }
+    },
+
+    ['gt3flat6'] = {
+        label = "GT3 Flat 6", 
+        power = 10.0,
+        durability = 100.0,
+        usability = {exclusive = {}, vehicletypes = {}},
+        sound = "gt3flat6", -- These sounds are not in by default download from (https://www.gta5-mods.com/vehicles/brabus-inspired-custom-engine-sound-add-on-sound)
         repair = {
             ['iron'] = {amount = 10, label = "Iron", reusable = false},
             ['piston'] = {amount = 6, label = "Piston", reusable = false}

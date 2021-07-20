@@ -46,6 +46,14 @@ BBBankingCore['functions'] = {
     GetPlayerData = function(src)
         return PlayersData[src]
     end,
+
+    AddMoney = function(player, account, amount, reason)
+        player.addAccountMoney(account, amount, reason)
+    end,
+
+    RemoveMoney = function(player, account, amount, reason)
+        player.removeAccountMoney(account, amount, reason)
+    end,
 }
 
 

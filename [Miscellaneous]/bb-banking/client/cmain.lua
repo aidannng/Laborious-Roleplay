@@ -18,24 +18,29 @@ AddEventHandler('bb-banking:client:registerPlayer', function()
             local ped = PlayerPedId()
             local pos = GetEntityCoords(ped)
             local closestBank, closestDst = BBBankingCore['functions'].GetClosestBank(pos)
-            local w = 3
+            local waitTime = 300
+
             if closestDst < 4.0 then
+                waitTime = 3
                 if IsControlJustPressed(0, 38) then
                     BBBankingCore['functions'].OpenNui()
                 end
 
                 if BBBankingCore['config']['popupText'] and not isPopup then
-                    --BBBankingCore['functions'].PopupText(true, 'bank', 'E')
-                    exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "[E] Bank")
+                    BBBankingCore['functions'].PopupText(true, 'bank', 'E')
                 end
-            elseif closestDst >= 4.01 and closestDst < 4.2 then
-                exports['cd_drawtextui']:HideInteraction()
+            else
+                if isPopup then
+                    BBBankingCore['functions'].PopupText(false, 'bank', 'E')
+                end
+
                 if BBBankingCore['config']['atmPopupText'] == true then
                     local foundATM = false
                     for k, v in pairs(BBBankingCore['config']['atmModels']) do
                         local hash = GetHashKey(v)
                         local atm = IsObjectNearPoint(hash, pos.x, pos.y, pos.z, 1.9)
                         if atm then
+                            waitTime = 3
                             foundATM = true 
                             if IsControlJustPressed(0, 38) then
                                 ExecuteCommand('atm')
@@ -44,7 +49,6 @@ AddEventHandler('bb-banking:client:registerPlayer', function()
                             if not isATMPopup then
                                 BBBankingCore['functions'].PopupText(true, 'atm', 'E')
                             end
-                            w = 3
                         end
                     end
 
@@ -52,19 +56,11 @@ AddEventHandler('bb-banking:client:registerPlayer', function()
                         if isATMPopup then
                             BBBankingCore['functions'].PopupText(false, 'atm', 'E')
                         end
-                        w = 10
                     end
-
-                    if isPopup then
-                        BBBankingCore['functions'].PopupText(false, 'bank', 'E')
-                        w = 10
-                    end
-                else
-                    BBBankingCore['functions'].PopupText(false, 'bank', 'E')
-                    w = 10
                 end
             end
-            Wait(w)
+
+            Wait(waitTime)
         end
     end)
 end)
@@ -88,48 +84,19 @@ AddEventHandler('bb-banking:client:triggerAtm', function(cards)
             end
         end     
     else
-        exports['mythic_notify']:SendAlert('error', 'You do not have a debit card on your person')
-        exports['mythic_notify']:SendAlert('error', 'Go to any bank and get your first card!')
+        BBBankingCore['functions'].Notify("You do not have a credit card on you.", "error")
     end
 end)
-
-
-Citizen.CreateThread(function()
-    local atm = {
-        -1364697528, --prop_atm_03
-        506770882, --prop_fleeca_atm
-        -870868698, --
-        -1126237515, --prop_atm_02 
-    }
-
-    exports['labrp_Eye']:AddTargetModel(atm, {
-        options = {
-            {
-                event = 'atm',
-                icon = 'fas fa-money-check-alt',
-                label = 'ATM'
-            },
-        },
-        job = {'all'},
-        distance = 1.5
-    })
-end)
-
-RegisterNetEvent('atm')
-AddEventHandler('atm', function()
-    ExecuteCommand('atm')
-end)
-
-RegisterNetEvent('wallett')
-AddEventHandler('walett', function()
-    ExecuteCommand('wallet')
-end)
-
 
 RegisterNetEvent('bb-banking:client:triggerWallet')
 AddEventHandler('bb-banking:client:triggerWallet', function(json)
     SetNuiFocus(true, true)
     SendNUIMessage(json)
+end)
+
+RegisterNetEvent('atm')
+AddEventHandler('atm', function()
+    ExecuteCommand('atm')
 end)
 
 RegisterNetEvent('bb-banking:client:refreshNui')
@@ -143,11 +110,12 @@ RegisterCommand('bbnui', function()
 end)
 
 -- NUI Callbacks
-RegisterNUICallback('closeNui', function()
-    SetNuiFocus(false, false)
+RegisterNUICallback('nuiFocus', function(data)
+    SetNuiFocus(data.focus, data.cursor)
 end)
 
 RegisterNUICallback('finishAuth', function()
+    while not temp[1] do Wait(0) end
     SendNUIMessage({type = 'nui', lang = Locales.Nui, sets = temp[1]})
     SendNUIMessage(temp[2])
     TriggerServerEvent('bb-banking:server:isRegistered')
@@ -171,6 +139,10 @@ end)
 
 RegisterNUICallback('cryptoEvent', function(data)
     TriggerServerEvent('bb-banking:server:cryptoEvent', data)
+end)
+
+RegisterNUICallback('saveSalarys', function(data)
+    TriggerServerEvent('bb-banking:server:saveSalarys', data)
 end)
 
 RegisterNUICallback('walletEvent', function(data, cb)

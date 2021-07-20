@@ -22,6 +22,8 @@ local Blacklisted = {
     Vehicles = {
         [`blimp`] = true,
         [`cargobob`] = true,
+        [`hydra`] = true,
+        [`lazer`] = true,
         [`ambulance`] = true,
         [`buzzard`] = true,       
     },

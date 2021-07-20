@@ -52,26 +52,26 @@ AddEventHandler("updatebill", function(billID, billAmount)
                         print(xPlayer.getAccount(name))
 
                         local target = result[1].target 
-                        if(target == 'society_cardealer') then
-                            MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
-                                local balance = result[1].money
+                        if(target == 'cardealer') then
+                            MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {}, function(result)
+                                local balance = result[1].amount
                                 balance = balance + billAmount
                 
-                                MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+                                MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
                             end)
-                        elseif(target == 'society_police') then
-                            MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_police'", {}, function(result)
-                                local balance = result[1].money
+                        elseif(target == 'police') then
+                            MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'police'", {}, function(result)
+                                local balance = result[1].amount
                                 balance = balance + billAmount
                 
-                                MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_police'", {['@money'] = balance})
+                                MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'police'", {['@money'] = balance})
                             end)
-                        elseif(target == 'society_mechanic') then
-                            MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
-                                local balance = result[1].money
+                        elseif(target == 'mechanic') then
+                            MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {}, function(result)
+                                local balance = result[1].amount
                                 balance = balance + billAmount
                 
-                                MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+                                MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
                             end)
                         else
                             local xPlayers = ESX.GetPlayers()

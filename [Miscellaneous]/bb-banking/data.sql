@@ -1,4 +1,6 @@
+ALTER TABLE `jobs` ADD `amount` int(11);
 ALTER TABLE `users` ADD `ibanNumber` varchar(255);
+
 CREATE TABLE IF NOT EXISTS `bbanking_accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(50) DEFAULT NULL,

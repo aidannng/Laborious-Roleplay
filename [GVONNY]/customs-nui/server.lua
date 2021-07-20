@@ -21,16 +21,16 @@ AddEventHandler("buymaterial", function(part, price, amount)
     if(job == "mechanic" and jobgrade > 1) then
         local total = tonumber(price) * tonumber(amount)
 
-        MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {} ,function(balance)
+        MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {} ,function(balance)
             if(balance ~= nil and #balance > 0) then
-                local balance  = balance[1].money
+                local balance  = balance[1].amount
 
                 if(balance >= total) then
                     xPlayer.addInventoryItem(part, tonumber(amount))
                     balance = balance - total
 
                     TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Items purchased', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
-                    MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+                    MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
                 else
                     TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'error', text = "Not enough money in account", })
                 end
@@ -61,7 +61,7 @@ AddEventHandler("lsccreatebill", function(luckynumber, price, termlength)
             if(cash >= downpayment) then
                 local termamount = price / termlength
     
-                MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'society', 'society_mechanic', 'Repair/Upgrade', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
+                MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'finance', 'mechanic', 'Repair/Upgrade', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
                     ['@ower'] = ower.identifier,
                     ['@biller'] = creator.identifier,
                     ['@price'] = price,
@@ -72,11 +72,11 @@ AddEventHandler("lsccreatebill", function(luckynumber, price, termlength)
     
                 ower.removeInventoryItem('money', downpayment)
     
-                MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
-                    local balance = result[1].money
+                MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {}, function(result)
+                    local balance = result[1].amount
                     balance = balance + downpayment
     
-                    MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+                    MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
                 end)
 
                 TriggerClientEvent("lsc:refreshbilling", src)
@@ -94,11 +94,11 @@ AddEventHandler("lsccreatebill", function(luckynumber, price, termlength)
             if(cash >= tonumber(price)) then
                 ower.removeInventoryItem('money', tonumber(price))
 
-                MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
-                    local balance = result[1].money
+                MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {}, function(result)
+                    local balance = result[1].amount
                     balance = balance + tonumber(price)
     
-                    MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+                    MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
                 end)
             else
                 TriggerClientEvent("lsc:billerror", src, "Customer has insufficient funds")
@@ -112,7 +112,7 @@ end)
 RegisterServerEvent("getlscbills")
 AddEventHandler("getlscbills", function()
     local src = source
-    MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'society_mechanic' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0",{}, function(bills)
+    MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'mechanic' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0",{}, function(bills)
         if(bills ~= nil and #bills>0) then
             for x=1,#bills,1 do
 
@@ -145,9 +145,9 @@ AddEventHandler("lscgetbossinfo", function()
 
     local balance = 0
     Citizen.Wait(50)
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(money)
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {}, function(money)
         if(money and #money > 0) then
-            balance = money[1].money
+            balance = money[1].amount
         end
     end)
     Citizen.Wait(50)
@@ -210,7 +210,7 @@ AddEventHandler("lschire", function(luckynumber)
         xPlayer.setJob('mechanic', 0)
     end
     print(xPlayer.identifier)
-    MySQL.Async.execute("UPDATE users SET job = 'cardealer', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = xPlayer.identifier})
+    MySQL.Async.execute("UPDATE users SET job = 'mechanic', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = xPlayer.identifier})
 end)
 
 RegisterServerEvent("lscfire")
@@ -230,11 +230,11 @@ AddEventHandler("lscpay", function(identifier, amount)
     local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
     xPlayer.addAccountMoney('bank', tonumber(amount))
 
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
-        local balance = result[1].money
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {}, function(result)
+        local balance = result[1].amount
         balance = balance - amount
 
-        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+        MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
     end)
 end)
 
@@ -243,11 +243,11 @@ AddEventHandler("lscdeposit", function(amount)
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.removeAccountMoney('bank', tonumber(amount))
 
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
-        local balance = result[1].money
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {}, function(result)
+        local balance = result[1].amount
         balance = balance + amount
 
-        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+        MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
     end)
 end)
 
@@ -256,10 +256,10 @@ AddEventHandler("lscwithdraw", function(amount)
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.addAccountMoney('bank', tonumber(amount))
 
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_mechanic'", {}, function(result)
-        local balance = result[1].money
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {}, function(result)
+        local balance = result[1].amount
         balance = balance - amount
 
-        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_mechanic'", {['@money'] = balance})
+        MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
     end)
 end)

@@ -101,4 +101,3 @@ function CheckOwner(plate, identifier, vehicle)
     end
     return retval
 end
-

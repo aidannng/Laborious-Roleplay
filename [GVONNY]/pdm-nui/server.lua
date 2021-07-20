@@ -52,10 +52,10 @@ AddEventHandler("purchase", function(model, price, plate)
     local job = xPlayer.job.name
     local jobgrade = tonumber(xPlayer.job.grade)
     if(job == "cardealer" and jobgrade == 5) then 
-        MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {} ,function(result)
-            local balance = result[1].money - price
+        MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {} ,function(result)
+            local balance = result[1].amount - price
 
-            MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+            MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
         end)
 
         MySQL.Async.fetchAll("SELECT stock FROM vehicles WHERE model = @model", {['@model'] = model}, function(result2)
@@ -250,7 +250,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                     if(cash >= downpayment) then
                         local termamount = price / termlength
             
-                        MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'society', 'society_cardealer', 'Vehicle Purchase', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
+                        MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'finance', 'cardealer', 'Vehicle Purchase', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
                             ['@ower'] = ower.identifier,
                             ['@biller'] = creator.identifier,
                             ['@price'] = price,
@@ -261,11 +261,11 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
             
                         ower.removeInventoryItem('money', downpayment)
             
-                        MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
-                            local balance = result[1].money
+                        MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {}, function(result)
+                            local balance = result[1].amount
                             balance = balance + downpayment
             
-                            MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+                            MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
                         end)
 
                         MySQL.Async.execute("UPDATE bbvehicles SET identifier = @identifier, state = 'unknown' WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
@@ -310,11 +310,11 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                     if(cash >= tonumber(price)) then
                         ower.removeInventoryItem('money', tonumber(price))
 
-                        MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
-                            local balance = result[1].money
+                        MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {}, function(result)
+                            local balance = result[1].amount
                             balance = balance + tonumber(price)
             
-                            MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+                            MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
                         end)
 
                         MySQL.Async.execute("UPDATE bbvehicles SET identifier = @identifier, state = 'unknown' WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
@@ -365,7 +365,7 @@ end)
 RegisterServerEvent("getbills")
 AddEventHandler("getbills", function()
     local src = source
-    MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'society_cardealer' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0",{}, function(result2)
+    MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'cardealer' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0",{}, function(result2)
         if(result2 ~= nil and #result2>0) then
             for x=1,#result2,1 do
 
@@ -428,9 +428,9 @@ AddEventHandler("pdmgetbossinfo", function()
 
     local balance = 0
     Citizen.Wait(50)
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(money)
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {}, function(money)
         if(money and #money > 0) then
-            balance = money[1].money
+            balance = money[1].amount
         end
     end)
     Citizen.Wait(50)
@@ -500,11 +500,11 @@ AddEventHandler("pdmpay", function(identifier, amount)
     local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
     xPlayer.addAccountMoney('bank', tonumber(amount))
 
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
-        local balance = result[1].money
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {}, function(result)
+        local balance = result[1].amount
         balance = balance - amount
 
-        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+        MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
     end)
 end)
 
@@ -513,11 +513,11 @@ AddEventHandler("pdmdeposit", function(amount)
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.removeAccountMoney('bank', tonumber(amount))
 
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
-        local balance = result[1].money
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {}, function(result)
+        local balance = result[1].amount
         balance = balance + amount
 
-        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+        MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
     end)
 end)
 
@@ -526,10 +526,10 @@ AddEventHandler("pdmwithdraw", function(amount)
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.addAccountMoney('bank', tonumber(amount))
 
-    MySQL.Async.fetchAll("SELECT money FROM addon_account_data WHERE account_name = 'society_cardealer'", {}, function(result)
-        local balance = result[1].money
+    MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {}, function(result)
+        local balance = result[1].amount
         balance = balance - amount
 
-        MySQL.Async.execute("UPDATE addon_account_data SET money = @money WHERE account_name = 'society_cardealer'", {['@money'] = balance})
+        MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
     end)
 end)
