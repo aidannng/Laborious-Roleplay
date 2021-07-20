@@ -407,7 +407,7 @@ newSubMenus = {
     ['general:wallet'] = {
         title = "Open Wallet",
         icon = "#general-wallet",
-        functionName = "walett"
+        functionName = "openWallet"
     },
     ['general:bills'] = {
         title = "View Bills",
@@ -1031,8 +1031,8 @@ AddEventHandler("isJudge", function()
     isJudge = true
 end)
 
-RegisterNetEvent("wallett")
-AddEventHandler("wallett", function()
+RegisterNetEvent("openWallet")
+AddEventHandler("openWallet", function()
     ExecuteCommand("wallet")
 end)
 
