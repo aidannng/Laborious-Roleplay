@@ -10,9 +10,7 @@ CreateThread(function()
         ESX = esx 
     end)
 
-    if GetCurrentResourceName() ~= "loaf_motel" then
-        print("Please don't rename the script")
-    end
+    print("I AM STARTING")
     
     PayMoney = function(source, amount)
         local xPlayer = ESX.GetPlayerFromId(source)
