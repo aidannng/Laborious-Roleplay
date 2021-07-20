@@ -472,7 +472,6 @@ Items = {
 		}
 	},
 
-
 	['redlaptop'] = {
 		label = 'Red Laptop',
 		weight = 3000,
@@ -484,7 +483,6 @@ Items = {
 		}
 	},
 
-
 	['boombox'] = {
 		label = 'Boombox',
 		weight = 300,
@@ -494,6 +492,13 @@ Items = {
 			usetime = 0,
 			event = 'dildothrow'
 		}
+	},
+
+	['membership'] = {
+		label = 'Membership',
+		weight = 0,
+		stack = true,
+		close = true,
 	},
 
 	['clippers'] = {
@@ -507,6 +512,13 @@ Items = {
 		label = 'Trimmers',
 		weight = 2500,
 		stack = false,
+		close = true,
+	},
+
+	['pay_welding'] = {
+		label = 'Welding Pay Slip',
+		weight = 5,
+		stack = true,
 		close = true,
 	},
 
@@ -535,6 +547,156 @@ Items = {
 			event = 'binoculars:Activate'
 		}
 	},
+
+	-- Galaxy Nightclub
+
+	['ice'] = {
+		label = 'Ice',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['orangemixer'] = {
+		label = 'Sour Orange Mixer',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['redmixer'] = {
+		label = 'Strawberry Daquiri Mixer',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['bluemixer'] = {
+		label = 'Blueberry Daquiri Mixer',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['shaker'] = {
+		label = 'Shaker',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['beef'] = {
+		label = 'Ground Beef',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['cheese'] = {
+		label = 'Shaker',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['bun'] = {
+		label = 'Burger Bun',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['potato'] = {
+		label = 'Potato',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['wings'] = {
+		label = 'Frozen Wings',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['galaxyburger'] = {
+		label = 'Galaxy Burger',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['solarfries'] = {
+		label = 'Solar Fries',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['universalwings'] = {
+		label = 'Universal Wings',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['cosmicsoda'] = {
+		label = 'Cosmic Soda',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['worldlybeer'] = {
+		label = 'Worldly Beer',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['starwine'] = {
+		label = 'Star Wine',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['sourblast'] = {
+		label = 'Sour Blast Cocktail',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['bluesensation'] = {
+		label = 'Blue Sensation Cocktail',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['eliptical'] = {
+		label = 'The Eliptical Cocktail',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['multiversalwhiskey'] = {
+		label = 'Multiversal Whiskey',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
+	['spacevodka'] = {
+		label = 'Space Vodka',
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
 	
 }
 -- 

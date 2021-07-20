@@ -40,7 +40,7 @@ Citizen.CreateThread(function()
                 label = "Toggle Duty",
             },
         },
-        job = {"all"},
+        job = {"burgershot"},
         distance = 2.0
     })
     
@@ -105,7 +105,7 @@ Citizen.CreateThread(function()
     }, {
     options = {
         {
-            event = "BSFryer",
+            event = "BSFoodShelf",
             icon = "fas fa-hamburger",
             label = "Open Food Shelf",
         },
@@ -163,19 +163,109 @@ end)
 
 RegisterNetEvent('BSBurger')
 AddEventHandler('BSBurger', function()
-    exports['br-menu']:SetTitle("Prep Food")
-    exports['br-menu']:AddButton("Beef Patty" , "Meat: 3" ,'beefburger' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Veggie Patty" , "Veggie Meat: 4" ,'fakeburger' ,'' , 'menuone')
+	TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Food Prep",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Beef Patty",
+            txt = "Meat: 3",
+            params = {
+                event = "beefburger",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Veggie Patty",
+            txt = "Veggie Meat: 4",
+            params = {
+                event = "fakeburger",
+                args = {
+                    number = 2,
+                    id = 3
+                }
+            }
+        }
+    })
 end)
 
 RegisterNetEvent('BSPrepFood')
 AddEventHandler('BSPrepFood', function()
-    exports['br-menu']:SetTitle("Prep Food")
-    exports['br-menu']:AddButton("Heart Stopper" , "Bun: 2 | Beef Patty: 8 | Filling: 3 " ,'heartstopper' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Money Shot" , "Bun: 2 | Beef Patty: 3 | Lettuce: 3 " ,'moneyshot' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Bleeder" , "Bun: 2 | Beef Patty: 3 | Filling: 2 " ,'bleeder' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Torpedo" , "Bun: 2 | Beef Patty: 4 | Filling: 2 " ,'torpedo' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Meat Free" , "Bun: 2 | Veggie Burger: 3 | Filling: 6 " ,'meatfree' ,'' , 'menuone')
+
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Food Prep",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Heart Stopper",
+            txt = "Meat: 3",
+            params = {
+                event = "heartstopper",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Money Shot",
+            txt = "Bun: 2 | Beef Patty: 3 | Lettuce: 3 ",
+            params = {
+                event = "moneyshot",
+                args = {
+                    number = 2,
+                    id = 3
+                }
+            }
+        },
+        {
+            id = 4,
+            header = "Bleeder",
+            txt = "Bun: 2 | Beef Patty: 3 | Filling: 2 ",
+            params = {
+                event = "bleeder",
+                args = {
+                    number = 3,
+                    id = 4
+                }
+            }
+        },
+        {
+            id = 4,
+            header = "Torpedo",
+            txt = "Bun: 2 | Beef Patty: 4 | Filling: 2 ",
+            params = {
+                event = "torpedo",
+                args = {
+                    number = 3,
+                    id = 4
+                }
+            }
+        },
+        {
+            id = 4,
+            header = "Meat Free",
+            txt = "Bun: 2 | Veggie Burger: 3 | Filling: 6 ",
+            params = {
+                event = "meatfree",
+                args = {
+                    number = 3,
+                    id = 4
+                }
+            }
+        }
+    })
 end)--BSDrinkMachine
 
 RegisterNetEvent('BSDrinkMachine')
@@ -316,7 +406,7 @@ exports['labrp_Eye']:AddBoxZone("BurgerShot_register_1", vector3(-1196.01, -891.
             label = "Charge Customer",
         },
      },
-     job = {"all"},
+     job = {"burgershot"},
     distance = 1.5
 })
 
@@ -335,7 +425,7 @@ exports['labrp_Eye']:AddBoxZone("BurgerShot_register_2", vector3(-1194.65, -893.
             label = "Charge Customer",
         },
      },
-     job = {"all"},
+     job = {"burgershot"},
     distance = 1.5
 })
 
@@ -354,7 +444,7 @@ exports['labrp_Eye']:AddBoxZone("BurgerShot_register_3", vector3(-1193.39, -895.
             label = "Charge Customer",
         },
      },
-     job = {"all"},
+     job = {"burgershot"},
     distance = 1.5
 })
 
@@ -373,24 +463,13 @@ exports['labrp_Eye']:AddBoxZone("BurgerShot_register_4", vector3(-1192.52, -906.
             label = "Charge Customer",
         },
     },
-    job = {"all"},
+    job = {"burgershot"},
     distance = 1.5
 })
 end)--pdweaponlicense
 
 
-RegisterNetEvent("pdweaponlicense")
-AddEventHandler("pdweaponlicense", function()
-    local license = exports["nh-keyboard"]:KeyboardInput({
-        header = "Weapon's License $500",
-        rows = {
-            {
-                id = 1,
-                txt = "Player ID"
-            },
-        }
-    })
-    if license then
-        TriggerServerEvent("giveweaponlicense", license[1].input)
-    end
+RegisterNetEvent("BSFoodShelf")
+AddEventHandler("BSFoodShelf", function()
+    exports['linden_inventory']:OpenStash({ id = 'Food Shelf', slots = 70, job= 'burgershot'})
 end)

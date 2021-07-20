@@ -468,7 +468,7 @@ AddEventHandler('linden_inventory:buyItem', function(info)
 					local cost
 					if currency == 'bank' or currency:find('money') then cost = '$'..ESX.Math.GroupDigits(data.price)..' '..currency else cost = ESX.Math.GroupDigits(data.price)..'x '..currency end
 					if currency == 'bank' then
-						xPlayer.removeAccountMoney('bank', data.price)
+						xPlayer.removeAccountMoney('bank', data.price, 'Store Purchase')
 					else
 						removeInventoryItem(xPlayer, item.name, data.price)
 					end

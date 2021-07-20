@@ -389,7 +389,46 @@ Citizen.CreateThread(function()
         },
         job = {"police"},
         distance = 2.5
-    })
+    })  
+
+        AddBoxZone("FBILift1", vector3(136.6300, -763.4200, 45.74219), 0.25, 0.35, {
+            name="FBILift1",
+            heading=160,
+            debugPoly=true,
+            minZ=45.40,
+            maxZ=46.45
+            }, {
+                options = {
+                    {
+                        event = "fbi:Lift", 
+                        icon = "fas fa-clipboard",
+                        label = "elevator",
+                    },
+        
+                },
+                job = {"all"},
+                distance = 2.5
+            }) ---192.5934, -1161.798, 23.66882
+
+        AddBoxZone("FBILift49", vector3(136.6900, -763.3300, 242.1436), 0.25, 0.35, {
+            name="FBILift49",
+            heading=160,
+            debugPoly=true,
+            minZ=241.90,
+            maxZ=242.78
+            }, {
+                options = {
+                    {
+                        event = "fbi:Lift", 
+                        icon = "fas fa-clipboard",
+                        label = "elevator",
+                    },
+        
+                },
+                job = {"all"},
+                distance = 2.5
+            }) ---192.5934, -1161.798, 23.66882
+
 
 end)-- s_m_y_pilot_01
 
@@ -495,9 +534,16 @@ AddEventHandler('PoliceDealership', function()
 	})
 end)
 
+
 RegisterNetEvent('pd:heli')--pd:heli
 AddEventHandler('pd:heli', function()
     exports['br-menu']:SetTitle("MRPD Helipad")
+    exports['br-menu']:AddButton("Police Helicopter" , "$5,000" ,'buyheli' ,'' , 'menuone')
+end)
+
+RegisterNetEvent('fbi:dealer')--pd:heli
+AddEventHandler('fbi:dealer', function()
+    exports['br-menu']:SetTitle("FBI Dealership")
     exports['br-menu']:AddButton("Police Helicopter" , "$5,000" ,'buyheli' ,'' , 'menuone')
 end)
 
@@ -693,7 +739,6 @@ AddEventHandler('helispawn', function()
     TriggerServerEvent('Aidan_isCool:giveKeys')
 end)
 
-
 -- LSC CUSTOMS TOW TRUCK RENTAL --
 
 local lsctruck = 1
@@ -709,11 +754,13 @@ AddEventHandler('spawnlsctruck', function()
         end
     end
     local vehicleBuy = CreateVehicle(hash, -365.8681, -85.41099, 39.0022, 250.00, 1, 1)
+    local plate = GetVehicleNumberPlateText(vehicleBuy)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
     lsctruck = GetHashKey(vehicleBuy)
     print(lsctruck)
     Citizen.Wait(1000)
     TriggerServerEvent('Aidan_isCool:giveKeys')
+    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
 end)
 
 RegisterNetEvent('return_lsc')

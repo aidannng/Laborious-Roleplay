@@ -522,6 +522,87 @@ AddEventHandler('craft:policeengine', function()
     end
 end)
 
+RegisterServerEvent('craft:rb26')
+AddEventHandler('craft:rb26', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('engine_block').count
+    local headCount = xPlayer.getInventoryItem('head').count
+
+    if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 0) then
+        xPlayer.removeInventoryItem('piston', 6)
+        xPlayer.removeInventoryItem('crankshaft', 1)
+        xPlayer.removeInventoryItem('engine_block', 1)
+        xPlayer.removeInventoryItem('head', 1)
+        xPlayer.addInventoryItem('rb26', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:chevylt5')
+AddEventHandler('craft:chevylt5', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('engine_block').count
+    local headCount = xPlayer.getInventoryItem('head').count
+
+    if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        xPlayer.removeInventoryItem('piston', 8)
+        xPlayer.removeInventoryItem('crankshaft', 1)
+        xPlayer.removeInventoryItem('engine_block', 1)
+        xPlayer.removeInventoryItem('head', 2)
+        xPlayer.addInventoryItem('chevylt5', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:gt3flat6')
+AddEventHandler('craft:gt3flat6', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('aluminum_engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        xPlayer.removeInventoryItem('piston', 6)
+        xPlayer.removeInventoryItem('crankshaft', 1)
+        xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+        xPlayer.removeInventoryItem('high_flow_head', 2)
+        xPlayer.addInventoryItem('gt3flat6', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:k20')
+AddEventHandler('craft:k20', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 3 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        xPlayer.removeInventoryItem('piston', 4)
+        xPlayer.removeInventoryItem('crankshaft', 1)
+        xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+        xPlayer.removeInventoryItem('high_flow_head', 1)
+        xPlayer.addInventoryItem('k20a', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+
 --############################
 --##       SUSPENSION       ##
 --############################

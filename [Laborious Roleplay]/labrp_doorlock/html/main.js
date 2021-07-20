@@ -3,7 +3,7 @@ $('document').ready(function() {
 
     document.onkeydown = function (data) {
         if (data.which == 27) {
-            $.post('https://nui_doorlock/close');
+            $.post('https://labrp_doorlock/close');
         }
     };
 
@@ -13,7 +13,7 @@ $('document').ready(function() {
             event.data.enable ? $('.form').show() : $('.form').hide();
 
             $("#newDoor").submit(function(event) {                       
-                $.post('https://nui_doorlock/newDoor', JSON.stringify({
+                $.post('https://labrp_doorlock/newDoor', JSON.stringify({
                     doorname: $("#doorname").val(),
                     doortype: $("#doortype").val(),
                     doorlocked: $("input[type='radio'][name='doorlocked']:checked").val(),
