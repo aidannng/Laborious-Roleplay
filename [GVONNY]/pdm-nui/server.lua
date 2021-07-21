@@ -26,7 +26,7 @@ AddEventHandler("getallvehicles", function()
     local job = xPlayer.job.name
     local jobgrade = tonumber(xPlayer.job.grade)
 
-    if(job == 'cardealer' and jobgrade == 5) then
+    if(job == 'cardealer' and jobgrade > 2) then
         MySQL.Async.fetchAll("SELECT DISTINCT(category) FROM vehicles ORDER BY category", {} ,function(result)
             if(#result > 0) then
                 for x=1,#result,1 do 
@@ -51,7 +51,7 @@ AddEventHandler("purchase", function(model, price, plate)
     local xPlayer = ESX.GetPlayerFromId(source)
     local job = xPlayer.job.name
     local jobgrade = tonumber(xPlayer.job.grade)
-    if(job == "cardealer" and jobgrade == 5) then 
+    if(job == "cardealer" and jobgrade > 2) then 
         MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'cardealer'", {} ,function(result)
             local balance = result[1].amount - price
 

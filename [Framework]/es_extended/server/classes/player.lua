@@ -43,24 +43,24 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, job, name, 
 		DropPlayer(self.source, reason)
 	end
 
-	self.setMoney = function(money)
-		money = ESX.Math.Round(money)
-		self.setAccountMoney('money', money)
-	end
+    self.setMoney = function(money, reason)
+        money = ESX.Math.Round(money)
+        self.setAccountMoney('money', money, reason)
+    end
 
-	self.getMoney = function()
-		return self.getAccount('money').money
-	end
+    self.getMoney = function()
+        return self.getAccount('money').money
+    end
 
-	self.addMoney = function(money)
-		money = ESX.Math.Round(money)
-		self.addAccountMoney('money', money)
-	end
+    self.addMoney = function(money, reason)
+        money = ESX.Math.Round(money)
+        self.addAccountMoney('money', money, reason)
+    end
 
-	self.removeMoney = function(money)
-		money = ESX.Math.Round(money)
-		self.removeAccountMoney('money', money)
-	end
+    self.removeMoney = function(money, reason)
+        money = ESX.Math.Round(money)
+        self.removeAccountMoney('money', money, reason)
+    end
 
 	self.getIdentifier = function()
 		return self.identifier
@@ -138,7 +138,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, job, name, 
 		self.name = newName
 	end
 
-	self.setAccountMoney = function(accountName, money)
+	self.setAccountMoney = function(accountName, money, reason)
 		if money >= 0 then
 			local account = self.getAccount(accountName)
   
@@ -146,33 +146,48 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, job, name, 
 				local prevMoney = account.money
 				local newMoney = ESX.Math.Round(money)
 				account.money = newMoney
-				if accountName ~= 'bank' then exports['linden_inventory']:setInventoryItem(self, accountName, money) end
+
+				if accountName ~= 'bank' then 
+					exports['linden_inventory']:setInventoryItem(self, accountName, money) 
+				end
+				
+				exports['bb-banking']:RegisterNewAction(self.source, accountName, 'reset', money, (reason ~= nil and reason or 'Unknown Payment'))
 				self.triggerEvent('esx:setAccountMoney', account)
 			end
 		end
 	end
   
-	self.addAccountMoney = function(accountName, money)
+	self.addAccountMoney = function(accountName, money, reason)
 		if money > 0 then
 			local account = self.getAccount(accountName)
   
 			if account then
 				local newMoney = account.money + ESX.Math.Round(money)
 				account.money = newMoney
-				if accountName ~= 'bank' then exports['linden_inventory']:addInventoryItem(self, accountName, money) end
+
+				if accountName ~= 'bank' then 
+					exports['linden_inventory']:addInventoryItem(self, accountName, money) 
+				end
+
+				exports['bb-banking']:RegisterNewAction(self.source, accountName, 'withdraw', money, (reason ~= nil and reason or 'Unknown Payment'))
 				self.triggerEvent('esx:setAccountMoney', account)
 			end
 		end
 	end
   
-	self.removeAccountMoney = function(accountName, money)
+	self.removeAccountMoney = function(accountName, money, reason)
 		if money > 0 then
 			local account = self.getAccount(accountName)
   
 			if account then
 				local newMoney = account.money - ESX.Math.Round(money)
 				account.money = newMoney
-				if accountName ~= 'bank' then exports['linden_inventory']:removeInventoryItem(self, accountName, money) end
+
+				if accountName ~= 'bank' then 
+					exports['linden_inventory']:removeInventoryItem(self, accountName, money) 
+				end
+
+				exports['bb-banking']:RegisterNewAction(self.source, accountName, 'deposit', money, (reason ~= nil and reason or 'Unknown Payment'))
 				self.triggerEvent('esx:setAccountMoney', account)
 			end
 		end

@@ -53,14 +53,12 @@ BossMenuUsers = {
 DefaultJobsInJobCenter = { -- Jobs that can be added by going to the job center. For icons use https://fontawesome.com/
 
     {job = 'unemployed', label = "Unemployed", icon = "fas fa-bed", description = "I mean, who said you had to work?"},
-	--{job = 'miner', label = "Miner", icon = "fas fa-gem", description = "You mine materials and then you can sell them!"},
-	--{job = 'slaughterer', label = "Butcher", icon = "fas fa-drumstick-bite", description = "You butcher animals and sell the packaged meat!!"},
 	{job = 'garbage', label = "Garbage", icon = "fas fa-trash", description = "You collect garbage & clean the streets of Los Santos!"},
 	--{job = 'busdriver', label = "Bus Driver", icon = "fas fa-bus", description = "Drive your own custom bus routes around the city!"},
 	{job = 'tow', label = "Tow", icon = "fas fa-wrench", description = "Tow some vehicles parked illegally"},
 	{job = 'trucker', label = "Trucking", icon = "fas fa-truck", description = "You drive your Truck statewide and deliver items!"},
 	{job = 'mail', label = "Mail Delivery", icon = "fas fa-mail-bulk", description = "Be a helpful citizen and deliver mail around the county!"},
-	--{job = 'welding', label = "Welding", icon = "fas fa-hammer", description = "Become a welder and help construct STUFF!"},
+	{job = 'welding', label = "Welding", icon = "fas fa-hammer", description = "Become a welder and help construct STUFF!"},
 },
 
 

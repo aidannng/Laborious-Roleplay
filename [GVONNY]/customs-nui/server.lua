@@ -18,7 +18,7 @@ AddEventHandler("buymaterial", function(part, price, amount)
     local job = xPlayer.job.name
     local jobgrade = tonumber(xPlayer.job.grade)
 
-    if(job == "mechanic" and jobgrade > 1) then
+    if(job == "mechanic" and jobgrade > 0) then
         local total = tonumber(price) * tonumber(amount)
 
         MySQL.Async.fetchAll("SELECT amount FROM jobs WHERE name = 'mechanic'", {} ,function(balance)
