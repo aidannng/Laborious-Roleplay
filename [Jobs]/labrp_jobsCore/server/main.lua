@@ -190,7 +190,7 @@ AddEventHandler(
         if money >= tonumber(amount) then
         if xPlayer then
 
-                xPlayer.addAccountMoney('bank', tonumber(amount))
+                xPlayer.addAccountMoney('bank', tonumber(amount), 'Bonus Payment')
                 TriggerClientEvent("core_jobutilities:sendMessage", src, Config.Text["bonus_given"])
                 TriggerClientEvent("core_jobutilities:sendMessage", xPlayer.source, Config.Text["bonus_recieved"] .. amount)
         else

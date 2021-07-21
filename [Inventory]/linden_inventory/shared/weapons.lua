@@ -662,6 +662,14 @@ Weapons = {
 		throwable = true,
 	},
 
+	['WEAPON_FLASHBANG'] = {
+		label = 'Flashbang',
+		weight = 1000,
+		stack = true,
+		close = false,
+		throwable = true,
+	},
+
 	['WEAPON_STONE_HATCHET'] = {
 		label = 'Stone Hatchet',
 		weight = 800,

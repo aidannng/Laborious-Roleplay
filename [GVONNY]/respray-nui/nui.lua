@@ -9,9 +9,9 @@ end)
 
 local display = false
 
-RegisterCommand("respray", function(source)
+--[[ RegisterCommand("respray", function(source)
     TriggerEvent("mechanic:respray")
-end)
+end) ]]
 
 RegisterCommand("gettrim", function(source)
     local xPlayer = PlayerPedId()
@@ -29,14 +29,14 @@ RegisterCommand("gettrim", function(source)
     end
 end)
 
---[[ RegisterNetEvent("mechanic:respray")
+RegisterNetEvent("mechanic:respray")
 AddEventHandler("mechanic:respray", function()
 	if IsPedInAnyVehicle(PlayerPedId(), false) then
 		SetDisplay(not display)
 	else
 		exports['mythic_notify']:SendAlert('error', "You are not in a vehicle.")
 	end
-end) ]]
+end)
 
 RegisterNetEvent("respray:primary")
 AddEventHandler("respray:primary", function(type, color)
