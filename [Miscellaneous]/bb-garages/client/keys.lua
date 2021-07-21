@@ -41,7 +41,7 @@ Citizen.CreateThread(function()
                     ESX.TriggerServerCallback('vehiclekeys:CheckHasKey', function(result)
                         Wait(350)
                         local model = GetEntityModel(GetVehiclePedIsIn(GetPlayerPed(-1), false));
-                        if result or model == `bus` or model == `airbus` or model == `coach` or model == `trash` or model == `trash2` or model == `hauler` or model == `phantom` or model == `bmx` or model == `cruiser` or model == `fixter` or model == `scorecher` or model == `tribike` or model == `tribike2` or model == `tribike3` or model == `packer` or model == `phantom3` then
+                        if result or model == `bus` or model == `airbus` or model == `coach` or model == `trash` or model == `trash2` or model == `riata` or model == `hauler` or model == `phantom` or model == `bmx` or model == `cruiser` or model == `fixter` or model == `scorecher` or model == `tribike` or model == `tribike2` or model == `tribike3` or model == `packer` or model == `phantom3` then
                             HasKey = true
                             SetVehicleEngineOn(veh, true, false, true)
                              TriggerServerEvent('Aidan_isCool:giveKeys')

@@ -73,14 +73,14 @@ Config.DeliveryPoints = {
     {
         label = 'Oil Fields Delivery',
         desc = 'Job Payout: $%d | Required Level: %d ',
-        pay = 225,
+        pay = 275,
         level = 1,
         zone = {x = 1512.13, y = -2098.36, z = 76.85, length = 3.8, width = 11.4, heading = 0, minZ = 75.85, maxZ = 79.85, markerHeading = 0},
     },
     {
         label = "Popular Street - Darnell", 
         desc = "Job Payout: $%d | Required Level: %d ", 
-        pay = 300,
+        pay = 375,
         level = 1,
         zone = {x = 715.94, y = -874.59, z = 24.11, length = 2.8, width = 12.9, heading = 0, minZ = 22.81, maxZ = 26.81, markerHeading = 0} 
     },
