@@ -51,24 +51,6 @@ base = base +'   <div class="gradient rounded-corners grpelem" id="u654"><!-- si
 '     $' +fund+
 '    </div>'+
 '    <div class="clearfix colelem" id="pu670-4"><!-- group -->';
-if(canwithdraw) {
-base = base +'     <button class="rounded-corners  grpelem ripple" onclick="openWithdraw()" id="u670-4"><!-- content -->'+
-'      <p id="u670-2">WITHDRAW</p>'+
-'     </button>';
-} else {
-    base = base +'     <button class="rounded-corners  grpelem ripple" style="opacity: 0.5;" id="u670-4"><!-- content -->'+
-'      <p id="u670-2">WITHDRAW</p>'+
-'     </button>';
-}
-if(candeposit) {
-base = base +'     <button class="rounded-corners  grpelem ripple" onclick="openDeposit()" id="u673-4"><!-- content -->'+
-'      <p id="u673-2">DEPOSIT</p>'+
-'     </button>';
-} else {
-    base = base +'     <button class="rounded-corners  grpelem ripple" style="opacity: 0.5;" id="u673-4"><!-- content -->'+
-'      <p id="u673-2">DEPOSIT</p>'+
-'     </button>';
-}
 base = base +'    </div>'+
 '    <div class="clearfix colelem" id="u688-4"><!-- content -->'+
 '     <p>EMPLOYEES</p>'+

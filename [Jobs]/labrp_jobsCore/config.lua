@@ -22,16 +22,14 @@ BossMenuLocations = {
 	{coords = vector3(990.1055, -136.3648, 74.06665), job = "bigdogs", label = "Big Dogs"},
 	{coords = vector3(-1351.886, -1054.932, 3.853516), job = "bmf", label = "Black Mafia Family"},
 	{coords = vector3(123.5077, -1944.738, 15.21021), job = "ballas", label = "East Side Ballas"},
-	{coords = vector3(108.0264, -750.5011, 242.1436), job = "fbi", label = "FBI"}  
-  
+	{coords = vector3(108.0264, -750.5011, 242.1436), job = "fbi", label = "FBI"},  
+	{coords = vector3(390.9758, 270.0791, 94.97729), job = "galaxy", label = "Galaxy Nightclub"},  --376.9055, -823.9517, 29.29675
+	{coords = vector3(376.9055, -823.9517, 29.29675), job = "kronichush", label = "Kronic Kush Dispensary"}
 },
 
 
 
 --Boss menu users by grade name and their permissions
--- NOTE BY AIDAN PLEASE READ >> In the database some ranks need a unique name if there is a supde. For example mechanic & pdm both have ceo so in database name one mechceo and the other pdmceo
--- NOTE BY AIDAN PLEASE READ >> In the database some ranks need a unique name if there is a supde. For example mechanic & pdm both have ceo so in database name one mechceo and the other pdmceo
--- NOTE BY AIDAN PLEASE READ >> In the database some ranks need a unique name if there is a supde. For example mechanic & pdm both have ceo so in database name one mechceo and the other pdmceo
 BossMenuUsers = {
 
 	['mechceo'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
@@ -39,13 +37,16 @@ BossMenuUsers = {
 	['pdmowner'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['mafiaboss'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['bigdogspresident'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
-	['chief'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	--['chief'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['asstchief'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = false},
 	['bmfboss'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['don'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['og'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['pimp'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
-	['director'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	--['director'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['boss'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['galaxymanagement'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['kkowner'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 },
 
 
@@ -55,10 +56,11 @@ DefaultJobsInJobCenter = { -- Jobs that can be added by going to the job center.
 	--{job = 'miner', label = "Miner", icon = "fas fa-gem", description = "You mine materials and then you can sell them!"},
 	--{job = 'slaughterer', label = "Butcher", icon = "fas fa-drumstick-bite", description = "You butcher animals and sell the packaged meat!!"},
 	{job = 'garbage', label = "Garbage", icon = "fas fa-trash", description = "You collect garbage & clean the streets of Los Santos!"},
-	{job = 'busdriver', label = "Bus Driver", icon = "fas fa-bus", description = "Drive your own custom bus routes around the city!"},
+	--{job = 'busdriver', label = "Bus Driver", icon = "fas fa-bus", description = "Drive your own custom bus routes around the city!"},
 	{job = 'tow', label = "Tow", icon = "fas fa-wrench", description = "Tow some vehicles parked illegally"},
 	{job = 'trucker', label = "Trucking", icon = "fas fa-truck", description = "You drive your Truck statewide and deliver items!"},
 	{job = 'mail', label = "Mail Delivery", icon = "fas fa-mail-bulk", description = "Be a helpful citizen and deliver mail around the county!"},
+	--{job = 'welding', label = "Welding", icon = "fas fa-hammer", description = "Become a welder and help construct STUFF!"},
 },
 
 

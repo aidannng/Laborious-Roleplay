@@ -179,45 +179,45 @@ AddEventHandler("fbi:Lift:f01", function()
     SetEntityCoords(ped, 136.2725 , -760.5516 , 45.1436 ) 
 end) 
 
-Citizen.CreateThread(function()
-    exports['labrp_Eye']:AddBoxZone("FBILift1", vector3(136.6022, -763.0417, 45.74219), 1.0, 0.8, {
-    name="FBILift1",
-    heading=90,
-    debugPoly=false,
-    minZ=45.7,
-    maxZ=46.6
-    }, {
-        options = {
-            {
-                event = "fbi:Lift",
-                icon = "far fa-clipboard",
-                label = "Use Elevator",
-            },
-        },
-        job = {"all"},
-        distance = 1.5
-    })   
-end)
+-- Citizen.CreateThread(function()
+--     exports['labrp_Eye']:AddBoxZone("FBILift1", vector3(136.6022, -763.0417, 45.74219), 1.0, 0.8, {
+--     name="FBILift1",
+--     heading=90,
+--     debugPoly=false,
+--     minZ=45.7,
+--     maxZ=46.6
+--     }, {
+--         options = {
+--             {
+--                 event = "fbi:Lift",
+--                 icon = "far fa-clipboard",
+--                 label = "Use Elevator",
+--             },
+--         },
+--         job = {"all"},
+--         distance = 1.5
+--     })   
+-- end)
 
-Citizen.CreateThread(function()
-    exports['labrp_Eye']:AddBoxZone("FBILift49", vector3(136.6681, -763.0549, 242.1436), 1.0, 0.8, {
-    name="FBILift49",
-    heading=90,
-    debugPoly=false,
-    minZ=242.1, 
-    maxZ=243.0
-    }, {
-        options = {
-            {
-                event = "fbi:Lift",
-                icon = "far fa-clipboard",
-                label = "Use Elevator",
-            },
-        },
-        job = {"all"},
-        distance = 1.5
-    })   
-end)
+-- Citizen.CreateThread(function()
+--     exports['labrp_Eye']:AddBoxZone("FBILift49", vector3(136.6681, -763.0549, 242.1436), 1.0, 0.8, {
+--     name="FBILift49",
+--     heading=90,
+--     debugPoly=false,
+--     minZ=242.1, 
+--     maxZ=243.0
+--     }, {
+--         options = {
+--             {
+--                 event = "fbi:Lift",
+--                 icon = "far fa-clipboard",
+--                 label = "Use Elevator",
+--             },
+--         },
+--         job = {"all"},
+--         distance = 1.5
+--     })   
+-- end)
 
 
 

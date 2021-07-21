@@ -31,7 +31,7 @@ Config.MaxLevel = 10
 Config.MaxProgress = 5
 Config.MultiplyProgressPerLevel = true -- if set to true it will multiply the max progress with the current level
 
-Config.PaymentInCash = true
+Config.PaymentInCash = false
 
 Config.WorkClothes = { -- Ignore if Config.EnableWorkClothes is set to false
     ['skin_male'] = {
