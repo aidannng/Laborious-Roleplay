@@ -25,7 +25,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxymixer", vector3(356.7700, 283.4500, 94.1853), 0.7, 0.8, {
     name="galaxymixer",
     heading=165,
-    debugPoly=true,
+    debugPoly=false,
     minZ=93.20,
     maxZ=95.35
     }, {
@@ -49,7 +49,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxyice", vector3(355.1500, 280.8000, 94.1853), 0.7, 0.8, {
     name="galaxyice",
     heading=75,
-    debugPoly=true,
+    debugPoly=false,
     minZ=93.20,
     maxZ=94.35
     }, {
@@ -68,7 +68,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxyliquor", vector3(355.3000, 282.2200, 94.1853), 0.6, 3.5, {
     name="galaxyliquor",
     heading=75,
-    debugPoly=true,
+    debugPoly=false,
     minZ=94.80,
     maxZ=95.30
     }, {
@@ -87,7 +87,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxycounter1", vector3(358.6500, 279.6, 95.14575), 1.05, 1.0, {
     name="galaxycounter1",
     heading=75,
-    debugPoly=true,
+    debugPoly=false,
     minZ=94.12,
     maxZ=94.30
     }, {
@@ -106,7 +106,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxycounter2", vector3(359.3000, 282.0, 95.14575), 1.05, 1.0, {
     name="galaxycounter2",
     heading=75,
-    debugPoly=true,
+    debugPoly=false,
     minZ=94.12,
     maxZ=94.30
     }, {
@@ -125,7 +125,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxycraft1", vector3(358.7000, 280.800, 95.14575), 0.8, 1.1, {
     name="galaxycraft1",
     heading=75,
-    debugPoly=true,
+    debugPoly=false,
     minZ=93.12,
     maxZ=94.15
     }, {
@@ -154,7 +154,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxytv1", vector3(362.2250, 281.9200, 94.1853), 0.08, 1.45, {
     name="galaxytv1",
     heading=74.5,
-    debugPoly=true,
+    debugPoly=false,
     minZ=94.75,
     maxZ=95.46
     }, {
@@ -173,7 +173,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxytv2", vector3(361.0500, 277.6000, 94.1853), 0.08, 1.45, {
     name="galaxytv2",
     heading=75,
-    debugPoly=true,
+    debugPoly=false,
     minZ=94.75,
     maxZ=95.46
     }, {
@@ -192,7 +192,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("galaxydj", vector3(375.3000, 275.800, 92.3000), 1.3, 2.0, {
     name="galaxydj",
     heading=75,
-    debugPoly=true,
+    debugPoly=false,
     minZ=91.00,
     maxZ=93.50
     }, {

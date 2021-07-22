@@ -86,9 +86,9 @@ AddEventHandler('chop:blip', function()
             BeginTextCommandSetBlipName("STRING")
             AddTextComponentString(info.title)
             EndTextCommandSetBlipName(info.blip)
+            Citizen.Wait(3600000)
+            RemoveBlip(info.blip)
         end
-    else
-        RemoveBlip(blips2)
     end
 end)
 

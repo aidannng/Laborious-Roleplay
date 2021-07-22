@@ -394,7 +394,7 @@ Citizen.CreateThread(function()
         AddBoxZone("FBILift1", vector3(136.6300, -763.4200, 45.74219), 0.25, 0.35, {
             name="FBILift1",
             heading=160,
-            debugPoly=true,
+            debugPoly=false,
             minZ=45.40,
             maxZ=46.45
             }, {
@@ -413,7 +413,7 @@ Citizen.CreateThread(function()
         AddBoxZone("FBILift49", vector3(136.6900, -763.3300, 242.1436), 0.25, 0.35, {
             name="FBILift49",
             heading=160,
-            debugPoly=true,
+            debugPoly=false,
             minZ=241.90,
             maxZ=242.78
             }, {
