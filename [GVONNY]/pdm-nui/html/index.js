@@ -100,6 +100,7 @@ $(function () {
 
     $(".showroom-slot").on("click", ".clear-slot", function (){
         var id = $(this).data('slot');
+        $('#slot-' + id).empty().append("<span><strong>"+ id +". </strong></span>");
 
         $.post('http://pdm-nui/clearslot', JSON.stringify({
             showroomslot:id,

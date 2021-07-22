@@ -175,9 +175,9 @@ end)
 
 RegisterServerEvent("clearslot")
 AddEventHandler("clearslot", function(slotid)
-    print(slotid)
     local src = source
     MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slotid})
+    TriggerClientEvent("pdm:refreshshowroom", src)
 end)
 
 RegisterServerEvent("movetoshowroom")

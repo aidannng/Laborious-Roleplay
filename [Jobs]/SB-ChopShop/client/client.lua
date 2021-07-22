@@ -51,9 +51,9 @@ AddEventHandler('ChopCarPaper', function()
         })
 	    Citizen.Wait(10000)
         inMission = true
-        inMission = true
         ClearPedTasks(PlayerPedId(-1))
         TriggerServerEvent('givechoppaper')
+        TriggerEvent('chop:blip')
     else
         exports['mythic_notify']:SendAlert('error', 'No Cars Available!')
     end
@@ -67,56 +67,73 @@ AddEventHandler('resetchop', function()
 end)
 
 
-Citizen.CreateThread(function()
-    while true do
-        if inMission == true then
-            local blips2 = {
+RegisterNetEvent('chop:blip')
+AddEventHandler('chop:blip', function()
+    if inMission == true then
+        local blips2 = {
                 -- Example {title="", colour=, id=, x=, y=, z=},
-               {title="Chop Warehouse", colour=3, id=569, x = 1204.3165, y = -3115.9, z = 5.5},
-            }
+            {title="Chop Warehouse", colour=3, id=569, x = 1204.3165, y = -3115.9, z = 5.5},
+        }
               
-            Citizen.CreateThread(function()
               
-                for _, info in pairs(blips2) do
-                  info.blip = AddBlipForCoord(info.x, info.y, info.z)
-                  SetBlipSprite(info.blip, info.id)
-                  SetBlipDisplay(info.blip, 4)
-                  SetBlipScale(info.blip, 0.8)
-                  SetBlipColour(info.blip, info.colour)
-                  SetBlipAsShortRange(info.blip, true)
-                  BeginTextCommandSetBlipName("STRING")
-                  AddTextComponentString(info.title)
-                  EndTextCommandSetBlipName(info.blip)
-                end
-            end)
-        else
-            RemoveBlip(blips2)
+        for _, info in pairs(blips2) do
+            info.blip = AddBlipForCoord(info.x, info.y, info.z)
+            SetBlipSprite(info.blip, info.id)
+            SetBlipDisplay(info.blip, 4)
+            SetBlipScale(info.blip, 0.8)
+            SetBlipColour(info.blip, info.colour)
+            SetBlipAsShortRange(info.blip, true)
+            BeginTextCommandSetBlipName("STRING")
+            AddTextComponentString(info.title)
+            EndTextCommandSetBlipName(info.blip)
         end
-        Citizen.Wait(1000000)
+    else
+        RemoveBlip(blips2)
     end
 end)
 
+local vehiclename = nil
+local chopname = nil
+local test = true
+local name = 0
+
 Citizen.CreateThread(function()
-    while true do
+    while test do
         local ped = GetPlayerPed(-1)
 		local pos = GetEntityCoords(ped)
 		local dist = GetDistanceBetweenCoords(pos.x, pos.y, pos.z, 1204.2, -3115.9, 5.5, true)
-        if dist <= 5 then
-            inMission = false
+
+
+
+        local vehicle = GetVehiclePedIsIn(ped, false)
+        local model = GetEntityModel(vehicle)
+
+        if dist <= 5 and model == chopname then
+            poggg = true
+            exports['mythic_notify']:SendAlert('error', 'Press [E] to chop car')
+            test = false
+        end
         Citizen.Wait(0)
     end
 end)
 
 Citizen.CreateThread(function()
-    while poggg do
-        if IsControlPressed(0, 38) then
-            inMission = false
-            TriggerEvent('EnterChopVehicle')
-            poggg = false
-            TriggerServerEvent('removepapers')
+    while true do
+        if poggg == true then
+            if IsControlPressed(0, 38) then
+                TriggerEvent('EnterChopVehicle')
+                poggg = false
+                TriggerServerEvent('removepapers')
+            end
         end
-        Citizen.Wait(100)
+        Citizen.Wait(0)
     end
+end)
+
+RegisterNetEvent('CarPapers')
+AddEventHandler('CarPapers', function(car)
+    chopname = GetHashKey(car)
+    print(chopname)
 end)
 
 RegisterNetEvent('EnterChopVehicle')
@@ -136,6 +153,8 @@ AddEventHandler('EnterChopVehicle', function()
         },
     })
     Citizen.Wait(30000)
+    inMission = false
+    TriggerEvent('chop:blip')
     DeleteEntity(current)
     TriggerServerEvent('choppayout')
 end)
