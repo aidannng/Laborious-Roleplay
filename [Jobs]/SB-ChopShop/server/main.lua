@@ -13,13 +13,14 @@ AddEventHandler('givechoppaper', function()
 
 	car = Config.ChopCars[math.random(1, #Config.ChopCars)]
 	xPlayer.addInventoryItem('papers', 1, {type='Find and Steal this car:', description=car})
+	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Find and Steal: '..car..'. Then delivery it to my warehouse on your gps!'})
 	TriggerClientEvent('CarPapers', source, car)
 end) --choppayout
 
 RegisterServerEvent('choppayout')
 AddEventHandler('choppayout', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local payout = math.random(2, 10)
+	local payout = math.random(10, 25)
 
 	xPlayer.addInventoryItem('scrapmetal', payout)
 	xPlayer.addInventoryItem('black_money', math.random(300, 700))

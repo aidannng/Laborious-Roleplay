@@ -23,3 +23,42 @@ AddEventHandler('labrp_issueID', function(src,url)
 	metadata.mugshoturl = url
 	exports['linden_inventory']:addInventoryItem(xPlayer, 'identification', 1, metadata)
 end)
+
+RegisterCommand('issueMembership', function(source, args, rawCommand)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local targetId = ESX.GetPlayerFromId(args[1])
+	local metadata = {}
+	local membershipType = args[2]
+
+	if targetId ~= nil then
+		if xPlayer.job.name == "galaxy" then
+			if args[2] == "universal" then
+				metadata.type = 'Galaxy Nightclub Membership | Universal Membership'
+				metadata.description = '' .. targetId.getName() .. ' | Membership ID: ' .. GenerateLicense() .. ' '
+				exports['linden_inventory']:addInventoryItem(xPlayer, 'membership', 1, metadata)
+			elseif args[2] == "galaxy+" then
+				metadata.type = 'Galaxy Nightclub Membership | Galaxy + Membership'
+				metadata.description = '' .. targetId.getName() .. ' | Membership ID: ' .. GenerateLicense() .. ' '
+				exports['linden_inventory']:addInventoryItem(xPlayer, 'membership', 1, metadata)
+			elseif args[2] == "galaxy" then
+				metadata.type = 'Galaxy Nightclub Membership | Galaxy Membership'
+				metadata.description = '' .. targetId.getName() .. ' | Membership ID: ' .. GenerateLicense() .. ' '
+				exports['linden_inventory']:addInventoryItem(xPlayer, 'membership', 1, metadata)
+			else
+				print("invalid membership type")
+			end
+		else
+			print("not nightclub job")
+		end
+	else
+		print("target not online")
+	end
+end)
+
+function GenerateLicense()
+    local numBase0 = math.random(100,999)
+    local numBase1 = math.random(100,999)
+    local num = string.format("%03d%03d", numBase0, numBase1)
+
+	return num
+end

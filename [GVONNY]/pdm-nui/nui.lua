@@ -255,7 +255,6 @@ RegisterNUICallback("removefromshowroom", function(data)
     if DoesEntityExist(vehicle) then
         local plate = GetVehicleNumberPlateText(vehicle)
         if(showroomplate == plate) then
-            print("plates match start removing vehicle")
             TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
             Citizen.Wait(500)
             local temp = DeleteVehicle(vehicle)
@@ -266,6 +265,10 @@ RegisterNUICallback("removefromshowroom", function(data)
     else
         exports['mythic_notify']:SendAlert('error', 'You are not standing by that vehicle')
     end
+end)
+
+RegisterNUICallback("clearslot", function(data)
+    TriggerServerEvent("clearslot", data.showroomslot)
 end)
 
 RegisterNUICallback("getshowroom", function(data)

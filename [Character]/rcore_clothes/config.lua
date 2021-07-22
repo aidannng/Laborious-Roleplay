@@ -71,6 +71,7 @@ Config.ChangePoint = {
         vector3(1399.345, 1164, 114.3209), -- Mafia
         vector3(986.2154, -133.7275, 78.88574), -- Big Dogs
         vector3(128.5714, -755.8417, 242.1436), -- FBI
+        vector3(393.5341, 279.3231, 94.97729), -- Galaxy Nightclub
     }
 }
 Config.Stores = {

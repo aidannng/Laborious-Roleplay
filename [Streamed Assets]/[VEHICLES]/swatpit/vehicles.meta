@@ -6,7 +6,7 @@
     <Item>
       <modelName>pitbb</modelName> <!--2017 Pitbull VX By Ferious Development-->
       <txdName>pitbb</txdName>
-      <handlingId>FIRETRUK</handlingId>
+      <handlingId>riot</handlingId>
       <gameName>pitbb</gameName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
@@ -14,7 +14,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>FIRETRUK</audioNameHash>
+      <audioNameHash>riot</audioNameHash>
       <layout>LAYOUT_RIOT_VAN</layout>
       <coverBoundOffsets>RIOT_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_TRUCK</explosionInfo>

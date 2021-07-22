@@ -543,7 +543,7 @@ end)
 
 RegisterNetEvent('fbi:dealer')--pd:heli
 AddEventHandler('fbi:dealer', function()
-    exports['br-menu']:SetTitle("FBI Dealership")
+    exports['br-menu']:SetTitle("FBI Helipad")
     exports['br-menu']:AddButton("Police Helicopter" , "$5,000" ,'buyheli' ,'' , 'menuone')
 end)
 
