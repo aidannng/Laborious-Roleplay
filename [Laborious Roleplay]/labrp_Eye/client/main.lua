@@ -9,6 +9,25 @@ Citizen.CreateThread(function()
     TriggerEvent("chat:removeSuggestion", "/-playerTarget")
 end)
 
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(0)
+    end
+
+    while ESX.GetPlayerData().job == nil do
+    Citizen.Wait(10)
+    
+    ESX.PlayerData = ESX.GetPlayerData()
+    
+    end
+
+    RegisterNetEvent('esx:setJob')
+    AddEventHandler('esx:setJob', function(job)
+        ESX.PlayerData = ESX.GetPlayerData()
+    end)
+end)
+
 if Config.ESX then
     Citizen.CreateThread(function()
         while ESX == nil do

@@ -414,6 +414,13 @@ Items = {
 		}
 	},
 
+	['baggy'] = {
+		label = 'Baggy',
+		weight = 50,
+		close = true,
+		stack = true,
+	},
+
 	['advancedlockpick'] = {
 		label = 'Advanced Lockpick',
 		weight = 1000,

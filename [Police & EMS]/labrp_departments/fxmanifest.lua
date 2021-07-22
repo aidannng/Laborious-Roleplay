@@ -21,18 +21,18 @@ client_scripts {
 }
 
 -- CHECKIN
-client_scripts {
-    'Checkin/locales/en.lua',
-    'Checkin/config.lua', 
-	'Checkin/client.lua' 
-} 
+-- client_scripts {
+--     'Checkin/locales/en.lua',
+--     'Checkin/config.lua', 
+-- 	'Checkin/client.lua' 
+-- } 
  
-server_scripts { 
-    'Checkin/locales/en.lua',
-    'Checkin/config.lua',
-	'Checkin/server.lua',
-	'@mysql-async/lib/MySQL.lua'
-} 
+-- server_scripts { 
+--     'Checkin/locales/en.lua',
+--     'Checkin/config.lua',
+-- 	'Checkin/server.lua',
+-- 	'@mysql-async/lib/MySQL.lua'
+-- } 
 
 -- GSR
 client_scripts {

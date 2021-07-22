@@ -22,9 +22,9 @@ AddEventHandler('labrp_identification:showIDCard', function(item, wait, cb)
     end
 end)
 
---[[ RegisterCommand("GimmieID", function(source)
+RegisterCommand("GimmieID", function(source)
     TriggerServerEvent("labrp_issueID")
-end) ]]
+end) 
 
 RegisterNetEvent('labrp_identification:open')
 AddEventHandler('labrp_identification:open', function( data, metadata, type )

@@ -98,6 +98,15 @@ $(function () {
         }));
     }); 
 
+    $(".showroom-slot").on("click", ".clear-slot", function (){
+        var id = $(this).data('slot');
+        $('#slot-' + id).empty().append("<span><strong>"+ id +". </strong></span>");
+
+        $.post('http://pdm-nui/clearslot', JSON.stringify({
+            showroomslot:id,
+        }));
+    }); 
+
     $('.employee').on('click', '.promote', function(){
         var identifier = $(this).data('identifier');
         var grade = $(this).data('grade');
@@ -317,6 +326,9 @@ $(function () {
             {
                 str = str + "<span class=\"margin-left-10pct\"><button class=\"btn test-drive\" data-slot="+ item.showroomslot +" data-plate="+ item.showroomplate +">Test Drive</button></span>"
             }
+
+            str = str + "<span class=\"margin-left-10pct\"><button class=\"btn clear-slot\" data-slot="+ item.showroomslot +">Clear Slot</button></span>"
+
 
             var id = item.showroomslot;
             $('#slot-' + id).empty();

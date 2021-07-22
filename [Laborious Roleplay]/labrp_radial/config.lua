@@ -1150,9 +1150,26 @@ end)
 
 RegisterNetEvent("police:menuimpound")
 AddEventHandler("police:menuimpound", function()
-    exports['br-menu']:SetTitle("Impound Menu")
-    exports['br-menu']:AddButton("Call for Impound" , "Calls nearby mechanics to impound this vehicle." ,'callforimpound' ,'' , 'menuone')
-    exports['br-menu']:AddButton("Scuff Impound" , "Only use if necessary" ,'scuffimpound' ,'' , 'menuone')
+
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Impound Menu",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Call for Impound",
+            txt = "Impound nearest Vehicle.",
+            params = {
+                event = "callforimpound",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        }
+    })
 end)
 
 RegisterNetEvent("drag")

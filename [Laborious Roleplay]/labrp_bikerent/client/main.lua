@@ -651,11 +651,11 @@ end)
 
 RegisterNetEvent('callforimpound')
 AddEventHandler('callforimpound', function()
-    local impoundLocation = GetEntityCoords(PlayerPedId())
-    --[[TriggerEvent("mythic_progbar:client:progress", {
+    --local impoundLocation = GetEntityCoords(PlayerPedId())
+    TriggerEvent("mythic_progbar:client:progress", {
         name = "unique_action_name",
-        duration = 15000,
-        label = "Requesting Impound",
+        duration = 2500,
+        label = "Impounding Vehicle",
         useWhileDead = false,
         canCancel = true,
         controlDisables = {
@@ -669,27 +669,10 @@ AddEventHandler('callforimpound', function()
         -- Do Something If Event Wasn't Cancelled
         end
     end)
-    Citizen.Wait(15000)]]
-    print(impoundLocation)
-    TriggerServerEvent('notfiytowimpound', impoundLocation)
+    Citizen.Wait(2500)
+    local impoundVeh = ESX.Game.GetClosestVehicle(coords, modelFilter)
+    print(impoundVeh)
+    DeleteVehicle(impoundVeh)
 end)
 
-RegisterNetEvent('impoundcall')
-AddEventHandler('impoundcall', function(callcoords)
-    local callcoords = callcoords
-    exports['mythic_notify']:SendAlert('inform', 'You got a call!')
-    exports['mythic_notify']:SendAlert('inform', 'Press Y to Join Call!')
-    TriggerEvent("InteractSound_CL:PlayOnOne", "demo", 0.4)
-    local count = 0
-    repeat
-        local stop = false
-        if IsControlPressed(0, 246) then
-            SetNewWaypoint(callcoords)
-            exports['mythic_notify']:SendAlert('inform', 'Waypoint Set!')
-            stop = true
-        end
-        count = count + 1
-        Citizen.Wait(5)
-    until stop or count > 400
-end)
 

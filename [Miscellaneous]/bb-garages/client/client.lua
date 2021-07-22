@@ -174,13 +174,13 @@ CreateThread(function()
             end
         end
 
-        for key, vehicle in pairs(ownedVehicles) do
+        --[[ for key, vehicle in pairs(ownedVehicles) do
             if DoesEntityExist(vehicle[2]) == false then
                 print("impounding vehicle")
                 TriggerServerEvent('bb-garages:server:impoundVehicle', vehicle[1])
                 table.remove(ownedVehicles, key)
             end
-        end
+        end ]]
         Wait(1)
     end
 end)
@@ -424,7 +424,7 @@ end)
     TriggerEvent("vehiclekeys:client:SetOwner", vehicleProps.plate, vehicle)
 	TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
 	TriggerEvent('bb-garages:client:insertOwnedVehicle', vehicleProps.plate, vehicle)
-end)  ]]
+end) ]]
 
 RegisterNetEvent('bb-garages:client:insertOwnedVehicle')
 AddEventHandler('bb-garages:client:insertOwnedVehicle', function(g, v)

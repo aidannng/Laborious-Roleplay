@@ -25,7 +25,14 @@ local Blacklisted = {
         [`hydra`] = true,
         [`lazer`] = true,
         [`ambulance`] = true,
-        [`buzzard`] = true,       
+        [`buzzard`] = true,
+        [`frogger`] = true,
+        [`maverick`] = true,
+        [`swift`] = true,
+        [`savage`] = true,
+        [`frogger`] = true,
+        [`volatus`] = true,
+        [`frogger`] = true,
     },
     Props = {}
   }

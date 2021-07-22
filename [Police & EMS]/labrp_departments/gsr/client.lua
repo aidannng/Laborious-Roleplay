@@ -1,16 +1,16 @@
 local clearGSR = 45 -- minutes
 local shotRecently = false
 
-RegisterCommand("cleargsr", function(source, args, raw)
-	if shotRecently then
-		local plyPed = PlayerPedId()
-		ClearPedBloodDamage(plyPed)
-		ClearPedEnvDirt(plyPed)
-		ResetPedVisibleDamage(plyPed)
-		shotRecently = false
-        exports['mythic_notify']:SendAlert('inform', 'You have cleared GSR from yourself')
-	end
-end)
+-- RegisterCommand("cleargsr", function(source, args, raw)
+-- 	if shotRecently then
+-- 		local plyPed = PlayerPedId()
+-- 		ClearPedBloodDamage(plyPed)
+-- 		ClearPedEnvDirt(plyPed)
+-- 		ResetPedVisibleDamage(plyPed)
+-- 		shotRecently = false
+--         exports['mythic_notify']:SendAlert('inform', 'You have cleared GSR from yourself')
+-- 	end
+-- end)
 
 RegisterNetEvent("gsr:test")
 AddEventHandler("gsr:test", function()
