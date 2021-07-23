@@ -72,6 +72,7 @@ Config.ChangePoint = {
         vector3(986.2154, -133.7275, 78.88574), -- Big Dogs
         vector3(128.5714, -755.8417, 242.1436), -- FBI
         vector3(393.5341, 279.3231, 94.97729), -- Galaxy Nightclub
+        vector3(-54.31648, -1083.864, 26.36487), -- PDM
     }
 }
 Config.Stores = {
@@ -3899,6 +3900,74 @@ Config.Stores = {
                         z = 0.8
                     },
                     taskHeading = 100.66
+                }
+            },
+        }
+    },
+    {
+        position = vector3(-627.6, -233.2, 38.0),
+        label = 'Jewlery Shop',
+        sprite = 617,
+        color = 38,
+        sections = {
+            bags = {
+                pos = vector3(-627.6, -233.2, 38.0),
+                label = '💍',
+                help = 'Press ~INPUT_CONTEXT~ to change your jewlery!',
+                components = {
+                    {
+                        label = 'Bracelets Style',
+                        name = 'bracelets_1',
+                        from = 0,
+                        to = 160,
+                        current = 0,
+                        price = 120,
+                    },
+                    {
+                        label = 'Bracelets Color',
+                        name = 'bracelets_2',
+                        from = 0,
+                        to = 160,
+                        current = 0,
+                        price = 120,
+                    },
+                    {
+                        label = 'Watches Style',
+                        name = 'watches_1',
+                        from = 0,
+                        to = 160,
+                        current = 0,
+                        price = 120,
+                    },
+                    {
+                        label = 'Watches Color',
+                        name = 'watches_2',
+                        from = 0,
+                        to = 160,
+                        current = 0,
+                        price = 120,
+                    },
+                    {
+                        label = 'Ear Accessories', 
+                        name = 'ears_1',
+                        from = 0,
+                        to = 160,
+                        current = 0,
+                        price = 120,
+                    },
+                },
+                cam = {
+                    offset = {
+                        x = 0.0,
+                        y = 1.0,
+                        z = 0.5
+                    },
+                    pointOffset = {
+                        x = 0,
+                        y = 0,
+                        z = 0.2
+                    },
+                    taskHeading = 80.66
                 }
             },
         }

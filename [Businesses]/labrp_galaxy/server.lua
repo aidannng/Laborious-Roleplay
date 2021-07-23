@@ -248,6 +248,41 @@ AddEventHandler('galaxy:takebeef', function()
         TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken Frozen Beef!', length = 10000})
 end)
 
+RegisterServerEvent('galaxy:takewings')
+AddEventHandler('galaxy:takewings', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('wings', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken Frozen Wings!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:takefries')
+AddEventHandler('galaxy:takefries', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('potato', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Potato!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:takebun')
+AddEventHandler('galaxy:takebun', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('bun', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Burger Bun!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:takecheese')
+AddEventHandler('galaxy:takecheese', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('cheese', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken Cheese!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:takecondom')
+AddEventHandler('galaxy:takecondom', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('condom', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Condom, stay safe!', length = 10000})
+end)
+
 RegisterCommand('galaxytray1', function(source)
     local xPlayer = ESX.GetPlayerFromId(source)
     local stash = {id = 'Galaxy-Tray-1', label = 'Galaxy Tray 1', slots = 5, coords = vector3(359.367, 279.3758, 94.1853)}
@@ -259,5 +294,7 @@ RegisterCommand('galaxytray2', function(source)
     local stash = {id = 'Galaxy-Tray-2', label = 'Galaxy Tray 2', slots = 5, coords = vector3(360.0396, 281.4462, 94.1853)}
     exports['linden_inventory']:OpenStash(xPlayer, stash)
 end)
+
+
 
 --exports['linden_inventory']:OpenStash({ id = 'Hospital Locker', slots = 70, job= 'ambulance'})

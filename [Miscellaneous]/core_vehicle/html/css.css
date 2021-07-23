@@ -455,24 +455,25 @@ p {
 	position: absolute;
 	right: 1vw;
 	bottom: 1vh;
+	margin-right:1415px;
 }
 
 #u120 {
 	z-index: 8;
 	width: 45px;
 	position: relative;
-	margin-right: -10000px;
 	margin-top: 5px;
-	left: 42.37%
+	margin-right: -10000px;
+	left: -2.37%
 }
 
 #u130 {
 	z-index: 10;
 	width: 36px;
 	position: relative;
-	margin-right: -10000px;
 	margin-top: 5px;
-	left: 53.34%
+	margin-right: -10000px;
+	left: 8.34%
 }
 
 #u107 {
@@ -555,9 +556,11 @@ p {
 
 #u108 {
 	z-index: 3;
-	width: 100px;
+	width: 90px;
 	height: 30px;
 	position: absolute;
+	bottom:87%;
+	left:-19.5%;
 	
 	display: none;
 	margin-top: 4px;
@@ -565,9 +568,10 @@ p {
 	font-weight: 700; 
 		border-radius: 20px;
 	 border-style: solid;
-	 border-width: 3px;
-  border-color: #a8a8a8;
+	 border-width: 2px;
+  border-color: #088EFF;
   overflow: hidden;
+  background: rgba(24, 24, 24, 0.62 );
 }
 
 #back {
@@ -598,8 +602,8 @@ transition: transform .2s ease-in-out;
 }
 
 #u110 {
-	background: rgb(40, 165, 219);
-	background: linear-gradient(90deg, rgba(40,165,219,1) 0%, rgba(40,160,219,1) 86%, rgba(40,155,219,0) 100%);
+	background: #4b7ab8;
+background: linear-gradient(90deg, #4b7ab8 0%, #4b7ab8 86%, #6695d1 100% ); 
 	position: absolute;
 	top: 0px;
 	z-index: 0;

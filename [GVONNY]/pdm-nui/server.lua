@@ -159,16 +159,12 @@ AddEventHandler("removefromshowroom", function(slotid)
 
     MySQL.Async.fetchAll("SELECT x, y, z, slot_id, plate FROM pdm_showroom WHERE slot_id = @slot",{['@slot']=slotid}, function(result)
         local slot = result[1].slot_id
-        --local x = result[1].x
-        --local y = result[1].y
-        --local z = result[1].z
 
         MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
         
         --print("plain remove from showroom")
         --print("server trigger despawn vehicle from showroom")
         --print("============================================")
-        --TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
         TriggerClientEvent("pdm:despawnvehicle", src, slot)
     end)
 end)
@@ -186,32 +182,15 @@ AddEventHandler("movetoshowroom", function(slotid, plate)
     local src = source
     local oldslot
 
-    --check if any slots have the plate already in the showroom
     MySQL.Async.fetchAll("SELECT x, y, z, slot_id, plate FROM pdm_showroom WHERE plate = @plate",{['@plate']=plate}, function(result)
-        --if plate is already in showroom
         --print("is plate in showroom already:")
         --print(result ~= nil and #result>0)
         if(result ~= nil and #result>0) then
-            local slot = result[1].slot_id
-
-            oldslot = slot
-            local x = result[1].x
-            local y = result[1].y
-            local z = result[1].z
-            
             --if new plate is the same as the plate
             if(plate == result[1].plate) then
                 TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "This vehicle is on the floor already", })
-
-                --MySQL.Async.execute("UPDATE pdm_showroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = slot})
-                --print("this vehicle is already in a slot")
-                --print("despawn vehicle from current slot")
-                --TriggerClientEvent("pdm:despawnvehicle", src, x, y, z)
-            else
-                print("doing this")
             end
         else
-            --TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'inform', text = "vehicle is not on the floor", })
             MySQL.Async.fetchAll("SELECT a.slot_id, a.x, a.y, a.z, a.plate, a.rotation, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid AND b.plate = @plate",{['@slotid'] = slotid, ['@plate'] = plate}, function(result2)
                 if(result2 ~= nil and #result2>0) then
                     local x = result2[1].x
@@ -257,7 +236,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                     if(cash >= downpayment) then
                         local termamount = price / termlength
             
-                        MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'finance', 'cardealer', 'Vehicle Purchase', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
+                        MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'finance', 'cardealer', 'Vehicle Purchase', @price, @termlength, @termamount, '0', @haspaid, '14', '0')",{
                             ['@ower'] = ower.identifier,
                             ['@biller'] = creator.identifier,
                             ['@price'] = price,

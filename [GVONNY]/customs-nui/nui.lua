@@ -9,6 +9,16 @@ end)
 
 local display = false
 
+RegisterNetEvent("local:inspect")
+AddEventHandler("local:inspect", function()
+    TriggerServerEvent('checktoolbox')
+end)
+
+RegisterNetEvent("mechanic:inspect")
+AddEventHandler("mechanic:inspect", function()
+    TriggerEvent('core_vehicle:toolUsed', 'mechanic_tools')
+end)
+
 RegisterNetEvent("mechanic:customs")
 AddEventHandler("mechanic:customs", function()
     SetDisplay(not display)

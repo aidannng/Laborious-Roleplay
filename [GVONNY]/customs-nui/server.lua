@@ -61,7 +61,7 @@ AddEventHandler("lsccreatebill", function(luckynumber, price, termlength)
             if(cash >= downpayment) then
                 local termamount = price / termlength
     
-                MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'finance', 'mechanic', 'Repair/Upgrade', @price, @termlength, @termamount, '0', @haspaid, '28', '0')",{
+                MySQL.Async.execute("INSERT INTO billing (identifier, sender, target_type, target, label, amount, term_length, term_amount, term_payment, has_paid, term_days_left, days_overdue) VALUES (@ower, @biller, 'finance', 'mechanic', 'Repair/Upgrade', @price, @termlength, @termamount, '0', @haspaid, '14', '0')",{
                     ['@ower'] = ower.identifier,
                     ['@biller'] = creator.identifier,
                     ['@price'] = price,

@@ -830,6 +830,12 @@ Citizen.CreateThread(
 										end
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
+                                        SetVehicleTyreFixed(currentVehicle, 0)
+                                        SetVehicleTyreFixed(currentVehicle, 1)
+                                        SetVehicleTyreFixed(currentVehicle, 2)
+                                        SetVehicleTyreFixed(currentVehicle, 3)
+                                        SetVehicleTyreFixed(currentVehicle, 4)
+                                        SetVehicleTyreFixed(currentVehicle, 5)
 									else
 										w1 = false
 										repairing = false
@@ -873,6 +879,12 @@ Citizen.CreateThread(
 										end
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
+                                        SetVehicleTyreFixed(currentVehicle, 0)
+                                        SetVehicleTyreFixed(currentVehicle, 1)
+                                        SetVehicleTyreFixed(currentVehicle, 2)
+                                        SetVehicleTyreFixed(currentVehicle, 3)
+                                        SetVehicleTyreFixed(currentVehicle, 4)
+                                        SetVehicleTyreFixed(currentVehicle, 5)
 									else
 										w2 = false
 										repairing = false
@@ -916,6 +928,12 @@ Citizen.CreateThread(
 										end
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
+                                        SetVehicleTyreFixed(currentVehicle, 0)
+                                        SetVehicleTyreFixed(currentVehicle, 1)
+                                        SetVehicleTyreFixed(currentVehicle, 2)
+                                        SetVehicleTyreFixed(currentVehicle, 3)
+                                        SetVehicleTyreFixed(currentVehicle, 4)
+                                        SetVehicleTyreFixed(currentVehicle, 5)
 									else
 										w3 = false
 										repairing = false
@@ -959,6 +977,12 @@ Citizen.CreateThread(
 										end
 										saveVehicleData(currentPlate)
 										SendTextMessage(Config.Text["mechanic_action_complete"])
+                                        SetVehicleTyreFixed(currentVehicle, 0)
+                                        SetVehicleTyreFixed(currentVehicle, 1)
+                                        SetVehicleTyreFixed(currentVehicle, 2)
+                                        SetVehicleTyreFixed(currentVehicle, 3)
+                                        SetVehicleTyreFixed(currentVehicle, 4)
+                                        SetVehicleTyreFixed(currentVehicle, 5)
 									else
 										w4 = false
 										repairing = false
@@ -1412,7 +1436,7 @@ Citizen.CreateThread(
     function()
         while true do
 		
-            Citizen.Wait(Config.SetWaitTimeBeforeLoadHud)
+            Citizen.Wait(200)
             local ped = PlayerPedId()
             local veh = GetVehiclePedIsIn(ped)
             local seat = 0
@@ -1431,12 +1455,12 @@ Citizen.CreateThread(
                 if not repairMode then
 
                 	 SendNUIMessage(
-                    {
-                        type = "showinfo",
-                        bottom = Config.InfoBottom,
-                        right = Config.InfoRight
-                    }
-                )
+                        {
+                            type = "showinfo",
+                            bottom = Config.InfoBottom,
+                            right = Config.InfoRight
+                        }
+                    )
                 	
                     currentPlate = GetVehicleNumberPlateText(veh)
 
@@ -1748,16 +1772,6 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("local:inspect")
-AddEventHandler("local:inspect", function()
-    TriggerServerEvent('checktoolbox')
-end)
-
-RegisterNetEvent("mechanic:inspect")
-AddEventHandler("mechanic:inspect", function()
-    TriggerEvent('core_vehicle:toolUsed', 'mechanic_tools')
-end)
-
 RegisterNetEvent("core_vehicle:SendTextMessage")
 AddEventHandler(
     "core_vehicle:SendTextMessage",
@@ -1790,6 +1804,10 @@ AddEventHandler(
 
                 local veh, dst = ESX.Game.GetClosestVehicle(coords)
 				local plate = GetVehicleNumberPlateText(veh)
+                local isPedInVehicle = GetPedInVehicleSeat(veh, -1)
+                if isPedInVehicle ~= 0 then
+                    exports["mythic_notify"]:SendAlert("error", "Please examine from outsie the vehicle.")
+                else
 				local localVehLockStatus = GetVehicleDoorLockStatus(veh)
 				ESX.TriggerServerCallback('core_vehicle:getIfVehicleOwned', function(vehOwned)
                 if dst < Config.DetectDistance and vehOwned then
@@ -2071,11 +2089,16 @@ AddEventHandler(
 				SendTextMessage(Config.Text["vehicle_nearby"])
 				end
 				end, plate) -- Callback End
+            end
             else
                 SendTextMessage(Config.Text["wrong_job"])
             end
         elseif tool == "toolbox" then
             local veh, dst = ESX.Game.GetClosestVehicle(coords)
+            local isPedInVehicle = GetPedInVehicleSeat(veh, -1)
+            if isPedInVehicle ~= 0 then
+                exports["mythic_notify"]:SendAlert("error", "Please examine from outsie the vehicle.")
+            else
 			local plate = GetVehicleNumberPlateText(veh)
 			local localVehLockStatus = GetVehicleDoorLockStatus(veh)
 			
@@ -2270,6 +2293,7 @@ AddEventHandler(
 			end
 			end, plate) -- Callback End
 			end
+        end
         end
     end
 )
