@@ -89,6 +89,7 @@ Config = {
         ['suspension'] = true,
         ['engine'] = true,
         ['transmission'] = true,
+        ['turbo'] = true,
         ['sparkplugs'] = true
     },
     

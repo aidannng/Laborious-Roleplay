@@ -216,15 +216,51 @@ Items = {
 		}
 	},
 
-	['warrant'] = {
-		label = 'Police Warrant',
+	['rollingtray'] = {
+		label = 'Rolling Tray',
 		weight = 750,
 		stack = false,
 		close = true,
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'show:warrant'
+			event = 'dispensary:rollingtray'
+		}
+	},
+
+	['kkjoint'] = {
+		label = 'Kronic Kush Joint',
+		weight = 300,
+		stack = true,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'use:kkjoint'
+		}
+	},
+
+	['wpjoint'] = {
+		label = 'Wedding Pie Joint',
+		weight = 300,
+		stack = true,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'use:wpjoint'
+		}
+	},
+
+	['zpjoint'] = {
+		label = 'Zurple Punch Joint',
+		weight = 300,
+		stack = true,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'use:zpjoint'
 		}
 	},
 
@@ -571,7 +607,7 @@ Items = {
 		close = true,
 	},
 
-	['mango'] = {
+	['orangemixer'] = {
 		label = 'Sweet Mango Mixer',
 		weight = 0,
 		stack = true,
@@ -607,7 +643,7 @@ Items = {
 	},
 
 	['cheese'] = {
-		label = 'Shaker',
+		label = 'Cheese',
 		weight = 0,
 		stack = true,
 		close = true,
@@ -639,6 +675,13 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { hunger = 500000 },
+			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+			prop = { model = 'prop_cs_burger_01', pos = { x = 0.020000000000004, y = 0.020000000000004, y = -0.020000000000004}, rot = { x = 0.0, y = 0.0, y = 0.0} },
+			usetime = 2500,
+			event = false,
+		}
 	},
 
 	['solarfries'] = {
@@ -646,6 +689,12 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { hunger = 200000 },
+			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+			usetime = 3000,
+			event = false,
+		}
 	},
 
 	['universalwings'] = {
@@ -653,6 +702,12 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { hunger = 200000 },
+			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+			usetime = 3000,
+			event = false,
+		}
 	},
 
 	['cosmicsoda'] = {
@@ -660,6 +715,13 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 300000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = 'prop_ecola_can', pos = { x = 0.010000000000002, y = 0.010000000000002, y = 0.060000000000002}, rot = { x = 5.0, y = 5.0, y = -180.5} },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	['worldlybeer'] = {
@@ -667,6 +729,13 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 350000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = 'prop_amb_beer_bottle', pos = { x = 0.010000000000002, y = 0.010000000000002, y = 0.060000000000002}, rot = { x = 5.0, y = 5.0, y = -180.5} },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	['starwine'] = {
@@ -674,6 +743,13 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 350000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = 'prop_sh_wine_glass', pos = { x = 0.010000000000002, y = 0.010000000000002, y = 0.060000000000002}, rot = { x = 5.0, y = 5.0, y = -180.5} },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	['sourblast'] = {
@@ -681,6 +757,12 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 350000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	['bluesensation'] = {
@@ -688,6 +770,12 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 350000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	['eliptical'] = {
@@ -695,6 +783,12 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 350000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	['multiversalwhiskey'] = {
@@ -702,6 +796,12 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 350000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	['spacevodka'] = {
@@ -709,6 +809,12 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			status = { thirst = 350000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			usetime = 3500,
+			event = false,
+		}
 	},
 
 	

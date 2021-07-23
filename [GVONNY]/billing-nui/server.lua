@@ -47,8 +47,8 @@ AddEventHandler("getmybills", function()
                 local lastname = result[x].lastname
                 local termlength = result[x].term_length
                 local termamount = result[x].term_amount
-                local termdaysleft = math.ceil(tonumber(result[x].term_days_left) / 4)
-                local daysoverdue= math.ceil(tonumber(result[x].days_overdue) / 4)
+                local termdaysleft = math.ceil(tonumber(result[x].term_days_left) / 2)
+                local daysoverdue= math.ceil(tonumber(result[x].days_overdue) / 2)
 
                 TriggerClientEvent('billing:createbillingrow', src, billid, sender, label, amount, firstname, lastname, target, termlength, termamount, termdaysleft, daysoverdue)
             end
@@ -121,7 +121,7 @@ AddEventHandler("updatebill", function(billID, billAmount)
                             end
 
 
-                            MySQL.Async.execute("UPDATE billing SET amount = @amount, term_length = @termlength, term_amount = @termamount, term_days_left = '28', days_overdue = '0', term_payment = '0' WHERE id = @id", {['@amount'] = newamount, ['@id'] = billID, ['@termlength'] = currenttermlength, ['@termamount'] = currenttermamount})
+                            MySQL.Async.execute("UPDATE billing SET amount = @amount, term_length = @termlength, term_amount = @termamount, term_days_left = '14', days_overdue = '0', term_payment = '0' WHERE id = @id", {['@amount'] = newamount, ['@id'] = billID, ['@termlength'] = currenttermlength, ['@termamount'] = currenttermamount})
                         else
                             currenttermamount = currenttermamount - billAmount
                             currenttermpayment = currenttermpayment + billAmount

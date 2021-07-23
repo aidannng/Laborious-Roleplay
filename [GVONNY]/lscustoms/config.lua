@@ -407,6 +407,7 @@ Config.Menus = {
 		label		= 'Benny\'s Motorworks',
 		parent		= nil,
 		extras				= _U('extras'),
+		--[[ upgrades			= _U('upgrades'), ]]
 		bodyparts			= _U('bodyparts'),
 		windowTint			= _U('windowtint'),
 		modHorns			= _U('horns'),
@@ -461,7 +462,7 @@ Config.Menus = {
 		label = _U('turbo'),
 		parent = 'upgrades',
 		modType = 17,
-		price = {55.81}
+		price = {110.81}
 	},
 	extras = {
 		label				= _U('extras'),

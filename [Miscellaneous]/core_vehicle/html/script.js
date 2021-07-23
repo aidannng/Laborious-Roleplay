@@ -309,10 +309,6 @@ function openGauge(bottom, right) {
     '    <div class="clip_frame grpelem" id="u130"><!-- image -->' +
     '     <img class="block" id="u130_img" src="img/checkengine.png" alt="" data-heightwidthratio="1" data-image-width="36" data-image-height="36"/>' +
     '    </div>' +
-    '    <div class="rounded-corners clearfix grpelem" id="u107"><!-- group -->' +
-    '     <div class="clearfix grpelem" id="u111-4"><!-- content -->' +
-    //'    00003485.0' +
-    '     </div>' +
     '    </div>' +
     '   </div>';
 

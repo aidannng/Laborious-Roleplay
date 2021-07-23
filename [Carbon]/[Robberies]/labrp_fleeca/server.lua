@@ -32,7 +32,7 @@ RegisterServerEvent('GiveSafeReward')
 AddEventHandler('GiveSafeReward', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
-    local moneypayout = math.random(25000, 45000)
+    local moneypayout = math.random(7500, 12500)
     local jewels = math.random(1, 10)
     local jewelsamount = math.random(1, 4)
     local laptopchance = math.random(1, 10)
@@ -48,7 +48,7 @@ AddEventHandler('GiveSafeReward', function()
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got '..jewelsamount..'x 2 CT Gold Chains', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
     end
 
-    xPlayer.addInventoryItem('money', moneypayout)
+    xPlayer.addInventoryItem('black_money', moneypayout)
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got $'..moneypayout, length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
 
 
@@ -103,7 +103,7 @@ AddEventHandler('checkstorecops', function()
         end
     end
 
-    if cops >= 0 then
+    if cops >= 3 then
         TriggerClientEvent('doHack', source)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'System Currently Down!'})

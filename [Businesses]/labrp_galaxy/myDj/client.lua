@@ -128,31 +128,31 @@ Citizen.CreateThread(function()
     --startSongFromPlaylist(1, examplePlaylist)
 end)
 
-Citizen.CreateThread(function()
-    while true do
+-- Citizen.CreateThread(function()
+--     while true do
 
-        if Config.enableMarker then
-            if isNearDJ then
-                DrawMarker(27, currentDJ.pos.x, currentDJ.pos.y, currentDJ.pos.z - 0.98, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0*1.5, 1.0*1.5, 1.0, 136, 0, 136, 75, false, false, 2, false, false, false, false)
-            end
-        end
+--         if Config.enableMarker then
+--             if isNearDJ then
+--                 DrawMarker(27, currentDJ.pos.x, currentDJ.pos.y, currentDJ.pos.z - 0.98, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0*1.5, 1.0*1.5, 1.0, 136, 0, 136, 75, false, false, 2, false, false, false, false)
+--             end
+--         end
 
-        if isAtDJ then
-            showInfobar(Translation[Config.Locale]['DJ_interact'])
-            if IsControlJustReleased(0, 38) then
-                -- open DJ Interface
-                SetNuiFocus(true, true)
-                isDjOpen = true
-                SendNUIMessage({type = 'open'})
-                ESX.TriggerServerCallback('myDJ:requestPlaylistsAndSongs', function(playlists, songs)
-                    SendNUIMessage({type = 'getPlaylists', playlists = playlists, songs = songs})
-                end)
-            end
-        end
+--         if isAtDJ then
+--             showInfobar(Translation[Config.Locale]['DJ_interact'])
+--             if IsControlJustReleased(0, 38) then
+--                 -- open DJ Interface
+--                 SetNuiFocus(true, true)
+--                 isDjOpen = true
+--                 SendNUIMessage({type = 'open'})
+--                 ESX.TriggerServerCallback('myDJ:requestPlaylistsAndSongs', function(playlists, songs)
+--                     SendNUIMessage({type = 'getPlaylists', playlists = playlists, songs = songs})
+--                 end)
+--             end
+--         end
 
-        Citizen.Wait(1)
-    end
-end)
+--         Citizen.Wait(1)
+--     end
+-- end)
 
 RegisterNetEvent('myDj:open')
 AddEventHandler('myDj:open', function()
