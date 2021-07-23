@@ -96,7 +96,7 @@ AddEventHandler('kypo-drug-effect:onWeed', function()
       duration = 6000,
       label = "Smoking Joint",
       useWhileDead = false,
-      canCancel = true,
+      canCancel = false,
       controlDisables = {
           disableMovement = false,
           disableCarMovement = false,
@@ -127,7 +127,7 @@ AddEventHandler('kypo-drug-effect:onWeed', function()
     SetEntityHealth(GetPlayerPed(-1), 200)
     SetPedArmour(PlayerPedId(), 50)
 --vvvvvvvvvvvvvvvv
-    Citizen.Wait(20000)
+    Citizen.Wait(50000)
     exports['mythic_notify']:SendAlert('error', 'You come down off your high!')
     Citizen.Wait(5000)
 --^^^^^^^^^^^^^^^^

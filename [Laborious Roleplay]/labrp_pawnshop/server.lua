@@ -295,22 +295,6 @@ AddEventHandler('drugsales:meth', function()
 end)
 
 
-RegisterServerEvent('drugunpack:weed')
-AddEventHandler('drugunpack:weed', function()
-    math.randomseed(os.time())
-    local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberQuantity = xPlayer.getInventoryItem('packagedweed').count
-
-    if RubberQuantity >= 1 then
-        local quality = 1
-        xPlayer.removeInventoryItem('packagedweed', RubberQuantity)
-        xPlayer.addInventoryItem('joint', RubberQuantity)
-        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have unpacked ' .. RubberQuantity .. ' Packaged Weed.', length = 10000})
-    else
-        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'You have no Packaged Weed to unpack!', length = 5000})
-    end
-end)
-
 RegisterServerEvent('drugunpack:coca')
 AddEventHandler('drugunpack:coca', function()
     math.randomseed(os.time())

@@ -186,6 +186,24 @@ RobTargetInventory = function(target)
 		end
 		if targetPlayer ~= -1 and targetDistance <= 1.5 then
 			if CanOpenTarget(GetPlayerPed(targetPlayer)) then
+				exports['mythic_progbar']:Progress({
+					name = "unique_action_name",
+					duration = 10000,
+					label = 'Robbing Person',
+					useWhileDead = true,
+					canCancel = false,
+					controlDisables = {
+						disableMovement = true,
+						disableCarMovement = true,
+						disableMouse = false,
+						disableCombat = true,
+					},
+					animation = {
+						animDict = "missheistdockssetup1clipboard@idle_a",
+						anim = "idle_a",
+					}
+				})
+				Citizen.Wait(10500)
 				TriggerServerEvent('linden_inventory:openTargetInventory', GetPlayerServerId(targetPlayer))
 			else
 				TriggerEvent('mythic_notify:client:SendAlert', {type = 'error', text = _U('inventory_cannot_open_other'), length = 2500})

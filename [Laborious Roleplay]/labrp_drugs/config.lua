@@ -138,13 +138,13 @@ Config.Weed = {
     },
     packageZone = {
         coords = {
-            [1] = {coord =  vector3(2861.196, 4463.934, 41.31067), heading = 125.00, rotx = -0.60, roty = 0.0, rotz = -1.4},
-            [2] = {coord = vector3(2863.358, 4464.686, 41.31067), heading = 125.00, rotx = -0.60, roty = 0.0, rotz = -1.4},
-            [3] = {coord = vector3(2867.42, 4465.952, 41.31067), heading = 125.00, rotx = -0.60, roty = 0.0, rotz = -1.4},
+            [1] = {coord =  vector3(2860.47, 4463.921, 41.31067), heading = 125.00, rotx = -0.60, roty = 0.0, rotz = -1.4},
+            [2] = {coord = vector3(2863.015, 4464.686, 41.31067), heading = 125.00, rotx = -0.60, roty = 0.0, rotz = -1.4},
+            [3] = {coord = vector3(2866.352, 4465.767, 41.31067), heading = 125.00, rotx = -0.60, roty = 0.0, rotz = -1.4},
         },
-        text = "[E] Package Weed",
+        text = "[E] Place Buds",
         count = 1, 
-        takeText = "[E] Pick up",
+        takeText = "[E] Package Weed",
     }
 }
 

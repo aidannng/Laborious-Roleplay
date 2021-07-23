@@ -30,6 +30,7 @@ Config.YouTool = {
 	}, inventory = {
 		{ name = 'lockpick', price = 125 },
 		{ name = 'radio', price = 200 },
+		{ name = 'rolling_paper', price = 20 },
 	}
 }
 

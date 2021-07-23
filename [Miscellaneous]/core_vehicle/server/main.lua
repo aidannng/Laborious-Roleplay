@@ -218,8 +218,8 @@ AddEventHandler(
 )
 
 -- Get Vehicle Owned Status:
-ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb, plate)
-    MySQL.Async.fetchAll("SELECT * FROM bbvehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
+--[[ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb, plate)
+    MySQL.Async.fetchAll("SELECT * FROM owned_vehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
         if Config.OnlyOwnedVehicles then
         if #data > 0 then
             cb(true)
@@ -229,5 +229,21 @@ ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb,
     else
             cb(true)
     end
+    end)
+end)--]]
+
+-- Get Vehicle Owned Status:
+ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb, plate)
+	local xPlayer = ESX.GetPlayerFromId(source)
+    MySQL.Async.fetchAll("SELECT * FROM bbvehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
+        if Config.OnlyOwnedVehicles then
+			if(data[1] ~= nil) then
+				cb(true)
+			else
+				cb(false)
+			end
+		else
+            cb(true)
+		end
     end)
 end)

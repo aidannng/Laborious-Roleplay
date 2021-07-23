@@ -284,15 +284,15 @@ AddEventHandler('galaxymenu', function()
     TriggerEvent('nh-context:sendMenu', {
         {
             id = 1,
-            header = "Pawnshop",
+            header = "Galaxy Nightclub - Food & Drinks",
             txt = ""
         },
 		{
             id = 2,
-            header = "Jewellery",
-            txt = "Rings | Chain's | Watch's",
+            header = "Drinks",
+            txt = "",
             params = {
-                event = "pawnshop:jewellery",
+                event = "galaxymenu2",
                 args = {
                     number = 1,
                     id = 2
@@ -301,10 +301,45 @@ AddEventHandler('galaxymenu', function()
         },
         {
             id = 3,
-            header = "Materials",
-            txt = "Rubber | Copper | Aluminium | Scrap Metal",
+            header = "Food",
+            txt = "",
             params = {
-                event = "pawnshop:material",
+                event = "galaxymenu3",
+                args = {
+                    number = 2,
+                    id = 3
+                }
+            }
+        },
+    })
+end)
+
+RegisterNetEvent('galaxymenu2')
+AddEventHandler('galaxymenu2', function()
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Galaxy Nightclub - Drinks",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Space Vodka",
+            txt = "description",
+            params = {
+                event = "galaxymenu2",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Multiversal Whiskey",
+            txt = "description",
+            params = {
+                event = "galaxymenu2",
                 args = {
                     number = 2,
                     id = 3
@@ -313,13 +348,144 @@ AddEventHandler('galaxymenu', function()
         },
         {
             id = 4,
-            header = "Electronic's",
-            txt = "Apple Phone | Nokia | Samsung | Electronic's",
+            header = "Sour Blast Cocktail",
+            txt = "description",
             params = {
-                event = "pawnshop:electronic",
+                event = "galaxymenu2",
                 args = {
                     number = 3,
                     id = 4
+                }
+            }
+        },
+        {
+            id = 5,
+            header = "Blue Sensation Cocktail",
+            txt = "description",
+            params = {
+                event = "galaxymenu2",
+                args = {
+                    number = 4,
+                    id = 5
+                }
+            }
+        },
+        {
+            id = 6,
+            header = "The Eliptical Cocktail",
+            txt = "description",
+            params = {
+                event = "galaxymenu2",
+                args = {
+                    number = 5,
+                    id = 6
+                }
+            }
+        },
+        {
+            id = 7,
+            header = "Star Wine",
+            txt = "description",
+            params = {
+                event = "galaxymenu2",
+                args = {
+                    number = 6,
+                    id = 7
+                }
+            }
+        },
+        {
+            id = 8,
+            header = "Wordly Beer",
+            txt = "description",
+            params = {
+                event = "galaxymenu2",
+                args = {
+                    number = 7,
+                    id = 8
+                }
+            }
+        },
+        {
+            id = 9,
+            header = "Cosmic Soda",
+            txt = "description",
+            params = {
+                event = "galaxymenu2",
+                args = {
+                    number = 8,
+                    id = 9
+                }
+            }
+        },
+        {
+            id = 10,
+            header = "Back",
+            txt = "Return to Main Menu",
+            params = {
+                event = "galaxymenu",
+                args = {
+                    number = 9,
+                    id = 10
+                }
+            }
+        },
+    })
+end)
+
+RegisterNetEvent('galaxymenu3')
+AddEventHandler('galaxymenu3', function()
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Galaxy Nightclub - Food",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Galaxy Burger",
+            txt = "description",
+            params = {
+                event = "galaxymenu3",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Solar Fries",
+            txt = "description",
+            params = {
+                event = "galaxymenu3",
+                args = {
+                    number = 2,
+                    id = 3
+                }
+            }
+        },
+        {
+            id = 4,
+            header = "Universal Wings",
+            txt = "description",
+            params = {
+                event = "galaxymenu3",
+                args = {
+                    number = 3,
+                    id = 4
+                }
+            }
+        },
+        {
+            id = 5,
+            header = "Back",
+            txt = "Return to Main Menu",
+            params = {
+                event = "galaxymenu",
+                args = {
+                    number = 4,
+                    id = 5
                 }
             }
         },
