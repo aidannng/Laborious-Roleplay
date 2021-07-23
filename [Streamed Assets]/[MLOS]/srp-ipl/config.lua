@@ -23,21 +23,21 @@ config.pinInteriorInMemory                   = false
     cd /d C:\Server\server-data
     C:\Server\FXServer.exe  +exec server.cfg +set onesync legacy +set sv_enforceGameBuild 2060
 ]]
-config.diamondCasinoAndResort                = false  -- 1100.000, 220.000, -50.000/1295.000, 230.000, -50.000/1380.000, 200.000, -50.000/976.636, 70.295, 115.164
-config.penthouse                             = false  -- 976.636, 70.295, 115.164
+config.diamondCasinoAndResort                = true  -- 1100.000, 220.000, -50.000/1295.000, 230.000, -50.000/1380.000, 200.000, -50.000/976.636, 70.295, 115.164
+config.penthouse                             = true  -- 976.636, 70.295, 115.164
 config.casinoCarPark                         = true  -- 1380.000, 200.000, -50.000
 -- Apartments
 -- Apartment One. Choose Only One
 config.apartmentOneModern                    = false -- -786.8663, 315.7642, 217.6385
 config.apartmentOneMoody                     = false -- -787.0749, 315.8198, 217.6386
 config.apartmentOneVirbrant                  = false -- -786.6245, 315.6175, 217.6385
-config.apartmentOneSharp                     = false -- -787.0902, 315.7039, 217.6384
+config.apartmentOneSharp                     = true -- -787.0902, 315.7039, 217.6384
 config.apartmentOneMonochrome                = false -- -786.9887, 315.7393, 217.6386
 config.apartmentOneSeductive                 = false -- -787.1423, 315.6943, 217.6384
 config.apartmentOneRegal                     = false -- -787.029, 315.7113, 217.6385
 config.apartmentOneAqua                      = false  -- -786.9469, 315.5655, 217.6383
 -- Apartment Two. Choose Only One
-config.apartmentTwoModern                    = false -- -786.9563, 315.6229, 187.9136
+config.apartmentTwoModern                    = true -- -786.9563, 315.6229, 187.9136
 config.apartmentTwoMoody                     = false -- -786.8195, 315.5634, 187.9137
 config.apartmentTwoVirbrant                  = false -- -786.9584, 315.7974, 187.9135
 config.apartmentTwoSharp                     = false -- -787.0155, 315.7071, 187.9135
@@ -53,7 +53,7 @@ config.apartmentThreeSharp                   = false -- -773.8976, 342.1525, 196
 config.apartmentThreeMonochrome              = false -- -774.0675, 342.0773, 196.6864
 config.apartmentThreeSeductive               = false -- -773.9552, 341.9892, 196.6862
 config.apartmentThreeRegal                   = false -- -774.0109, 342.0965, 196.6863
-config.apartmentThreeAqua                    = false  -- -774.0349, 342.0296, 196.6862
+config.apartmentThreeAqua                    = true  -- -774.0349, 342.0296, 196.6862
 -- offices
 config.ceoOffices                            = false
 -- Arcadius Business Center. Choose Only One.

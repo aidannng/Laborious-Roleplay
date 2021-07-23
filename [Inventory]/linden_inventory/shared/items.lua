@@ -414,6 +414,13 @@ Items = {
 		}
 	},
 
+	['packagedweed'] = {
+		label = 'Packaged Weed',
+		weight = 950,
+		close = true,
+		stack = true,
+	},
+
 	['baggy'] = {
 		label = 'Baggy',
 		weight = 50,
@@ -564,8 +571,8 @@ Items = {
 		close = true,
 	},
 
-	['orangemixer'] = {
-		label = 'Sour Orange Mixer',
+	['mango'] = {
+		label = 'Sweet Mango Mixer',
 		weight = 0,
 		stack = true,
 		close = true,
@@ -670,7 +677,7 @@ Items = {
 	},
 
 	['sourblast'] = {
-		label = 'Sour Blast Cocktail',
+		label = 'Sweet Blast Cocktail',
 		weight = 0,
 		stack = true,
 		close = true,

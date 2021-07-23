@@ -7,6 +7,28 @@ Citizen.CreateThread(function()
     end
 end)
 
+RegisterServerEvent("updatebilldays")
+AddEventHandler("updatebilldays", function()
+    MySQL.Async.fetchAll("SELECT id, term_days_left, days_overdue FROM billing", {}, function(bills)
+        if(bills and #bills > 0) then
+            for x=1,#bills,1 do
+                local billid = bills[x].id
+                local termdaysleft = tonumber(bills[x].term_days_left)
+                local daysoverdue = tonumber(bills[x].days_overdue)
+
+                if(termdaysleft > 0) then
+                    termdaysleft = termdaysleft - 1
+                else
+                    daysoverdue = daysoverdue + 1
+                end
+
+                MySQL.Async.execute("UPDATE billing SET term_days_left = @daysleft, days_overdue = @overdue WHERE id = @id", {['@daysleft'] = termdaysleft, ['@overdue'] = daysoverdue, ['@id'] = billid})
+            end
+        end
+    end)
+end)
+
+
 local discord_webhook = {url = "https://discord.com/api/webhooks/861524224330301472/0kJenGNe8fK_k8Vl-1IL6j6__xwSVUbRYIJjlGiVemWuthfI14qMRXMhnCb1_XNtJf4l",image = "https://i.iodine.gg/i5fba.png"}
 
 RegisterServerEvent("getmybills")
@@ -45,11 +67,9 @@ AddEventHandler("updatebill", function(billID, billAmount)
                 local name = accounts[x].name
                 if(name == 'bank') then
                     local balance = tonumber(accounts[x].money)
-                    print(balance)
 
                     if(balance >= tonumber(billAmount)) then
                         xPlayer.removeAccountMoney('bank', tonumber(billAmount))
-                        print(xPlayer.getAccount(name))
 
                         local target = result[1].target 
                         if(target == 'cardealer') then
@@ -101,7 +121,7 @@ AddEventHandler("updatebill", function(billID, billAmount)
                             end
 
 
-                            MySQL.Async.execute("UPDATE billing SET amount = @amount, term_length = @termlength, term_amount = @termamount, term_days_left = '14', days_overdue = '0', term_payment = '0' WHERE id = @id", {['@amount'] = newamount, ['@id'] = billID, ['@termlength'] = currenttermlength, ['@termamount'] = currenttermamount})
+                            MySQL.Async.execute("UPDATE billing SET amount = @amount, term_length = @termlength, term_amount = @termamount, term_days_left = '28', days_overdue = '0', term_payment = '0' WHERE id = @id", {['@amount'] = newamount, ['@id'] = billID, ['@termlength'] = currenttermlength, ['@termamount'] = currenttermamount})
                         else
                             currenttermamount = currenttermamount - billAmount
                             currenttermpayment = currenttermpayment + billAmount
@@ -109,6 +129,8 @@ AddEventHandler("updatebill", function(billID, billAmount)
 
                             MySQL.Async.execute("UPDATE billing SET amount = @amount, term_length = @termlength, term_amount = @termamount, term_payment = @termpayment WHERE id = @id", {['@amount'] = newamount, ['@id'] = billID, ['@termlength'] = currenttermlength, ['@termamount'] = currenttermamount, ['@termpayment'] = currenttermpayment})
                         end
+                        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = '$'..billAmount..' was just charged from your account', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+
                         PerformHttpRequest(discord_webhook.url, function(err, text, header) end, 'POST', json.encode({username = "LABRP | Staff Logs", content = "**" .. xPlayer.getName() .. "**(" .. xPlayer.identifier .. ") has payed **$" .. billAmount .. "** of their bill from **" .. result[1].sender .. "** with a total of **$" .. newamount .. "** remaining",avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'})             
                     else
                         TriggerClientEvent("billing:error", src, "Not enough funds.")

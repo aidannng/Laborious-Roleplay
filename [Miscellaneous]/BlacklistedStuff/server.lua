@@ -31,7 +31,6 @@ local Blacklisted = {
         [`swift`] = true,
         [`savage`] = true,
         [`frogger`] = true,
-        [`volatus`] = true,
         [`frogger`] = true,
     },
     Props = {}

@@ -1,19 +1,30 @@
+--===============================
+-- by JUST INTERIOR STUDIO
+-- Discord UncleJust#0001
+--===============================
+
 local int_id = GetInteriorAtCoords(345.4899597168,294.95315551758,98.191421508789)
 
+--==============================================================
+--НАСТРОЙКИ НАХОДЯТ В САМОМ НИЗУ СКРИПТА / SETTINGS ARE LOWEST SCRIPT
+--==============================================================
+
+--============================ НЕ ТРОГАТЬ / DO NOT TOUCH ==================================
+-- upgrade
 EnableInteriorProp(int_id , "Int01_ba_security_upgrade")
 EnableInteriorProp(int_id , "Int01_ba_equipment_setup")
-DisableInteriorProp(int_id , "Int01_ba_Style01") 
-DisableInteriorProp(int_id , "Int01_ba_Style02") 
-EnableInteriorProp(int_id , "Int01_ba_Style03") 
-DisableInteriorProp(int_id , "Int01_ba_style01_podium") 
-DisableInteriorProp(int_id , "Int01_ba_style02_podium") 
-EnableInteriorProp(int_id , "Int01_ba_style03_podium") 
+DisableInteriorProp(int_id , "Int01_ba_Style01") -- дешовый
+DisableInteriorProp(int_id , "Int01_ba_Style02") -- средний
+EnableInteriorProp(int_id , "Int01_ba_Style03") -- дорогой
+DisableInteriorProp(int_id , "Int01_ba_style01_podium") -- дешовый
+DisableInteriorProp(int_id , "Int01_ba_style02_podium") -- средний
+EnableInteriorProp(int_id , "Int01_ba_style03_podium") -- дорогой
 EnableInteriorProp(int_id , "int01_ba_lights_screen")
 EnableInteriorProp(int_id , "Int01_ba_Screen")
 EnableInteriorProp(int_id , "Int01_ba_bar_content")
-DisableInteriorProp(int_id , "Int01_ba_booze_01") 
-DisableInteriorProp(int_id , "Int01_ba_booze_02")
-DisableInteriorProp(int_id , "Int01_ba_booze_03")
+DisableInteriorProp(int_id , "Int01_ba_booze_01") --мусор после вечеринки
+DisableInteriorProp(int_id , "Int01_ba_booze_02") --мусор после вечеринки
+DisableInteriorProp(int_id , "Int01_ba_booze_03") --мусор после вечеринки
 DisableInteriorProp(int_id , "Int01_ba_dj01")
 DisableInteriorProp(int_id , "Int01_ba_dj02")
 EnableInteriorProp(int_id , "Int01_ba_dj03")
@@ -66,5 +77,5 @@ DisableInteriorProp(int_id , "Int01_ba_trophy03")
 DisableInteriorProp(int_id , "Int01_ba_trophy01")
 DisableInteriorProp(int_id , "Int01_ba_trophy02")
 DisableInteriorProp(int_id , "Int01_ba_trad_lights")
-DisableInteriorProp(int_id , "Int01_ba_Worklamps") 
+DisableInteriorProp(int_id , "Int01_ba_Worklamps") -- работа
 RefreshInterior(int_id )

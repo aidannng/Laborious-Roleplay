@@ -32,7 +32,7 @@ RegisterServerEvent('GiveSafeReward')
 AddEventHandler('GiveSafeReward', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
-    local moneypayout = math.random(1000, 5000)
+    local moneypayout = math.random(25000, 45000)
     local jewels = math.random(1, 10)
     local jewelsamount = math.random(1, 4)
     local laptopchance = math.random(1, 10)
@@ -51,10 +51,6 @@ AddEventHandler('GiveSafeReward', function()
     xPlayer.addInventoryItem('money', moneypayout)
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got $'..moneypayout, length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
 
-    if laptopchance >= 9 then
-        xPlayer.addInventoryItem('g6card', 1)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You found a Gruppe 6 Card', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
-    end
 
 end)
 
@@ -107,7 +103,7 @@ AddEventHandler('checkstorecops', function()
         end
     end
 
-    if cops >= 3 then
+    if cops >= 0 then
         TriggerClientEvent('doHack', source)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'System Currently Down!'})
@@ -126,7 +122,5 @@ AddEventHandler('checkhousecops', function()
 
     if cops >= 2 then
         TriggerClientEvent('house:attempt', source)
-    else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'HOUSE HAS ALREADY BEEN ROBBED!'})
     end
 end)

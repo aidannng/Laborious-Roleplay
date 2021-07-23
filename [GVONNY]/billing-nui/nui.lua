@@ -5,6 +5,8 @@ Citizen.CreateThread(function()
         TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
         Citizen.Wait(10)
     end
+
+    TriggerServerEvent("updatebilldays")
 end)
 
 local display = false

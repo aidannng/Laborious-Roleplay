@@ -61,8 +61,14 @@ Citizen.CreateThread(function()
                     DrawMarker(2, v.coord, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.05, 44, 194, 33, 255, false, false, false, 1, false, false, false)
                     DrawText3D(v.coord.x, v.coord.y, v.coord.z + 0.20, 0.30, Config.Coca.gatheringZone.text)
                     if IsControlJustPressed(0, 38) and not gathering then
-                        gathering = true
-                        TriggerEvent("kaves_drugs:gatheringCoca", v.coord, v.heading, v.rotx, v.roty, v.rotz)
+                        ESX.TriggerServerCallback("kaves_drugs:checkItem", function(data)
+                            if data then
+                            gathering = true
+                            TriggerEvent("kaves_drugs:gatheringCoca", v.coord, v.heading, v.rotx, v.roty, v.rotz)
+                            else
+                                exports['mythic_notify']:SendAlert('error', 'You do not have the right tool!') 
+                            end
+                        end, "clippers")
                     end
                 end
             end

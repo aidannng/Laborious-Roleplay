@@ -1412,7 +1412,7 @@ Citizen.CreateThread(
     function()
         while true do
 		
-            Citizen.Wait(200)
+            Citizen.Wait(Config.SetWaitTimeBeforeLoadHud)
             local ped = PlayerPedId()
             local veh = GetVehiclePedIsIn(ped)
             local seat = 0
@@ -1438,7 +1438,7 @@ Citizen.CreateThread(
                     }
                 )
                 	
-                    currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
+                    currentPlate = GetVehicleNumberPlateText(veh)
 
                     currentVehicle = veh
 
@@ -1748,20 +1748,6 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("core_vehicle:SendTextMessage")
-AddEventHandler(
-    "core_vehicle:SendTextMessage",
-    function(msg)
-        SendTextMessage(msg)
-    end
-)
-
-
---[[ RegisterCommand('mech', function()
-
-		TriggerEvent('core_vehicle:toolUsed', 'mechanic_tools')
-end) ]]
-
 RegisterNetEvent("local:inspect")
 AddEventHandler("local:inspect", function()
     TriggerServerEvent('checktoolbox')
@@ -1772,9 +1758,24 @@ AddEventHandler("mechanic:inspect", function()
     TriggerEvent('core_vehicle:toolUsed', 'mechanic_tools')
 end)
 
+RegisterNetEvent("core_vehicle:SendTextMessage")
+AddEventHandler(
+    "core_vehicle:SendTextMessage",
+    function(msg)
+        SendTextMessage(msg)
+    end
+)
+
+
+RegisterCommand('mech', function()
+
+		TriggerEvent('core_vehicle:toolUsed', 'mechanic_tools')
+end)
+
 RegisterNetEvent("core_vehicle:toolUsed")
-AddEventHandler("core_vehicle:toolUsed",function(tool)
-        print("start tool used")
+AddEventHandler(
+    "core_vehicle:toolUsed",
+    function(tool)
         local ped = PlayerPedId()
         local coords = GetEntityCoords(ped)
 
@@ -1789,497 +1790,489 @@ AddEventHandler("core_vehicle:toolUsed",function(tool)
 
                 local veh, dst = ESX.Game.GetClosestVehicle(coords)
 				local plate = GetVehicleNumberPlateText(veh)
-                
-                local isPedInVehicle = GetPedInVehicleSeat(veh, -1)
-                if isPedInVehicle ~= 0 then
-                    exports["mythic_notify"]:SendAlert("error", "Please examine from outsie the vehicle.")
-                else
-                    local localVehLockStatus = GetVehicleDoorLockStatus(veh)
-                    ESX.TriggerServerCallback('core_vehicle:getIfVehicleOwned', function(vehOwned)
-                    if dst < Config.DetectDistance and vehOwned then
-                        if localVehLockStatus == 1  then
-                            --VehicleClass
-                            local vehicleClass = GetVehicleClass(veh)
-                                if vehicleClass == 0 or vehicleClass == 1 or vehicleClass == 2 or vehicleClass == 3 or vehicleClass == 4 or vehicleClass == 5 or vehicleClass == 6 or vehicleClass == 7 then
-                                --VehicleClass End
-                                    if Config.UseT1gerMechanic then
-                                        IsOnLift = exports.t1ger_mechanicjob:IsOnLift()
-                                        if IsOnLift then
-                                            currentVehicle = veh
-                                            currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
-                                            TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(currentPlate, "%s+", ""))
+				local localVehLockStatus = GetVehicleDoorLockStatus(veh)
+				ESX.TriggerServerCallback('core_vehicle:getIfVehicleOwned', function(vehOwned)
+                if dst < Config.DetectDistance and vehOwned then
+				if localVehLockStatus == 1  then
+				--VehicleClass
+				local vehicleClass = GetVehicleClass(veh)
+				if vehicleClass == 0 or vehicleClass == 1 or vehicleClass == 2 or vehicleClass == 3 or vehicleClass == 4 or vehicleClass == 5 or vehicleClass == 6 or vehicleClass == 7 then
+				--VehicleClass End
+				if Config.UseT1gerMechanic then
+				IsOnLift = exports.t1ger_mechanicjob:IsOnLift()
+				if IsOnLift then
+                    currentVehicle = veh
+                    currentPlate = GetVehicleNumberPlateText(veh)
+                    TriggerServerEvent("core_vehicle:getVehicleHandling", currentPlate)
 
-                                            TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(currentPlate, "%s+", ""))
-                                            Citizen.Wait(300)
-                                            local parts = {}
+                    TriggerServerEvent("core_vehicle:getVehicleParts", currentPlate)
+                    Citizen.Wait(300)
+                    local parts = {}
 
-                                            for b, g in pairs(currentVehicleParts) do
-                                                parts[b] = g
-                                            end
+                    for b, g in pairs(currentVehicleParts) do
+                        parts[b] = g
+                    end
 
-                                            for k, v in pairs(parts) do
-                                                if Config.Engines[v.type] ~= nil then
-                                                    v.label = Config.Engines[v.type].label
-                                                end
-                                                if Config.Turbos[v.type] ~= nil then
-                                                    v.label = Config.Turbos[v.type].label
-                                                end
-                                                if Config.Transmissions[v.type] ~= nil then
-                                                    v.label = Config.Transmissions[v.type].label
-                                                end
-                                                if Config.Suspensions[v.type] ~= nil then
-                                                    v.label = Config.Suspensions[v.type].label
-                                                end
-                                                if Config.Oils[v.type] ~= nil then
-                                                    v.label = Config.Oils[v.type].label
-                                                end
-                                                if Config.Tires[v.type] ~= nil then
-                                                    v.label = Config.Tires[v.type].label
-                                                end
-                                                if Config.Brakes[v.type] ~= nil then
-                                                    v.label = Config.Brakes[v.type].label
-                                                end
-                                                if Config.Nitros[v.type] ~= nil then
-                                                    v.label = Config.Nitros[v.type].label
-                                                end
-                                                if Config.SparkPlugs[v.type] ~= nil then
-                                                    v.label = Config.SparkPlugs[v.type].label
-                                                end
+                    for k, v in pairs(parts) do
+                        if Config.Engines[v.type] ~= nil then
+                            v.label = Config.Engines[v.type].label
+                        end
+                        if Config.Turbos[v.type] ~= nil then
+                            v.label = Config.Turbos[v.type].label
+                        end
+                        if Config.Transmissions[v.type] ~= nil then
+                            v.label = Config.Transmissions[v.type].label
+                        end
+                        if Config.Suspensions[v.type] ~= nil then
+                            v.label = Config.Suspensions[v.type].label
+                        end
+                        if Config.Oils[v.type] ~= nil then
+                            v.label = Config.Oils[v.type].label
+                        end
+                        if Config.Tires[v.type] ~= nil then
+                            v.label = Config.Tires[v.type].label
+                        end
+                        if Config.Brakes[v.type] ~= nil then
+                            v.label = Config.Brakes[v.type].label
+                        end
+                        if Config.Nitros[v.type] ~= nil then
+                            v.label = Config.Nitros[v.type].label
+                        end
+						if Config.SparkPlugs[v.type] ~= nil then
+							v.label = Config.SparkPlugs[v.type].label
+						end
 
-                                                if workshop then
-                                                    if Config.MechanicWorkshopAccess[k] == nil then
-                                                        parts[k] = nil
-                                                    end
-                                                else
-                                                    if Config.MechanicToolsAccess[k] == nil then
-                                                        parts[k] = nil
-                                                    end
-                                                end
-                                            end
-
-                                            local mileage = 0
-                                            if Config.UseMiles then
-                                                mileage = currentMileage / 1609.34
-                                            else
-                                                mileage = currentMileage / 1000
-                                            end
-
-                                            local allparts = {}
-
-                                            allparts["engine"] = Config.Engines
-                                            allparts["turbo"] = Config.Turbos
-                                            allparts["brakes"] = Config.Brakes
-                                            allparts["suspension"] = Config.Suspensions
-                                            allparts["transmission"] = Config.Transmissions
-                                            allparts["oil"] = Config.Oils
-                                            allparts["tires"] = Config.Tires
-                                            allparts["nitro"] = Config.Nitros
-                                            allparts["sparkplugs"] = Config.SparkPlugs
-
-                                            SetNuiFocus(true, true)
-                                            SendNUIMessage(
-                                                {
-                                                    type = "open",
-                                                    parts = parts,
-                                                    plate = currentPlate,
-                                                    allparts = allparts,
-                                                    mileage = math.floor(mileage * 100) / 100,
-                                                    workshop = workshop,
-                                                    vehicleType = GetVehicleClass(currentVehicle),
-                                                    model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
-                                                    repair = repairMode
-                                                }
-                                            )
-                                        else
-                                            SendTextMessage(Config.Text["vehicle_notonlift"])
-                                        end
-                                    else
-                                        currentVehicle = veh
-                                        currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
-                                        TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(currentPlate, "%s+", ""))
-
-                                        TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(currentPlate, "%s+", ""))
-                                        Citizen.Wait(300)
-                                        local parts = {}
-
-                                        for b, g in pairs(currentVehicleParts) do
-                                            parts[b] = g
-                                        end
-
-                                        for k, v in pairs(parts) do
-                                            if Config.Engines[v.type] ~= nil then
-                                                v.label = Config.Engines[v.type].label
-                                            end
-                                            if Config.Turbos[v.type] ~= nil then
-                                                v.label = Config.Turbos[v.type].label
-                                            end
-                                            if Config.Transmissions[v.type] ~= nil then
-                                                v.label = Config.Transmissions[v.type].label
-                                            end
-                                            if Config.Suspensions[v.type] ~= nil then
-                                                v.label = Config.Suspensions[v.type].label
-                                            end
-                                            if Config.Oils[v.type] ~= nil then
-                                                v.label = Config.Oils[v.type].label
-                                            end
-                                            if Config.Tires[v.type] ~= nil then
-                                                v.label = Config.Tires[v.type].label
-                                            end
-                                            if Config.Brakes[v.type] ~= nil then
-                                                v.label = Config.Brakes[v.type].label
-                                            end
-                                            if Config.Nitros[v.type] ~= nil then
-                                                v.label = Config.Nitros[v.type].label
-                                            end
-                                            if Config.SparkPlugs[v.type] ~= nil then
-                                                v.label = Config.SparkPlugs[v.type].label
-                                            end
-
-                                            if workshop then
-                                                if Config.MechanicWorkshopAccess[k] == nil then
-                                                    parts[k] = nil
-                                                end
-                                            else
-                                                if Config.MechanicToolsAccess[k] == nil then
-                                                    parts[k] = nil
-                                                end
-                                            end
-                                        end
-
-                                        local mileage = 0
-                                        if Config.UseMiles then
-                                            mileage = currentMileage / 1609.34
-                                        else
-                                            mileage = currentMileage / 1000
-                                        end
-
-                                        local allparts = {}
-
-                                        allparts["engine"] = Config.Engines
-                                        allparts["turbo"] = Config.Turbos
-                                        allparts["brakes"] = Config.Brakes
-                                        allparts["suspension"] = Config.Suspensions
-                                        allparts["transmission"] = Config.Transmissions
-                                        allparts["oil"] = Config.Oils
-                                        allparts["tires"] = Config.Tires
-                                        allparts["nitro"] = Config.Nitros
-                                        allparts["sparkplugs"] = Config.SparkPlugs
-
-                                        SetNuiFocus(true, true)
-                                        SendNUIMessage(
-                                            {
-                                                type = "open",
-                                                parts = parts,
-                                                plate = currentPlate,
-                                                allparts = allparts,
-                                                mileage = math.floor(mileage * 100) / 100,
-                                                workshop = workshop,
-                                                vehicleType = GetVehicleClass(currentVehicle),
-                                                model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
-                                                repair = repairMode
-                                            }
-                                        )
-                                    end
-                                else
-                                    currentVehicle = veh
-                                    currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
-                                    TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(currentPlate, "%s+", ""))
-
-                                    TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(currentPlate, "%s+", ""))
-                                    Citizen.Wait(300)
-                                    local parts = {}
-
-                                    for b, g in pairs(currentVehicleParts) do
-                                        parts[b] = g
-                                    end
-
-                                    for k, v in pairs(parts) do
-                                        if Config.Engines[v.type] ~= nil then
-                                            v.label = Config.Engines[v.type].label
-                                        end
-                                        if Config.Turbos[v.type] ~= nil then
-                                            v.label = Config.Turbos[v.type].label
-                                        end
-                                        if Config.Transmissions[v.type] ~= nil then
-                                            v.label = Config.Transmissions[v.type].label
-                                        end
-                                        if Config.Suspensions[v.type] ~= nil then
-                                            v.label = Config.Suspensions[v.type].label
-                                        end
-                                        if Config.Oils[v.type] ~= nil then
-                                            v.label = Config.Oils[v.type].label
-                                        end
-                                        if Config.Tires[v.type] ~= nil then
-                                            v.label = Config.Tires[v.type].label
-                                        end
-                                        if Config.Brakes[v.type] ~= nil then
-                                            v.label = Config.Brakes[v.type].label
-                                        end
-                                        if Config.Nitros[v.type] ~= nil then
-                                            v.label = Config.Nitros[v.type].label
-                                        end
-                                        if Config.SparkPlugs[v.type] ~= nil then
-                                            v.label = Config.SparkPlugs[v.type].label
-                                        end
-
-                                        if workshop then
-                                            if Config.MechanicWorkshopAccess[k] == nil then
-                                                parts[k] = nil
-                                            end
-                                        else
-                                            if Config.MechanicToolsAccess[k] == nil then
-                                                parts[k] = nil
-                                            end
-                                        end
-                                    end
-
-                                    local mileage = 0
-                                    if Config.UseMiles then
-                                        mileage = currentMileage / 1609.34
-                                    else
-                                        mileage = currentMileage / 1000
-                                    end
-
-                                    local allparts = {}
-
-                                    allparts["engine"] = Config.Engines
-                                    allparts["turbo"] = Config.Turbos
-                                    allparts["brakes"] = Config.Brakes
-                                    allparts["suspension"] = Config.Suspensions
-                                    allparts["transmission"] = Config.Transmissions
-                                    allparts["oil"] = Config.Oils
-                                    allparts["tires"] = Config.Tires
-                                    allparts["nitro"] = Config.Nitros
-                                    allparts["sparkplugs"] = Config.SparkPlugs
-
-                                    SetNuiFocus(true, true)
-                                    SendNUIMessage(
-                                        {
-                                            type = "open",
-                                            parts = parts,
-                                            plate = currentPlate,
-                                            allparts = allparts,
-                                            mileage = math.floor(mileage * 100) / 100,
-                                            workshop = workshop,
-                                            vehicleType = GetVehicleClass(currentVehicle),
-                                            model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
-                                            repair = repairMode
-                                        }
-                                    )
-                                end
-                            else
-                                SendTextMessage(Config.Text["vehicle_locked"])
+                        if workshop then
+                            if Config.MechanicWorkshopAccess[k] == nil then
+                                parts[k] = nil
                             end
                         else
-                            SendTextMessage(Config.Text["vehicle_nearby"])
+                            if Config.MechanicToolsAccess[k] == nil then
+                                parts[k] = nil
+                            end
                         end
-                    end, plate) -- Callback End
+                    end
+
+                    local mileage = 0
+                    if Config.UseMiles then
+                        mileage = currentMileage / 1609.34
+                    else
+                        mileage = currentMileage / 1000
+                    end
+
+                    local allparts = {}
+
+                    allparts["engine"] = Config.Engines
+                    allparts["turbo"] = Config.Turbos
+                    allparts["brakes"] = Config.Brakes
+                    allparts["suspension"] = Config.Suspensions
+                    allparts["transmission"] = Config.Transmissions
+                    allparts["oil"] = Config.Oils
+                    allparts["tires"] = Config.Tires
+                    allparts["nitro"] = Config.Nitros
+					allparts["sparkplugs"] = Config.SparkPlugs
+
+                    SetNuiFocus(true, true)
+                    SendNUIMessage(
+                        {
+                            type = "open",
+                            parts = parts,
+                            plate = currentPlate,
+                            allparts = allparts,
+                            mileage = math.floor(mileage * 100) / 100,
+                            workshop = workshop,
+                            vehicleType = GetVehicleClass(currentVehicle),
+                            model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
+                            repair = repairMode
+                        }
+                    )
+				else
+					SendTextMessage(Config.Text["vehicle_notonlift"])
                 end
+				
+				else
+					currentVehicle = veh
+                    currentPlate = GetVehicleNumberPlateText(veh)
+                    TriggerServerEvent("core_vehicle:getVehicleHandling", currentPlate)
+
+                    TriggerServerEvent("core_vehicle:getVehicleParts", currentPlate)
+                    Citizen.Wait(300)
+                    local parts = {}
+
+                    for b, g in pairs(currentVehicleParts) do
+                        parts[b] = g
+                    end
+
+                    for k, v in pairs(parts) do
+                        if Config.Engines[v.type] ~= nil then
+                            v.label = Config.Engines[v.type].label
+                        end
+                        if Config.Turbos[v.type] ~= nil then
+                            v.label = Config.Turbos[v.type].label
+                        end
+                        if Config.Transmissions[v.type] ~= nil then
+                            v.label = Config.Transmissions[v.type].label
+                        end
+                        if Config.Suspensions[v.type] ~= nil then
+                            v.label = Config.Suspensions[v.type].label
+                        end
+                        if Config.Oils[v.type] ~= nil then
+                            v.label = Config.Oils[v.type].label
+                        end
+                        if Config.Tires[v.type] ~= nil then
+                            v.label = Config.Tires[v.type].label
+                        end
+                        if Config.Brakes[v.type] ~= nil then
+                            v.label = Config.Brakes[v.type].label
+                        end
+                        if Config.Nitros[v.type] ~= nil then
+                            v.label = Config.Nitros[v.type].label
+                        end
+						if Config.SparkPlugs[v.type] ~= nil then
+							v.label = Config.SparkPlugs[v.type].label
+						end
+
+                        if workshop then
+                            if Config.MechanicWorkshopAccess[k] == nil then
+                                parts[k] = nil
+                            end
+                        else
+                            if Config.MechanicToolsAccess[k] == nil then
+                                parts[k] = nil
+                            end
+                        end
+                    end
+
+                    local mileage = 0
+                    if Config.UseMiles then
+                        mileage = currentMileage / 1609.34
+                    else
+                        mileage = currentMileage / 1000
+                    end
+
+                    local allparts = {}
+
+                    allparts["engine"] = Config.Engines
+                    allparts["turbo"] = Config.Turbos
+                    allparts["brakes"] = Config.Brakes
+                    allparts["suspension"] = Config.Suspensions
+                    allparts["transmission"] = Config.Transmissions
+                    allparts["oil"] = Config.Oils
+                    allparts["tires"] = Config.Tires
+                    allparts["nitro"] = Config.Nitros
+					allparts["sparkplugs"] = Config.SparkPlugs
+
+                    SetNuiFocus(true, true)
+                    SendNUIMessage(
+                        {
+                            type = "open",
+                            parts = parts,
+                            plate = currentPlate,
+                            allparts = allparts,
+                            mileage = math.floor(mileage * 100) / 100,
+                            workshop = workshop,
+                            vehicleType = GetVehicleClass(currentVehicle),
+                            model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
+                            repair = repairMode
+                        }
+                    )
+				end
+				else
+					currentVehicle = veh
+                    currentPlate = GetVehicleNumberPlateText(veh)
+                    TriggerServerEvent("core_vehicle:getVehicleHandling", currentPlate)
+
+                    TriggerServerEvent("core_vehicle:getVehicleParts", currentPlate)
+                    Citizen.Wait(300)
+                    local parts = {}
+
+                    for b, g in pairs(currentVehicleParts) do
+                        parts[b] = g
+                    end
+
+                    for k, v in pairs(parts) do
+                        if Config.Engines[v.type] ~= nil then
+                            v.label = Config.Engines[v.type].label
+                        end
+                        if Config.Turbos[v.type] ~= nil then
+                            v.label = Config.Turbos[v.type].label
+                        end
+                        if Config.Transmissions[v.type] ~= nil then
+                            v.label = Config.Transmissions[v.type].label
+                        end
+                        if Config.Suspensions[v.type] ~= nil then
+                            v.label = Config.Suspensions[v.type].label
+                        end
+                        if Config.Oils[v.type] ~= nil then
+                            v.label = Config.Oils[v.type].label
+                        end
+                        if Config.Tires[v.type] ~= nil then
+                            v.label = Config.Tires[v.type].label
+                        end
+                        if Config.Brakes[v.type] ~= nil then
+                            v.label = Config.Brakes[v.type].label
+                        end
+                        if Config.Nitros[v.type] ~= nil then
+                            v.label = Config.Nitros[v.type].label
+                        end
+						if Config.SparkPlugs[v.type] ~= nil then
+							v.label = Config.SparkPlugs[v.type].label
+						end
+
+                        if workshop then
+                            if Config.MechanicWorkshopAccess[k] == nil then
+                                parts[k] = nil
+                            end
+                        else
+                            if Config.MechanicToolsAccess[k] == nil then
+                                parts[k] = nil
+                            end
+                        end
+                    end
+
+                    local mileage = 0
+                    if Config.UseMiles then
+                        mileage = currentMileage / 1609.34
+                    else
+                        mileage = currentMileage / 1000
+                    end
+
+                    local allparts = {}
+
+                    allparts["engine"] = Config.Engines
+                    allparts["turbo"] = Config.Turbos
+                    allparts["brakes"] = Config.Brakes
+                    allparts["suspension"] = Config.Suspensions
+                    allparts["transmission"] = Config.Transmissions
+                    allparts["oil"] = Config.Oils
+                    allparts["tires"] = Config.Tires
+                    allparts["nitro"] = Config.Nitros
+					allparts["sparkplugs"] = Config.SparkPlugs
+
+                    SetNuiFocus(true, true)
+                    SendNUIMessage(
+                        {
+                            type = "open",
+                            parts = parts,
+                            plate = currentPlate,
+                            allparts = allparts,
+                            mileage = math.floor(mileage * 100) / 100,
+                            workshop = workshop,
+                            vehicleType = GetVehicleClass(currentVehicle),
+                            model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
+                            repair = repairMode
+                        }
+                    )
+                end
+				else
+				SendTextMessage(Config.Text["vehicle_locked"])
+				end
+				else
+				SendTextMessage(Config.Text["vehicle_nearby"])
+				end
+				end, plate) -- Callback End
             else
                 SendTextMessage(Config.Text["wrong_job"])
             end
         elseif tool == "toolbox" then
-            print("toolbox")
             local veh, dst = ESX.Game.GetClosestVehicle(coords)
-            local isPedInVehicle = GetPedInVehicleSeat(veh, -1)
-            if isPedInVehicle ~= 0 then
-                exports["mythic_notify"]:SendAlert("error", "Please examine from outsie the vehicle.")
-            else
-                local plate = GetVehicleNumberPlateText(veh)
-                local localVehLockStatus = GetVehicleDoorLockStatus(veh)
-                
-                if Config.UseT1gerMechanic then
-                    ESX.TriggerServerCallback('core_vehicle:getIfVehicleOwned', function(vehOwned)
+			local plate = GetVehicleNumberPlateText(veh)
+			local localVehLockStatus = GetVehicleDoorLockStatus(veh)
+			
+			if Config.UseT1gerMechanic then
+			ESX.TriggerServerCallback('core_vehicle:getIfVehicleOwned', function(vehOwned)
 
-                    if dst < Config.DetectDistance and vehOwned then
-                        if localVehLockStatus == 1 then
-                            local vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.0, 0, 71)
-                            local vehCoords = GetEntityCoords(vehicle, 1)
-                            local findObj = GetClosestObjectOfType(vehCoords.x, vehCoords.y, vehCoords.z, 1.0, GetHashKey("prop_carjack"), false, false, false)
-                            if DoesEntityExist(findObj) then
-                                currentVehicle = veh
-                                currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
-                                TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(currentPlate, "%s+", ""))
+            if dst < Config.DetectDistance and vehOwned then
+			if localVehLockStatus == 1 then
+				local vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.0, 0, 71)
+				local vehCoords = GetEntityCoords(vehicle, 1)
+				local findObj = GetClosestObjectOfType(vehCoords.x, vehCoords.y, vehCoords.z, 1.0, GetHashKey("prop_carjack"), false, false, false)
+				if DoesEntityExist(findObj) then
+                currentVehicle = veh
+                currentPlate = GetVehicleNumberPlateText(veh)
+                TriggerServerEvent("core_vehicle:getVehicleHandling", currentPlate)
 
-                                TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(currentPlate, "%s+", ""))
-                                Citizen.Wait(300)
-                                local parts = {}
+                TriggerServerEvent("core_vehicle:getVehicleParts", currentPlate)
+                Citizen.Wait(300)
+                local parts = {}
 
-                                for b, g in pairs(currentVehicleParts) do
-                                    parts[b] = g
-                                end
+                for b, g in pairs(currentVehicleParts) do
+                    parts[b] = g
+                end
 
-                                for k, v in pairs(parts) do
-                                    if Config.Engines[v.type] ~= nil then
-                                        v.label = Config.Engines[v.type].label
-                                    end
-                                    if Config.Turbos[v.type] ~= nil then
-                                        v.label = Config.Turbos[v.type].label
-                                    end
-                                    if Config.Transmissions[v.type] ~= nil then
-                                        v.label = Config.Transmissions[v.type].label
-                                    end
-                                    if Config.Suspensions[v.type] ~= nil then
-                                        v.label = Config.Suspensions[v.type].label
-                                    end
-                                    if Config.Oils[v.type] ~= nil then
-                                        v.label = Config.Oils[v.type].label
-                                    end
-                                    if Config.Tires[v.type] ~= nil then
-                                        v.label = Config.Tires[v.type].label
-                                    end
-                                    if Config.Brakes[v.type] ~= nil then
-                                        v.label = Config.Brakes[v.type].label
-                                    end
-                                    if Config.Nitros[v.type] ~= nil then
-                                        v.label = Config.Nitros[v.type].label
-                                    end
-                                    if Config.SparkPlugs[v.type] ~= nil then
-                                        v.label = Config.SparkPlugs[v.type].label
-                                    end
-
-                                    if Config.ToolBoxAccess[k] == nil then
-                                        parts[k] = nil
-                                    end
-                                end
-
-                                local mileage = 0
-                                if Config.UseMiles then
-                                    mileage = currentMileage / 1609.34
-                                else
-                                    mileage = currentMileage / 1000
-                                end
-
-                                local allparts = {}
-
-                                allparts["engine"] = Config.Engines
-                                allparts["turbo"] = Config.Turbos
-                                allparts["brakes"] = Config.Brakes
-                                allparts["suspension"] = Config.Suspensions
-                                allparts["transmission"] = Config.Transmissions
-                                allparts["oil"] = Config.Oils
-                                allparts["tires"] = Config.Tires
-                                allparts["nitro"] = Config.Nitros
-                                allparts["sparkplugs"] = Config.SparkPlugs
-
-                                SetNuiFocus(true, true)
-                                SendNUIMessage(
-                                {
-                                    type = "open",
-                                    parts = parts,
-                                    plate = currentPlate,
-                                    allparts = allparts,
-                                    mileage = math.floor(mileage * 100) / 100,
-                                    workshop = false,
-                                    vehicleType = GetVehicleClass(currentVehicle),
-                                    model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
-                                        repair = repairMode
-                                })
-                            else
-                                SendTextMessage(Config.Text["vehicle_notoncarjack"])
-                            end
-                        else
-                            SendTextMessage(Config.Text["vehicle_locked"])
-                        end
-                    else
-                        SendTextMessage(Config.Text["vehicle_nearby"])
+                for k, v in pairs(parts) do
+                    if Config.Engines[v.type] ~= nil then
+                        v.label = Config.Engines[v.type].label
                     end
-                end, plate) -- Callback End
+                    if Config.Turbos[v.type] ~= nil then
+                        v.label = Config.Turbos[v.type].label
+                    end
+                    if Config.Transmissions[v.type] ~= nil then
+                        v.label = Config.Transmissions[v.type].label
+                    end
+                    if Config.Suspensions[v.type] ~= nil then
+                        v.label = Config.Suspensions[v.type].label
+                    end
+                    if Config.Oils[v.type] ~= nil then
+                        v.label = Config.Oils[v.type].label
+                    end
+                    if Config.Tires[v.type] ~= nil then
+                        v.label = Config.Tires[v.type].label
+                    end
+                    if Config.Brakes[v.type] ~= nil then
+                        v.label = Config.Brakes[v.type].label
+                    end
+                    if Config.Nitros[v.type] ~= nil then
+                        v.label = Config.Nitros[v.type].label
+                    end
+					if Config.SparkPlugs[v.type] ~= nil then
+                        v.label = Config.SparkPlugs[v.type].label
+                    end
+
+                    if Config.ToolBoxAccess[k] == nil then
+                        parts[k] = nil
+                    end
+                end
+
+                local mileage = 0
+                if Config.UseMiles then
+                    mileage = currentMileage / 1609.34
                 else
-                    ESX.TriggerServerCallback('core_vehicle:getIfVehicleOwned', function(vehOwned)
-                    if dst < Config.DetectDistance and vehOwned then
-                        if localVehLockStatus == 1  then
-                            local vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.0, 0, 71)
-                            local vehCoords = GetEntityCoords(vehicle, 1)
-                            currentVehicle = veh
-                            currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
-                            TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(currentPlate, "%s+", ""))
+                    mileage = currentMileage / 1000
+                end
 
-                            TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(currentPlate, "%s+", ""))
-                            Citizen.Wait(300)
-                            local parts = {}
+                local allparts = {}
 
-                            for b, g in pairs(currentVehicleParts) do
-                                parts[b] = g
-                            end
+                allparts["engine"] = Config.Engines
+                allparts["turbo"] = Config.Turbos
+                allparts["brakes"] = Config.Brakes
+                allparts["suspension"] = Config.Suspensions
+                allparts["transmission"] = Config.Transmissions
+                allparts["oil"] = Config.Oils
+                allparts["tires"] = Config.Tires
+                allparts["nitro"] = Config.Nitros
+				allparts["sparkplugs"] = Config.SparkPlugs
 
-                            for k, v in pairs(parts) do
-                                if Config.Engines[v.type] ~= nil then
-                                    v.label = Config.Engines[v.type].label
-                                end
-                                if Config.Turbos[v.type] ~= nil then
-                                    v.label = Config.Turbos[v.type].label
-                                end
-                                if Config.Transmissions[v.type] ~= nil then
-                                    v.label = Config.Transmissions[v.type].label
-                                end
-                                if Config.Suspensions[v.type] ~= nil then
-                                    v.label = Config.Suspensions[v.type].label
-                                end
-                                if Config.Oils[v.type] ~= nil then
-                                    v.label = Config.Oils[v.type].label
-                                end
-                                if Config.Tires[v.type] ~= nil then
-                                    v.label = Config.Tires[v.type].label
-                                end
-                                if Config.Brakes[v.type] ~= nil then
-                                    v.label = Config.Brakes[v.type].label
-                                end
-                                if Config.Nitros[v.type] ~= nil then
-                                    v.label = Config.Nitros[v.type].label
-                                end
-                                if Config.SparkPlugs[v.type] ~= nil then
-                                    v.label = Config.SparkPlugs[v.type].label
-                                end
+                SetNuiFocus(true, true)
+                SendNUIMessage(
+                    {
+                        type = "open",
+                        parts = parts,
+                        plate = currentPlate,
+                        allparts = allparts,
+                        mileage = math.floor(mileage * 100) / 100,
+                        workshop = false,
+                        vehicleType = GetVehicleClass(currentVehicle),
+                        model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
+                         repair = repairMode
+                    }
+                )
+				else
+				SendTextMessage(Config.Text["vehicle_notoncarjack"])
+				end
+			else
+			SendTextMessage(Config.Text["vehicle_locked"])
+			end
+			else
+			SendTextMessage(Config.Text["vehicle_nearby"])
+			end
+			end, plate) -- Callback End
+			else
+				ESX.TriggerServerCallback('core_vehicle:getIfVehicleOwned', function(vehOwned)
+				if dst < Config.DetectDistance and vehOwned then
+				if localVehLockStatus == 1  then
+				local vehicle = GetClosestVehicle(coords.x, coords.y, coords.z, 3.0, 0, 71)
+				local vehCoords = GetEntityCoords(vehicle, 1)
+                currentVehicle = veh
+                currentPlate = GetVehicleNumberPlateText(veh)
+                TriggerServerEvent("core_vehicle:getVehicleHandling", currentPlate)
 
-                                if Config.ToolBoxAccess[k] == nil then
-                                    parts[k] = nil
-                                end
-                            end
+                TriggerServerEvent("core_vehicle:getVehicleParts", currentPlate)
+                Citizen.Wait(300)
+                local parts = {}
 
-                            local mileage = 0
-                            if Config.UseMiles then
-                                mileage = currentMileage / 1609.34
-                            else
-                                mileage = currentMileage / 1000
-                            end
+                for b, g in pairs(currentVehicleParts) do
+                    parts[b] = g
+                end
 
-                            local allparts = {}
-
-                            allparts["engine"] = Config.Engines
-                            allparts["turbo"] = Config.Turbos
-                            allparts["brakes"] = Config.Brakes
-                            allparts["suspension"] = Config.Suspensions
-                            allparts["transmission"] = Config.Transmissions
-                            allparts["oil"] = Config.Oils
-                            allparts["tires"] = Config.Tires
-                            allparts["nitro"] = Config.Nitros
-                            allparts["sparkplugs"] = Config.SparkPlugs
-
-                            SetNuiFocus(true, true)
-                            SendNUIMessage(
-                            {
-                                type = "open",
-                                parts = parts,
-                                plate = currentPlate,
-                                allparts = allparts,
-                                mileage = math.floor(mileage * 100) / 100,
-                                workshop = false,
-                                vehicleType = GetVehicleClass(currentVehicle),
-                                model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
-                                    repair = repairMode
-                            })
-                        else
-                            SendTextMessage(Config.Text["vehicle_locked"])
-                        end
-                    else
-                        SendTextMessage(Config.Text["vehicle_nearby"])
+                for k, v in pairs(parts) do
+                    if Config.Engines[v.type] ~= nil then
+                        v.label = Config.Engines[v.type].label
                     end
-                end, plate) -- Callback End
-            end
+                    if Config.Turbos[v.type] ~= nil then
+                        v.label = Config.Turbos[v.type].label
+                    end
+                    if Config.Transmissions[v.type] ~= nil then
+                        v.label = Config.Transmissions[v.type].label
+                    end
+                    if Config.Suspensions[v.type] ~= nil then
+                        v.label = Config.Suspensions[v.type].label
+                    end
+                    if Config.Oils[v.type] ~= nil then
+                        v.label = Config.Oils[v.type].label
+                    end
+                    if Config.Tires[v.type] ~= nil then
+                        v.label = Config.Tires[v.type].label
+                    end
+                    if Config.Brakes[v.type] ~= nil then
+                        v.label = Config.Brakes[v.type].label
+                    end
+                    if Config.Nitros[v.type] ~= nil then
+                        v.label = Config.Nitros[v.type].label
+                    end
+					if Config.SparkPlugs[v.type] ~= nil then
+                        v.label = Config.SparkPlugs[v.type].label
+                    end
+
+                    if Config.ToolBoxAccess[k] == nil then
+                        parts[k] = nil
+                    end
+                end
+
+                local mileage = 0
+                if Config.UseMiles then
+                    mileage = currentMileage / 1609.34
+                else
+                    mileage = currentMileage / 1000
+                end
+
+                local allparts = {}
+
+                allparts["engine"] = Config.Engines
+                allparts["turbo"] = Config.Turbos
+                allparts["brakes"] = Config.Brakes
+                allparts["suspension"] = Config.Suspensions
+                allparts["transmission"] = Config.Transmissions
+                allparts["oil"] = Config.Oils
+                allparts["tires"] = Config.Tires
+                allparts["nitro"] = Config.Nitros
+				allparts["sparkplugs"] = Config.SparkPlugs
+
+                SetNuiFocus(true, true)
+                SendNUIMessage(
+                    {
+                        type = "open",
+                        parts = parts,
+                        plate = currentPlate,
+                        allparts = allparts,
+                        mileage = math.floor(mileage * 100) / 100,
+                        workshop = false,
+                        vehicleType = GetVehicleClass(currentVehicle),
+                        model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle))),
+                         repair = repairMode
+                    }
+                )
+			else
+			SendTextMessage(Config.Text["vehicle_locked"])
+			end
+			else
+			SendTextMessage(Config.Text["vehicle_nearby"])
+			end
+			end, plate) -- Callback End
+			end
         end
     end
-end)
+)
 
 RegisterNetEvent("core_vehicle:startInstall")
 AddEventHandler(
@@ -2396,10 +2389,10 @@ RegisterCommand(
             if GetVehicleDoorAngleRatio(veh, 4) ~= 0 then
                 local plate = GetVehicleNumberPlateText(veh)
                 currentVehicle = veh
-                currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
-                TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(plate, "%s+", ""))
+                currentPlate = GetVehicleNumberPlateText(veh)
+                TriggerServerEvent("core_vehicle:getVehicleHandling", plate)
 
-                TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(plate, "%s+", ""))
+                TriggerServerEvent("core_vehicle:getVehicleParts", plate)
                 Citizen.Wait(300)
                 local parts = {}
 
@@ -2480,10 +2473,10 @@ RegisterCommand(
 		else -- If no Hood go ahead without open it
 		local plate = GetVehicleNumberPlateText(veh)
                 currentVehicle = veh
-                currentPlate = string.gsub(GetVehicleNumberPlateText(veh), "%s+", "")
-                TriggerServerEvent("core_vehicle:getVehicleHandling", string.gsub(plate, "%s+", ""))
+                currentPlate = GetVehicleNumberPlateText(veh)
+                TriggerServerEvent("core_vehicle:getVehicleHandling", plate)
 
-                TriggerServerEvent("core_vehicle:getVehicleParts", string.gsub(plate, "%s+", ""))
+                TriggerServerEvent("core_vehicle:getVehicleParts", plate)
                 Citizen.Wait(300)
                 local parts = {}
 
@@ -2614,10 +2607,6 @@ AddEventHandler(
                 handling["fTractionCurveMin"] = 0
             end
 
-             handling["tires_width"] = GetVehicleWheelWidth(currentVehicle)
-             handling["tires_size"] = GetVehicleWheelSize(currentVehicle)
-               
-
             TriggerServerEvent("core_vehicle:setVehicleHandling", plate, handling)
             currentVehicleHandling = handling
         else
@@ -2735,9 +2724,6 @@ function setTires(veh)
         "fTractionCurveMin",
         currentVehicleHandling["fTractionCurveMin"] + traction
     )
-
-    --SetVehicleWheelWidth(veh,currentVehicleHandling['tires_width'] + tires.width)
-    --SetVehicleWheelSize(veh,currentVehicleHandling['tires_size'] + tires.size)
 
 
 

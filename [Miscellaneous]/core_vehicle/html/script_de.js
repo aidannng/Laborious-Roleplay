@@ -311,7 +311,7 @@ function openGauge(bottom, right) {
     '    </div>' +
     '    <div class="rounded-corners clearfix grpelem" id="u107"><!-- group -->' +
     '     <div class="clearfix grpelem" id="u111-4"><!-- content -->' +
-    '    00003485.0' +
+    //'    00003485.0' +
     '     </div>' +
     '    </div>' +
     '   </div>';
