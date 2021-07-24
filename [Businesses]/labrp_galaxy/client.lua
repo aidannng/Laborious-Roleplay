@@ -222,24 +222,24 @@ Citizen.CreateThread(function()
         distance = 2.5
     }) ---192.5934, -1161.798, 23.66882
 
-  exports['labrp_Eye']:AddBoxZone("galaxycondom", vector3(383.8200, 270.600, 91.18604), 0.8, 1.5, {
-    name="galaxycondom",
-    heading=75,
-    debugPoly=false,
-    minZ=91.00,
-    maxZ=91.50
-    }, {
-        options = {
-            {
-                event = "givecondom", 
-                icon = "fas fa-restroom",
-                label = "Condom Dispensor",
-            },
+--   exports['labrp_Eye']:AddBoxZone("galaxycondom", vector3(382.4250, 270.9500, 91.18604), 0.45, 0.2, {
+--     name="galaxycondom",
+--     heading=75,
+--     debugPoly=true,
+--     minZ=91.30,
+--     maxZ=92.40
+--     }, {
+--         options = {
+--             {
+--                 event = "givecondom", 
+--                 icon = "fas fa-restroom",
+--                 label = "Condom Dispensor",
+--             },
 
-        },
-        job = {"all"},
-        distance = 2.5
-    }) ---192.5934, -1161.798, 23.66882
+--         },
+--         job = {"all"},
+--         distance = 2.5
+--     }) ---192.5934, -1161.798, 23.66882
 
 end)
 

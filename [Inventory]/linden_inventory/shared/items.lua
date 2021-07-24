@@ -264,6 +264,42 @@ Items = {
 		}
 	},
 
+	['kkgummies'] = {
+		label = 'Kronic Kush Gummies',
+		weight = 300,
+		stack = true,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'use:kkgummies'
+		}
+	},
+
+	['kkbrownie'] = {
+		label = 'Kronic Kush Brownie',
+		weight = 300,
+		stack = true,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'use:kkbrownie'
+		}
+	},
+
+	['kkcookie'] = {
+		label = 'Kronic Kush Cookie',
+		weight = 300,
+		stack = true,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'use:kkcookie'
+		}
+	},
+
 	['spikestrips'] = {
 		label = 'Spike Strips',
 		weight = 2500,

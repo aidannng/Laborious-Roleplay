@@ -16,7 +16,7 @@ end)
 
 RegisterNetEvent("mechanic:inspect")
 AddEventHandler("mechanic:inspect", function()
-    TriggerEvent('core_vehicle:toolUsed', 'mechanic_tools')
+    TriggerEvent('advanced_vehicles:showStatusUI')
 end)
 
 RegisterNetEvent("mechanic:customs")

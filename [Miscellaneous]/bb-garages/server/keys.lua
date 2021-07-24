@@ -47,17 +47,6 @@ AddEventHandler('vehiclekeys:server:SetVehicleOwner', function(plate, vehicle)
 end)
 
 
-RegisterServerEvent("vehiclekeys:server:givePeopleKeys")
-AddEventHandler("vehiclekeys:server:givePeopleKeys", function(source, plate)
-    local xPlayer = ESX.GetPlayerFromId(source)
-
-    MySQL.Async.execute("INSERT into vehicle_keys (identifier, plate) VALUES (@identifier,@plate)", {
-        ['@identifier'] = "AIDAN",
-        ['@plate'] = plate,
-        }) 
-end)
-
-
 RegisterServerEvent('vehiclekeys:server:GiveVehicleKeys')
 AddEventHandler('vehiclekeys:server:GiveVehicleKeys', function(plate, target)
     local src = source
