@@ -422,7 +422,7 @@ newSubMenus = {
     ['general:checkvehicle'] = {
         title = "Examine Vehicle",
         icon = "#general-check-vehicle",
-        functionName = "local:inspect"
+        functionName = "advanced_vehicles:showStatusUI"
     },--escort:player
     ['general:escort'] = {
         title = "Escort",

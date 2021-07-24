@@ -2407,25 +2407,6 @@ table.insert(Config.DoorList, {
 	-- autoLock = 1000
 })
 
--- Drug Door
-table.insert(Config.DoorList, {
-	objHash = 1427451548,
-	objCoords = vector3(2849.57, 4449.917, 48.67156),
-	lockpick = false,
-	slides = false,
-	authorizedJobs = { ['police']=0, ['fbi']=0 },
-	audioRemote = false,
-	fixText = false,
-	maxDistance = 2.0,
-	locked = true,
-	garage = false,
-	objHeading = 288.00006103516,
-	items = { 'greenlaptop' },		
-	-- oldMethod = true,
-	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-	-- autoLock = 1000
-})
 
 -- Drug Door 2
 table.insert(Config.DoorList, {

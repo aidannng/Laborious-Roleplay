@@ -48,6 +48,13 @@ AddEventHandler('GiveSafeReward', function()
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got '..jewelsamount..'x 2 CT Gold Chains', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
     end
 
+    if laptopchance >= 9 then 
+        xPlayer.addInventoryItem('g6card', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got a Gruppe 6 Card', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+    else 
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Better luck next time!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+
+
     xPlayer.addInventoryItem('black_money', moneypayout)
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got $'..moneypayout, length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
 
