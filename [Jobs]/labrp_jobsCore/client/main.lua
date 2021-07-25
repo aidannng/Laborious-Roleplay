@@ -305,6 +305,7 @@ RegisterNUICallback(
         local job = data["job"]
 
         TriggerServerEvent("core_jobutilities:hire", id, job)
+        TriggerServerEvent("bossmenuhiremultijob", id, job)
     end
 )
 
@@ -315,6 +316,7 @@ RegisterNUICallback(
         local job = data["job"]
 
         TriggerServerEvent("core_jobutilities:fire", identifier, job)
+        TriggerServerEvent("bossmenufiremultijob", identifier, job)
     end
 )
 
@@ -323,7 +325,7 @@ RegisterNUICallback(
     function(data)
         local identifier = data["identifier"]
         local amount = data["amount"]
-         local job = data["job"]
+        local job = data["job"]
 
         TriggerServerEvent("core_jobutilities:givebonus", identifier, amount, job)
     end
@@ -337,6 +339,7 @@ RegisterNUICallback(
         local rank = data["rank"]
 
         TriggerServerEvent("core_jobutilities:setRank", identifier, job, rank)
+        TriggerServerEvent("bossmenusetmultijobrank", identifier, job, rank)
     end
 )
 

@@ -177,6 +177,18 @@ $(function () {
         resetManagement()
     })
 
+    $('.employee').on('click', '.refresh', function(){
+        var identifier = $(this).data('identifier');
+        var grade = $(this).data('grade');
+
+        $.post('http://pdm-nui/pdmrefresh', JSON.stringify({
+            identifier:identifier,
+            grade:grade,
+        }));
+
+        resetManagement()
+    });
+
     function resetManagement()
     {
         $('#bankamount').val('');
@@ -371,9 +383,8 @@ $(function () {
         if(item.jobgrade != null)
         {
             var id = item.jobgrade;
-            console.log(id)
 
-            var str = "<tr id=\""+ item.identifier +"\"><td>"+ item.employeefirstname + " " + item.employeelastname +"</td>";
+            var str = "<tr id=\""+ item.identifier +"\"><td>"+ item.employeefirstname + " " + item.employeelastname +"</td><td><button class=\"btn refresh margin-left-5\" data-grade=\""+ item.jobgrade +"\" data-identifier=\""+ item.identifier +"\">Refresh</button></td>";
 
             if(item.isowner)
             {

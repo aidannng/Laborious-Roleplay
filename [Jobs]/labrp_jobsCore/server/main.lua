@@ -61,7 +61,8 @@ ESX.RegisterServerCallback(
                 for _, v in ipairs(info) do
 
                     if v.job_grade == nil then
-                        v.job_grade = 0 end
+                        v.job_grade = 0 
+                    end
 
                     table.insert(
                         employees,
@@ -73,14 +74,14 @@ ESX.RegisterServerCallback(
                         }
                     )
                 end
- TriggerEvent('esx_addonaccount:getSharedAccount', 'society_' .. job, function(account)
-                        if true then
-                            cb(gradeInfo, employees, account.money, xPlayer.getJob().grade_name)
-                        else
-                            cb(gradeInfo, employees, "-", xPlayer.getJob().grade_name)
-                        end
+
+                MySQL.Async.fetchAll("Select amount FROM jobs WHERE name = @job", {['@job'] = job}, function(balance)
+                    if(balance and #balance>0) then
+                        cb(gradeInfo, employees, balance[1].amount, xPlayer.getJob().grade_name)
+                    else
+                        cb(gradeInfo, employees, "-", xPlayer.getJob().grade_name)
                     end
-                )
+                end)
             end
         )
     end

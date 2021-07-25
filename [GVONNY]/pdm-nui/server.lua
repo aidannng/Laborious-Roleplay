@@ -440,6 +440,11 @@ AddEventHandler("pdmpromote", function(identifier, grade)
     if(newgrade < 6) then
         if(xPlayer ~= nil) then
             xPlayer.setJob('cardealer', newgrade)
+            MySQL.Async.fetchAll("SELECT job FROM multi_job WHERE job = 'cardealer' and identifier = @identifier", {['@identifier'] = xPlayer.identifier}, function(job)
+                if(job and #job>0) then
+                    MySQL.Async.execute("UPDATE multi_job SET job_grade = @grade WHERE identifier = @identifier AND job = 'cardealer'", {['@grade'] = newgrade, ['@identifier'] = xPlayer.identifier})
+                end
+            end)
         end
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
     else
@@ -455,6 +460,11 @@ AddEventHandler("pdmdemote", function(identifier, grade)
     if(newgrade > -1) then
         if(xPlayer ~= nil) then
             xPlayer.setJob('cardealer', newgrade)
+            MySQL.Async.fetchAll("SELECT job FROM multi_job WHERE job = 'cardealer' and identifier = @identifier", {['@identifier'] = xPlayer.identifier}, function(job)
+                if(job and #job>0) then
+                    MySQL.Async.execute("UPDATE multi_job SET job_grade = @grade WHERE identifier = @identifier AND job = 'cardealer'", {['@grade'] = newgrade, ['@identifier'] = xPlayer.identifier})
+                end
+            end)
         end
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
     else
@@ -467,8 +477,8 @@ AddEventHandler("pdmhire", function(luckynumber)
     local xPlayer = ESX.GetPlayerFromId(luckynumber)
     if(xPlayer ~= nil) then
         xPlayer.setJob('cardealer', 0)
+        MySQL.Async.execute("INSERT INTO multi_job (identifier, job, job_grade) VALUES(@identifier, 'cardealer', 0)", {['@identifier'] = xPlayer.identifier})
     end
-    print(xPlayer.identifier)
     MySQL.Async.execute("UPDATE users SET job = 'cardealer', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = xPlayer.identifier})
 end)
 
@@ -479,8 +489,21 @@ AddEventHandler("pdmfire", function(identifier)
     if(xPlayer ~= nil) then
         xPlayer.setJob('unemployed', 0)
         MySQL.Async.execute("UPDATE users SET job = 'unemployed', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = identifier})
+        MySQL.Async.execute("DELETE FROM multi_job WHERE identifier = @identifier AND job = 'cardealer'", {['@identifier'] = identifier})
+
     else
         TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "Player is not in city", })
+    end
+end)
+
+RegisterServerEvent("pdmrefresh")
+AddEventHandler("pdmrefresh", function(identifier, grade)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
+    if(xPlayer ~= nil) then
+        xPlayer.setJob('cardealer', grade)
+        MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = grade, ['@identifier'] = identifier})
+        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Job refreshed', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
     end
 end)
 

@@ -162,8 +162,6 @@ end)
 
 RegisterServerEvent("lscrefresh")
 AddEventHandler("lscrefresh", function(identifier, grade)
-    print(identifier)
-    print(grade)
     local src = source
     local xPlayer = ESX.GetPlayerFromIdentifier(identifier)
     if(xPlayer ~= nil) then
@@ -181,6 +179,11 @@ AddEventHandler("lscpromote", function(identifier, grade)
     if(newgrade < 5) then
         if(xPlayer ~= nil) then
             xPlayer.setJob('mechanic', newgrade)
+            MySQL.Async.fetchAll("SELECT job FROM multi_job WHERE job = 'mechanic' and identifier = @identifier", {['@identifier'] = xPlayer.identifier}, function(job)
+                if(job and #job>0) then
+                    MySQL.Async.execute("UPDATE multi_job SET job_grade = @grade WHERE identifier = @identifier AND job = 'mechanic'", {['@grade'] = newgrade, ['@identifier'] = xPlayer.identifier})
+                end
+            end)
         end
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
     else
@@ -196,6 +199,11 @@ AddEventHandler("lscdemote", function(identifier, grade)
     if(newgrade > -1) then
         if(xPlayer ~= nil) then
             xPlayer.setJob('mechanic', newgrade)
+            MySQL.Async.fetchAll("SELECT job FROM multi_job WHERE job = 'mechanic' and identifier = @identifier", {['@identifier'] = xPlayer.identifier}, function(job)
+                if(job and #job>0) then
+                    MySQL.Async.execute("UPDATE multi_job SET job_grade = @grade WHERE identifier = @identifier AND job = 'mechanic'", {['@grade'] = newgrade, ['@identifier'] = xPlayer.identifier})
+                end
+            end)
         end
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = newgrade, ['@identifier'] = identifier})
     else
@@ -208,8 +216,9 @@ AddEventHandler("lschire", function(luckynumber)
     local xPlayer = ESX.GetPlayerFromId(luckynumber)
     if(xPlayer ~= nil) then
         xPlayer.setJob('mechanic', 0)
+        MySQL.Async.execute("INSERT INTO multi_job (identifier, job, job_grade) VALUES(@identifier, 'mechanic', 0)", {['@identifier'] = xPlayer.identifier})
+
     end
-    print(xPlayer.identifier)
     MySQL.Async.execute("UPDATE users SET job = 'mechanic', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = xPlayer.identifier})
 end)
 
@@ -220,6 +229,7 @@ AddEventHandler("lscfire", function(identifier)
     if(xPlayer ~= nil) then
         xPlayer.setJob('unemployed', 0)
         MySQL.Async.execute("UPDATE users SET job = 'unemployed', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = identifier})
+        MySQL.Async.execute("DELETE FROM multi_job WHERE identifier = @identifier AND job = 'mechanic'", {['@identifier'] = identifier})
     else
         TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "Player is not in city", })
     end
