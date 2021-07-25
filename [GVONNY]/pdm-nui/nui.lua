@@ -205,6 +205,10 @@ RegisterNUICallback("pdmpay", function(data)
     TriggerServerEvent("pdmpay", data.identifier, data.amount)
 end)
 
+RegisterNUICallback("pdmrefresh", function(data)
+    TriggerServerEvent("pdmrefresh", data.identifier, data.grade)
+end)
+
 RegisterNUICallback("pdmpromote", function(data)
     TriggerServerEvent("pdmpromote", data.identifier, data.grade)
 end)
@@ -347,3 +351,22 @@ function SetDisplay(bool)
 		status = bool,
 	})
 end
+
+exports['labrp_Eye']:AddBoxZone("PDMDesk", vector3(-21.92967, -1096.985, 27.19043), 2.00, 0.50, {
+    name="PDMDesk",
+    debugPoly=false,
+    heading=305.0,
+    minZ=26.0,
+    maxZ=26.8
+}, 
+{
+    options = {
+        {
+            event = "pdm:signonoff",
+            icon = "fas fa-tools",
+            label = "Sign On/Off",
+        },
+    },
+    job = {"all"},
+    distance = 1.6
+})
