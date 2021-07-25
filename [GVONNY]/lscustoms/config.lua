@@ -407,7 +407,7 @@ Config.Menus = {
 		label		= 'Benny\'s Motorworks',
 		parent		= nil,
 		extras				= _U('extras'),
-		--[[ upgrades			= _U('upgrades'), ]]
+		upgrades			= _U('upgrades'),
 		bodyparts			= _U('bodyparts'),
 		windowTint			= _U('windowtint'),
 		modHorns			= _U('horns'),
@@ -425,7 +425,7 @@ Config.Menus = {
 		modBrakes		= _U('brakes'),
 		modTransmission	= _U('transmission'),
 		modSuspension	= _U('suspension'),
-		modArmor		= _U('armor'),
+		--[[ modArmor		= _U('armor'), ]]
 		modTurbo		= _U('turbo')
 	},
 	modEngine = {

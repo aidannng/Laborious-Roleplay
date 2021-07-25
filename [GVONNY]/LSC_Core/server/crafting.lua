@@ -53,7 +53,119 @@ AddEventHandler('craft:piston', function()
     end
 end)
 
-RegisterServerEvent('craft:crankshaft')
+RegisterServerEvent('craft:oil')
+AddEventHandler('craft:oil', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 3 then
+        xPlayer.removeInventoryItem('iron', 4)
+        xPlayer.addInventoryItem('oil', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:transmissionoil')
+AddEventHandler('craft:transmissionoil', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 5 then
+        xPlayer.removeInventoryItem('iron', 6)
+        xPlayer.addInventoryItem('transmission_oil', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:clutch')
+AddEventHandler('craft:clutch', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 7 then
+        xPlayer.removeInventoryItem('iron', 8)
+        xPlayer.addInventoryItem('clutch', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:airfilter')
+AddEventHandler('craft:airfilter', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 2 then
+        xPlayer.removeInventoryItem('iron', 3)
+        xPlayer.addInventoryItem('air_filter', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:sparkplugs')
+AddEventHandler('craft:sparkplugs', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 5 then
+        xPlayer.removeInventoryItem('iron', 6)
+        xPlayer.addInventoryItem('spark_plugs', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:serpentinebelt')
+AddEventHandler('craft:serpentinebelt', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('rubber').count
+
+    if itemCount > 6 then
+        xPlayer.removeInventoryItem('iron', 7)
+        xPlayer.addInventoryItem('serpentine_belt', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough rubber", })
+    end
+end)
+
+RegisterServerEvent('craft:nitrous')
+AddEventHandler('craft:nitrous', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 9 then
+        xPlayer.removeInventoryItem('iron', 10)
+        xPlayer.addInventoryItem('nitrous', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+RegisterServerEvent('craft:fuelfilter')
+AddEventHandler('craft:fuelfilter', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local itemCount = xPlayer.getInventoryItem('iron').count
+
+    if itemCount > 4 then
+        xPlayer.removeInventoryItem('iron', 5)
+        xPlayer.addInventoryItem('fuel_filter', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
+    end
+end)
+
+--[[ RegisterServerEvent('craft:crankshaft')
 AddEventHandler('craft:crankshaft', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -121,7 +233,7 @@ AddEventHandler('craft:head', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]
 
 RegisterServerEvent('craft:spring')
 AddEventHandler('craft:spring', function()
@@ -129,15 +241,15 @@ AddEventHandler('craft:spring', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local itemCount = xPlayer.getInventoryItem('iron').count
 
-    if itemCount > 0 then
-        xPlayer.removeInventoryItem('iron', 1)
+    if itemCount > 1 then
+        xPlayer.removeInventoryItem('iron', 2)
         xPlayer.addInventoryItem('spring', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
 end)
 
-RegisterServerEvent('craft:loweringspring')
+--[[ RegisterServerEvent('craft:loweringspring')
 AddEventHandler('craft:loweringspring', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -149,7 +261,7 @@ AddEventHandler('craft:loweringspring', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]
 
 RegisterServerEvent('craft:strut')
 AddEventHandler('craft:strut', function()
@@ -157,15 +269,15 @@ AddEventHandler('craft:strut', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local itemCount = xPlayer.getInventoryItem('iron').count
 
-    if itemCount > 0 then
-        xPlayer.removeInventoryItem('iron', 1)
+    if itemCount > 2 then
+        xPlayer.removeInventoryItem('iron', 3)
         xPlayer.addInventoryItem('strut', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
 end)
 
-RegisterServerEvent('craft:racestrut')
+--[[ RegisterServerEvent('craft:racestrut')
 AddEventHandler('craft:racestrut', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -191,7 +303,7 @@ AddEventHandler('craft:nutsandbolts', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough scrap metal", })
     end
-end)
+end) ]]
 
 RegisterServerEvent('craft:brakepad')
 AddEventHandler('craft:brakepad', function()
@@ -207,7 +319,7 @@ AddEventHandler('craft:brakepad', function()
     end
 end)
 
-RegisterServerEvent('craft:racebrakepad')
+--[[ RegisterServerEvent('craft:racebrakepad')
 AddEventHandler('craft:racebrakepad', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -219,7 +331,7 @@ AddEventHandler('craft:racebrakepad', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]
 
 RegisterServerEvent('craft:rotor')
 AddEventHandler('craft:rotor', function()
@@ -227,15 +339,15 @@ AddEventHandler('craft:rotor', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local itemCount = xPlayer.getInventoryItem('iron').count
 
-    if itemCount > 1 then
-        xPlayer.removeInventoryItem('iron', 2)
+    if itemCount > 3 then
+        xPlayer.removeInventoryItem('iron', 4)
         xPlayer.addInventoryItem('rotor', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
 end)
 
-RegisterServerEvent('craft:racerotor')
+--[[ RegisterServerEvent('craft:racerotor')
 AddEventHandler('craft:racerotor', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -247,7 +359,7 @@ AddEventHandler('craft:racerotor', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]
 
 RegisterServerEvent('craft:transmissiongear')
 AddEventHandler('craft:transmissiongear', function()
@@ -255,8 +367,8 @@ AddEventHandler('craft:transmissiongear', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local itemCount = xPlayer.getInventoryItem('iron').count
 
-    if itemCount > 0 then
-        xPlayer.removeInventoryItem('iron', 1)
+    if itemCount > 1 then
+        xPlayer.removeInventoryItem('iron', 2)
         xPlayer.addInventoryItem('transmission_gear', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
@@ -266,7 +378,7 @@ end)
 --############################
 --##       SUSPENSION       ##
 --############################
-RegisterServerEvent('craft:stocksuspension')
+--[[ RegisterServerEvent('craft:stocksuspension')
 AddEventHandler('craft:stocksuspension', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -376,13 +488,13 @@ AddEventHandler('craft:liftedcoilovers2', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
-end)
+end) ]]
 
 
 --############################
 --##        ENGINES         ##
 --############################
-RegisterServerEvent('craft:stockengine')
+--[[ RegisterServerEvent('craft:stockengine')
 AddEventHandler('craft:stockengine', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -600,14 +712,14 @@ AddEventHandler('craft:k20', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
-end)
+end) ]]
 
 
 --############################
 --##       SUSPENSION       ##
 --############################
 
-RegisterServerEvent('craft:stockbrakes')
+--[[ RegisterServerEvent('craft:stockbrakes')
 AddEventHandler('craft:stockbrakes', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -669,13 +781,13 @@ AddEventHandler('craft:wilwoodbrakes', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
-end)
+end) ]]
 
 --############################
 --##         TIRES         ##
 --############################
 
-RegisterServerEvent('craft:stocktires')
+--[[ RegisterServerEvent('craft:stocktires')
 AddEventHandler('craft:stocktires', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -771,13 +883,13 @@ AddEventHandler('craft:dunloptires', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough rubber", })
     end
-end)
+end) ]]
 
 --############################
 --##         TURBOS         ##
 --############################
 
-RegisterServerEvent('craft:singleturbo')
+--[[ RegisterServerEvent('craft:singleturbo')
 AddEventHandler('craft:singleturbo', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -831,13 +943,13 @@ AddEventHandler('craft:racetwinturbo', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]
 
 --###########################
 --##     TRANSMISSIONS     ##
 --###########################
 
-RegisterServerEvent('craft:stocktransmission')
+--[[ RegisterServerEvent('craft:stocktransmission')
 AddEventHandler('craft:stocktransmission', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -963,13 +1075,13 @@ AddEventHandler('craft:policetransmission', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
-end)
+end) ]]
 
 --###########################
 --##          OIL          ##
 --###########################
 
-RegisterServerEvent('craft:stockoil')
+--[[ RegisterServerEvent('craft:stockoil')
 AddEventHandler('craft:stockoil', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -1037,13 +1149,13 @@ AddEventHandler('craft:royalpurple', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]
 
 --############################
 --##       SPARKPLUGS       ##
 --############################
 
-RegisterServerEvent('craft:stocksparkplugs')
+--[[ RegisterServerEvent('craft:stocksparkplugs')
 AddEventHandler('craft:stocksparkplugs', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -1167,4 +1279,4 @@ AddEventHandler('craft:nos', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]

@@ -19,6 +19,7 @@ AddEventHandler("mechanic:inspect", function()
     TriggerEvent('advanced_vehicles:showStatusUI')
 end)
 
+
 RegisterNetEvent("mechanic:customs")
 AddEventHandler("mechanic:customs", function()
     SetDisplay(not display)

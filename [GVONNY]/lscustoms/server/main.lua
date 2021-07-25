@@ -71,7 +71,7 @@ ESX.RegisterServerCallback('esx_lscustom:getVehiclesPrices', function(source, cb
 			for i=1, #result, 1 do
 				table.insert(vehicles, {
 					model = result[i].model,
-					price = result[i].price
+					price = result[i].bennys
 				})
 			end
 

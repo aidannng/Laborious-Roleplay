@@ -12,9 +12,10 @@ Config = {
     --]]
 
     Policeraid = {
-        Enabled = false,
+        Enabled = true,
         Jobs = {
-            {job = "police", grade = 1},
+            {job = "police", grade = 5},
+            {job = "fbi", grade = 0},
         },
     },
     
@@ -56,8 +57,8 @@ Config = {
     },
 
     Prices = {
-        500, -- price for interior 1
-        2000, -- price for interior 2
+        0, -- price for interior 1
+        750, -- price for interior 2
         1000, -- price for interior 3
         1500, -- price for interior 4
         3000, -- price for interior 5
@@ -66,8 +67,7 @@ Config = {
     Motels = {
         {
             Name = "Alta Street Apartments",
-            Interiors = {1}, -- possible interiors you can buy in this motel
-            --Interiors = {1, 2, 3, 4}, -- possible interiors you can buy in this motel
+            Interiors = {1, 2}, -- possible interiors you can buy in this motel
             Rent = false, -- should it cost to live in this motel?
 
             Location = vector4(

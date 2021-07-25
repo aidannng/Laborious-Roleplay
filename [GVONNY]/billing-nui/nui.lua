@@ -6,7 +6,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(10)
     end
 
-    TriggerServerEvent("updatebilldays")
+    --TriggerServerEvent("updatebilldays")
 end)
 
 local display = false
