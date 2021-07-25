@@ -56,3 +56,8 @@ exports {
 
 	'CreateTier1HouseFurnished',-- INTERIORS
 }
+
+-- UPGRADED INTERIORS
+this_is_a_map 'yes'
+files 'Upgradeable/shellpropsv14.ytyp'
+data_file 'DLC_ITYP_REQUEST' 'Upgradeable/shellpropsv14.ytyp'

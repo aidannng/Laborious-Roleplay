@@ -68,6 +68,9 @@ AddEventHandler("purchase", function(model, price, plate)
         
             MySQL.Async.execute("UPDATE vehicles SET stock = @stock WHERE model = @model", {['@stock'] = stock, ['@model'] = model})
             MySQL.Async.execute("INSERT INTO cardealer_vehicles SET plate = @plate, price = @price, test_drive = false", {['@plate'] = plate, ['@price'] = markup})
+
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "Vehicle purchased", style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+
             
             PerformHttpRequest(discord_webhook.url, 
             function(err, text, header) end, 

@@ -290,11 +290,7 @@ end)
 ESX.RegisterServerCallback("loaf_keysystem:getRpName", function(src, cb, player)
     local xPlayer = ESX.GetPlayerFromId(player)
     if xPlayer then
-        if Config.EnableESXIdentity then
-            cb(xPlayer.get('firstName') .. " " .. xPlayer.get('lastName'))
-        else
-            cb(false)
-        end
+        cb(xPlayer.getName())
     else
         cb(false)
     end

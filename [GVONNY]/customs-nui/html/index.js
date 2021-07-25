@@ -3,11 +3,20 @@ $(function () {
     function display(bool) {
         if (bool) {
             $("#container").show();
+            $('#purchasePrice').val('');
         } else {
             $("#container").hide();
         }
     }
     
+    var price = 0;
+    $('.image-container').click(function(){
+        var cost = parseInt($(this).data('price'));
+        price = price + cost;
+
+        $('#purchasePrice').val(price);
+    })
+
 
     $('#create-bill').click(function(){
         var luckyNumber = $('#luckyNumber').val();
