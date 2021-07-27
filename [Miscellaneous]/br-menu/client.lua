@@ -197,7 +197,12 @@ AddEventHandler('blackmarket:menu', function()
 end)
 
 
--- plasma
+-- Sonora Boats
+RegisterNetEvent('sonoraboats:menu')
+AddEventHandler('sonoraboats:menu', function()
+    exports['br-menu']:SetTitle("Sonora Cartel Boats")
+    exports['br-menu']:AddButton("Jetski" , "$500" ,'seashark' ,'' , 'meone')
+end)
 
 
 

@@ -22,9 +22,10 @@ BossMenuLocations = {
 	{coords = vector3(990.1055, -136.3648, 74.06665), job = "bigdogs", label = "Big Dogs"},
 	{coords = vector3(-1351.886, -1054.932, 3.853516), job = "bmf", label = "Black Mafia Family"},
 	{coords = vector3(123.5077, -1944.738, 15.21021), job = "ballas", label = "East Side Ballas"},
+	{coords = vector3(376.9055, -823.9517, 29.29675), job = "kronichush", label = "Kronic Kush Dispensary"},
 	{coords = vector3(108.0264, -750.5011, 242.1436), job = "fbi", label = "FBI"},  
 	{coords = vector3(390.9758, 270.0791, 94.97729), job = "galaxy", label = "Galaxy Nightclub"},  --376.9055, -823.9517, 29.29675
-	{coords = vector3(376.9055, -823.9517, 29.29675), job = "kronichush", label = "Kronic Kush Dispensary"}
+	{coords = vector3(-172.4308, 923.0505, 239.9363), job = "sonora", label = "Sonora Cartel"}
 },
 
 
@@ -47,6 +48,8 @@ BossMenuUsers = {
 	['boss'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['kkowner'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['galaxymanagement'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true}
+	['eljefe'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true}
+	['jefe'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true}
 },
 
 

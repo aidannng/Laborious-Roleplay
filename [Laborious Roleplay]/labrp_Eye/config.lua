@@ -305,7 +305,7 @@ Citizen.CreateThread(function()
         AddTargetModel(beachreturn, {
         options = {
         {
-            event = "beachreturn:menu",
+            event = "sonoraboats:menu",
             icon = "fas fa-anchor", 
             label = "Beach Returns",
         },
@@ -429,6 +429,20 @@ Citizen.CreateThread(function()
                 distance = 2.5
             }) ---192.5934, -1161.798, 23.66882
 
+            local sonoraboats = {
+                `a_m_y_beach_01`,
+                }   
+                AddTargetModel(sonoraboats, {
+                options = {
+                {
+                    event = "open-garage",
+                    icon = "fas fa-anchor",
+                    label = "Sonora Boats",
+                },
+                },
+                job = {"all"},
+                distance = 2.5
+            })
 
 end)-- s_m_y_pilot_01
 
