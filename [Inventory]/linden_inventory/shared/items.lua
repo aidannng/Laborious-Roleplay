@@ -210,6 +210,7 @@ Items = {
 		stack = false,
 		close = true,
 		client = {
+			disable = { move = false, car = false, combat = true },
 			consume = 0,
 			usetime = 0,
 			event = 'd-phone:client:openphone'
@@ -324,6 +325,8 @@ Items = {
 		}
 	},
 
+-- Fishing Job
+
 	['fishingrod'] = {
 		label = 'Fishing Rod',
 		weight = 1500,
@@ -335,6 +338,42 @@ Items = {
 			event = 'fishing:fishstart'
 		}
 	},
+
+	['fishbait'] = {
+		label = 'Fish Bait',
+		weight = 1000,
+		stack = true,
+		close = true,
+	},
+
+	['turtlebait'] = {
+		label = 'Turtle Bait',
+		weight = 1000,
+		stack = true,
+		close = true,
+	},
+
+	['turtle'] = {
+		label = 'Sea Turtle',
+		weight = 2000,
+		stack = true,
+		close = true,
+	},
+
+	['shark'] = {
+		label = 'Shark Meat',
+		weight = 2000,
+		stack = true,
+		close = true,
+	},
+
+	['fish'] = {
+		label = 'Fish',
+		weight = 2000,
+		stack = true,
+		close = true,
+	},
+
 
 	['money'] = {
 		label = 'Money',
@@ -504,6 +543,7 @@ Items = {
 		label = 'Advanced Lockpick',
 		weight = 1000,
 		close = true,
+		stack = true,
 		client = {
 			consume = 0,
 			usetime = 0,
@@ -851,6 +891,13 @@ Items = {
 			usetime = 3500,
 			event = false,
 		}
+	},
+
+	['crowbar'] = {
+		label = 'Crowbar',
+		weight = 5000,
+		stack = false,
+		close = true,
 	},
 
 	

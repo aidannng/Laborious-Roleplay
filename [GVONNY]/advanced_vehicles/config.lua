@@ -43,7 +43,7 @@ Config.maintenance = {
 				['type'] = 'engine',			-- Type of damage: this will damage the vehicle engine
 				['amount_per_km'] = 0.0001,		-- This is the base amount (in percentage) the car will take damage for each km he run [Max health in engine is 1000 so, 0.0001 of 1000 is 0.1 | Max value for handling is get from vehicle handling.meta file]
 				['km_threshold'] = 100,			-- This is the threshold to increase the multiplier, so the multiplier will be increased each time the player pass this km [Set this value as 99999 if you dont want the multiplier working]
-				['multiplier'] = 1.2,			-- This is the damage multiplier, this value will make the car take even more damage after player use the car longer [This value can't be less than 1.0 | Set this value as 1.0 if you dont want the multiplier working]
+				['multiplier'] = 1.5,			-- This is the damage multiplier, this value will make the car take even more damage after player use the car longer [This value can't be less than 1.0 | Set this value as 1.0 if you dont want the multiplier working]
 				['min'] = 0,					-- This is the min value the part health can reach taking damage
 				['destroy_engine'] = false		-- Will make the car stop working if engine reach the min value [Only applicable when type = engine]
 			},
@@ -107,13 +107,13 @@ Config.maintenance = {
 			}
 		},
 		['transmission_oil'] = {
-			['lifespan'] = 15000,
+			['lifespan'] = 7500,
 			['damage'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveMaxFlatVel',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 1.5,
+				['multiplier'] = 2.1,
 				['min'] = 100.0
 			},
 			['repair_item'] = {
@@ -136,7 +136,7 @@ Config.maintenance = {
 				['handId'] = 'fSuspensionForce',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 1.4,
+				['multiplier'] = 2.3,
 				['min'] = 0.1
 			},
 			['repair_item'] = {
@@ -153,13 +153,13 @@ Config.maintenance = {
 			}
 		},
 		['clutch'] = {
-			['lifespan'] = 17500,
+			['lifespan'] = 10000,
 			['damage'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fClutchChangeRateScaleUpShift',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 2.1,
+				['multiplier'] = 3.4,
 				['min'] = 0.1
 			},
 			['repair_item'] = {
@@ -181,7 +181,7 @@ Config.maintenance = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.00005,
 				['km_threshold'] = 100,
-				['multiplier'] = 1.3,
+				['multiplier'] = 1.7,
 				['min'] = 0,
 				['destroy_engine'] = false
 			},
@@ -204,7 +204,7 @@ Config.maintenance = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.00005,
 				['km_threshold'] = 100,
-				['multiplier'] = 1.7,
+				['multiplier'] = 2.0,
 				['min'] = 0,
 				['destroy_engine'] = false
 			},
@@ -228,7 +228,7 @@ Config.maintenance = {
 				['handId'] = 'fInitialDriveForce',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 1.8,
+				['multiplier'] = 2.4,
 				['min'] = 0
 			},
 			['repair_item'] = {
@@ -245,12 +245,12 @@ Config.maintenance = {
 			}
 		},
 		['serpentine_belt'] = {
-			['lifespan'] = 10000,
+			['lifespan'] = 7000,
 			['damage'] = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.001,
 				['km_threshold'] = 100,
-				['multiplier'] = 1.9,
+				['multiplier'] = 2.6,
 				['min'] = 0,
 				['destroy_engine'] = true
 			},

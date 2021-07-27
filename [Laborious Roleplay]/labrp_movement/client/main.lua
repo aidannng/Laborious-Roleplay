@@ -637,6 +637,25 @@ Citizen.CreateThread(function()
 	end
 end)
 
+--[[Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+		playerPed = GetPlayerPed(-1)
+		local vehicle = GetVehiclePedIsIn(playerPed, false)
+		local invehicle = IsPedInVehicle(playerPed, vehicle, true)
+		if invehicle then
+			if IsPedArmed(playerPed, 4) then
+				SetFollowPedCamViewMode(4)
+				print('is aiming gun in vehicle')
+			else
+				print('not aiming')
+			end
+		else
+			print('error')
+		end
+	end
+end)]]
+
 
 
 

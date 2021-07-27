@@ -18,29 +18,24 @@ AddEventHandler('bb-banking:client:registerPlayer', function()
             local ped = PlayerPedId()
             local pos = GetEntityCoords(ped)
             local closestBank, closestDst = BBBankingCore['functions'].GetClosestBank(pos)
-            local waitTime = 300
-
+            local w = 3
             if closestDst < 4.0 then
-                waitTime = 3
                 if IsControlJustPressed(0, 38) then
                     BBBankingCore['functions'].OpenNui()
                 end
 
                 if BBBankingCore['config']['popupText'] and not isPopup then
-                    BBBankingCore['functions'].PopupText(true, 'bank', 'E')
+                    --BBBankingCore['functions'].PopupText(true, 'bank', 'E')
+                    exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "[E] Bank")
                 end
-            else
-                if isPopup then
-                    BBBankingCore['functions'].PopupText(false, 'bank', 'E')
-                end
-
+            elseif closestDst >= 4.01 and closestDst < 4.2 then
+                exports['cd_drawtextui']:HideInteraction()
                 if BBBankingCore['config']['atmPopupText'] == true then
                     local foundATM = false
                     for k, v in pairs(BBBankingCore['config']['atmModels']) do
                         local hash = GetHashKey(v)
                         local atm = IsObjectNearPoint(hash, pos.x, pos.y, pos.z, 1.9)
                         if atm then
-                            waitTime = 3
                             foundATM = true 
                             if IsControlJustPressed(0, 38) then
                                 ExecuteCommand('atm')
@@ -49,6 +44,7 @@ AddEventHandler('bb-banking:client:registerPlayer', function()
                             if not isATMPopup then
                                 BBBankingCore['functions'].PopupText(true, 'atm', 'E')
                             end
+                            w = 3
                         end
                     end
 
@@ -56,11 +52,19 @@ AddEventHandler('bb-banking:client:registerPlayer', function()
                         if isATMPopup then
                             BBBankingCore['functions'].PopupText(false, 'atm', 'E')
                         end
+                        w = 10
                     end
+
+                    if isPopup then
+                        BBBankingCore['functions'].PopupText(false, 'bank', 'E')
+                        w = 10
+                    end
+                else
+                    BBBankingCore['functions'].PopupText(false, 'bank', 'E')
+                    w = 10
                 end
             end
-
-            Wait(waitTime)
+            Wait(w)
         end
     end)
 end)

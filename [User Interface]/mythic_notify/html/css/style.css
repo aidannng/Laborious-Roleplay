@@ -9,7 +9,7 @@ body {
 .notif-container {
     width: 20%;
     position: absolute;
-    right: 22%;
+    right: 0%;
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
@@ -26,12 +26,12 @@ body {
 }
 
 .success {
-    background: rgb(21, 100, 15, 0.95);
+    background: rgba(6, 82, 0, 0.95);
     color: #fff;
 }
 
 .inform {
-    background-color: rgb(51, 112, 165, 0.85);
+    background-color: #335b91;
     color: #ffffff;
 }
 

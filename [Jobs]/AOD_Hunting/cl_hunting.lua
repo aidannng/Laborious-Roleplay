@@ -136,6 +136,7 @@ AddEventHandler('AOD-huntingbait', function()
     exports['mythic_notify']:SendAlert('success', 'Bait placed.. now time to wait', 3000)
     TriggerServerEvent('AOD-hunt:TakeItem', 'huntingbait')
     baitDown(baitLocation)
+    DrawMarker(51, baitLocation, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, false, true, false, false, false)
     busy = false
 end)
 

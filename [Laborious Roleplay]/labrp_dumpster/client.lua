@@ -180,7 +180,7 @@ AddEventHandler('smashparkingmeter', function()
             },
         })
         Wait(30000)
-        ClearPedTasks(ped)
+        ClearPedTasks(PlayerPedId(-1))
         TriggerEvent('payparkingmeter')
         TriggerEvent('startcooldown')
     else

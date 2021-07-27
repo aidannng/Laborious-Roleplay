@@ -257,7 +257,8 @@ AddEventHandler('luke_truckerjob:DutyHandle', function(duty)
                 maxProgress = maxProgress
             })
 
-            exports['mythic_notify']:SendAlert('inform', 'Clocked in. You can now pick and start a job!') 
+            exports['mythic_notify']:SendAlert('inform', 'Clocked in. You can now pick and start a job!', 7500)
+            exports['mythic_notify']:SendAlert('inform', 'Use Radio Channel 42 to speak with other truckers!', 7500)
         end)
         if Config.EnableWorkClothes then
             ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)

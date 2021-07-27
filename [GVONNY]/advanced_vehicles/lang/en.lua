@@ -16,7 +16,7 @@ Lang['en'] = {
     ['inpect_progress'] = "Inspection in progress",
     ['inpect_done'] = "Inspection performed",
     ['inpect_cancel'] = "Inspection cancelled",
-    ['no_scanner'] = "You need a scanner",
+    ['no_scanner'] = "You need a toolbox",
     
     ['upgrade_progress'] = "Upgrade in progress",
     ['upgrade_done'] = "Upgrade done",
