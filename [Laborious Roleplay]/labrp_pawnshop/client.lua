@@ -430,6 +430,7 @@ AddEventHandler('smallcrafting', function()
     
     exports['br-menu']:AddButton("Advanced Lockpick" , "Materials : 5 Scrap Metal" ,'craftadlock' ,'' , 'menutwo')
     exports['br-menu']:AddButton("Casio Watch" , "Materials : 2 Batteries | 5 Plastic" ,'craftcasio' ,'' , 'menutwo')
+	exports['br-menu']:AddButton("Trimmers" , "Materials : 10 Scrap Metal" ,'craft:trimmers' ,'' , 'menuthree')
     
 end)
 

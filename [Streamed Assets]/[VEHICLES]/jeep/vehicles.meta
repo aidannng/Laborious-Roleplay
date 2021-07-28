@@ -6,7 +6,7 @@
     <Item>
       <modelName>JEEP</modelName> <!--2018 Jeep Grand Cherokee TrackHawk made by Zeakor Designs-->
       <txdName>JEEP</txdName>
-      <handlingId>GAUNTLET4</handlingId>
+      <handlingId>POLJEEP</handlingId>
       <gameName>JEEP</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>

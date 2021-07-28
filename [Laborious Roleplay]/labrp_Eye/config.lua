@@ -158,6 +158,20 @@ Citizen.CreateThread(function()
         distance = 2.5
     })
 
+    local gokart = {
+    	`u_m_y_cyclist_01`,
+        }   
+        AddTargetModel(gokart, {
+        options = {
+        {
+            event = "gokart:menu",
+            icon = "fas fa-flag-checkered",
+            label = "Spawn Go Kart",
+        },
+        },
+        job = {"all"},
+        distance = 2.5
+    })
 
     local car = {
         `cs_bankman`,
