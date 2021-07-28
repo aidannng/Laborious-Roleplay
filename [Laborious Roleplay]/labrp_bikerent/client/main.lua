@@ -425,6 +425,7 @@ local blips = {
      {title="Tow Yard", colour=62, id=67, x = -209.3407, y = -1174.193, z = 23.02856},---209.3407, -1174.193, 23.02856
      {title="Beach Rentals", colour=47, id=410, x = -1609.292, y = -1121.301, z = 2.471802}, -- -1609.292, -1121.301, 2.471802
      {title="Dirt Rentals", colour=47, id=376, x = 1123.569, y = 2114.611, z = 55.46448}, -- 1123.569, 2114.611, 55.46448
+     {title="Go Karting", colour=47, id=38, x = -161.3011, y = -2145.837, z = 16.69299}, -- -161.3011, -2145.837, 16.69299
   }
       
 Citizen.CreateThread(function()
@@ -579,6 +580,28 @@ AddEventHandler('spawndune', function()
     exports['mythic_notify']:SendAlert('inform', 'You have purchased a Dune Buggy for $4,500!')
 end)
 
+RegisterNetEvent('windsurf')
+AddEventHandler('windsurf', function()
+    TriggerServerEvent("windsurf")
+end)
+
+RegisterNetEvent('spawnwindsurf')
+AddEventHandler('spawnwindsurf', function()
+    local hash = GetHashKey("windsurfing")
+        
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    local vehicleBuy = CreateVehicle(hash, -1600.47, -1121.209, 2.522339, 90.00, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    Citizen.Wait(1000)
+    TriggerServerEvent('Aidan_isCool:giveKeys')
+    exports['mythic_notify']:SendAlert('inform', 'You have purchased a Windsurf for $1,000!')
+end)
+
 -- dirt rentals
 RegisterNetEvent('sanchez')
 AddEventHandler('sanchez', function()
@@ -676,3 +699,86 @@ AddEventHandler('callforimpound', function()
 end)
 
 
+RegisterNetEvent('gokart:menu')
+AddEventHandler('gokart:menu', function()
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Go Karting",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Spawn Go Kart",
+            txt = "Free",
+            params = {
+                event = "spawngokart",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Return Go Kart",
+            txt = "",
+            params = {
+                event = "returngokart",
+                args = {
+                    number = 2,
+                    id = 3
+                }
+            }
+        },
+    })
+end)
+
+-- RegisterNetEvent('spawngokart')
+-- AddEventHandler('spawngokart', function()
+--     TriggerServerEvent('server:spawngokart')
+-- end)
+
+-- RegisterNetEvent('returngokart')
+-- AddEventHandler('returngokart', function()
+--     TriggerServerEvent('server:returngokart')
+-- end)
+
+RegisterNetEvent('spawngokart')
+AddEventHandler('spawngokart', function()
+    local hash = GetHashKey("veto")
+        
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    local vehicleBuy = CreateVehicle(hash, -163.7407, -2133.93, 15.90112, 180.00, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    Citizen.Wait(1000)
+    TriggerServerEvent('Aidan_isCool:giveKeys')
+    exports['mythic_notify']:SendAlert('inform', 'You have taken out a Go Kart!')
+end)
+
+RegisterNetEvent('returngokart')
+AddEventHandler('returngokart', function()
+    local xPlayer = ESX.GetPlayerData()
+   
+    refundcount = refundcount + 1
+    local bicis = GetVehiclePedIsIn(PlayerPedId(),true)
+    local refundbike = false
+    if refundcount <= 1 then
+        if IsPedInAnyVehicle(PlayerPedId(), false) then
+            exports['mythic_notify']:SendAlert('inform', "You have returned your Go Kart")
+            refundcount = false
+            SetEntityAsMissionEntity(bicis, true, true)
+            TaskLeaveVehicle(PlayerPedId(), vbicis, 0)
+            Wait(1250)
+            DeleteVehicle(bicis) --refundbike
+        else
+            exports['mythic_notify']:SendAlert('error', 'You do not have a Go Kart to return.')
+        end
+    end
+    refundcount = 0
+end)

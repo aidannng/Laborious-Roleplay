@@ -459,6 +459,21 @@ AddEventHandler('craft:adlock', function()
     
 end)
 
+RegisterServerEvent('craft:trimmers')
+AddEventHandler('craft:trimmers', function()
+    math.randomseed(os.time())
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local scrap = xPlayer.getInventoryItem('scrapmetal').count
+
+    if scrap >= 10 then
+        xPlayer.addInventoryItem('trimmers', 1)
+        xPlayer.removeInventoryItem('scrapmetal', 10)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'Insufficient Materials', length = 5000})
+    end  
+    
+end)
+
 RegisterServerEvent('craft:casio')
 AddEventHandler('craft:casio', function()
     math.randomseed(os.time())

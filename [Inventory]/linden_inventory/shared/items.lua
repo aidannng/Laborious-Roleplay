@@ -641,6 +641,13 @@ Items = {
 		close = true,
 	},
 
+	['suspackage'] = {
+		label = 'Suspicious Package',
+		weight = 1500,
+		stack = false,
+		close = true,
+	},
+
 	['pay_welding'] = {
 		label = 'Welding Pay Slip',
 		weight = 5,
@@ -675,6 +682,14 @@ Items = {
 	},
 
 	-- Galaxy Nightclub
+
+	['viproom'] = {
+		label = 'VIP Room Access',
+		weight = 0,
+		stack = false,
+		close = true,
+	},
+
 
 	['ice'] = {
 		label = 'Ice',

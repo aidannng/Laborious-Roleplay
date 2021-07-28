@@ -31,6 +31,19 @@ AddEventHandler('chargedinghy', function()
 	end
 end)
 
+RegisterServerEvent('chargewindsurf')
+AddEventHandler('chargedwindsurf', function()
+	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!
+	local moneycount = xPlayer.getInventoryItem('money').count
+	if moneycount >= 1000 then
+		xPlayer.removeMoney(1000)
+		refundvalue = math.random(750, 1000)
+		TriggerClientEvent('spawnwindsurf', source)
+	else
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+	end
+end)
+
 RegisterServerEvent('chargesqualo')
 AddEventHandler('chargesqualo', function()
 	local xPlayer = ESX.GetPlayerFromId(source) ---- you can use this if you want to charge for the rent!!

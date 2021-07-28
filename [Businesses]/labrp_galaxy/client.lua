@@ -132,7 +132,7 @@ Citizen.CreateThread(function()
             },
 
         },
-        job = {"galaxy"},
+        job = {"all"},
         distance = 2.5
     }) ---192.5934, -1161.798, 23.66882
 
