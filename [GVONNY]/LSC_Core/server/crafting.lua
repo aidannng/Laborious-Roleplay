@@ -1195,7 +1195,7 @@ AddEventHandler('craft:championsparkplugs', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)
+end) ]]
 
 RegisterServerEvent('craft:toolbox')
 AddEventHandler('craft:toolbox', function()
@@ -1209,7 +1209,7 @@ AddEventHandler('craft:toolbox', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end)]]
+end)
 
 RegisterServerEvent('craft:mechanictools')
 AddEventHandler('craft:mechanictools', function()

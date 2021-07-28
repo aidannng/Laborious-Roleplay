@@ -73,6 +73,7 @@ Config.ChangePoint = {
         vector3(128.5714, -755.8417, 242.1436), -- FBI
         vector3(393.5341, 279.3231, 94.97729), -- Galaxy Nightclub
         vector3(-54.31648, -1083.864, 26.36487), -- PDM
+        vector3(-162.5275, 900.3561, 233.4491), -- Sonora Cartel
     }
 }
 Config.Stores = {
