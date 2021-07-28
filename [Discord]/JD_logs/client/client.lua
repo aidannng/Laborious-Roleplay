@@ -35,6 +35,7 @@ WeaponNames = {
 	[tostring(GetHashKey('WEAPON_STUNGUN'))] = 'Stun Gun',
 	[tostring(GetHashKey('WEAPON_FLAREGUN'))] = 'Flare Gun',
 	[tostring(GetHashKey('WEAPON_RAYPISTOL'))] = 'Up-n-Atomizer',
+	[tostring(GetHashKey('WEAPON_PLASMAP'))] = 'PLASMAGAME BLASTER',
 
 	[tostring(GetHashKey('WEAPON_MICROSMG'))] = 'Micro SMG',
 	[tostring(GetHashKey('WEAPON_MACHINEPISTOL'))] = 'Machine Pistol',

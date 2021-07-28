@@ -2,6 +2,7 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj)ESX = obj end)
 
+
 RegisterServerEvent('pawnshop:sellcasio')
 AddEventHandler('pawnshop:sellcasio', function()
     math.randomseed(os.time())
@@ -493,4 +494,16 @@ AddEventHandler('craft:casio', function()
         TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'Insufficient Materials', length = 5000})
     end  
     
+end)
+
+RegisterServerEvent('box:check')
+AddEventHandler('box:check', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local batteryQuantity = xPlayer.getInventoryItem('scrapmetal').count
+    
+    if batteryQuantity >= 1 then
+        TriggerClientEvent('holdbox', source)
+    else
+        TriggerClientEvent('cancelbox', source)
+    end
 end)

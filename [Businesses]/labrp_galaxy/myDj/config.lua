@@ -18,7 +18,7 @@ Config.Locale = 'en'
 Config.useESX = true -- can not be disabled without changing the callbacks
 Config.enableCommand = false
 
-Config.enableMarker = false -- purple marker at the DJ stations
+Config.enableMarker = true -- purple marker at the DJ stations
 
 Config.DJPositions = {
     {
@@ -26,6 +26,14 @@ Config.DJPositions = {
         pos = vector3(376.1671, 275.6176, 92.39929),
         requiredJob = nil, 
         range = 30.0, 
+        volume = 1.0 --[[ do not touch the volume! --]]
+    },
+
+    {
+        name = 'laser',
+        pos = vector3(-1151.895, -1241.341, -79.97437),
+        requiredJob = nil, 
+        range = 40.0, 
         volume = 1.0 --[[ do not touch the volume! --]]
     }
 

@@ -157,9 +157,10 @@ AddEventHandler('beachrental:menu', function()
     exports['br-menu']:SetTitle("Beach Rentals")
     exports['br-menu']:AddButton("Jetski" , "$500" ,'seashark' ,'' , 'meone')
     exports['br-menu']:AddButton("Dinghy" , "$1,000" ,'dinghy' ,'' , 'me2')
-    exports['br-menu']:AddButton("Squalo" , "$1,750" ,'squalo' ,'' , 'me3')
-    exports['br-menu']:AddButton("Speeder" , "$2,500" ,'speeder' ,'' , 'me4')
-    exports['br-menu']:AddButton("Dune Buggy" , "$4,500" ,'dune' ,'' , 'me5')
+    exports['br-menu']:AddButton("Windsurf" , "$1,000" ,'windsurf' ,'' , 'me3')
+    exports['br-menu']:AddButton("Squalo" , "$1,750" ,'squalo' ,'' , 'me4')
+    exports['br-menu']:AddButton("Speeder" , "$2,500" ,'speeder' ,'' , 'me5')
+    exports['br-menu']:AddButton("Dune Buggy" , "$4,500" ,'dune' ,'' , 'me6')
 end)
 
 -- Dirt Rentals

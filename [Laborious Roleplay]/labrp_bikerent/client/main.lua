@@ -453,6 +453,7 @@ local dinghy = false
 local squalo = false
 local speeder = false
 local dune = false
+local windsurf = false
 
 -- Beach Rentals Spawn
 
@@ -478,7 +479,27 @@ AddEventHandler('spawnseashark', function()
     exports['mythic_notify']:SendAlert('inform', 'You have purchased a Jetski for $500!')
 end)
 
+RegisterNetEvent('windsurf')
+AddEventHandler('windsurf', function()
+    TriggerServerEvent("chargewindsurf")
+end)
 
+RegisterNetEvent('spawnwindsurf')
+AddEventHandler('spawnwindsurf', function()
+    local hash = GetHashKey("windsurf")
+        
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    local vehicleBuy = CreateVehicle(hash, -1636.246, -1148.268, 0.04541016, 90.00, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    Citizen.Wait(1000)
+    TriggerServerEvent('Aidan_isCool:giveKeys')
+    exports['mythic_notify']:SendAlert('inform', 'You have purchased a Windsurf for $500!')
+end)
 
 
 RegisterNetEvent('squalo')
@@ -580,27 +601,6 @@ AddEventHandler('spawndune', function()
     exports['mythic_notify']:SendAlert('inform', 'You have purchased a Dune Buggy for $4,500!')
 end)
 
-RegisterNetEvent('windsurf')
-AddEventHandler('windsurf', function()
-    TriggerServerEvent("windsurf")
-end)
-
-RegisterNetEvent('spawnwindsurf')
-AddEventHandler('spawnwindsurf', function()
-    local hash = GetHashKey("windsurfing")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, -1600.47, -1121.209, 2.522339, 90.00, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    TriggerServerEvent('Aidan_isCool:giveKeys')
-    exports['mythic_notify']:SendAlert('inform', 'You have purchased a Windsurf for $1,000!')
-end)
 
 -- dirt rentals
 RegisterNetEvent('sanchez')

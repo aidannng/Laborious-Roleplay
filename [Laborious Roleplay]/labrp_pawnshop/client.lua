@@ -19,6 +19,24 @@ AddEventHandler('esx:setJob', function(job)
   PlayerData.job = job
 end)
 
+--[[RegisterNetEvent('holdbox')
+AddEventHandler('holdbox', function()
+	ExecuteCommand('e box')
+end)
+
+RegisterNetEvent('cancelbox')
+AddEventHandler('cancelbox', function()
+	ExecuteCommand('e c')
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(500)
+		TriggerServerEvent('box:check')
+		print('checking')
+	end
+end)]]
+
 
 
 RegisterNetEvent('openpawnshop')
@@ -404,18 +422,18 @@ end)
 
 
 
-exports['labrp_Eye']:AddBoxZone("smallcrafting", vector3(2514.356, 4215.771, 39.02417), 1.7, 0.9, {
+exports['labrp_Eye']:AddBoxZone("smallcrafting", vector3(192.3868, -2226.607, 6.970703), 0.2, 1.1, {
 	name="smallcrafting",
-	heading=55,
+	heading=90,
 	debugPoly=false,
-	minZ=38.55,
-	maxZ=40.05
+	minZ=5.97,
+	maxZ=8.37
     }, {
         options = {
             {
                 event = 'smallcrafting',
                 icon = 'fas fa-hammer',
-                label = 'Crafting Bench'
+                label = 'Crafting'
             },
 
         },
@@ -426,13 +444,53 @@ exports['labrp_Eye']:AddBoxZone("smallcrafting", vector3(2514.356, 4215.771, 39.
 
 RegisterNetEvent('smallcrafting')
 AddEventHandler('smallcrafting', function()
-    exports['br-menu']:SetTitle("Small Crafting")    
-    
-    exports['br-menu']:AddButton("Advanced Lockpick" , "Materials : 5 Scrap Metal" ,'craftadlock' ,'' , 'menutwo')
-    exports['br-menu']:AddButton("Casio Watch" , "Materials : 2 Batteries | 5 Plastic" ,'craftcasio' ,'' , 'menutwo')
-	exports['br-menu']:AddButton("Trimmers" , "Materials : 10 Scrap Metal" ,'craft:trimmers' ,'' , 'menuthree')
-    
+	TriggerEvent('nh-context:sendMenu', {
+		{
+			id = 1,
+			header = "Small Crafting",
+			txt = ""
+		},
+		{
+			id = 2,
+			header = "Advanced Lockpick",
+			txt = "Materials : 5 Scrap Metal",
+			params = {
+				event = "craftadlock",
+				args = {
+					number = 1,
+					id = 2
+				}
+			}
+		},
+		{
+			id = 3,
+			header = "Casio Watch",
+			txt = "Materials : 2 Batteries | 5 Plastic",
+			params = {
+				event = "craftcasio",
+				args = {
+					number = 2,
+					id = 3
+				}
+			}
+		},
+		{
+			id = 4,
+			header = "Trimmers",
+			txt = "Materials : 10 Scrap Metal",
+			params = {
+				event = "crafts:trimmers",
+				args = {
+					number = 3,
+					id = 4
+				}
+			}
+		}
+	})
 end)
+
+
+
 
 RegisterNetEvent('craftadlock')
 AddEventHandler('craftadlock', function()
@@ -442,4 +500,9 @@ end)
 RegisterNetEvent('craftcasio')
 AddEventHandler('craftcasio', function()
     TriggerServerEvent('craft:casio')
+end)
+
+RegisterNetEvent('crafts:trimmers')
+AddEventHandler('crafts:trimmers', function()
+    TriggerServerEvent('craft:trimmers')
 end)

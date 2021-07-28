@@ -222,6 +222,25 @@ Citizen.CreateThread(function()
         distance = 2.5
     }) ---192.5934, -1161.798, 23.66882
 
+  exports['labrp_Eye']:AddBoxZone("laserdj", vector3(-1151.650, -1239.596, -79.97437), 0.25, 1.3, {
+    name="laserdj",
+    heading=0,
+    debugPoly=true,
+    minZ=-80.75,
+    maxZ=-80.00
+    }, {
+        options = {
+            {
+                event = "myDj:open", 
+                icon = "fas fa-music",
+                label = "Open DJ Menu",
+            },
+
+        },
+        job = {"galaxy"},
+        distance = 2.5
+    }) ---192.5934, -1161.798, 23.66882
+
 --   exports['labrp_Eye']:AddBoxZone("galaxycondom", vector3(382.4250, 270.9500, 91.18604), 0.45, 0.2, {
 --     name="galaxycondom",
 --     heading=75,
