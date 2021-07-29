@@ -71,7 +71,7 @@ Citizen.CreateThread(function()
 		elseif IsControlPressed(0, Config.Button) then -- U by default
 			WarMenu.OpenMenu('scoreboard')
 			shouldDraw = true
-            TriggerEvent('playclipanim')
+            ExecuteCommand('me checks something')
 		else
 			shouldDraw =false
 		end
