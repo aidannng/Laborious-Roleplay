@@ -297,4 +297,85 @@ end)
 
 
 
---exports['linden_inventory']:OpenStash({ id = 'Hospital Locker', slots = 70, job= 'ambulance'})
+---------------------
+--     VIP ROOM    --
+---------------------
+
+
+RegisterServerEvent('galaxy:vodka2')
+AddEventHandler('galaxy:vodka2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('spacevodka', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Space Vodka!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:whiskey2')
+AddEventHandler('galaxy:whiskey2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('multiversalwhiskey', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Multiversal Whiskey!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:cocktail12')
+AddEventHandler('galaxy:cocktail12', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('sourblast', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Sweet Blast Cocktail!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:cocktail22')
+AddEventHandler('galaxy:cocktail22', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('bluesensation', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Blue Sensation Cocktail!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:cocktail32')
+AddEventHandler('galaxy:cocktail32', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('eliptical', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a The Eliptical Cocktail!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:wine2')
+AddEventHandler('galaxy:wine2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('starwine', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Star Wine!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:beer2')
+AddEventHandler('galaxy:beer2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('worldlybeer', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Worldy Beer!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:soda2')
+AddEventHandler('galaxy:soda2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('cosmicsoda', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Cosmic Soda!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:burger2')
+AddEventHandler('galaxy:burger2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('galaxyburger', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken a Galaxy Burger!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:fries2')
+AddEventHandler('galaxy:fries2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('solarfries', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken Galaxy Fries!', length = 10000})
+end)
+
+RegisterServerEvent('galaxy:wings2')
+AddEventHandler('galaxy:wings2', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('universalwings', 1)
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'inform', text = 'You have taken Galaxy Wings!', length = 10000})
+end)
+

@@ -443,6 +443,44 @@ Citizen.CreateThread(function()
                 distance = 2.5
             }) ---192.5934, -1161.798, 23.66882
 
+        AddBoxZone("stevepent1", vector3(-306.3500, -721.8500, 28.01611), 0.25, 0.35, {
+            name="stevepent1",
+            heading=160,
+            debugPoly=false,
+            minZ=27.80,
+            maxZ=28.65
+            }, {
+                options = {
+                    {
+                        event = "steve:lift", 
+                        icon = "fas fa-clipboard",
+                        label = "elevator",
+                    },
+        
+                },
+                job = {"all"},
+                distance = 2.5
+            }) ---192.5934, -1161.798, 23.66882
+
+        AddBoxZone("stevepent2", vector3(-287.4000, -723.9000, 125.4586), 0.25, 0.35, {
+            name="stevepent2",
+            heading=70,
+            debugPoly=false,
+            minZ=125.25,
+            maxZ=126.10
+            }, {
+                options = {
+                    {
+                        event = "steve:lift", 
+                        icon = "fas fa-clipboard",
+                        label = "elevator",
+                    },
+        
+                },
+                job = {"all"},
+                distance = 2.5
+            }) ---192.5934, -1161.798, 23.66882
+
             local sonoraboats = {
                 `a_m_y_beach_01`,
                 }   

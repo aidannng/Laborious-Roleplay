@@ -67,7 +67,7 @@ Config.maintenance = {
 				['handId'] = 'fTractionCurveMax',	-- handling.meta entry
 				['amount_per_km'] = 0.0001,			-- Setting 0.0001 (on amount_per_km), 100 (on km_threshold) and 1.2 (on multiplier) the car will run approximatelly 1.300 km before reach the min value
 				['km_threshold'] = 100,
-				['multiplier'] = 2.8,
+				['multiplier'] = 4.2,
 				['min'] = 0.5
 			},
 			['repair_item'] = {
@@ -90,7 +90,7 @@ Config.maintenance = {
 				['handId'] = 'fBrakeForce',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 2.7,
+				['multiplier'] = 3.5,
 				['min'] = 0.1
 			},
 			['repair_item'] = {
@@ -113,7 +113,7 @@ Config.maintenance = {
 				['handId'] = 'fInitialDriveMaxFlatVel',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 3.1,
+				['multiplier'] = 5.4,
 				['min'] = 100.0
 			},
 			['repair_item'] = {
@@ -136,7 +136,7 @@ Config.maintenance = {
 				['handId'] = 'fSuspensionForce',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 3.3,
+				['multiplier'] = 4.2,
 				['min'] = 0.1
 			},
 			['repair_item'] = {
@@ -159,7 +159,7 @@ Config.maintenance = {
 				['handId'] = 'fClutchChangeRateScaleUpShift',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 4.4,
+				['multiplier'] = 8.5,
 				['min'] = 0.1
 			},
 			['repair_item'] = {
@@ -181,7 +181,7 @@ Config.maintenance = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.00005,
 				['km_threshold'] = 100,
-				['multiplier'] = 2.7,
+				['multiplier'] = 4.8,
 				['min'] = 0,
 				['destroy_engine'] = false
 			},
@@ -204,7 +204,7 @@ Config.maintenance = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.00005,
 				['km_threshold'] = 100,
-				['multiplier'] = 3.0,
+				['multiplier'] = 4.1,
 				['min'] = 0,
 				['destroy_engine'] = false
 			},
@@ -228,7 +228,7 @@ Config.maintenance = {
 				['handId'] = 'fInitialDriveForce',
 				['amount_per_km'] = 0.0001,
 				['km_threshold'] = 100,
-				['multiplier'] = 3.4,
+				['multiplier'] = 6.2,
 				['min'] = 0
 			},
 			['repair_item'] = {
@@ -250,7 +250,7 @@ Config.maintenance = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.001,
 				['km_threshold'] = 100,
-				['multiplier'] = 3.6,
+				['multiplier'] = 5.5,
 				['min'] = 0,
 				['destroy_engine'] = true
 			},
@@ -298,7 +298,7 @@ Config.maintenance = {
 -- Upgrades availables
 Config.upgrades = {
 	['default'] = {
-		--[[ ['lowering_springs'] = {	-- Index
+		['lowering_springs'] = {	-- Index
 			['improvements'] = {
 				['type'] = 'CHandlingData',			-- CHandlingData: will affect the vehicle handling
 				['handId'] = 'fSuspensionRaise',	-- The handling.meta entry 
@@ -369,7 +369,7 @@ Config.upgrades = {
 				['fixed_value'] = false
 			},
 			['item'] = {
-				['name'] = 'lifted_coil_overs',
+				['name'] = 'lifted_coil_overs2',
 				['amount'] = 1,
 				['time'] = 10
 			},
@@ -390,7 +390,7 @@ Config.upgrades = {
 				['fixed_value'] = false
 			},
 			['item'] = {
-				['name'] = 'lifted_coil_overs2',
+				['name'] = 'lifted_coil_overs',
 				['amount'] = 1,
 				['time'] = 10
 			},
@@ -404,7 +404,7 @@ Config.upgrades = {
 			['class'] = 'suspension'
 		},
 
-		['single_turbo'] = {
+		--[['single_turbo'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',

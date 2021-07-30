@@ -249,7 +249,7 @@ AddEventHandler('craft:spring', function()
     end
 end)
 
---[[ RegisterServerEvent('craft:loweringspring')
+RegisterServerEvent('craft:loweringspring')
 AddEventHandler('craft:loweringspring', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -261,7 +261,7 @@ AddEventHandler('craft:loweringspring', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have enough iron", })
     end
-end) ]]
+end)
 
 RegisterServerEvent('craft:strut')
 AddEventHandler('craft:strut', function()
@@ -277,7 +277,7 @@ AddEventHandler('craft:strut', function()
     end
 end)
 
---[[ RegisterServerEvent('craft:racestrut')
+RegisterServerEvent('craft:racestrut')
 AddEventHandler('craft:racestrut', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -291,7 +291,7 @@ AddEventHandler('craft:racestrut', function()
     end
 end)
 
-RegisterServerEvent('craft:nutsandbolts')
+--[[RegisterServerEvent('craft:nutsandbolts')
 AddEventHandler('craft:nutsandbolts', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -392,7 +392,7 @@ AddEventHandler('craft:stocksuspension', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
-end)
+end) ]]
 
 RegisterServerEvent('craft:loweringsprings')
 AddEventHandler('craft:loweringsprings', function()
@@ -426,7 +426,7 @@ AddEventHandler('craft:coilovers', function()
     end
 end)
 
-RegisterServerEvent('craft:racecoilovers')
+--[[RegisterServerEvent('craft:racecoilovers')
 AddEventHandler('craft:racecoilovers', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -440,7 +440,7 @@ AddEventHandler('craft:racecoilovers', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
-end)
+end)]]
 
 RegisterServerEvent('craft:stancedcoilovers')
 AddEventHandler('craft:stancedcoilovers', function()
@@ -488,7 +488,7 @@ AddEventHandler('craft:liftedcoilovers2', function()
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
-end) ]]
+end)
 
 
 --############################
