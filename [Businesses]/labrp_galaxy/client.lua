@@ -225,7 +225,7 @@ Citizen.CreateThread(function()
   exports['labrp_Eye']:AddBoxZone("laserdj", vector3(-1151.650, -1239.596, -79.97437), 0.25, 1.3, {
     name="laserdj",
     heading=0,
-    debugPoly=true,
+    debugPoly=false,
     minZ=-80.75,
     maxZ=-80.00
     }, {
@@ -241,24 +241,85 @@ Citizen.CreateThread(function()
         distance = 2.5
     }) ---192.5934, -1161.798, 23.66882
 
---   exports['labrp_Eye']:AddBoxZone("galaxycondom", vector3(382.4250, 270.9500, 91.18604), 0.45, 0.2, {
---     name="galaxycondom",
---     heading=75,
---     debugPoly=true,
---     minZ=91.30,
---     maxZ=92.40
---     }, {
---         options = {
---             {
---                 event = "givecondom", 
---                 icon = "fas fa-restroom",
---                 label = "Condom Dispensor",
---             },
+  exports['labrp_Eye']:AddBoxZone("stevepent", vector3(-292.1000, -730.8000, 130.4293), 0.55, 1.3, {
+    name="stevepent",
+    heading=60,
+    debugPoly=false,
+    minZ=130.00,
+    maxZ=130.55
+    }, {
+        options = {
+            {
+                event = "myDj:open", 
+                icon = "fas fa-music",
+                label = "Open DJ Menu",
+            },
 
---         },
---         job = {"all"},
---         distance = 2.5
---     }) ---192.5934, -1161.798, 23.66882
+        },
+        job = {"all"},
+        distance = 2.5
+    }) ---192.5934, -1161.798, 23.66882
+
+  exports['labrp_Eye']:AddBoxZone("stevepentliquor", vector3(-289.3000, -725.1000, 126.1831), 0.6, 1.65, {
+    name="stevepentliquor",
+    heading=160,
+    debugPoly=false,
+    minZ=125.30,
+    maxZ=125.60
+    }, {
+        options = {
+            {
+                event = "galaxy:takeliquor", 
+                icon = "fas fa-beer",
+                label = "Take Liquor",
+            },
+
+        },
+        job = {"all"},
+        distance = 2.5
+    }) ---192.5934, -1161.798, 23.66882
+
+  exports['labrp_Eye']:AddBoxZone("galaxycraft1", vector3(383.1000, 278.2000, 94.97729), 0.5, 0.7, {
+    name="galaxycraft1",
+    heading=75,
+    debugPoly=false,
+    minZ=94.05,
+    maxZ=94.90
+    }, {
+        options = {
+            {
+                event = "galaxy:craftdrink2",
+                icon = "fas fa-glass-martini", 
+                label = "Make Drink",
+            },
+            {
+                event = "galaxy:craftfood2",
+                icon = "fas fa-hamburger", 
+                label = "Make Food",
+            },
+            },
+            job = {"galaxy"},
+            distance = 2.5
+        }) ---192.5934, -1161.798, 23.66882
+
+  exports['labrp_Eye']:AddBoxZone("galaxycondom", vector3(382.3000, 270.1000, 91.18604), 0.50, 0.55, {
+    name="galaxycondom",
+    heading=75,
+    debugPoly=false,
+    minZ=91.30,
+    maxZ=92.40
+    }, {
+        options = {
+            {
+                event = "givecondom", 
+                icon = "fas fa-restroom",
+                label = "Condom Dispensor",
+            },
+
+        },
+        job = {"all"},
+        distance = 2.5
+    }) ---192.5934, -1161.798, 23.66882
 
 end)
 
@@ -312,6 +373,27 @@ AddEventHandler('galaxy:craftfood', function()
     exports['br-menu']:AddButton("Make Galaxy Burger" , "Burger Bun & Ground Beef & Cheese" ,'galaxy:burger' ,'' , 'meone')
     exports['br-menu']:AddButton("Make Solar Fries" , "Potato" ,'galaxy:fries' ,'' , 'me2')
     exports['br-menu']:AddButton("Make Universal Wings" , "Frozen Wings" ,'galaxy:wings' ,'' , 'me3')
+end)
+
+RegisterNetEvent('galaxy:craftdrink2')
+AddEventHandler('galaxy:craftdrink2', function()
+    exports['br-menu']:SetTitle("Galaxy Nightclub VIP Room - Take Drink")
+    exports['br-menu']:AddButton("Take Space Vodka" , "" ,'galaxy:vodka2' ,'' , 'meone')
+    exports['br-menu']:AddButton("Take Multiversal Whiskey" , "" ,'galaxy:whiskey2' ,'' , 'me2')
+    exports['br-menu']:AddButton("Take Sweet Blast Cocktail" , "" ,'galaxy:cocktail12' ,'' , 'me3')
+    exports['br-menu']:AddButton("Take Blue Sensation Cocktail" , "" ,'galaxy:cocktail22' ,'' , 'me4')
+    exports['br-menu']:AddButton("Take The Eliptical Cocktail" , "" ,'galaxy:cocktail32' ,'' , 'me5')
+    exports['br-menu']:AddButton("Take Star Wine" , "" ,'galaxy:wine2' ,'' , 'me6')
+    exports['br-menu']:AddButton("Take Wordly Beer" , "" ,'galaxy:beer2' ,'' , 'me7')
+    exports['br-menu']:AddButton("Take Cosmic Soda" , "" ,'galaxy:soda2' ,'' , 'me8')
+end)
+
+RegisterNetEvent('galaxy:craftfood2')
+AddEventHandler('galaxy:craftfood2', function()
+    exports['br-menu']:SetTitle("Galaxy Nightclub VIP Room - Take Food")
+    exports['br-menu']:AddButton("Take Galaxy Burger" , "" ,'galaxy:burger2' ,'' , 'meone')
+    exports['br-menu']:AddButton("Take Solar Fries" , "" ,'galaxy:fries2' ,'' , 'me2')
+    exports['br-menu']:AddButton("Take Universal Wings" , "" ,'galaxy:wings2' ,'' , 'me3')
 end)
 
 RegisterNetEvent('galaxy:takemixer')
@@ -387,7 +469,7 @@ AddEventHandler('galaxymenu2', function()
 		{
             id = 2,
             header = "Space Vodka",
-            txt = "Vodka & Ice - Free",
+            txt = "Vodka & Ice - $15",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -399,7 +481,7 @@ AddEventHandler('galaxymenu2', function()
         {
             id = 3,
             header = "Multiversal Whiskey",
-            txt = "Whiskey & Ice - Free",
+            txt = "Whiskey & Ice - $20",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -411,7 +493,7 @@ AddEventHandler('galaxymenu2', function()
         {
             id = 4,
             header = "Sweet Blast Cocktail",
-            txt = "Sweet Mango Mixer, Ice, And Vodka - Free",
+            txt = "Sweet Mango Mixer, Ice, And Vodka - $15",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -423,7 +505,7 @@ AddEventHandler('galaxymenu2', function()
         {
             id = 5,
             header = "Blue Sensation Cocktail",
-            txt = "Blueberry Daquiri Mixer, Ice, And Vodka - Free",
+            txt = "Blueberry Daquiri Mixer, Ice, And Vodka - $15",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -435,7 +517,7 @@ AddEventHandler('galaxymenu2', function()
         {
             id = 6,
             header = "The Eliptical Cocktail",
-            txt = "Strawberry Daquiri Mixer, Ice, And Vodka - Free",
+            txt = "Strawberry Daquiri Mixer, Ice, And Vodka - $15",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -447,7 +529,7 @@ AddEventHandler('galaxymenu2', function()
         {
             id = 7,
             header = "Star Wine",
-            txt = "Red Wine - Free",
+            txt = "Red Wine & Star Mixer - $15",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -459,7 +541,7 @@ AddEventHandler('galaxymenu2', function()
         {
             id = 8,
             header = "Wordly Beer",
-            txt = "Beer - Free",
+            txt = "Beer & Worldy Mixer - $10",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -471,7 +553,7 @@ AddEventHandler('galaxymenu2', function()
         {
             id = 9,
             header = "Cosmic Soda",
-            txt = "Soda Can - Free",
+            txt = "Soda & Cosmic Mixer - $5",
             params = {
                 event = "galaxymenu2",
                 args = {
@@ -506,7 +588,7 @@ AddEventHandler('galaxymenu3', function()
 		{
             id = 2,
             header = "Galaxy Burger",
-            txt = "Buger Bun, Ground Beef, Cheese - Free",
+            txt = "Buger Bun, Ground Beef, Cheese - $12",
             params = {
                 event = "galaxymenu3",
                 args = {
@@ -518,7 +600,7 @@ AddEventHandler('galaxymenu3', function()
         {
             id = 3,
             header = "Solar Fries",
-            txt = "French Fries, Ketchup, Mayo - Free",
+            txt = "French Fries, Ketchup, Mayo - $8",
             params = {
                 event = "galaxymenu3",
                 args = {
@@ -530,7 +612,7 @@ AddEventHandler('galaxymenu3', function()
         {
             id = 4,
             header = "Universal Wings",
-            txt = "Frozen Wings, Buffalo Sauce - Free",
+            txt = "Frozen Wings, Buffalo Sauce - $15",
             params = {
                 event = "galaxymenu3",
                 args = {

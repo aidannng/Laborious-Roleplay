@@ -69,7 +69,7 @@ Citizen.CreateThread(function()
 				timer = 1000
 				
 				vehicleData = {}
-				vehicleData.plate = GetVehicleNumberPlateText(veh)
+				vehicleData.plate = GetVehicleNumberPlateText(veh):gsub("^%s*(.-)%s*$", "%1")
 				vehicleData.model = GetEntityModel(veh)
 				vehicleData.name = string.lower(GetDisplayNameFromVehicleModel(vehicleData.model))
 				vehicleData.veh = veh
@@ -363,6 +363,7 @@ end)
 
 RegisterNetEvent('advanced_vehicles:showStatusUI')
 AddEventHandler('advanced_vehicles:showStatusUI', function()
+	print(vehicleData.loaded)
 	if vehicleData ~= nil and vehicleData ~={} and vehicleData.loaded == true then
 		local ped = PlayerPedId()
 		local veh = GetVehiclePedIsIn(ped)

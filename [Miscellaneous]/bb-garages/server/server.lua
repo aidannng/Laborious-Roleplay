@@ -69,16 +69,16 @@ ESX.RegisterServerCallback('bb-garages:server:getOwnedVehicles', function(source
                 local stats = json.decode(vehicle.stats)
                 local status = vehicle.state
                 if status == 'unknown' then
-                    local isNearby = IsNearby(vehicle.plate, nearbyVehicles)
-                    if isNearby == true then
+                    --local isNearby = IsNearby(vehicle.plate, nearbyVehicles)
+                    --if isNearby == true then
                         if freeSlots > 0 then
                             table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, parkButton(vehicle.plate), 'border-left-success'})
                         else
                             table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, nospaceButton(vehicle.plate), 'border-left-danger'})
                         end
-                    else
-                        table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, unknownButton(vehicle.plate), 'border-left-danger'})
-                    end
+                    --else
+                        --table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, unknownButton(vehicle.plate), 'border-left-danger'})
+                    --end
                 elseif status == 'impound' then
                     local parking = json.decode(vehicle.parking)
                     table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, garageButton('Impounded', vehicle.plate, 'impound'), 'border-left-warning'})
@@ -104,6 +104,10 @@ ESX.RegisterServerCallback('bb-garages:server:getOwnedVehicles', function(source
         cb(vehiclesTable)
     end)
 end)
+
+function trim(s)
+    return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+end
 
 RegisterServerEvent('bb-garages:server:setFirstData')
 AddEventHandler('bb-garages:server:setFirstData', function()
@@ -170,7 +174,7 @@ AddEventHandler('bb-garages:server:parkVehicle', function(garage, slots, plate, 
             json.encode({username = "LABRP | Garage Logs", content = "**" .. xPlayer.getName() .. "** parked the vehicle with the plate **".. plate .. "** in **" .. garage .. "** " , avatar_url=discord_webhook.image }), {['Content-Type'] = 'application/json'}) 
 
 
-            TriggerClientEvent('bb-garages:client:createParkingVehicle', src, false, serverConfig['garages'][garage]['slots'][slots[tonumber("1")]])
+            --TriggerClientEvent('bb-garages:client:createParkingVehicle', src, false, serverConfig['garages'][garage]['slots'][slots[tonumber("1")]])
         else
             print('^1[bb-garages] ^7' .. GetPlayerName(src) .. ' just tried to expoilt the garages.')
         end

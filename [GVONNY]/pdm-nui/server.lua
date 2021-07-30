@@ -354,7 +354,7 @@ end)
 RegisterServerEvent("getbills")
 AddEventHandler("getbills", function()
     local src = source
-    MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'cardealer' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0",{}, function(result2)
+    MySQL.Async.fetchAll("SELECT ower.firstname, ower.lastname, creator.firstname as employeefirstname, creator.lastname as employeelastname, billing.amount, billing.term_length, billing.days_overdue FROM users ower, billing, users creator  WHERE target = 'cardealer' and billing.identifier = ower.identifier AND billing.sender = creator.identifier AND billing.amount > 0 ORDER BY ower.firstname",{}, function(result2)
         if(result2 ~= nil and #result2>0) then
             for x=1,#result2,1 do
 
@@ -364,7 +364,7 @@ AddEventHandler("getbills", function()
                 local employeelastname = result2[x].employeelastname
                 local amount = result2[x].amount
                 local termlength = result2[x].term_length
-                local daysoverdue = result2[x].days_overdue
+                local daysoverdue = result2[x].days_overdue / 2
 
                 TriggerClientEvent("pdm:addtobillinglist", src, firstname, lastname, employeefirstname, employeelastname, amount, termlength, daysoverdue)
             end
