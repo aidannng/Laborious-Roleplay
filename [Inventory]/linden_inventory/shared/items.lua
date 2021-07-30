@@ -353,6 +353,13 @@ Items = {
 		close = true,
 	},
 
+	['stevecard'] = {
+		label = "Steve's Card",
+		weight = 0,
+		stack = true,
+		close = true,
+	},
+
 	['turtle'] = {
 		label = 'Sea Turtle',
 		weight = 2000,
@@ -598,6 +605,13 @@ Items = {
 		}
 	},
 
+	['gps'] = {
+		label = 'GPS',
+		weight = 100,
+		close = true,
+		stack = true,
+	},
+
 	['redlaptop'] = {
 		label = 'Red Laptop',
 		weight = 3000,
@@ -693,77 +707,77 @@ Items = {
 
 	['ice'] = {
 		label = 'Ice',
-		weight = 0,
+		weight = 10,
 		stack = true,
 		close = true,
 	},
 
 	['orangemixer'] = {
 		label = 'Sweet Mango Mixer',
-		weight = 0,
+		weight = 50,
 		stack = true,
 		close = true,
 	},
 
 	['redmixer'] = {
 		label = 'Strawberry Daquiri Mixer',
-		weight = 0,
+		weight = 50,
 		stack = true,
 		close = true,
 	},
 
 	['bluemixer'] = {
 		label = 'Blueberry Daquiri Mixer',
-		weight = 0,
+		weight = 50,
 		stack = true,
 		close = true,
 	},
 
 	['shaker'] = {
 		label = 'Shaker',
-		weight = 0,
+		weight = 300,
 		stack = true,
 		close = true,
 	},
 
 	['beef'] = {
 		label = 'Ground Beef',
-		weight = 0,
+		weight = 400,
 		stack = true,
 		close = true,
 	},
 
 	['cheese'] = {
 		label = 'Cheese',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 	},
 
 	['bun'] = {
 		label = 'Burger Bun',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 	},
 
 	['potato'] = {
 		label = 'Potato',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 	},
 
 	['wings'] = {
 		label = 'Frozen Wings',
-		weight = 0,
+		weight = 500,
 		stack = true,
 		close = true,
 	},
 
 	['galaxyburger'] = {
 		label = 'Galaxy Burger',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -777,7 +791,7 @@ Items = {
 
 	['solarfries'] = {
 		label = 'Solar Fries',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -790,7 +804,7 @@ Items = {
 
 	['universalwings'] = {
 		label = 'Universal Wings',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -803,7 +817,7 @@ Items = {
 
 	['cosmicsoda'] = {
 		label = 'Cosmic Soda',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -817,7 +831,7 @@ Items = {
 
 	['worldlybeer'] = {
 		label = 'Worldly Beer',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -831,7 +845,7 @@ Items = {
 
 	['starwine'] = {
 		label = 'Star Wine',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -845,7 +859,7 @@ Items = {
 
 	['sourblast'] = {
 		label = 'Sweet Blast Cocktail',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -858,7 +872,7 @@ Items = {
 
 	['bluesensation'] = {
 		label = 'Blue Sensation Cocktail',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -871,7 +885,7 @@ Items = {
 
 	['eliptical'] = {
 		label = 'The Eliptical Cocktail',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -884,7 +898,7 @@ Items = {
 
 	['multiversalwhiskey'] = {
 		label = 'Multiversal Whiskey',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -897,7 +911,7 @@ Items = {
 
 	['spacevodka'] = {
 		label = 'Space Vodka',
-		weight = 0,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
