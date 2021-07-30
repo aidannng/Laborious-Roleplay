@@ -179,6 +179,25 @@ AddEventHandler("fbi:Lift:f01", function()
     SetEntityCoords(ped, 136.2725 , -760.5516 , 45.1436 ) 
 end) 
 
+RegisterNetEvent('steve:lift')
+AddEventHandler('steve:lift', function()
+    exports['br-menu']:SetTitle("Steve's Penthouse")
+    exports['br-menu']:AddButton("Penthouse" , "Go to the Penthouse" ,'steve:pent' ,'' , 'menuone')
+    exports['br-menu']:AddButton("Garage" , "Go to the Garage" ,'steve:garage' ,'' , "me2" )
+end)
+
+RegisterNetEvent("steve:pent")
+AddEventHandler("steve:pent", function()    
+    local ped = PlayerPedId()
+    SetEntityCoords(ped, -288.3033, -722.4, 125.4586 ) 
+end) 
+
+RegisterNetEvent("steve:garage")
+AddEventHandler("steve:garage", function()   
+    local ped = PlayerPedId()
+    SetEntityCoords(ped, -304.9714, -721.2264, 28.01611 ) 
+end) 
+
 -- Citizen.CreateThread(function()
 --     exports['labrp_Eye']:AddBoxZone("FBILift1", vector3(136.6022, -763.0417, 45.74219), 1.0, 0.8, {
 --     name="FBILift1",

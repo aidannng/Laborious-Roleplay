@@ -18,5 +18,6 @@ Config.Stashes = {
 
 	{ coords = vector3(118.6418, -729.1649, 242.1436), slots = 60, name = 'FBI Personal Locker', owner = true, job = 'fbi' }, -- FBI PErsonal Lockers
 	{ coords = vector3(385.5692, 256.4044, 92.04541), slots = 100, name = 'Galaxy Stash', owner = true, job = 'galaxy' }, -- Galaxy Owner Stash
+	{ coords = vector3(-262.378, -725.2088, 125.4586), slots = 60, name = 'Penthouse Stash', owner = true, job = 'galaxy' }, -- Steve's Penthouse Stash
 
 }

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
 
 html {
-	font-family: 'Signika';
+	font-family: 'Ubuntu', sans-serif;
 	user-select: none;
 	color: white;
 }
@@ -12,7 +12,6 @@ body {
 	justify-content: center;
 	text-shadow: 1px 1px 0px black;
 	overflow:hidden;
-	border-radius: 12px;
 }
 
 .inventory-main {
@@ -21,31 +20,39 @@ body {
 	margin: auto;
 	opacity: 0.9;
 	overflow: hidden;
-	border-radius: 12px;
 }
 
-.inventory-main-leftside, .inventory-main-rightside {
-	width: 515px;
+.inventory-main-leftside {
+	width: 514px;
 	height: 408px;
 	overflow: auto;
-	border-radius: 12px;
+	direction: ltr;
+}
+
+.inventory-main-rightside {
+	width: 514px;
+	height: 408px;
+	overflow: auto;
+	direction: rtl;
+	margin-left: -4px;
 }
 
 .ItemBoxes {
 	position: relative;
 	width: 100px;
 	height: 100px;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.36);
 	float: left;
+	top: -2px;
 	margin: 2px 1px 0 1px;
-	outline: 1px solid rgba(33, 33, 33, 0);
-	outline-offset: -1px;
-	border-radius: 12px;
+	/* outline: 1px solid rgba(33,33,33,0.4); */
+	/* outline-offset: -1px; */
+	border-radius: 7px;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);;
 } 
 
 .ItemBoxes:hover {
-    background-color: rgba(226, 245, 245, 0);
-    box-shadow: 0 0 5px rgb(75, 122, 184) inset;	
+	background-color: rgba(0, 0, 0, 0.25);
 }
 
 .inventory-main-leftside > .ItemBoxes:nth-child(1):after {
@@ -58,16 +65,16 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: "Basic";
+	font-family: 'Ubuntu', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
 	background-color: white;
 	color: black;
 	text-shadow: none;
-	outline: 1px solid rgba(0, 0, 0, 0);
-	outline-offset: -1px;
-	border-radius: 12px;
+	border-radius: 10px;
+	/* outline: 1px solid rgba(0,0,0,0.9); */
+	/* outline-offset: -1px; */
 }
 
 .inventory-main-leftside > .ItemBoxes:nth-child(2):after {
@@ -80,16 +87,16 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: "Basic";
+	font-family: 'Ubuntu', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
 	background-color: white;
 	color: black;
 	text-shadow: none;
-	outline: 1px solid rgba(0, 0, 0, 0);
-	outline-offset: -1px;
-	border-radius: 12px;
+	border-radius: 10px;
+	/* outline: 1px solid rgba(0,0,0,0.9); */
+	/* outline-offset: -1px; */
 }
 
 .inventory-main-leftside > .ItemBoxes:nth-child(3):after {
@@ -102,16 +109,16 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: "Basic";
+	font-family: 'Ubuntu', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
 	background-color: white;
 	color: black;
 	text-shadow: none;
-	outline: 1px solid rgba(0, 0, 0, 0);
-	outline-offset: -1px;
-	border-radius: 12px;
+	border-radius: 10px;
+	/* outline: 1px solid rgba(0,0,0,0.9); */
+	/* outline-offset: -1px; */
 }
 
 .inventory-main-leftside > .ItemBoxes:nth-child(4):after {
@@ -124,16 +131,16 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: "Basic";
+	font-family: 'Ubuntu', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
 	background-color: white;
 	color: black;
 	text-shadow: none;
-	outline: 1px solid rgba(0, 0, 0, 0);
-	outline-offset: -1px;
-	border-radius: 12px;
+	border-radius: 10px;
+	/* outline: 1px solid rgba(0,0,0,0.9); */
+	/* outline-offset: -1px; */
 }
 
 .inventory-main-leftside > .ItemBoxes:nth-child(5):after {
@@ -146,16 +153,16 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: "Basic";
+	font-family: 'Ubuntu', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
 	background-color: white;
 	color: black;
 	text-shadow: none;
-	outline: 1px solid rgba(0, 0, 0, 0);
-	outline-offset: -1px;
-	border-radius: 12px;
+	border-radius: 10px;
+	/* outline: 1px solid rgba(0,0,0,0.9); */
+	/* outline-offset: -1px; */
 }
 
 .itemboxes-container {
@@ -164,10 +171,10 @@ body {
 	max-width: 550px;
 	width: fit-content;
 	position: absolute;
-	left: 47%;
+	left: 50%;
+	transform: translateX(-50%);
 	bottom: 15%;
 	overflow: hidden;
-	border-radius: 12px;
 }
 
 .template {
@@ -183,9 +190,8 @@ body {
 	height: 130px;
 	z-index: 1;
 	background-color: rgba(0, 0, 0, 0.2);
-	outline: 1px solid rgba(38,38,38,0.1);
-	outline-offset: -1px;
-	border-radius: 12px;
+	/* outline: 1px solid rgba(38,38,38,0.1); */
+	/* outline-offset: -1px; */
 }
 
 .hotbar-container {
@@ -198,21 +204,18 @@ body {
 	z-index: 1;
 	transform: translate(-50%, 0%);
 	overflow: hidden;
-	border-radius: 12px;
 }
 
 .hotslot-container {
 	position: relative;
 	float: left;
-	margin: 0.5px;
 	margin: 1px;
 	width: 110px;
 	height: 110px;
 	z-index: 1;
 	background-color: rgba(0, 0, 0, 0.2);
-	outline: 1px solid rgba(38,38,38,0.1);
-	outline-offset: -1px;
-	border-radius: 12px;
+	/* outline: 1px solid rgba(38,38,38,0.1); */
+	/* outline-offset: -1px; */
 }
 
 #itembox-action {
@@ -223,12 +226,11 @@ body {
 	left: 0;
 	font-size: 13px;
 	background-color: white;
-	outline: 1px solid rgba(38,38,38,0.1);
-	outline-offset: -1px;
+	/* outline: 1px solid rgba(38,38,38,0.1); */
+	/* outline-offset: -1px; */
 	color: #111;
 	text-shadow: none !important;
 	font-weight: 700;
-
 }
 
 .itembox-img img {
@@ -287,9 +289,9 @@ body {
 	text-align: center;
 	text-transform: uppercase;
 	font-variant: small-caps;
-	outline: 1px solid rgba(33, 33, 33, 0);
-	outline-offset: -1px;
 	border-radius: 5px;
+	/* outline: 1px solid rgba(33,33,33,0.4); */
+	/* outline-offset: -1px; */
 }
 
 .item-slot-durability-bar {
@@ -298,7 +300,7 @@ body {
 	width: 100%;
 	top: -4px;
 	background-color: #1d1d1de8;
-	outline: 1px solid rgba(38, 38, 38, 0);
+	outline: 1px solid rgba(38,38,38,0.2);
 	outline-offset: -1px;
 }
 
@@ -317,7 +319,6 @@ body {
 	background-color: rgba(0,0,0,0.267);
 	user-select: all !important;
 	color: white;
-	border-radius: 12px;
 }
 
 p {
@@ -344,7 +345,6 @@ p {
 	top: -3px;
 	font-size: 11px;
 	position: absolute;
-	border-radius: 12px;
 }
 
 .inv-option-item > p {
@@ -353,7 +353,7 @@ p {
 	line-height: 48px;
 	text-transform: uppercase;
 	font-size: 1.1pt;
-	font-family: Verdana;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 .inv-option-item { 
@@ -364,17 +364,14 @@ p {
 	width: 150px;
 	top: 30%;
 	background-color:rgba(12, 12, 12, 0.35);
-	outline: 1px solid rgba(33, 33, 33, 0);
-	outline-offset: -1px;
+	/* outline: 1px solid rgba(33,33,33,0.4); */
+	/* outline-offset: -1px; */
+	border-radius: 7px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);;
 	color: white;
 	text-align: center;
 	transition: 0.2s ease-in-out all;
 	border: 0;
-	border-radius: 100px;
-	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
-	border-style: solid;
-	border-width: 2px;
-	border-color: #088EFF; /* Second Pill | Outside */
 }
 
 .use {
@@ -383,17 +380,16 @@ p {
 	margin: 0 auto;
 	height: 40px;
 	width: 150px;
-	background-color:rgba(24, 24, 24, 0.62);
-	outline-offset: -1px;
+	background-color:rgba(12, 12, 12, 0.35);
+	/* outline: 1px solid rgba(33,33,33,0.4); */
+	/* outline-offset: -1px; */
+	border-radius: 7px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);;
 	color: white;
 	text-align: center;
 	transition: 0.2s ease-in-out all;
 	line-height: 40px;
-	border-radius: 100px;
-	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
-	border-style: solid;
-	border-width: 2px;
-	border-color: #088EFF; /* Second Pill | Outside */
+	border: 0;
 }
 
 .give {
@@ -403,24 +399,20 @@ p {
 	height: 40px;
 	width: 150px;
 	top: 35%;
-	background-color:rgba(24, 24, 24, 0.62);
-	outline: 1px solid rgba(33, 33, 33, 0);
-	outline-offset: -1px;
+	background-color:rgba(12, 12, 12, 0.35);
+	/* outline: 1px solid rgba(33,33,33,0.4); */
+	/* outline-offset: -1px; */
+	border-radius: 7px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);;
 	color: white;
 	text-align: center;
 	transition: 0.2s ease-in-out all;
 	line-height: 40px;
 	border: 0;
-	border-radius: 100px;
-	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
-	border-style: solid;
-	border-width: 2px;
-	border-color: #088EFF; /* Second Pill | Outside */
 }
 
 .give:hover, .use:hover, .close:hover, .inv-option-item:hover {
-    background-color: rgba(226, 245, 245, 0.1);
-    box-shadow: 0 0 5px rgb(75, 122, 184) inset;
+	background-color: rgba(216, 216, 216, 0.15);
 }
 
 .close {
@@ -432,15 +424,12 @@ p {
 	top: 40%;
 	color: white;
 	background-color:rgba(12, 12, 12, 0.35);
-	outline: 1px solid rgba(33, 33, 33, 0);
-	outline-offset: -1px;
+	/* outline: 1px solid rgba(33,33,33,0.4); */
+	/* outline-offset: -1px; */
+	border-radius: 7px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);
 	transition: 0.2s ease-in-out all;
 	border: 0;
-	border-radius: 100px;
-	box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.0806);
-	border-style: solid;
-	border-width: 2px;
-	border-color: #088EFF; /* Second Pill | Outside */
 }
 
 /* scrollbar Hsn*/
@@ -450,14 +439,12 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
 	width: 4px;
 }
 
-::-webkit-scrollbar-thumb
-{
-	background-color: rgba(0, 0, 0, 0.705);
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .ui-draggable-dragging {
@@ -469,13 +456,12 @@ input[type=number]::-webkit-outer-spin-button {
 	margin: 2px 1px 0 1px;
 }
 
-
 .ui-progressbar {
 	background: rgba(0,0,0,0.5);
-	width: 507px;
+	width: 508px;
 	margin-left: 1px;
-	height: 25px;
-	border-radius: 5px;
+	height: 10px;
+	border-radius: 5;
 	border: 1px solid rgba(0,0,0,0.5);
 }
 
@@ -483,33 +469,9 @@ input[type=number]::-webkit-outer-spin-button {
 {
 	background: #30a121;
 	border: 0px;
-	border-radius: 0;
-	transition: all 1s ease-out;
+	border-radius: 5;
 }
 
 .ui-widget.ui-widget-content {
     border: 0px solid #c5c5c5;
 }
-
-
-.progressLeftLabel {
-	position: absolute;
-	left: 0.5%;
-	top: 27px;
-	font-size: 15px;
-	color: #fff;
-	font-weight: bold;
-	padding: 5px;
-	border-radius: 5px;
-}
-
-.progressRightLabel {
-	position: absolute;
-	right: 34%;
-	top: 27px;
-	font-size: 15px;
-	color: #fff;
-	font-weight: bold;
-	padding: 5px;
-	border-radius: 5px;
-} 

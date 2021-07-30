@@ -33,4 +33,5 @@ files {
 	'html/script.js',
 	'html/images/*.png',
 	'html/style.css',
+	'html/hand-holding-solid.png'
 }
