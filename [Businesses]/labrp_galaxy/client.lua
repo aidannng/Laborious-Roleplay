@@ -279,8 +279,8 @@ Citizen.CreateThread(function()
         distance = 2.5
     }) ---192.5934, -1161.798, 23.66882
 
-  exports['labrp_Eye']:AddBoxZone("galaxycraft1", vector3(383.1000, 278.2000, 94.97729), 0.5, 0.7, {
-    name="galaxycraft1",
+  exports['labrp_Eye']:AddBoxZone("galaxycraft2", vector3(383.1000, 278.2000, 94.97729), 0.5, 0.7, {
+    name="galaxycraft2",
     heading=75,
     debugPoly=false,
     minZ=94.05,
