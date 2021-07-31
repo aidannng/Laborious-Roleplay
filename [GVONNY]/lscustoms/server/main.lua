@@ -83,6 +83,14 @@ ESX.RegisterServerCallback('esx_lscustom:getVehiclesPrices', function(source, cb
 	end
 end)
 
+ESX.RegisterServerCallback('esx_lscustom:getprops', function(source, cb, plate)
+	MySQL.Async.fetchAll('SELECT props FROM bbvehicles WHERE plate = @plate', {['@plate'] = plate}, function(result)
+		if(result and #result>0) then
+			cb(result[1].props)
+		end
+	end)
+end)
+
 ESX.RegisterServerCallback('lsc:getcash', function(source, cb, player)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local cash = xPlayer.getMoney()

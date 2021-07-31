@@ -100,17 +100,7 @@ Citizen.CreateThread(function()
     while true do
         if shouldDraw == true then
             if IsControlReleased(0, Config.Button) then
-                local player = GetPlayerPed(-1)
                 WarMenu.CloseMenu('scoreboard')
-                RequestAnimDict("amb@medic@standing@timeofdeath@exit")
-                while not HasAnimDictLoaded("amb@medic@standing@timeofdeath@exit") do
-                    Citizen.Wait(0)
-                end
-                TaskPlayAnim(player, "amb@medic@standing@timeofdeath@exit", "exit", 0.1, 1.0, 1.0, 48, 0, 0, 0, 0)
-                TriggerEvent("destroyProp")
-                TriggerEvent("destroyProp69")
-                Citizen.Wait(500)
-                ClearPedTasks(player)
             end
         end
         Citizen.Wait(0)

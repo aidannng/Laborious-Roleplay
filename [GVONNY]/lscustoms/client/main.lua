@@ -37,6 +37,7 @@ AddEventHandler('esx_lscustom:installMod', function()
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
 	myCar = ESX.Game.GetVehicleProperties(vehicle)
 	myCar.modTrimA = GetVehicleInteriorColor(vehicle)
+	myCar.modLivery = GetVehicleLivery(vehicle)
 
 	Citizen.Wait(1000)
 
