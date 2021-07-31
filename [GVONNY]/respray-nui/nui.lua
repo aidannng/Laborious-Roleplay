@@ -29,6 +29,8 @@ AddEventHandler("respray:primary", function(type, color)
     local vehicleID = GetVehiclePedIsIn(xPlayer, false)
 
     if vehicleID ~= 0 then
+        local upgrades = {color1=color}
+        ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
         props.modLivery = GetVehicleLivery(vehicleID)
 	    props.modTrimA = GetVehicleInteriorColor(vehicleID)
@@ -45,6 +47,8 @@ AddEventHandler("respray:secondary", function(type, color)
     local vehicleID = GetVehiclePedIsIn(xPlayer, false)
 
     if vehicleID ~= 0 then
+        local upgrades = {color2=color}
+        ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
         props.modLivery = GetVehicleLivery(vehicleID)
 	    props.modTrimA = GetVehicleInteriorColor(vehicleID)
@@ -61,6 +65,7 @@ AddEventHandler("respray:pearl", function(type, color)
     local vehicleID = GetVehiclePedIsIn(xPlayer, false)
 
     if vehicleID ~= 0 then
+        local upgrades = {pearlescentColor=color}
         ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
         props.modLivery = GetVehicleLivery(vehicleID)
@@ -79,6 +84,7 @@ AddEventHandler("respray:interior", function(color)
     local props = ESX.Game.GetVehicleProperties(vehicleID)
 
     if vehicleID ~= 0 then
+        local upgrades = {modTrimA=color}
         SetVehicleInteriorColor(vehicleID, color)
         props = ESX.Game.GetVehicleProperties(vehicleID)
         props.modLivery = GetVehicleLivery(vehicleID)
@@ -95,6 +101,7 @@ AddEventHandler("respray:wheel", function(color)
     local vehicleID = GetVehiclePedIsIn(xPlayer, false)
 
     if vehicleID ~= 0 then
+        local upgrades = {wheelColor=color}
         ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
         props.modLivery = GetVehicleLivery(vehicleID)
