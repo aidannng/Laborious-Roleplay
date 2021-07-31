@@ -60,6 +60,8 @@ AddEventHandler('esx_jail:sendToJail', function(playerId, jailTime, quiet)
 	TriggerClientEvent('jailintro', playerId)
 	Citizen.Wait(27000)
 	TriggerEvent('linden_inventory:confiscatePlayerInventory', playerId)
+	TriggerClientEvent('radial:Jail', playerId)
+	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Check your F1 for a list of jobs to do!'})
 	if xPlayer then
 		if not playersInJail[playerId] then
 			MySQL.Async.execute('UPDATE users SET jail_time = @jail_time WHERE identifier = @identifier', {
@@ -95,6 +97,7 @@ function unjailPlayer(playerId)
 				xPlayer.triggerEvent('esx_jail:unjailPlayer')
 			end)
 			TriggerEvent('linden_inventory:recoverPlayerInventory', playerId)
+			TriggerClientEvent('radial:UnJail', playerId)
 		end
 	end
 end
