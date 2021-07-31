@@ -323,6 +323,25 @@ Citizen.CreateThread(function()
 
 end)
 
+  exports['labrp_Eye']:AddBoxZone("ballasdj", vector3(138.0527, -1933.332, 15.96851), 0.55, 1.3, {
+    name="ballasdj",
+    heading=140,
+    debugPoly=false,
+    minZ=14.90,
+    maxZ=15.10
+    }, {
+        options = {
+            {
+                event = "myDj:open", 
+                icon = "fas fa-music",
+                label = "Open DJ Menu",
+            },
+
+        },
+        job = {"ballas"},
+        distance = 2.5
+    }) ---192.5934, -1161.798, 23.66882
+
 RegisterNetEvent('giveice')
 AddEventHandler('giveice', function()  
     TriggerServerEvent('galaxy:giveice')

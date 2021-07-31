@@ -69,7 +69,7 @@ Citizen.CreateThread(function()
 				timer = 1000
 				
 				vehicleData = {}
-				vehicleData.plate = GetVehicleNumberPlateText(veh):gsub("^%s*(.-)%s*$", "%1")
+				vehicleData.plate = GetVehicleNumberPlateText(veh)
 				vehicleData.model = GetEntityModel(veh)
 				vehicleData.name = string.lower(GetDisplayNameFromVehicleModel(vehicleData.model))
 				vehicleData.veh = veh

@@ -18,15 +18,13 @@ end)
 RegisterServerEvent('esx_lscustom:refreshOwnedVehicle')
 AddEventHandler('esx_lscustom:refreshOwnedVehicle', function(vehicleProps)
 	local xPlayer = ESX.GetPlayerFromId(source)
+	local plate = vehicleProps.plate
 
-	MySQL.Async.fetchAll('SELECT model FROM bbvehicles WHERE plate = @plate', {
-		['@plate'] = vehicleProps.plate
-	}, function(result)
+	MySQL.Async.fetchAll('SELECT model FROM bbvehicles WHERE plate like \'%'..plate..'%\'', {}, function(result)
 		if result[1] then
 			local hash = GetHashKey(result[1].model)
 			if vehicleProps.model == hash then
-				MySQL.Async.execute('UPDATE bbvehicles SET props = @props WHERE plate = @plate', {
-					['@plate'] = vehicleProps.plate,
+				MySQL.Async.execute('UPDATE bbvehicles SET props = @props WHERE plate like \'%'..plate..'%\'', {
 					['@props'] = json.encode(vehicleProps)
 				})
 			else

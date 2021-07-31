@@ -31,6 +31,7 @@ local isHandcuffedAndWalking = false
 local hasOxygenTankOn = false
 local gangNum = 0
 local cuffStates = {}
+local inJail = false
 
 
 
@@ -223,10 +224,24 @@ rootMenuConfig =  {
          end,
     },
     {
+        id = "prisonjob",
+        displayName = "Prison Job's",
+        icon = "#prison-job",
+        functionName = "prison:showjob",
+        enableMenu = function()
+        local ped = PlayerPedId()
+            PlayerData = ESX.GetPlayerData()
+            fuck = exports["esx_ambulancejob"]:GetDeath()
+             if not fuck and inJail == true then
+                 return true
+             end
+         end,
+    },
+    {
         id = "bennys",
         displayName = "Benny's",
         icon = "#police-vehicle",
-        functionName = "lsc:openmenu",
+        functionName = "openBennysMenu",
         enableMenu = function()
         local ped = PlayerPedId()
             PlayerData = ESX.GetPlayerData()
@@ -1205,4 +1220,14 @@ end)
 RegisterNetEvent('pdvehicleextras')
 AddEventHandler('pdvehicleextras', function()
     TriggerEvent('openpdextras')
+end)
+
+RegisterNetEvent('radial:Jail')
+AddEventHandler('radial:Jail', function()
+    inJail = true
+end)
+
+RegisterNetEvent('radial:UnJail')
+AddEventHandler('radial:UnJail', function()
+    inJail = false
 end)

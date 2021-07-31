@@ -425,7 +425,11 @@ local function DriveInGarage()
 				end
 			end
 		end
-		
+
+		AddMod(11,LSCMenu.categories,"ENGINE", "Engine Tunes", "Engine Tunes.",true)
+		AddMod(12,LSCMenu.categories,"BRAKES", "Brakes", "Engine Tunes.",true)
+		AddMod(13,LSCMenu.categories,"TRANSMISSION", "Transmission", "Engine Tunes.",true)
+		AddMod(18,LSCMenu.categories,"TURBO", "Turbo", "Engine Tunes.",true)
 		AddMod(0,LSCMenu.categories,"SPOILER", "Spoiler", "Increase downforce.",true)
 		AddMod(3,LSCMenu.categories,"SKIRTS", "Skirts", "Enhance your vehicle's look with custom side skirts.",true)
 		AddMod(4,LSCMenu.categories,"EXHAUST", "Exhausts", "Customized sports exhausts.",true)
@@ -434,7 +438,7 @@ local function DriveInGarage()
 		AddMod(8,LSCMenu.categories,"FENDERS", "Fenders", "Enhance body paneling with custom fenders.",true)
 		AddMod(10,LSCMenu.categories,"ROOF", "Roof", "Lower your center of gravity with lightweight roof panels.",true)
 		AddMod(14,LSCMenu.categories,"HORN", "Horn", "Custom air horns.",true)
-		
+				
 		if chassis then
 			LSCMenu.categories:addSubMenu("CHASSIS", "Chassis",nil, true)
 			AddMod(42, LSCMenu.categories.Chassis, "ARCH COVER", "Arch cover", "",true) --headlight trim
@@ -546,10 +550,10 @@ local function DriveInGarage()
 						end
 				end
 					
-		m = LSCMenu.categories.Wheels:addSubMenu("WHEEL COLOR", "Wheel color", "Custom wheel colors.",true)
+		--[[ m = LSCMenu.categories.Wheels:addSubMenu("WHEEL COLOR", "Wheel color", "Custom wheel colors.",true)
 			for n, c in pairs(LSC_Config.prices.wheelcolor.colors) do
 				local btn = m:addPurchase(c.name,LSC_Config.prices.wheelcolor.price)btn.colorindex = c.colorindex
-			end
+			end ]]
 		
 		m = LSCMenu.categories.Wheels:addSubMenu("WHEEL ACCESSORIES", "Wheel accessories", "Bulletproof tires and custom burnout smoke.",true)
 			for n, mod in pairs(LSC_Config.prices.wheelaccessories) do
@@ -764,20 +768,9 @@ AddEventHandler("LSC:buttonSelected", function(name, button, canpurchase)
 		if button.name == "Stock" or button.purchased or CanPurchase(price, canpurchase)then
 			myveh.mods[button.modtype].mod = button.mod
 			SetVehicleMod(veh,button.modtype,button.mod)
-
-			myCar = ESX.Game.GetVehicleProperties(veh)
-
-			ESX.TriggerServerCallback('vehicleGetInterior', function(props)
-				print(props)
-				if(props ~= nil) then
-					props.modLivery = button.mod
-					ESX.Game.SetVehicleProperties(vehcile, props)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', props)
-				else
-					myCar = ESX.Game.GetVehicleProperties(vehicle)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
-				end
-			end, myCar.plate)
+			if(mname == "liveries") then
+				SetVehicleLivery(veh,button.mod)
+			end
 		end
 	elseif mname == "fenders" then
 		if button.name == "Stock" or button.purchased or CanPurchase(price, canpurchase)then
@@ -836,23 +829,6 @@ AddEventHandler("LSC:buttonSelected", function(name, button, canpurchase)
 			myveh.mods[button.modtype].mod = button.mod
 			SetVehicleWheelType(veh,button.wtype)
 			SetVehicleMod(veh,button.modtype,button.mod)
-
-			myCar = ESX.Game.GetVehicleProperties(veh)
-
-			ESX.TriggerServerCallback('vehicleGetInterior', function(props)
-				print(props)
-				if(props ~= nil) then
-					props.modFrontWheels = button.mod
-					props.wheels =  button.wtype
-					print(props.wheels)
-					print(props.modFrontWheels)
-					ESX.Game.SetVehicleProperties(vehcile, props)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', props)
-				else
-					myCar = ESX.Game.GetVehicleProperties(vehicle)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
-				end
-			end, myCar.plate)
 		end
 	elseif mname == "wheel color" then
 		if button.purchased or CanPurchase(price, canpurchase) then
@@ -872,23 +848,7 @@ AddEventHandler("LSC:buttonSelected", function(name, button, canpurchase)
 		elseif button.name == "Custom Tires" and  (button.purchased or CanPurchase(price, canpurchase)) then
 			SetVehicleModKit(veh,0)
 			SetVehicleMod(veh,23,myveh.mods[23].mod,true)
-			print("mod: "..myveh.mods[23].mod)
 			myveh.mods[23].variation = true
-
-			myCar = ESX.Game.GetVehicleProperties(veh)
-
-			ESX.TriggerServerCallback('vehicleGetInterior', function(props)
-				print(props)
-				if(props ~= nil) then
-					props.modBackWheels = myveh.mods[23].mod
-					ESX.Game.SetVehicleProperties(vehcile, props)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', props)
-				else
-					myCar = ESX.Game.GetVehicleProperties(vehicle)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
-				end
-			end, myCar.plate)
-
 			if IsThisModelABike(GetEntityModel(veh)) then
 				SetVehicleModKit(veh,0)
 				SetVehicleMod(veh,24,myveh.mods[24].mod,true)
@@ -922,6 +882,11 @@ AddEventHandler("LSC:buttonSelected", function(name, button, canpurchase)
 			end
 		end
 	end
+	local props = ESX.Game.GetVehicleProperties(veh)
+	props.modLivery = GetVehicleLivery(veh)
+	props.modTrimA = GetVehicleInteriorColor(veh)
+
+	TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
 	CheckPurchases(m)
 end)
 
@@ -1201,19 +1166,6 @@ function CanPurchase(price, canpurchase)
 			LSCMenu:showNotification("Your vehicle has been repaired.")
 		else
 			LSCMenu:showNotification("Item purchased.")
-			local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-			myCar = ESX.Game.GetVehicleProperties(vehicle)
-
-			ESX.TriggerServerCallback('vehicleGetInterior', function(props)
-				print(props)
-				if(props ~= nil) then
-					ESX.Game.SetVehicleProperties(vehcile, props)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', props)
-				else
-					myCar = ESX.Game.GetVehicleProperties(vehicle)
-					TriggerServerEvent('esx_lscustom:refreshOwnedVehicle', myCar)
-				end
-			end, myCar.plate)
 		end
 		return true
 	else
@@ -1447,6 +1399,18 @@ AddEventHandler('getlivery',function()
 				args = {
 					number = 3,
 					id = 4
+				}
+			}
+		},
+		{
+			id = 5,
+			header = "Cancel",
+			txt = "",
+			params = {
+				event = "openpdextras",
+				args = {
+					number = 4,
+					id = 5
 				}
 			}
 		}

@@ -126,8 +126,8 @@ AddEventHandler('vehiclekeys:client:SetOwner', function(plate, vehicle)
         VehPlate = GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true))
     end
 
-    TriggerServerEvent('vehiclekeys:server:SetVehicleOwner', GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true)), vehicle)
-    if IsPedInAnyVehicle(GetPlayerPed(-1)) then
+    TriggerServerEvent('vehiclekeys:server:SetVehicleOwner', plate, vehicle)
+    if (IsPedInAnyVehicle(GetPlayerPed(-1) and plate == GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true)))) then
         SetVehicleEngineOn(GetVehiclePedIsIn(GetPlayerPed(-1), true), true, false, true)
     end
     HasKey = true

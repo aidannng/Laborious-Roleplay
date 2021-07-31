@@ -69,16 +69,16 @@ ESX.RegisterServerCallback('bb-garages:server:getOwnedVehicles', function(source
                 local stats = json.decode(vehicle.stats)
                 local status = vehicle.state
                 if status == 'unknown' then
-                    --local isNearby = IsNearby(vehicle.plate, nearbyVehicles)
-                    --if isNearby == true then
+                    local isNearby = IsNearby(vehicle.plate, nearbyVehicles)
+                    if isNearby == true then
                         if freeSlots > 0 then
                             table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, parkButton(vehicle.plate), 'border-left-success'})
                         else
                             table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, nospaceButton(vehicle.plate), 'border-left-danger'})
                         end
-                    --else
-                        --table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, unknownButton(vehicle.plate), 'border-left-danger'})
-                    --end
+                    else
+                        table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, unknownButton(vehicle.plate), 'border-left-danger'})
+                    end
                 elseif status == 'impound' then
                     local parking = json.decode(vehicle.parking)
                     table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, garageButton('Impounded', vehicle.plate, 'impound'), 'border-left-warning'})

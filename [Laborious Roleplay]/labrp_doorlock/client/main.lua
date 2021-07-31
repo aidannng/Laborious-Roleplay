@@ -360,24 +360,21 @@ Citizen.CreateThread(function()
 	end
 end)
 
-
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 		playerPed = PlayerPedId()
 		playerCoords = GetEntityCoords(playerPed)
-		local hit, coords, entity = RayCastGamePlayCamera(20.0)
 			if doorCount ~= nil and doorCount ~= 0 and closestDistance and closestV.setText then
-				closestDistance = #(closestV.textCoords - coords)
+				closestDistance = #(closestV.textCoords - playerCoords)
 				if closestDistance < closestV.maxDistance then
 					if IsAuthorized(closestV) then 
 						if not closestV.doors then
 							local doorState = DoorSystemGetDoorState(closestV.doorHash)
 							if closestV.locked and doorState ~= 1 then
-								--TriggerEvent('cd_drawtextui:ShowUI', 'show', '<strong>[E]</strong> Locked', 'red')
 								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "[E] Locked")
 							elseif not closestV.locked then
-								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "[E] Unlocked") else if isDrawing then exports['cd_drawtextui']:HideInteraction() isDrawing = false end end
+								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "[E] Unlocked") else if isDrawing then SendNUIMessage ({action = "hide"}) isDrawing = false end end
 							else
 								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "[E] Locked")
 							end
@@ -390,12 +387,10 @@ Citizen.CreateThread(function()
 							state[2] = DoorSystemGetDoorState(door[2].doorHash)
 							
 							if closestV.locked and (state[1] ~= 1 or state[2] ~= 1) then
-								--TriggerEvent('cd_drawtextui:ShowUI', 'show', '<strong>[E]</strong> Locking', 'ForestGreen')
-								exports['cd_drawtextui']:ShowInteraction('show', 'DarkOrange', "[E] Locking")
+								exports['cd_drawtextui']:ShowInteraction('show', 'DarkOrange', "Locking")
 							elseif not closestV.locked then
-								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "[E] Unlocked") else if isDrawing then exports['cd_drawtextui']:HideInteraction() isDrawing = false end end
+								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "[E] Unlocked") else if isDrawing then SendNUIMessage ({action = "hide"}) isDrawing = false end end
 							else
-								--TriggerEvent('cd_drawtextui:ShowUI', 'show', '<strong>[E]</strong> Locked', 'ForestGreen')
 								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "[E] Locked")
 							end
 						end
@@ -404,15 +399,13 @@ Citizen.CreateThread(function()
 							local doorState = DoorSystemGetDoorState(closestV.doorHash)
 							if closestV.locked and doorState ~= 1 then
 								-- Draw3dNUI(closestV.textCoords, 'Locking')
-								-- TriggerEvent('nui-drawtextui:ShowUI', 'show', "Locking")
-								--TriggerEvent('cd_drawtextui:ShowUI', 'show', '<strong>[E]</strong> Locking', "ForestGreen")
-								exports['cd_drawtextui']:ShowInteraction('show', 'DarkOrange', "[E] Locking")
+								-- TriggerEvent('cd_drawtextuiui:ShowUI', 'show', "Locking")
+								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "Locked")
 							elseif not closestV.locked then
-								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "[E] Unlocked") else if isDrawing then exports['cd_drawtextui']:HideInteraction() isDrawing = false end end
+								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "Unlocked") else if isDrawing then SendNUIMessage ({action = "hide"}) isDrawing = false end end
 							else
 								-- Draw3dNUI(closestV.textCoords, 'Locked')
-								--TriggerEvent('cd_drawtextui:ShowUI', 'show', '<strong>[E]</strong> Locked', "red")
-								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "[E] Locked")
+								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "Locked")
 							end
 						else
 							local door = {}
@@ -424,14 +417,12 @@ Citizen.CreateThread(function()
 							
 							if closestV.locked and (state[1] ~= 1 or state[2] ~= 1) then
 								-- Draw3dNUI(closestV.textCoords, 'Locking')
-								--TriggerEvent('cd_drawtextui:ShowUI', 'show', '<strong>[E]</strong> Locked', "red")
-								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "[E] Locked")
+								exports['cd_drawtextui']:ShowInteraction('show', 'DarkOrange', "Locking")
 							elseif not closestV.locked then
-								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "[E] Unlocked") else if isDrawing then exports['cd_drawtextui']:HideInteraction() isDrawing = false end end
+								if Config.ShowUnlockedText then exports['cd_drawtextui']:ShowInteraction('show', 'ForestGreen', "Unlocked") else if isDrawing then SendNUIMessage ({action = "hide"}) isDrawing = false end end
 							else
 								-- Draw3dNUI(closestV.textCoords, 'Locked')
-								--TriggerEvent('cd_drawtextui:ShowUI', 'show', '<strong>[E]</strong> Locked', "red")
-								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "[E] Locked")
+								exports['cd_drawtextui']:ShowInteraction('show', 'FireBrick', "Locked")
 							end
 						end
 					end
@@ -678,34 +669,3 @@ AddEventHandler('nui_doorlock:newDoorAdded', function(newDoor, doorID, locked)
 	updateDoors()
 	TriggerEvent('nui_doorlock:setState', GetPlayerServerId(PlayerId()), doorID, locked)
 end)
-
-
-function RotationToDirection(rotation)
-    local adjustedRotation =
-    {
-        x = (math.pi / 180) * rotation.x,
-        y = (math.pi / 180) * rotation.y,
-        z = (math.pi / 180) * rotation.z
-    }
-    local direction =
-    {
-        x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
-        y = math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
-        z = math.sin(adjustedRotation.x)
-    }
-    return direction
-end
-
-function RayCastGamePlayCamera(distance)
-    local cameraRotation = GetGameplayCamRot()
-    local cameraCoord = GetGameplayCamCoord()
-    local direction = RotationToDirection(cameraRotation)
-    local destination =
-    {
-        x = cameraCoord.x + direction.x * distance,
-        y = cameraCoord.y + direction.y * distance,
-        z = cameraCoord.z + direction.z * distance
-    }
-    local a, b, c, d, e = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, -1, PlayerPedId(), 0))
-    return b, c, e
-end

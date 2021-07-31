@@ -13,22 +13,6 @@ local display = false
     TriggerEvent("mechanic:respray")
 end) ]]
 
-RegisterCommand("gettrim", function(source)
-    local xPlayer = PlayerPedId()
-    
-    local vehicleID = GetVehiclePedIsIn(xPlayer, false)
-    local props = ESX.Game.GetVehicleProperties(vehicleID)
-
-    if vehicleID ~= 0 then
-        props = ESX.Game.GetVehicleProperties(vehicleID)
-        for key,value in pairs(props) do
-            if(key == "modTrimA") then
-                print(key, value)
-            end
-        end
-    end
-end)
-
 RegisterNetEvent("mechanic:respray")
 AddEventHandler("mechanic:respray", function()
 	if IsPedInAnyVehicle(PlayerPedId(), false) then
@@ -48,6 +32,9 @@ AddEventHandler("respray:primary", function(type, color)
         local upgrades = {color1=color}
         ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
+        props.modLivery = GetVehicleLivery(vehicleID)
+	    props.modTrimA = GetVehicleInteriorColor(vehicleID)
+        props.color1 = color
         TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
@@ -63,6 +50,9 @@ AddEventHandler("respray:secondary", function(type, color)
         local upgrades = {color2=color}
         ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
+        props.modLivery = GetVehicleLivery(vehicleID)
+	    props.modTrimA = GetVehicleInteriorColor(vehicleID)
+        props.color2 = color
         TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
@@ -78,6 +68,9 @@ AddEventHandler("respray:pearl", function(type, color)
         local upgrades = {pearlescentColor=color}
         ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
+        props.modLivery = GetVehicleLivery(vehicleID)
+	    props.modTrimA = GetVehicleInteriorColor(vehicleID)
+        props.pearlescentColor = color
         TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
@@ -91,34 +84,11 @@ AddEventHandler("respray:interior", function(color)
     local props = ESX.Game.GetVehicleProperties(vehicleID)
 
     if vehicleID ~= 0 then
+        local upgrades = {modTrimA=color}
         SetVehicleInteriorColor(vehicleID, color)
         props = ESX.Game.GetVehicleProperties(vehicleID)
-        for key,value in pairs(props) do
-            if(key == "modTrimA") then
-                props[key] = color
-            end
-        end
-        TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
-    end
-end)
-
-RegisterNetEvent("respray:trim")
-AddEventHandler("respray:trim", function(color)
-
-    local xPlayer = PlayerPedId()
-    
-    local vehicleID = GetVehiclePedIsIn(xPlayer, false)
-    local props = ESX.Game.GetVehicleProperties(vehicleID)
-
-    if vehicleID ~= 0 then
-        SetVehicleModKit(vehicleID, 0)
-        props = ESX.Game.GetVehicleProperties(vehicleID)
-        for key,value in pairs(props) do
-            if(key == "modTrimB") then
-                props[key] = color
-            end
-        end
-        ESX.Game.SetVehicleProperties(vehicleID, props)
+        props.modLivery = GetVehicleLivery(vehicleID)
+	    props.modTrimA = GetVehicleInteriorColor(vehicleID)
         TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
@@ -134,6 +104,9 @@ AddEventHandler("respray:wheel", function(color)
         local upgrades = {wheelColor=color}
         ESX.Game.SetVehicleProperties(vehicleID, upgrades)
         local props = ESX.Game.GetVehicleProperties(vehicleID)
+        props.modLivery = GetVehicleLivery(vehicleID)
+	    props.modTrimA = GetVehicleInteriorColor(vehicleID)
+        props.wheelColor = color
         TriggerServerEvent("esx_lscustom:refreshOwnedVehicle", props)
     end
 end)
