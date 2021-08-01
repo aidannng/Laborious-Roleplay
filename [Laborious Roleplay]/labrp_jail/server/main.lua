@@ -38,8 +38,8 @@ RegisterCommand("jail", function(source, args, rawCommand)
 		local playerId = tonumber(args[1])
 		local time = tonumber(args[2])
 		TriggerEvent('esx_jail:sendToJail', playerId, time * 60)
-	else 
-		TriggerClientEvent('chat:addMessage', xPlayer.source, {template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;"> ^*[^4LABRP^0] You are not a cop! </div>',}); 
+	else
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'inform', text = 'You are not a cop!' })
 	end
 end)
 
@@ -49,8 +49,8 @@ RegisterCommand("unjail", function(source, args, rawCommand)
 		local tarPlayer = ESX.GetPlayerFromId(args[1])
 		local targetId = tonumber(args[1])
 		unjailPlayer(targetId)
-	else 
-		TriggerClientEvent('chat:addMessage', xPlayer.source, {template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;"> ^*[^4LABRP^0] You are not a cop! </div>',}); 
+	else
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'inform', text = 'You are not a cop!' })
 	end
 end)
 
@@ -60,8 +60,6 @@ AddEventHandler('esx_jail:sendToJail', function(playerId, jailTime, quiet)
 	TriggerClientEvent('jailintro', playerId)
 	Citizen.Wait(27000)
 	TriggerEvent('linden_inventory:confiscatePlayerInventory', playerId)
-	TriggerClientEvent('radial:Jail', playerId)
-	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Check your F1 for a list of jobs to do!'})
 	if xPlayer then
 		if not playersInJail[playerId] then
 			MySQL.Async.execute('UPDATE users SET jail_time = @jail_time WHERE identifier = @identifier', {
@@ -73,11 +71,8 @@ AddEventHandler('esx_jail:sendToJail', function(playerId, jailTime, quiet)
 				playersInJail[playerId] = {timeRemaining = jailTime, identifier = xPlayer.getIdentifier()}
 
 				if not quiet then
-					--TriggerClientEvent('chat:addMessage', -1, {args = {_U('judge'), _U('jailed_msg', xPlayer.getName(), ESX.Math.Round(jailTime / 60))}, color = {147, 196, 109}})
-					TriggerClientEvent('chat:addMessage', xPlayer.source, {
-						template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;"> ^*[^3LABRP^0] {0} </div>',
-						args = { xPlayer.getName()..' was jailed for '..ESX.Math.Round(jailTime / 60)..' Months'}
-					});
+					local realTime = jailTime//60
+					TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'inform', text = 'You have been jailed for '..realTime..' months' })
 				end
 			end)
 
@@ -97,7 +92,6 @@ function unjailPlayer(playerId)
 				xPlayer.triggerEvent('esx_jail:unjailPlayer')
 			end)
 			TriggerEvent('linden_inventory:recoverPlayerInventory', playerId)
-			TriggerClientEvent('radial:UnJail', playerId)
 		end
 	end
 end

@@ -364,7 +364,7 @@ $(function () {
                     "<td>" + item.employeefirstname + " " + item.employeelastname + "</td>" +
                     "<td>" + item.amount + "</td>" +
                     "<td>" + item.termlength + "</td>" +
-                    "<td>" + item.daysoverdue + "</td>" +
+                    "<td>" + Math.floor(item.daysoverdue) + "</td>" +
                 "</tr>"
             );
         }

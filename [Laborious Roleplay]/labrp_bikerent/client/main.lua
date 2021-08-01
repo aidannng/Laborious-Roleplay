@@ -746,7 +746,7 @@ end)
 
 RegisterNetEvent('spawngokart')
 AddEventHandler('spawngokart', function()
-    local hash = GetHashKey("veto")
+    local hash = GetHashKey("veto2")
         
     if not HasModelLoaded(hash) then
         RequestModel(hash)

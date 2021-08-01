@@ -11,20 +11,29 @@ end)
 
 RegisterServerEvent("updatebilldays")
 AddEventHandler("updatebilldays", function()
-    MySQL.Async.fetchAll("SELECT id, term_days_left, days_overdue FROM billing", {}, function(bills)
+    MySQL.Async.fetchAll("SELECT id, amount, term_amount, term_payment, term_days_left, days_overdue FROM billing", {}, function(bills)
         if(bills and #bills > 0) then
             for x=1,#bills,1 do
                 local billid = bills[x].id
                 local termdaysleft = tonumber(bills[x].term_days_left)
                 local daysoverdue = tonumber(bills[x].days_overdue)
+                local amount = tonumber(bills[x].amount)
+                local termamount = tonumber(bills[x].term_amount)
+                local termpayment = tonumber(bills[x].term_payment)
 
-                if(termdaysleft > 0) then
-                    termdaysleft = termdaysleft - 1
-                else
-                    daysoverdue = daysoverdue + 1
+                if(amount > 0) then
+                    if(termdaysleft > 0) then
+                        termdaysleft = termdaysleft - 1
+                    else
+                        daysoverdue = daysoverdue + 1
+                    end
+
+                    if(daysoverdue >= 14) then
+                        TriggerEvent("updatebill", billid, (term_amount-term_payment)
+                    end
+
+                    MySQL.Async.execute("UPDATE billing SET term_days_left = @daysleft, days_overdue = @overdue WHERE id = @id", {['@daysleft'] = termdaysleft, ['@overdue'] = daysoverdue, ['@id'] = billid})
                 end
-
-                MySQL.Async.execute("UPDATE billing SET term_days_left = @daysleft, days_overdue = @overdue WHERE id = @id", {['@daysleft'] = termdaysleft, ['@overdue'] = daysoverdue, ['@id'] = billid})
             end
         end
     end)

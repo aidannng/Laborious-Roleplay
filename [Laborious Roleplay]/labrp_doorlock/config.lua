@@ -1618,7 +1618,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	objHeading = 340.00003051758,
 	locked = true,
-	authorizedJobs = { ['police']=0, ['fbi']=0 },
+	authorizedJobs = { ['police']=9, ['fbi']=0 },
 	objHash = -222270721,
 	maxDistance = 2.0,
 	audioRemote = false,
@@ -1637,7 +1637,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	objHeading = 250.00004577637,
 	locked = true,
-	authorizedJobs = { ['police']=0, ['fbi']=0 },
+	authorizedJobs = { ['police']=9, ['fbi']=0 },
 	objHash = 746855201,
 	maxDistance = 2.0,
 	audioRemote = false,
@@ -1664,7 +1664,7 @@ table.insert(Config.DoorList, {
 		{objHash = -1887114592, objHeading = 250.00004577637, objCoords = vector3(273.1413, 230.5395, 96.68304)},
 		{objHash = -1887114592, objHeading = 70.000007629395, objCoords = vector3(272.255, 228.0946, 96.68304)}
  },
-	authorizedJobs = { ['police']=0, ['fbi']=0 },		
+	authorizedJobs = { ['police']=9, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -2389,23 +2389,6 @@ table.insert(Config.DoorList, {
 })
 
 -- prison
-table.insert(Config.DoorList, {
-	slides = false,
-	objHeading = 179.99987792969,
-	locked = true,
-	garage = false,
-	objHash = -1156020871,
-	lockpick = false,
-	audioRemote = false,
-	authorizedJobs = { ['police']=0, ['fbi']=0 },
-	fixText = false,
-	objCoords = vector3(1798.09, 2591.687, 46.41784),
-	maxDistance = 2.0,		
-	-- oldMethod = true,
-	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-	-- autoLock = 1000
-})
 
 
 -- Drug Door 2
@@ -3184,3 +3167,42 @@ table.insert(Config.DoorList, {
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 	-- autoLock = 1000
 })
+
+-- plasma's room steve pent
+table.insert(Config.DoorList, {
+	objHeading = 159.99996948242,
+	garage = false,
+	maxDistance = 2.0,
+	lockpick = false,
+	objCoords = vector3(-278.5445, -724.3054, 125.6251),
+	objHash = 1026320033,
+	items = { 'stevecard' },
+	audioRemote = false,
+	slides = false,
+	fixText = false,
+	locked = true,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- pacific standard top door above vault
+table.insert(Config.DoorList, {
+	fixText = false,
+	lockpick = false,
+	authorizedJobs = { ['police']=9 },
+	slides = false,
+	garage = false,
+	audioRemote = false,
+	locked = true,
+	objHash = 1956494919,
+	objCoords = vector3(266.3624, 217.5698, 110.4328),
+	maxDistance = 2.0,
+	objHeading = 340.00003051758,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+

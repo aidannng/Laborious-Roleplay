@@ -73,8 +73,9 @@ Config.ChangePoint = {
         vector3(128.5714, -755.8417, 242.1436), -- FBI
         vector3(393.5341, 279.3231, 94.97729), -- Galaxy Nightclub
         vector3(-54.31648, -1083.864, 26.36487), -- PDM
-        vector3(-162.5275, 900.3561, 233.4491), -- Sonora Cartel
+        vector3(-162.5275, 900.3561, 233.4491), -- Sonora Cartel 
         vector3(-269.9077, -731.3538, 125.4586), -- Steve's Penthouse
+        vector3(-280.4044, -722.0703, 125.4586), -- Steve's Penthouse daddy plasmas room
     }
 }
 Config.Stores = {

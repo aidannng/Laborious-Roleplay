@@ -110,7 +110,8 @@ AddEventHandler('jailintro', function()
 
     SetEntityCoords(PlayerPedId(),472.9714, -1011.376, 25.26379)
     SetEntityHeading(PlayerPedId(),270.0)
-    Citizen.Wait(1500) 
+    Citizen.Wait(1500)
+	ExecuteCommand('e mugshot')
     DoScreenFadeIn(500)
     TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     Citizen.Wait(3000) 
@@ -125,100 +126,45 @@ AddEventHandler('jailintro', function()
     SetEntityHeading(PlayerPedId(),170.74) 
 
     TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
-    Citizen.Wait(3000) 
+    Citizen.Wait(3000)
+	SetEntityHeading(PlayerPedId(),270.0)
      TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
-    Citizen.Wait(3000)       
+    Citizen.Wait(1500)       
 
-    SetEntityHeading(PlayerPedId(),270.0)
 
     Citizen.Wait(2000)
     DoScreenFadeOut(1100)   
     Citizen.Wait(2000)
+	ExecuteCommand('e c')
     TriggerEvent('InteractSound_CL:PlayOnOne', 'jaildoor', 1.0)
 	FreezeEntityPosition(PlayerPedId(), false)
 	Citizen.Wait(2000)
-	DoScreenFadeIn(1100)
+	DoScreenFadeIn(2000)
 end)
 
-Citizen.CreateThread(function()
-    exports["PolyZone"]:AddBoxZone("jailtime", vector3(1831.965, 2580.844, 46.01172), 2.0, 2.0, {
-        name="jailtime",
-        heading=180,
-        debugPoly=false,
+
+exports['labrp_Eye']:AddBoxZone("jailphone", vector3(1832, 2580.0, 46.6), 0.5, 0.3, {
+	name="jailphone",
+	heading=90,
+	debugPoly=false,
+	minZ=46.2,
+	maxZ=47.0
+    }, {
+        options = {
+            {
+                event = 'checkjailtime',
+                icon = 'fas fa-stopwatch-20',
+                label = 'Check Jail Time'
+            },
+
+        },
+        job = {"all"},
+        distance = 2.5
     })
+
+RegisterNetEvent('checkjailtime')
+AddEventHandler('checkjailtime', function()
+	local months = fastTimer//60
+	exports['mythic_notify']:SendAlert('inform', 'You have '..months..' months left', 5000) 
 end)
 
-local jailtimezone = false
-
-AddEventHandler('bt-polyzone:enter', function(name)
-    if name == "jailtime" then
-        jailtimezone = true
-    end
-end)
-
-AddEventHandler('bt-polyzone:exit', function(name)
-    if name == "jailtime" then
-        jailtimezone = false
-    end
-end)
-
-local timecheck = false
-
-Citizen.CreateThread(function()
-	while true do
-    	if jailtimezone == true then
-			--exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "[E] Check Jail Time")
-			exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "[E] Check Jail Time")
-			if IsControlPressed(0, 38) then
-				local months = fastTimer//60
-				exports['mythic_notify']:SendAlert('inform', 'You have '..months..' months left') 
-				exports['cd_drawtextui']:HideInteraction()
-				jailtimezone = false
-			end
-		else
-		end
-		Citizen.Wait(0)
-	end
-end)
-
-local makingslush = false
-
-Citizen.CreateThread(function()
-	while true do
-        local sleep = 200
-        local playerCoords = GetEntityCoords(PlayerPedId())
-    	local distCheck =  GetDistanceBetweenCoords(1778.73, 2557.609, 45.65784, playerCoords)
-        if distCheck <= 1.5 then 
-			sleep = 500
-            if IsControlPressed(0, 38) then
-				if makingslush == false then
-					TriggerEvent('makeslushy')
-					exports['mythic_notify']:SendAlert('inform', 'yo fool you making a slushy')
-				else
-					exports['mythic_notify']:SendAlert('error', 'Action Invalid, Try Again Later')
-				end
-			end
-        end
-        Citizen.Wait(300)
-	end
-end)
-
-RegisterNetEvent('makeslushy')
-AddEventHandler('makeslushy', function()
-	exports['mythic_progbar']:Progress({
-		name = "unique_action_name",
-		duration = 5000,
-		label = 'Making God Slushy',
-		useWhileDead = true,
-		canCancel = false,
-		controlDisables = {
-			disableMovement = true,
-			disableCarMovement = true,
-			disableMouse = false,
-			disableCombat = true,
-		},
-	})
-	makingslush = true
-	Citizen.Wait(180000)
-	makingslush = false
-end)

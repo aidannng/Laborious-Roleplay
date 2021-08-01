@@ -1,6 +1,7 @@
 RegisterNetEvent('mythic_notify:client:SendAlert')
 AddEventHandler('mythic_notify:client:SendAlert', function(data)
 	SendAlert(data.type, data.text, data.length, data.style)
+	
 end)
 
 RegisterNetEvent('mythic_notify:client:SendUniqueAlert')
