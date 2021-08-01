@@ -403,7 +403,7 @@ AddEventHandler('linden_inventory:openInventory',function(data, rightinventory)
 			if not rightinventory.id then rightinventory.id = rightinventory.name end
 			if not rightinventory.name then rightinventory.name = rightinventory.id end
 		end
-		--TriggerEvent('InteractSound_CL:PlayOnOne', 'Stash', 0.4)
+		TriggerEvent('InteractSound_CL:PlayOnOne', 'Stash', 0.4)
 		SendNUIMessage({
 			message = 'openinventory',
 			inventory = data.inventory,
