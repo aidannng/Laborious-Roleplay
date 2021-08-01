@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap');
+
+
 body {
     background-color: transparent !important;
 }
@@ -20,22 +23,26 @@ body {
     width: fit-content;
     border-radius: 3px;
     margin: 6px;
-    font: caption;
-    font-size: 12px;
-    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .success {
-    background: rgba(6, 82, 0, 0.95);
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+    border-left: 7px solid;
+    border-color: rgba(6, 82, 0, 0.95);
 }
 
 .inform {
-    background-color: #335b91;
-    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+    border-left: 7px solid;
+    border-color: #335b91;
 }
 
 .error {
-    background: rgb(181, 82, 85, 0.85);
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+    border-left: 7px solid;
+    border-color: rgb(181, 82, 85, 0.85);
 }

@@ -121,7 +121,7 @@ Weapons = {
 
 	['WEAPON_CARBINERIFLE'] = {
 		label = 'Carbine Rifle',
-		weight = 3100,
+		weight = 4500,
 		stack = false,
 		close = false,
 		durability = 0.8,
@@ -172,7 +172,7 @@ Weapons = {
 
 	['WEAPON_COMBATPISTOL'] = {
 		label = 'Combat Pistol',
-		weight = 970,
+		weight = 1250,
 		stack = false,
 		close = false,
 		durability = 0.5,

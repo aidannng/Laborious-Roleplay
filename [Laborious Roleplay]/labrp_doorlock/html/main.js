@@ -3,7 +3,7 @@ $('document').ready(function() {
 
     document.onkeydown = function (data) {
         if (data.which == 27) {
-            $.post('https://labrp_doorlock/close');
+            $.post('https://nui_doorlock/close');
         }
     };
 
