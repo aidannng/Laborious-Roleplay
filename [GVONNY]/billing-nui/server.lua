@@ -29,7 +29,7 @@ AddEventHandler("updatebilldays", function()
                     end
 
                     if(daysoverdue >= 14) then
-                        TriggerEvent("updatebill", billid, (term_amount-term_payment)
+                        TriggerEvent("updatebill", billid, (term_amount-term_payment))
                     end
 
                     MySQL.Async.execute("UPDATE billing SET term_days_left = @daysleft, days_overdue = @overdue WHERE id = @id", {['@daysleft'] = termdaysleft, ['@overdue'] = daysoverdue, ['@id'] = billid})
