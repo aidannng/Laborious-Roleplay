@@ -33,47 +33,47 @@ Config.VehicleStorage = {
 
 -- slots, maxWeight; default weight is 8000 per slot
 Config.Gloveboxes = {	
-	[0] = {11, 88000}, -- compact
-	[1] = {11, 88000}, -- sedan
-	[2] = {11, 88000}, -- suv
-	[3] = {11, 88000}, -- coupe
-	[4] = {11, 88000}, -- muscle
-	[5] = {11, 88000}, -- sports classic
-	[6] = {11, 88000}, -- sports
-	[7] = {11, 88000}, -- super
-	[8] = {5, 40000}, -- motorcycle
-	[9] = {11, 88000}, -- offroad
-	[10] = {11, 88000}, -- industrial
-	[11] = {11, 88000}, -- utility
-	[12] = {11, 88000}, -- van
-	[14] = {31, 248000}, -- boat
-	[15] = {31, 248000}, -- helicopter
-	[16] = {51, 408000}, -- plane
-	[17] = {11, 88000}, -- service
-	[18] = {11, 88000}, -- emergency
-	[19] = {11, 88000}, -- military
-	[20] = {11, 88000} -- commercial (trucks)
+	[0] = {10, 10000}, -- compact
+	[1] = {10, 10000}, -- sedan
+	[2] = {10, 10000}, -- suv
+	[3] = {10, 10000}, -- coupe
+	[4] = {10, 10000}, -- muscle
+	[5] = {10, 10000}, -- sports classic
+	[6] = {10, 10000}, -- sports
+	[7] = {10, 10000}, -- super
+	[8] = {5, 5000}, -- motorcycle
+	[9] = {10, 10000}, -- offroad
+	[10] = {10, 10000}, -- industrial
+	[11] = {10, 10000}, -- utility
+	[12] = {10, 10000}, -- van
+	[14] = {15, 248000}, -- boat
+	[15] = {15, 248000}, -- helicopter
+	[16] = {30, 408000}, -- plane
+	[17] = {10, 88000}, -- service
+	[18] = {10, 88000}, -- emergency
+	[19] = {10, 88000}, -- military
+	[20] = {10, 88000} -- commercial (trucks)
 }
 
 Config.Trunks = {
-	[0] = {21, 168000}, -- compact
-	[1] = {41, 328000}, -- sedan
-	[2] = {51, 408000}, -- suv
-	[3] = {31, 248000}, -- coupe
-	[4] = {41, 328000}, -- muscle
-	[5] = {31, 248000}, -- sports classic
-	[6] = {31, 248000}, -- sports
-	[7] = {21, 168000}, -- super
-	[8] = {5,  40000},-- motorcycle
-	[9] = {51, 408000}, -- offroad
-	[10] = {51, 408000}, -- industrial
-	[11] = {41, 328000}, -- utility
-	[12] = {61, 488000}, -- van
+	[0] = {20, 60000}, -- compact
+	[1] = {40, 80000}, -- sedan
+	[2] = {50, 100000}, -- suv
+	[3] = {30, 70000}, -- coupe
+	[4] = {40, 70000}, -- muscle
+	[5] = {30, 60000}, -- sports classic
+	[6] = {30, 60000}, -- sports
+	[7] = {20, 40000}, -- super
+	[8] = {5,  10000},-- motorcycle
+	[9] = {50, 150000}, -- offroad
+	[10] = {50, 200000}, -- industrial
+	[11] = {40, 328000}, -- utility
+	[12] = {60, 300000}, -- van
 	--[14] -- boat
 	--[15] -- helicopter
 	--[16] -- plane
-	[17] = {41, 328000}, -- service
-	[18] = {41, 328000}, -- emergency
-	[19] = {41, 328000}, -- military
-	[20] = {61, 488000} -- commercial
+	[17] = {40, 328000}, -- service
+	[18] = {40, 328000}, -- emergency
+	[19] = {40, 328000}, -- military
+	[20] = {80, 600000} -- commercial
 }

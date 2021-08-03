@@ -427,9 +427,10 @@ local function DriveInGarage()
 		end
 
 		AddMod(11,LSCMenu.categories,"ENGINE", "Engine Tunes", "Engine Tunes.",true)
-		AddMod(12,LSCMenu.categories,"BRAKES", "Brakes", "Engine Tunes.",true)
-		AddMod(13,LSCMenu.categories,"TRANSMISSION", "Transmission", "Engine Tunes.",true)
+		AddMod(12,LSCMenu.categories,"BRAKES", "Brakes", "Brake Kits.",true)
+		AddMod(13,LSCMenu.categories,"TRANSMISSION", "Transmission", "Transmissions.",true)
 		AddMod(18,LSCMenu.categories,"TURBO", "Turbo", "Engine Tunes.",true)
+		AddMod(15,LSCMenu.categories,"SUSPENSION", "Suspension", "Lowering options.",true)
 		AddMod(0,LSCMenu.categories,"SPOILER", "Spoiler", "Increase downforce.",true)
 		AddMod(3,LSCMenu.categories,"SKIRTS", "Skirts", "Enhance your vehicle's look with custom side skirts.",true)
 		AddMod(4,LSCMenu.categories,"EXHAUST", "Exhausts", "Customized sports exhausts.",true)

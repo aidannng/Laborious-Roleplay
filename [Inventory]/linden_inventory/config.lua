@@ -14,7 +14,7 @@ Config.DBCleanup = '6 MONTH'
 Config.PlayerSlots = 20
 
 -- If vehicle plates are stored with a trailing space, set to false (i.e. `XXX-000 `)
-Config.TrimPlate = true
+Config.TrimPlate = false
 
 -- Blur the screen while in an inventory
 Config.EnableBlur = true
