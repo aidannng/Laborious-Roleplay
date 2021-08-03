@@ -100,10 +100,10 @@ RegisterCommand("sc", function(source, args, rawCommand)	-- /sc command for staf
 
 				for i=1, #xAll, 1 do
 					local xTarget = ESX.GetPlayerFromId(xAll[i])
-					if havePermission(xTarget) then			
+					if havePermission(xTarget) then
 						TriggerClientEvent('chat:addMessage',xTarget.source , {
 							template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(255,0,0,0.2); border-radius: 3px;">{0} <br> {1} </div>',
-							args = { "^*[^4LABRP^0] Staff Chat", "^4 " .. xPlayer.getName() .. " ^0» " .. message}
+							args = { "^*[^4LABRP^0] Staff Chat", "^4 " .. GetPlayerName(source) .. " ^0» " .. message}
 						});								
 					end
 				end
