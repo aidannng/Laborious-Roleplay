@@ -127,11 +127,16 @@ AddEventHandler('vehiclekeys:client:SetOwner', function(plate, vehicle)
     end
 
     TriggerServerEvent('vehiclekeys:server:SetVehicleOwner', plate, vehicle)
-    if (IsPedInAnyVehicle(GetPlayerPed(-1) and plate == GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true)))) then
-        SetVehicleEngineOn(GetVehiclePedIsIn(GetPlayerPed(-1), true), true, false, true)
-    end
+    
+    --if (plate == all_trim(GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true)))) then
+        SetVehicleEngineOn(vehicle, true), true, false, true)
+    --end
     HasKey = true
 end)
+
+function all_trim(s)
+    return s:match( "^%s*(.-)%s*$" )
+end
 
 RegisterNetEvent('vehiclekeys:client:GiveKeys')
 AddEventHandler('vehiclekeys:client:GiveKeys', function()

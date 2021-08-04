@@ -255,7 +255,7 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
                     SetVehicleDirtLevel(v, stats.dirty)
 
                     exports['mythic_notify']:SendAlert('inform', 'Successfully released your vehicle from slot ' ..  parking[1] .. '')
-                    TriggerEvent("vehiclekeys:client:SetOwner", string.gsub(data.plate, "^%s*(.-)%s*$", "%1"), v)
+                    TriggerEvent("vehiclekeys:client:SetOwner", data.plate, v)
                     while not IsPedInAnyVehicle(GetPlayerPed(-1), false) do Wait(0) end
                     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
                     SetVehicleInteriorColor(vehicle, tonumber(json.decode(data.props).modTrimA))
@@ -339,18 +339,22 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
             SetEntityInvincible(vehicle, false)
 
             SetEntityHeading(vehicle, BBGarages.Config['impounds'][name]['spawn'].h)
-            TaskWarpPedIntoVehicle(playerPed , vehicle, -1)
-            TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
+            TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+            --TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
             exports['mythic_notify']:SendAlert('inform', 'Successfully released your vehicle from the impound')
         end)
 
         while not IsPedInAnyVehicle(GetPlayerPed(-1), false) do Wait(0) end
         local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-        if GetVehicleNumberPlateText(vehicle) == data.plate then
+        if all_trim(GetVehicleNumberPlateText(vehicle)) == data.plate then
             TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
         end
     end
 end)
+
+function all_trim(s)
+    return s:match( "^%s*(.-)%s*$" )
+end
 
 RegisterNetEvent('bb-garages:client:fakeplate:steal')
 AddEventHandler('bb-garages:client:fakeplate:steal', function(data)

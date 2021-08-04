@@ -88,11 +88,11 @@ Config.PoliceArmoury = {
 Config.FBIArmoury = {
 	name = 'FBI Armoury',
 	inventory = {
-		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		--{ name = 'WEAPON_CARBINERIFLE', price = 20, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_COMBATPISTOL', price = 50, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_CARBINERIFLE', price = 50, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 		{ name = 'WEAPON_HEAVYPISTOL', price = 15, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		{ name = 'WEAPON_CARBINERIFLE_MK2', price = 250, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		{ name = 'WEAPON_STUNGUN', price = 100, metadata = { registered = true, serial = 'POL'} },
+		{ name = 'WEAPON_CARBINERIFLE_MK2', price = 50, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_STUNGUN', price = 20, metadata = { registered = true, serial = 'POL'} },
 		{ name = 'ammo-9', price = 1, },
 		{ name = 'ammo-rifle', price = 10, },
 		{ name = 'WEAPON_FLASHLIGHT', price = 50 },
