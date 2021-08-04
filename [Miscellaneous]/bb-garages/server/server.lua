@@ -69,7 +69,8 @@ ESX.RegisterServerCallback('bb-garages:server:getOwnedVehicles', function(source
                 local stats = json.decode(vehicle.stats)
                 local status = vehicle.state
                 if status == 'unknown' then
-                    local isNearby = IsNearby(vehicle.plate, nearbyVehicles)
+                    print(vehicle.plate)
+                    local isNearby = IsNearby(all_trim(vehicle.plate), nearbyVehicles)
                     if isNearby == true then
                         if freeSlots > 0 then
                             table.insert(vehiclesTable, {vehicle.model, vehicle.plate, stats, parkButton(vehicle.plate), 'border-left-success'})
@@ -105,8 +106,8 @@ ESX.RegisterServerCallback('bb-garages:server:getOwnedVehicles', function(source
     end)
 end)
 
-function trim(s)
-    return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+function all_trim(s)
+    return s:match( "^%s*(.-)%s*$" )
 end
 
 RegisterServerEvent('bb-garages:server:setFirstData')

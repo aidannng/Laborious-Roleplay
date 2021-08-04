@@ -308,6 +308,16 @@ rootMenuConfig =  {
          end,
     },
     {
+        id = "carradio",
+        displayName = "Car Radio",
+        icon = "#car",
+        functionName = "car:radio",
+        enableMenu = function()
+        fuck = exports["esx_ambulancejob"]:GetDeath()
+            return not fuck
+        end,
+    },
+    {
         id = "returntowtruck",
         displayName = "Return Tow Truck",
         icon = "#return-tow",
@@ -1049,6 +1059,11 @@ end)
 RegisterNetEvent("openWallet")
 AddEventHandler("openWallet", function()
     ExecuteCommand("wallet")
+end)
+
+RegisterNetEvent("carradio")
+AddEventHandler("carradio", function()
+    ExecuteCommand("carradio")
 end)
 
 RegisterNetEvent("isJudgeOff")

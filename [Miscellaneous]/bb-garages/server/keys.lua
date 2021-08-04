@@ -19,6 +19,7 @@ RegisterServerEvent('vehiclekeys:server:SetVehicleOwner')
 AddEventHandler('vehiclekeys:server:SetVehicleOwner', function(plate, vehicle)
     local src = source
     local Player =  ESX.GetPlayerFromId(src)
+    print(DoesPlateExist(plate, vehicle))
     if VehicleList ~= nil then
         if DoesPlateExist(plate, vehicle) then
             for k, val in pairs(VehicleList) do

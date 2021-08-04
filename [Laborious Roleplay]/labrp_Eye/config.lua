@@ -528,7 +528,7 @@ AddEventHandler('PoliceDealership', function()
 		{
 			id = 2,
 			header = "Crown Victoria",
-			txt = "$20,000",
+			txt = "$12,500",
 			params = {
 				event = "buycvpi",
 				args = {
@@ -540,7 +540,7 @@ AddEventHandler('PoliceDealership', function()
 		{
 			id = 3,
 			header = "Ford Taurus",
-			txt = "$45,000",
+			txt = "$25,000",
 			params = {
 				event = "buyfpis",
 				args = {
@@ -552,7 +552,7 @@ AddEventHandler('PoliceDealership', function()
 		{
 			id = 4,
 			header = "2014 Tahoe",
-			txt = "$55,500 (Off-Road)",
+			txt = "$30,000 (Off-Road)",
 			params = {
 				event = "buytahoe",
 				args = {
@@ -564,7 +564,7 @@ AddEventHandler('PoliceDealership', function()
         {
 			id = 5,
 			header = "Dodge RAM",
-			txt = "$30,000 (Off-Road)",
+			txt = "$35,000 (Off-Road)",
 			params = {
 				event = "buyram",
 				args = {
@@ -576,7 +576,7 @@ AddEventHandler('PoliceDealership', function()
         {
 			id = 6,
 			header = "BMW Motorcycle",
-			txt = "$65,000 (Motor)",
+			txt = "$25,000 (Motor)",
 			params = {
 				event = "buybmw",
 				args = {
@@ -588,7 +588,7 @@ AddEventHandler('PoliceDealership', function()
         {
 			id = 7,
 			header = "2018 Charger",
-			txt = "$80,000",
+			txt = "$50,000",
 			params = {
 				event = "buycharg",
 				args = {
@@ -603,14 +603,49 @@ end)
 
 RegisterNetEvent('pd:heli')--pd:heli
 AddEventHandler('pd:heli', function()
-    exports['br-menu']:SetTitle("MRPD Helipad")
-    exports['br-menu']:AddButton("Police Helicopter" , "$5,000" ,'buyheli' ,'' , 'menuone')
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "MRPD Helipad",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Police Helicopter",
+            txt = "$5,000",
+            params = {
+                event = "buyheli",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        }
+    })
 end)
 
 RegisterNetEvent('fbi:dealer')--pd:heli
 AddEventHandler('fbi:dealer', function()
-    exports['br-menu']:SetTitle("FBI Helipad")
-    exports['br-menu']:AddButton("Police Helicopter" , "$5,000" ,'buyheli' ,'' , 'menuone')
+
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "FBI Helipad",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Police Helicopter",
+            txt = "$5,000",
+            params = {
+                event = "buyheli",
+                args = {
+                    number = 1,
+                    id = 2
+                }
+            }
+        }
+    })
 end)
 
 RegisterNetEvent('buycvpi')

@@ -185,3 +185,58 @@ function sit(object, modelName, data)
 		end
 	end, objectCoords)
 end
+
+
+
+
+
+
+
+-- Bed Version
+
+local Beds = {
+	1631638868,
+}
+
+exports['labrp_Eye']:AddTargetModel(Beds, {
+	options = {
+		{
+			event = "Boost-Sit:Bed",
+			icon = "fas fa-bed",
+			label = "Lay Down",
+		},
+	},
+	job = {"all"},
+	distance = 2.0
+})
+
+function GetNearBed()
+	local object, distance
+	local coords = GetEntityCoords(GetPlayerPed(-1))
+	for i=1, #Config.Beds do
+		object = GetClosestObjectOfType(coords, 3.0, 1631638868, false, false, false)
+		distance = #(coords - GetEntityCoords(object))
+		pos = GetEntityCoords(object)
+		local heading = GetEntityHeading(object)
+		objectCoords = pos.x .. pos.y .. pos.z
+		print(heading)
+		print(pos)
+		print(objectCoords)
+		SetEntityHeading(PlayerPedId(-1), heading + 90)
+		SetEntityCoords(PlayerPedId(-1), pos.x, pos.y, pos.z, false, false, false, true)
+		ExecuteCommand('e passout')
+		if distance < 1.6 then
+			return object, distance
+		end
+	end
+	return nil, nil
+end
+
+RegisterNetEvent("Boost-Sit:Bed")
+AddEventHandler("Boost-Sit:Bed", function()
+	print("Bed Triggered Successfully")
+	local playerPed = PlayerPedId()
+	GetNearBed()
+	--TaskStartScenarioAtPosition(playerPed, 'missarmenian2', objectCoords.x, objectCoords.y, objectCoords.z, GetEntityHeading(object) + 180.0, 0, true, true)
+	--SetEntityCoords(PlayerPedId(-1), objectCoords, false, false, false, true)
+end)

@@ -236,6 +236,7 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
     local playerPed = PlayerPedId()
     local nearbyVehicles = ESX.Game.GetVehicles()
     local released = false
+    print(data.plate)
 
     if typ ~= 'impounds' then
         for k, v in pairs(nearbyVehicles) do
@@ -346,7 +347,8 @@ AddEventHandler('bb-garages:client:releaseVehicle', function(data, typ, name)
 
         while not IsPedInAnyVehicle(GetPlayerPed(-1), false) do Wait(0) end
         local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-        if all_trim(GetVehicleNumberPlateText(vehicle)) == data.plate then
+        print(data.plate)
+        if GetVehicleNumberPlateText(vehicle) == data.plate then
             TriggerEvent("vehiclekeys:client:SetOwner", data.plate, vehicle)
         end
     end
@@ -604,6 +606,7 @@ RegisterNUICallback('payout', function(data)
     local plate = data.plate
     local price = data.price
     local typ = data.type
+    print(plate)
     
     if typ == 'impounds' then
         if BBGarages.Functions.IsSpawnClear(BBGarages.Config['impounds'][garage]['spawn'], 2.0) then

@@ -45,7 +45,7 @@ if not moneytruck then
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = ("You dont have the right tools for this") })
     end
 else
-    TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = ("Someone is robbing moneytruck") })
+    TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = ("Someone is robbing the truck") })
 end    
 end)
 
@@ -98,10 +98,10 @@ AddEventHandler('RS7x:Payout', function()
 
     while Robbing == true do
         if math.random(1,100) <= 92 then
-            xPlayer.addMoney(math.random(6500,8500))
+            xPlayer.addInventoryItem("black_money",math.random(16500,22500))
             Robbing = false
         else
-            xPlayer.addMoney(math.random(4500,5500))
+            xPlayer.addInventoryItem("black_money", math.random(8500,10500))
             xPlayer.addInventoryItem(RandomItem(), 1)
            Robbing = false
         end
