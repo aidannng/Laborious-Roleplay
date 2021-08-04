@@ -140,6 +140,20 @@ Items = {
 		close = true,
 	},
 
+	['workpermit'] = {
+		label = 'Work Permit',
+		weight = 3500,
+		stack = false,
+		close = true,
+	},
+
+	['lcard'] = {
+		label = 'Laundry Card',
+		weight = 2500,
+		stack = false,
+		close = true,
+	},
+
 	['paperbag'] = {
 		label = 'Paper Bag',
 		weight = 75,

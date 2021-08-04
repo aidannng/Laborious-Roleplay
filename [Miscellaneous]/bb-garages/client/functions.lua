@@ -7,6 +7,9 @@ Citizen.CreateThread(function()
 	end
 end)
 
+function all_trim(s)
+    return s:match( "^%s*(.-)%s*$" )
+end
 
 BBGarages = {}
 BBGarages.Config = {}
@@ -129,10 +132,11 @@ BBGarages.Functions = {
         local nearbyPlates = {}
         for k, v in pairs(nearbyVehicles) do
             if #(GetEntityCoords(v) - GetEntityCoords(playerPed)) < 10.0 then
+                local plate = all_trim(GetVehicleNumberPlateText(v))
                 if plates == true then
-                    table.insert(nearbyPlates, GetVehicleNumberPlateText(v))
+                    table.insert(nearbyPlates, plate)
                 else
-                    table.insert(nearbyPlates, {v, GetVehicleNumberPlateText(v)})
+                    table.insert(nearbyPlates, {v, plate})
                 end
             end
         end
@@ -267,3 +271,4 @@ BBGarages.Functions = {
 
     tprint = function(a,b) for c,d in pairs(a)do local e='["'..tostring(c)..'"]'if type(c)~='string'then e='['..c..']'end;local f='"'..tostring(d)..'"'if type(d)=='table'then tprint(d,(b or'')..e)else if type(d)~='string'then f=tostring(d)end;print(type(a)..(b or'')..e..' = '..f)end end end,
 }
+

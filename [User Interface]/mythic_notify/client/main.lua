@@ -1,7 +1,7 @@
 RegisterNetEvent('mythic_notify:client:SendAlert')
 AddEventHandler('mythic_notify:client:SendAlert', function(data)
+	TriggerEvent('InteractSound_CL:PlayOnOne', 'demo', 0.15)
 	SendAlert(data.type, data.text, data.length, data.style)
-	
 end)
 
 RegisterNetEvent('mythic_notify:client:SendUniqueAlert')
