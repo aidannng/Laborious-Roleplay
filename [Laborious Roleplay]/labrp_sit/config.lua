@@ -119,3 +119,7 @@ Config.Interactables = {
 	'v_ret_gc_chair02',
 	'v_serv_ct_chair02',
 }
+
+Config.Beds = {
+	1631638868,
+}

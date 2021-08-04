@@ -11,12 +11,12 @@ Keys = {
 
 icfg = {}
 icfg.Timer = 300
-icfg.LaundryMaxMoneyWash = 5000
+icfg.LaundryMaxMoneyWash = 5250
 icfg.LaundryMinMoneyWash = 2500
-icfg.MaxWashingTime = 11
-icfg.MinWashingTime = 10
-icfg.WashingTax = 0.65
-icfg.DropWorkPermitChance = 85
+icfg.MaxWashingTime = 750
+icfg.MinWashingTime = 500
+icfg.WashingTax = 0.70
+icfg.DropWorkPermitChance = 99
 
 icfg.LaundryPlaces = {
     Laundry1 = {
@@ -33,10 +33,10 @@ icfg.LaundryPlaces = {
     },
 }
 
-icfg.MaxDrivers = 5
+icfg.MaxDrivers = 3
 icfg.DepositPrice = 2000
-icfg.LaundererMaxMoneyWash = 9500
-icfg.LaundererMinMoneyWash = 7500
+icfg.LaundererMaxMoneyWash = 4500
+icfg.LaundererMinMoneyWash = 2500
 icfg.AutoRepairsVehicle = "rumpo"
 icfg.LaundererPlaces = {
     Base = {

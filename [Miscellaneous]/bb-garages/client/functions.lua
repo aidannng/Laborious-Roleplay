@@ -43,7 +43,7 @@ BBGarages.Functions = {
                                 vehicledata = {false}
                             })
                         end
-                    end, GetVehicleNumberPlateText(vehicle))
+                    end, all_trim(GetVehicleNumberPlateText(vehicle)))
                 else
                     SendNUIMessage({
                         open = true,

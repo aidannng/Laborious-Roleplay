@@ -318,7 +318,7 @@ function OpenLaundryMenu()
             elements = elements,
             }, 
             function(data, menu)
-            FreezeEntityPosition(PlayerPedId(), false) ---You insert Laundry Card...
+            FreezeEntityPosition(PlayerPedId(), false)
             ESX.UI.Menu.CloseAll()
 			if data.current.value == 'PutCard' then
                 ESX.TriggerServerCallback('inside-moneywash:checkLaundryCard', function(hasCard)
@@ -539,7 +539,7 @@ Citizen.CreateThread(function()
                                         exports['mythic_progbar']:Progress({
                                             name = "unique_action_name",
                                             duration = 7000,
-                                            label = 'Someone is exchanging your Black Money for Clean Money',
+                                            label = 'Exchanging your Money',
                                             useWhileDead = true,
                                             canCancel = false,
                                             controlDisables = {

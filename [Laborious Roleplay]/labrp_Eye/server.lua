@@ -7,9 +7,9 @@ AddEventHandler('cvpimoney', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local money = xPlayer.getInventoryItem('money').count
 
-    if money >= 20000 then
+    if money >= 12500 then
         TriggerClientEvent('cvpispawn', source)
-        xPlayer.removeInventoryItem('money', 20000)
+        xPlayer.removeInventoryItem('money', 12500)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
@@ -21,9 +21,9 @@ AddEventHandler('fpismoney', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local money = xPlayer.getInventoryItem('money').count
 
-    if money >= 45000 then
+    if money >= 25000 then
         TriggerClientEvent('fpisspawn', source)
-        xPlayer.removeInventoryItem('money', 45000)
+        xPlayer.removeInventoryItem('money', 25000)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
@@ -35,9 +35,9 @@ AddEventHandler('tahoemoney', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local money = xPlayer.getInventoryItem('money').count
 
-    if money >= 55500 then
+    if money >= 30000 then
         TriggerClientEvent('tahoespawn', source)
-        xPlayer.removeInventoryItem('money', 55500)
+        xPlayer.removeInventoryItem('money', 30000)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
@@ -49,9 +49,9 @@ AddEventHandler('bmwmoney', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local money = xPlayer.getInventoryItem('money').count
 
-    if money >= 30000 then
+    if money >= 25000 then
         TriggerClientEvent('bmwspawn', source)
-        xPlayer.removeInventoryItem('money', 30000)
+        xPlayer.removeInventoryItem('money', 25000)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
@@ -63,9 +63,9 @@ AddEventHandler('rammoney', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local money = xPlayer.getInventoryItem('money').count
 
-    if money >= 65000 then
+    if money >= 35000 then
         TriggerClientEvent('ramspawn', source)
-        xPlayer.removeInventoryItem('money', 65000)
+        xPlayer.removeInventoryItem('money', 35000)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
@@ -77,9 +77,9 @@ AddEventHandler('chargmoney', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local money = xPlayer.getInventoryItem('money').count
 
-    if money >= 80000 then
+    if money >= 50000 then
         TriggerClientEvent('chargspawn', source)
-        xPlayer.removeInventoryItem('money', 80000)
+        xPlayer.removeInventoryItem('money', 50000)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
@@ -105,7 +105,7 @@ AddEventHandler('refundpdheli', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local tax = math.random(100, 500)
     local newval = 5000 - tax
-    xPlayer.addInventoryItem('money', newval)
+    xPlayer.addInventoryItem('money', 5000)
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You\'ve been refuned $'..newval, })
 end)
 

@@ -120,17 +120,11 @@ end) ]]
 
 RegisterNetEvent('vehiclekeys:client:SetOwner')
 AddEventHandler('vehiclekeys:client:SetOwner', function(plate, vehicle)
-    local VehPlate = plate
     Citizen.Wait(100)
-    if VehPlate == nil then
-        VehPlate = GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true))
+    if (plate == GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true))) then
+        TriggerServerEvent('vehiclekeys:server:SetVehicleOwner', plate, vehicle)
+        SetVehicleEngineOn(GetVehiclePedIsIn(GetPlayerPed(-1), false), true, false, true)
     end
-
-    TriggerServerEvent('vehiclekeys:server:SetVehicleOwner', plate, vehicle)
-    
-    --if (plate == all_trim(GetVehicleNumberPlateText(GetVehiclePedIsIn(GetPlayerPed(-1), true)))) then
-        SetVehicleEngineOn(vehicle, true), true, false, true)
-    --end
     HasKey = true
 end)
 
