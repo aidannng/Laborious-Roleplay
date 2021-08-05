@@ -219,7 +219,7 @@ AddEventHandler("kk:payment", function(TargetID, amount, order)
                 xPlayer.addInventoryItem('receipt', 1, {type='Kronic Kush Order of $'..fine.. ': ', description=order})
                 TriggerClientEvent('mythic_notify:client:SendAlert', xTarget.source, { type = 'inform', text = 'You have been billed for $'..fine})
                 TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have successfully wrote a bill for $'..fine})
-                xTarget.addMoney(fine)
+                xPlayer.addMoney(fine)
                 TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You recieved $'..fine})
             else
                 TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'Recipient does not have enough'})
