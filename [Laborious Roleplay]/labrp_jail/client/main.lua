@@ -19,6 +19,13 @@ AddEventHandler('esx_jail:jailPlayer', function(_jailTime)
 	ESX.Game.Teleport(playerPed, Config.JailLocation)
 	isInJail, unjail = true, false
 
+	local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+	if closestPlayer == -1 or closestDistance > 3.0 then
+
+	else
+	TriggerServerEvent('gl-drugselling:removeReputation',GetPlayerServerId(closestPlayer))
+	end
+
 	while not unjail do
 		playerPed = PlayerPedId()
 

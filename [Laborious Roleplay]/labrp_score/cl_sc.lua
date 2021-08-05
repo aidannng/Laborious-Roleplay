@@ -23,70 +23,37 @@ local forceDraw = false
 local shouldDraw = false
 local shouldOpenMenu = false
 local doemote = false
+local playerAmount = 0
+local player = GetPlayerPed(-1)
+local wait = false
 
---shouldDraw = true
 
-
-function CD.Scoreboard.GetPlayerCount(self)
-    local count = NetworkGetNumConnectedPlayers()
-    return count
-end
-
-Citizen.CreateThread(function()
-	local currentItemIndex = 1
-	local selectedItemIndex = 1
-
-	WarMenu.CreateMenu('scoreboard', 'Online Players')
-
-	WarMenu.SetSubTitle("scoreboard", "Players")
-	WarMenu.SetTitleColor("scoreboard", 135, 206, 250, 255)
-    WarMenu.SetTitleBackgroundColor("scoreboard", 0 , 0, 0, 150)
-    WarMenu.SetMenuBackgroundColor("scoreboard", 0, 0, 0, 100)
-    WarMenu.SetMenuSubTextColor("scoreboard", 255, 255, 255, 255)
-
-    WarMenu.CreateSubMenu('playeroptions', 'scoreboard', 'Player Info')
-
-	while true do
-		if WarMenu.IsMenuOpened('scoreboard') then
-			if WarMenu.Button("Total:", tostring(CD.Scoreboard:GetPlayerCount()), {r = 135, g = 206, b = 250, a = 150}) then
-				else
-				local playerlist = GetActivePlayers()
-				--print(''..identifierSteam..'')
-                for i = 1, #playerlist do
-                    local currPlayer = playerlist[i]
-                    if WarMenu.MenuButton("ID: ~y~[" .. GetPlayerServerId(currPlayer) .. "] ~s~" .. GetPlayerName(currPlayer), 'playeroptions') then
-                        selectedPlayer = currPlayer end
-                end
-			end
-
-			WarMenu.Display()
-		elseif WarMenu.IsMenuOpened('playeroptions') then
-			if WarMenu.Button("~p~Selected: " .. "~y~[" .. GetPlayerServerId(selectedPlayer) .. "] ~s~" .. GetPlayerName(selectedPlayer)) then
-			elseif WarMenu.Button("ID: ~y~[" .. GetPlayerServerId(selectedPlayer) .. "] ~s~") then
-			elseif WarMenu.Button("Name: ~y~[" .. GetPlayerName(selectedPlayer) .. "] ~s~") then
-            		elseif WarMenu.Button("Steam: ~y~[" .. ESX.PlayerData.identifier .. "] ~s~") then
-			end
-
-			WarMenu.Display()
-		elseif IsControlPressed(0, Config.Button) then -- U by default
-			WarMenu.OpenMenu('scoreboard')
-			shouldDraw = true
-            ExecuteCommand('me checks something')
-		else
-			shouldDraw =false
-		end
-
-		Citizen.Wait(0)
-	end
+RegisterNetEvent('score:returnPlayerCount')
+AddEventHandler('score:returnPlayerCount', function(count)
+    playerAmount = count
 end)
 
 AddEventHandler('playerSpawned', function(spawn)
     return count
 end)
 
+Citizen.CreateThread(function()
+    while true do
+        if wait == false then
+            if IsControlPressed(0, Config.Button) then
+                TriggerServerEvent('score:getplayers')
+                TriggerEvent('scoreboard')
+                shouldDraw = true
+                TriggerEvent('playclipanim')
+                wait = true
+            end
+        end
+        Citizen.Wait(0)
+    end
+end)
+
 RegisterNetEvent('playclipanim')
 AddEventHandler('playclipanim', function()
-    local player = GetPlayerPed(-1)
     RequestAnimDict("amb@medic@standing@timeofdeath@base")
     while not HasAnimDictLoaded("amb@medic@standing@timeofdeath@base") do
         Citizen.Wait(0)
@@ -94,17 +61,36 @@ AddEventHandler('playclipanim', function()
     TaskPlayAnim(player, "amb@medic@standing@timeofdeath@base", "base", 8.0, 0.01, -1, 49, 0, 0, 0, 0)
     TriggerEvent("attachItem", "notepad01")
     TriggerEvent("attachItem69", "pencil01")
+    print('play emote')
 end)
 
 Citizen.CreateThread(function()
     while true do
-        if shouldDraw == true then
-            if IsControlReleased(0, Config.Button) then
-                WarMenu.CloseMenu('scoreboard')
+        if wait == true then
+            if shouldDraw == true then
+                if IsControlReleased(0, Config.Button) then
+                    RequestAnimDict("amb@medic@standing@timeofdeath@exit")
+                    while not HasAnimDictLoaded("amb@medic@standing@timeofdeath@exit") do
+                        Citizen.Wait(0)
+                    end
+                    TaskPlayAnim(player, "amb@medic@standing@timeofdeath@exit", "exit", 0.1, 1.0, 1.0, 48, 0, 0, 0, 0)
+                    TriggerEvent("destroyProp")
+                    TriggerEvent("destroyProp69")
+                    Citizen.Wait(200)
+                    exports['cd_drawtextui']:HideInteraction()
+                    ClearPedTasks(player)
+                    wait = false
+                    shouldDraw = false
+                end
             end
         end
         Citizen.Wait(0)
     end
+end)
+
+RegisterNetEvent('scoreboard')
+AddEventHandler('scoreboard', function()
+	exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "Players : "..playerAmount)
 end)
 
 --Draw Things
@@ -162,3 +148,6 @@ function GetNeareastPlayers()
     end
     return players_clean
 end
+
+
+

@@ -1,31 +1,3 @@
----------------------------------------------------------------------
-                --[[SCRIPT MADE BY : ALEXMIHAI04]]--
-               --[[DO NOT SELL OR COPY THIS SCRIPT]]--
-                   --[[github.com/ItsAlexYTB]]--
-        --[[ENJOY THE SCRIPT , DO NOT MAKE 1000 NPCS :))))) ]]
----------------------------------------------------------------------
-
---[[EXPLANATION [EN]: 
-
--1,2,3 : Coordonates
--4 : Name for the drawtext
--5 : Ped heading
--6 : Ped hash
--7: Ped model
-
-]]--
-
---[[DO NOT TOUCH IF YOU DON'T KNOW WHAT YOU DO]]--
-
---[[EXPLANATION [RO]
--1,2,3 : sunt coordonatele de la npc
--4 : Numele care apare deasupra npc-ului
--5 : Heading (partea in care sta orientat)
--6 : Hash de la ped , se poate lua de pe net
--7 : Modelul de la ped , asemenea , il gasiti pe net
-
-
-]]--
 
 local coordonate = {
   --24/7's
@@ -58,7 +30,8 @@ local coordonate = {
   {-331.61,6085.41,30.45,"",226.14,0xCAE9E5D5,"csb_cletus"},
   {-680.3,5838.8,16.31,"",226.14,0xCE1324DE,"ig_hunter"},
   {-42.42198, -1094.308, 25.38171,"",140.14,0x9760192E,"cs_bankman"},
-  {72.21,-1398.98, 28.36,"",270.14,0x445AC854,"a_f_y_bevhills_01"},
+  {72.21,-1398.98, 28.36,"",270.14,0x445AC854,"a_f_y_bevhills_01"},--ig_vagspeak
+  {-552.8176, -191.9604, 37.21021,"",210.0,0xF9FD068C,"ig_vagspeak"},
 }
 -- 2748.97
 local coords = {
