@@ -30,35 +30,35 @@ AddEventHandler('AOD-butcheranimal', function(animal)
 
         if animal == boar then
             if rarity >= 85 then
-                xPlayer.addInventoryItem('meat3star', AOD.BoarMeat)
+                xPlayer.addInventoryItem('meat3star', math.random(1, 5))
                 xPlayer.addInventoryItem('leather3star', 1)
             elseif rarity >= 60 then
-                xPlayer.addInventoryItem('meat2star', AOD.BoarMeat)
+                xPlayer.addInventoryItem('meat2star', math.random(1, 5))
                 xPlayer.addInventoryItem('leather2star', 1)
             elseif rarity <= 59 then
-                xPlayer.addInventoryItem('meat', AOD.BoarMeat)
+                xPlayer.addInventoryItem('meat', math.random(1, 5))
                 xPlayer.addInventoryItem('leather', 1)
             end
         elseif animal == deer then
             if rarity >= 85 then
-                xPlayer.addInventoryItem('meat3star', AOD.DeerMeat)
+                xPlayer.addInventoryItem('meat3star', math.random(1, 5))
                 xPlayer.addInventoryItem('leather3star', 1)
             elseif rarity >= 60 then
-                xPlayer.addInventoryItem('meat2star', AOD.DeerMeat)
+                xPlayer.addInventoryItem('meat2star', math.random(1, 5))
                 xPlayer.addInventoryItem('leather2star', 1)
             elseif rarity <= 59 then
-                xPlayer.addInventoryItem('meat', AOD.DeerMeat)
+                xPlayer.addInventoryItem('meat', math.random(1, 5))
                 xPlayer.addInventoryItem('leather', 1)
             end
         elseif animal == coyote then
             if rarity >= 85 then
-                xPlayer.addInventoryItem('meat3star', AOD.CoyoteMeat)
+                xPlayer.addInventoryItem('meat3star', math.random(1, 5))
                 xPlayer.addInventoryItem('leather3star', 1)
             elseif rarity >= 60 then
-                xPlayer.addInventoryItem('meat2star', AOD.CoyoteMeat)
+                xPlayer.addInventoryItem('meat2star', math.random(1, 5))
                 xPlayer.addInventoryItem('leather2star', 1)
             elseif rarity <= 59 then
-                xPlayer.addInventoryItem('meat', AOD.CoyoteMeat)
+                xPlayer.addInventoryItem('meat', math.random(1, 5))
                 xPlayer.addInventoryItem('leather', 1)
             end
         else

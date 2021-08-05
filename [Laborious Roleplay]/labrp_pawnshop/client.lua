@@ -19,24 +19,6 @@ AddEventHandler('esx:setJob', function(job)
   PlayerData.job = job
 end)
 
---[[RegisterNetEvent('holdbox')
-AddEventHandler('holdbox', function()
-	ExecuteCommand('e box')
-end)
-
-RegisterNetEvent('cancelbox')
-AddEventHandler('cancelbox', function()
-	ExecuteCommand('e c')
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(500)
-		TriggerServerEvent('box:check')
-		print('checking')
-	end
-end)]]
-
 
 
 RegisterNetEvent('openpawnshop')

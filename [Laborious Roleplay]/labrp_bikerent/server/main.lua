@@ -14,7 +14,7 @@ AddEventHandler('chargeseashark', function()
 		refundvalue = math.random(350, 500)
 		TriggerClientEvent('spawnseashark', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -27,7 +27,7 @@ AddEventHandler('chargewindsurf', function()
 		refundvalue = math.random(750, 950)
 		TriggerClientEvent('spawnwindsurf', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -40,7 +40,7 @@ AddEventHandler('chargedinghy', function()
 		refundvalue = math.random(750, 1000)
 		TriggerClientEvent('spawndinghy', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -53,7 +53,7 @@ AddEventHandler('chargesqualo', function()
 		refundvalue = math.random(1000, 1500)
 		TriggerClientEvent('spawnsqualo', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -66,7 +66,7 @@ AddEventHandler('chargespeeder', function()
 		refundvalue = math.random(1850, 2500)
 		TriggerClientEvent('spawnspeeder', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -79,7 +79,7 @@ AddEventHandler('chargedune', function()
 	refundvalue = math.random(3000, 4000)
 	TriggerClientEvent('spawndune', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -93,7 +93,7 @@ AddEventHandler('chargesanchez', function()
 		refundvalue = math.random(500, 1000)
 		TriggerClientEvent('spawnsanchez', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -106,7 +106,7 @@ AddEventHandler('chargeblazer', function()
 		refundvalue = math.random(750, 1250)
 		TriggerClientEvent('spawnblazer', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -119,7 +119,7 @@ AddEventHandler('chargeblazer4', function()
 		refundvalue = math.random(1250, 1750)
 		TriggerClientEvent('spawnblazer4', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -134,7 +134,7 @@ AddEventHandler('chargebmx', function()
 		refundvalue = math.random(10, 25)
 		TriggerClientEvent('spawnbmx', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -147,7 +147,7 @@ AddEventHandler('chargecruiser', function()
 		refundvalue = math.random(20, 30)
 		TriggerClientEvent('spawncruiser', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)	
 
@@ -160,7 +160,7 @@ AddEventHandler('chargetri', function()
 		refundvalue = math.random(30, 40)
 		TriggerClientEvent('spawntri', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)	
 
@@ -173,7 +173,7 @@ AddEventHandler('chargetri2', function()
 		refundvalue = math.random(40, 50)
 		TriggerClientEvent('spawntri2', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -186,7 +186,7 @@ AddEventHandler('chargetowtruck', function()
 		refundvalue = math.random(470, 500)
 		TriggerClientEvent('spawntowtruck', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -250,7 +250,7 @@ AddEventHandler('chargebmx5', function()
 		refundvalue = math.random(10, 25)
 		TriggerClientEvent('spawnbmx5', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 
@@ -263,7 +263,7 @@ AddEventHandler('chargecruiser5', function()
 		refundvalue = math.random(20, 30)
 		TriggerClientEvent('spawncruiser5', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)	
 
@@ -276,7 +276,7 @@ AddEventHandler('chargetri5', function()
 		refundvalue = math.random(30, 40)
 		TriggerClientEvent('spawntri5', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)	
 
@@ -289,7 +289,7 @@ AddEventHandler('chargetri25', function()
 		refundvalue = math.random(40, 50)
 		TriggerClientEvent('spawntri25', source)
 	else
-		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!', style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'You need cash!'})
 	end
 end)
 

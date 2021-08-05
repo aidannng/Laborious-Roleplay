@@ -13,7 +13,7 @@ BBBankingCore['config'] = {
     ['server']              = '1', -- Auth server [Available: 1]
 
     ['fees']                = { transfer = 1, withdraw = 1 }, -- Fees on transfers/witdraws [Min 1, Max 100]
-    ['bossGrade']           = 'chief', -- Boss grade name on the database.
+    ['bossGrade']           = 'boss', -- Boss grade name on the database.
     ['startingMoney']       = 4000, -- Starting money on the core
     ['ATMDaily']            = 3600000, -- Time to reset ATM Withdraw daily limit [Default 1 Hour]
     ['ATMDailyLimit']       = 3000, -- Max withdraw amount for each session

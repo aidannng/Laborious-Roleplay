@@ -9,12 +9,12 @@ AOD.DistanceTooCloseToAnimal = 15.0
 AOD.HuntingWeapon = `WEAPON_SNIPERRIFLE` --set to nil for no requirement
 
 --Rewards for butchering animals
-AOD.BoarMeat = math.random(1, 5) -- amount of meat to receive from Boars
+AOD.BoarMeat = math.random(1,5) -- amount of meat to receive from Boars
 AOD.BoarTusk = 2
 AOD.DeerSkin = 1
-AOD.DeerMeat = math.random(1, 5)
+AOD.DeerMeat = math.random(1,5)
 AOD.CoyoteFur = 1
-AOD.CoyoteMeat = math.random(1, 5)
+AOD.CoyoteMeat = math.random(1,5)
 
 AOD.Strings = {
 ESXClient = 'esx:getSharedObject',

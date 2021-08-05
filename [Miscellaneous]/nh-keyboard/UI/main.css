@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -21,7 +23,7 @@ html,body {
 .main-wrapper {
     width: 35%;
     height: auto;
-    background: rgb(19, 23, 32);
+    background: rgba(19, 23, 32, 0.7);
     margin: auto;
     position: relative;
     top: 10%;
@@ -29,6 +31,8 @@ html,body {
     border-radius: 3%;
     padding: 1.5rem;
     display: none;
+    border: solid;
+    border-color: #385b88;
 }
 
 .heading {
@@ -44,7 +48,7 @@ html,body {
 
 .heading h1 {
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 0.85rem;
     font-weight: bold;
     position: relative;
@@ -58,9 +62,10 @@ html,body {
     margin: auto;
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 0.8rem;
     font-weight: bold;
+    
 }
 
 .body label {
@@ -117,4 +122,5 @@ html,body {
     background-color: rgba(0, 0, 0, 0.452);
     z-index: -99;
     display: none;
+
 }

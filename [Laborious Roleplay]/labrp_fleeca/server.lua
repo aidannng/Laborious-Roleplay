@@ -48,7 +48,7 @@ AddEventHandler('GiveSafeReward', function()
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got '..jewelsamount..'x 2 CT Gold Chains', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
     end
 
-    if laptopchance >= 9 then 
+    if laptopchance >= 8 then 
         xPlayer.addInventoryItem('g6card', 1)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got a Gruppe 6 Card', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
     end
@@ -104,7 +104,7 @@ AddEventHandler('checkstorecops', function()
     local xPlayers = ESX.GetExtendedPlayers()
     local cops = 0
     for _, xPlayer in pairs(xPlayers) do
-        if xPlayer.job.name == 'police' and xPlayer.job.name == 'fbi' then
+        if xPlayer.job.name == 'police' then
             cops = cops + 1
         end
     end
