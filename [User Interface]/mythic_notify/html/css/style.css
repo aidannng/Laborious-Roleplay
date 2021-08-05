@@ -46,3 +46,27 @@ body {
     border-left: 7px solid;
     border-color: rgb(181, 82, 85, 0.85);
 }
+
+
+
+
+.normal {
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+    border-left: 7px solid;
+    border-color: #2E8B57;
+}
+
+.whisper {
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+    border-left: 7px solid;
+    border-color: #FFA500;
+}
+
+.shouting {
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+    border-left: 7px solid;
+    border-color: #B22222;
+}

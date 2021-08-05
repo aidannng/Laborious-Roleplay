@@ -26,3 +26,21 @@ end)
 RegisterNUICallback('actionFinish', function(data, cb)
 	Finish()
 end)
+
+
+RegisterCommand('progtest', function()
+	exports['mythic_progbar']:Progress({
+        name = "unique_action_name",
+        duration = 5000,
+        label = 'Testing',
+        useWhileDead = true,
+        canCancel = false,
+        controlDisables = {
+            disableMovement = false,
+            disableCarMovement = false,
+            disableMouse = false,
+            disableCombat = false,
+        },
+    })
+end, false)
+

@@ -132,7 +132,8 @@
       <child>urus</child>
     </Item>
   </txdRelationships>
-  <Item>
+  <InitDatas>
+    <Item>
       <modelName>filthynsx</modelName>
       <txdName>filthynsx</txdName>
       <handlingId>filthynsx</handlingId>

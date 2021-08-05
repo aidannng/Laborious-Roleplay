@@ -179,12 +179,13 @@ AddEventHandler("hunting:butcherCreature", function()
                             anim = "player_search",
                         },
                     })
-                    Citizen.Wait(25000)
+                    Citizen.Wait(24000)
+                    TriggerServerEvent('check:weight')
+                    Citizen.Wait(1000)
                     ClearPedTasks(person)
-                    --Notify(AOD.Strings.Butchered)
                     exports['mythic_notify']:SendAlert('inform', 'Animal butchered', 3000)
                     DeleteEntity(value.id)
-                    TriggerServerEvent('AOD-butcheranimal', value.animal)
+                    --TriggerServerEvent('AOD-butcheranimal', value.animal)
                     busy = false
                     table.remove(HuntedAnimalTable, index)
                 elseif busy then
@@ -256,3 +257,11 @@ local blip = AddBlipForRadius(x,y,z,radius)
 SetBlipColour(blip,idcolor)
 SetBlipAlpha(blip,80)
 SetBlipSprite(blip,9)
+
+RegisterCommand('checkweight', function()
+	TriggerServerEvent('check:weight')
+end, false)
+
+RegisterCommand('triggerhuntingreward', function()
+	TriggerServerEvent('AOD-butcheranimal', -832573324)
+end, false)

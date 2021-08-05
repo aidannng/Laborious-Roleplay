@@ -8,7 +8,7 @@ $('document').ready(function() {
         $("#progress-label").text(data.label);
 
         $(".progress-container").fadeIn('fast', function() {
-            $("#progress-bar").stop().css({"width": 0, "background-color": "rgba(32, 153, 255, 0.99)"}).animate({
+            $("#progress-bar").stop().css({"width": 0, "background-color": "#4b7ab8"}).animate({
               width: '100%'
             }, {
               duration: parseInt(data.duration),
@@ -27,7 +27,7 @@ $('document').ready(function() {
 
     MythicProgBar.ProgressCancel = function() {
         $("#progress-label").text("CANCELLED");
-        $("#progress-bar").stop().css( {"width": "100%", "background-color": "rgba(32, 153, 255, 0.99)"});   
+        $("#progress-bar").stop().css( {"width": "100%", "background-color": "#4b7ab8"});   
         $('#progress-bar').removeClass('cancellable');
 
         cancelledTimer = setTimeout(function () {
