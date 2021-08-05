@@ -185,7 +185,7 @@ AddEventHandler("hunting:butcherCreature", function()
                     ClearPedTasks(person)
                     exports['mythic_notify']:SendAlert('inform', 'Animal butchered', 3000)
                     DeleteEntity(value.id)
-                    --TriggerServerEvent('AOD-butcheranimal', value.animal)
+                    TriggerServerEvent('AOD-butcheranimal', value.animal)
                     busy = false
                     table.remove(HuntedAnimalTable, index)
                 elseif busy then
