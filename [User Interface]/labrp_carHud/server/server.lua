@@ -7,17 +7,17 @@ end)
 
 RegisterServerEvent('notifyvoice:default')
 AddEventHandler('notifyvoice:default', function()
-	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Voice Distance: Normal', length = 4500, style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'normal', text = 'Voice Distance: Normal'})
 end)
 
 RegisterServerEvent('notifyvoice:whisper')
 AddEventHandler('notifyvoice:whisper', function()
-	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Voice Distance: Whisper', length = 4500, style = { ['background-color'] = '#ffb700', ['color'] = '#FFFFFF' } })
+	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'whisper', text = 'Voice Distance: Whisper'})
 end)
 
 RegisterServerEvent('notifyvoice:shout')
 AddEventHandler('notifyvoice:shout', function()
-	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Voice Distance: Shout', length = 4500, style = { ['background-color'] = '#ff0000', ['color'] = '#FFFFFF' } })
+	TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'shouting', text = 'Voice Distance: Shout'})
 end)
 
 

@@ -10,6 +10,14 @@ ESX.RegisterUsableItem('huntingbait', function(source)
     TriggerClientEvent('AOD-huntingbait', source)
 end)
 
+local inventoryspace = 0
+
+RegisterServerEvent('check:weight')
+AddEventHandler('check:weight', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    print(xPlayer.getWeight())
+end)
+
 RegisterServerEvent('AOD-butcheranimal')
 AddEventHandler('AOD-butcheranimal', function(animal)
     local xPlayer = ESX.GetPlayerFromId(source)
@@ -17,42 +25,48 @@ AddEventHandler('AOD-butcheranimal', function(animal)
     local deer = -664053099
     local coyote = 1682622302
     local rarity = math.random(1, 100)
-    if animal == boar then
-        if rarity >= 85 then
-            xPlayer.addInventoryItem('meat3star', AOD.BoarMeat)
-            xPlayer.addInventoryItem('leather3star', 1)
-        elseif rarity >= 60 then
-            xPlayer.addInventoryItem('meat2star', AOD.BoarMeat)
-            xPlayer.addInventoryItem('leather2star', 1)
-        elseif rarity <= 59 then
-            xPlayer.addInventoryItem('meat', AOD.BoarMeat)
-            xPlayer.addInventoryItem('leather', 1)
-        end
-    elseif animal == deer then
-        if rarity >= 85 then
-            xPlayer.addInventoryItem('meat3star', AOD.DeerMeat)
-            xPlayer.addInventoryItem('leather3star', 1)
-        elseif rarity >= 60 then
-            xPlayer.addInventoryItem('meat2star', AOD.DeerMeat)
-            xPlayer.addInventoryItem('leather2star', 1)
-        elseif rarity <= 59 then
-            xPlayer.addInventoryItem('meat', AOD.DeerMeat)
-            xPlayer.addInventoryItem('leather', 1)
-        end
-    elseif animal == coyote then
-        if rarity >= 85 then
-            xPlayer.addInventoryItem('meat3star', AOD.CoyoteMeat)
-            xPlayer.addInventoryItem('leather3star', 1)
-        elseif rarity >= 60 then
-            xPlayer.addInventoryItem('meat2star', AOD.CoyoteMeat)
-            xPlayer.addInventoryItem('leather2star', 1)
-        elseif rarity <= 59 then
-            xPlayer.addInventoryItem('meat', AOD.CoyoteMeat)
-            xPlayer.addInventoryItem('leather', 1)
+
+    if xPlayer.getWeight() <= 30000 then
+
+        if animal == boar then
+            if rarity >= 85 then
+                xPlayer.addInventoryItem('meat3star', AOD.BoarMeat)
+                xPlayer.addInventoryItem('leather3star', 1)
+            elseif rarity >= 60 then
+                xPlayer.addInventoryItem('meat2star', AOD.BoarMeat)
+                xPlayer.addInventoryItem('leather2star', 1)
+            elseif rarity <= 59 then
+                xPlayer.addInventoryItem('meat', AOD.BoarMeat)
+                xPlayer.addInventoryItem('leather', 1)
+            end
+        elseif animal == deer then
+            if rarity >= 85 then
+                xPlayer.addInventoryItem('meat3star', AOD.DeerMeat)
+                xPlayer.addInventoryItem('leather3star', 1)
+            elseif rarity >= 60 then
+                xPlayer.addInventoryItem('meat2star', AOD.DeerMeat)
+                xPlayer.addInventoryItem('leather2star', 1)
+            elseif rarity <= 59 then
+                xPlayer.addInventoryItem('meat', AOD.DeerMeat)
+                xPlayer.addInventoryItem('leather', 1)
+            end
+        elseif animal == coyote then
+            if rarity >= 85 then
+                xPlayer.addInventoryItem('meat3star', AOD.CoyoteMeat)
+                xPlayer.addInventoryItem('leather3star', 1)
+            elseif rarity >= 60 then
+                xPlayer.addInventoryItem('meat2star', AOD.CoyoteMeat)
+                xPlayer.addInventoryItem('leather2star', 1)
+            elseif rarity <= 59 then
+                xPlayer.addInventoryItem('meat', AOD.CoyoteMeat)
+                xPlayer.addInventoryItem('leather', 1)
+            end
+        else
+            print('exploit detected')
+        --add your ban event here for cheating
         end
     else
-        print('exploit detected')
-        --add your ban event here for cheating
+        TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, {type = 'error', text = 'You can\'t carry anymore'})
     end
 end)
 
@@ -114,6 +128,7 @@ AddEventHandler('hunting:sellLeather', function()
     local LeatherQuantity3 = xPlayer.getInventoryItem('leather3star').count
     local LeatherQuantity4 = xPlayer.getInventoryItem('leather4star').count
     local LeatherQuantity5 = xPlayer.getInventoryItem('leather5star').count
+
     
     if LeatherQuantity >= 1 then
         local quality = 1
