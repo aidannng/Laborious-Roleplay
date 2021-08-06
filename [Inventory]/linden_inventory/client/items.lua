@@ -164,7 +164,7 @@ AddEventHandler('linden_inventory:ifak', function(item, wait, cb)
 	Citizen.Wait(10000)
 	TriggerServerEvent('removeifak')
 	local currenthealth = GetEntityHealth(ESX.PlayerData.ped)
-	local newhealth = currenthealth + math.random(10,23)
+	local newhealth = currenthealth + math.random(90, 100)
 
 	SetEntityHealth(ESX.PlayerData.ped, newhealth)
 end)

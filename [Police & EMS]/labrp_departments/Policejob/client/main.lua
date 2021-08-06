@@ -1678,3 +1678,8 @@ Citizen.CreateThread(function()
 		Citizen.Wait(1000)
 	end
 end)
+
+RegisterNetEvent('labrp:checkvin')
+AddEventHandler('labrp:checkvin', function()
+	print(data.entity)
+end)
