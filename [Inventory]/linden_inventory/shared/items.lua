@@ -245,7 +245,7 @@ Items = {
 
 	['kkjoint'] = {
 		label = 'Kronic Kush Joint',
-		weight = 300,
+		weight = 1,
 		stack = true,
 		close = true,
 		client = {
@@ -257,7 +257,7 @@ Items = {
 
 	['wpjoint'] = {
 		label = 'Wedding Pie Joint',
-		weight = 300,
+		weight = 1,
 		stack = true,
 		close = true,
 		client = {
@@ -269,7 +269,7 @@ Items = {
 
 	['zpjoint'] = {
 		label = 'Zurple Punch Joint',
-		weight = 300,
+		weight = 1,
 		stack = true,
 		close = true,
 		client = {
@@ -281,7 +281,7 @@ Items = {
 
 	['kkgummies'] = {
 		label = 'Kronic Kush Gummies',
-		weight = 300,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -293,7 +293,7 @@ Items = {
 
 	['kkbrownie'] = {
 		label = 'Kronic Kush Brownie',
-		weight = 300,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {
@@ -305,7 +305,7 @@ Items = {
 
 	['kkcookie'] = {
 		label = 'Kronic Kush Cookie',
-		weight = 300,
+		weight = 100,
 		stack = true,
 		close = true,
 		client = {

@@ -37,36 +37,48 @@ Citizen.CreateThread(function()
 		job = {"all"},
 		distance = 2.0
 	})
-end) 
+end)
+
+local InProgress = false
+local dist = 0
+local checkdist = true
+local isPress = false
+
 
 RegisterNetEvent('checkinEye') 
-AddEventHandler('checkinEye', function() 
-	TriggerEvent("mythic_progbar:client:progress", {
-        name = "unique_action_name",
-        duration = 10000,
-        label = "Checking In",
-        useWhileDead = false,
-        canCancel = true,
-        controlDisables = {
-            disableMovement = true,
-            disableCarMovement = true,
-            disableMouse = false,
-            disableCombat = true,
-        },
-        animation = {
-            animDict = "missheistdockssetup1clipboard@idle_a",
-            anim = "idle_a",
-        },
-        prop = {
-            model = "prop_fib_clipboard",
-        }
-    }, function(status)
-        if not status then
-            -- Do Something If Event Wasn't Cancelled
-        end
-    end)
-	Citizen.Wait(10000)
-	TriggerEvent('esx_checkin:checkIn')
+AddEventHandler('checkinEye', function()
+	if not InProgress then
+		TriggerEvent("mythic_progbar:client:progress", {
+        	name = "unique_action_name",
+        	duration = 10000,
+        	label = "Checking In",
+        	useWhileDead = false,
+        	canCancel = true,
+        	controlDisables = {
+            	disableMovement = true,
+            	disableCarMovement = true,
+            	disableMouse = false,
+            	disableCombat = true,
+        	},
+        	animation = {
+            	animDict = "missheistdockssetup1clipboard@idle_a",
+            	anim = "idle_a",
+        	},
+        	prop = {
+            	model = "prop_fib_clipboard",
+        	}
+    	}, function(status)
+        	if not status then
+            	-- Do Something If Event Wasn't Cancelled
+        	end
+    	end)
+		exports['cd_drawtextui']:HideInteraction()
+		Citizen.Wait(10000)
+		TriggerEvent('esx_checkin:checkIn')
+		InProgress = false
+	else
+		exports['mythic_notify']:SendAlert('inform', 'Stop Spamming')
+	end
 end)
 
 
