@@ -283,3 +283,28 @@ AddEventHandler("kk:hire", function(TargetID)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You are not currently employed here'})
     end
 end)
+
+local isOpen = false
+
+RegisterServerEvent('kk:openmsg')
+AddEventHandler('kk:openmsg', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+    if job == "kronickush" then
+        if not isOpen then
+            TriggerClientEvent('chat:addMessage', -1, {
+                template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0} </div>',
+                args = { "^*[^2Kronic Kush^0] The Kronic Kush Dispensary is now open, come on down to legion sqaure to purchase some of our finest goods!" }
+            });	
+            isOpen = true
+        else
+            TriggerClientEvent('chat:addMessage', -1, {
+                template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0} </div>',
+                args = { "^*[^2Kronic Kush^0] The Kronic Kush Dispensary is now closed" }
+            });
+            isOpen = false
+        end
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You are not currently employed here'})
+    end
+end)
