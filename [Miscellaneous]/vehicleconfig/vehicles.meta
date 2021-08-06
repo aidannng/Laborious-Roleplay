@@ -4,8 +4,8 @@
   <residentAnims />
   <InitDatas>
     <Item>
-      <modelName>npgem</modelName>
-      <txdName>npgem</txdName>
+      <modelName>BMX</modelName>
+      <txdName>BMX</txdName>
       <handlingId>BMX</handlingId>
       <gameName>BMX</gameName>
       <vehicleMakeName />

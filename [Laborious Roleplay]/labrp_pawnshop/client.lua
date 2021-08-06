@@ -404,12 +404,12 @@ end)
 
 
 
-exports['labrp_Eye']:AddBoxZone("smallcrafting", vector3(192.3868, -2226.607, 6.970703), 0.2, 1.1, {
+exports['labrp_Eye']:AddBoxZone("smallcrafting", vector3(2514.5000, 4215.8500, 41.02417), 0.65, 1.75, {
 	name="smallcrafting",
-	heading=90,
+	heading=143,
 	debugPoly=false,
-	minZ=5.97,
-	maxZ=8.37
+	minZ=39.10,
+	maxZ=40.10
     }, {
         options = {
             {

@@ -61,9 +61,9 @@ exports['labrp_Eye']:AddBoxZone("KronicKushBuyStock", vector3(375.5, -827.3, 29.
           job = "kronickush",
       },
       {
-        event = "kk:hire",
-        icon = "fas fa-credit-card",
-        label = "Hire Person",
+        event = "kk:announce",
+        icon = "fas fa-bullhorn",
+        label = "Shop Announcement",
         job = "kronickush",
     },
    },
@@ -94,9 +94,10 @@ AddEventHandler("kk:payment", function()
     end
 end)
 
-RegisterNetEvent("kk:hire")
-AddEventHandler("kk:hire", function()
-    local bill = exports["nh-keyboard"]:KeyboardInput({
+RegisterNetEvent("kk:announce")
+AddEventHandler("kk:announce", function()
+  TriggerServerEvent('kk:openmsg')
+    --[[local bill = exports["nh-keyboard"]:KeyboardInput({
         header = "Hire Person",
         rows = {
             {
@@ -107,7 +108,7 @@ AddEventHandler("kk:hire", function()
     })
     if bill then
         TriggerServerEvent("kk:payment", bill[1].input)
-    end
+    end]]
 end)
 
 RegisterNetEvent("kk:purchase")
