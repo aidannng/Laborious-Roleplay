@@ -92,9 +92,9 @@ AddEventHandler("racing:addmodeltotracktable", function(a, b, c, d, f, g)
     })
 end)
 
-RegisterCommand("trials", function(source)
+--[[ RegisterCommand("trials", function(source)
     TriggerEvent('racing:menu')
-end)
+end)]]
 
 RegisterNUICallback("activatetrial", function(data)
     TriggerServerEvent("activatetrial", data.track, data.model)
