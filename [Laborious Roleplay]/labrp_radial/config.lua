@@ -91,6 +91,14 @@ Citizen.CreateThread(function()
     })
 end)
 
+Citizen.CreateThread(function()
+    exports["PolyZone"]:AddBoxZone("GarageArea", vector3(228, -787.7802, 30.72888), 40.0, 50.0, {
+        name="GarageArea",
+        heading=70,
+        debugPoly=false,
+    })
+end)
+
 local bennysMenuEnable = false
 local pdheliMenu = false
 local returntowtruck = false
@@ -98,6 +106,7 @@ local impoundtow = false
 local pdmbills = false
 local lscustomtowtruck = false
 local pdVehicleExtras = false
+local inGarageArea = false
 
 AddEventHandler('bt-polyzone:enter', function(name)
     if name == "lscustomreturntruck" then
@@ -180,6 +189,18 @@ end)
 AddEventHandler('bt-polyzone:exit', function(name)
     if name == "impoundvehicle" then
         impoundtow = false
+    end
+end)
+
+AddEventHandler('bt-polyzone:enter', function(name)
+    if name == "GarageArea" then
+        inGarageArea = true
+    end
+end)
+
+AddEventHandler('bt-polyzone:exit', function(name)
+    if name == "GarageArea" then
+        inGarageArea = false
     end
 end)
 
@@ -418,7 +439,7 @@ rootMenuConfig =  {
                 return true
             end
         end,
-        subMenus = { "mechanic:mech", "mechanic:repair", "mechanic:hood", "mechanic:menu" }
+        subMenus = { "mechanic:mech", "mechanic:repair", "mechanic:hood", "mechanic:menu", "mechanic:trials" }
     },
 }
 
@@ -576,7 +597,7 @@ newSubMenus = {
     },
     ['mechanic:repair'] = {
         title = "Repair",
-        icon = "#police-vehicle",
+        icon = "#repair",
         functionName = "vehcontrol:repair"
     },
     ['mechanic:hood'] = {
@@ -584,10 +605,15 @@ newSubMenus = {
         icon = "#police-vehicle",
         functionName = "mechanic:hood"
     },
-   ['mechanic:menu'] = {
+    ['mechanic:menu'] = {
         title = "Customs Tablet",
-        icon = "#general-check-vehicle",
+        icon = "#tablet",
         functionName = "mechanic:customs"
+    },
+    ['mechanic:trials'] = {
+        title = "Time Trials",
+        icon = "#ordered-list",
+        functionName = "racing:menu"
     },
     ['k9:spawn'] = {
         title = "Summon",

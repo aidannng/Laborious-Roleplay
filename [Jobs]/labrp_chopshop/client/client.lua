@@ -20,10 +20,11 @@ Citizen.CreateThread(function()
     }) 
 end)
 
+
+
 local canChop = true
 local inMission = false
-local pogg = false
-local poggg = false
+local car = nil
 
 RegisterNetEvent('ChopCarPaper')
 AddEventHandler('ChopCarPaper', function()
@@ -53,108 +54,95 @@ AddEventHandler('ChopCarPaper', function()
         inMission = true
         ClearPedTasks(PlayerPedId(-1))
         TriggerServerEvent('givechoppaper')
-        TriggerEvent('chop:blip')
     else
-        exports['mythic_notify']:SendAlert('error', 'No Cars Available!')
+        exports['mythic_notify']:SendAlert('error', 'Try Again Later!')
+    end
+end)
+
+RegisterNetEvent('ChopShop:BeginChop')
+AddEventHandler('ChopShop:BeginChop', function(vehicle)
+    local currentVehicle = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicle.entity)))
+    if car == currentVehicle then
+        TriggerServerEvent('removepapers')
+        exports['mythic_progbar']:Progress({
+            name = "unique_action_name",
+            duration = 30000,
+            label = 'Chopping Car',
+            useWhileDead = true,
+            canCancel = false,
+            controlDisables = {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            },
+            animation = {
+                animDict = "mini@repair",
+                anim = "fixing_a_ped",
+            },
+        })
+        Citizen.Wait(30000)
+        ClearPedTasks(PlayerPedId(-1))
+        DeleteEntity(vehicle.entity)
+        TriggerServerEvent('choppayout')
+        inMission = false
+        TriggerEvent('resetchop')
+    else
+        exports['mythic_notify']:SendAlert('error', 'Invalid Vehicle!')
     end
 end)
 
 
 RegisterNetEvent('resetchop')
 AddEventHandler('resetchop', function()
-    Citizen.Wait(1500000)
+    Citizen.Wait(300000)
     canChop = true
 end)
 
 
-RegisterNetEvent('chop:blip')
-AddEventHandler('chop:blip', function()
-    if inMission == true then
-        local blips2 = {
-                -- Example {title="", colour=, id=, x=, y=, z=},
-            {title="Chop Warehouse", colour=3, id=569, x = 1204.3165, y = -3115.9, z = 5.5},
-        }
-              
-              
-        for _, info in pairs(blips2) do
-            info.blip = AddBlipForCoord(info.x, info.y, info.z)
-            SetBlipSprite(info.blip, info.id)
-            SetBlipDisplay(info.blip, 4)
-            SetBlipScale(info.blip, 0.8)
-            SetBlipColour(info.blip, info.colour)
-            SetBlipAsShortRange(info.blip, true)
-            BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString(info.title)
-            EndTextCommandSetBlipName(info.blip)
-            Citizen.Wait(3600000)
-            RemoveBlip(info.blip)
-        end
+
+Citizen.CreateThread(function()
+    exports["PolyZone"]:AddBoxZone("chopshop", vector3(1204.391, -3116.967, 5.538452), 15.0, 10.0, {
+        name="chopshop",
+        heading=90,
+        debugPoly=false,
+    })
+end)
+
+local inChopLocation = false
+
+AddEventHandler('bt-polyzone:enter', function(name)
+    if name == "chopshop" then
+        exports['labrp_Eye']:Vehicle({
+            options = {
+                {
+                    event = "ChopShop:BeginChop",
+                    icon = "fas fa-screwdriver",
+                    label = "Chop Car",
+                    canInteract = function(entity)
+                        hasChecked = false
+                        if inMission and not hasChecked then
+                            hasChecked = true
+                            return true
+                        end
+                    end
+                },
+            },
+            distance = 2.5,
+        })
     end
 end)
 
-local vehiclename = nil
-local chopname = nil
-local test = true
-local name = 0
-
-Citizen.CreateThread(function()
-    while test do
-        local ped = GetPlayerPed(-1)
-		local pos = GetEntityCoords(ped)
-		local dist = GetDistanceBetweenCoords(pos.x, pos.y, pos.z, 1204.2, -3115.9, 5.5, true)
-
-
-
-        local vehicle = GetVehiclePedIsIn(ped, false)
-        local model = GetEntityModel(vehicle)
-
-        if dist <= 5 and model == chopname then
-            poggg = true
-            exports['mythic_notify']:SendAlert('error', 'Press [E] to chop car')
-            test = false
-        end
-        Citizen.Wait(0)
-    end
-end)
-
-Citizen.CreateThread(function()
-    while true do
-        if poggg == true then
-            if IsControlPressed(0, 38) then
-                TriggerEvent('EnterChopVehicle')
-                poggg = false
-                TriggerServerEvent('removepapers')
-            end
-        end
-        Citizen.Wait(0)
+AddEventHandler('bt-polyzone:exit', function(name)
+    if name == "chopshop" then
+        exports['labrp_Eye']:RemoveVehicle({
+            'Chop Car',
+        })
     end
 end)
 
 RegisterNetEvent('CarPapers')
-AddEventHandler('CarPapers', function(car)
-    chopname = GetHashKey(car)
-    print(chopname)
-end)
-
-RegisterNetEvent('EnterChopVehicle')
-AddEventHandler('EnterChopVehicle', function()
-    local current = GetVehiclePedIsIn(PlayerPedId(), false)
-    exports['mythic_progbar']:Progress({
-        name = "unique_action_name",
-        duration = 30000,
-        label = 'Chopping Vehicle',
-        useWhileDead = true,
-        canCancel = false,
-        controlDisables = {
-            disableMovement = true,
-            disableCarMovement = true,
-            disableMouse = false,
-            disableCombat = true,
-        },
-    })
-    Citizen.Wait(30000)
-    inMission = false
-    TriggerEvent('chop:blip')
-    DeleteEntity(current)
-    TriggerServerEvent('choppayout')
+AddEventHandler('CarPapers', function(newcar)
+    car = string.lower(newcar)
+    print(car)
 end)

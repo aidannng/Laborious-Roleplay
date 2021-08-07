@@ -20,11 +20,10 @@ end) --choppayout
 RegisterServerEvent('choppayout')
 AddEventHandler('choppayout', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local payout = math.random(10, 25)
+	local payout = math.random(3, 8)
 
 	xPlayer.addInventoryItem('scrapmetal', payout)
-	xPlayer.addInventoryItem('black_money', math.random(300, 700))
-	TriggerClientEvent('resetchop', source)
+	xPlayer.addInventoryItem('black_money', math.random(150, 300))
 end)
 
 RegisterServerEvent('removepapers')

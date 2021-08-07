@@ -4,9 +4,17 @@ Config = {}
 Config.ChopCars = {
 	[1] = 'Buccaneer',    
 	[2] = 'Akuma',   
-	[3] = 'Asea',	
+	[3] = 'Bati',	
 	[4] = 'Tailgater',	
 	[5] = 'Dukes',
+	[6] = 'Dominator',
+	[7] = 'Buccaneer',    
+	[8] = 'Prairie',   
+	[9] = 'Blista',	
+	[10] = 'Fugitive',	
+	[11] = 'Emperor',
+	[12] = 'Banshee',
+	[13] = 'Patriot',
 }
 
 Config.SpawnCar = {
