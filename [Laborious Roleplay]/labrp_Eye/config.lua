@@ -75,73 +75,6 @@ M.ToggleDoor = function(vehicle, door)
 	end
 end
 
--------------------------------------------------------------------------------
--- Default options
--------------------------------------------------------------------------------
-Bones['seat_dside_f'] = {
-	options = {
-		{
-			icon = "fas fa-door-open",
-			label = "Toggle front Door",
-			canInteract = function(entity)
-				return GetEntityBoneIndexByName(entity, 'door_dside_f') ~= -1
-			end,
-			action = function(entity)
-				M.ToggleDoor(entity, 0)
-			end
-		},
-	},
-	distance = 1.2
-}
-
-Bones['seat_pside_f'] = {
-	options = {
-		{
-			icon = "fas fa-door-open",
-			label = "Toggle front Door",
-			canInteract = function(entity)
-				return GetEntityBoneIndexByName(entity, 'door_pside_f') ~= -1
-			end,
-			action = function(entity)
-				M.ToggleDoor(entity, 1)
-			end
-		},
-	},
-	distance = 1.2
-}
-
-Bones['seat_dside_r'] = {
-	options = {
-		{
-			icon = "fas fa-door-open",
-			label = "Toggle rear Door",
-			canInteract = function(entity)
-				return GetEntityBoneIndexByName(entity, 'door_dside_r') ~= -1
-			end,
-			action = function(entity)
-				M.ToggleDoor(entity, 2)
-			end
-		},
-	},
-	distance = 1.2
-}
-
-Bones['seat_pside_r'] = {
-	options = {
-		{
-			icon = "fas fa-door-open",
-			label = "Toggle rear Door",
-			canInteract = function(entity)
-				return GetEntityBoneIndexByName(entity, 'door_pside_r') ~= -1
-			end,
-			action = function(entity)
-				M.ToggleDoor(entity, 3)
-			end
-		},
-	},
-	distance = 1.2
-}
-
 Bones['bonnet'] = {
 	options = {
 		{
@@ -154,7 +87,6 @@ Bones['bonnet'] = {
 	},
 	distance = 0.9
 }
-
 -------------------------------------------------------------------------------
 return Config, Players, Types, Entities, Models, Zones, Bones, M
 -------------------------------------------------------------------------------

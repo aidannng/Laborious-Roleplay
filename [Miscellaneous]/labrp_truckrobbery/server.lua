@@ -98,10 +98,10 @@ AddEventHandler('RS7x:Payout', function()
 
     while Robbing == true do
         if math.random(1,100) <= 92 then
-            xPlayer.addInventoryItem("black_money",math.random(16500,22500))
+            xPlayer.addInventoryItem("black_money",math.random(20500,29500))
             Robbing = false
         else
-            xPlayer.addInventoryItem("black_money", math.random(8500,10500))
+            xPlayer.addInventoryItem("black_money", math.random(10500,16500))
             xPlayer.addInventoryItem(RandomItem(), 1)
            Robbing = false
         end

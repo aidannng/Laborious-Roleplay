@@ -645,6 +645,11 @@ AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0.4, 0.6, {
             icon = "fas fa-flag-checkered",
             label = "Spawn Go Kart",
         },
+        {
+            event = "racing:menu",
+            icon = "fas fa-list-ol",
+            label = "Time Trials",
+        },
         },
         job = {"all"},
         distance = 2.5

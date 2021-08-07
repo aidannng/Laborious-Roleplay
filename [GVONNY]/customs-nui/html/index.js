@@ -31,7 +31,7 @@ $(function () {
             $('#purchasePrice').val('');
             $('#termLength').val('');
             
-            $.post('http://customs-nui/createbill', JSON.stringify({
+            $.post('http://customs-nui/lsccreatebill', JSON.stringify({
                 luckyNumber:luckyNumber,
                 purchasePrice: purchasePrice,
                 termLength: termLength,

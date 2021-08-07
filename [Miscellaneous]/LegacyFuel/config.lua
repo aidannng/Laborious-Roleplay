@@ -66,6 +66,7 @@ Config.Blacklist = {
 	"packer",
 	"phantom3",
 	"models",
+	"modelsleo",
 }
 
 -- Do you want the HUD removed from showing in blacklisted vehicles?
