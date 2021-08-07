@@ -108,7 +108,7 @@ RegisterNUICallback("getlscbills", function(data)
 	TriggerServerEvent("getlscbills")
 end)
 
-RegisterNUICallback("createbill", function(data)
+RegisterNUICallback("lsccreatebill", function(data)
 	TriggerServerEvent("lsccreatebill", data.luckyNumber, data.purchasePrice, data.termLength)
 end)
 

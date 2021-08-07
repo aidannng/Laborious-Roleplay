@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Copsneeded = 1
+Config.Copsneeded = 4
 
 Config.Item = "g6card" -- item needed to start robbing
 

@@ -33,95 +33,50 @@
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
             <div class="tab-pane fade" id="nav-gokart" role="tabpanel" aria-labelledby="nav-gokart-tab">
                 <br>
-                <div class="accordion" id="gokartform">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button style="padding-left:15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                -= Click to create time trial entry =-
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#gokartform">
-                            <div class="accordion-body create-bill">
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Lucky Number:</span>
-                                    <input type="number" min="0" class="display-inline-block width-50pct" id="gokartLuckyNumber" />
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Model:</span>
-                                    <select id="gokartVehicles">
-                                        <option>Model</option>
-                                    </select>
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue" style="margin-left:3px;">Minutes:</span>
-                                    <input type="number" min="0" class="display-inline-block" id="gokartMinutes" />
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Seconds:</span>
-                                    <input type="number" min="0" max="60" class="display-inline-block" id="gokartSeconds" />
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Milliseconds:</span>
-                                    <input type="number" min="0" max="100" class="display-inline-block" id="gokartMilliseconds" />
-                                </div>
-                                <br>
-                                <button class="create btn margin-top display-inline" data-track="gokart">Create</button>
-                                <span id="gokart-error" class="margin-left-10 error" style="margin-bottom:8px;"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
                 <div id="gokart" class="track overflow-auto">
 
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-underground" role="tabpanel" aria-labelledby="nav-underground-tab">
                 <br>
-                <div class="accordion" id="undergroundform">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button style="padding-left:15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                -= Click to create time trial entry =-
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#undergroundform">
-                            <div class="accordion-body create-bill">
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Lucky Number:</span>
-                                    <input type="number" min="0" class="display-inline-block width-50pct" id="undergroundLuckyNumber" />
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Model:</span>
-                                    <select id="undergroundVehicles">
-                                        <option>Model</option>
-                                    </select>
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue" style="margin-left:3px;">Minutes:</span>
-                                    <input type="number" min="0" class="display-inline-block" id="undergroundMinutes" />
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Seconds:</span>
-                                    <input type="number" min="0" max="60" class="display-inline-block" id="undergroundSeconds" />
-                                </div>
-                                <div class="display-inline-block">
-                                    <span class="color-blue">Milliseconds:</span>
-                                    <input type="number" min="0" max="100" class="display-inline-block" id="undergroundMilliseconds" />
-                                </div>
-                                <br>
-                                <button class="create btn margin-top display-inline" data-track="underground">Create</button>
-                                <span id="underground-error" class="margin-left-10 error" style="margin-bottom:8px;"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
                 <div id="underground" class="track overflow-auto">
 
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-management" role="tabpanel" aria-labelledby="nav-management-tab">
+                <br>
+                <div class="accordio" id="billform">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button style="padding-left:15px" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                -= Click to create trials =-
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#billform">
+                            <div class="accordion-body create-bill">
+                                <div class="display-inline-block">
+                                    <span class="color-blue">Track:</span>
+                                    <select id="allTracks">
+                                        <option>Track</option>
+                                    </select>
+                                </div>
+                                <div class="display-inline-block">
+                                    <span class="color-blue">Model:</span>
+                                    <select id="allVehicles">
+                                        <option>Model</option>
+                                    </select>
+                                </div>
+                                <div class="display-inline-block">
+                                    <span>Laps:</span>
+                                    <input type="number" min="1" max="5" class="display-inline-block" id="laps" />
+                                </div>
+                                <br>
+                                <button id="create-trial" class="btn col-1 margin-top">Create</button>
+                                <span id="create-error" class="margin-left-10 error" style="margin-bottom:8px;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <div id="active-trials">
                     

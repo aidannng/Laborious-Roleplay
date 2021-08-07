@@ -20,75 +20,102 @@ $(function () {
     });
 
     $('#nav-management-tab').click(function(){
+        getresetactivetrials();
+    });
+
+    $('#active-trials').on('click', '.activate', function(){
+        console.log("activating trial")
+        var track = $(this).data('track');
+        var model = $(this).data('model');
+
+        $.post('http://racing-nui/activatetrial', JSON.stringify({
+            track:track,
+            model:model,
+        }));
+        getresetactivetrials();
+    });
+
+    $('#active-trials').on('click', '.deactivate', function(){
+        var track = $(this).data('track');
+        var model = $(this).data('model');
+
+        $.post('http://racing-nui/deactivatetrial', JSON.stringify({
+            track:track,
+            model:model,
+        }));
+        getresetactivetrials();
+    })
+
+    $('#active-trials').on('click', '.delete', function(){
+        var track = $(this).data('track');
+        var model = $(this).data('model');
+
+        $.post('http://racing-nui/deletetrial', JSON.stringify({
+            track:track,
+            model:model,
+        }));
+        getresetactivetrials();
+    })
+
+    function getresetactivetrials()
+    {
+        $('#allVehicles').empty().append($('<option>', { 
+            value: '',
+            text : "Model"
+        }));
+
+        $('#allTracks').empty().append($('<option>', { 
+            value: '',
+            text : "Track"
+        }));
+
         $('#active-trials').empty();
         $.post('http://racing-nui/getactivetrials', JSON.stringify({}));
-    });
+    }
 
     function getresettrackinfo(track)
     {
-        $('#' + track + '-error').empty();
         $('#' + track).empty();
-
-        $('#gokartVehicles').empty().append($('<option>', { 
-            text : "Model"
-        }));
-
-        $('#undergroundVehicles').empty().append($('<option>', { 
-            text : "Model"
-        }));
 
         $.post('http://racing-nui/gettrackinfo', JSON.stringify({
             track:track,
         }));
-
-        $('#' + track + 'LuckyNumber').val('');
-        $('#' + track + 'Minutes').val(0);
-        $('#' + track + 'Seconds').val(0);
-        $('#' + track + 'Milliseconds').val(0);
     }
 
     var model = '';
-    $('#gokartVehicles').change(function(){
+    $('#allVehicles').change(function(){
         model = $(this).val();
     });
 
-    $('#undergroundVehicles').change(function(){
-        model = $(this).val();
+    var track = ''
+    $('#allTracks').change(function(){
+        track = $(this).val();
     });
 
-    $('.create').click(function(){
-        var track = $(this).data("track");
-
-        var luckynumber = $('#'+ track +'LuckyNumber').val();
-        var minutes = $('#'+ track +'Minutes').val();
-        var seconds = $('#'+ track +'Seconds').val();
-        var milliseconds = $('#'+ track +'Milliseconds').val();
-
-        if(luckynumber == '')
+    $('#create-trial').click(function(){
+        var laps = $('#laps').val();
+        if(track == '')
         {
-            $('#'+ track +'-error').empty().append("Please enter a lucky number");
+            $('#create-error').empty().append("Please select a track");
         }
         else if(model == '')
         {
-            $('#'+ track +'-error').empty().append("Please select a model");
+            $('#create-error').empty().append("Please select a model");
         }
-        else if(minutes == 0 && seconds == 0 && milliseconds == 0)
+        else if(laps == '')
         {
-            $('#'+ track +'-error').empty().append("Please enter a valid time");
+            $('#create-error').empty().append("Please enter number of laps");
         }
         else
         {
             $.post('http://racing-nui/createtrial', JSON.stringify({
                 track:track,
-                luckyNumber:luckynumber,
                 model:model,
-                minutes:minutes,
-                seconds:seconds,
-                milliseconds:milliseconds,
+                laps:laps
             }));
-    
-            getresettrackinfo(track)
         }
+        getresetactivetrials()
+        $('#laps').val('');
     });
 
     window.addEventListener('message', function (event) {
@@ -107,18 +134,27 @@ $(function () {
             $('#' + id).empty().append(item.text);
         }
 
-        if(item.addtodropdown)
+        if(item.addtovehicledropdown)
         {
-            $('#' + item.track + 'Vehicles').append($('<option>', { 
+            $('#allVehicles').append($('<option>', { 
                 value: item.model,
                 text : item.name 
+            }));
+        }
+
+        if(item.addtotrackdropdown)
+        {
+            $('#allTracks').append($('<option>', { 
+                value: item.track,
+                text : item.track[0].toUpperCase() + item.track.slice(1)
             }));
         }
 
         if(item.setupvehicletable)
         {
             var id = item.track;
-            $('#' + id).append("<div class=\"trial-content\">"+
+            console.log("creating table")
+            $('#' + id).append("<div class=\"trial-content\" style=\"margin-bottom:10px;\">"+
                                     "<h3  class=\"color-blue text-align-center display-inline-block\">"+ item.name +"</h3>"+
                                     "<table class=\"table\">"+
                                         "<thead>"+
@@ -138,6 +174,7 @@ $(function () {
 
         if(item.addtomodel)
         {
+            console.log("adding time")
             var id = item.model;
             var minutes = item.minutes.toString();
             var seconds = item.seconds.toString();
@@ -170,10 +207,15 @@ $(function () {
                                             "<table class=\"table\">"+
                                                 "<thead>"+
                                                     "<tr>"+
-                                                        "<th></th>"+
+                                                        "<th class=\"col-3\"></th>"+
+                                                        "<th class=\"col-2\">Prize Pool</th>"+
+                                                        "<th class=\"col-2\">Laps</th>"+
+                                                        "<th class=\"col-2\">Status</th>"+
+                                                        "<th class=\"col-3\"></th>"+
+                                                        "<th class=\"col-3\"></th>"+
                                                     "</tr>"+
                                                 "</thead>"+
-                                                "<tbody id=\""+ item.track +"\">"+
+                                                "<tbody id=\""+ track +"-admin\">"+
 
                                                 "</tbody>"+
                                             "</table"+
@@ -182,8 +224,22 @@ $(function () {
 
         if(item.addtotracktable)
         {
-            var track = item.track;
-            $('#' + track).append("<tr><td>" + item.name + "</td></tr>");
+            var id = item.track;
+            var active = '';
+            if(item.active == 1)
+            {
+                active = "<td style=\"color:green\">ACTIVE</td>";
+            }
+            else
+            {
+                active = "<td style=\"color:red\">INACTIVE</td>";
+            }
+
+            var deletes = "<td><button class=\"btn delete\" data-track=\""+ item.track +"\" data-model=\""+ item.model +"\">DELETE</button></td>";
+
+            var buttons = "<button class=\"btn activate\" data-track=\""+ item.track +"\" data-model=\""+ item.model +"\">ACTIVATE</button><button class=\"btn deactivate\" data-track=\""+ item.track +"\" data-model=\""+ item.model +"\">DEACTIVATE</button>"
+
+            $('#' + id + '-admin').append("<tr><td>" + item.name + "</td><td>"+ item.prizepool +"</td><td>"+ item.laps +"</td>"+ active +"<td>"+ buttons +"</td>"+ deletes +"</tr>");
         }
 
         if(item.hide == true)

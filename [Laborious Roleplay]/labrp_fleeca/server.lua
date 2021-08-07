@@ -32,7 +32,7 @@ RegisterServerEvent('GiveSafeReward')
 AddEventHandler('GiveSafeReward', function()
 
     local xPlayer = ESX.GetPlayerFromId(source)
-    local moneypayout = math.random(7500, 12500)
+    local moneypayout = math.random(12500, 18500)
     local jewels = math.random(1, 10)
     local jewelsamount = math.random(1, 4)
     local laptopchance = math.random(1, 10)
