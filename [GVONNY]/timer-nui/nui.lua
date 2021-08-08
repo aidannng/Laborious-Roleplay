@@ -126,12 +126,12 @@ AddEventHandler('bt-polyzone:enter', function(name)
                         model=model,
                         track=track,
                     })
+                    active = false
                     Citizen.Wait(7000)
                     SetDisplay(false)
                     lap = 0
                     time = 0
                     laps = 0
-                    active = false
                 end
             end
         end

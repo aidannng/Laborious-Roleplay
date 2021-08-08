@@ -230,6 +230,21 @@ AddEventHandler("kk:payment", function(TargetID, amount, order)
     end
 end)
 
+RegisterServerEvent('kk:hire')
+AddEventHandler("kk:hire", function(TargetID)
+    print('triggered')
+    local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	local xTarget = ESX.GetPlayerFromId(TargetID)
+    local fine = amount
+    local job = xPlayer.job.name
+    local MoneyQuantity = xTarget.getInventoryItem('money').count
+
+    if job == "kronickush" then
+	    print(TargetID)
+    end
+end)
+
 RegisterServerEvent('removekkgummies')
 AddEventHandler('removekkgummies', function()
     local xPlayer = ESX.GetPlayerFromId(source)
