@@ -20,7 +20,6 @@ let availableweight = 0
 let job = []
 let slots = 0
 let keys = []
-const stepKeyCode10 = 'Control';
 
 document.onkeyup = function (e) {
 	if (e.key == 'Escape') {
@@ -184,7 +183,7 @@ HSN.InventoryGetDurability = function(quality) {
 	if (quality == undefined) {
 		quality = 100
 	}
-	let color = colorMixer([15,214,15], [190,35,35], (quality/100));
+	let color = colorMixer([35,190,35], [190,35,35], (quality/100));
 	let width = quality
 	if (quality <= 0) {width = 100}
 	return [color=color, width=width]
@@ -289,7 +288,7 @@ HSN.SetupInventory = function(data) {
 			let progressbar = $( "#progressbarLeft" )
 			let progressbarValue = progressbar.find( ".ui-progressbar-value" )
 			let value = totalkg/maxWeight
-			let color = colorMixer([190,35,35], [15,214,15], value)
+			let color = colorMixer([190,35,35], [35,190,35], value)
 			progressbarValue.css({"background": color, "width": (value*100) +"%"})
 		});
 		if (data.rightinventory !== undefined) {
@@ -387,7 +386,7 @@ HSN.SetupInventory = function(data) {
 		let progressbar = $( "#progressbarRight" )
 		let progressbarValue = progressbar.find( ".ui-progressbar-value" )
 		let value = righttotalkg/rightmaxWeight
-		let color = colorMixer([190,35,35], [15,214,15], value)
+		let color = colorMixer([190,35,35], [35,190,35], value)
 		progressbarValue.css({"background": color, "width": (value*100) +"%"})
 	});
 	DragAndDrop()
@@ -868,7 +867,7 @@ SwapItems = function(fromInventory, toInventory, fromSlot, toSlot) {
 							
 						}));
 						fromItem.slot = toSlot
-						toInventory.find("[inventory-slot=" + toSlot + "]").data("ItemData", fromItem);
+						toInventory.find("[inventory-slot="+toSlot+"]").data("ItemData", fromItem);
 						success = true
 					}
 				}
@@ -885,7 +884,7 @@ SwapItems = function(fromInventory, toInventory, fromSlot, toSlot) {
 						let progressbar = $( "#progressbarRight" )
 						let progressbarValue = progressbar.find( ".ui-progressbar-value" )
 						let value = righttotalkg/rightmaxWeight
-						let color = colorMixer([190,35,35], [15,214,15], value)
+						let color = colorMixer([190,35,35], [35,190,35], value)
 						progressbarValue.css({"background": color, "width": (value*100) +"%"})
 					});
 					if (rightinvtype !== 'bag') {
@@ -896,7 +895,7 @@ SwapItems = function(fromInventory, toInventory, fromSlot, toSlot) {
 							let progressbar = $( "#progressbarLeft" )
 							let progressbarValue = progressbar.find( ".ui-progressbar-value" )
 							let value = totalkg/maxWeight
-							let color = colorMixer([190,35,35], [15,214,15], value)
+							let color = colorMixer([190,35,35], [35,190,35], value)
 							progressbarValue.css({"background": color, "width": (value*100) +"%"})
 						});
 					} else {
@@ -917,7 +916,7 @@ SwapItems = function(fromInventory, toInventory, fromSlot, toSlot) {
 						let progressbar = $( "#progressbarRight" )
 						let progressbarValue = progressbar.find( ".ui-progressbar-value" )
 						let value = righttotalkg/rightmaxWeight
-						let color = colorMixer([190,35,35], [15,214,15], value)
+						let color = colorMixer([190,35,35], [35,190,35], value)
 						progressbarValue.css({"background": color, "width": (value*100) +"%"})
 					});
 					if (rightinvtype !== 'bag') {
@@ -928,7 +927,7 @@ SwapItems = function(fromInventory, toInventory, fromSlot, toSlot) {
 							let progressbar = $( "#progressbarLeft" )
 							let progressbarValue = progressbar.find( ".ui-progressbar-value" )
 							let value = totalkg/maxWeight
-							let color = colorMixer([190,35,35], [15,214,15], value)
+							let color = colorMixer([190,35,35], [35,190,35], value)
 							progressbarValue.css({"background": color, "width": (value*100) +"%"})
 						});
 					} else {
@@ -983,22 +982,9 @@ $("#item-count").on("wheel", function(event) {
 	count = parseInt($("#item-count").val()) || 0
 	if (event.originalEvent.deltaY < 0) {
 		if (drag && count >= drag) { return }
-		if (keys['Control']) {
-			$("#item-count").val(count+10)
-		} else {
-			$("#item-count").val(count + 1)
-		}
+		$("#item-count").val(count+1)
 	}
 	else if (count > 0) {
-		if (keys['Control']) {
-			count = (count - 10)
-			if (count < 0) {
-				$("#item-count").val(0)
-			} else {
-				$("#item-count").val(count)
-			}
-		} else { 
-			$("#item-count").val(count - 1)
-		}
+		$("#item-count").val(count - 1) 
 	}
 })

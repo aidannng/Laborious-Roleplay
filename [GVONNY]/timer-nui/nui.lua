@@ -57,11 +57,11 @@ function SetDisplay(bool)
 	})
 end
 
-exports['PolyZone']:AddBoxZone("gokartstart", vector3(-116.0044, -2116.826, 16.69299), 14.0, 8, {
+--[[ exports['PolyZone']:AddBoxZone("gokartstart", vector3(-116.0044, -2116.826, 16.69299), 14.0, 8, {
     name="gokartstart",
     heading=20,
     debugPoly=false,
-})
+}) ]]
 
 --vector3(-123.5736, -2119.925, 16.69299)
 exports['PolyZone']:AddBoxZone("gokartfinish", vector3(-123.5736, -2119.925, 16.69299), 14.0, 8, {
@@ -77,9 +77,106 @@ local time = 0
 local model = ''
 local track = ''
 local active = false
+local multiplier = 1.6
 
 AddEventHandler('bt-polyzone:enter', function(name)
-    local playerPed = GetPlayerPed(-1)
+    print(name)
+    if name == "gokartfinish" then
+        local playerPed = GetPlayerPed(-1)
+        local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+        if(vehicle ~= 0) then
+            local props = ESX.Game.GetVehicleProperties(vehicle)
+            local hash = props.model
+            model = GetDisplayNameFromVehicleModel(hash)
+            if(model == "CADDY") then
+                model = "CADDY2"
+            end
+            ESX.TriggerServerCallback('trialisactive', function(isactive)
+                if isactive then
+                    active = true
+                end
+            end, "gokart", model)
+
+            ESX.TriggerServerCallback('gettriallaps', function(dblaps, dbtrack)
+                laps = dblaps
+                track = dbtrack
+            end, "gokart", model)
+            Wait(200)
+            print(track)
+            print(model)
+            print(active)
+        end
+    end
+end)
+    
+function UpdateLaps()
+    SendNUIMessage({
+        updatelaps = true,
+        lap=lap,
+        laps=laps,
+        time=time*multiplier,
+    })
+end
+
+AddEventHandler('bt-polyzone:exit', function(name)
+    if name == "gokartfinish" then
+        if active then
+            if lap == 0 then
+                lap = lap + 1
+                TriggerEvent("starttimer", true)
+                UpdateLaps()
+                SetDisplay(true)
+            elseif lap < laps then
+                lap = lap + 1
+                UpdateLaps()
+            else
+                TriggerEvent("starttimer", false)
+                TriggerServerEvent("deactivatetrial", "gokart", model)
+                UpdateLaps()
+                SendNUIMessage({
+                    gettime=true,
+                    time=time*multiplier,
+                    model=model,
+                    track=track
+                })
+                active = false
+                Citizen.Wait(7000)
+                SetDisplay(false)
+                lap = 0
+                time = 0
+                laps = 0
+            end
+        end
+    end
+end)
+
+RegisterNetEvent("starttimer")
+AddEventHandler("starttimer", function(toggle)
+    timerstarted = toggle
+
+    while time >= 0 and timerstarted do
+        Wait(1)
+        time = time + 1
+        SendNUIMessage({
+            updatetime = true,
+            time=time*multiplier,
+        })
+    end
+    if not timerstarted then
+        time = time - 1
+        SendNUIMessage({
+            updatetime = true,
+            time=time*multiplier,
+        })
+    end
+end)
+
+RegisterNUICallback("createtrialtime", function(data)
+    TriggerServerEvent("createtrialtime", data.track, data.model, data.minutes, data.seconds, data.milliseconds)
+end)
+
+
+    --[[ local playerPed = GetPlayerPed(-1)
     local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
     if(vehicle ~= 0) then
         local props = ESX.Game.GetVehicleProperties(vehicle)
@@ -122,7 +219,7 @@ AddEventHandler('bt-polyzone:enter', function(name)
                     UpdateLaps()
                     SendNUIMessage({
                         gettime=true,
-                        time=time*1.5,
+                        time=time*multiplier,
                         model=model,
                         track=track,
                     })
@@ -135,66 +232,4 @@ AddEventHandler('bt-polyzone:enter', function(name)
                 end
             end
         end
-    end
-end)
-    
-function UpdateLaps()
-    SendNUIMessage({
-        updatelaps = true,
-        lap=lap,
-        laps=laps,
-        time=time*1.5,
-    })
-end
-
-AddEventHandler('bt-polyzone:exit', function(name)
-    --[[ if name == "gokartfinish" then
-        if(active) then
-            if lap < laps then
-                lap = lap + 1
-                UpdateLaps()
-            else
-                TriggerEvent("starttimer", false)
-                TriggerServerEvent("deactivatetrial", "gokart", model)
-                UpdateLaps()
-                SendNUIMessage({
-                    gettime=true,
-                    time=time*1.5,
-                    model=model,
-                    track=track,
-                })
-                Citizen.Wait(7000)
-                SetDisplay(false)
-                lap = 0
-                time = 0
-                laps = 0
-                active = false
-            end
-        end
     end ]]
-end)
-
-RegisterNetEvent("starttimer")
-AddEventHandler("starttimer", function(toggle)
-    timerstarted = toggle
-
-    while time >= 0 and timerstarted do
-        Citizen.Wait(1)
-        time = time + 1
-        SendNUIMessage({
-            updatetime = true,
-            time=time*1.5,
-        })
-    end
-    if not timerstarted then
-        time = time - 1
-        SendNUIMessage({
-            updatetime = true,
-            time=time*1.5,
-        })
-    end
-end)
-
-RegisterNUICallback("createtrialtime", function(data)
-    TriggerServerEvent("createtrialtime", data.track, data.model, data.minutes, data.seconds, data.milliseconds)
-end)
