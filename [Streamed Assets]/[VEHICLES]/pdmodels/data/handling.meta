@@ -4,7 +4,7 @@
 
   <HandlingData>
     <Item type="CHandlingData">
-      <handlingName>MODELS</handlingName>
+      <handlingName>MODELSLEO</handlingName>
       <fMass value="1800.000000" />
       <fInitialDragCoeff value="8.300000" />
       <fPercentSubmerged value="85.000000" />

@@ -56,14 +56,14 @@ $(function () {
 
         if(item.updatetime)
         {
-            var time = (item.time/100).toFixed(2);
+            var time = (item.time/1000).toFixed(2);
 
             $('#time').empty().html(convertTime(time));
         }
 
         if(item.updatelaps)
         {
-            var time = (item.time/100).toFixed(2);
+            var time = (item.time/1000).toFixed(2);
             var difference = 0
             var totaltime = 0;
             if(times.length > 0)
@@ -105,7 +105,7 @@ $(function () {
 
         if(item.gettime)
         {
-            var time = (item.time/100).toFixed(2);
+            var time = (item.time/1000).toFixed(2);
 
             time = convertTime(time);
 

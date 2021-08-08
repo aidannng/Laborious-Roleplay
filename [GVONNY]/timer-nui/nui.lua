@@ -14,9 +14,6 @@ AddEventHandler("timer:menu", function()
     SetDisplay(not display)
 end)
 
-
-
-
 RegisterCommand("timer", function(source)
     TriggerEvent('timer:menu')
 end)
@@ -57,31 +54,57 @@ function SetDisplay(bool)
 	})
 end
 
---[[ exports['PolyZone']:AddBoxZone("gokartstart", vector3(-116.0044, -2116.826, 16.69299), 14.0, 8, {
-    name="gokartstart",
-    heading=20,
-    debugPoly=false,
-}) ]]
+local gokart = {}
 
---vector3(-123.5736, -2119.925, 16.69299)
+local underground = {}
+underground[1] =  	{ x = 1120.998, y = -3105.323, z = -12.27185, type = 13}
+underground[2] =	{ x = 1066.18, y = -3094.681, z = -12.27185, type = 13}
+underground[3] =	{ x = 1050.633, y = -3207.561, z = -12.27185, type = 13}
+underground[4] =	{ x = 1029.27, y = -3117.336, z = -12.27185, type = 13}
+underground[5] =	{ x = 857.9868, y = -3121.991, z = -12.27185, type = 13}
+underground[6] =	{ x = 911.1824, y = -3147.02, z = -12.27185, type = 13}
+underground[7] =	{ x = 862.7209, y = -3166.695, z = -12.27185, type = 13}
+underground[8] =	{ x = 868.5494, y = -3307.424, z = -12.27185, type = 13}
+underground[9] =	{ x = 887.3011, y = -3243.534, z = -12.27185, type = 13}
+underground[10] =	{ x = 994.6945, y = -3231.27, z = -12.27185, type = 13}
+underground[11] =	{ x = 1000.51, y = -3167.116, z = -12.27185, type = 13}
+underground[12] =	{ x = 953.2879, y = -3164.545, z = -12.27185, type = 13}
+underground[13] =	{ x = 948.778, y = -3276.818, z = -12.27185, type = 13}
+underground[14] =	{ x = 1017.31, y = -3261.732, z = -12.27185, type = 13}
+underground[15] =	{ x = 1124.716, y = -3294.33, z = -12.27185, type = 13}
+underground[16] =	{ x = 1094.782, y = -3302.756, z = -12.27185, type = 13}
+underground[17] =  	{ x = 1092.765, y = -3207.099, z = -12.27185, type = 16}
+
+
 exports['PolyZone']:AddBoxZone("gokartfinish", vector3(-123.5736, -2119.925, 16.69299), 14.0, 8, {
     name="gokartfinish",
     heading=20,
     debugPoly=false,
 })
 
+exports['PolyZone']:AddBoxZone("undergroundfinish", vector3(1092.026, -3214.721, -12.27185), 18.0, 16, {
+    name="undergroundfinish",
+    heading=90,
+    debugPoly=false,
+})
+
 local timerstarted = false
+local active = false
+local starttime = 0
+local time = 0
 local laps = 0
 local lap = 0
-local time = 0
 local model = ''
 local track = ''
-local active = false
-local multiplier = 1.6
 
 AddEventHandler('bt-polyzone:enter', function(name)
-    print(name)
-    if name == "gokartfinish" then
+    if name == "gokartfinish" or name == "undergroundfinish" then
+        if name == "gokartfinish" then
+            track = "gokart"
+        elseif name == "undergroundfinish" then
+            track = "underground"
+        end
+
         local playerPed = GetPlayerPed(-1)
         local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
         if(vehicle ~= 0) then
@@ -91,21 +114,25 @@ AddEventHandler('bt-polyzone:enter', function(name)
             if(model == "CADDY") then
                 model = "CADDY2"
             end
-            ESX.TriggerServerCallback('trialisactive', function(isactive)
-                if isactive then
-                    active = true
-                end
-            end, "gokart", model)
-
-            ESX.TriggerServerCallback('gettriallaps', function(dblaps, dbtrack)
-                laps = dblaps
-                track = dbtrack
-            end, "gokart", model)
-            Wait(200)
-            print(track)
-            print(model)
-            print(active)
+            TriggerEvent("checktrialactive")
         end
+    end
+end)
+
+RegisterNetEvent("checktrialactive")
+AddEventHandler("checktrialactive", function()
+    while not active do
+        Wait(250)
+        ESX.TriggerServerCallback('trialisactive', function(isactive)
+            if isactive then
+                active = true
+            end
+        end, track, model)
+
+        ESX.TriggerServerCallback('gettriallaps', function(dblaps, dbtrack)
+            laps = dblaps
+            track = dbtrack
+        end, track, model)
     end
 end)
     
@@ -114,31 +141,32 @@ function UpdateLaps()
         updatelaps = true,
         lap=lap,
         laps=laps,
-        time=time*multiplier,
+        time=formatTimer(starttime, GetGameTimer())
     })
 end
 
+local cP = 1
+local cP2 = 2
+local checkpoint
+local blip
+
 AddEventHandler('bt-polyzone:exit', function(name)
-    if name == "gokartfinish" then
+    if name == "gokartfinish" or name == "undergroundfinish" then
         if active then
             if lap == 0 then
                 lap = lap + 1
-                TriggerEvent("starttimer", true)
+                TriggerEvent("starttimer", true, name)
+
                 UpdateLaps()
                 SetDisplay(true)
+                TriggerServerEvent("deactivatetrial", track, model)
             elseif lap < laps then
                 lap = lap + 1
                 UpdateLaps()
+                cp = 1
+                cp2 = 2
+                TriggerEvent("drawcheckpoint")
             else
-                TriggerEvent("starttimer", false)
-                TriggerServerEvent("deactivatetrial", "gokart", model)
-                UpdateLaps()
-                SendNUIMessage({
-                    gettime=true,
-                    time=time*multiplier,
-                    model=model,
-                    track=track
-                })
                 active = false
                 Citizen.Wait(7000)
                 SetDisplay(false)
@@ -151,85 +179,78 @@ AddEventHandler('bt-polyzone:exit', function(name)
 end)
 
 RegisterNetEvent("starttimer")
-AddEventHandler("starttimer", function(toggle)
+AddEventHandler("starttimer", function(toggle, name)
+    local CheckPoints
+    if(name == "gokartfinish") then
+        CheckPoints = gokart
+    elseif(name == "undergroundfinish") then
+        CheckPoints = underground
+    end
     timerstarted = toggle
+    if(timerstarted) then
+        starttime = GetGameTimer()
+        TriggerEvent("drawcheckpoint")
+    end
 
     while time >= 0 and timerstarted do
-        Wait(1)
-        time = time + 1
+        Wait(10)
         SendNUIMessage({
-            updatetime = true,
-            time=time*multiplier,
+            updatetime=true,
+            time=formatTimer(starttime, GetGameTimer()),
         })
+
+        if GetDistanceBetweenCoords(CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z, GetEntityCoords(GetPlayerPed(-1))) < 10.0 then
+            if CheckPoints[cP].type == 13 then
+                DeleteCheckpoint(checkpoint)
+                RemoveBlip(blip)
+                PlaySoundFrontend(-1, "RACE_PLACED", "HUD_AWARDS")
+                cP = cP + 1
+                if(CheckPoints[cP].type == 13) then
+                    cP2 = cP2+1
+                end
+                
+                checkpoint = CreateCheckpoint(CheckPoints[cP].type, CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z + 2, CheckPoints[cP2].x, CheckPoints[cP2].y, CheckPoints[cP2].z + 2, 8.0, 204, 204, 1, 100, 0)
+                blip = AddBlipForCoord(CheckPoints[cP].x, CheckPoints[cP].y, CheckPoints[cP].z)
+            else
+                PlaySoundFrontend(-1, "ScreenFlash", "WastedSounds")
+                DeleteCheckpoint(checkpoint)
+                RemoveBlip(blip)
+                if(lap == laps) then
+                    TriggerEvent("starttimer", false)
+                    UpdateLaps()
+                    SendNUIMessage({
+                        gettime=true,
+                        time=formatTimer(starttime, GetGameTimer()),
+                        model=model,
+                        track=track
+                    })
+                end
+                cP = 1
+                cP2 = 2
+            end
+        end
     end
     if not timerstarted then
-        time = time - 1
         SendNUIMessage({
             updatetime = true,
-            time=time*multiplier,
+            time=formatTimer(starttime, GetGameTimer()),
         })
     end
 end)
+
+RegisterNetEvent("drawcheckpoint")
+AddEventHandler("drawcheckpoint", function()
+    checkpoint = CreateCheckpoint(CheckPoints[cP].type, CheckPoints[cP].x,  CheckPoints[cP].y,  CheckPoints[cP].z + 2, CheckPoints[cP2].x, CheckPoints[cP2].y, CheckPoints[cP2].z + 2, 8.0, 204, 204, 1, 100, 0)
+    blip = AddBlipForCoord(CheckPoints[cP].x, CheckPoints[cP].y, CheckPoints[cP].z)
+end)
+
+function formatTimer(startTime, currTime)
+    local newString = currTime - startTime
+    return newString
+end
 
 RegisterNUICallback("createtrialtime", function(data)
     TriggerServerEvent("createtrialtime", data.track, data.model, data.minutes, data.seconds, data.milliseconds)
 end)
 
 
-    --[[ local playerPed = GetPlayerPed(-1)
-    local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
-    if(vehicle ~= 0) then
-        local props = ESX.Game.GetVehicleProperties(vehicle)
-        local hash = props.model
-        local model = GetDisplayNameFromVehicleModel(hash)
-        if(model == "CADDY") then
-            model = "CADDY2"
-        end
-
-        if name == "gokartstart" then
-            ESX.TriggerServerCallback('trialisactive', function(isactive)
-                if isactive then
-                    active = true
-                end
-            end, "gokart", model)
-    
-            ESX.TriggerServerCallback('gettriallaps', function(dblaps, dbtrack, dbmodel)
-                laps = dblaps
-                track = dbtrack
-                modal = dbmodel
-            end, "gokart", model)
-
-            Citizen.Wait(200)
-            if(active) then
-                if lap == 0 then
-                    lap = lap + 1
-                    TriggerEvent("starttimer", true)
-                    UpdateLaps()
-                    SetDisplay(true)
-                end
-            end
-        elseif name == "gokartfinish" then
-            if(active) then
-                if lap < laps then
-                    lap = lap + 1
-                    UpdateLaps()
-                else
-                    TriggerEvent("starttimer", false)
-                    TriggerServerEvent("deactivatetrial", "gokart", model)
-                    UpdateLaps()
-                    SendNUIMessage({
-                        gettime=true,
-                        time=time*multiplier,
-                        model=model,
-                        track=track,
-                    })
-                    active = false
-                    Citizen.Wait(7000)
-                    SetDisplay(false)
-                    lap = 0
-                    time = 0
-                    laps = 0
-                end
-            end
-        end
-    end ]]
