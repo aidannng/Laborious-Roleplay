@@ -65,7 +65,13 @@ exports['labrp_Eye']:AddBoxZone("KronicKushBuyStock", vector3(375.5, -827.3, 29.
         icon = "fas fa-bullhorn",
         label = "Shop Announcement",
         job = "kronickush",
-    },
+      },
+      --[[{
+        event = "kk:hire",
+        icon = "fas fa-bullhorn",
+        label = "Hire Person",
+        job = "kronickush",
+      },]]
    },
   distance = 1.5
 })
@@ -92,6 +98,23 @@ AddEventHandler("kk:payment", function()
     if bill then
       TriggerServerEvent("kk:payment", bill[1].input, bill[2].input, bill[3].input)
     end
+end)
+
+RegisterNetEvent("kk:hire")
+AddEventHandler("kk:hire", function()
+  local keyboard = exports["nh-keyboard"]:KeyboardInput({
+      header = "Kronic Kush",
+    rows = {
+      {
+    id = 0,
+          txt = "Player ID"
+      }
+    }
+  })
+  if keyboard ~= nil then
+    if keyboard[1].input == nil then return end
+    TriggerServerEvent("kk:hire", bill[1].input)
+  end
 end)
 
 RegisterNetEvent("kk:announce")
@@ -587,8 +610,9 @@ AddEventHandler('use:kkjoint', function()
   AnimpostfxPlay("ChopVision", 10000001, true)
   ShakeGameplayCam("DRUNK_SHAKE", 1.0)
 
-  SetEntityHealth(GetPlayerPed(-1), 200)
-  SetPedArmour(PlayerPedId(), 33)
+  local armour = GetPedArmour(PlayerPedId())
+  SetEntityHealth(PlayerPedId(), 200)
+  SetPedArmour(PlayerPedId(), armour + 33)
   ClearPedTasks(GetPlayerPed(-1))
   Citizen.Wait(50000)
   AnimpostfxStopAll()
@@ -617,7 +641,9 @@ AddEventHandler('use:zpjoint', function()
   ShakeGameplayCam("DRUNK_SHAKE", 1.0)
 
   SetEntityHealth(GetPlayerPed(-1), 200)
-  SetPedArmour(PlayerPedId(), 66)
+  local armour = GetPedArmour(PlayerPedId())
+  SetEntityHealth(PlayerPedId(), 200)
+  SetPedArmour(PlayerPedId(), armour + 66)
   ClearPedTasks(GetPlayerPed(-1))
   Citizen.Wait(50000)
   AnimpostfxStopAll()
@@ -646,7 +672,9 @@ AddEventHandler('use:wpjoint', function()
   ShakeGameplayCam("DRUNK_SHAKE", 1.0)
 
   SetEntityHealth(GetPlayerPed(-1), 200)
-  SetPedArmour(PlayerPedId(), 100)
+  local armour = GetPedArmour(PlayerPedId())
+  SetEntityHealth(PlayerPedId(), 200)
+  SetPedArmour(PlayerPedId(), armour + 100)
   ClearPedTasks(GetPlayerPed(-1))
   Citizen.Wait(50000)
   AnimpostfxStopAll()
@@ -674,7 +702,8 @@ AddEventHandler('use:kkgummies', function()
   AnimpostfxPlay("ChopVision", 10000001, true)
   ShakeGameplayCam("DRUNK_SHAKE", 1.0)
 
-  SetPedArmour(PlayerPedId(), 30)
+  local armour = GetPedArmour(PlayerPedId())
+  SetPedArmour(PlayerPedId(), armour + 30)
   ClearPedTasks(GetPlayerPed(-1))
   Citizen.Wait(50000)
   AnimpostfxStopAll()
@@ -702,7 +731,8 @@ AddEventHandler('use:kkbrownie', function()
   AnimpostfxPlay("ChopVision", 10000001, true)
   ShakeGameplayCam("DRUNK_SHAKE", 1.0)
 
-  SetPedArmour(PlayerPedId(), 30)
+  local armour = GetPedArmour(PlayerPedId())
+  SetPedArmour(PlayerPedId(), armour + 30)
   ClearPedTasks(GetPlayerPed(-1))
   Citizen.Wait(50000)
   AnimpostfxStopAll()
@@ -730,7 +760,8 @@ AddEventHandler('use:kkcookie', function()
   AnimpostfxPlay("ChopVision", 10000001, true)
   ShakeGameplayCam("DRUNK_SHAKE", 1.0)
 
-  SetPedArmour(PlayerPedId(), 30)
+  local armour = GetPedArmour(PlayerPedId())
+  SetPedArmour(PlayerPedId(), armour + 30)
   ClearPedTasks(GetPlayerPed(-1))
   Citizen.Wait(50000)
   AnimpostfxStopAll()
