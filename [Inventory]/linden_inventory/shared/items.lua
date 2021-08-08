@@ -943,6 +943,20 @@ Items = {
 		close = true,
 	},
 
+	['gunbody'] = {
+		label = 'Weapon Body',
+		weight = 1000,
+		stack = true,
+		close = true,
+	},
+
+	['gunhandle'] = {
+		label = 'Weapon Handle',
+		weight = 800,
+		stack = true,
+		close = true,
+	},
+
 	
 }
 -- 

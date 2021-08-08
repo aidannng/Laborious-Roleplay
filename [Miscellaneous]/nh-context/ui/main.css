@@ -42,7 +42,7 @@ body::-webkit-scrollbar {
     margin: auto;
     position: relative;
     top: 10%;
-    margin-top: 0.5rem;
+    margin-top: 6px;
     overflow: hidden;
     padding: 0.45rem;
     border-radius: 0.15rem;

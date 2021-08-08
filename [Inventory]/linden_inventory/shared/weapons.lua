@@ -189,11 +189,11 @@ Weapons = {
 
 	['WEAPON_COMPACTRIFLE'] = {
 		label = 'Compact Rifle',
-		weight = 2700,
+		weight = 5000,
 		stack = false,
 		close = false,
 		durability = 0.7,
-		ammoname = 'ammo-rifle2'
+		ammoname = 'ammo-rifle'
 	},
 
 	['WEAPON_CROWBAR'] = {
@@ -417,7 +417,7 @@ Weapons = {
 
 	['WEAPON_MICROSMG'] = {
 		label = 'Micro SMG',
-		weight = 4000,
+		weight = 3500,
 		stack = false,
 		close = false,
 		durability = 0.6,
@@ -578,7 +578,7 @@ Weapons = {
 
 	['WEAPON_SMG'] = {
 		label = 'SMG',
-		weight = 3084,
+		weight = 4000,
 		stack = false,
 		close = false,
 		durability = 0.8,
