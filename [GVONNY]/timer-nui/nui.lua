@@ -56,24 +56,24 @@ end
 
 local gokart = {}
 
-local underground = {}
-underground[1] =  	{ x = 1120.998, y = -3105.323, z = -12.27185, type = 13}
-underground[2] =	{ x = 1066.18, y = -3094.681, z = -12.27185, type = 13}
-underground[3] =	{ x = 1050.633, y = -3207.561, z = -12.27185, type = 13}
-underground[4] =	{ x = 1029.27, y = -3117.336, z = -12.27185, type = 13}
-underground[5] =	{ x = 857.9868, y = -3121.991, z = -12.27185, type = 13}
-underground[6] =	{ x = 911.1824, y = -3147.02, z = -12.27185, type = 13}
-underground[7] =	{ x = 862.7209, y = -3166.695, z = -12.27185, type = 13}
-underground[8] =	{ x = 868.5494, y = -3307.424, z = -12.27185, type = 13}
-underground[9] =	{ x = 887.3011, y = -3243.534, z = -12.27185, type = 13}
-underground[10] =	{ x = 994.6945, y = -3231.27, z = -12.27185, type = 13}
-underground[11] =	{ x = 1000.51, y = -3167.116, z = -12.27185, type = 13}
-underground[12] =	{ x = 953.2879, y = -3164.545, z = -12.27185, type = 13}
-underground[13] =	{ x = 948.778, y = -3276.818, z = -12.27185, type = 13}
-underground[14] =	{ x = 1017.31, y = -3261.732, z = -12.27185, type = 13}
-underground[15] =	{ x = 1124.716, y = -3294.33, z = -12.27185, type = 13}
-underground[16] =	{ x = 1094.782, y = -3302.756, z = -12.27185, type = 13}
-underground[17] =  	{ x = 1092.765, y = -3207.099, z = -12.27185, type = 16}
+local CheckPoints = {}
+CheckPoints[1] =  	{ x = 1120.998, y = -3105.323, z = -12.27185, type = 13}
+CheckPoints[2] =	{ x = 1066.18, y = -3094.681, z = -12.27185, type = 13}
+CheckPoints[3] =	{ x = 1050.633, y = -3207.561, z = -12.27185, type = 13}
+CheckPoints[4] =	{ x = 1029.27, y = -3117.336, z = -12.27185, type = 13}
+CheckPoints[5] =	{ x = 857.9868, y = -3121.991, z = -12.27185, type = 13}
+CheckPoints[6] =	{ x = 911.1824, y = -3147.02, z = -12.27185, type = 13}
+CheckPoints[7] =	{ x = 862.7209, y = -3166.695, z = -12.27185, type = 13}
+CheckPoints[8] =	{ x = 868.5494, y = -3307.424, z = -12.27185, type = 13}
+CheckPoints[9] =	{ x = 887.3011, y = -3243.534, z = -12.27185, type = 13}
+CheckPoints[10] =	{ x = 994.6945, y = -3231.27, z = -12.27185, type = 13}
+CheckPoints[11] =	{ x = 1000.51, y = -3167.116, z = -12.27185, type = 13}
+CheckPoints[12] =	{ x = 953.2879, y = -3164.545, z = -12.27185, type = 13}
+CheckPoints[13] =	{ x = 948.778, y = -3276.818, z = -12.27185, type = 13}
+CheckPoints[14] =	{ x = 1017.31, y = -3261.732, z = -12.27185, type = 13}
+CheckPoints[15] =	{ x = 1124.716, y = -3294.33, z = -12.27185, type = 13}
+CheckPoints[16] =	{ x = 1094.782, y = -3302.756, z = -12.27185, type = 13}
+CheckPoints[17] =  	{ x = 1092.765, y = -3207.099, z = -12.27185, type = 16}
 
 
 exports['PolyZone']:AddBoxZone("gokartfinish", vector3(-123.5736, -2119.925, 16.69299), 14.0, 8, {
@@ -180,12 +180,6 @@ end)
 
 RegisterNetEvent("starttimer")
 AddEventHandler("starttimer", function(toggle, name)
-    local CheckPoints
-    if(name == "gokartfinish") then
-        CheckPoints = gokart
-    elseif(name == "undergroundfinish") then
-        CheckPoints = underground
-    end
     timerstarted = toggle
     if(timerstarted) then
         starttime = GetGameTimer()
