@@ -135,7 +135,7 @@ AddEventHandler('jailintro', function()
     TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     Citizen.Wait(3000)
 	SetEntityHeading(PlayerPedId(),270.0)
-     TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
+    TriggerEvent('InteractSound_CL:PlayOnOne', 'photo', 0.4)
     Citizen.Wait(1500)       
 
 

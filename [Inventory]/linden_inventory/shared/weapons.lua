@@ -504,7 +504,7 @@ Weapons = {
 		stack = false,
 		close = false,
 		durability = 0.8,
-		ammoname = 'paintball'
+		ammoname = 'ammo-50'
 	},
 
 	['WEAPON_PISTOL_MK2'] = {
