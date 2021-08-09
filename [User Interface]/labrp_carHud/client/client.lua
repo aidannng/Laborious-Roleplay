@@ -31,7 +31,7 @@ Citizen.CreateThread(function()
     local isPauseMenu = false
 
 	while true do
-		Citizen.Wait(300)
+		Citizen.Wait(500)
 
 		if IsPauseMenuActive() then -- ESC Key
 			if not isPauseMenu then
@@ -109,7 +109,7 @@ local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(200)
+		Wait(150)
 		local player = PlayerPedId()
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local position = GetEntityCoords(player)
@@ -391,7 +391,7 @@ Citizen.CreateThread(function()
 	    RequestAnimDict('mp_facial')
 
 	    while true do
-	        Citizen.Wait(300)
+	        Citizen.Wait(400)
 	        local playerID = PlayerId()
 
 	        for _,player in ipairs(GetActivePlayers()) do
@@ -418,7 +418,7 @@ Citizen.CreateThread(function()
 		local voiceDistance = nil
 
 		while true do
-			Citizen.Wait(1)
+			Citizen.Wait(100)
 
 			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
 				isTalking = not isTalking
@@ -464,7 +464,7 @@ end)
 Citizen.CreateThread(function()
 	if Config.ui.showWeapons then
 		while true do
-			Citizen.Wait(100)
+			Citizen.Wait(150)
 
 			local player = GetPlayerPed(-1)
 			local status = {}
@@ -517,7 +517,7 @@ end)
 -- Everything that neededs to be at WAIT 0
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(100)
 		local player = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local vehicleClass = GetVehicleClass(vehicle)
@@ -795,4 +795,16 @@ exports('setStatus', function(args)
 		{ name = args['name'], value = args['value'] }
 	}}
 	SendNUIMessage(playerStatus)
+end)
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(1000)
+            if IsPedInAnyVehicle(PlayerPedId()) then
+                SetUserRadioControlEnabled(false)
+                if GetPlayerRadioStationName() ~= nil then
+                SetVehRadioStation(GetVehiclePedIsIn(PlayerPedId()),"OFF")
+                end
+        end
+    end
 end)

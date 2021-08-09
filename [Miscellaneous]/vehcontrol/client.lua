@@ -378,3 +378,23 @@ function DisplayHelpText(str)
 	AddTextComponentString(str)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
+
+RegisterKeyMapping("engine:on", "Vehicle Engine : On", "keyboard", "LMENU")
+RegisterKeyMapping("engine:off", "Vehicle Engine : Off", "keyboard", "LMENU")
+TriggerEvent('chat:removeSuggestion', '/engine:on')
+TriggerEvent('chat:removeSuggestion', '/engine:off')
+
+RegisterCommand('engine:on', function()
+	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
+        SetVehicleEngineOn(vehicle, true, false, true)
+    end
+end, false)
+
+RegisterCommand('engine:off', function()
+	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+    if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
+        SetVehicleEngineOn(vehicle, false, false, true)
+    end
+end, false)
+

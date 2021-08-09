@@ -1,83 +1,75 @@
 ESX = nil
 
---[[
-    Chance = Lower is most likely
-    ID = Item Name
-    Name = Name of Item
-    Quantity = amount you get from finding the item
-    Limit = max you can get per item
-]]
-
-local dumpsterItems = { 
-    [1] = {chance = 2, id = 'casiowatch', name = 'Casio Watch', quantity = math.random(1,3), limit = 10},
-    [2] = {chance = 4, id = 'rubber', name = 'Rubber', quantity = math.random(1,4), limit = 15},
-    [3] = {chance = 2, id = 'oldshoe', name = 'Old Shoe', quantity = 1, limit = 10},
-    [4] = {chance = 2, id = 'cookie', name = 'Cookie', quantity = 2, limit = 10},
-    [5] = {chance = 3, id = 'plastic', name = 'Plastic', quantity = math.random(1,8), limit = 0},
-    [6] = {chance = 4, id = 'WEAPON_BAT', name = 'Baseball Bat', quantity = 1, limit = 2},
-    [7] = {chance = 8, id = 'electronics', name = 'Electronics', quantity = math.random(1,2), limit = 0},
-    [8] = {chance = 2, id = 'battery', name = 'Battery', quantity = math.random(1,3), limit = 10},
-    [9] = {chance = 4, id = 'phone', name = 'Phone', quantity = 1, limit = 0},
-    [10] = {chance = 3, id = 'copper', name = 'Copper', quantity = math.random(1,3), limit = 0},
-    [11] = {chance = 2, id = 'fishingrod', name = 'Fishing Rod', quantity = 1, limit = 10},
-    [12] = {chance = 7, id = 'cartire', name = 'Car Tire', quantity = 1, limit = 4},
-    [13] = {chance = 8, id = 'weddingring', name = 'Wedding Ring', quantity = 1, limit = 10},
-    [14] = {chance = 7, id = 'lockpick', name = 'Lockpick', quantity = 1, limit = 15},
-    [15] = {chance = 2, id = 'burger', name = 'Burger', quantity = 1, limit = 10}
-   }
-
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
+   local robbableItems = {
+    [1] = {chance = 3, id = 0, name = 'Cash', quantity = math.random(1, 900)}, -- really common
+    [2] = {chance = 10, id = 'WEAPON_PISTOL', name = 'Pistol', isWeapon = true}, -- rare
+    [3] = {chance = 5, id = 'kkjoint', name = 'Kronic Kush Joint', quantity = 1}, -- rare
+    [4] = {chance = 4, id = '2ct_gold_chain', name = '2CT Gold Chain (P)', quantity = 1}, -- rare
+    [5] = {chance = 5, id = '5ct_gold_chain', name = '5CT Gold Chain (P)', quantity = 1}, -- rare
+    [6] = {chance = 6, id = '8ct_gold_chain', name = '8CT Gold Chain (P)', quantity = 1}, -- rare
+    [7] = {chance = 8, id = '10ct_gold_chain', name = '10CT Gold Chain (P)', quantity = 1}, -- rare
+    [8] = {chance = 8, id = 'advancedlockpick', name = 'Advanced Lockpick', quantity = 1}, -- rare
+    [9] = {chance = 3, id = 'sunglasses', name = 'Oakley Sunglasses (P)', quantity = 1}, -- rare
+    [10] = {chance = 4, id = 'gameboy', name = 'Gameboy (P)', quantity = 1}, -- rare
+    [11] = {chance = 3, id = 'casio_watch', name = 'Casio Watch (P)', quantity = 1}, -- rare
+    [12] = {chance = 3, id = 'nokia_phone', name = 'Nokia Phone (P)', quantity = 1}, -- rare
+    [13] = {chance = 5, id = 'samsung_s8', name = 'Samsung S8 (P)', quantity = 1}, -- rare
+    [14] = {chance = 5, id = 'apple_iphone', name = 'Apple iPhone (P)', quantity = 1}, -- rare
+    [15] = {chance = 4, id = 'steel', name = 'Steel', quantity = 1}, -- rare
+    [16] = {chance = 2, id = 'scrap_metal', name = 'Scrap Metal', quantity = 1}, -- rare
+    [17] = {chance = 2, id = 'rubber', name = 'Rubber', quantity = 1}, -- rare
+    [18] = {chance = 1, id = 'rolling_paper', name = 'Rolling Paper', quantity = 1}, -- rare
+    [19] = {chance = 3, id = 'glass', name = 'Glass', quantity = 1}, -- rare
+    [20] = {chance = 5, id = 'battery', name = 'Battery', quantity = 1}, -- rare
+    [21] = {chance = 7, id = 'white_pearl', name = 'White Pearl (P)', quantity = 1}, -- rare
+    [22] = {chance = 8, id = 'electronics', name = 'Electronics (P)', quantity = 1}, -- rare
+   }
 
-RegisterServerEvent('stv:startDumpsterTimer')
-AddEventHandler('stv:startDumpsterTimer', function(dumpster)
-    startTimer(source, dumpster)
+
+RegisterServerEvent('dumpster:givereward')
+AddEventHandler('dumpster:givereward', function()
+    local source = tonumber(source)
+    local item = {}
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local gotID = {}
+
+
+    for i=1, math.random(1, 2) do
+        item = robbableItems[math.random(1, #robbableItems)]
+        if math.random(1, 10) >= item.chance then
+            if tonumber(item.id) == 0 and not gotID[item.id] then
+                gotID[item.id] = true
+                xPlayer.addMoney(item.quantity)
+                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You found $'..item.quantity, })
+            elseif item.isWeapon and not gotID[item.id] then
+                gotID[item.id] = true
+                xPlayer.addWeapon(item.id, 50)
+                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
+            elseif not gotID[item.id] then
+                gotID[item.id] = true
+                xPlayer.addInventoryItem(item.id, item.quantity)
+                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
+            end
+        end
+    end
 end)
 
-RegisterServerEvent('stv:giveDumpsterReward')
-AddEventHandler('stv:giveDumpsterReward', function()
- local source = tonumber(source)
- local item = {}
- local xPlayer = ESX.GetPlayerFromId(source)
- local gotID = {}
 
-
- for i=1, math.random(1, 2) do
-  item = dumpsterItems[math.random(1, #dumpsterItems)]
-  if math.random(1, 10) >= item.chance then
-   if tonumber(item.id) == 0 and not gotID[item.id] then
-    gotID[item.id] = true
-    xPlayer.addMoney(item.quantity)
-    --TriggerClientEvent('chatMessage', source, 'You found $'..item.quantity)
-    --TriggerClientEvent('notification', source, 'You found $'..item.quantity)
-   elseif item.isWeapon and not gotID[item.id] then
-    gotID[item.id] = true
-    xPlayer.addWeapon(item.id, 50)
-    --TriggerClientEvent('chatMessage', source, 'You found a '..item.name)
-    --TriggerClientEvent('notification', source, 'Item Added!', 2)
-   elseif not gotID[item.id] then
-    gotID[item.id] = true
-    xPlayer.addInventoryItem(item.id, item.quantity)
-    --TriggerClientEvent('chatMessage', source, 'You have found '..item.quantity..'x '..item.name)
-    --TriggerClientEvent('notification', source, 'Item Added!', 2)
-   end
-  end
- end
-end)
-
-function startTimer(id, object)
+RegisterServerEvent('dumpster:starttimer')
+AddEventHandler('dumpster:starttimer', function(dumpster)
     local timer = 10 * 60000
 
     while timer > 0 do
         Wait(1000)
         timer = timer - 1000
         if timer == 0 then
-            TriggerClientEvent('stv:removeDumpster', id, object)
+            TriggerClientEvent('stv:removeDumpster', source, dumpster)
         end
     end
-end
-
+end)
 
 
 
@@ -91,6 +83,22 @@ AddEventHandler('payparkingmeter', function()
     xPlayer.addMoney(foundmoney)
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You found $'..foundmoney, })
 end)
+
+RegisterServerEvent('parkingmeter:starttimer')
+AddEventHandler('parkingmeter:starttimer', function(meter)
+    local timer = 10 * 60000
+
+    while timer > 0 do
+        Wait(1000)
+        timer = timer - 1000
+        if timer == 0 then
+            TriggerClientEvent('meter:removemeter', source, meter)
+        end
+    end
+end)
+
+
+
 
 -- SIGN SCRAP -- payscrapsign
 

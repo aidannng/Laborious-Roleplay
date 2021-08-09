@@ -8,13 +8,13 @@ DisplayStress = true, -- Forth pill displays users stress (You need to get the s
 DisplayVoice = false, -- Forth pill will display voice range and when speaking (TokoVOIP or Mumble)
 
 
-StatusUpdateInterval = 1000, -- Time it takes for status to update (lowering this value adds ms)
-VitalsUpdateInterval = 500, -- Time it takes for vitals to update (lowering this value adds ms)
+StatusUpdateInterval = 1500, -- Time it takes for status to update (lowering this value adds ms)
+VitalsUpdateInterval = 1500, -- Time it takes for vitals to update (lowering this value adds ms)
 
 MapZoom = 0.24, -- The zoom of the map (Lower the value more zoomed out it will be)
 
 -- Choose icons from FontAwsome (https://fontawesome.com/) 
-HealthIcon = "fa-heartbeat",
+HealthIcon = "fas fa-heart",
 ArmorIcon = "fa-shield-alt",
 FoodIcon = "fa-hamburger",
 ThirstIcon = "fa-tint",
