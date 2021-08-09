@@ -82,7 +82,7 @@ exports['PolyZone']:AddBoxZone("gokartfinish", vector3(-123.5736, -2119.925, 16.
     debugPoly=false,
 })
 
-exports['PolyZone']:AddBoxZone("undergroundfinish", vector3(1092.026, -3214.721, -12.27185), 18.0, 16, {
+exports['PolyZone']:AddBoxZone("undergroundfinish", vector3(1092.198, -3219.837, -12.27185), 18.0, 24, {
     name="undergroundfinish",
     heading=90,
     debugPoly=false,
