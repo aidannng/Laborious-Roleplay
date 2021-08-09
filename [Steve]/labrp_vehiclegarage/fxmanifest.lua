@@ -24,3 +24,5 @@ server_scripts {
     'server/version_check.lua',
     'server/server.lua'
 }
+
+export "setOwnership"

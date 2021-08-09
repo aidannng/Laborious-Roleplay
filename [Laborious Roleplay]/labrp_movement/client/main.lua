@@ -53,7 +53,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(0)
+		Wait(50)
 
 		if IsControlPressed(0, 61) and IsControlPressed(0, 38) then
 			--print('key pressed')

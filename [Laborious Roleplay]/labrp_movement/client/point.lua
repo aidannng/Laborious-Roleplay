@@ -32,7 +32,7 @@ local oldvalped = false
 
 Citizen.CreateThread(function()
     while true do
-        Wait(0)
+        Wait(1)
 
         if once then
             once = false

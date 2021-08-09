@@ -61,20 +61,20 @@ Citizen.CreateThread(function()
     
 end) 
 
-Citizen.CreateThread(function()
+-- Citizen.CreateThread(function()
 
-        interiorID = GetInteriorAtCoords(-38.43956, 6456.633, 24.32605)
+--         interiorID = GetInteriorAtCoords(-38.43956, 6456.633, 24.32605)
 
 
-        if IsValidInterior(interiorID) then
-        RefreshInterior(interiorID)
-        EnableInteriorProp(interiorID, "light_stock")
-        EnableInteriorProp(interiorID, "weapon_app")
-        EnableInteriorProp(interiorID, "weapon_staff_01")
-        EnableInteriorProp(interiorID, "weapon_stock")
+--         if IsValidInterior(interiorID) then
+--         RefreshInterior(interiorID)
+--         EnableInteriorProp(interiorID, "light_stock")
+--         EnableInteriorProp(interiorID, "weapon_app")
+--         EnableInteriorProp(interiorID, "weapon_staff_01")
+--         EnableInteriorProp(interiorID, "weapon_stock")
 
-        RefreshInterior(interiorID)
+--         RefreshInterior(interiorID)
 
-    end
+--     end
 
-end) 
+-- end) 

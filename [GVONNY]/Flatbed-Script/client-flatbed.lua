@@ -80,14 +80,14 @@ Citizen.CreateThread(function()
                 bedslide('retract')
             end
         end
-        Wait(0)
+        Wait(50)
     end
 end)
 
 
 Citizen.CreateThread(function()
 	while true do
-        Citizen.Wait(0)
+        Citizen.Wait(50)
         local ped = GetPlayerPed(-1)
         local veh = GetVehiclePedIsIn(ped, false)
         local pos = GetEntityCoords(lastVeh)
