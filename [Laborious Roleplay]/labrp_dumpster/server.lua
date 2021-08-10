@@ -3,9 +3,10 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
-   local robbableItems = {
-    [1] = {chance = 3, id = 0, name = 'Cash', quantity = math.random(1, 900)}, -- really common
-    [2] = {chance = 10, id = 'WEAPON_PISTOL', name = 'Pistol', isWeapon = true}, -- rare
+
+   local dumpsterItems = {
+    [1] = {chance = 3, id = 0, name = 'Cash', quantity = math.random(1, 400)}, -- really common
+    [2] = {chance = 10, id = 'WEAPON_PISTOL', name = 'Pistol', quantity = 1}, -- rare
     [3] = {chance = 5, id = 'kkjoint', name = 'Kronic Kush Joint', quantity = 1}, -- rare
     [4] = {chance = 4, id = '2ct_gold_chain', name = '2CT Gold Chain (P)', quantity = 1}, -- rare
     [5] = {chance = 5, id = '5ct_gold_chain', name = '5CT Gold Chain (P)', quantity = 1}, -- rare
@@ -21,41 +22,35 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     [15] = {chance = 4, id = 'steel', name = 'Steel', quantity = 1}, -- rare
     [16] = {chance = 2, id = 'scrap_metal', name = 'Scrap Metal', quantity = 1}, -- rare
     [17] = {chance = 2, id = 'rubber', name = 'Rubber', quantity = 1}, -- rare
-    [18] = {chance = 1, id = 'rolling_paper', name = 'Rolling Paper', quantity = 1}, -- rare
+    [18] = {chance = 2, id = 'rolling_paper', name = 'Rolling Paper', quantity = 1}, -- rare
     [19] = {chance = 3, id = 'glass', name = 'Glass', quantity = 1}, -- rare
     [20] = {chance = 5, id = 'battery', name = 'Battery', quantity = 1}, -- rare
     [21] = {chance = 7, id = 'white_pearl', name = 'White Pearl (P)', quantity = 1}, -- rare
     [22] = {chance = 8, id = 'electronics', name = 'Electronics (P)', quantity = 1}, -- rare
-   }
+}
 
 
-   RegisterServerEvent('dumpster:givereward')
-   AddEventHandler('dumpster:givereward', function()
-       local source = tonumber(source)
-       local item = {}
-       local xPlayer = ESX.GetPlayerFromId(source)
-       local gotID = {}
-   
-   
-       for i=1, math.random(1, 2) do
-           item = robbableItems[math.random(1, #robbableItems)]
-           if math.random(1, 10) >= item.chance then
-               if tonumber(item.id) == 0 and not gotID[item.id] then
-                   gotID[item.id] = true
-                   xPlayer.addMoney(item.quantity)
-                   TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You found $'..item.quantity, })
-               elseif item.isWeapon and not gotID[item.id] then
-                   gotID[item.id] = true
-                   xPlayer.addWeapon(item.id, 50)
-                   TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
-               elseif not gotID[item.id] then
-                   gotID[item.id] = true
-                   xPlayer.addInventoryItem(item.id, item.quantity)
-                   TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
-               end
-           end
-       end
-   end)
+RegisterServerEvent('dumpster:givereward')
+AddEventHandler('dumpster:givereward', function()
+ local source = tonumber(source)
+ local item = {}
+ local xPlayer = ESX.GetPlayerFromId(source)
+ local gotID = {}
+
+
+ for i=1, math.random(1, 2) do
+  item = dumpsterItems[math.random(1, #dumpsterItems)]
+  if math.random(1, 10) >= item.chance then
+   if tonumber(item.id) == 0 and not gotID[item.id] then
+    gotID[item.id] = true
+    xPlayer.addMoney(item.quantity)
+   elseif not gotID[item.id] then
+    gotID[item.id] = true
+    xPlayer.addInventoryItem(item.id, item.quantity)
+   end
+  end
+ end
+end)
 
 
 
