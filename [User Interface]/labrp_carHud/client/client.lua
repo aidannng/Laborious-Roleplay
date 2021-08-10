@@ -74,7 +74,7 @@ end)
 Citizen.CreateThread(function()
 
 	while Config.ui.showLocation do
-		Citizen.Wait(200)
+		Citizen.Wait(5)
 		local player = PlayerPedId()
 		local position = GetEntityCoords(player)
 		local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
@@ -109,7 +109,7 @@ local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(150)
+		Wait(0)
 		local player = PlayerPedId()
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local position = GetEntityCoords(player)

@@ -404,7 +404,7 @@ AddEventHandler('craft:loweringsprings', function()
     if (springCount > 3 and strutCount > 3) then
         xPlayer.removeInventoryItem('lowering_spring', 4)
         xPlayer.removeInventoryItem('strut', 4)
-        xPlayer.addInventoryItem('lowering_spring', 1)
+        xPlayer.addInventoryItem('lowering_springs', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end

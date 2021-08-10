@@ -80,15 +80,10 @@ function toggleLock(vehicle)
     end
 end
 
-RegisterNetEvent('onyx:pickDoor')
-AddEventHandler('onyx:pickDoor', function()
-    -- TODO: Lockpicking vehicle doors to gain access
-end)
-
 -- Locking vehicles
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        local wait = 750
         local pos = GetEntityCoords(GetPlayerPed(-1))
         if IsControlJustReleased(0, 182) then
             print('lock')
@@ -96,26 +91,13 @@ Citizen.CreateThread(function()
                 local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
                 toggleLock(veh)
             else
-                local veh = GetVehiclePedIsIn(GetPlayerPed(-1), true)
-                local target = GetEntityCoords(veh)
-                local player = GetEntityCoords(PlayerPedId(-1))
-                local compare = GetDistanceBetweenCoords(player, target, false)
-                print(compare)
-                if compare <= 4 then
-                    toggleLock(veh)
-                else
-                    exports['mythic_notify']:SendAlert('error', 'Too Far Away')
+                local vehicle = GetClosestVehicle(pos.x, pos.y, pos.z, 3.0, 0, 70)
+                if DoesEntityExist(vehicle) then
+                    toggleLock(vehicle)
                 end
             end
         end
-
-        -- TODO: Unable to gain access to vehicles without a lockpick or keys
-        -- local enteringVeh = GetVehiclePedIsTryingToEnter(GetPlayerPed(-1))
-        -- local enteringPlate = GetVehicleNumberPlateText(enteringVeh)
-
-        -- if not hasKeys(entertingPlate) then
-        --     SetVehicleDoorsLocked(enteringVeh, 2)
-        -- end
+        Citizen.Wait(1)
     end
 end)
 
@@ -125,7 +107,7 @@ local isHotwiring = false
 -- Has entered vehicle without keys
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        local wait = 750
         local ped = GetPlayerPed(-1)
         if IsPedInAnyVehicle(ped, false) then
             local veh = GetVehiclePedIsIn(ped)
@@ -135,8 +117,10 @@ Citizen.CreateThread(function()
                 if not hasKeys(plate) and not isHotwiring and not isSearching then
                     local pos = GetEntityCoords(ped)
                     if hasBeenSearched(plate) then
+                        wait = 2
                         DrawText3Ds(pos.x, pos.y, pos.z + 0.2, 'Press ~y~[H] ~w~to hotwire')
                     else
+                        wait = 2
                         DrawText3Ds(pos.x, pos.y, pos.z + 0.2, 'Press ~y~[H] ~w~to hotwire or ~g~[G] ~w~to search')
                     end
                     SetVehicleEngineOn(veh, false, false, true)
@@ -217,16 +201,18 @@ Citizen.CreateThread(function()
                 end
             end
         end
+        Citizen.Wait(wait)
     end
 end)
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(100)
+        local wait = 750
         if isHotwiring then
             DisableControlAction(0, 75, true)  -- Disable exit vehicle
             DisableControlAction(0, 74, true)  -- Lights
         end
+        Citizen.Wait(wait)
     end
 end)
 
@@ -285,109 +271,7 @@ local isRobbing = false
 local canRob = false
 local prevPed = false
 local prevCar = false
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(100)
-        local foundEnt, aimingEnt = GetEntityPlayerIsFreeAimingAt(PlayerId())
-        local entPos = GetEntityCoords(aimingEnt)
-        local pos = GetEntityCoords(GetPlayerPed(-1))
-        local dist = GetDistanceBetweenCoords(pos.x, pos.y, pos.z, entPos.x, entPos.y, entPos.z, true)
-
-        if foundEnt and prevPed ~= aimingEnt and IsPedInAnyVehicle(aimingEnt, false) and IsPedArmed(PlayerPedId(), 7) and dist < 20.0 and not IsPedInAnyVehicle(PlayerPedId()) then
-            if not IsPedAPlayer(aimingEnt) then
-                prevPed = aimingEnt
-                Wait(math.random(300, 700))
-                local dict = "random@mugging3"
-                RequestAnimDict(dict)
-                while not HasAnimDictLoaded(dict) do
-                    Citizen.Wait(0)
-                end
-                local rand = math.random(1, 10)
-
-                if rand > 4 then
-                    prevCar = GetVehiclePedIsIn(aimingEnt, false)
-                    TaskLeaveVehicle(aimingEnt, prevCar)
-                    SetVehicleEngineOn(prevCar, false, false, true)
-                    while IsPedInAnyVehicle(aimingEnt, false) do
-                        Citizen.Wait(0)
-                    end
-                    SetBlockingOfNonTemporaryEvents(aimingEnt, true)
-                    ClearPedTasksImmediately(aimingEnt)
-                    TaskPlayAnim(aimingEnt, dict, "handsup_standing_base", 8.0, -8.0, 0.01, 49, 0, 0, 0, 0)
-                    ResetPedLastVehicle(aimingEnt)
-                    TaskWanderInArea(aimingEnt, 0, 0, 0, 20, 100, 100)
-                    canRob = true
-                    beginRobTimer(aimingEnt)
-                end
-            end
-        end
-    end
-end)
-
 local canTakeKeys = true
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(100)
-        if canRob and not IsEntityDead(prevPed) and IsPlayerFreeAiming(PlayerId()) then
-            local ped = PlayerPedId()
-            local pos = GetEntityCoords(ped)
-            local entPos = GetEntityCoords(prevPed)
-            if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, entPos.x, entPos.y, entPos.z, false) < 3.5 then
-                DrawText3Ds(entPos.x, entPos.y, entPos.z, 'Press ~y~[E]~w~ to rob')
-                if IsControlJustReleased(0, 38) then
-                    local rand = math.random(1, 10)
-                    if rand == 1 then
-                        Wait(400)
-                        exports['mythic_notify']:SendAlert('inform', 'They do not hand over the keys')
-                    else
-                        local plate = GetVehicleNumberPlateText(prevCar)
-                        exports['mythic_progbar']:Progress({
-                            name = "unique_action_name",
-                            duration = 3600,
-                            label = 'Taking Keys',
-                            useWhileDead = true,
-                            canCancel = false,
-                            controlDisables = {
-                                disableMovement = true,
-                                disableCarMovement = true,
-                                disableMouse = false,
-                                disableCombat = true,
-                            },
-                        })
-                        Wait(3600)
-                        givePlayerKeys(plate)
-                        exports['mythic_notify']:SendAlert('inform', 'You rob the keys')
-                    end
-                    SetBlockingOfNonTemporaryEvents(prevPed, false)
-                    canRob = false
-                end
-            end
-        end
-    end
-end)
-
-function beginRobTimer(entity)
-    local timer = 18
-
-    while canRob do
-        timer = timer - 1
-        if timer == 0 then
-            canRob = false
-            SetBlockingOfNonTemporaryEvents(entity, false)
-        end
-        Wait(1000)
-    end
-end
-
-function isNpc(ped)
-    if IsPedAPlayer(ped) then
-        return false
-    else
-        return true
-    end
-end
 
 
 RegisterNetEvent('onyx:returnSearchedVehTable')
@@ -436,6 +320,7 @@ local playerIsClose = false
 
 Citizen.CreateThread(function()
     while true do
+        local wait = 750
         local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
 
         if closestPlayer == -1 or closestPlayerDistance > 4.0 then
@@ -443,7 +328,7 @@ Citizen.CreateThread(function()
         else
             playerIsClose = true
         end 
-        Citizen.Wait(0)  
+        Citizen.Wait(wait)  
     end
 end)
 
