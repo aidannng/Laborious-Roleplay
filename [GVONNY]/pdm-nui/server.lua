@@ -1,19 +1,8 @@
 ESX = nil
 
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(10)
-
-        --MySQL.Async.fetchAll("SELECT a.plate, a.x, a.y, a.z, a.rotation, b.model FROM pdm_showroom a, bbvehicles b WHERE a.plate = b.plate", {}, function(vehicles)
-        --[[ MySQL.Async.fetchAll("SELECT slot_id FROM pdm_showroom", {}, function(vehicles)
-            if(vehicles ~= nil and #vehicles > 0) then
-                for x=1,#vehicles,1 do
-                    MySQL.Async.execute("UPDATE pdm_shoroom SET plate = NULL WHERE slot_id = @slotid", {['@slotid'] = vehicles[x].slot_id})
-                end
-            end
-        end) ]]
-    end
+    
 end)
 
 local discord_webhook = {url = "https://discord.com/api/webhooks/863790069059813406/RGXqIdef_TAWX8L1WxI04yFUc35-9cCrkx9-SQFf6vJNbSBildiYnJ0b85UTfJQXTdwK",image = "https://i.iodine.gg/i5fba.png"}
@@ -69,7 +58,7 @@ AddEventHandler("purchase", function(model, price, plate)
             MySQL.Async.execute("UPDATE vehicles SET stock = @stock WHERE model = @model", {['@stock'] = stock, ['@model'] = model})
             MySQL.Async.execute("INSERT INTO cardealer_vehicles SET plate = @plate, price = @price, test_drive = false", {['@plate'] = plate, ['@price'] = markup})
 
-            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "Vehicle purchased", style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+            TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = "Vehicle purchased", style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
 
             
             PerformHttpRequest(discord_webhook.url, 
@@ -82,9 +71,13 @@ AddEventHandler("purchase", function(model, price, plate)
 end)
 
 RegisterServerEvent('pdmbuy')
-AddEventHandler('pdmbuy', function(props, stats, model)
+AddEventHandler('pdmbuy', function(props, model)
     local src = source
-    MySQL.Async.execute("INSERT INTO bbvehicles (identifier, plate, model, props, stats, state) VALUES ('PDM', '"..props.plate.."', '"..model.."', '"..json.encode(props).."', '"..stats.."', 'PDM')")
+    MySQL.Async.execute("INSERT INTO owned_vehicles (owner, plate, vehicle, model) VALUES ('pdm', @plate, @props, @model)", {
+        ['@plate'] = props.plate,
+        ['@props'] = json.encode(props),
+        ['@model'] = model,
+    })
 end)
 
 RegisterServerEvent("getallstock")
@@ -100,7 +93,7 @@ AddEventHandler("getallstock", function()
         canshowcar = true
     end
 
-    MySQL.Async.fetchAll("SELECT a.plate, a.price, a.test_drive, c.name FROM cardealer_vehicles a, bbvehicles b, vehicles c WHERE a.plate = b.plate AND b.model = c.model ORDER BY c.name", {} ,function(result)
+    MySQL.Async.fetchAll("SELECT a.plate, a.price, a.test_drive, c.name FROM cardealer_vehicles a, owned_vehicles b, vehicles c WHERE a.plate = b.plate AND b.model = c.model ORDER BY c.name", {} ,function(result)
         if(#result>0) then
             for x=1,#result,1 do 
                 local plate = result[x].plate
@@ -142,7 +135,7 @@ AddEventHandler("getshowroom", function()
         cantestdrive = true
     end
 
-    MySQL.Async.fetchAll("SELECT a.slot_id as slot_id, a.plate as plate, c.name as name FROM pdm_showroom a, bbvehicles b, vehicles c WHERE a.plate = b.plate and b.model = c.model ORDER BY slot_id", {} ,function(result)
+    MySQL.Async.fetchAll("SELECT a.slot_id as slot_id, a.plate as plate, c.name as name FROM pdm_showroom a, owned_vehicles b, vehicles c WHERE a.plate = b.plate and b.model = c.model ORDER BY slot_id", {} ,function(result)
         if(#result ~= nil) then
             for x=1,#result,1 do
                 local slot_id = result[x].slot_id
@@ -183,7 +176,6 @@ RegisterServerEvent("movetoshowroom")
 AddEventHandler("movetoshowroom", function(slotid, plate)
     --print("start moving to showroom")
     local src = source
-    local oldslot
 
     MySQL.Async.fetchAll("SELECT x, y, z, slot_id, plate FROM pdm_showroom WHERE plate = @plate",{['@plate']=plate}, function(result)
         --print("is plate in showroom already:")
@@ -194,7 +186,7 @@ AddEventHandler("movetoshowroom", function(slotid, plate)
                 TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "This vehicle is on the floor already", })
             end
         else
-            MySQL.Async.fetchAll("SELECT a.slot_id, a.x, a.y, a.z, a.plate, a.rotation, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid AND b.plate = @plate",{['@slotid'] = slotid, ['@plate'] = plate}, function(result2)
+            MySQL.Async.fetchAll("SELECT a.slot_id, a.x, a.y, a.z, a.plate, a.rotation, b.model FROM pdm_showroom a, owned_vehicles b WHERE a.slot_id = @slotid AND b.plate = @plate",{['@slotid'] = slotid, ['@plate'] = plate}, function(result2)
                 if(result2 ~= nil and #result2>0) then
                     local x = result2[1].x
                     local y = result2[1].y
@@ -217,7 +209,7 @@ AddEventHandler("movetoshowroom", function(slotid, plate)
                 end
             end)
         end
-    end)    
+    end) 
 end)
 
 RegisterServerEvent("createbill")
@@ -227,7 +219,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
     local ower = ESX.GetPlayerFromId(luckynumber)
 
     if(ower ~= nil) then
-        MySQL.Async.fetchAll("SELECT a.id, b.model FROM cardealer_vehicles a, bbvehicles b WHERE a.plate = @plate and b.plate = @plate", {['@plate'] = plate}, function(result)
+        MySQL.Async.fetchAll("SELECT a.id, b.model FROM cardealer_vehicles a, owned_vehicles b WHERE a.plate = @plate and b.plate = @plate", {['@plate'] = plate}, function(result)
             if(result ~= nil) then
                 local model = result[1].model
                 if(tonumber(termlength) > 0) then
@@ -257,8 +249,8 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                             MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
                         end)
 
-                        MySQL.Async.execute("UPDATE bbvehicles SET identifier = @identifier, state = 'unknown' WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
-                        MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
+                        MySQL.Async.execute("UPDATE owned_vehicles SET identifier = @identifier WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
+                        --MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
                         MySQL.Async.fetchAll("SELECT slot_id, x, y, z FROM pdm_showroom WHERE plate = @plate", {['@plate'] = plate}, function(result2)
                             if(result2 ~= nil and #result2 > 0) then
                                 local slot = result2[1].slot_id
@@ -272,14 +264,16 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                             end
                         end)
 
-                        MySQL.Async.fetchAll("SELECT model, plate FROM bbvehicles WHERE plate = @plate",{['@plate'] = plate}, function(vehicle)
+                        MySQL.Async.fetchAll("SELECT model, plate FROM owned_vehicles WHERE plate = @plate",{['@plate'] = plate}, function(vehicle)
                             if(vehicle ~= nil) then
                                 local model = vehicle[1].model
                                 local plate = vehicle[1].plate
 
                                 --print("moving purchased car to back of garage")
                                 --print("======================================")
-                                TriggerClientEvent("vehicleshop.spawnVehicle", ower.source, model, plate)
+                                --TriggerClientEvent("vehicleshop.spawnVehicle", ower.source, model, plate)
+                                TriggerClientEvent("pdm:spawntestdrive", ower.source, -26.2022, -1083.02, 26.78613, model, plate, 50.0)
+
                             end
                         end)
                         
@@ -306,8 +300,8 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                             MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'cardealer'", {['@money'] = balance})
                         end)
 
-                        MySQL.Async.execute("UPDATE bbvehicles SET identifier = @identifier, state = 'unknown' WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
-                        MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
+                        MySQL.Async.execute("UPDATE owned_vehicles SET identifier = @identifier WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
+                        --MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
                         MySQL.Async.fetchAll("SELECT slot_id, x, y, z FROM pdm_showroom WHERE plate = @plate", {['@plate'] = plate}, function(result2)
                             if(result2 ~= nil and #result2 > 0) then
                                 local slot = result2[1].slot_id
@@ -321,14 +315,15 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                             end
                         end)
 
-                        MySQL.Async.fetchAll("SELECT model, plate FROM bbvehicles WHERE plate = @plate",{['@plate'] = plate}, function(vehicle)
+                        MySQL.Async.fetchAll("SELECT model, plate FROM owned_vehicles WHERE plate = @plate",{['@plate'] = plate}, function(vehicle)
                             if(vehicle ~= nil) then
                                 local model = vehicle[1].model
                                 local plate = vehicle[1].plate
 
                                 --print("moving purchased car to back of garage")
                                 --print("======================================")
-                                TriggerClientEvent("vehicleshop.spawnVehicle", ower.source, model, plate)
+                                --TriggerClientEvent("vehicleshop.spawnVehicle", ower.source, model, plate)
+                                TriggerClientEvent("pdm:spawntestdrive", ower.source, -26.2022, -1083.02, 26.78613, model, plate, 50.0)
                             end
                         end)
 
@@ -376,7 +371,7 @@ RegisterServerEvent("spawntestdrive")
 AddEventHandler("spawntestdrive", function(slot)
     --print("starting test drive")
     local src = source
-    MySQL.Async.fetchAll("SELECT a.plate, b.model FROM pdm_showroom a, bbvehicles b WHERE a.slot_id = @slotid and a.plate = b.plate",{['@slotid'] = slot}, function(result2)
+    MySQL.Async.fetchAll("SELECT a.plate, b.model FROM pdm_showroom a, owned_vehicles b WHERE a.slot_id = @slotid and a.plate = b.plate",{['@slotid'] = slot}, function(result2)
         --print(result2 ~= nil and #result2>0)
         if(result2 ~= nil and #result2>0) then
             local model = result2[1].model
@@ -503,7 +498,7 @@ AddEventHandler("pdmrefresh", function(identifier, grade)
     if(xPlayer ~= nil) then
         xPlayer.setJob('cardealer', grade)
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = grade, ['@identifier'] = identifier})
-        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Job refreshed', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Job refreshed', style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
     end
 end)
 

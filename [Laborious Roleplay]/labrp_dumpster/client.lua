@@ -273,7 +273,7 @@ AddEventHandler('smashparkingmeter', function(data)
     else
         exports['mythic_notify']:SendAlert('inform', "Smashing Meter")
         table.insert(Smashed, parkingmeter)
-        TriggerServerEvent('parkingmeter:starttimer', parkingmeter)
+        TriggerEvent('meter:removemeter', parkingmeter)
         SmashMeter()
     end
 end)
@@ -303,56 +303,69 @@ end
 
 RegisterNetEvent('meter:removemeter')
 AddEventHandler('meter:removemeter', function(meter)
-    table.remove(Smashed, meter)
-end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-RegisterNetEvent('payparkingmeter')
-AddEventHandler('payparkingmeter', function()
-    if cooldown == false then
-        TriggerServerEvent('payparkingmeter')
-    else
-        exports['mythic_notify']:SendAlert('error', 'This has already been smashed!')
+    local timer = 7 * 60000
+    while timer > 0 do
+        Wait(1000)
+        timer = timer - 1000
+        if timer == 0 then
+            for i = 1, #Smashed do
+                if Smashed[i] == meter then
+                    table.remove(Smashed, i)
+                end
+            end
+        end
     end
 end)
 
 
 
 
+
 -- SIGN SMASH --
 
+local SmashedSign = {}
 
 local smashSign = {
-    -949234773,
-    442297252,
-    -1124643460,
-    962570067,
-    -2065375912,
+    966571283,
+    749704633,
+    -2018392280,
+    -928289202,
     -582192764,
+    -1547577184,
+    1392401630,
+    -133126160,
+    1898279756,
+    1803721002,
+    768318833,
+    1384097539,
+    1212260769,
+    -1914350933,
+    -1853115340,
+    240277467,
+    -639994124,
+    -9158461,
+    -172481957,
+    -249781228,
+    -1798096217,
+    1822452318,
+    -2090002469,
+    -290853289,
+    -735074497,
+    029303486,
+    60777741,
+    -488700007,
+    995405207,
+    -1721242988,
+    -1293825,
+    1509115140,
+    -156356737,
+    -1522620555,
+    282735287,
+    -1454939221,
+    219009290,
+    -1753555592,
+    1502931467,
+    793482617,
 }
 
 exports['labrp_Eye']:AddTargetModel(smashSign, {
@@ -360,7 +373,10 @@ exports['labrp_Eye']:AddTargetModel(smashSign, {
         {
             event = 'scrapsign',
             icon = 'fas fa-hammer',
-            label = 'Scrap Sign'
+            label = 'Scrap Sign',
+            canInteract = function(entity)
+                return true
+            end
         },
     },
     job = {'all'},
@@ -368,61 +384,65 @@ exports['labrp_Eye']:AddTargetModel(smashSign, {
 })
 
 
-local ped = GetPlayerPed(-1)
-
-local signcooldown = false
+function CheckSign(data)
+    local sign = data.entity
+    for k, v in ipairs(SmashedSign) do
+        if v == sign then
+            return true
+        end
+    end
+    return false
+end
 
 RegisterNetEvent('scrapsign')
-AddEventHandler('scrapsign', function()
-    if signcooldown == false then
-        exports['mythic_progbar']:Progress({
-            name = "smash parking meter",
-            duration = 30000,
-            label = 'Scrapping Sign',
-            useWhileDead = false,
-            canCancel = true,
-            controlDisables = {
-                disableMovement = true,
-                disableCarMovement = true,
-                disableMouse = false,
-                disableCombat = true,
-            },
-            animation = {
-                animDict = "amb@prop_human_bum_bin@base",
-                anim = "base",
-            },
-        })
-        Wait(30000)
-        ClearPedTasks(ped)
-        TriggerEvent('payscrapsign')
-        TriggerEvent('startsigncooldown')
+AddEventHandler('scrapsign', function(data)
+    local sign = data.entity
+    if CheckSign(data) then
+        exports['mythic_notify']:SendAlert('error', "This has already been scrapped")
     else
-        exports['mythic_notify']:SendAlert('error', 'Uh Oh Action Unavailable!')
+        exports['mythic_notify']:SendAlert('inform', "Scrapping Sign")
+        table.insert(SmashedSign, sign)
+        TriggerEvent('sign:removesign', sign)
+        ScrapSign()
     end
-    
 end)
 
-
-RegisterNetEvent('startsigncooldown')
-AddEventHandler('startsigncooldown', function()
-    signcooldown = true
-    local timer = 10 * 60000
-
+RegisterNetEvent('sign:removesign')
+AddEventHandler('sign:removesign', function(sign)
+    local timer = 7 * 60000
     while timer > 0 do
         Wait(1000)
         timer = timer - 1000
         if timer == 0 then
-            cooldown = false
+            for i = 1, #SmashedSign do
+                if SmashedSign[i] == sign then
+                    table.remove(SmashedSign, i)
+                end
+            end
         end
     end
-
 end)
 
-RegisterNetEvent('payscrapsign')
-AddEventHandler('payscrapsign', function()
-    if signcooldown == false then
-        TriggerServerEvent('payscrapsign')
-    else
-        exports['mythic_notify']:SendAlert('error', 'This has already been scrapped!')
-    end
-end)
+
+function ScrapSign()
+    exports['mythic_progbar']:Progress({
+        name = "smash parking meter",
+        duration = 30000,
+        label = 'Scrapping Sign',
+        useWhileDead = false,
+        canCancel = true,
+        controlDisables = {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        },
+        animation = {
+            animDict = "amb@world_human_hammering@male@base",
+            anim = "base",
+        },
+    })
+    Wait(30000)
+    ClearPedTasks(PlayerPedId(-1))
+    TriggerServerEvent('payscrapsign')
+end

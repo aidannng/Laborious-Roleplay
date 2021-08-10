@@ -132,7 +132,7 @@ AddEventHandler("pdm:spawntestdrive", function(a, b, c, d, f, g)
     g = g / 1.0
     local vehicle = CreateVehicle(hash, a, b, c, g, 1, 1)
     SetVehicleNumberPlateText(vehicle, f)
-    TriggerEvent("vehiclekeys:client:SetOwner", f, vehicle)
+    exports["labrp_vehiclelock"]:givePlayerKeys(f)
 end)
 
 RegisterNetEvent("pdm:refreshstocklist")
@@ -255,7 +255,6 @@ RegisterNUICallback("removefromshowroom", function(data)
         vehicle = GetVehiclePedIsIn(ESX.PlayerData.ped, false)
     end
 
-
     if DoesEntityExist(vehicle) then
         local plate = GetVehicleNumberPlateText(vehicle)
         if(showroomplate == plate) then
@@ -313,7 +312,7 @@ RegisterNUICallback("purchase", function(data)
     
     TriggerServerEvent("purchase", data.model, data.price, vehicleProps.plate)
 
-    TriggerServerEvent('pdmbuy', vehicleProps, "{\"damage\":10,\"fuel\":98}", data.model)
+    TriggerServerEvent('pdmbuy', vehicleProps, data.model)
 end)
 
 RegisterNUICallback("error", function(data)

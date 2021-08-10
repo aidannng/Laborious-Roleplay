@@ -96,6 +96,11 @@ local laps = 0
 local lap = 0
 local model = ''
 local track = ''
+local cP = 1
+local cP2 = 2
+local checkpoint
+local blip
+local driver
 
 AddEventHandler('bt-polyzone:enter', function(name)
     if name == "gokartfinish" or name == "undergroundfinish" then
@@ -105,9 +110,9 @@ AddEventHandler('bt-polyzone:enter', function(name)
             track = "underground"
         end
 
-        local playerPed = GetPlayerPed(-1)
         local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
         if(vehicle ~= 0) then
+            driver = GetPedInVehicleSeat(vehicle, 1)
             local props = ESX.Game.GetVehicleProperties(vehicle)
             local hash = props.model
             model = GetDisplayNameFromVehicleModel(hash)
@@ -144,11 +149,6 @@ function UpdateLaps()
         time=formatTimer(starttime, GetGameTimer())
     })
 end
-
-local cP = 1
-local cP2 = 2
-local checkpoint
-local blip
 
 AddEventHandler('bt-polyzone:exit', function(name)
     if name == "gokartfinish" or name == "undergroundfinish" then
@@ -212,12 +212,14 @@ AddEventHandler("starttimer", function(toggle, name)
                 if(lap == laps) then
                     TriggerEvent("starttimer", false)
                     UpdateLaps()
-                    SendNUIMessage({
-                        gettime=true,
-                        time=formatTimer(starttime, GetGameTimer()),
-                        model=model,
-                        track=track
-                    })
+                    if(GetPlayerPed(-1) == driver) then
+                        SendNUIMessage({
+                            gettime=true,
+                            time=formatTimer(starttime, GetGameTimer()),
+                            model=model,
+                            track=track
+                        })
+                    end
                 end
                 cP = 1
                 cP2 = 2
