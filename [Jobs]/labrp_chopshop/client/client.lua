@@ -54,6 +54,7 @@ AddEventHandler('ChopCarPaper', function()
         inMission = true
         ClearPedTasks(PlayerPedId(-1))
         TriggerServerEvent('givechoppaper')
+        TriggerEvent('ChopShop:resetchop')
     else
         exports['mythic_notify']:SendAlert('error', 'Try Again Later!')
     end
@@ -86,17 +87,24 @@ AddEventHandler('ChopShop:BeginChop', function(vehicle)
         DeleteEntity(vehicle.entity)
         TriggerServerEvent('choppayout')
         inMission = false
-        TriggerEvent('resetchop')
     else
         exports['mythic_notify']:SendAlert('error', 'Invalid Vehicle!')
     end
 end)
 
 
-RegisterNetEvent('resetchop')
-AddEventHandler('resetchop', function()
-    Citizen.Wait(300000)
-    canChop = true
+RegisterNetEvent('ChopShop:resetchop')
+AddEventHandler('ChopShop:resetchop', function()
+    local timer = 10 * 60000
+
+    while timer > 0 do
+        Wait(1000)
+        timer = timer - 1000
+        if timer == 0 then
+            canChop = true
+            print('ChopShop Cooldown : Off')
+        end
+    end
 end)
 
 
