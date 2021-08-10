@@ -250,7 +250,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                         end)
 
                         MySQL.Async.execute("UPDATE owned_vehicles SET owner = @identifier WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
-                        --MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
+                        MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
                         MySQL.Async.fetchAll("SELECT slot_id, x, y, z FROM pdm_showroom WHERE plate = @plate", {['@plate'] = plate}, function(result2)
                             if(result2 ~= nil and #result2 > 0) then
                                 local slot = result2[1].slot_id
@@ -301,7 +301,7 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                         end)
 
                         MySQL.Async.execute("UPDATE owned_vehicles SET owner = @identifier WHERE plate = @plate", {['@identifier'] = ower.identifier, ['@plate'] = plate})
-                        --MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
+                        MySQL.Async.execute("DELETE FROM cardealer_vehicles WHERE plate = @plate", {['@plate'] = plate})
                         MySQL.Async.fetchAll("SELECT slot_id, x, y, z FROM pdm_showroom WHERE plate = @plate", {['@plate'] = plate}, function(result2)
                             if(result2 ~= nil and #result2 > 0) then
                                 local slot = result2[1].slot_id
