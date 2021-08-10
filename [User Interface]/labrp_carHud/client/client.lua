@@ -514,10 +514,12 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+
 -- Everything that neededs to be at WAIT 0
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(100)
+		Citizen.Wait(0)
 		local player = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local vehicleClass = GetVehicleClass(vehicle)
@@ -808,3 +810,4 @@ Citizen.CreateThread(function()
         end
     end
 end)
+

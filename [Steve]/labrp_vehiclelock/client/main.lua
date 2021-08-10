@@ -196,13 +196,30 @@ Citizen.CreateThread(function()
                     if IsControlJustReleased(0, 74) and not isHotwiring then -- E
                         TriggerServerEvent('onyx:reqHotwiring', plate)
                     end
-                else
-                    --SetVehicleEngineOn(veh, true, false, true)
                 end
             end
         end
         Citizen.Wait(wait)
     end
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(5)
+
+		local ped = GetPlayerPed(-1)
+		
+		if DoesEntityExist(ped) and IsPedInAnyVehicle(ped, false) and IsControlPressed(2, 75) and not IsEntityDead(ped) and not IsPauseMenuActive() then
+			local engineWasRunning = GetIsVehicleEngineRunning(GetVehiclePedIsIn(ped, true))
+			Citizen.Wait(1000)
+			if DoesEntityExist(ped) and not IsPedInAnyVehicle(ped, false) and not IsEntityDead(ped) and not IsPauseMenuActive() then
+				local veh = GetVehiclePedIsIn(ped, true)
+				if (engineWasRunning) then
+					SetVehicleEngineOn(veh, true, true, true)
+				end
+			end
+		end
+	end
 end)
 
 Citizen.CreateThread(function()
@@ -234,7 +251,6 @@ AddEventHandler('onyx:beginHotwire', function(plate)
     local vehPlate = plate
     isHotwiring = true
 
-    SetVehicleEngineOn(veh, false, false, true)
     SetVehicleLights(veh, 0)
     
     if Config.HotwireAlarmEnabled then
@@ -264,7 +280,6 @@ AddEventHandler('onyx:beginHotwire', function(plate)
     table.insert(vehicles, vehPlate)
     StopAnimTask(PlayerPedId(), 'veh@std@ds@base', 'hotwire', 1.0)
     isHotwiring = false
-    SetVehicleEngineOn(veh, true, false, true)
 end)
 
 local isRobbing = false

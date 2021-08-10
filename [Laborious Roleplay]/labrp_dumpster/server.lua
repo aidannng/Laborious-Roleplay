@@ -67,19 +67,6 @@ AddEventHandler('payparkingmeter', function()
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You found $'..foundmoney, })
 end)
 
-RegisterServerEvent('parkingmeter:starttimer')
-AddEventHandler('parkingmeter:starttimer', function(meter)
-    local timer = 10 * 60000
-
-    while timer > 0 do
-        Wait(1000)
-        timer = timer - 1000
-        if timer == 0 then
-            TriggerClientEvent('meter:removemeter', source, meter)
-        end
-    end
-end)
-
 
 
 

@@ -32,7 +32,7 @@ AddEventHandler("buymaterial", function(part, price, amount)
                     xPlayer.addInventoryItem(part, tonumber(amount))
                     balance = balance - total
 
-                    TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Items purchased', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+                    TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Items purchased', style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
                     MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
                 else
                     TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'error', text = "Not enough money in account", })
@@ -170,7 +170,7 @@ AddEventHandler("lscrefresh", function(identifier, grade)
     if(xPlayer ~= nil) then
         xPlayer.setJob('mechanic', grade)
         MySQL.Async.execute("UPDATE users SET job_grade = @grade WHERE identifier = @identifier", {['@grade'] = grade, ['@identifier'] = identifier})
-        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Job refreshed', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'Job refreshed', style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
     end
 end)
 
