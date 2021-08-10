@@ -124,7 +124,7 @@ end
 
 RegisterNetEvent('dumpster:starttimer')
 AddEventHandler('dumpster:starttimer', function(dumpster)
-    local timer = 1 * 60000
+    local timer = 7 * 60000
     while timer > 0 do
         Wait(1000)
         timer = timer - 1000
