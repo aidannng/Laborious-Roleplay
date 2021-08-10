@@ -29,47 +29,35 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
    }
 
 
-RegisterServerEvent('dumpster:givereward')
-AddEventHandler('dumpster:givereward', function()
-    local source = tonumber(source)
-    local item = {}
-    local xPlayer = ESX.GetPlayerFromId(source)
-    local gotID = {}
+   RegisterServerEvent('dumpster:givereward')
+   AddEventHandler('dumpster:givereward', function()
+       local source = tonumber(source)
+       local item = {}
+       local xPlayer = ESX.GetPlayerFromId(source)
+       local gotID = {}
+   
+   
+       for i=1, math.random(1, 2) do
+           item = robbableItems[math.random(1, #robbableItems)]
+           if math.random(1, 10) >= item.chance then
+               if tonumber(item.id) == 0 and not gotID[item.id] then
+                   gotID[item.id] = true
+                   xPlayer.addMoney(item.quantity)
+                   TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You found $'..item.quantity, })
+               elseif item.isWeapon and not gotID[item.id] then
+                   gotID[item.id] = true
+                   xPlayer.addWeapon(item.id, 50)
+                   TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
+               elseif not gotID[item.id] then
+                   gotID[item.id] = true
+                   xPlayer.addInventoryItem(item.id, item.quantity)
+                   TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
+               end
+           end
+       end
+   end)
 
 
-    for i=1, math.random(1, 2) do
-        item = robbableItems[math.random(1, #robbableItems)]
-        if math.random(1, 10) >= item.chance then
-            if tonumber(item.id) == 0 and not gotID[item.id] then
-                gotID[item.id] = true
-                xPlayer.addMoney(item.quantity)
-                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You found $'..item.quantity, })
-            elseif item.isWeapon and not gotID[item.id] then
-                gotID[item.id] = true
-                xPlayer.addWeapon(item.id, 50)
-                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
-            elseif not gotID[item.id] then
-                gotID[item.id] = true
-                xPlayer.addInventoryItem(item.id, item.quantity)
-                TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'Item Added!', })
-            end
-        end
-    end
-end)
-
-
-RegisterServerEvent('dumpster:starttimer')
-AddEventHandler('dumpster:starttimer', function(dumpster)
-    local timer = 10 * 60000
-
-    while timer > 0 do
-        Wait(1000)
-        timer = timer - 1000
-        if timer == 0 then
-            TriggerClientEvent('stv:removeDumpster', source, dumpster)
-        end
-    end
-end)
 
 
 

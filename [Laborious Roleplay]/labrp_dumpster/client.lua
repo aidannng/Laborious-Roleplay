@@ -8,6 +8,18 @@ Citizen.CreateThread(function()
 end)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 local dumspterModel = {
     218085040,
     666561306,
@@ -19,6 +31,14 @@ local dumspterModel = {
 
 exports['labrp_Eye']:AddTargetModel(dumspterModel, {
     options = {
+        --[[{
+            event = 'dumpsterGetIn',
+            icon = 'fas fa-dumpster',
+            label = 'Get in Dumpster',
+            canInteract = function(entity)
+                return true
+            end
+        },]]
         {
             event = 'dumpsterTrigger',
             icon = 'fas fa-dumpster',
@@ -34,10 +54,10 @@ exports['labrp_Eye']:AddTargetModel(dumspterModel, {
 
 
 local Searched = {}
+local InDumpster = false
 
 function CheckSearch(dumpster)
     local dumpstermodel = dumpster.entity
-    print(dumpstermodel)
     for k, v in ipairs(Searched) do
         if v == dumpstermodel then
             return true
@@ -46,15 +66,34 @@ function CheckSearch(dumpster)
     return false
 end
 
+--[[RegisterNetEvent('dumpsterGetIn')
+AddEventHandler('dumpsterGetIn', function(data)
+    local playerCoord = GetEntityCoords(PlayerPedId(-1))
+    local dumpstermodel = data.entity
+    print(dumpstermodel)
+    local dumpCoords = GetEntityCoords(dumpstermodel)
+    if not InDumpster then
+        SetEntityCoords(PlayerPedId(-1), dumpCoords, false, false, false, true)
+        SetEntityVisible(PlayerPedId(), false, 0)
+        InDumpster = true
+    else
+        SetEntityCoords(PlayerPedId(-1), playerCoord, false, false, false, true)
+        SetEntityVisible(PlayerPedId(), true, 0)
+        InDumpster = false
+    end
+end)]]
+
+
 RegisterNetEvent('dumpsterTrigger')
 AddEventHandler('dumpsterTrigger', function(data)
     local dumpstermodel = data.entity
+    print(dumpstermodel)
     if CheckSearch(data) then
         exports['mythic_notify']:SendAlert('error', "You've already searched this dumpster")
     else
         exports['mythic_notify']:SendAlert('inform', "Searching Dumpster")
         table.insert(Searched, dumpstermodel)
-        TriggerServerEvent('dumpster:starttimer', dumpstermodel)
+        TriggerEvent('dumpster:starttimer', dumpstermodel)
         SearchDumpster()
     end
 end)
@@ -83,10 +122,22 @@ function SearchDumpster()
     TriggerServerEvent('dumpster:givereward')
 end
 
-RegisterNetEvent('dumpster:removedumpster')
-AddEventHandler('dumpster:removedumpster', function(dumpster)
-    table.remove(Searched, dumpster)
+RegisterNetEvent('dumpster:starttimer')
+AddEventHandler('dumpster:starttimer', function(dumpster)
+    local timer = 1 * 60000
+    while timer > 0 do
+        Wait(1000)
+        timer = timer - 1000
+        if timer == 0 then
+            for i = 1, #Searched do
+                if Searched[i] == dumpster then
+                    table.remove(Searched, i)
+                end
+            end
+        end
+    end
 end)
+
 
 --[[exports['labrp_Eye']:AddTargetBone({"platelight"}, {
     options = {
