@@ -104,7 +104,7 @@ AddEventHandler("mdt:getOffenderDetails", function(offender)
 	})
 	offender.phone_number = phone_number[1].phone_number
 
-	local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `bbvehicles` WHERE `identifier` = @identifier', {
+	local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier', {
 		['@identifier'] = offender.identifier
 	})
 	for i = 1, #vehicles do
@@ -372,7 +372,7 @@ RegisterServerEvent("mdt:performVehicleSearch")
 AddEventHandler("mdt:performVehicleSearch", function(query)
 	local usource = source
 	local matches = {}
-	MySQL.Async.fetchAll("SELECT * FROM `bbvehicles` WHERE (`plate`) LIKE @query", {
+	MySQL.Async.fetchAll("SELECT * FROM `owned_vehicles` WHERE (`plate`) LIKE @query", {
 		['@query'] = string.lower('%'..query..'%') -- % wildcard, needed to search for all alike results
 	}, function(result)
 
@@ -404,7 +404,7 @@ AddEventHandler("mdt:performVehicleSearchInFront", function(query)
     			for w = 1, #warrants do
     				warrants[w].charges = json.decode(warrants[w].charges)
     			end
-    			MySQL.Async.fetchAll("SELECT * FROM `bbvehicles` WHERE `plate` = @query", {
+    			MySQL.Async.fetchAll("SELECT * FROM `owned_vehicles` WHERE `plate` = @query", {
 					['@query'] = query
 				}, function(result)
 					local officer = GetCharacterName(usource)

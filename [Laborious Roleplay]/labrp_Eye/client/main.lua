@@ -1,3 +1,13 @@
+ESX = nil
+
+Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
+end)
+
+
 local Config, Players, Types, Entities, Models, Zones, Bones, M = load(LoadResourceFile(GetCurrentResourceName(), 'config.lua'))()
 local playerPed, hasFocus, success, sendData = PlayerPedId(), false, false
 
@@ -698,21 +708,6 @@ AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0.4, 0.6, {
         distance = 2.5
     })
 
-    local trolley = {
-        269934519
-        }   
-        AddTargetModel(trolley, {
-        options = {
-        {
-            event = "lootcart",
-            icon = "fas fa-money-bill",
-            label = "Grab Cash",
-        },
-        },
-        job = {"all"},
-        distance = 2.5
-    })
-
     local impoundRent = {
     	`ig_benny`,
         }   
@@ -986,93 +981,6 @@ AddEventHandler('lsc_twotruck', function()
 end)
 
 
---            exports['cn-taskbar']:taskbar(1500, 'Starting Hack...')
-
-RegisterNetEvent('PoliceDealership')--pd:heli
-AddEventHandler('PoliceDealership', function()
-
-    TriggerEvent('nh-context:sendMenu', {
-        {
-            id = 1,
-            header = "Police Dealership",
-            txt = ""
-        },
-		{
-			id = 2,
-			header = "Crown Victoria",
-			txt = "$12,500",
-			params = {
-				event = "buycvpi",
-				args = {
-					number = 1,
-					id = 2
-				}
-			}
-		},
-		{
-			id = 3,
-			header = "Ford Taurus",
-			txt = "$25,000",
-			params = {
-				event = "buyfpis",
-				args = {
-					number = 2,
-					id = 3
-				}
-			}
-		},
-		{
-			id = 4,
-			header = "2014 Tahoe",
-			txt = "$30,000 (Off-Road)",
-			params = {
-				event = "buytahoe",
-				args = {
-					number = 3,
-					id = 4
-				}
-			}
-		},
-        {
-			id = 5,
-			header = "Dodge RAM",
-			txt = "$35,000 (Off-Road)",
-			params = {
-				event = "buyram",
-				args = {
-					number = 4,
-					id = 5
-				}
-			}
-		},
-        {
-			id = 6,
-			header = "BMW Motorcycle",
-			txt = "$25,000 (Motor)",
-			params = {
-				event = "buybmw",
-				args = {
-					number = 5,
-					id = 6
-				}
-			}
-		},
-        {
-			id = 7,
-			header = "2018 Charger",
-			txt = "$50,000",
-			params = {
-				event = "buycharg",
-				args = {
-					number = 6,
-					id = 7
-				}
-			}
-		}
-	})
-end)
-
-
 RegisterNetEvent('pd:heli')--pd:heli
 AddEventHandler('pd:heli', function()
     TriggerEvent('nh-context:sendMenu', {
@@ -1120,181 +1028,13 @@ AddEventHandler('fbi:dealer', function()
     })
 end)
 
-RegisterNetEvent('buycvpi')
-AddEventHandler('buycvpi', function()  
-    TriggerServerEvent('cvpimoney')
-end)
-
 RegisterNetEvent('buyheli')
 AddEventHandler('buyheli', function()  
     TriggerServerEvent('helimoney')
 end)
 
-RegisterNetEvent('buyram')
-AddEventHandler('buyram', function()  
-    TriggerServerEvent('rammoney')
-end)
-
-RegisterNetEvent('buyfpis')
-AddEventHandler('buyfpis', function()  
-    TriggerServerEvent('fpismoney')
-end)
-
-RegisterNetEvent('buytahoe')
-AddEventHandler('buytahoe', function()  
-    TriggerServerEvent('tahoemoney')
-end)
-
-RegisterNetEvent('buybmw')
-AddEventHandler('buybmw', function()  
-    TriggerServerEvent('bmwmoney')
-end)
-
-RegisterNetEvent('buycharg')
-AddEventHandler('buycharg', function()  
-    TriggerServerEvent('chargmoney')
-end)
-
 local spawn = false
 local playerPed = PlayerPedId()
-
-RegisterNetEvent('cvpispawn')
-AddEventHandler('cvpispawn', function()
-    local hash = GetHashKey("code3cvpi")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, 450.1846, -975.8373, 25.6908, 90.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    local plate = GetVehicleNumberPlateText(vehiclebuy)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-    Citizen.Wait(1000)
-    local vehicleProps = ESX.Game.GetVehicleProperties(vehicleBuy)
-    local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleBuy)))
-    TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
-    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
-    TriggerEvent('bb-garages:client:insertOwnedVehicle', plate, vehicleBuy)
-end)
-
-RegisterNetEvent('ramspawn')
-AddEventHandler('ramspawn', function()
-    local hash = GetHashKey("code3ram")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, 450.1846, -975.8373, 25.6908, 90.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    local plate = GetVehicleNumberPlateText(vehiclebuy)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-    Citizen.Wait(1000)
-    local vehicleProps = ESX.Game.GetVehicleProperties(vehicleBuy)
-    local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleBuy)))
-    TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
-    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
-    TriggerEvent('bb-garages:client:insertOwnedVehicle', plate, vehicleBuy)
-end)
-
-RegisterNetEvent('fpisspawn')
-AddEventHandler('fpisspawn', function()
-    local hash = GetHashKey("code3fpis")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, 450.1846, -975.8373, 25.6908, 90.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    local plate = GetVehicleNumberPlateText(vehiclebuy)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-    Citizen.Wait(1000)
-    local vehicleProps = ESX.Game.GetVehicleProperties(vehicleBuy)
-    local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleBuy)))
-    TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
-    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
-    TriggerEvent('bb-garages:client:insertOwnedVehicle', plate, vehicleBuy)
-end)
-
-RegisterNetEvent('tahoespawn')
-AddEventHandler('tahoespawn', function()
-    local hash = GetHashKey("code314tahoe")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, 450.1846, -975.8373, 25.6908, 90.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    local plate = GetVehicleNumberPlateText(vehiclebuy)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-    Citizen.Wait(1000)
-    local vehicleProps = ESX.Game.GetVehicleProperties(vehicleBuy)
-    local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleBuy)))
-    TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
-    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
-    TriggerEvent('bb-garages:client:insertOwnedVehicle', plate, vehicleBuy)
-end)
-
-RegisterNetEvent('bmwspawn')
-AddEventHandler('bmwspawn', function()
-    local hash = GetHashKey("code3bmw")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, 450.1846, -975.8373, 25.6908, 90.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    local plate = GetVehicleNumberPlateText(vehiclebuy)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-    Citizen.Wait(1000)
-    local vehicleProps = ESX.Game.GetVehicleProperties(vehicleBuy)
-    local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleBuy)))
-    TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
-    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
-    TriggerEvent('bb-garages:client:insertOwnedVehicle', plate, vehicleBuy)
-end)
-
-RegisterNetEvent('chargspawn')
-AddEventHandler('chargspawn', function()
-    local hash = GetHashKey("code318charg")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, 450.1846, -975.8373, 25.6908, 90.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    local plate = GetVehicleNumberPlateText(vehiclebuy)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-    Citizen.Wait(1000)
-    local vehicleProps = ESX.Game.GetVehicleProperties(vehicleBuy)
-    local model = string.lower(GetDisplayNameFromVehicleModel(GetEntityModel(vehicleBuy)))
-    TriggerServerEvent('bb-garages:server:setVehicleOwned', vehicleProps, {damage = 10, fuel = 98}, model)
-    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
-    TriggerEvent('bb-garages:client:insertOwnedVehicle', plate, vehicleBuy)
-end)
 
 RegisterNetEvent('helispawn')--helispawn
 AddEventHandler('helispawn', function()
@@ -1313,46 +1053,6 @@ AddEventHandler('helispawn', function()
 end)
 
 -- LSC CUSTOMS TOW TRUCK RENTAL --
-
-local lsctruck = 1
-
-RegisterNetEvent('spawnlsctruck')
-AddEventHandler('spawnlsctruck', function()
-    local hash = GetHashKey("20ramrbc")
-        
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    local vehicleBuy = CreateVehicle(hash, -365.8681, -85.41099, 39.0022, 250.00, 1, 1)
-    local plate = GetVehicleNumberPlateText(vehicleBuy)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    lsctruck = GetHashKey(vehicleBuy)
-    print(lsctruck)
-    Citizen.Wait(1000)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-    TriggerEvent("vehiclekeys:client:SetOwner", plate, vehicleBuy)
-end)
-
-RegisterNetEvent('return_lsc')
-AddEventHandler('return_lsc', function()
-    local current = GetVehiclePedIsIn(PlayerPedId(), false)
-    local hash = GetHashKey(current)
-    if hash == lsctruck then
-        print('correct truck')
-        exports['mythic_notify']:SendAlert('inform', 'Truck Returned') 
-        TriggerServerEvent('returnLSCKeys')
-        DeleteVehicle(current)
-        lsctruck = 1
-    else
-        print('invalid truck')
-        exports['mythic_notify']:SendAlert('error', 'This truck ain\'t the same bitch') 
-    end
-
-    --    TriggerServerEvent('returnLSCKeys')
-end)
 
 RegisterNetEvent('open_paint_menu')
 AddEventHandler('open_paint_menu', function()

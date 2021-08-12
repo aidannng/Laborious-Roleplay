@@ -50,6 +50,14 @@ input{
     box-shadow: none!important;
 }
 
+.track{
+    height:800px;
+}
+
+#active-trials{
+    height:625px;
+}
+
 .error {
     color:red;
     font-size: 14px;

@@ -207,7 +207,8 @@ AddEventHandler('luke_truckerjob:SpawnTruck', function(data)
                         end
                         workVehicle = CreateVehicle(data.truck, Config.TruckSpawn[i].x, Config.TruckSpawn[i].y, Config.TruckSpawn[i].z, Config.TruckSpawn[i].h, true, false)
                         SetModelAsNoLongerNeeded(data.truck)
-
+                        local plate = GetVehicleNumberPlateText(workVehicle)
+                        exports["labrp_vehiclelock"]:givePlayerKeys(plate)
                         DeliverySelectMenu()
                         ReturnBlip()
 

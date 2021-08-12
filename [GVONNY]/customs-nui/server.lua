@@ -6,13 +6,8 @@ Citizen.CreateThread(function()
         Citizen.Wait(10)
     end
 
-    TriggerEvent("impoundunknown")
 end)
 
-RegisterServerEvent("impoundunknown")
-AddEventHandler("impoundunkown", function()
-    MySQL.Async.execut("UPDATE bbvehicles SET state = 'impound' WHERE state = 'unknown'")
-end)
 
 RegisterServerEvent("buymaterial")
 AddEventHandler("buymaterial", function(part, price, amount)
