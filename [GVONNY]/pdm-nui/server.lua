@@ -73,10 +73,11 @@ end)
 RegisterServerEvent('pdmbuy')
 AddEventHandler('pdmbuy', function(props, model)
     local src = source
-    MySQL.Async.execute("INSERT INTO owned_vehicles (owner, plate, vehicle, model) VALUES ('pdm', @plate, @props, @model)", {
+    MySQL.Async.execute("INSERT INTO `owned_vehicles` (`owner`, `plate`, `vehicle`, `model`, `stored`) VALUES ('pdm', @plate, @props, @model, @stored)", {
         ['@plate'] = props.plate,
         ['@props'] = json.encode(props),
         ['@model'] = model,
+        ['@stored'] = true
     })
 end)
 
@@ -276,6 +277,8 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
 
                             end
                         end)
+
+                        MySQL.Async.execute("UPDATE `owned_vehicles` SET `stored` = false WHERE `plate` = @plate", {['@plate'] = plate})
                         
                         TriggerClientEvent("pdm:refreshbilllist", src)
 
@@ -326,6 +329,8 @@ AddEventHandler("createbill", function(luckynumber, plate, price, termlength)
                                 TriggerClientEvent("pdm:spawntestdrive", ower.source, -26.2022, -1083.02, 26.78613, model, plate, 50.0)
                             end
                         end)
+
+                        MySQL.Async.execute("UPDATE `owned_vehicles` SET `stored` = false WHERE `plate` = @plate", {['@plate'] = plate})
 
                         TriggerClientEvent("pdm:refreshbilllist", src)
                         PerformHttpRequest(discord_webhook.url, 
