@@ -35,7 +35,7 @@
 
 .target-icon {
 	color: #4b7ab8;
-	margin-top: 2px;
+	margin-top: 1px;
 }
 
 .target-item {
@@ -43,10 +43,8 @@
 	opacity: 0.85;
 	border: 0px;
 	margin-bottom: 5px;
-	width: 240px;
+	width: 190px;
 	padding: 6px;
-	height: 19px;
-	border-left: 3px solid;
-    border-color: #385b88;
-	border-radius: 0.15rem;
+	height: 15px;
+	border-radius: 5px;
 }

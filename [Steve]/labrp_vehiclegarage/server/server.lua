@@ -1,12 +1,13 @@
-ESX.RegisterServerCallback('luke_vehiclegarage:GetVehicles', function(source, callback, type)
+ESX.RegisterServerCallback('luke_vehiclegarage:GetVehicles', function(source, callback, type, garage)
     local xPlayer = ESX.GetPlayerFromId(source)
     local identifier = xPlayer.getIdentifier()
     local job = xPlayer.job.name
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage', {
         ['@identifier'] = identifier,
-        ['@type'] = type
+        ['@type'] = type,
+        ['@garage'] = garage,
     }, function(result)
         if result[1] ~= nil then
             for k, v in pairs(result) do
@@ -21,15 +22,16 @@ ESX.RegisterServerCallback('luke_vehiclegarage:GetVehicles', function(source, ca
     end)
 end)
 
-ESX.RegisterServerCallback('luke_vehiclegarage:GetJobVehicles', function(source, callback, type)
+ESX.RegisterServerCallback('luke_vehiclegarage:GetJobVehicles', function(source, callback, type, garage)
     local xPlayer = ESX.GetPlayerFromId(source)
     local identifier = xPlayer.getIdentifier()
     local job = xPlayer.job.name
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage', {
         ['@identifier'] = job,
-        ['@type'] = type
+        ['@type'] = type,
+        ['@garage'] = garage
     }, function(result)
         if result[1] ~= nil then
             for k, v in pairs(result) do
@@ -49,9 +51,10 @@ ESX.RegisterServerCallback('luke_vehiclegarage:GetImpound', function(source, cal
     local identifier = xPlayer.getIdentifier()
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `stored` = 0', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage', {
         ['@identifier'] = identifier,
         ['@type'] = type,
+        ['@garage'] = "Impound",
     }, function(results)
         if results[1] ~= nil then
             for k, v in pairs(results) do
@@ -72,9 +75,10 @@ ESX.RegisterServerCallback('luke_vehiclegarage:GetJobImpound', function(source, 
     local job = xPlayer.job.name
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @job AND `type` = @type AND `stored` = 0', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @job AND `type` = @type AND `garage` = @garage', {
         ['@job'] = job,
         ['@type'] = type,
+        ['@garage'] = "Impound",
     }, function(results)
         if results[1] ~= nil then
             for k, v in pairs(results) do
@@ -129,23 +133,23 @@ ESX.RegisterServerCallback('luke_vehiclegarage:CheckJobOwnership', function(sour
 end)
 
 RegisterNetEvent('luke_vehiclegarage:ChangeStored')
-AddEventHandler('luke_vehiclegarage:ChangeStored', function(plate, stored)
+AddEventHandler('luke_vehiclegarage:ChangeStored', function(plate, stored, garage)
     local xPlayer = ESX.GetPlayerFromId(source)
     
-    if stored then 
-        stored = 1 
-    else 
-        stored = 0 
-    end
-
     local plate = ESX.Math.Trim(plate)
 
-
-    MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored WHERE `plate` = @plate', {
-        ['@stored'] = stored,
-        ['@plate'] = plate
-    }, function(rowsChanged)
-    end)
+    if(stored) then
+        MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = @garage WHERE `plate` = @plate', {
+            ['@stored'] = stored,
+            ['@plate'] = plate,
+            ['@garage'] = garage
+        })
+    else
+        MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = NULL WHERE `plate` = @plate', {
+            ['@stored'] = stored,
+            ['@plate'] = plate
+        })
+    end
 end)
 
 RegisterNetEvent('luke_vehiclegarage:SaveVehicle')
@@ -185,7 +189,7 @@ AddEventHandler('luke_vehiclegarage:SetOwner', function(plate, vehicle)
         ['@plate'] = plate,
         ['@vehicle'] = json.encode(vehicle),
         ['@type'] = 'car',
-        ['@stored'] = 0
+        ['@stored'] = false
     }, function(rowChanged)
     end)
 end)

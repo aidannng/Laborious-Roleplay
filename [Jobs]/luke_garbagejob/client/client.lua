@@ -325,6 +325,8 @@ RegisterNUICallback('luke_garbagejob:SpawnJobVehicle', function(data)
             hasWorkVehicle = true
             jobVehiclePlate = GetVehicleNumberPlateText(jobVehicle)
             TaskWarpPedIntoVehicle(playerPed, jobVehicle, -1) -- Teleports the ped into driver seat on spawn
+            Citizen.Wait(500)
+            exports["labrp_vehiclelock"]:givePlayerKeys(jobVehiclePlate)
         end)
     elseif data == 'vehicle2' then
         ESX.Game.SpawnVehicle('trash2', vector3(Config.Vehicle.x, Config.Vehicle.y, Config.Vehicle.z), Config.Vehicle.h, function(vehicle)
@@ -332,6 +334,8 @@ RegisterNUICallback('luke_garbagejob:SpawnJobVehicle', function(data)
             hasWorkVehicle = true
             jobVehiclePlate = GetVehicleNumberPlateText(jobVehicle)
             TaskWarpPedIntoVehicle(playerPed, jobVehicle, -1) -- Teleports the ped into driver seat on spawn
+            Citizen.Wait(500)
+            exports["labrp_vehiclelock"]:givePlayerKeys(jobVehiclePlate)
         end)
     end
     RemoveBlip(VehiclesBlip)

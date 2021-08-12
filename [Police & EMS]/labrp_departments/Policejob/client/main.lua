@@ -1132,7 +1132,7 @@ Citizen.CreateThread(function()
 	local wasDragged
 
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(5)
 		local playerPed = PlayerPedId()
 
 		if isHandcuffed and dragStatus.isDragged then
@@ -1657,29 +1657,3 @@ AddEventHandler('pickupspike', function()
 	TriggerServerEvent('pickupspike')
 end)
 
-
-Citizen.CreateThread(function()
-	while true do
-		local spikestrip = {
-			`p_ld_stinger_s`
-		}
-
-		exports['labrp_Eye']:AddTargetModel(spikestrip, {
-			options = {
-				{
-					event = 'pickupspike',
-					icon = 'fas fa-plus',
-					label = 'Pickup Spike Strip'
-				},
-			},
-			job = {'all'},
-			distance = 3.0
-		})
-		Citizen.Wait(1000)
-	end
-end)
-
-RegisterNetEvent('labrp:checkvin')
-AddEventHandler('labrp:checkvin', function()
-	print(data.entity)
-end)

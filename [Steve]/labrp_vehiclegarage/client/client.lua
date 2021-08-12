@@ -227,7 +227,6 @@ end)
 RegisterNetEvent('luke_vehiclegarage:StoreBothVehicle')
 AddEventHandler('luke_vehiclegarage:StoreBothVehicle', function(target)
     TriggerEvent('luke_vehiclegarage:StoreVehicle', target)
-    --TriggerEvent('luke_vehiclegarage:StoreJobVehicle', target)
 end)
 
 RegisterNetEvent('luke_vehiclegarage:GetImpoundedVehicles')
@@ -405,7 +404,7 @@ AddEventHandler('luke_vehiclegarage:GetOwnedVehicles', function()
                 }
             })
         end
-    end, garageType)
+    end, garageType, currentGarage)
 end)
 
 RegisterNetEvent('luke_vehiclegarage:GetJobOwnedVehicles')
@@ -469,7 +468,7 @@ AddEventHandler('luke_vehiclegarage:GetJobOwnedVehicles', function()
                 }
             })
         end
-    end, garageType)
+    end, garageType, currentGarage)
 end)
 
 RegisterNetEvent('luke_vehiclegarage:ImpoundVehicleMenu')
@@ -590,7 +589,7 @@ AddEventHandler('luke_vehiclegarage:SpawnVehicle', function(data)
             ESX.Game.SetVehicleProperties(spawnedVehicle, data.vehicle)
             SetVehicleInteriorColor(spawnedVehicle, tonumber(data.vehicle.modTrimA))
             SetVehicleLivery(spawnedVehicle, tonumber(data.vehicle.modLivery))
-            TriggerServerEvent('luke_vehiclegarage:ChangeStored', GetVehicleNumberPlateText(spawnedVehicle), false)
+            TriggerServerEvent('luke_vehiclegarage:ChangeStored', GetVehicleNumberPlateText(spawnedVehicle), false, currentGarage)
 
             if data.type == 'impound' then
                 TriggerServerEvent('luke_vehiclegarage:PayImpound', data.price)
@@ -622,10 +621,12 @@ AddEventHandler('luke_vehiclegarage:StoreVehicle', function(target)
     ESX.TriggerServerCallback('luke_vehiclegarage:CheckOwnership', function(doesOwn)
         if doesOwn then
             local vehProps = ESX.Game.GetVehicleProperties(vehicle)
+            vehProps.modTrimA = GetVehicleInteriorColor(vehicle)
+            vehProps.modLivery = GetVehicleLivery(vehicle)
 
             ESX.Game.DeleteVehicle(vehicle)
 
-            TriggerServerEvent('luke_vehiclegarage:ChangeStored', vehPlate, true)
+            TriggerServerEvent('luke_vehiclegarage:ChangeStored', vehPlate, true, currentGarage)
 
             TriggerServerEvent('luke_vehiclegarage:SaveVehicle', vehProps, health, vehPlate)
         else
@@ -651,7 +652,7 @@ AddEventHandler('luke_vehiclegarage:StoreJobVehicle', function(target)
 
             ESX.Game.DeleteVehicle(vehicle)
 
-            TriggerServerEvent('luke_vehiclegarage:ChangeStored', vehPlate, true)
+            TriggerServerEvent('luke_vehiclegarage:ChangeStored', vehPlate, true, currentGarage)
 
             TriggerServerEvent('luke_vehiclegarage:SaveVehicle', vehProps, health, vehPlate)
         else
@@ -795,7 +796,7 @@ end
 
 
 
-RegisterCommand('ownvehicle', function()
+--[[RegisterCommand('ownvehicle', function()
     if IsPedInAnyVehicle(PlayerPedId(), false) then
         local vehicleBuy = GetVehiclePedIsIn(PlayerPedId(), false)
         local plate = GetVehicleNumberPlateText(vehicleBuy)
@@ -810,9 +811,9 @@ RegisterCommand('ownvehicle', function()
     else
         exports['mythic_notify']:SendAlert('error', "You're not in a vehicle")
     end
-end, false)
+end, false)]]
 
-RegisterCommand('getkeys', function()
+--[[RegisterCommand('getkeys', function()
     if IsPedInAnyVehicle(PlayerPedId(), false) then
         local vehicleBuy = GetVehiclePedIsIn(PlayerPedId(), false)
         local plate = GetVehicleNumberPlateText(vehicleBuy)
@@ -820,4 +821,4 @@ RegisterCommand('getkeys', function()
     else
         exports['mythic_notify']:SendAlert('error', "You're not in a vehicle")
     end
-end, false)
+end, false)]]

@@ -31,7 +31,7 @@ Citizen.CreateThread(function()
     local isPauseMenu = false
 
 	while true do
-		Citizen.Wait(500)
+		Citizen.Wait(1000)
 
 		if IsPauseMenuActive() then -- ESC Key
 			if not isPauseMenu then
@@ -74,7 +74,7 @@ end)
 Citizen.CreateThread(function()
 
 	while Config.ui.showLocation do
-		Citizen.Wait(5)
+		Citizen.Wait(500)
 		local player = PlayerPedId()
 		local position = GetEntityCoords(player)
 		local zoneNameFull = zones[GetNameOfZone(position.x, position.y, position.z)]
@@ -109,7 +109,7 @@ local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(0)
+		Wait(150)
 		local player = PlayerPedId()
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local position = GetEntityCoords(player)
@@ -253,7 +253,7 @@ end)
 
 
 -- Player status
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
 
 	while true do
 		Citizen.Wait(5000)
@@ -379,7 +379,7 @@ Citizen.CreateThread(function()
   	    SendNUIMessage(playerStatus)
   	end
     end
-end)
+end)]]
 
 
 -- Voice detection and distance
@@ -391,7 +391,7 @@ Citizen.CreateThread(function()
 	    RequestAnimDict('mp_facial')
 
 	    while true do
-	        Citizen.Wait(400)
+	        Citizen.Wait(150)
 	        local playerID = PlayerId()
 
 	        for _,player in ipairs(GetActivePlayers()) do
@@ -418,7 +418,7 @@ Citizen.CreateThread(function()
 		local voiceDistance = nil
 
 		while true do
-			Citizen.Wait(100)
+			Citizen.Wait(5)
 
 			if NetworkIsPlayerTalking(PlayerId()) and not isTalking then 
 				isTalking = not isTalking
@@ -519,7 +519,7 @@ end)
 -- Everything that neededs to be at WAIT 0
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(5)
 		local player = GetPlayerPed(-1)
 		local vehicle = GetVehiclePedIsIn(player, false)
 		local vehicleClass = GetVehicleClass(vehicle)
@@ -806,7 +806,7 @@ Citizen.CreateThread(function()
                 SetUserRadioControlEnabled(false)
                 if GetPlayerRadioStationName() ~= nil then
                 SetVehRadioStation(GetVehiclePedIsIn(PlayerPedId()),"OFF")
-                end
+            end
         end
     end
 end)
