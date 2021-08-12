@@ -74,7 +74,7 @@ local vehiclesHandlingsOriginal = {}
 RegisterServerEvent('advanced_vehicles:getVehicleData')
 AddEventHandler('advanced_vehicles:getVehicleData', function(vehicleDataClient)
 	local source = source
-	MySQL.Async.fetchAll("SELECT identifier as user_id FROM bbvehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleDataClient.plate}, function(vehiclequery)
+	MySQL.Async.fetchAll("SELECT owner as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleDataClient.plate}, function(vehiclequery)
 		if vehiclequery[1] then
 			local owner_id = vehiclequery[1].user_id
 			local vehicleData = getVehicleData(vehicleDataClient,owner_id)
@@ -88,7 +88,7 @@ end)
 RegisterServerEvent('advanced_vehicles:setVehicleData')
 AddEventHandler('advanced_vehicles:setVehicleData', function(vehicleData,vehicleHandling)
 	local source = source
-	MySQL.Async.fetchAll("SELECT identifier as user_id FROM bbvehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
+	MySQL.Async.fetchAll("SELECT identifier as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
 		if vehiclequery[1] then
 			local owner_id = vehiclequery[1].user_id
 			vehicleData.km = string.format("%.2f",(vehicleData.km/1000))
@@ -114,7 +114,7 @@ AddEventHandler('advanced_vehicles:makeAction', function(vehicleData,data,firstS
 		cooldown[source] = true
 		local xPlayer = ESX.GetPlayerFromId(source)
 		local user_id = xPlayer.identifier
-		MySQL.Async.fetchAll("SELECT identifier as user_id FROM bbvehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
+		MySQL.Async.fetchAll("SELECT owner as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
 			if vehiclequery[1] then
 				local owner_id = vehiclequery[1].user_id
 				if data.action == 'Repair' then
@@ -363,7 +363,7 @@ end)
 RegisterServerEvent('advanced_vehicles:removeNitroUpgrade')
 AddEventHandler('advanced_vehicles:removeNitroUpgrade', function(vehicleData)
 	local source = source
-	MySQL.Async.fetchAll("SELECT identifier as user_id FROM bbvehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
+	MySQL.Async.fetchAll("SELECT owner as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
 		local owner_id = vehiclequery[1].user_id
 		local upgrades = {}
 		if Config.upgrades[vehicleData.name] then
