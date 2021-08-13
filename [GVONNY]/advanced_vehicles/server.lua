@@ -88,7 +88,7 @@ end)
 RegisterServerEvent('advanced_vehicles:setVehicleData')
 AddEventHandler('advanced_vehicles:setVehicleData', function(vehicleData,vehicleHandling)
 	local source = source
-	MySQL.Async.fetchAll("SELECT identifier as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
+	MySQL.Async.fetchAll("SELECT owner as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleData.plate}, function(vehiclequery)
 		if vehiclequery[1] then
 			local owner_id = vehiclequery[1].user_id
 			vehicleData.km = string.format("%.2f",(vehicleData.km/1000))
