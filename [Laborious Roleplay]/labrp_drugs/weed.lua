@@ -240,14 +240,23 @@ end)
 
 RegisterNetEvent("plasma:weedpack")
 AddEventHandler("plasma:weedpack", function()
-    local finished = exports["reload-skillbar"]:taskBar(10000,math.random(7,10))
     ESX.TriggerServerCallback("Aidan:server:CheckItem", function(data)
         if data then
-            if finished ~= 100 then
-                exports['mythic_notify']:SendAlert('error', 'You dropped the buds!')
-            else
-                TriggerServerEvent('plasma1')
-            end
+            exports['mythic_progbar']:Progress({
+                name = "unique_action_name",
+                duration = 12500,
+                label = 'Packing Weed',
+                useWhileDead = false,
+                canCancel = false,
+                controlDisables = {
+                    disableMovement = true,
+                    disableCarMovement = true,
+                    disableMouse = false,
+                    disableCombat = true,
+                },
+            })
+            Citizen.Wait(13000)
+            TriggerServerEvent('plasma1')
         end
     end, "weed")
 end)
@@ -277,14 +286,23 @@ end)
 
 RegisterNetEvent("plasma:weedgather2")
 AddEventHandler("plasma:weedgather2", function()
-    local finished = exports["reload-skillbar"]:taskBar(8000,math.random(7,10))
     ESX.TriggerServerCallback("Aidan:server:CheckItem", function(data)
         if data then
-            if finished ~= 100 then
-                exports['mythic_notify']:SendAlert('error', 'You trimmed too much.')
-            else
-                TriggerServerEvent('plasma2')
-            end
+            exports['mythic_progbar']:Progress({
+                name = "unique_action_name",
+                duration = 8000,
+                label = 'Gathering Weed',
+                useWhileDead = false,
+                canCancel = false,
+                controlDisables = {
+                    disableMovement = true,
+                    disableCarMovement = true,
+                    disableMouse = false,
+                    disableCombat = true,
+                },
+            })
+            Citizen.Wait(8500)
+            TriggerServerEvent('plasma2')
         end
     end, "trimmers")
 end)
@@ -358,16 +376,25 @@ end)
 
 RegisterNetEvent("plasma5")
 AddEventHandler("plasma5", function()
-    local finished = exports["reload-skillbar"]:taskBar(8000,math.random(7,10))
     ESX.TriggerServerCallback("Aidan:server:CheckItem", function(data)
         if data then
             ESX.TriggerServerCallback("Aidan:server:CheckItem", function(data)
                 if data then
-                    if finished ~= 100 then
-                        exports['mythic_notify']:SendAlert('error', 'You dropped the weed.')
-                    else
-                        TriggerServerEvent('server:joint')
-                    end
+                    exports['mythic_progbar']:Progress({
+                        name = "unique_action_name",
+                        duration = 9500,
+                        label = 'Making Joints',
+                        useWhileDead = false,
+                        canCancel = false,
+                        controlDisables = {
+                            disableMovement = true,
+                            disableCarMovement = true,
+                            disableMouse = false,
+                            disableCombat = true,
+                        },
+                    })
+                    Citizen.Wait(10000)
+                    TriggerServerEvent('server:joint')
                 else
                     exports['mythic_notify']:SendAlert('error', 'You have no packaged weed.')
                 end

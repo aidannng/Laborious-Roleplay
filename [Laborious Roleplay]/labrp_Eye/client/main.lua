@@ -810,53 +810,6 @@ AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0.4, 0.6, {
         job = {"all"},
         distance = 2.5
     })
-    local drugsales = {
-        `g_m_y_mexgoon_01`,
-        }   
-        AddTargetModel(drugsales, {
-        options = {
-        {
-            event = "drugsales:menu",
-            icon = "fas fa-cannabis", 
-            label = "Drug Sales",
-        },
-        },
-        job = {"all"},
-        distance = 2.5
-    })
-    local drugsales = {
-        `g_m_y_mexgoon_01`,
-    }
-    AddTargetModel(drugsales, {
-        options = {
-        {
-            event = "drugsales:menu",
-            icon = "fas fa-cannabis",
-            label = "Drug Sales",
-        },
-        {
-            event = "drugunpack:menu",
-            icon = "fas fa-cannabis",
-            label = "Unpack Drugs",
-        },
-        },
-        job = {"all"},
-        distance = 4.5
-    })
-    local blackmarket = {
-        `g_m_m_chicold_01`,
-        }   
-        AddTargetModel(blackmarket, {
-        options = {
-        {
-            event = "blackmarket:menu",
-            icon = "fas fa-suitcase", 
-            label = "Blackmarket",
-        },
-        },
-        job = {"all"},
-        distance = 2.5
-    })--mp_f_freemode_01
 
 
     local pdheli = {
