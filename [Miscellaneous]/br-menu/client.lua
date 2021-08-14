@@ -173,30 +173,6 @@ AddEventHandler('dirtrental:menu', function()
 end)
 
 
--- drug sales
-RegisterNetEvent('drugsales:menu')
-AddEventHandler('drugsales:menu', function()
-    exports['br-menu']:SetTitle("Drug Sales")
-    exports['br-menu']:AddButton("Sell Packaged Weed" , "find out" ,'drugsales:weed' ,'' , 'meone')
-    exports['br-menu']:AddButton("Sell Packaged Cocaine" , "find out" ,'drugsales:cocaine' ,'' , "me2" )
-    exports['br-menu']:AddButton("Sell Packaged Meth" , "find out" ,'drugsales:meth' ,'' , "me3" )
-end)
-
-RegisterNetEvent('drugunpack:menu')
-AddEventHandler('drugunpack:menu', function()
-    exports['br-menu']:SetTitle("Unpack Drugs")
-    exports['br-menu']:AddButton("Unpack Packaged Weed" , "" ,'drugunpack:weed' ,'' , 'meone')
-    exports['br-menu']:AddButton("Unpack Packaged Cocaine" , "" ,'drugunpack:coca' ,'' , "me2" )
-end)
-
-RegisterNetEvent('blackmarket:menu')
-AddEventHandler('blackmarket:menu', function()
-    exports['br-menu']:SetTitle("Blackmarket")
-    exports['br-menu']:AddButton("Buy Ammonia" , "$1,000" ,'blackmarket:ammonia' ,'' , 'meone')
-    exports['br-menu']:AddButton("Buy Labcard" , "$1,000" ,'blackmarket:labcard' ,'' , "me2" )
-    exports['br-menu']:AddButton("Buy Sodium Benzoat" , "$1,000" ,'blackmarket:sacid' ,'' , "me3" )
-end)
-
 
 -- Sonora Boats
 RegisterNetEvent('sonoraboats:menu')

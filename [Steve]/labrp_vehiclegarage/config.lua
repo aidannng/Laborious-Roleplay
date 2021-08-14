@@ -86,9 +86,10 @@ Config.Impounds = {
 
 Config.Garages = {
     LegionGarage = {
+        Display = "Legion Square",
         GarageType = 'car', -- car, boat or aircraft
         PedCoords = {x = 215.90, y = -808.87, z = 29.74, h = 248.0}, -- The Ped MUST be inside the PolyZone
-        Zone = {name = 'legion', x = 228.68, y = -789.15, z = 30.59, l = 52.4, w = 39.6, h = 340, minZ = 28.99, maxZ = 32.99},
+        Zone = {display = 'Legion Square', name = 'legion', x = 228.68, y = -789.15, z = 30.59, l = 52.4, w = 39.6, h = 340, minZ = 28.99, maxZ = 32.99},
         Spawns = {
             {x = 206.25, y = -801.21, z = 31.00, h = 250.47},
             {x = 208.72, y = -796.45, z = 30.95, h = 246.74},
@@ -101,6 +102,7 @@ Config.Garages = {
         }
     },
     AmericanoWayGarage = {
+        Display = "Americano Way",
         GarageType = 'car',
         PedCoords = {x = -1651.83, y = 63.90, z = 61.86, h = 338.03},
         Zone = {name = 'americano', x = -1682.74, y = 60.93, z = 63.5, l = 59.6, w = 60.6, h = 329, minZ = 61.15, maxZ = 68.35},
@@ -114,6 +116,7 @@ Config.Garages = {
         }
     },
     Route68 = {
+        Display = "Route 68",
         GarageType = 'car',
         PedCoords = {x = 587.23, y = 2723.50, z = 41.13, h = 7.85},
         Zone = {name = 'route68', x = 573.19, y = 2727.17, z = 42.06, l = 22.4, w = 51.2, h = 4, minZ = 41.08, maxZ = 45.08},
@@ -130,6 +133,7 @@ Config.Garages = {
         }
     },
     Paleto = {
+        Display = "Paleto",
         GarageType = 'car',
         PedCoords = {x = 140.62, y = 6613.02, z = 31.06, h = 183.37},
         Zone = {name = 'paleto', x = 152.63, y = 6600.21, z = 30.84, l = 28.2, w = 27.2, h = 0, minZ = 30.84, maxZ = 34.84},
@@ -143,6 +147,7 @@ Config.Garages = {
         }
     },
     MRPD = {
+        Display = "MRPD",
         GarageType = 'car',
         PedCoords = {x = 441.4418, y = -984.8571, z = 24.6908, h = 0.37},
         Zone = {name = 'MRPD', x = 442.5231, y = -986.5978, z = 24.6908, l = 28.2, w = 27.2, h = 0, minZ = 24.69, maxZ = 28.69},
@@ -161,6 +166,7 @@ Config.Garages = {
         }
     },
     PDM = {
+        Display = "PDM",
         GarageType = 'car',
         PedCoords = {x = -50.76923, y = -1082.796, z = 25.87036, h = 340.00},
         Zone = {name = 'pdm', x = -47.59121, y = -1078.325, z = 25.87036, l = 20.0, w = 25.0, h = 340.0, minZ = 25.87036, maxZ = 27.73547},
@@ -169,6 +175,7 @@ Config.Garages = {
         }
     },
     ALTAAPT = {
+        Display = "Alta Street",
         GarageType = 'car',
         PedCoords = {x = -293.5385, y = -986.8615, z = 30.06592, h = 70.00},
         Zone = {name = 'Alta Street', x = -318.1714, y = -976.1934, z = 30.06592, l = 60.4, w = 20.6, h = 70, minZ = 29.0, maxZ = 35.0},

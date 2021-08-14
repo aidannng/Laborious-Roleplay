@@ -2,6 +2,7 @@ local garages = {}
 local impounds = {}
 
 local currentGarage = nil
+local garageCode = nil
 local garageType = nil
 local currentImpound = nil
 local impoundType = nil
@@ -23,6 +24,7 @@ Citizen.CreateThread(function()
         )
 
         garages[k].type = v.GarageType
+        garages[k].display = v.Display
 
         garages[k]:onPlayerInOut(function(isPointInside, point)
             local model = Config.GaragePed
@@ -66,7 +68,8 @@ Citizen.CreateThread(function()
                 heading = v.Zone.h,
                 debugPoly = false,
                 minZ = v.Zone.minZ,
-                maxZ = v.Zone.maxZ
+                maxZ = v.Zone.maxZ,
+                display = v.Display
             }
         )
 
@@ -570,7 +573,7 @@ AddEventHandler('luke_vehiclegarage:SpawnVehicle', function(data)
     local model = data.vehicle.model
 
     if data.type == 'garage' then
-        spawn = Config.Garages[currentGarage].Spawns
+        spawn = Config.Garages[garageCode].Spawns
     else
         spawn = Config.Impounds[currentImpound].Spawns
     end
@@ -736,7 +739,8 @@ function IsInsideGarage(entity)
     for k, v in pairs(garages) do
         if garages[k]:isPointInside(entityCoords) then
             garageType = v.type
-            currentGarage = k
+            currentGarage = v.display
+            garageCode = k
             return true
         end
         if k == #garages then
