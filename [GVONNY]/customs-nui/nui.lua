@@ -9,6 +9,10 @@ end)
 
 local display = false
 
+RegisterCommand("impound", function(source, args)
+    TriggerServerEvent("impound:vehicle", args[1])
+end)
+
 RegisterNetEvent("local:inspect")
 AddEventHandler("local:inspect", function()
     TriggerServerEvent('checktoolbox')
