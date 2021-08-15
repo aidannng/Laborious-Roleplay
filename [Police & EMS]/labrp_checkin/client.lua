@@ -17,32 +17,74 @@ end)
 RegisterNetEvent('esx:setJob') 
 AddEventHandler('esx:setJob', function(job) 
 	PlayerData.job = job 
-end) 
-
-Citizen.CreateThread(function() 
-	exports["labrp_Eye"]:AddBoxZone("PBCheckIn", vector3(307.5428, -595.3055, 43.30767), 0.3, 0.4, { -- -1197.64, -899.433, 14.90698
-		name="PBCheckIn",
-		heading=70,
-		debugPoly=false,
-		minZ=43.0,
-		maxZ=43.5
-		}, {
-		options = {
-			{
-				event = "checkinEye",
-				icon = "fas fa-hospital",
-				label = "Check In - $500",
-			},
-		},
-		job = {"all"},
-		distance = 2.0
-	})
 end)
 
+local InCheckInBox = false
 local InProgress = false
 local dist = 0
 local checkdist = true
 local isPress = false
+
+exports["PolyZone"]:AddBoxZone("CheckInBox", vector3(306.6989, -594.9758, 43.2821), 2.5, 2.5, {
+	name="CheckInBox",
+	heading=70,
+	minz=42.2,
+	maxz=44.2,
+	debugPoly=false,
+})
+
+AddEventHandler('bt-polyzone:enter', function(name)
+    if name == "CheckInBox" then
+        InCheckInBox = true
+		print('in box')
+		exports['cd_drawtextui']:ShowInteraction('show', 'OrangeRed', "[E] Check In")
+    end
+end)
+
+AddEventHandler('bt-polyzone:exit', function(name)
+    if name == "CheckInBox" then
+        InCheckInBox = false
+		print('not in box')
+		exports['cd_drawtextui']:HideInteraction()
+    end
+end)
+
+
+Citizen.CreateThread(function()
+	while true do
+		sleep = 100
+		if InCheckInBox then
+			sleep = 5
+			if IsControlJustPressed(0, 38) then
+				TriggerEvent('checkinEye')
+			end
+		end
+		Citizen.Wait(sleep)
+	end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 RegisterNetEvent('checkinEye') 
@@ -72,12 +114,12 @@ AddEventHandler('checkinEye', function()
             	-- Do Something If Event Wasn't Cancelled
         	end
     	end)
+		InProgress = true
 		exports['cd_drawtextui']:HideInteraction()
 		Citizen.Wait(10000)
 		TriggerEvent('esx_checkin:checkIn')
-		InProgress = false
 	else
-		exports['mythic_notify']:SendAlert('inform', 'Stop Spamming')
+		exports['mythic_notify']:SendAlert('error', 'Already Checking In')
 	end
 end)
 
@@ -93,6 +135,7 @@ AddEventHandler('esx_checkin:checkIn', function()
 	local source = source
 	TriggerEvent('checkinReviveCheck')
 	Citizen.Wait(200)
+	InProgress = false
 
 	-- Bed 1
 	if chance == 1 then
@@ -113,7 +156,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityCoords(ped, 321.7055, -586.8792, 43.2821, false, false, false, false)
 				break
 			end
@@ -138,7 +180,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityHealth(ped, 200)
 				SetEntityCoords(ped, 323.1693, -582.6594, 43.2821, false, false, false, false)
 				break
@@ -164,7 +205,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityHealth(ped, 200)
 				SetEntityCoords(ped, 318.8044, -585.6, 43.2821, false, false, false, false)
 				break
@@ -190,7 +230,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityHealth(ped, 200)
 				SetEntityCoords(ped, 320.2418, -581.4462, 43.2821, false, false, false, false)
 				break
@@ -216,7 +255,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityHealth(ped, 200)
 				SetEntityCoords(ped, 315.5605, -584.334, 43.2821, false, false, false, false)
 				break
@@ -243,7 +281,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityHealth(ped, 200)
 				SetEntityCoords(ped, 312.567, -579.2967, 43.2821 + 1, false, false, false, false)
 				break
@@ -269,7 +306,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityHealth(ped, 200)
 				SetEntityCoords(ped, 314.756, -579.4154, 43.2821, false, false, false, false)
 				break
@@ -295,7 +331,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 				exports['cd_drawtextui']:HideInteraction()
 				FreezeEntityPosition(ped, false) 
 				ClearPedTasksImmediately(ped)
-				TriggerServerEvent('esx_checkin:takeMoney')
 				SetEntityHealth(ped, 200)
 				SetEntityCoords(ped, 308.7692, -582.0396, 43.2821, false, false, false, false)
 				break
