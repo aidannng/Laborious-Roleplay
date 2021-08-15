@@ -1,2 +1,2 @@
 Fuel = {}
-Fuel.Explode = false
+Fuel.Explode = true
