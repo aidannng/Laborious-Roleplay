@@ -212,14 +212,14 @@ AddEventHandler("starttimer", function(toggle, name)
                 if(lap == laps) then
                     TriggerEvent("starttimer", false)
                     UpdateLaps()
-                    if(GetPlayerPed(-1) == driver) then
+                    --if(GetPlayerPed(-1) == driver) then
                         SendNUIMessage({
                             gettime=true,
                             time=formatTimer(starttime, GetGameTimer()),
                             model=model,
                             track=track
                         })
-                    end
+                    --end
                 end
                 cP = 1
                 cP2 = 2

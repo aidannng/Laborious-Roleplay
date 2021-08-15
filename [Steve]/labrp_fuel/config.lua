@@ -1,0 +1,2 @@
+Fuel = {}
+Fuel.Explode = false

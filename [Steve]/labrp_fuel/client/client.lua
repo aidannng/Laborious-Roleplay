@@ -367,28 +367,32 @@ AddEventHandler('fuel:startfuel', function(data)
 	ESX.TriggerServerCallback('labrp_fuel:checkmoney', function(hasEnough)
 		if hasEnough then
 			if GetIsVehicleEngineRunning(data.entity) then
-				TaskTurnPedToFaceEntity(ped, data.entity, 1000)
-				Citizen.Wait(1000)
-				loadAnimDict("timetable@gardener@filling_can")
-				TaskPlayAnim(ped, "timetable@gardener@filling_can", "gar_ig_5_filling_can", 2.0, 8.0, -1, 50, 0, 0, 0, 0)
-				exports['mythic_progbar']:Progress({
-					name = "unique_action_name",
-					duration = time,
-					label = 'Fueling Vehicle',
-					useWhileDead = true,
-					canCancel = false,
-					controlDisables = {
-						disableMovement = true,
-						disableCarMovement = false,
-						disableMouse = false,
-						disableCombat = true,
-					},
-				})
-				Citizen.Wait(5000)
-				ClearPedTasks(ped)
-				RemoveAnimDict("timetable@gardener@filling_can")
-				local vehicleCoords = GetEntityCoords(data.entity)
-				AddExplosion(vehicleCoords, 5, 50.0, true, false, true)
+				if Fuel.Explode then
+					TaskTurnPedToFaceEntity(ped, data.entity, 1000)
+					Citizen.Wait(1000)
+					loadAnimDict("timetable@gardener@filling_can")
+					TaskPlayAnim(ped, "timetable@gardener@filling_can", "gar_ig_5_filling_can", 2.0, 8.0, -1, 50, 0, 0, 0, 0)
+					exports['mythic_progbar']:Progress({
+						name = "unique_action_name",
+						duration = time,
+						label = 'Fueling Vehicle',
+						useWhileDead = true,
+						canCancel = false,
+						controlDisables = {
+							disableMovement = true,
+							disableCarMovement = false,
+							disableMouse = false,
+							disableCombat = true,
+						},
+					})
+					Citizen.Wait(5000)
+					ClearPedTasks(ped)
+					RemoveAnimDict("timetable@gardener@filling_can")
+					local vehicleCoords = GetEntityCoords(data.entity)
+					AddExplosion(vehicleCoords, 5, 50.0, true, false, true)
+				else
+					StartFuel(data.entity)
+				end
 			else
 				StartFuel(data.entity)
 			end
