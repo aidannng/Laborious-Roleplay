@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `drugrep` INT NOT NULL;

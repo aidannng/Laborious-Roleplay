@@ -21,7 +21,7 @@ Config.DebugChance = false
 
 -- enable default alerts
 Config.Enable.Speeding = false
-Config.Enable.Shooting = true
+Config.Enable.Shooting = false
 Config.Enable.Autotheft = true
 Config.Enable.Melee = false
 Config.Enable.PlayerDowned = true

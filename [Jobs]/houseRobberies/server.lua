@@ -29,7 +29,7 @@ local robbableItems = {
  [27] = {chance = 9, id = 'coke_pooch', name = 'Bag of Coke', quantity = 1}, -- rare
  [28] = {chance = 7, id = 'Oxy', name = 'Oxy 100Mg', quantity = 1}, -- rare
  [29] = {chance = 8, id = 'electronics', name = 'Electronics (P)', quantity = 1}, -- rare
- [30] = {chance = 9, id = 'electronic_kit', name = 'Electronic Kit', quantity = 1}, -- rare
+ [30] = {chance = 6, id = 'lcard', name = 'Laundry Card', quantity = 1}, -- rare
 }
 local discord_webhook = {url = "https://discord.com/api/webhooks/865718213193891871/vnDi-Sy9-FCuyutnb2DbF-DZYHE1eluEebOHaL1u9ihbuqk6nkqXzhi1jim7uftMh9OZ",image = "https://i.iodine.gg/i5fba.png"}
 
@@ -40,10 +40,10 @@ TriggerEvent('esx:getSharedObject', function(obj)
  ESX = obj
 end)
 
-ESX.RegisterUsableItem('advancedlockpick', function(source) --Hammer high time to unlock but 100% call cops
+ESX.RegisterUsableItem('lockpick', function(source) --Hammer high time to unlock but 100% call cops
  local source = tonumber(source)
  local xPlayer = ESX.GetPlayerFromId(source)
- TriggerClientEvent('houseRobberies:attempt', source, xPlayer.getInventoryItem('advancedlockpick').count)
+ TriggerClientEvent('houseRobberies:attempt', source, xPlayer.getInventoryItem('lockpick').count)
 
  PerformHttpRequest(discord_webhook.url, 
  function(err, text, header) end, 
@@ -56,7 +56,7 @@ RegisterServerEvent('houseRobberies:removeLockpick')
 AddEventHandler('houseRobberies:removeLockpick', function()
  local source = tonumber(source)
  local xPlayer = ESX.GetPlayerFromId(source)
- xPlayer.removeInventoryItem('advancedlockpick', 1)
+ xPlayer.removeInventoryItem('lockpick', 1)
  --TriggerClientEvent('chatMessage', source, '^1Your lockpick has bent out of shape')
  --TriggerClientEvent('notification', source, 'The lockpick bent out of shape.', 2)
  TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'The lockpick bent out of shape.', })
@@ -122,6 +122,6 @@ AddEventHandler('checkhousecops', function()
     if cops >= 2 then
         TriggerClientEvent('house:attempt', source)
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'Take the L!'})
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'Neighborhood Watch phoned the police!'})
     end
 end)

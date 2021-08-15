@@ -638,29 +638,30 @@ AddEventHandler('house:attempt', function()
 
  if isNight() and not isRobbing then
   local playerCoords = GetEntityCoords(PlayerPedId(), true)
+  local coords = GetEntityCoords(PlayerPedId())
   for id,v in pairs(robbableHouses) do
    if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) <= 2.5 then
     local finished = exports["reload-skillbar"]:taskBar(10000,math.random(5,15))
     --local finished = taskBar(4000,math.random(5,15))
     if finished ~= 100 then
       exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
-      local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
-      local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
-      TriggerServerEvent('wf-alerts:svNotify', dispatchData)
+      exports['core_dispatch']:addCall("10-68", "House Robbery", {
+        {icon="fa-house-damage", info="House Robbery"}
+        }, {coords.x, coords.y, coords.z}, "police", 10000, 40, 1)
     else
         local finished2 = exports["reload-skillbar"]:taskBar(1250,math.random(5,15))
         if finished2 ~= 100 then
           exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
-          local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
-          local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
-          TriggerServerEvent('wf-alerts:svNotify', dispatchData)
+          exports['core_dispatch']:addCall("10-68", "House Robbery", {
+            {icon="fa-house-damage", info="House Robbery"}
+            }, {coords.x, coords.y, coords.z}, "police", 10000, 40, 1)
         else
             local finished3 = exports["reload-skillbar"]:taskBar(6500,math.random(5,15))
             if finished3 ~= 100 then
                 exports['mythic_notify']:SendAlert('error', 'UH OH COPS!')
-                local data = {displayCode = '10-68', description = 'Suspicious Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000', infoM = 'fas fa-home', info = 'Breaking and Entering'}
-                local dispatchData = {dispatchData = data, caller = 'Security System', coords = vector3(v.x, v.y, v.z)}
-                TriggerServerEvent('wf-alerts:svNotify', dispatchData)
+                exports['core_dispatch']:addCall("10-68", "House Robbery", {
+                  {icon="fa-house-damage", info="House Robbery"}
+                  }, {coords.x, coords.y, coords.z}, "police", 10000, 40, 1)
             else
               TriggerEvent('lockpickAnimation')
               --exports["t0sic_loadingbar"]:StartDelayedFunction("Lockpicking Property", 12000, function()
