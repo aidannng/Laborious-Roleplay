@@ -271,3 +271,13 @@ AddEventHandler("lscwithdraw", function(amount)
         MySQL.Async.execute("UPDATE jobs SET amount = @money WHERE name = 'mechanic'", {['@money'] = balance})
     end)
 end)
+
+RegisterServerEvent("impound:vehicle")
+AddEventHandler("impound:vehicle", function(plate)
+    print(plate)
+    local plate = ESX.Math.Trim(plate)
+    MySQL.Async.execute("UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = 'Impound' WHERE `plate` = @plate", {
+        ['@stored'] = true,
+        ['@plate'] = plate,
+    })
+end)
