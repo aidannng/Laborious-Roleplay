@@ -12,10 +12,10 @@ AddEventHandler('pdduty:onoff', function(job)
     
     if job == 'police' then
         xPlayer.setJob('off' ..job, grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!'})
     elseif job == 'offpolice' then
         xPlayer.setJob('police', grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!'})
     end
 
 end)
@@ -29,10 +29,10 @@ AddEventHandler('bgduty:onoff', function(job)
 
     if job == 'burgershot' then
         xPlayer.setJob('off' ..job, grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!'})
     elseif job == 'offburgershot' then
         xPlayer.setJob('burgershot', grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!'})
     end
 end)
 
@@ -45,10 +45,10 @@ AddEventHandler('emsduty:onoff', function(job)
 
     if job == 'ambulance' then
         xPlayer.setJob('off' ..job, grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!'})
     elseif job == 'offambulance' then
         xPlayer.setJob('ambulance', grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!'})
     end
 end)
 
@@ -61,10 +61,10 @@ AddEventHandler('towduty:onoff', function(job)
 
     if job == 'tow' then
         xPlayer.setJob('off' ..job, grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!'})
     elseif job == 'offtow' then
         xPlayer.setJob('tow', grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!'})
     end
 end) --mechduty:onoff
 
@@ -77,10 +77,10 @@ AddEventHandler('mechduty:onoff', function(job)
 
     if job == 'mechanic' then
         xPlayer.setJob('off' ..job, grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went off duty!'})
     elseif job == 'offtow' then
         xPlayer.setJob('mechanic', grade)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!', length = 4500, style = { ['background-color'] = '#05b5f9', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You went on duty!'})
     end
 end)
 

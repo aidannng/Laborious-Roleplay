@@ -320,27 +320,25 @@ Citizen.CreateThread(function()
         job = {"all"},
         distance = 2.5
     }) ---192.5934, -1161.798, 23.66882
-
-end)
-
-  exports['labrp_Eye']:AddBoxZone("ballasdj", vector3(138.0527, -1933.332, 15.96851), 0.55, 1.3, {
-    name="ballasdj",
-    heading=140,
-    debugPoly=false,
-    minZ=14.90,
-    maxZ=15.10
-    }, {
-        options = {
-            {
-                event = "myDj:open", 
-                icon = "fas fa-music",
-                label = "Open DJ Menu",
+    
+    exports['labrp_Eye']:AddBoxZone("grovecustomsdj", vector3(-104.7297, -1796.967, 33.00366), 1.0, 2.3, {
+        name="grovecustomsdj",
+        heading=50,
+        debugPoly=false,
+        minZ=31.50,
+        maxZ=33.20
+        }, {
+            options = {
+                {
+                    event = "myDj:open", 
+                    icon = "fas fa-music",
+                    label = "Open DJ",
+                },
             },
-
-        },
-        job = {"all"},
-        distance = 2.5
-    }) ---192.5934, -1161.798, 23.66882
+            job = {"all"},
+            distance = 2.5
+        })
+end)
 
 RegisterNetEvent('giveice')
 AddEventHandler('giveice', function()  
