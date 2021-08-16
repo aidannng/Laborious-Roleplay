@@ -286,7 +286,7 @@ RegisterNUICallback('closeTarget', function(data, cb)
 	hasFocus = false
 end)
 
-RegisterKeyMapping("+playerTarget", "[qtarget] Enable targeting~", "keyboard", "LMENU")
+RegisterKeyMapping("+playerTarget", "[Labrp Eye] Enable targeting~", "keyboard", "LMENU")
 RegisterCommand('+playerTarget', EnableTarget, false)
 RegisterCommand('-playerTarget', DisableTarget, false)
 TriggerEvent("chat:removeSuggestion", "/+playerTarget")

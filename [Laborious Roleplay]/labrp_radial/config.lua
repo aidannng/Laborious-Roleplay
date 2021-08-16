@@ -231,6 +231,20 @@ rootMenuConfig =  {
         subMenus = {"police:gsr", "police:impound", "police:mdt", "general:escort", "police:hardcuff", "police:softcuff", "police:search"}
     },
     {
+        id = "medic-action",
+        displayName = "Medical Actions",
+        icon = "#medic",
+        enableMenu = function()
+           local ped = PlayerPedId()
+           PlayerData = ESX.GetPlayerData()
+           fuck = exports["esx_ambulancejob"]:GetDeath()
+           if PlayerData.job.name == "ambulance" and not fuck then
+                return true
+            end
+        end,
+        subMenus = {"police:gsr", "police:impound", "police:mdt", "general:escort", "police:hardcuff", "police:softcuff", "police:search"}
+    },
+    {
         id = "vehicle",
         displayName = "Vehicle",
         icon = "#police-vehicle",

@@ -91,9 +91,12 @@ Citizen.CreateThread(function()
                 local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
                 toggleLock(veh)
             else
+                local pdvehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
                 local vehicle = GetClosestVehicle(pos.x, pos.y, pos.z, 3.0, 0, 70)
                 if DoesEntityExist(vehicle) then
                     toggleLock(vehicle)
+                elseif pdvehicle then
+                    toggleLock(pdvehicle)
                 end
             end
         end
@@ -262,24 +265,33 @@ AddEventHandler('onyx:beginHotwire', function(plate)
         end
     end
 
-    exports['mythic_progbar']:Progress({
-        name = "unique_action_name",
-        duration = 35000,
-        label = 'Hotwiring',
-        useWhileDead = true,
-        canCancel = false,
-        controlDisables = {
-            disableMovement = true,
-            disableCarMovement = true,
-            disableMouse = false,
-            disableCombat = true,
-        },
-    })
     TaskPlayAnim(PlayerPedId(), "veh@std@ds@base", "hotwire", 8.0, 8.0, -1, 1, 0.3, true, true, true)
-    Citizen.Wait(35000)
-    table.insert(vehicles, vehPlate)
-    StopAnimTask(PlayerPedId(), 'veh@std@ds@base', 'hotwire', 1.0)
-    isHotwiring = false
+
+    local finished = exports["reload-skillbar"]:taskBar(30000,math.random(5,15))
+    if finished ~= 100 then
+        exports['mythic_notify']:SendAlert('error', "Failed to Lockpick Vehicle!")
+        StopAnimTask(PlayerPedId(), 'veh@std@ds@base', 'hotwire', 1.0)
+        isHotwiring = false
+    else
+        local finished2 = exports["reload-skillbar"]:taskBar(1500,math.random(5,15))
+        if finished2 ~= 100 then
+            exports['mythic_notify']:SendAlert('error', "Failed to Lockpick Vehicle!")
+            StopAnimTask(PlayerPedId(), 'veh@std@ds@base', 'hotwire', 1.0)
+            isHotwiring = false
+        else
+            local finished3 = exports["reload-skillbar"]:taskBar(25000,math.random(5,15))
+            if finished3 ~= 100 then
+                exports['mythic_notify']:SendAlert('error', "Failed to Lockpick Vehicle!")
+                StopAnimTask(PlayerPedId(), 'veh@std@ds@base', 'hotwire', 1.0)
+                isHotwiring = false
+            else
+                exports['mythic_notify']:SendAlert('inform', "Successfully Lockpicked Vehicle!")
+                table.insert(vehicles, vehPlate)
+                StopAnimTask(PlayerPedId(), 'veh@std@ds@base', 'hotwire', 1.0)
+                isHotwiring = false
+            end
+        end
+    end
 end)
 
 local isRobbing = false

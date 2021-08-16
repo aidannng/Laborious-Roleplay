@@ -76,6 +76,8 @@ Config.ChangePoint = {
         vector3(-162.5275, 900.3561, 233.4491), -- Sonora Cartel 
         vector3(-269.9077, -731.3538, 125.4586), -- Steve's Penthouse
         vector3(-280.4044, -722.0703, 125.4586), -- Steve's Penthouse daddy plasmas room
+        vector3(-103.6088, -1782.462, 32.21167), -- Ballas Mech Shop
+        vector3(124.2462, -1959.31, 15.21021), -- Ballas HQ 
     }
 }
 Config.Stores = {
