@@ -166,6 +166,11 @@ Items = {
 		weight = 0,
 		stack = true,
 		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'show:identification'
+		}
 	},
 
 	['zippo'] = {
@@ -349,7 +354,7 @@ Items = {
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'fishing:fishstart'
+			event = 'gl-fishing:checkCanFish'
 		}
 	},
 
@@ -360,41 +365,95 @@ Items = {
 		close = true,
 	},
 
-	['turtlebait'] = {
-		label = 'Turtle Bait',
+	['yellowtail'] = {
+		label = 'Yellowtail',
 		weight = 1000,
 		stack = true,
-		close = true,
+		close = false,
 	},
 
+	['tuna'] = {
+		label = 'Tuna',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['sea_bass'] = {
+		label = 'Sea Bass',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['grupper'] = {
+		label = 'Grupper',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['salmon'] = {
+		label = 'Salmon',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['mahi_mahi'] = {
+		label = 'Mahi Mahi',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['flounder'] = {
+		label = 'Flounder',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['cod'] = {
+		label = 'Cod',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['blowfish'] = {
+		label = 'Blowfish',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['orange_roughy'] = {
+		label = 'Orange Roughy',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
+
+	['turtle'] = {
+		label = 'Sea Turtle',
+		weight = 10000,
+		stack = false,
+		close = false,
+	},
+
+	['shark'] = {
+		label = 'Shark',
+		weight = 10000,
+		stack = false,
+		close = false,
+	},
 	['stevecard'] = {
 		label = "Steve's Card",
 		weight = 0,
 		stack = true,
 		close = true,
 	},
-
-	['turtle'] = {
-		label = 'Sea Turtle',
-		weight = 2000,
-		stack = true,
-		close = true,
-	},
-
-	['shark'] = {
-		label = 'Shark Meat',
-		weight = 2000,
-		stack = true,
-		close = true,
-	},
-
-	['fish'] = {
-		label = 'Fish',
-		weight = 2000,
-		stack = true,
-		close = true,
-	},
-
 
 	['money'] = {
 		label = 'Money',
@@ -568,7 +627,7 @@ Items = {
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'houseRobberies:attempt'--anim:cuff
+			event = ''--anim:cuff
 		}
 	}, --houseRobberies:attempt
 
@@ -957,6 +1016,83 @@ Items = {
 		close = true,
 	},
 
+	['tacomeat'] = {
+		label = 'Taco Meat',
+		weight = 800,
+		stack = true,
+		close = false,
+	},
+
+	['taco'] = {
+		label = 'Taco',
+		weight = 1000,
+		stack = true,
+		close = true,
+		client = {
+			status = { hunger = 200000 },
+			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
+			prop = { model = 'prop_cs_burger_01', pos = { x = 0.020000000000004, y = 0.020000000000004, y = -0.020000000000004}, rot = { x = 0.0, y = 0.0, y = 0.0} },
+			usetime = 2500,
+			event = true,
+		}
+	},
+
+	['tacos'] = {
+		label = 'Taco Packaged',
+		weight = 3000,
+		stack = false,
+		close = false,
+	},
+
+	['plate'] = {
+		label = 'Vehicle License Plate',
+		weight = 500,
+		stack = false,
+		close = true,
+	},
+	
+	['fakeplate'] = {
+		label = 'Fake License Plate',
+		weight = 500,
+		stack = false,
+		close = true,
+	},
+
+	['campchair'] = {
+		label = 'Camping Chair',
+		weight = 500,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'labrp-chairs:Chair1'
+		}
+	},
+
+	['campchair2'] = {
+		label = 'Camping Chair',
+		weight = 500,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'labrp-chairs:Chair2'
+		}
+	},
+
+	['stopsign'] = {
+		label = 'Stop Sign',
+		weight = 1500,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'use:stopsign'
+		}
+	},
 	
 }
 -- 

@@ -135,3 +135,28 @@ AddEventHandler('onResourceStart', function(resourceName)
 		startcommands()
     end
 end)
+
+RegisterNetEvent('use:stopsign')
+AddEventHandler('use:stopsign', function()
+	stopsign()
+end)
+
+
+function stopsign()
+	if not hasstopsign then
+		hasstopsign = true
+		local coords = GetEntityCoords(GetPlayerPed(-1))
+		local animDict = "random@hitch_lift"
+		local animation = "idle_f"
+--	SetEntityCoords(PlayerPedId(),coords.x,coords.y,coords.z - 0.68) -- Temporary Freezing Entity for proper placement of chair (Not Required)
+--	FreezeEntityPosition(PlayerPedId(),true) -- Entity Froze (Secondary Check)
+		local stopsignprop = attachAProp("prop_sign_road_01a", 28422, 0, -1.2, 0.0, 15.0, 90.0, 90.0, 0.0, false, false, false, false, 2, true)
+		loadAnimDict(animDict)
+		local animLength = GetAnimDuration(animDict, animation)
+		TaskPlayAnim(GetPlayerPed(-1), animDict, animation, 2.0, 2.0, animLength, 51, 0, false, false, false)
+	else
+		hasstopsign = false
+		ClearPedTasks(PlayerPedId())
+		removeAttachedProp()
+	end
+end

@@ -2,7 +2,7 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-ESX.RegisterServerCallback('Aidan:server:CheckItem', function(source, cb, item)
+ESX.RegisterServerCallback('kaves_drugs:checkItem', function(source, cb, item)
     local ply = ESX.GetPlayerFromId(source)
     itemcount = ply.getInventoryItem(item).count
     if itemcount > 0 then
@@ -16,6 +16,16 @@ ESX.RegisterServerCallback('Aidan:server:CheckItem3', function(source, cb, item)
     local ply = ESX.GetPlayerFromId(source)
     itemcount = ply.getInventoryItem(item).count
     if itemcount >= 3 then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+ESX.RegisterServerCallback('Aidan:server:CheckItem', function(source, cb, item)
+    local ply = ESX.GetPlayerFromId(source)
+    itemcount = ply.getInventoryItem(item).count
+    if itemcount >= 1 then
         cb(true)
     else
         cb(false)

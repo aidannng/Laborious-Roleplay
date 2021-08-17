@@ -137,6 +137,7 @@ AddEventHandler('pdvehicle:buycar', function(data)
             end
             local vehicleBuy = CreateVehicle(hash, 450.1846, -975.8373, 25.6908, 90.0, 1, 1)
             SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+            TriggerServerEvent('labrp_pdvehicles:takemoney', data.price)
             local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
             Citizen.Wait(1000)
             local plate = GetVehicleNumberPlateText(vehicle)
