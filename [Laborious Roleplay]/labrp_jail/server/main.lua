@@ -146,3 +146,49 @@ AddEventHandler('gettimeleft', function()
 	end)
 
 end)
+
+
+RegisterServerEvent('show:identification')
+AddEventHandler('show:identification', function(TargetID)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local name = xPlayer.getName()
+	local identifier = xPlayer.identifier
+
+    MySQL.Async.fetchAll('SELECT `dateofbirth` FROM `users` WHERE `identifier` = @identifier', {
+        ['@identifier'] = xPlayer.identifier,
+    }, function(result)
+        if result then
+			TriggerClientEvent('chat:addMessage', TargetID, {
+				template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0}</div>',
+				args = { "^*^4Name^0 : "..name.." | ^4DOB^0 : "..result[1].dateofbirth }
+			});	
+        end
+    end)
+end)
+
+ESX.RegisterServerCallback('labrp_jail:identification', function(source, callback)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local name = xPlayer.getName()
+	local identifier = xPlayer.identifier
+    MySQL.Async.fetchAll('SELECT `dateofbirth` FROM `users` WHERE `identifier` = @identifier', {
+        ['@identifier'] = xPlayer.identifier,
+    }, function(result)
+        if result then
+            callback(name, result[1].dateofbirth)
+        end
+    end)
+end)
+
+ESX.RegisterServerCallback('labrp_pdvehicles:checkvin', function(source, callback, plate)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    MySQL.Async.fetchAll('SELECT b.firstname, b.lastname FROM owned_vehicles a, users b WHERE a.plate = @plate AND a.owner = b.identifier', {
+        ['@plate'] = plate,
+    }, function(result)
+        if result and #result>0 then
+			local fullname = result[1].firstname..' '..result[1].lastname
+            callback(fullname)
+		else
+			callback('unknown')
+        end
+    end)
+end)

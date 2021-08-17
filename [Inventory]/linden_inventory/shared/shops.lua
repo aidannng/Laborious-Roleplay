@@ -18,6 +18,7 @@ Config.General = {
 		{ name = 'vodka', price = 25 },
 		{ name = 'beer', price = 10 },
 		{ name = 'whiskey', price = 40 },
+		{ name = 'rolling_paper', price = 20 },
 	}
 }
 
@@ -30,7 +31,9 @@ Config.YouTool = {
 	}, inventory = {
 		{ name = 'lockpick', price = 125 },
 		{ name = 'radio', price = 200 },
-		{ name = 'rolling_paper', price = 20 },
+		{ name = 'campchair', price = 120 },
+		{ name = 'campchair2', price = 120 },
+		{ name = 'stopsign', price = 200 },
 	}
 }
 
@@ -63,6 +66,18 @@ Config.Hunting = {
 		{ name = 'ammo-sniper', price = 25 },
 		{ name = 'WEAPON_KNIFE', price = 250 },
 		{ name = 'huntingbait', price = 100 },
+	}
+}
+
+Config.Fishing = {
+	name = 'Fishing',
+	blip = {
+		id = 356,
+		colour = 30,
+		scale = 0.6
+	}, inventory = {
+		{ name = 'fishbait', price = 75},
+		{ name = 'fishingrod', price = 225 },
 	}
 }
 
@@ -132,6 +147,7 @@ Config.Shops = {
 	{ type = Config.YouTool, coords = vector3(-11.14, 6499.56, 30.50) }, --  -680.3,5838.8,16.31
 
 	{ type = Config.Hunting, coords = vector3(-679.2, 5837.6, 17.3), name = 'Hunting Store' }, --  Prison  1777.411, 2564.967, 45.65784
+	{ type = Config.Fishing, coords = vector3(-1593.402, 5196.883, 4.342163), name = 'Fishing Store' }, 
 
 	{ coords = vector3(2557.458,  382.282, 108.622), name = '24/7'},
 	{ coords = vector3(-3038.939, 585.954, 7.908), name = '24/7'},
