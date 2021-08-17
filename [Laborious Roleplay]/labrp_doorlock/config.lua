@@ -3132,8 +3132,6 @@ table.insert(Config.DoorList, {
 	-- autoLock = 1000
 })
 
-
-
 -- Ballas Warehouse
 table.insert(Config.DoorList, {
 	authorizedJobs = { ['ballas']=5 },
