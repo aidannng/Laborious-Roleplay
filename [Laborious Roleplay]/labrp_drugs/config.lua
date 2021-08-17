@@ -6,25 +6,36 @@ Config.BlackMoney = true -- for hold corner system
 Config.Corners = {
 
     [1] = {
-        coord = vector3(191.2, -1764.08, 29.16),
-        items = {"packagedweed", "packagedmeth", "packagedcoca"},
+        coord = vector3(305.6176, -2005.793, 20.5011),
+        items = {"packagedweed"},
         radius = 30.0,
-        minMoney = 100,
-        maxMoney = 150,
+        minMoney = 450,
+        maxMoney = 750,
         spawnpoints = {
-            vector3(244.52, -1745.2, 28.8),
-            vector3(238.4, -1797.16, 27.84),
+            vector3(321.1385, -1988.255, 22.74219),
+            vector3(331.0154, -2020.431, 21.69739),
         }
     },
     [2] = {
-        coord = vector3(451.64, -1829.6, 27.84),
-        items = {"packagedweed", "packagedmeth", "packagedcoca"},
+        coord = vector3(-36.81758, -1808.98, 26.46594),
+        items = {"packagedweed"},
         radius = 30.0,
-        minMoney = 100,
-        maxMoney = 150,
+        minMoney = 450,
+        maxMoney = 750,
         spawnpoints = {
-            vector3(418.68, -1807.44, 28.68),
-            vector3(407.56, -1861.72, 26.84),
+            vector3(-22.25934, -1789.912, 27.76343),
+            vector3(-56.57142, -1789.49, 27.69592),
+        },
+    },
+    [3] = {
+        coord = vector3(193.7407, -1764.119, 29.29675),
+        items = {"packagedweed"},
+        radius = 30.0,
+        minMoney = 450,
+        maxMoney = 750,
+        spawnpoints = {
+            vector3(224.822, -1746.303, 29.26306),
+            vector3(212.2286, -1780.484, 29.12817),
         },
     }
 

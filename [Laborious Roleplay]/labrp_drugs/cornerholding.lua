@@ -22,23 +22,23 @@ local npcModels = {
 }
 
 
-RegisterCommand("kosetut", function(source, args)
+RegisterCommand("corner", function(source, args)
     local playerPed = PlayerPedId()
     if not IsPedInAnyVehicle(playerPed) and not IsPedInAnyBoat(playerPed) and not IsPedInAnyHeli(playerPed) and not IsPedInAnyPlane(playerPed) then
         if not holding then
             if args[1] == nil then
-                exports['mythic_notify']:SendAlert('error', 'quantity cannot be empty') 
+                exports['mythic_notify']:SendAlert('error', 'Quantity cannot be empty') 
             elseif tonumber(args[1]) < 1 then
-                exports['mythic_notify']:SendAlert('error', 'you cannot enter negative numbers') 
+                exports['mythic_notify']:SendAlert('error', 'You cannot enter negative numbers') 
             elseif tonumber(args[1]) > 5 then
-                exports['mythic_notify']:SendAlert('error', 'you can only sell 5 pairs at a time') 
+                exports['mythic_notify']:SendAlert('error', 'You can only sell 5 pairs at a time') 
             else
                 holding = true
                 itemCount = args[1]
                 TriggerEvent("kaves_drugs:StartCorner")
             end
         else
-            exports['mythic_notify']:SendAlert('error', 'you are already cornering now')
+            exports['mythic_notify']:SendAlert('error', 'You are already cornering now')
         end
     else
         exports['mythic_notify']:SendAlert('error', 'you cannot hold a corner in any vehicle')

@@ -13,3 +13,9 @@ ESX.RegisterServerCallback('labrp_pdvehicles:checkmoney', function(source, callb
     end
 end)
 
+RegisterServerEvent('labrp_pdvehicles:takemoney')
+AddEventHandler('labrp_pdvehicles:takemoney', function(price)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.removeMoney(price)
+end)
+
