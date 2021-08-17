@@ -81,7 +81,7 @@ RegisterServerEvent('hunting:sellMeat')
 AddEventHandler('hunting:sellMeat', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local MeatPrice = math.random(150, 200)
+    local MeatPrice = math.random(80, 110)
     local MeatQuantity = xPlayer.getInventoryItem('meat').count
     local MeatQuantity2 = xPlayer.getInventoryItem('meat2star').count
     local MeatQuantity3 = xPlayer.getInventoryItem('meat3star').count
@@ -122,7 +122,7 @@ RegisterServerEvent('hunting:sellLeather')
 AddEventHandler('hunting:sellLeather', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local LeatherPrice = math.random(150, 200)
+    local LeatherPrice = math.random(80, 110)
     local LeatherQuantity = xPlayer.getInventoryItem('leather').count
     local LeatherQuantity2 = xPlayer.getInventoryItem('leather2star').count
     local LeatherQuantity3 = xPlayer.getInventoryItem('leather3star').count

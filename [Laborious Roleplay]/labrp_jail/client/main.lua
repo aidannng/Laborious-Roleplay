@@ -175,3 +175,21 @@ AddEventHandler('checkjailtime', function()
 	exports['mythic_notify']:SendAlert('inform', 'You have '..months..' months left', 5000) 
 end)
 
+
+
+
+
+RegisterNetEvent('show:identification')
+AddEventHandler('show:identification', function()
+	local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
+    if closestplayer ~= -1 and closestPlayerDistance  <= 3.0 then
+        TriggerServerEvent('show:identification', GetPlayerServerId(closestPlayer))
+        exports['mythic_notify']:SendAlert('inform', "ID Shown!")
+    end
+	ESX.TriggerServerCallback('labrp_jail:identification', function(name, dob)
+		TriggerEvent('chat:addMessage', {
+			template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0}</div>',
+			args = { "^*^4Name^0 : "..name.." | ^4DOB^0 : "..dob }
+		});
+	end)
+end)

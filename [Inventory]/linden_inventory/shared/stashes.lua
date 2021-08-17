@@ -17,8 +17,12 @@ Config.Stashes = {
 	{ coords = vector3(-180.2242, 915.811, 239.1106), slots = 60, name = 'Sonora Cartel Gang Storage', owner = false, job = 'sonora' }, -- ESB Storage
 
 	{ coords = vector3(118.6418, -729.1649, 242.1436), slots = 60, name = 'FBI Personal Locker', owner = true, job = 'fbi' }, -- FBI PErsonal Lockers
-	{ coords = vector3(385.5692, 256.4044, 92.04541), slots = 100, name = 'Galaxy Stash', owner = true, job = 'galaxy' }, -- Galaxy Owner Stash
-	{ coords = vector3(-262.378, -725.2088, 125.4586), slots = 60, name = "Steve's Penthouse Stash", owner = true, job = 'galaxy' }, -- Steve's Penthouse Stash
-	{ coords = vector3(-272.4659, -721.4637, 125.4755), slots = 60, name = "plasma's Penthouse Stash", owner = true, job = 'galaxy' }, -- plasma's Penthouse Stash
+	{ coords = vector3(385.5692, 256.4044, 92.04541), slots = 100, name = 'Galaxy Stash', owner = false, job = 'galaxy' }, -- Galaxy Owner Stash
+	{ coords = vector3(-262.378, -725.2088, 125.4586), slots = 60, name = "Steve's Penthouse Stash", owner = false, job = 'galaxy' }, -- Steve's Penthouse Stash
+	{ coords = vector3(-272.4659, -721.4637, 125.4755), slots = 60, name = "plasma's Penthouse Stash", owner = false, job = 'galaxy' }, -- plasma's Penthouse Stash
+	{ coords = vector3(-103.6879, -1789.543, 26.80298), slots = 200, name = "Grove Customs Receipts", owner = false, job = 'ballas' }, -- Grove Customs Receipts
+	{ coords = vector3(-120.8044, -1780.76, 24.12378), slots = 120, name = "Grove Customs Storage", owner = false, job = 'ballas' }, -- Grove Customs Storage
+	{ coords = vector3(148.4967, -1707.982, 22.20288), slots = 400, name = "Ballas Warehouse 1", owner = false, job = 'ballas' }, -- Ballas Warehouse 1
+	{ coords = vector3(156.9363, -1698.013, 22.79272), slots = 2, name = "Ballas Warehouse 2", owner = false, job = 'ballas' }, -- Ballas Warehouse 2
 
 }

@@ -19,3 +19,7 @@ AddEventHandler('labrp_pdvehicles:takemoney', function(price)
     xPlayer.removeMoney(price)
 end)
 
+
+
+
+
