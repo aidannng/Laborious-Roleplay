@@ -1116,9 +1116,9 @@ AddEventHandler('esx_policejob:unrestrain', function()
 	end
 end)
 
-RegisterCommand("uncuffme", function()
-	TriggerEvent("esx_policejob:unrestrain")
-end)
+-- RegisterCommand("uncuffme", function()
+-- 	TriggerEvent("esx_policejob:unrestrain")
+-- end)
 
 RegisterNetEvent('esx_policejob:drag')
 AddEventHandler('esx_policejob:drag', function(copId)
