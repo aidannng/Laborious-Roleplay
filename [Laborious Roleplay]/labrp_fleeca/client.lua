@@ -400,7 +400,7 @@ AddEventHandler("doHack", function()
                 TriggerServerEvent('wf-alerts:svNotify', dispatchData)
                 exports['mythic_progbar']:Progress({
                     name = "unique_action_name",
-                    duration = 35000,
+                    duration = 40000,
                     label = 'Cracking Safe',
                     useWhileDead = true,
                     canCancel = false,
@@ -415,13 +415,13 @@ AddEventHandler("doHack", function()
                         anim = "idle_a",
                     },
                 })
-                Citizen.Wait(35000)
-                exports["memorygame"]:thermiteminigame(10, 300, 3, 10,
+                Citizen.Wait(40000)
+                exports["memorygame"]:thermiteminigame(10, 3, 3, 9,
                 function() -- success
                     exports['mythic_notify']:SendAlert('success', "Nice Job!")
                     exports['mythic_progbar']:Progress({
                         name = "unique_action_name",
-                        duration = 40000,
+                        duration = 60000,
                         label = 'Grabbing Items',
                         useWhileDead = true,
                         canCancel = false,
@@ -436,7 +436,7 @@ AddEventHandler("doHack", function()
                             anim = "put_cash_into_bag_loop",
                         },
                     })
-                    Citizen.Wait(40000)
+                    Citizen.Wait(60000)
                     ClearPedTasks(PlayerPedId())
                     TriggerServerEvent('GiveSafeReward')
                 end,

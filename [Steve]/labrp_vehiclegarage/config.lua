@@ -85,6 +85,27 @@ Config.Impounds = {
 }
 
 Config.Garages = {
+    LSCGarage = {
+        Display = "LSC Garage",
+        GarageType = 'car', -- car, boat or aircraft
+        PedCoords = {x = -349.5956, y = -148.9714, z = 38.0022, h = 293.0}, -- The Ped MUST be inside the PolyZone
+        Zone = {display = 'LSC Garage', name = 'lsc', x = -345.5472, y = -150.778, z = 39.0022, l = 52.4, w = 39.6, h = 340, minZ = 38.00, maxZ = 40.00},
+        Spawns = {
+            {x = -346.022, y = -151.0022, z = 39.0022, h = 288.00},
+            {x = -344.2945, y = -154.444, z = 39.0022, h = 288.00},
+            {x = -342.3165, y = -157.7802, z = 39.0022, h = 288.00},
+            {x = -340.378, y = -161.3143, z = 39.0022, h = 288.00},
+        }
+    },
+    LSCTowGarage = {
+        Display = "LSC Tow Garage",
+        GarageType = 'car', -- car, boat or aircraft
+        PedCoords = {x = -369.4418, y = -80.03077, z = 38.0022, h = 220.0}, -- The Ped MUST be inside the PolyZone
+        Zone = {display = 'LSC Tow Garage', name = 'lsctow', x = -366.1319, y = -85.51648, z = 39.0022, l = 52.4, w = 39.6, h = 340, minZ = 38.00, maxZ = 40.00},
+        Spawns = {
+            {x = -366.1319, y = -85.51648, z = 39.0022, h = 250.47},
+        }
+    },
     LegionGarage = {
         Display = "Legion Square",
         GarageType = 'car', -- car, boat or aircraft
