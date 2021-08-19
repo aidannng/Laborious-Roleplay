@@ -208,13 +208,7 @@ exports['labrp_Eye']:AddTargetBone({"platelight"}, {
             event = "labrp_pdvehicles:checkvin",
             icon = "fas fa-newspaper",
             label = "Check VIN",
-            canInteract = function(entity)
-                hasChecked = false
-                if ESX.PlayerData.job.name == "police" and not hasChecked then
-                    hasChecked = true
-                    return true
-                end
-            end
+            job = "police",
         },
     },
     distance = 1.0,

@@ -1683,3 +1683,114 @@ RegisterNetEvent('labrp:checkvin')
 AddEventHandler('labrp:checkvin', function()
 	print(data.entity)
 end)
+
+
+local player = {
+	`mp_m_freemode_01`,
+	`mp_f_freemode_01`,
+}
+
+
+exports['labrp_Eye']:AddTargetModel(player, {
+	options = {
+		{
+			event = 'qrp_police:requestCuffPed',
+			icon = 'fas fa-plus',
+			label = 'Handcuff'
+			job = {['police']=0},
+		},
+	},
+	job = {'all'},
+	distance = 3.0
+})
+
+
+
+
+
+RegisterNetEvent('qrp_police:requestCuffPed')
+AddEventHandler('qrp_police:requestCuffPed', function(data)
+    if GetEntityType(data.entity) == 1 and ESX.PlayerData.job.name == 'police' then 
+        local target = data.entity
+        if IsPedAPlayer(target) then 
+            -- The target is a Player
+            local targetPlayer = GetPlayerServerId(NetworkGetPlayerIndexFromPed(target))
+            if Player(targetPlayer).state.cuffed then 
+                TriggerServerEvent('qrp_police:uncuffPlayer', targetPlayer)
+            else
+                TriggerServerEvent('qrp_police:cuffPlayer', targetPlayer)
+            end 
+        end 
+    end 
+end)
+
+-- The player cuffing the ped
+RegisterNetEvent('qrp_police:cuffPed')
+AddEventHandler('qrp_police:cuffPed',function()
+    LoadAnimDict('mp_arrest_paired')
+    Citizen.Wait(250)
+    TaskPlayAnim(ESX.PlayerData.ped, 'mp_arrest_paired', 'cop_p2_back_right', 8.0, -8,3750, 2, 0, 0, 0, 0)
+    Citizen.Wait(3000)
+end)
+
+-- The player uncuffing the pped
+RegisterNetEvent('qrp_police:uncuffPed')
+AddEventHandler('qrp_police:uncuffPed',function()
+    LoadAnimDict('mp_arresting')
+    Citizen.Wait(250)
+    TaskPlayAnim(ESX.PlayerData.ped, 'mp_arresting', 'a_uncuff', 8.0, -8,-1, 2, 0, 0, 0, 0)
+    Citizen.Wait(5500)
+    ClearPedTasks(ESX.PlayerData.ped)
+end)
+
+-- The player being cuffed
+RegisterNetEvent('qrp_police:getCuffed')
+AddEventHandler('qrp_police:getCuffed',function(sourceNetID)
+    local cuffingPed = GetPlayerPed(GetPlayerFromServerId(sourceNetID))
+    LocalPlayer.state:set('cuffed',true,true)
+    LoadAnimDict('mp_arrest_paired')
+    SetCurrentPedWeapon(ESX.PlayerData.ped, `WEAPON_UNARMED`,true)
+    SetEntityCoords(ESX.PlayerData.ped,GetOffsetFromEntityInWorldCoords(cuffingPed,0.0,0.45,0.0))
+    SetEntityHeading(ESX.PlayerData.ped,GetEntityHeading(cuffingPed))
+    Citizen.Wait(250)
+    TaskPlayAnim(ESX.PlayerData.ped,'mp_arrest_paired','crook_p2_back_right', 8.0, -8, 3750 , 2, 0, 0, 0, 0)
+    Citizen.Wait(3760)
+    LoadAnimDict('mp_arresting')
+    TaskPlayAnim(ESX.PlayerData.ped, 'mp_arresting', 'idle', 8.0, -8, -1, 49, 0.0, false, false, false)
+end)
+
+-- The player being uncuffed
+RegisterNetEvent('qrp_police:getUncuffed')
+AddEventHandler('qrp_police:getUncuffed',function()
+    Citizen.Wait(250)
+    LoadAnimDict('mp_arresting')
+    TaskPlayAnim(ESX.PlayerData.ped, 'mp_arresting', 'b_uncuff', 8.0, -8,-1, 2, 0, 0, 0, 0)
+    Citizen.Wait(5500)
+    ClearPedTasks(ESX.PlayerData.ped)
+    LocalPlayer.state:set('cuffed',false,true)
+end)
+
+-- Function to load anim dicts
+function LoadAnimDict(dict)
+    if not HasAnimDictLoaded(dict) then
+        RequestAnimDict(dict)
+        while not HasAnimDictLoaded(dict) do 
+            Citizen.Wait(1)
+        end 
+    end
+end
+
+
+RegisterNetEvent('qrp_police:cuffPlayer')
+AddEventHandler('qrp_police:cuffPlayer', function(targetNetID)
+    local _source = source
+    TriggerClientEvent('qrp_police:getCuffed',targetNetID,_source)
+    TriggerClientEvent('qrp_police:cuffPed',_source)
+end)
+
+RegisterNetEvent('qrp_police:uncuffPlayer')
+AddEventHandler('qrp_police:uncuffPlayer', function(targetNetID)
+    local _source = source
+    TriggerClientEvent('qrp_police:getUncuffed',targetNetID)
+    TriggerClientEvent('qrp_police:uncuffPed',_source)
+end)

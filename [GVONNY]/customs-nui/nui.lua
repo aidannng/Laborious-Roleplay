@@ -171,9 +171,9 @@ exports['labrp_Eye']:AddBoxZone("BenchV1", vector3(-346.6813, -111.2703, 38.8447
             event = "mechanic:crafting",
             icon = "fas fa-tools",
             label = "Crafting Bench",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
@@ -190,9 +190,9 @@ exports['labrp_Eye']:AddBoxZone("BenchV2", vector3(-322.2066, -146.4527, 38.8447
             event = "mechanic:crafting",
             icon = "fas fa-tools",
             label = "Crafting Bench",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
@@ -209,9 +209,9 @@ exports['labrp_Eye']:AddBoxZone("BenchV3", vector3(-310.2725, -113.644, 38.84473
             event = "mechanic:crafting",
             icon = "fas fa-tools",
             label = "Crafting Bench",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
@@ -228,9 +228,9 @@ exports['labrp_Eye']:AddBoxZone("BenchV4", vector3(-339.0461, -90.09231, 38.8447
             event = "mechanic:crafting",
             icon = "fas fa-tools",
             label = "Crafting Bench",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
@@ -247,9 +247,9 @@ exports['labrp_Eye']:AddBoxZone("BenchV5", vector3(-367.1472, -79.85934, 38.8447
             event = "mechanic:crafting",
             icon = "fas fa-tools",
             label = "Crafting Bench",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })--  -341.5253, -163.0417, 46.68567
 
@@ -263,7 +263,7 @@ exports['labrp_Eye']:AddBoxZone("ToggleDuty", vector3(-341.4521, -162.978, 45.68
 {
     options = {
         {
-            event = "mechanic:signonoff",
+            event = "`:signonoff",
             icon = "fas fa-tools",
             label = "Sign On/Off",
         },
@@ -273,7 +273,6 @@ exports['labrp_Eye']:AddBoxZone("ToggleDuty", vector3(-341.4521, -162.978, 45.68
             label = "Open Locker",
         },
     },
-    job = {"all"},
     distance = 1.6
 })
 
@@ -296,9 +295,9 @@ exports['labrp_Eye']:AddBoxZone("StorageV1", vector3(-319.1209, -137.7231, 38.84
             event = "storageV1",
             icon = "fas fa-tools",
             label = "Storage",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
@@ -320,9 +319,9 @@ exports['labrp_Eye']:AddBoxZone("StorageV2", vector3(-316.4176, -130.6418, 38.84
             event = "storageV2",
             icon = "fas fa-tools",
             label = "Storage",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
@@ -344,9 +343,9 @@ exports['labrp_Eye']:AddBoxZone("StorageV3", vector3(-308.6242, -109.2132, 38.84
             event = "storageV3",
             icon = "fas fa-tools",
             label = "Storage",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
@@ -373,9 +372,9 @@ exports['labrp_Eye']:AddBoxZone("StorageV4", vector3(-353.4725, -129.8769, 38.84
             event = "storageV4",
             icon = "fas fa-tools",
             label = "Storage",
+            job = "mechanic",
         },
     },
-    job = {"mechanic"},
     distance = 1.6
 })
 
