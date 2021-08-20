@@ -140,8 +140,8 @@ local alreadySold = tableHasKey(soldto,pedID)
 if alreadySold then
 exports['mythic_notify']:SendAlert('error', "Im not intrested.", 8500) 
 else
-    local CallDaPolice = math.random(1,Config.NotifyPercent)
-    if CallDaPolice == Config.NotifyPercent then
+    local CallDaPolice = math.random(1, 3)
+    if CallDaPolice == 3 then
         TriggerEvent('gl-drugselling:notifyPolice')
     end
     if not IsPedDeadOrDying(ped) then
