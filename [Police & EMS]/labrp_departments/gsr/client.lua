@@ -12,17 +12,16 @@ local shotRecently = false
 -- 	end
 -- end)
 
-RegisterNetEvent("gsr:test")
-AddEventHandler("gsr:test", function()
-	local target = GetClosestPlayerRadius(2.0)
-	if target == nil then exports['mythic_notify']:SendAlert('error', 'Target player not found')  return; end
-	TriggerServerEvent("gsr:doTest", GetPlayerServerId(target))
+RegisterNetEvent("labrp_police:gsr")
+AddEventHandler("labrp_police:gsr", function(data)
+	local targetPlayer = GetPlayerServerId(NetworkGetPlayerIndexFromPed(data.entity))
+	TriggerServerEvent("gsr:doTest", targetPlayer)
 end)
 
 RegisterNetEvent('searchsuspect')
-AddEventHandler('searchsuspect', function()
-    local target = GetClosestPlayerRadius(2.0)
-    TriggerServerEvent("search:notif", GetPlayerServerId(target))
+AddEventHandler('searchsuspect', function(data)
+    local targetPlayer = GetPlayerServerId(NetworkGetPlayerIndexFromPed(data.entity))
+    TriggerServerEvent("search:notif", targetPlayer)
     exports['linden_inventory']:OpenTargetInventory()
 end)
 

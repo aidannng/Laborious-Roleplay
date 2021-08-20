@@ -295,3 +295,11 @@ AddEventHandler('clearinventory', function(playerId)
 	print('should remove items')
 end)
 
+RegisterNetEvent('ambulance:reviveclosest')
+AddEventHandler('ambulance:reviveclosest', function(playerId)
+	TriggerClientEvent('esx_ambulancejob:revive', playerId)
+end)
+
+
+
+

@@ -228,21 +228,7 @@ rootMenuConfig =  {
                 return true
             end
         end,
-        subMenus = {"police:gsr", "police:impound", "police:mdt", "general:escort", "police:hardcuff", "police:softcuff", "police:search"}
-    },
-    {
-        id = "medic-action",
-        displayName = "Medical Actions",
-        icon = "#medic",
-        enableMenu = function()
-           local ped = PlayerPedId()
-           PlayerData = ESX.GetPlayerData()
-           fuck = exports["esx_ambulancejob"]:GetDeath()
-           if PlayerData.job.name == "ambulance" and not fuck then
-                return true
-            end
-        end,
-        subMenus = {"police:gsr", "police:impound", "police:mdt", "general:escort", "police:hardcuff", "police:softcuff", "police:search"}
+        subMenus = {"police:mdt"}
     },
     {
         id = "vehicle",
@@ -737,37 +723,22 @@ newSubMenus = {
     ['medic:revive'] = {
         title = "Revive",
         icon = "#medic-revive",
-        functionName = "st:emsRevive"
-    },
-    ['medic:heal'] = {
-        title = "Treat Small Wounds",
-        icon = "#medic-heal",
-        functionName = "st:emssmallheal"
-    },
-    ['medic:bigheal'] = {
-        title = "Treat Serious Wounds",
-        icon = "#medic-heal",
-        functionName = "st:emsbigheal"
+        functionName = "medic:revive"
     },
     ['medic:putinvehicle'] = {
         title = "Put in vehicle",
         icon = "#general-put-in-veh",
-        functionName = "police:seat"
+        functionName = "medic:putinvehicle"
     },
     ['medic:takeoutvehicle'] = {
         title = "Take out vehicle",
         icon = "#general-unseat-nearest",
-        functionName = "police:unseat"
+        functionName = "medic:unseat"
     },
-    ['medic:drag'] = {
-        title = "Drag",
+    ['medic:escort'] = {
+        title = "Escort",
         icon = "#general-escort",
-        functionName = "police:escort"
-    },
-    ['medic:undrag'] = {
-        title = "Undrag",
-        icon = "#general-escort",
-        functionName = "escort:player"
+        functionName = "medic:escort"
     },
     ['police:escort'] = {
         title = "Escort",
@@ -1289,4 +1260,68 @@ end)
 RegisterNetEvent('radial:UnJail')
 AddEventHandler('radial:UnJail', function()
     inJail = false
+end)
+
+-- Medic Functions --
+
+RegisterNetEvent('medic:revive')
+AddEventHandler('medic:revive', function()
+    print('revive')
+    local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
+    if closestplayer ~= -1 and closestPlayerDistance <= 3.0 then
+        exports['mythic_progbar']:Progress({
+            name = "unique_action_name",
+            duration = 10000,
+            label = 'Reviving Person',
+            useWhileDead = true,
+            canCancel = false,
+            controlDisables = {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            },
+            animation = {
+                animDict = "amb@medic@standing@tendtodead@base",
+                anim = "base",
+            },
+        })
+        Citizen.Wait(10000)
+        ClearPedTasks(PlayerPedId())
+        TriggerServerEvent('ambulance:reviveclosest', GetPlayerServerId(closestPlayer))
+        exports['mythic_notify']:SendAlert('inform', "Player Revived!")
+    else
+        exports['mythic_notify']:SendAlert('error', "Invalid Target!")
+    end
+end)
+
+RegisterNetEvent('medic:escort')
+AddEventHandler('medic:escort', function()
+    local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
+    if closestplayer ~= -1 and closestPlayerDistance <= 3.0 then
+        exports['mythic_notify']:SendAlert('inform', "Escorting Person!")
+        TriggerEvent('escort:target', closestPlayer)
+    else
+        exports['mythic_notify']:SendAlert('error', "Invalid Target!")
+    end
+end)
+
+RegisterNetEvent('medic:putinvehicle')
+AddEventHandler('medic:putinvehicle', function()
+    local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
+    if closestplayer ~= -1 and closestPlayerDistance <= 3.0 then
+        exports['mythic_notify']:SendAlert('inform', "Put in vehicle")
+    else
+        exports['mythic_notify']:SendAlert('error', "Invalid Target!")
+    end
+end)
+
+RegisterNetEvent('medic:takeoutvehicle')
+AddEventHandler('medic:takeoutvehicle', function()
+    local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
+    if closestplayer ~= -1 and closestPlayerDistance <= 3.0 then
+        exports['mythic_notify']:SendAlert('inform', "Take out of vehicle")
+    else
+        exports['mythic_notify']:SendAlert('error', "Invalid Target!")
+    end
 end)
