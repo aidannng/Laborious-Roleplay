@@ -12,7 +12,7 @@ Config.MaxDistance = 7.0
 Config.Debug = false
 
 -- Support when not using ESX Legacy
-Config.Standalone = true
+Config.Standalone = false
 
 -- Support when using linden_inventory
 Config.LindenInventory = true

@@ -127,8 +127,6 @@ Citizen.CreateThread(function()
         local playerPed = PlayerPedId()
         if isDead then
 			if IsPedInAnyVehicle(GetPlayerPed(-1)) then
-				print('in vehicle')
-				ClearPedTasks(playerPed)
 			else
             	Playdeadanim = true
             	ClearPedTasks(playerPed)
