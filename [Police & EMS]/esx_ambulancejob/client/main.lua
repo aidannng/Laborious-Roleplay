@@ -126,30 +126,30 @@ Citizen.CreateThread(function()
         Citizen.Wait(500)
         local playerPed = PlayerPedId()
         if isDead then
-            Playdeadanim = true
-            ClearPedTasksImmediately(playerPed)
-            SetEntityInvincible(playerPed, true)
-            Citizen.Wait(200)
-            SetEntityHealth(playerPed, GetPedMaxHealth(playerPed))
-            ClearPedTasksImmediately(playerPed)
-            --local lib, anim = 'random@drunk_driver_1', 'drunk_fall_over'
-            local lib, anim = 'move_fall', 'land_fall'
-            ESX.Streaming.RequestAnimDict(lib, function()
-                TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 1, 0, 0, 0, 0)
-                Citizen.Wait(1000)
-                while isDead do
-                    if not IsEntityPlayingAnim(playerPed, 'dead', 'dead_a', 3) and Playdeadanim then
-                        ESX.Streaming.RequestAnimDict('dead', function()
-                            TaskPlayAnim(playerPed, 'dead', 'dead_a', 8.0, 8.0, -1, 33, 0, 0, 0, 0)
-                        end)
-                        Citizen.Wait(3000)
-                    elseif Playdeadanim then
-                        ClearPedTasksImmediately(playerPed)
-                        Citizen.Wait(0)
-                    end
-                    Citizen.Wait(0)
-                end
-            end)
+			if IsPedInAnyVehicle(GetPlayerPed(-1)) then
+				print('in vehicle')
+				ClearPedTasks(playerPed)
+			else
+            	Playdeadanim = true
+            	ClearPedTasks(playerPed)
+            	SetEntityInvincible(playerPed, true)
+            	Citizen.Wait(200)
+            	SetEntityHealth(playerPed, GetPedMaxHealth(playerPed))
+				Citizen.Wait(450)
+            	ClearPedTasksImmediately(playerPed)
+            	while isDead do
+                	if Playdeadanim then
+                    	ESX.Streaming.RequestAnimDict('dead', function()
+                        	TaskPlayAnim(playerPed, 'dead', 'dead_a', 8.0, 8.0, -1, 33, 0, 0, 0, 0)
+                    	end)
+                    	Citizen.Wait(5000)
+                	elseif Playdeadanim then
+                    	ClearPedTasksImmediately(playerPed)
+                    	Citizen.Wait(0)
+                	end
+				end
+                Citizen.Wait(0)
+            end
         end
     end
 end)

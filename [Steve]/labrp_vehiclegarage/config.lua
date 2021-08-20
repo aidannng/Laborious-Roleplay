@@ -140,7 +140,7 @@ Config.Garages = {
         Display = "Route 68",
         GarageType = 'car',
         PedCoords = {x = 587.23, y = 2723.50, z = 41.13, h = 7.85},
-        Zone = {name = 'route68', x = 573.19, y = 2727.17, z = 42.06, l = 22.4, w = 51.2, h = 4, minZ = 41.08, maxZ = 45.08},
+        Zone = {display = 'Route 68', name = 'route68', x = 573.19, y = 2727.17, z = 42.06, l = 22.4, w = 51.2, h = 4, minZ = 41.08, maxZ = 45.08},
         Spawns = {
             {x = 584.51, y = 2721.56, z = 41.88, h = 3.59}, 
             {x = 581.14, y = 2721.32, z = 41.88, h = 3.99},
@@ -157,7 +157,7 @@ Config.Garages = {
         Display = "Paleto",
         GarageType = 'car',
         PedCoords = {x = 140.62, y = 6613.02, z = 31.06, h = 183.37},
-        Zone = {name = 'paleto', x = 152.63, y = 6600.21, z = 30.84, l = 28.2, w = 27.2, h = 0, minZ = 30.84, maxZ = 34.84},
+        Zone = {display = 'Paleto', name = 'paleto', x = 152.63, y = 6600.21, z = 30.84, l = 28.2, w = 27.2, h = 0, minZ = 30.84, maxZ = 34.84},
         Spawns = {
             {x = 145.55, y = 6601.92, z = 31.67, h = 357.80},
             {x = 150.56, y = 6597.71, z = 31.67, h = 359.00},
@@ -171,7 +171,7 @@ Config.Garages = {
         Display = "MRPD",
         GarageType = 'car',
         PedCoords = {x = 441.4418, y = -984.8571, z = 24.6908, h = 0.37},
-        Zone = {name = 'MRPD', x = 442.5231, y = -986.5978, z = 24.6908, l = 28.2, w = 27.2, h = 0, minZ = 24.69, maxZ = 28.69},
+        Zone = {display = 'MRPD', name = 'MRPD', x = 442.5231, y = -986.5978, z = 24.6908, l = 28.2, w = 27.2, h = 0, minZ = 24.69, maxZ = 28.69},
         Spawns = {
             {x = 445.7275, y = -986.2418, z = 24.6908, h = 270.00},
             {x = 445.7275, y = -988.9451, z = 24.6908, h = 270.00},
@@ -190,7 +190,7 @@ Config.Garages = {
         Display = "PDM",
         GarageType = 'car',
         PedCoords = {x = -50.76923, y = -1082.796, z = 25.87036, h = 340.00},
-        Zone = {name = 'pdm', x = -47.59121, y = -1078.325, z = 25.87036, l = 20.0, w = 25.0, h = 340.0, minZ = 25.87036, maxZ = 27.73547},
+        Zone = {display = 'PDM', name = 'pdm', x = -47.59121, y = -1078.325, z = 25.87036, l = 20.0, w = 25.0, h = 340.0, minZ = 25.87036, maxZ = 27.73547},
         Spawns = {
             {x = -45.53407, y = -1083.059, z = 25.71863, h = 70.00},
         }
@@ -199,7 +199,7 @@ Config.Garages = {
         Display = "Alta Street",
         GarageType = 'car',
         PedCoords = {x = -293.5385, y = -986.8615, z = 30.06592, h = 70.00},
-        Zone = {name = 'Alta Street', x = -318.1714, y = -976.1934, z = 30.06592, l = 60.4, w = 20.6, h = 70, minZ = 29.0, maxZ = 35.0},
+        Zone = {display = 'Alta Street', name = 'Alta Street', x = -318.1714, y = -976.1934, z = 30.06592, l = 60.4, w = 20.6, h = 70, minZ = 29.0, maxZ = 35.0},
         Spawns = {
             {x = -297.8637, y = -990.7648, z = 30.06592, h = 340.00},
             {x = -301.4242, y = -989.4066, z = 30.06592, h = 340.00},

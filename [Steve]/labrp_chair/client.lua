@@ -160,3 +160,24 @@ function stopsign()
 		removeAttachedProp()
 	end
 end
+
+
+RegisterNetEvent('labrp_phone:anim')
+AddEventHandler('labrp_phone:anim', function()
+	if not hasphoneout then
+		hasphoneout = true
+		local coords = GetEntityCoords(GetPlayerPed(-1))
+		local animDict = "cellphone@"
+		local animation = "cellphone_text_read_base"
+
+
+		local phoneprop = attachAProp("prop_npc_phone_02", 28422, 0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
+		loadAnimDict(animDict)
+		local animLength = GetAnimDuration(animDict, animation)
+		TaskPlayAnim(GetPlayerPed(-1), animDict, animation, 2.0, 2.0, animLength, 51, 0, false, false, false)
+	else
+		hasphoneout = false
+		ClearPedTasks(PlayerPedId())
+		removeAttachedProp()
+	end
+end)
