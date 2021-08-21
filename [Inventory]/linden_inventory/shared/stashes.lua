@@ -24,5 +24,6 @@ Config.Stashes = {
 	{ coords = vector3(-120.8044, -1780.76, 24.12378), slots = 120, name = "Grove Customs Storage", owner = false, job = 'ballas' }, -- Grove Customs Storage
 	{ coords = vector3(148.4967, -1707.982, 22.20288), slots = 400, name = "Ballas Warehouse 1", owner = false, job = 'ballas' }, -- Ballas Warehouse 1
 	{ coords = vector3(156.9363, -1698.013, 22.79272), slots = 2, name = "Ballas Warehouse 2", owner = false, job = 'ballas' }, -- Ballas Warehouse 2
+	{ coords = vector3(-977.5648, -254.0967, 38.46301), slots = 650, name = "Rockford Record's Stash", owner = false, job = 'record' }, -- Ballas Warehouse 2
 
 }
