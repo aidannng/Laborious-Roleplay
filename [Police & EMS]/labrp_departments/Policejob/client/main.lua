@@ -260,12 +260,6 @@ exports['labrp_Eye']:Vehicle({
 				end
 			end,
 		},
-		{
-			event = 'labrp_police:impound',
-			icon = 'fas fa-car-crash',
-			label = 'Impound Vehicle',
-			job = "police", "mechanic",
-		},
 	},
 	distance = 3.0
 })
@@ -393,3 +387,4 @@ AddEventHandler('labrp_police:getinbed', function(bed)
 	SetEntityCoords(PlayerPedId(), bed, false, false, false, false)
 	print('test')
 end)
+

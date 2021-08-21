@@ -1,4 +1,5 @@
 ESX = nil
+local tabletObject = nil
 
 Citizen.CreateThread(function()
     while ESX == nil do
@@ -163,6 +164,17 @@ end) ]]
 RegisterNetEvent("pdm:menu")
 AddEventHandler("pdm:menu", function()
     SetDisplay(not display)
+    local playerPed = PlayerPedId()
+    local dict = "amb@world_human_seat_wall_tablet@female@base"
+    RequestAnimDict(dict)
+    if tabletObject == nil then
+        tabletObject = CreateObject(GetHashKey('prop_cs_tablet'), GetEntityCoords(playerPed), 1, 1, 1)
+        AttachEntityToEntity(tabletObject, playerPed, GetPedBoneIndex(playerPed, 28422), 0.0, 0.0, 0.03, 0.0, 0.0, 0.0, 1, 1, 0, 1, 0, 1)
+    end
+    while not HasAnimDictLoaded(dict) do Citizen.Wait(100) end
+    if not IsEntityPlayingAnim(playerPed, dict, 'base', 3) then
+        TaskPlayAnim(playerPed, dict, "base", 8.0, 1.0, -1, 49, 1.0, 0, 0, 0)
+    end
 end)
 
 RegisterNUICallback("endtestdrive", function(data)
@@ -320,6 +332,10 @@ RegisterNUICallback("error", function(data)
 end)
 
 RegisterNUICallback("exit", function(data)
+    local playerPed = PlayerPedId()
+    DeleteEntity(tabletObject)
+    ClearPedTasks(playerPed)
+    tabletObject = nil
 	SetDisplay(false)
 end)
 

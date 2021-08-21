@@ -776,14 +776,14 @@ local recoils = {
 	[1593441988] = 0.4, -- COMBAT PISTOL
 	[584646201] = 0.6, -- AP PISTOL
 	[3523564046] = 0.8, -- HEAVY PISTOL
-	[2578377531] = 2.0, -- PISTOL .50
-	[324215364] = 0.5, -- MICRO SMG
+	[-1716589765] = 20.0, -- PISTOL .50
+	[324215364] = 1.5, -- MICRO SMG
 	[736523883] = 0.8, -- SMG
 	[2024373456] = 0.5, -- SMG MK2
 	[4024951519] = 0.1, -- ASSAULT SMG
-	[3220176749] = 0.7, -- ASSAULT RIFLE
+	[-1074790547] = 0.5, -- ASSAULT RIFLE
 	[961495388] = 0.2, -- ASSAULT RIFLE MK2
-	[2210333304] = 0.1, -- CARBINE RIFLE
+	[-2084633992] = 0.2, -- CARBINE RIFLE
 	[4208062921] = 0.1, -- CARBINE RIFLE MK2
 	[2937143193] = 0.1, -- ADVANCED RIFLE
 	[2634544996] = 0.1, -- MG
@@ -821,14 +821,14 @@ local recoils = {
 	[171789620] = 0.2, -- COMBAT PDW
 	[3696079510] = 0.9, -- MARKSMAN PISTOL
 	[1834241177] = 2.4, -- RAILGUN
-	[3675956304] = 0.3, -- MACHINE PISTOL
+	[-619010992] = 1.2, -- MACHINE PISTOL
 	[3249783761] = 0.6, -- REVOLVER
 	[-879347409] = 0.6, -- REVOLVER MK2
 	[4019527611] = 0.7, -- DOUBLE BARREL SHOTGUN
 	[1649403952] = 0.4, -- COMPACT RIFLE
 	[317205821] = 0.2, -- AUTO SHOTGUN
 	[125959754] = 0.5, -- COMPACT LAUNCHER
-	[3173288789] = 0.1, -- MINI SMG		
+	[-1121678507] = 0.3, -- MINI SMG		
 }
 
 
@@ -866,7 +866,27 @@ Citizen.CreateThread(function()
 	end
 end)
 
+-- -- DISABLE BLIND FIRING
+-- Citizen.CreateThread(function()
+--     while true do
+--         if IsPedInCover(GetPed(), 0) and not IsPedAimingFromCover(GetPed()) then
+--             DisablePlayerFiring(GetPed(), true)
+--         end
+--         Citizen.Wait(100)
+--     end
+-- end)
 
+RegisterNetEvent('escort:target')
+AddEventHandler('escort:target', function(target)
+	if not isEscort then
+		local targetPed = GetPlayerPed(GetPlayerFromServerId(target))
+		AttachEntityToEntity(GetPlayerPed(-1), targetPed, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
+		isEscort = true
+	else
+		DetachEntity(GetPlayerPed(-1), true, false)
+		isEscort = false
+	end
+end)
 
 
 
