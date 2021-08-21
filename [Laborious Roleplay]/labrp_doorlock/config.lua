@@ -3283,3 +3283,115 @@ table.insert(Config.DoorList, {
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 	-- autoLock = 1000
 })
+
+-- RR Back Garage Door
+table.insert(Config.DoorList, {
+	objHash = 363383944,
+	objCoords = vector3(-977.819, -264.3036, 37.6967),
+	garage = true,
+	authorizedJobs = { ['record']=0 },
+	objHeading = 207.81890869141,
+	locked = true,
+	fixText = false,
+	audioRemote = false,
+	slides = 6.0,
+	lockpick = false,
+	maxDistance = 6.0,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- RR Back door
+table.insert(Config.DoorList, {
+	objHash = -1719935594,
+	objCoords = vector3(-993.4475, -281.3838, 38.36613),
+	garage = false,
+	authorizedJobs = { ['record']=0 },
+	objHeading = 26.066831588745,
+	locked = true,
+	fixText = false,
+	audioRemote = false,
+	slides = false,
+	lockpick = false,
+	maxDistance = 2.0,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+
+-- RR Front Door
+table.insert(Config.DoorList, {
+	doors = {
+		{objHash = -10590885, objHeading = 55.231945037842, objCoords = vector3(-1015.003, -264.9782, 39.27121)},
+		{objHash = 662746527, objHeading = 54.395790100098, objCoords = vector3(-1016.506, -267.1098, 39.27121)}
+ },
+	locked = false,
+	slides = false,
+	audioRemote = false,
+	maxDistance = 2.5,
+	lockpick = false,
+	authorizedJobs = { ['record']=0 },		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- RR Front Staff
+table.insert(Config.DoorList, {
+	doors = {
+		{objHash = 1930160225, objHeading = 234.3957824707, objCoords = vector3(-999.9194, -270.3868, 39.19212)},
+		{objHash = -1693304723, objHeading = 234.3957824707, objCoords = vector3(-998.4088, -268.2771, 39.19212)}
+ },
+	locked = true,
+	slides = false,
+	audioRemote = false,
+	maxDistance = 2.5,
+	lockpick = false,
+	authorizedJobs = { ['record']=0 },		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- RR Front Staffroom
+table.insert(Config.DoorList, {
+	objHash = -2122500721,
+	objCoords = vector3(-1008.176, -275.7034, 39.19226),
+	garage = false,
+	authorizedJobs = { ['record']=0 },
+	objHeading = 144.39579772949,
+	locked = true,
+	fixText = false,
+	audioRemote = false,
+	slides = false,
+	lockpick = false,
+	maxDistance = 2.0,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- RR Bar Staff Door
+table.insert(Config.DoorList, {
+	doors = {
+		{objHash = 1650276170, objHeading = 54.395790100098, objCoords = vector3(-997.1768, -263.4583, 39.19092)},
+		{objHash = 1650276170, objHeading = 234.3957824707, objCoords = vector3(-995.6696, -261.3473, 39.19092)}
+ },
+	locked = true,
+	slides = false,
+	audioRemote = false,
+	maxDistance = 2.5,
+	lockpick = false,
+	authorizedJobs = { ['record']=0 },		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
