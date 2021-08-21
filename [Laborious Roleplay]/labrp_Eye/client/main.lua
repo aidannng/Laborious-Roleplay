@@ -515,7 +515,6 @@ AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0.4, 0.6, {
                 event = "pdsign", --
                 icon = "fas fa-sign-in-alt",
                 label = "Sign On/Off",
-                job = "police",
             },
 
         },
@@ -534,7 +533,6 @@ AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0.4, 0.6, {
                     event = "emssign",
                     icon = "fas fa-business-time",
                     label = "EMS Duty",
-                    job = "ambulance",
                 },
             },
             distance = 1.49

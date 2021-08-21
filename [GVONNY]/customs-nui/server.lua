@@ -6,8 +6,13 @@ Citizen.CreateThread(function()
         Citizen.Wait(10)
     end
 
+    TriggerEvent("core-vehicle:remove-non-owned")
 end)
 
+RegisterServerEvent("core-vehicle:remove-non-owned")
+AddEventHandler("core-vehicle:remove-non-owned", function()
+    MySQL.Async.execute("DELETE FROM vehicle_parts WHERE plate NOT IN (SELECT plate FROM owned_vehicles)",{})
+end)
 
 RegisterServerEvent("buymaterial")
 AddEventHandler("buymaterial", function(part, price, amount)
