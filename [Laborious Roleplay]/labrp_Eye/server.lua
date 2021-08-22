@@ -86,18 +86,25 @@ AddEventHandler('chargmoney', function()
     end
 end)
 
+-- RegisterNetEvent('helimoney')
+-- AddEventHandler('helimoney', function()
+--     local xPlayer = ESX.GetPlayerFromId(source)
+--     local money = xPlayer.getInventoryItem('money').count
+
+--     if money >= 5000 then
+--         TriggerClientEvent('helispawn', source)
+--         xPlayer.removeInventoryItem('money', 5000)
+--         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
+--     else
+--         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
+--     end
+-- end) --refundpdheli
+
 RegisterNetEvent('helimoney')
 AddEventHandler('helimoney', function()
     local xPlayer = ESX.GetPlayerFromId(source)
-    local money = xPlayer.getInventoryItem('money').count
-
-    if money >= 5000 then
         TriggerClientEvent('helispawn', source)
-        xPlayer.removeInventoryItem('money', 5000)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'Congratulations!', })
-    else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You don\'t have enough money!', })
-    end
 end) --refundpdheli
 
 RegisterNetEvent('refundpdheli')

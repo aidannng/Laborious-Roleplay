@@ -990,7 +990,6 @@ local playerPed = PlayerPedId()
 RegisterNetEvent('helispawn')--helispawn
 AddEventHandler('helispawn', function()
     local hash = GetHashKey("eheli")
-        
     if not HasModelLoaded(hash) then
         RequestModel(hash)
         while not HasModelLoaded(hash) do
@@ -999,8 +998,6 @@ AddEventHandler('helispawn', function()
     end
     local vehicleBuy = CreateVehicle(hash, 449.3143, -981.1252, 43.6864, 90.0, 1, 1)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    Citizen.Wait(1000)
-    TriggerServerEvent('Aidan_isCool:giveKeys')
 end)
 
 -- LSC CUSTOMS TOW TRUCK RENTAL --

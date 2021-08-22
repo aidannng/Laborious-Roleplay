@@ -972,9 +972,9 @@ AddEventHandler('craft:streettransmissionfwd', function()
     local gearCount = xPlayer.getInventoryItem('transmission_gear').count
     local oilCount = xPlayer.getInventoryItem('shell_oil').count
 
-    if (gearCount > 4 and oilCount > 0) then
+    if (gearCount > 4 and oilCount > 1) then
         xPlayer.removeInventoryItem('transmission_gear', 5)
-        xPlayer.removeInventoryItem('shell_oil', 1)
+        xPlayer.removeInventoryItem('stock_oil', 2)
         xPlayer.addInventoryItem('street_transmission_fwd', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
@@ -988,9 +988,9 @@ AddEventHandler('craft:streettransmission4wd', function()
     local gearCount = xPlayer.getInventoryItem('transmission_gear').count
     local oilCount = xPlayer.getInventoryItem('shell_oil').count
 
-    if (gearCount > 4 and oilCount > 0) then
+    if (gearCount > 4 and oilCount > 1) then
         xPlayer.removeInventoryItem('transmission_gear', 5)
-        xPlayer.removeInventoryItem('shell_oil', 1)
+        xPlayer.removeInventoryItem('stock_oil', 2)
         xPlayer.addInventoryItem('street_transmission_4wd', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
@@ -1004,9 +1004,9 @@ AddEventHandler('craft:streettransmissionrwd', function()
     local gearCount = xPlayer.getInventoryItem('transmission_gear').count
     local oilCount = xPlayer.getInventoryItem('shell_oil').count
 
-    if (gearCount > 4 and oilCount > 0) then
+    if (gearCount > 4 and oilCount > 1) then
         xPlayer.removeInventoryItem('transmission_gear', 5)
-        xPlayer.removeInventoryItem('shell_oil', 1)
+        xPlayer.removeInventoryItem('stock_oil', 2)
         xPlayer.addInventoryItem('street_transmission', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
@@ -1020,9 +1020,9 @@ AddEventHandler('craft:racetransmissionfwd', function()
     local gearCount = xPlayer.getInventoryItem('transmission_gear').count
     local oilCount = xPlayer.getInventoryItem('amsoil_oil').count
 
-    if (gearCount > 5 and oilCount > 0) then
+    if (gearCount > 5 and oilCount > 2) then
         xPlayer.removeInventoryItem('transmission_gear', 6)
-        xPlayer.removeInventoryItem('amsoil_oil', 1)
+        xPlayer.removeInventoryItem('stock_oil', 3)
         xPlayer.addInventoryItem('race_transmission_fwd', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
@@ -1036,9 +1036,9 @@ AddEventHandler('craft:racetransmission4wd', function()
     local gearCount = xPlayer.getInventoryItem('transmission_gear').count
     local oilCount = xPlayer.getInventoryItem('amsoil_oil').count
 
-    if (gearCount > 5 and oilCount > 0) then
+    if (gearCount > 5 and oilCount > 2) then
         xPlayer.removeInventoryItem('transmission_gear', 6)
-        xPlayer.removeInventoryItem('amsoil_oil', 1)
+        xPlayer.removeInventoryItem('stock_oil', 3)
         xPlayer.addInventoryItem('race_transmission_4wd', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
@@ -1052,9 +1052,9 @@ AddEventHandler('craft:racetransmissionrwd', function()
     local gearCount = xPlayer.getInventoryItem('transmission_gear').count
     local oilCount = xPlayer.getInventoryItem('amsoil_oil').count
 
-    if (gearCount > 5 and oilCount > 0) then
+    if (gearCount > 5 and oilCount > 2) then
         xPlayer.removeInventoryItem('transmission_gear', 6)
-        xPlayer.removeInventoryItem('amsoil_oil', 1)
+        xPlayer.removeInventoryItem('stock_oil', 3)
         xPlayer.addInventoryItem('race_transmission', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
@@ -1070,7 +1070,7 @@ AddEventHandler('craft:policetransmission', function()
 
     if (gearCount > 4 and oilCount > 0) then
         xPlayer.removeInventoryItem('transmission_gear', 5)
-        xPlayer.removeInventoryItem('shell_oil', 1)
+        xPlayer.removeInventoryItem('stock_oil', 1)
         xPlayer.addInventoryItem('police_transmission', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })

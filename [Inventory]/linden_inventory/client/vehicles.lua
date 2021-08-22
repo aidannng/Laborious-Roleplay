@@ -44,7 +44,7 @@ Config.Gloveboxes = {
 	[8] = {5, 5000}, -- motorcycle
 	[9] = {10, 10000}, -- offroad
 	[10] = {10, 10000}, -- industrial
-	[11] = {10, 10000}, -- utility
+	[11] = {10, 66000}, -- utility
 	[12] = {10, 10000}, -- van
 	[14] = {15, 248000}, -- boat
 	[15] = {15, 248000}, -- helicopter
@@ -66,9 +66,9 @@ Config.Trunks = {
 	[7] = {20, 40000}, -- super
 	[8] = {5,  10000},-- motorcycle
 	[9] = {50, 150000}, -- offroad
-	[10] = {50, 200000}, -- industrial
+	[10] = {70, 480000}, -- industrial
 	[11] = {40, 328000}, -- utility
-	[12] = {60, 300000}, -- van
+	[12] = {60, 150000}, -- van
 	--[14] -- boat
 	--[15] -- helicopter
 	--[16] -- plane

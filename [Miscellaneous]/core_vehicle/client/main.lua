@@ -1561,7 +1561,7 @@ Citizen.CreateThread(
 
                 --ENGINE WEAR
                 if currentVehicleParts["engine"].health <= 0 then
-                    SetVehicleEngineHealth(currentVehicle, -4000)
+                    SetVehicleEngineHealth(currentVehicle, 0)
                 else
                     if currentVehicleParts["engine"].health < 30 then
                         checkEngine = true
@@ -1570,9 +1570,7 @@ Citizen.CreateThread(
                     currentVehicleParts["engine"].health = GetVehicleEngineHealth(currentVehicle) / 10
                     SetVehicleEngineHealth(
                         currentVehicle,
-                        (currentVehicleParts["engine"].health * 10) -
-                            ((100 - Config.Engines[currentVehicleParts["engine"].type].durability) *
-                                ((kmh / (currentWear / 2)) + (rpm / (currentWear))))
+                        (currentVehicleParts["engine"].health * 10) - ((100 - Config.Engines[currentVehicleParts["engine"].type].durability) * ((kmh / (currentWear / 2)) + (rpm / (currentWear))))
                     )
                 end
 
