@@ -477,7 +477,7 @@ newSubMenus = {
     ['general:escort'] = {
         title = "Escort",
         icon = "#general-put-in-veh",
-        functionName = "escort:player"
+        functionName = "labrp_police:escort"
     },
     ['general:putinvehicle'] = {
         title = "Seat Vehicle",
@@ -593,7 +593,7 @@ newSubMenus = {
     ['mechanic:mech'] = {
         title = "Inspect Vehicle",
         icon = "#general-check-vehicle",
-        functionName = "mechanic:inspect"
+        functionName = "mechanic:inspect-core"
     },
     ['mechanic:repair'] = {
         title = "Repair",

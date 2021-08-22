@@ -87,11 +87,6 @@ local peds = {
 exports['labrp_Eye']:Player({
 	options = {
 		{
-			event = 'labrp_police:escort',
-			icon = 'fas fa-user-friends',
-			label = 'Escort',
-		},
-		{
 			event = 'qrp_police:requestCuffPed',
 			icon = 'fas fa-handshake',
 			label = 'Handcuff/Uncuff',

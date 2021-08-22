@@ -38,6 +38,11 @@ RegisterCommand("jail", function(source, args, rawCommand)
 		local playerId = tonumber(args[1])
 		local time = tonumber(args[2])
 		TriggerEvent('esx_jail:sendToJail', playerId, time * 60)
+		MySQL.Async.execute('UPDATE `users` SET `drugrep` = @reputation WHERE `identifier` = @identifier', {
+			['@reputation'] = 0,
+			['@identifier'] = tarPlayer.identifier,
+		}, function()
+		end)
 	else
 		TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'inform', text = 'You are not a cop!' })
 	end
