@@ -2,20 +2,21 @@
 
 <CHandlingDataMgr>
 
-<Item type="CHandlingData">
+  <HandlingData>
+    <Item type="CHandlingData">
       <handlingName>POLJEEP</handlingName>
-      <fMass value="2300.000000" />
+      <fMass value="2380.000000" />
       <fInitialDragCoeff value="3.500000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.0000000" z="0.0200000" />
       <vecInertiaMultiplier x="1.000000" y="1.900000" z="1.900000" />
-      <fDriveBiasFront value="0.000000" />
+      <fDriveBiasFront value="0.500000" />
       <nInitialDriveGears value="6" />
-      <fInitialDriveForce value="0.335000" />
+      <fInitialDriveForce value="0.2350000" />
       <fDriveInertia value="1.000000" />
       <fClutchChangeRateScaleUpShift value="2.500000" />
       <fClutchChangeRateScaleDownShift value="2.400000" />
-      <fInitialDriveMaxFlatVel value="185.800000" />
+      <fInitialDriveMaxFlatVel value="180.800000" />
       <fBrakeForce value="1.100000" />
       <fBrakeBiasFront value="0.400000" />
       <fHandBrakeForce value="1.450000" />
@@ -64,4 +65,5 @@
       </SubHandlingData>
     </Item>
   </HandlingData>
+
 </CHandlingDataMgr>
