@@ -1172,7 +1172,6 @@ AddEventHandler('deleteHeli',function()
     TaskLeaveVehicle(PlayerPedId(), vheli, 0)
     Wait(2000)
     DeleteVehicle(heli) --refundbike
-    TriggerServerEvent("refundpdheli")
 end) --returntow
 
 

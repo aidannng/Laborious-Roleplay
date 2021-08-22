@@ -151,6 +151,18 @@ AddEventHandler('pdvehicle:menu', function()
                     price = 50000
 				}
 			}
+		},
+        {
+			id = 8,
+			header = "Jeep Trackhawk",
+			txt = "$65,000",
+			params = {
+				event = "pdvehicle:buycar",
+				args = {
+					id = 8,
+                    price = 65000
+				}
+			}
 		}
 	})
 end)
@@ -168,13 +180,15 @@ AddEventHandler('pdvehicle:buycar', function(data)
             elseif id == 3 then
                 hash = GetHashKey("code3fpis")
             elseif id == 4 then
-                hash = GetHashKey("code14tahoe")
+                hash = GetHashKey("code314tahoe")
             elseif id == 5 then
                 hash = GetHashKey("code3ram")
             elseif id == 6 then
                 hash = GetHashKey("code3bmw")
             elseif id == 7 then
                 hash = GetHashKey("code318charg")
+            elseif id == 8 then
+                hash = GetHashKey("jeep")
             end
             print(hash)
             print(data.price)
