@@ -14,6 +14,28 @@ AddEventHandler("core-vehicle:remove-non-owned", function()
     MySQL.Async.execute("DELETE FROM vehicle_parts WHERE plate NOT IN (SELECT plate FROM owned_vehicles)",{})
 end)
 
+RegisterServerEvent("downgradeVehicles")
+AddEventHandler("downgradeVehicles", function()
+    MySQL.Async.fetchAll("SELECT vehicle FROM owned_vehicles", {}, function(vehicles)
+        if(vehicles and #vehicles>0) then
+            for x=1,#vehicles,1 do
+                local props = json.decode(vehicles[x].vehicle)
+
+                props.modEngine = -1
+                props.modTransmission = -1
+                props.turbo = -1
+                props.modBrakes = -1
+
+                local newprops = json.encode(props)
+
+                MySQL.Async.execute("UPDATE owned_vehicles SET vehicle = @props", {
+                    ['@props'] = newprops,
+                })
+            end
+        end
+    end)
+end)
+
 RegisterServerEvent("buymaterial")
 AddEventHandler("buymaterial", function(part, price, amount)
     local src = source

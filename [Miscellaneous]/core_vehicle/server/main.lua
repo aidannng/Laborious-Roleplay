@@ -121,6 +121,16 @@ AddEventHandler(
     end
 )
 
+RegisterServerEvent("core_vehicle:updateParts")
+AddEventHandler("core_vehicle:updateParts", function(plate, parts)
+    MySQL.Async.execute(
+        "REPLACE INTO vehicle_parts (plate, parts) values(@plate, @parts)",
+        {["@parts"] = json.encode(parts), ["@plate"] = plate},
+        function()
+        end
+    )
+end)
+
 RegisterServerEvent("core_vehicle:getVehicleParts")
 AddEventHandler(
     "core_vehicle:getVehicleParts",
@@ -235,7 +245,7 @@ end)--]]
 -- Get Vehicle Owned Status:
 ESX.RegisterServerCallback('core_vehicle:getIfVehicleOwned',function(source, cb, plate)
 	local xPlayer = ESX.GetPlayerFromId(source)
-    MySQL.Async.fetchAll("SELECT * FROM bbvehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
+    MySQL.Async.fetchAll("SELECT * FROM owned_vehicles WHERE plate=@plate",{['@plate'] = plate}, function(data) 
         if Config.OnlyOwnedVehicles then
 			if(data[1] ~= nil) then
 				cb(true)

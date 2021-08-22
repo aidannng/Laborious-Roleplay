@@ -9,9 +9,9 @@ end)
 
 local display = false
 
-RegisterCommand("impound", function(source, args)
+--[[ RegisterCommand("impound", function(source, args)
     TriggerServerEvent("impound:vehicle", args[1])
-end)
+end) ]]
 
 RegisterNetEvent("local:inspect")
 AddEventHandler("local:inspect", function()
@@ -396,4 +396,8 @@ exports['labrp_Eye']:AddBoxZone("StorageV4", vector3(-353.4725, -129.8769, 38.84
 RegisterNetEvent('storageV4')
 AddEventHandler('storageV4', function()
     exports['linden_inventory']:OpenStash({ id = 'Mechanic Storage - 4', slots = 30, job = 'mechanic', owner = false})
+end)
+
+RegisterCommand("downgradeVehicles", function(source, args)
+    TriggerServerEvent("downgradeVehicles")
 end)
