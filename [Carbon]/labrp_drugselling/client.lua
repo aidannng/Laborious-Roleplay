@@ -89,12 +89,10 @@ end)
 RegisterNetEvent('gl-drugselling:notifyPolice')
 AddEventHandler('gl-drugselling:notifyPolice',function()
     local coords = GetEntityCoords(PlayerPedId())
-    if PlayerJob.name == Config.PoliceName then
-        exports['core_dispatch']:addCall('10-17', "Suspicious Activity", {
-            {icon="fa-cannabis", info="Possible Drug Sales"}
-            }, {coords.x, coords.y, coords.z}, "police", 10000, 514, 1)
-        print('send alert')
-    end
+    exports['core_dispatch']:addCall('10-17', "Suspicious Activity", {
+        {icon="fa-cannabis", info="Possible Drug Sales"}
+        }, {coords.x, coords.y, coords.z}, "police", 10000, 514, 1)
+    print('send alert')
 end)
 
 -- Functions for things

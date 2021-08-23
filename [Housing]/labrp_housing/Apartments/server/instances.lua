@@ -25,84 +25,90 @@ CreateThread(function()
     AddEventHandler("loaf_motels:enter_room", function(motel, room, id, raid)
         local src = source
         local xPlayer = ESX.GetPlayerFromId(src)
-    
-        for instance, data in pairs(Instances) do
-            if data then
-                for i, guest in pairs(data.users) do
-                    if guest == src then
-                        return TriggerClientEvent("esx:showNotification", Strings["already_inside"])
-                    end
-                end
-            end
-        end
-    
-        local instance_name = ("motel_%s:room_%s:id_%s"):format(motel, room, id)
-        TriggerEvent("getKeys", src, function(keys)
-            if keys then
-                local has_key, should_enter = false, false
-    
-                for k, v in pairs(keys) do
-                    if v.key_id == instance_name then
-                        has_key = true
-                    end
-                end
-
-                if raid and xPlayer and Config.Policeraid.Enabled then
-                    for k, v in pairs(Config.Policeraid.Jobs) do
-                        if v.job == xPlayer.job.name and xPlayer.job.grade >= v.grade then
-                            has_key = true
-                        end
-                    end
-                end
-    
-                if not has_key then
-                    if GlobalState[instance_name] then
-                        should_enter = true
-                    else
-                        return TriggerClientEvent("esx:showNotification", src, Strings["no_key"])
-                    end
-                else
-                    should_enter = true
-                end
-    
-                if should_enter then
-                    if Instances[instance_name] then
-                        for k, v in pairs(Instances[instance_name].users) do
-                            if v == src then
+        MySQL.Async.fetchAll('SELECT `jail_time` FROM `users` WHERE identifier = @identifier', {
+            ['@identifier'] = xPlayer.identifier
+        }, function(result)
+            if result[1] and result[1].jail_time > 0 then
+                print("you're in jail")
+            else
+                for instance, data in pairs(Instances) do
+                    if data then
+                        for i, guest in pairs(data.users) do
+                            if guest == src then
                                 return TriggerClientEvent("esx:showNotification", Strings["already_inside"])
                             end
                         end
-                        table.insert(Instances[instance_name].users, src)
-                        TriggerClientEvent("loaf_motel:spawn_motel", src, Instances[instance_name])
-                    else
-                        MySQL.Async.fetchAll("SELECT `interior`, `identifier` FROM `loaf_motel` WHERE `motel`=@motel AND `room`=@room AND `id`=@id", {
-                            ["@motel"] = motel,
-                            ["@room"] = room,
-                            ["@id"] = id
-                        }, function(result)
-                            if result and result[1] then
-                                local spawn = find_spawn()
-                                if spawn then
-                                    Instances[instance_name] = {
-                                        location = Spawnpoints[spawn],
-                                        locationid = spawn,
-                                        motel = motel,
-                                        room = room,
-                                        id = id,
-                                        interior = result[1].interior,
-                                        users = {src},
-                                        instance = instance_name,
-                                        identifier = result[1].identifier
-                                    }
-    
-                                    TriggerClientEvent("loaf_motel:spawn_motel", src, Instances[instance_name])
+                    end
+                end
+
+                local instance_name = ("motel_%s:room_%s:id_%s"):format(motel, room, id)
+                TriggerEvent("getKeys", src, function(keys)
+                    if keys then
+                        local has_key, should_enter = false, false
+            
+                        for k, v in pairs(keys) do
+                            if v.key_id == instance_name then
+                                has_key = true
+                            end
+                        end
+
+                        if raid and xPlayer and Config.Policeraid.Enabled then
+                            for k, v in pairs(Config.Policeraid.Jobs) do
+                                if v.job == xPlayer.job.name and xPlayer.job.grade >= v.grade then
+                                    has_key = true
                                 end
                             end
-                        end)
+                        end
+            
+                        if not has_key then
+                            if GlobalState[instance_name] then
+                                should_enter = true
+                            else
+                                return TriggerClientEvent("esx:showNotification", src, Strings["no_key"])
+                            end
+                        else
+                            should_enter = true
+                        end
+            
+                        if should_enter then
+                            if Instances[instance_name] then
+                                for k, v in pairs(Instances[instance_name].users) do
+                                    if v == src then
+                                        return TriggerClientEvent("esx:showNotification", Strings["already_inside"])
+                                    end
+                                end
+                                table.insert(Instances[instance_name].users, src)
+                                TriggerClientEvent("loaf_motel:spawn_motel", src, Instances[instance_name])
+                            else
+                                MySQL.Async.fetchAll("SELECT `interior`, `identifier` FROM `loaf_motel` WHERE `motel`=@motel AND `room`=@room AND `id`=@id", {
+                                    ["@motel"] = motel,
+                                    ["@room"] = room,
+                                    ["@id"] = id
+                                }, function(result)
+                                    if result and result[1] then
+                                        local spawn = find_spawn()
+                                        if spawn then
+                                            Instances[instance_name] = {
+                                                location = Spawnpoints[spawn],
+                                                locationid = spawn,
+                                                motel = motel,
+                                                room = room,
+                                                id = id,
+                                                interior = result[1].interior,
+                                                users = {src},
+                                                instance = instance_name,
+                                                identifier = result[1].identifier
+                                            }
+                                            TriggerClientEvent("loaf_motel:spawn_motel", src, Instances[instance_name])
+                                        end
+                                    end
+                                end)
+                            end
+                        else
+                            TriggerClientEvent("esx:showNotification", src, Strings["door_locked"])
+                        end
                     end
-                else
-                    TriggerClientEvent("esx:showNotification", src, Strings["door_locked"])
-                end
+                end)
             end
         end)
     end)

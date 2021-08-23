@@ -155,8 +155,8 @@ Items = {
 	},
 
 	['paperbag'] = {
-		label = 'Paper Bag',
-		weight = 75,
+		label = 'Pouch',
+		weight = 2500,
 		stack = false,
 		close = false,
 	},

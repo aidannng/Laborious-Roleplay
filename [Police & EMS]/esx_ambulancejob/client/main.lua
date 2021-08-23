@@ -437,3 +437,88 @@ end
 if Config.LoadIpl then
 	RequestIpl('Coroner_Int_on') -- Morgue
 end
+
+
+local hospitalbedmodel = {
+	1631638868,
+}
+
+exports['labrp_Eye']:AddTargetModel(hospitalbedmodel,{
+	options = {
+		{
+			event = "labrp_police:putinbed",
+			icon = "fas fa-car-side",
+			label = "Put in Bed",
+			job = "ambulance"
+		},
+	},
+	distance = 3.0
+})
+
+AddEventHandler('labrp_police:putinbed', function(data)
+	print(GetEntityCoords(data.entity))
+	bedcoords = GetEntityCoords(data.entity)
+	local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+	if closestPlayer ~= -1 and closestDistance <= 3.0 then
+		print(GetPlayerServerId(closestPlayer))
+		TriggerServerEvent('labrp_police:requestputinbed', GetPlayerServerId(closestPlayer), bedcoords)
+	else
+		exports['mythic_notify']:SendAlert('error', 'Invalid Target!') 
+	end
+end)
+
+RegisterNetEvent('labrp_police:getinbed')
+AddEventHandler('labrp_police:getinbed', function(bed)
+	SetEntityCoords(PlayerPedId(), bed, false, false, false, false)
+	print('test')
+end)
+
+
+exports['labrp_Eye']:AddBoxZone("EMSDuty", vector3(310.23, -597.56, 43.29), 0.25, 0.4, {
+	name="EMSDuty",
+	heading=60,
+	debugPoly=false,
+	minZ=43.26,
+	maxZ=43.31
+	}, {
+		options = {
+			{
+				event = "emssign",
+				icon = "fas fa-business-time",
+				label = "EMS Duty",
+			},
+		},
+		distance = 1.49
+})
+
+
+RegisterNetEvent('labrp_ems:grandmas')
+AddEventHandler('labrp_ems:grandmas', function()
+	local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
+    if closestplayer ~= -1 and closestPlayerDistance <= 3.0 then
+		exports['mythic_notify']:SendAlert('inform', 'Reviving Player!')
+		local finished = exports["reload-skillbar"]:taskBar(35000,math.random(5,15))
+		if finished ~= 100 then
+			exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
+		else
+			local finished = exports["reload-skillbar"]:taskBar(200,math.random(5,15))
+			if finished ~= 100 then
+				exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
+			else
+				local finished = exports["reload-skillbar"]:taskBar(45000,math.random(5,15))
+				if finished ~= 100 then
+					exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
+				else
+					local finished = exports["reload-skillbar"]:taskBar(100,math.random(5,15))
+					if finished ~= 100 then
+						exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
+					else
+						TriggerServerEvent('ambulance:reviveclosest', GetPlayerServerId(closestPlayer))
+					end
+				end
+			end
+		end
+	else
+		exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
+	end
+end)
