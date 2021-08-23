@@ -91,13 +91,13 @@ Citizen.CreateThread(function()
     })
 end)
 
-Citizen.CreateThread(function()
-    exports["PolyZone"]:AddBoxZone("GarageArea", vector3(228, -787.7802, 30.72888), 40.0, 50.0, {
-        name="GarageArea",
-        heading=70,
-        debugPoly=false,
-    })
-end)
+exports["PolyZone"]:AddBoxZone("Grandmas", vector3(3314.717, 5179.662, 19.60803), 12.0, 4.0, {
+    name="Grandmas",
+    heading=320,
+    minz=18.9,
+    maxz=20.9,
+    debugPoly=true,
+})
 
 local bennysMenuEnable = false
 local pdheliMenu = false
@@ -107,6 +107,7 @@ local pdmbills = false
 local lscustomtowtruck = false
 local pdVehicleExtras = false
 local inGarageArea = false
+local inGrandmas = false
 
 AddEventHandler('bt-polyzone:enter', function(name)
     if name == "lscustomreturntruck" then
@@ -117,6 +118,18 @@ end)
 AddEventHandler('bt-polyzone:exit', function(name)
     if name == "lscustomreturntruck" then
         lscustomtowtruck = false
+    end
+end)
+
+AddEventHandler('bt-polyzone:enter', function(name)
+    if name == "Grandmas" then
+        inGrandmas = true
+    end
+end)
+
+AddEventHandler('bt-polyzone:exit', function(name)
+    if name == "Grandmas" then
+        inGrandmas = false
     end
 end)
 
@@ -240,6 +253,20 @@ rootMenuConfig =  {
             PlayerData = ESX.GetPlayerData()
             fuck = exports["esx_ambulancejob"]:GetDeath()
              if not fuck and IsPedInAnyVehicle(PlayerPedId(), false) then
+                 return true
+             end
+         end,
+    },
+    {
+        id = "grandmas",
+        displayName = "Revive Person",
+        icon = "#medic-revive",
+        functionName = "labrp_ems:grandmas",
+        enableMenu = function()
+        local ped = PlayerPedId()
+            PlayerData = ESX.GetPlayerData()
+            fuck = exports["esx_ambulancejob"]:GetDeath()
+             if not fuck and inGrandmas then
                  return true
              end
          end,
@@ -593,7 +620,7 @@ newSubMenus = {
     ['mechanic:mech'] = {
         title = "Inspect Vehicle",
         icon = "#general-check-vehicle",
-        functionName = "mechanic:inspect-core"
+        functionName = "mechanic:inspect"
     },
     ['mechanic:repair'] = {
         title = "Repair",

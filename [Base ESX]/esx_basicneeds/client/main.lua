@@ -12,7 +12,6 @@ end)
 AddEventHandler('esx_basicneeds:resetStatus', function()
 	TriggerEvent('esx_status:set', 'hunger', 1000000)
 	TriggerEvent('esx_status:set', 'thirst', 1000000)
-	TriggerEvent('esx_status:set', 'stress', 100000)
 end)
 
 RegisterNetEvent('esx_basicneeds:healPlayer')
@@ -20,8 +19,6 @@ AddEventHandler('esx_basicneeds:healPlayer', function()
 	-- restore hunger & thirst
 	TriggerEvent('esx_status:set', 'hunger', 1000000)
 	TriggerEvent('esx_status:set', 'thirst', 1000000)
-	TriggerEvent('esx_status:set', 'stress', 200000)
-
 	-- restore hp
 	local playerPed = PlayerPedId()
 	SetEntityHealth(playerPed, GetEntityMaxHealth(playerPed))
@@ -53,12 +50,6 @@ AddEventHandler('esx_status:loaded', function(status)
 		status.remove(75)
 	end)
 
- 	TriggerEvent('esx_status:registerStatus', 'stress', 100000, '#cadfff', function(status)
-		return false
-	end, function(status)
-		status.add(20)
-	end) 
-	
 	Citizen.CreateThread(function()
 		while true do
 			Citizen.Wait(1000)
@@ -87,28 +78,6 @@ AddEventHandler('esx_status:loaded', function(status)
 					end
 				end
 			end)
-
-			TriggerEvent('esx_status:getStatus', 'stress', function(status)
-				stressVal = status.val
-			end)
-
-			if health ~= prevHealth then
-				SetEntityHealth(playerPed, health)
-			end
-
-			if stressVal >= 750000 then
-				Citizen.Wait(3000)
-				--ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 0.16)
-			elseif stressVal >= 700000 then
-				Citizen.Wait(4000)
-				--ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 0.12)
-			elseif stressVal >= 600000 then
-				Citizen.Wait(5000)
-				--ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 0.07)
-			elseif stressVal >= 350000 then
-				Citizen.Wait(6000)
-				--ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 0.03)
-			end
 		end
 	end)
 end)

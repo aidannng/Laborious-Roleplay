@@ -589,6 +589,7 @@ AddEventHandler('luke_vehiclegarage:SpawnVehicle', function(data)
         if ESX.Game.IsSpawnPointClear(vector3(spawn[i].x, spawn[i].y, spawn[i].z), 1.0) then
 
             local spawnedVehicle = CreateVehicle(model, vector3(spawn[i].x, spawn[i].y, spawn[i].z), spawn[i].h, 1, 1)
+            SetEntityAsMissionEntity(spawnedVehicle)
             ESX.Game.SetVehicleProperties(spawnedVehicle, data.vehicle)
             SetVehicleInteriorColor(spawnedVehicle, tonumber(data.vehicle.modTrimA))
             SetVehicleLivery(spawnedVehicle, tonumber(data.vehicle.modLivery))
@@ -691,14 +692,12 @@ function DoVehicleDamage(vehicle, health)
             math.randomseed(GetGameTimer())
             local num = math.random(1, 4)
             for i = 0, 5, num do
-                SetVehicleDoorBroken(vehicle, i, false)
             end
         end
 
         if health.body < 825.0 then
             math.randomseed(GetGameTimer())
             local randomTire = tires[math.random(#tires)]
-            SetVehicleTyreBurst(vehicle, randomTire, true, 1000.0)
         end
 
         SetVehicleBodyHealth(vehicle, health.body)

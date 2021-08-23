@@ -34,6 +34,7 @@ Config.YouTool = {
 		{ name = 'campchair', price = 120 },
 		{ name = 'campchair2', price = 120 },
 		{ name = 'stopsign', price = 200 },
+		{ name = 'paperbag', price = 450 },
 	}
 }
 
@@ -85,18 +86,20 @@ Config.PoliceArmoury = {
 	name = 'Police Armoury',
 	inventory = {
 		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		--{ name = 'WEAPON_CARBINERIFLE', price = 20, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_CARBINERIFLE', price = 750, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 		--{ name = 'WEAPON_HEAVYPISTOL', price = 15, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 		--{ name = 'WEAPON_CARBINERIFLE_MK2', price = 25, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
 		{ name = 'WEAPON_STUNGUN', price = 100, metadata = { registered = true, serial = 'POL'} },
 		{ name = 'ammo-9', price = 1, },
-		--{ name = 'ammo-rifle', price = 10, },
+		{ name = 'ammo-rifle', price = 10, },
 		{ name = 'WEAPON_FLASHLIGHT', price = 50 },
 		{ name = 'WEAPON_NIGHTSTICK', price = 50 },
+		{ name = 'WEAPON_FIREEXTINGUISHER', price = 50 },
 		{ name = 'pdarmour', price = 75, },
 		{ name = 'ifak', price = 50, },
 		{ name = 'radio', price = 50 },
 		{ name = 'spikestrips', price = 150 },
+		{ name = 'paperbag', price = 125 },
 	}
 }
 

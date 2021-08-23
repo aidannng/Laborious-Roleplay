@@ -349,37 +349,21 @@ Citizen.CreateThread(function()
 	end
 end)
 
-local hospitalbedmodel = {
-	1631638868,
-}
+exports['labrp_Eye']:AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0.4, 0.6, {
+	name="PoliceDuty",
+	heading=91,
+	debugPoly=false,
+	minZ=30.79,
+	maxZ=30.99
+    }, {
+        options = {
+            {
+                event = "pdsign", --
+                icon = "fas fa-sign-in-alt",
+                label = "Sign On/Off",
+            },
 
-exports['labrp_Eye']:AddTargetModel(hospitalbedmodel,{
-	options = {
-		{
-			event = "labrp_police:putinbed",
-			icon = "fas fa-car-side",
-			label = "Put in Bed",
-			job = "ambulance"
-		},
-	},
-	distance = 3.0
-})
-
-AddEventHandler('labrp_police:putinbed', function(data)
-	print(GetEntityCoords(data.entity))
-	bedcoords = GetEntityCoords(data.entity)
-	local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
-	if closestPlayer ~= -1 and closestDistance <= 3.0 then
-		print(GetPlayerServerId(closestPlayer))
-		TriggerServerEvent('labrp_police:requestputinbed', GetPlayerServerId(closestPlayer), bedcoords)
-	else
-		exports['mythic_notify']:SendAlert('error', 'Invalid Target!') 
-	end
-end)
-
-RegisterNetEvent('labrp_police:getinbed')
-AddEventHandler('labrp_police:getinbed', function(bed)
-	SetEntityCoords(PlayerPedId(), bed, false, false, false, false)
-	print('test')
-end)
+        },
+        distance = 1.5
+    })
 
