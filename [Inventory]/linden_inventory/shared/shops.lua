@@ -13,7 +13,6 @@ Config.General = {
 		{ name = 'zippo', price = 12 },
 		{ name = 'donut', price = 10 },
 		{ name = 'energydrink', price = 20 },
-		{ name = 'phone', price = 200 },
 		{ name = 'wine', price = 15 },
 		{ name = 'vodka', price = 25 },
 		{ name = 'beer', price = 10 },
@@ -56,6 +55,17 @@ Config.Ammunation = {
 	}
 }
 
+Config.Tech = {
+	name = 'DigitalDen',
+	blip = {
+		id = 521,
+		colour = 27,
+		scale = 0.8
+	}, inventory = {
+		{ name = 'phone', price = 6500 },
+	}
+}
+
 Config.Hunting = {
 	name = 'Hunting',
 	blip = {
@@ -85,10 +95,8 @@ Config.Fishing = {
 Config.PoliceArmoury = {
 	name = 'Police Armoury',
 	inventory = {
-		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		{ name = 'WEAPON_CARBINERIFLE', price = 750, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		--{ name = 'WEAPON_HEAVYPISTOL', price = 15, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-		--{ name = 'WEAPON_CARBINERIFLE_MK2', price = 25, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
+		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL', components = {'flashlight'} }, grade = 0},
+		{ name = 'WEAPON_CARBINERIFLE', price = 750, metadata = { registered = true, serial = 'POL', components = {'flashlight','scope'} }, grade = 0},
 		{ name = 'WEAPON_STUNGUN', price = 100, metadata = { registered = true, serial = 'POL'} },
 		{ name = 'ammo-9', price = 1, },
 		{ name = 'ammo-rifle', price = 10, },
@@ -98,6 +106,7 @@ Config.PoliceArmoury = {
 		{ name = 'pdarmour', price = 75, },
 		{ name = 'ifak', price = 50, },
 		{ name = 'radio', price = 50 },
+		{ name = 'binoculars', price = 50 },
 		{ name = 'spikestrips', price = 150 },
 		{ name = 'paperbag', price = 125 },
 	}
@@ -150,7 +159,8 @@ Config.Shops = {
 	{ type = Config.YouTool, coords = vector3(-11.14, 6499.56, 30.50) }, --  -680.3,5838.8,16.31
 
 	{ type = Config.Hunting, coords = vector3(-679.2, 5837.6, 17.3), name = 'Hunting Store' }, --  Prison  1777.411, 2564.967, 45.65784
-	{ type = Config.Fishing, coords = vector3(-1593.402, 5196.883, 4.342163), name = 'Fishing Store' }, 
+	{ type = Config.Fishing, coords = vector3(-1593.402, 5196.883, 4.342163), name = 'Fishing Store' },
+	{ type = Config.Tech, coords = vector3(1134.105, -469.5956, 66.48425), name = 'Digital Den' },
 
 	{ coords = vector3(2557.458,  382.282, 108.622), name = '24/7'},
 	{ coords = vector3(-3038.939, 585.954, 7.908), name = '24/7'},

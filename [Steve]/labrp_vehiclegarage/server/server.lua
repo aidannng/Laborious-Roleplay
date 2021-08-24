@@ -1,3 +1,12 @@
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(10)
+    end
+
+    TriggerEvent("labrp_garage:resetVehicles")
+end)
+
 ESX.RegisterServerCallback('luke_vehiclegarage:GetVehicles', function(source, callback, type, garage)
     local xPlayer = ESX.GetPlayerFromId(source)
     local identifier = xPlayer.getIdentifier()
@@ -161,6 +170,14 @@ AddEventHandler('luke_vehiclegarage:SaveVehicle', function(vehicle, health, plat
     }, function(rowsChanged)
         
     end)
+end)
+
+RegisterNetEvent('labrp_garage:resetVehicles')
+AddEventHandler('labrp_garage:resetVehicles', function()
+    MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = @garage WHERE `garage` IS NULL', {
+        ['@garage'] = "Impound",
+        ['@stored'] = true,
+    })
 end)
 
 RegisterNetEvent('luke_vehiclegarage:PayImpound')

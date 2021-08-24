@@ -163,6 +163,30 @@ AddEventHandler('pdvehicle:menu', function()
                     price = 65000
 				}
 			}
+		},
+        {
+			id = 9,
+			header = "Cadillac CTS",
+			txt = "$72,500",
+			params = {
+				event = "pdvehicle:buycar",
+				args = {
+					id = 9,
+                    price = 72500
+				}
+			}
+		},
+        {
+			id = 10,
+			header = "Toyota Tundra",
+			txt = "$40,000",
+			params = {
+				event = "pdvehicle:buycar",
+				args = {
+					id = 10,
+                    price = 40000
+				}
+			}
 		}
 	})
 end)
@@ -189,6 +213,10 @@ AddEventHandler('pdvehicle:buycar', function(data)
                 hash = GetHashKey("code318charg")
             elseif id == 8 then
                 hash = GetHashKey("jeep")
+            elseif id == 9 then
+                hash = GetHashKey("caddyum")
+            elseif id == 10 then
+                hash = GetHashKey("tundra")
             end
             print(hash)
             print(data.price)

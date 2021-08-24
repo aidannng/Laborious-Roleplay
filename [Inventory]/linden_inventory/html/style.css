@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 html {
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	user-select: none;
 	color: white;
 }
@@ -65,7 +65,7 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
@@ -87,7 +87,7 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
@@ -109,7 +109,7 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
@@ -131,7 +131,7 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
@@ -153,7 +153,7 @@ body {
 	width: 15px !important;
 	font-size: 11px;
 	font-weight: bold;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 	line-height: 14px;
 	vertical-align: middle;
@@ -353,7 +353,7 @@ p {
 	line-height: 48px;
 	text-transform: uppercase;
 	font-size: 1.1pt;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .inv-option-item { 
