@@ -25,6 +25,7 @@ end)
 
 
 
+
 Citizen.CreateThread(function()
 	local blip = AddBlipForCoord(Config.JailBlip)
 

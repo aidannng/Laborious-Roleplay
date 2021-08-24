@@ -91,10 +91,23 @@ RegisterNUICallback('closemenu', function(data, cb)
     SendNUIMessage({
         state = 'destroy'
     })
+    
 
     PlaySoundFrontend(-1, "NAV", "HUD_AMMO_SHOP_SOUNDSET", 1)
 
     cb('ok')
+end)
+
+RegisterCommand("radial-close", function()
+    showMenu = false
+    SetNuiFocus(false, false)
+    SendNUIMessage({
+        state = 'destroy'
+    })
+    
+
+    PlaySoundFrontend(-1, "NAV", "HUD_AMMO_SHOP_SOUNDSET", 1)
+
 end)
 
 -- Callback function for when a slice is clicked, execute command

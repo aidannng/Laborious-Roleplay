@@ -25,6 +25,7 @@ RegisterCommand("jail", function(source, args, rawCommand)
 		local time = tonumber(args[2])
 		if tarPlayer then
 			TriggerEvent('labrp_jail:sendToJail', playerId, time * 60)
+			TriggerClientEvent('radial:Jail', playerId)
 			MySQL.Async.execute('UPDATE `users` SET `drugrep` = @reputation WHERE `identifier` = @identifier', {
 				['@reputation'] = 0,
 				['@identifier'] = tarPlayer.identifier,
@@ -67,7 +68,7 @@ AddEventHandler('labrp_jail:sendToJail', function(playerId, jailTime)
 				}, function(rowsChanged)
 					playersInJail[playerId] = {timeRemaining = jailTime, identifier = xPlayer.getIdentifier()}
 					realtime = jailTime//60
-					TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'inform', text = 'You have been jailed for '..realtime..' months' })
+					TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'inform', text = "You have been jailed for "..realtime.." months, Check you're F1 for Prison Jobs to reduce your time" })
 				end)
 			end
 		end
@@ -87,6 +88,8 @@ function unjailPlayer(playerId)
 			end)
 			TriggerEvent('linden_inventory:recoverPlayerInventory', playerId)
 			TriggerClientEvent('labrp_jail:unjail', playerId)
+			TriggerClientEvent('radial:UnJail', playerId)
+			TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = "You've been released from jail" })
 		else
 			TriggerClientEvent('mythic_notify:client:SendAlert', xPlayer.source, { type = 'error', text = 'This Person is not in jail' })
 		end
@@ -99,6 +102,12 @@ Citizen.CreateThread(function()
 
 		for playerId,data in pairs(playersInJail) do
 			playersInJail[playerId].timeRemaining = data.timeRemaining - 1
+			local xPlayer = ESX.GetPlayerFromId(playerId)
+
+			MySQL.Async.execute('UPDATE users SET jail_time = @jailtime WHERE identifier = @identifier', {
+				['@identifier'] = xPlayer.identifier,
+				['@jailtime'] = data.timeRemaining,
+			})
 
 			if data.timeRemaining < 1 then
 				unjailPlayer(playerId, false)
@@ -110,11 +119,10 @@ end)
 
 ESX.RegisterServerCallback('labrp_jail:checktime', function(source, callback)
     local xPlayer = ESX.GetPlayerFromId(source)
-	MySQL.Async.fetchAll('SELECT jail_time FROM users WHERE identifier = @identifier', {
-		['@identifier'] = xPlayer.identifier
-	}, function(result)
-		callback(result[1].jail_time//60)
-	end)
+
+	for playerId,data in pairs(playersInJail) do
+		callback(playersInJail[playerId].timeRemaining//60)
+	end
 end)
 
 
@@ -215,6 +223,26 @@ ESX.RegisterServerCallback('labrp_pdvehicles:checkvin', function(source, callbac
             callback(fullname)
 		else
 			callback('unknown')
+        end
+    end)
+end)
+
+
+RegisterServerEvent('show:fingerprint')
+AddEventHandler('show:fingerprint', function(TargetID)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local xTarget = ESX.GetPlayerFromId(TargetID)
+	local name = xTarget.getName()
+	local identifier = xTarget.identifier
+
+    MySQL.Async.fetchAll('SELECT `dateofbirth` FROM `users` WHERE `identifier` = @identifier', {
+        ['@identifier'] = xTarget.identifier,
+    }, function(result)
+        if result then
+			TriggerClientEvent('chat:addMessage', xPlayer.source, {
+				template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0}</div>',
+				args = { "^*^4Name^0 : "..name.." | ^4DOB^0 : "..result[1].dateofbirth }
+			});	
         end
     end)
 end)

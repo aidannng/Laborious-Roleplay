@@ -15,7 +15,7 @@ Weapons = {
 		stack = false,
 		close = false,
 		durability = 0.4,
-		ammoname = 'ammo-9'
+		ammoname = 'ammo-45'
 	},
 
 	['WEAPON_ASSAULTRIFLE'] = {
@@ -379,7 +379,7 @@ Weapons = {
 		stack = false,
 		close = false,
 		durability = 0.7,
-		ammoname = 'ammo-9'
+		ammoname = 'ammo-45'
 	},
 
 	['WEAPON_MARKSMANPISTOL'] = {
@@ -438,7 +438,7 @@ Weapons = {
 		stack = false,
 		close = false,
 		durability = 0.6,
-		ammoname = 'ammo-9'
+		ammoname = 'ammo-45'
 	},
 
 	['WEAPON_MOLOTOV'] = {
@@ -679,11 +679,12 @@ Weapons = {
 	},
 
 	['WEAPON_STUNGUN'] = {
-		label = 'Tazer',
+		label = 'PD Taser',
 		weight = 227,
 		stack = false,
 		close = false,
 		durability = 0.6,
+		ammoname = 'ammo-cart'
 	},
 
 	['WEAPON_SWEEPERSHOTGUN'] = {
@@ -1207,6 +1208,13 @@ Ammo = {
 	['ammo-44'] = {
 		label = '.44 Magnum',
 		weight = 16,
+		stack = true,
+		close = false,
+	},
+
+	['ammo-cart'] = {
+		label = 'Taser Cartridge',
+		weight = 500,
 		stack = true,
 		close = false,
 	},

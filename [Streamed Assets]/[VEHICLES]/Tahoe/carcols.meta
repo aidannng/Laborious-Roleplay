@@ -613,7 +613,7 @@
     </Lights>
 	<Sirens>
     <Item>
-      <id value="17964"/> <!--2021 Chevrolet Tahoe made by Zeakor Designs-->
+      <id value="19846"/> <!--2021 Chevrolet Tahoe made by Zeakor Designs-->
       <name>2021 Chevrolet Tahoe</name>
       <timeMultiplier value="1.00000000"/>
       <lightFalloffMax value="125.00000000"/>
