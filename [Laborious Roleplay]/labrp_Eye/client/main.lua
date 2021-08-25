@@ -502,41 +502,6 @@ end
 
 
 -- Config --
-
-AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0.4, 0.6, {
-	name="PoliceDuty",
-	heading=91,
-	debugPoly=false,
-	minZ=30.79,
-	maxZ=30.99
-    }, {
-        options = {
-            {
-                event = "pdsign", --
-                icon = "fas fa-sign-in-alt",
-                label = "Sign On/Off",
-            },
-
-        },
-        distance = 1.5
-    })
-
-    AddBoxZone("EMSDuty", vector3(310.23, -597.56, 43.29), 0.25, 0.4, {
-        name="EMSDuty",
-        heading=60,
-        debugPoly=false,
-        minZ=43.26,
-        maxZ=43.31
-        }, {
-            options = {
-                {
-                    event = "emssign",
-                    icon = "fas fa-business-time",
-                    label = "EMS Duty",
-                },
-            },
-            distance = 1.49
-        })
     
 
     local weaponstore = {

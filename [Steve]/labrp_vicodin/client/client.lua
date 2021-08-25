@@ -36,59 +36,60 @@ local DroppedOff = {}
 local hasFinished = false
 local Cooldown = false
 
-local Vicodin = {
-	`g_m_y_azteca_01`,
-}
-exports['labrp_Eye']:AddTargetModel(Vicodin, {
-	options = {
-        {
-			event = "labrp_vicodin:tradein",
-			icon = "fas fa-capsules",
-			label = "Trade In Vicodin",
-            canInteract = function(entity)
-                return true
-            end
-		},	
-		{
-			event = "labrp_vicodin:start",
-			icon = "fas fa-capsules",
-			label = "Vicodin Run - $1000",
-            canInteract = function(entity)
-                hasChecked = false
-                if not hasStarted and not Cooldown and not hasChecked then
-                    hasChecked = true
+exports['labrp_Eye']:AddBoxZone("VicodinTrade", vector3(975.4813, -2358.013, 30.80737), 0.75, 0.75, {
+	name="VicodinTrade",
+	heading=220.0,
+	debugPoly=false,
+	}, {
+        options = {
+            {
+                event = "labrp_vicodin:tradein",
+                icon = "fas fa-capsules",
+                label = "Trade In Vicodin",
+                canInteract = function(entity)
                     return true
                 end
-            end
-		},
-        {
-			event = "labrp_vicodin:cancelrun",
-			icon = "fas fa-times",
-			label = "Cancel Run",
-            canInteract = function(entity)
-                hasChecked = false
-                if hasStarted and not hasFinished and not hasChecked then
-                    hasChecked = true
-                    return true
+            },	
+            {
+                event = "labrp_vicodin:start",
+                icon = "fas fa-capsules",
+                label = "Vicodin Run - $1000",
+                canInteract = function(entity)
+                    hasChecked = false
+                    if not hasStarted and not Cooldown and not hasChecked then
+                        hasChecked = true
+                        return true
+                    end
                 end
-            end
-		},
-        {
-			event = "labrp_vicodin:finishrun",
-			icon = "fas fa-flag-checkered",
-			label = "Finish Run",
-            canInteract = function(entity)
-                hasChecked = false
-                if hasStarted and hasFinished and not hasChecked then
-                    hasChecked = true
-                    return true
+            },
+            {
+                event = "labrp_vicodin:cancelrun",
+                icon = "fas fa-times",
+                label = "Cancel Run",
+                canInteract = function(entity)
+                    hasChecked = false
+                    if hasStarted and not hasFinished and not hasChecked then
+                        hasChecked = true
+                        return true
+                    end
                 end
-            end
-		},	
-	},
-	job = {"all"},
-	distance = 2.5
-})
+            },
+            {
+                event = "labrp_vicodin:finishrun",
+                icon = "fas fa-flag-checkered",
+                label = "Finish Run",
+                canInteract = function(entity)
+                    hasChecked = false
+                    if hasStarted and hasFinished and not hasChecked then
+                        hasChecked = true
+                        return true
+                    end
+                end
+            },	
+        },
+        job = {"all"},
+        distance = 2.5
+    })
 
 
 AddEventHandler('labrp_vicodin:start', function()

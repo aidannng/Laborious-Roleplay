@@ -74,6 +74,19 @@ AddEventHandler('linden_inventory:openYTInventory', function()
     end
 end)
 
+AddEventHandler('linden_inventory:openTechInventory', function()
+    for i = 1, #Config.Shops, 1 do
+        for k,v in pairs(Config.Shops[i].type) do
+            if Config.Shops[i].type['name'] == 'DigitalDen' then
+                if #(GetEntityCoords(PlayerPedId()) - Config.Shops[i].coords) <= 1.8 then
+                    OpenShop(i)
+                    break
+                end
+            end
+        end
+    end
+end)
+
 
 exports['labrp_Eye']:AddBoxZone("YouToolKeeps", vector3(45.04, -1748.36, 29.55), 1.0, 1.0, {
 	name="YouToolKeeps",
@@ -198,45 +211,6 @@ AddEventHandler("steve:garage", function()
     SetEntityCoords(ped, -304.9714, -721.2264, 28.01611 ) 
 end) 
 
--- Citizen.CreateThread(function()
---     exports['labrp_Eye']:AddBoxZone("FBILift1", vector3(136.6022, -763.0417, 45.74219), 1.0, 0.8, {
---     name="FBILift1",
---     heading=90,
---     debugPoly=false,
---     minZ=45.7,
---     maxZ=46.6
---     }, {
---         options = {
---             {
---                 event = "fbi:Lift",
---                 icon = "far fa-clipboard",
---                 label = "Use Elevator",
---             },
---         },
---         job = {"all"},
---         distance = 1.5
---     })   
--- end)
-
--- Citizen.CreateThread(function()
---     exports['labrp_Eye']:AddBoxZone("FBILift49", vector3(136.6681, -763.0549, 242.1436), 1.0, 0.8, {
---     name="FBILift49",
---     heading=90,
---     debugPoly=false,
---     minZ=242.1, 
---     maxZ=243.0
---     }, {
---         options = {
---             {
---                 event = "fbi:Lift",
---                 icon = "far fa-clipboard",
---                 label = "Use Elevator",
---             },
---         },
---         job = {"all"},
---         distance = 1.5
---     })   
--- end)
 
 
 
@@ -367,4 +341,93 @@ AddEventHandler('linden_inventory:openPrisonInventory', function()
             end
         end
     end
+end)
+
+
+exports['labrp_Eye']:AddBoxZone("DigitalDen", vector3(1134.462, -467.9604, 66.48425), 1.55, 1.55, {
+	name="DigitalDen",
+	heading=170,
+	debugPoly=false,
+	minZ=65.55,
+	maxZ=67.55,
+    }, {
+        options = {
+            {
+                event = 'linden_inventory:openTechInventory',
+                icon = 'fas fa-hammer',
+                label = 'Tech Store',
+            },
+
+        },
+    distance = 2.5
+})
+
+
+local Vending = {
+    `prop_vend_snak_01`
+}
+
+exports['labrp_Eye']:AddTargetModel(Vending, {
+    options = {
+        {
+            event = 'linden_inventory:openVendingMachine',
+            icon = 'fas fa-utensils',
+            label = 'Vending Machine'
+        },
+    },
+    job = {'all'},
+    distance = 3.0
+})
+
+AddEventHandler('linden_inventory:openVendingMachine', function()
+	TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "Vending Machine",
+            txt = ""
+        },
+		{
+            id = 2,
+            header = "Water",
+            txt = "$10",
+            params = {
+                event = "linden_inventory:VendingBuyItem",
+                args = {
+                    item = 'water',
+                    price = 10
+                }
+            }
+        },
+        {
+            id = 3,
+            header = "Burger",
+            txt = "$10",
+            params = {
+                event = "linden_inventory:VendingBuyItem",
+                args = {
+                    item = 'burger',
+                    price = 10
+                }
+            }
+        },
+        {
+            id = 4,
+            header = "Sandwich",
+            txt = "$10",
+            params = {
+                event = "linden_inventory:VendingBuyItem",
+                args = {
+                    item = 'sandwich',
+                    price = 10
+                }
+            }
+        },
+    })
+end)
+
+
+AddEventHandler('linden_inventory:VendingBuyItem', function(data)
+    item = data.item
+    price = data.price
+    TriggerServerEvent('linden_inventory:vendingmachine', item, price)
 end)

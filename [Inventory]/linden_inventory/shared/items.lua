@@ -354,7 +354,7 @@ Items = {
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'gl-fishing:checkCanFish'
+			event = 'labrp_fish:start'
 		}
 	},
 
@@ -363,91 +363,34 @@ Items = {
 		weight = 1000,
 		stack = true,
 		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'labrp_fish:usebait'
+		}
 	},
 
-	['yellowtail'] = {
-		label = 'Yellowtail',
-		weight = 1000,
+	['Fish'] = {
+		label = 'Fish',
+		weight = 600,
 		stack = true,
 		close = false,
 	},
 
-	['tuna'] = {
-		label = 'Tuna',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['sea_bass'] = {
-		label = 'Sea Bass',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['grupper'] = {
-		label = 'Grupper',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['salmon'] = {
-		label = 'Salmon',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['mahi_mahi'] = {
-		label = 'Mahi Mahi',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['flounder'] = {
-		label = 'Flounder',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['cod'] = {
-		label = 'Cod',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['blowfish'] = {
-		label = 'Blowfish',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['orange_roughy'] = {
-		label = 'Orange Roughy',
-		weight = 1000,
-		stack = true,
-		close = false,
-	},
-
-	['turtle'] = {
+	['Turtle'] = {
 		label = 'Sea Turtle',
-		weight = 10000,
-		stack = false,
+		weight = 3000,
+		stack = true,
 		close = false,
 	},
 
-	['shark'] = {
+	['Shark'] = {
 		label = 'Shark',
-		weight = 10000,
-		stack = false,
+		weight = 7000,
+		stack = true,
 		close = false,
 	},
+
 	['stevecard'] = {
 		label = "Steve's Card",
 		weight = 0,
@@ -1066,7 +1009,7 @@ Items = {
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'labrp-chairs:Chair1'
+			event = 'labrp-chairs:UseChair1'
 		}
 	},
 
@@ -1078,7 +1021,7 @@ Items = {
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'labrp-chairs:Chair2'
+			event = 'labrp-chairs:UseChair2'
 		}
 	},
 

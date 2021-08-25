@@ -16,6 +16,7 @@ ui_page 'client/html/index.html'
 -- DON'T FORGET TO ADD THE SOUND FILES TO THIS!
 files {
     'client/html/index.html',
+    'client/html/sounds/hammer.ogg',
     'client/html/sounds/demo.ogg',
     'client/html/sounds/10-1315.ogg',
     'client/html/sounds/10-1314.ogg',
@@ -67,5 +68,5 @@ files {
     'client/html/sounds/demo.ogg',
     'client/html/sounds/flashbang.ogg',
     'client/html/sounds/pinpull.ogg',
-    'client/html/sounds/pager.ogg'
+    'client/html/sounds/pager.ogg',
 }

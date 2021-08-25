@@ -37,36 +37,15 @@ Config.Hospitals = {
 		},
 
 		AmbulanceActions = {
-			vector3(270.5, -1363.0, 23.5)
 		},
 
 		Pharmacies = {
-			vector3(306.6, -601.7, 43.2)
 		},
 
 		Vehicles = {
-			{
-				Spawner = vector3(323.4725, -561.455, 28.79126),
-				InsideShop = vector3(327.2703, -570.1583, 28.79126),
-				Marker = {type = 36, x = 1.0, y = 1.0, z = 1.0, r = 255, g = 0, b = 0, a = 100, rotate = true},
-				SpawnPoints = {
-					{coords = vector3(327.2703, -570.1583, 28.79126), heading = 227.6, radius = 1.0},
-					{coords = vector3(327.2703, -570.1583, 28.79126), heading = 227.6, radius = 1.0},
-					{coords = vector3(327.2703, -570.1583, 28.79126), heading = 227.6, radius = 1.0}
-				}
-			}
 		},
 
 		Helicopters = {
-			{
-				Spawner = vector3(317.5, -1449.5, 46.5),
-				InsideShop = vector3(305.6, -1419.7, 41.5),
-				Marker = {type = 34, x = 1.5, y = 1.5, z = 1.5, r = 255, g = 0, b = 0, a = 100, rotate = true},
-				SpawnPoints = {
-					{coords = vector3(313.5, -1465.1, 46.5), heading = 142.7, radius = 10.0},
-					{coords = vector3(299.5, -1453.2, 46.5), heading = 142.7, radius = 10.0}
-				}
-			}
 		},
 
 		FastTravels = {
@@ -128,38 +107,8 @@ Config.Hospitals = {
 
 Config.AuthorizedVehicles = {
 	car = {
-		ambulance = {
-			{model = 'ambulance', price = 5000}
-		},
-
-		doctor = {
-			{model = 'ambulance', price = 4500}
-		},
-
-		chief_doctor = {
-			{model = 'ambulance', price = 3000}
-		},
-
-		boss = {
-			{model = 'ambulance', price = 2000}
-		}
 	},
 
 	helicopter = {
-		ambulance = {},
-
-		doctor = {
-			{model = 'buzzard2', price = 150000}
-		},
-
-		chief_doctor = {
-			{model = 'buzzard2', price = 150000},
-			{model = 'seasparrow', price = 300000}
-		},
-
-		boss = {
-			{model = 'buzzard2', price = 10000},
-			{model = 'seasparrow', price = 250000}
-		}
 	}
 }

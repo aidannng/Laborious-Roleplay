@@ -501,7 +501,7 @@ AddEventHandler('labrp_ems:grandmas', function()
 		if finished ~= 100 then
 			exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 		else
-			local finished = exports["reload-skillbar"]:taskBar(200,math.random(5,15))
+			local finished = exports["reload-skillbar"]:taskBar(300,math.random(5,15))
 			if finished ~= 100 then
 				exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 			else
@@ -509,7 +509,7 @@ AddEventHandler('labrp_ems:grandmas', function()
 				if finished ~= 100 then
 					exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 				else
-					local finished = exports["reload-skillbar"]:taskBar(100,math.random(5,15))
+					local finished = exports["reload-skillbar"]:taskBar(250,math.random(5,15))
 					if finished ~= 100 then
 						exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 					else
@@ -521,4 +521,92 @@ AddEventHandler('labrp_ems:grandmas', function()
 	else
 		exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 	end
+end)
+
+local hasVehicleOut = false
+
+exports['labrp_Eye']:AddBoxZone("EMSGarage", vector3(336.4, -589.7, 28.7), 0.5, 0.5, {
+	name="EMSGarage",
+	heading=0,
+	debugPoly=false,
+	minZ=26.26,
+	maxZ=29.31
+	}, {
+		options = {
+			{
+				event = "labrp_ems:selectvehicle",
+				icon = "fas fa-ambulance",
+				label = "EMS Garage",
+				job = "ambulance",
+				canInteract = function(entity)
+					if not hasVehicleOut then
+						hasChecked = true
+						return true
+					end
+				end
+			},
+			{
+				event = "labrp_ems:returnAmbulance",
+				icon = "fas fa-undo-alt",
+				label = "Return Ambulance",
+				job = "ambulance",
+				canInteract = function(entity)
+					if hasVehicleOut then
+						return true
+					end
+				end
+			},
+		},
+	distance = 1.5
+})
+
+RegisterNetEvent('labrp_ems:selectvehicle')
+AddEventHandler('labrp_ems:selectvehicle', function()
+	TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 1,
+            header = "EMS Garage",
+            txt = ""
+        },
+        {
+            id = 2,
+            header = "EMS Speedo Van",
+            txt = "Classic Box Ambulance",
+            params = {
+                event = "labrp_ems:getcar",
+                args = {
+                    vehicle = 'emsnspeedo'
+                }
+            }
+        },
+    })
+end)
+
+RegisterNetEvent('labrp_ems:getcar')
+AddEventHandler('labrp_ems:getcar', function(data)
+	hash = data.vehicle      
+    if not HasModelLoaded(hash) then
+        RequestModel(hash)
+        while not HasModelLoaded(hash) do
+            Citizen.Wait(10)
+        end
+    end
+    vehicleBuy = CreateVehicle(hash, 333.0066, -590.2022, 28.79126, 340.0, 1, 1)
+    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+    Citizen.Wait(1000)
+    local plate = GetVehicleNumberPlateText(vehicle)
+    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
+	hasVehicleOut = true
+end)
+
+RegisterNetEvent('labrp_ems:returnAmbulance')
+AddEventHandler('labrp_ems:returnAmbulance', function()
+	if DoesEntityExist(vehicleBuy) then
+		DeleteEntity(vehicleBuy)
+		hasVehicleOut = false
+	else
+		hasVehicleOut = false
+	end
+	exports['mythic_notify']:SendAlert('inform', 'Vehicle Returned!')
 end)
