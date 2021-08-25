@@ -105,6 +105,12 @@ exports['labrp_Eye']:Player({
 			job = "police",
 		},
 		{
+			event = 'labrp_police:checkfingerprint',
+			icon = 'fas fa-fingerprint',
+			label = 'Check Fingerprint',
+			job = "police",
+		},
+		{
 			event = 'labrp_police:requestrevive',
 			icon = 'fas fa-stethoscope',
 			label = 'Revive',
@@ -139,6 +145,17 @@ AddEventHandler('labrp_police:requestrevive', function(data)
 end)
 
 
+RegisterNetEvent('labrp_police:checkfingerprint')
+AddEventHandler('labrp_police:checkfingerprint', function(data)
+    local targetPlayer = GetPlayerServerId(NetworkGetPlayerIndexFromPed(data.entity))
+
+	ESX.TriggerServerCallback('show:fingerprint', function(name,dob)
+		TriggerEvent('chat:addMessage', {
+			template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0}</div>',
+			args = { "^*^4Name^0 : "..name.." | ^4DOB^0 : "..dob }
+		});
+	end, targetPlayer)
+end)
 
 RegisterNetEvent('qrp_police:requestCuffPed')
 AddEventHandler('qrp_police:requestCuffPed', function(data)
@@ -201,8 +218,21 @@ Citizen.CreateThread(function()
 			DisableAllControlActions(0)
 			EnableControlAction(0, 1, true)
 			EnableControlAction(0, 2, true)
+			EnableControlAction(0, 2, true)
+			EnableControlAction(0, 245, true)
+			EnableControlAction(0, 249, true)
 		end
 		Citizen.Wait(5)
+	end
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		if cuffState then
+			LoadAnimDict('mp_arresting')
+			TaskPlayAnim(ESX.PlayerData.ped, 'mp_arresting', 'idle', 8.0, -8, -1, 49, 0.0, false, false, false)
+		end
+		Citizen.Wait(1000)
 	end
 end)
 

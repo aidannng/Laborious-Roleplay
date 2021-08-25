@@ -43,7 +43,7 @@ local whitelistedWeapons = {
 Citizen.CreateThread(function()
 	local lastShot = 0
 	while true do
-		Citizen.Wait(1)
+		Citizen.Wait(50)
 		local plyPed = PlayerPedId()
 		if IsPedShooting(plyPed) then
 			local whash = GetSelectedPedWeapon(plyPed)

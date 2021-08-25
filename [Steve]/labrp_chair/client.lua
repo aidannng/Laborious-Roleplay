@@ -54,30 +54,17 @@ function loadAnimDict(dict)
     end
 end
 
-function startcommands()
-if Config["UseCommands"] then
-	RegisterCommand(Config["Chair1Command"], function(source)
-		greenchair()
-	end)
-	
-	RegisterCommand(Config["Chair2Command"], function(source)
-		pladchair()
-	end)
-end
-end
 
-function startTriggers()
-if Config["UseTriggers"] then
-	RegisterNetEvent(Config["ClientTrigger1"])
-	AddEventHandler(Config["ClientTrigger1"], function()
-		greenchair()
-	end)
-	RegisterNetEvent(Config["ClientTrigger2"])
-	AddEventHandler(Config["ClientTrigger2"], function()
-		pladchair()
-	end)
-end
-end
+
+RegisterNetEvent('labrp-chairs:UseChair1')
+AddEventHandler('labrp-chairs:UseChair1', function()
+	greenchair()
+end)
+
+RegisterNetEvent('labrp-chairs:UseChair2')
+AddEventHandler('labrp-chairs:UseChair2', function()
+	pladchair()
+end)
 
 
 
@@ -129,12 +116,6 @@ RegisterCommand('clearprop', function()
 	removeAttachedProp2()
 end)
 
-AddEventHandler('onResourceStart', function(resourceName)
-    if (GetCurrentResourceName() == resourceName) then
-		startTriggers()
-		startcommands()
-    end
-end)
 
 RegisterNetEvent('use:stopsign')
 AddEventHandler('use:stopsign', function()

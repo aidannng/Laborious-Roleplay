@@ -1187,3 +1187,24 @@ if Config.ItemList then
 		end
 	end, true)
 end
+
+ESX.RegisterServerCallback('linden_inventory:vendingmachine', function(source, cb, item, price)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    moneycount = xPlayer.getInventoryItem('money').count
+    if moneycount >= price then
+		xPlayer.addInventoryItem(item, 1)
+    else
+		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You're too poor", })
+    end
+end)
+
+RegisterNetEvent('linden_inventory:vendingmachine')
+AddEventHandler('linden_inventory:vendingmachine', function(item, price)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    moneycount = xPlayer.getInventoryItem('money').count
+    if moneycount >= price then
+		xPlayer.addInventoryItem(item, 1)
+    else
+		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You're too poor", })
+    end
+end)

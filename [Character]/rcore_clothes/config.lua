@@ -95,7 +95,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -106,7 +106,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -147,7 +147,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -175,7 +175,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -186,7 +186,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -214,7 +214,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -228,7 +228,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -267,7 +267,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -287,7 +287,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -295,7 +295,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -303,7 +303,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -311,7 +311,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -319,7 +319,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -327,7 +327,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -364,7 +364,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -372,7 +372,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -412,7 +412,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -440,7 +440,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -451,7 +451,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -479,7 +479,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -493,7 +493,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -532,7 +532,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -552,7 +552,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -560,7 +560,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -568,7 +568,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -576,7 +576,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -584,7 +584,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -592,7 +592,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -629,7 +629,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -637,7 +637,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -665,7 +665,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -676,7 +676,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -715,7 +715,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -735,7 +735,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -743,7 +743,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -751,7 +751,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -759,7 +759,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -767,7 +767,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -775,7 +775,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -812,7 +812,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -820,7 +820,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -848,7 +848,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -859,7 +859,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -898,7 +898,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -918,7 +918,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -926,7 +926,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -934,7 +934,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -942,7 +942,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -950,7 +950,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -958,7 +958,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -995,7 +995,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -1003,7 +1003,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1043,7 +1043,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1071,7 +1071,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -1082,7 +1082,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1110,7 +1110,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -1124,7 +1124,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1163,7 +1163,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1183,7 +1183,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1191,7 +1191,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1199,7 +1199,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1207,7 +1207,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -1215,7 +1215,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1223,7 +1223,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1260,7 +1260,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -1268,7 +1268,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1296,7 +1296,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -1307,7 +1307,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1346,7 +1346,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1366,7 +1366,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1374,7 +1374,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1382,7 +1382,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1390,7 +1390,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -1398,7 +1398,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1406,7 +1406,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1443,7 +1443,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -1451,7 +1451,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1491,7 +1491,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1519,7 +1519,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -1530,7 +1530,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1558,7 +1558,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -1572,7 +1572,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1611,7 +1611,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1631,7 +1631,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1639,7 +1639,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1647,7 +1647,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1655,7 +1655,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -1663,7 +1663,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1671,7 +1671,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1708,7 +1708,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -1716,7 +1716,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1756,7 +1756,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1784,7 +1784,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -1795,7 +1795,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1823,7 +1823,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -1837,7 +1837,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -1876,7 +1876,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1896,7 +1896,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1904,7 +1904,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1912,7 +1912,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -1920,7 +1920,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -1928,7 +1928,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1936,7 +1936,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -1973,7 +1973,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -1981,7 +1981,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2021,7 +2021,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2049,7 +2049,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2060,7 +2060,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2088,7 +2088,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2102,7 +2102,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2141,7 +2141,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2161,7 +2161,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2169,7 +2169,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2177,7 +2177,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2185,7 +2185,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -2193,7 +2193,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2201,7 +2201,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2238,7 +2238,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -2246,7 +2246,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2286,7 +2286,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2314,7 +2314,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2325,7 +2325,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2353,7 +2353,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2367,7 +2367,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2406,7 +2406,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2426,7 +2426,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2434,7 +2434,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2442,7 +2442,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2450,7 +2450,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -2458,7 +2458,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2466,7 +2466,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2503,7 +2503,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -2511,7 +2511,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2551,7 +2551,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2579,7 +2579,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2590,7 +2590,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2618,7 +2618,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2632,7 +2632,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2671,7 +2671,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2691,7 +2691,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2699,7 +2699,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2707,7 +2707,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2715,7 +2715,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -2723,7 +2723,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2731,7 +2731,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2768,7 +2768,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -2776,7 +2776,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2816,7 +2816,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2844,7 +2844,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2855,7 +2855,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2883,7 +2883,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -2897,7 +2897,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -2936,7 +2936,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2956,7 +2956,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2964,7 +2964,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2972,7 +2972,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -2980,7 +2980,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -2988,7 +2988,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -2996,7 +2996,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3033,7 +3033,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -3041,7 +3041,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3081,7 +3081,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -3109,7 +3109,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -3120,7 +3120,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -3148,7 +3148,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -3162,7 +3162,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -3201,7 +3201,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3221,7 +3221,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3229,7 +3229,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -3237,7 +3237,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -3245,7 +3245,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -3253,7 +3253,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3261,7 +3261,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3297,7 +3297,7 @@ Config.Stores = {
                     {
                         label = 'Shoes',
                         name = 'shoes_1',
-                        from = 1,
+                        from = -1,
                         to = 88,
                         current = 1,
                         price = 150,
@@ -3305,7 +3305,7 @@ Config.Stores = {
                     {
                         label = 'Shoes color',
                         name = 'shoes_2',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3344,7 +3344,7 @@ Config.Stores = {
                     {
                         label = 'Hat color',
                         name = 'helmet_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -3372,7 +3372,7 @@ Config.Stores = {
                     {
                         label = 'Pants',
                         name = 'pants_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -3383,7 +3383,7 @@ Config.Stores = {
                     {
                         label = 'Pants color',
                         name = 'pants_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -3411,7 +3411,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -3425,7 +3425,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -3464,7 +3464,7 @@ Config.Stores = {
                     {
                         label = 'TShirt color',
                         name = 'tshirt_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3484,7 +3484,7 @@ Config.Stores = {
                     {
                         label = 'Torso 2',
                         name = 'torso_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3492,7 +3492,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vests',
                         name = 'bproof_1',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -3500,7 +3500,7 @@ Config.Stores = {
                     {
                         label = 'Bulletproof Vest Varities',
                         name = 'bproof_2',
-                        from = 0,
+                        from = -1,
                         to = 500,
                         current = 0,
                         price = 0,
@@ -3508,7 +3508,7 @@ Config.Stores = {
                     {
                         label = 'Arms',
                         name = 'arms',
-                        from = 1,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 0,
@@ -3516,7 +3516,7 @@ Config.Stores = {
                     {
                         label = 'Chains',
                         name = 'chain_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3524,7 +3524,7 @@ Config.Stores = {
                     {
                         label = 'Chain color',
                         name = 'chain_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 50,
@@ -3560,7 +3560,7 @@ Config.Stores = {
                     {
                         label = 'Glasses',
                         name = 'glasses_1',
-                        from = 1,
+                        from = -1,
                         to = 160,
                         current = 1,
                         reset = {
@@ -3574,7 +3574,7 @@ Config.Stores = {
                     {
                         label = 'Glasses color',
                         name = 'glasses_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 1,
                         price = 10,
@@ -3624,7 +3624,7 @@ Config.Stores = {
                     {
                         label = 'Mask color',
                         name = 'mask_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3671,7 +3671,7 @@ Config.Stores = {
                     {
                         label = 'Bags color',
                         name = 'bags_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3707,7 +3707,7 @@ Config.Stores = {
                     {
                         label = 'Hair Style',
                         name = 'hair_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3715,7 +3715,7 @@ Config.Stores = {
                     {
                         label = 'Hair Texture',
                         name = 'hair_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3723,7 +3723,7 @@ Config.Stores = {
                     {
                         label = 'Hair Color',
                         name = 'hair_color_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3731,7 +3731,7 @@ Config.Stores = {
                     {
                         label = 'Hair Highlights',
                         name = 'hair_color_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3739,7 +3739,7 @@ Config.Stores = {
                     {
                         label = 'Beard Style',
                         name = 'beard_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3747,7 +3747,7 @@ Config.Stores = {
                     {
                         label = 'Beard Thickness',
                         name = 'beard_2',
-                        from = 0,
+                        from = -1,
                         to = 10,
                         current = 10,
                         price = 10,
@@ -3755,7 +3755,7 @@ Config.Stores = {
                     {
                         label = 'Beard Color',
                         name = 'beard_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3763,7 +3763,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Style',
                         name = 'eyebrows_1',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3771,7 +3771,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Thickness',
                         name = 'eyebrows_2',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3779,7 +3779,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Color',
                         name = 'eyebrows_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3815,7 +3815,7 @@ Config.Stores = {
                     {
                         label = 'Hair Style',
                         name = 'hair_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3823,7 +3823,7 @@ Config.Stores = {
                     {
                         label = 'Hair Texture',
                         name = 'hair_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3831,7 +3831,7 @@ Config.Stores = {
                     {
                         label = 'Hair Color',
                         name = 'hair_color_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3839,7 +3839,7 @@ Config.Stores = {
                     {
                         label = 'Hair Highlights',
                         name = 'hair_color_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3847,7 +3847,7 @@ Config.Stores = {
                     {
                         label = 'Beard Style',
                         name = 'beard_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -3855,7 +3855,7 @@ Config.Stores = {
                     {
                         label = 'Beard Thickness',
                         name = 'beard_2',
-                        from = 0,
+                        from = -1,
                         to = 10,
                         current = 10,
                         price = 10,
@@ -3863,7 +3863,7 @@ Config.Stores = {
                     {
                         label = 'Beard Color',
                         name = 'beard_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3871,7 +3871,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Style',
                         name = 'eyebrows_1',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3879,7 +3879,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Thickness',
                         name = 'eyebrows_2',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3887,7 +3887,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Color',
                         name = 'eyebrows_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -3923,7 +3923,7 @@ Config.Stores = {
                     {
                         label = 'Bracelets Style',
                         name = 'bracelets_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3931,7 +3931,7 @@ Config.Stores = {
                     {
                         label = 'Bracelets Color',
                         name = 'bracelets_2',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3939,7 +3939,7 @@ Config.Stores = {
                     {
                         label = 'Watches Style',
                         name = 'watches_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3947,7 +3947,7 @@ Config.Stores = {
                     {
                         label = 'Watches Color',
                         name = 'watches_2',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3955,7 +3955,7 @@ Config.Stores = {
                     {
                         label = 'Ear Accessories', 
                         name = 'ears_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3991,7 +3991,7 @@ Config.Stores = {
                     {
                         label = 'Hair Style',
                         name = 'hair_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -3999,7 +3999,7 @@ Config.Stores = {
                     {
                         label = 'Hair Texture',
                         name = 'hair_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4007,7 +4007,7 @@ Config.Stores = {
                     {
                         label = 'Hair Color',
                         name = 'hair_color_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4015,7 +4015,7 @@ Config.Stores = {
                     {
                         label = 'Hair Highlights',
                         name = 'hair_color_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4023,7 +4023,7 @@ Config.Stores = {
                     {
                         label = 'Beard Style',
                         name = 'beard_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4031,7 +4031,7 @@ Config.Stores = {
                     {
                         label = 'Beard Thickness',
                         name = 'beard_2',
-                        from = 0,
+                        from = -1,
                         to = 10,
                         current = 10,
                         price = 10,
@@ -4039,7 +4039,7 @@ Config.Stores = {
                     {
                         label = 'Beard Color',
                         name = 'beard_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4047,7 +4047,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Style',
                         name = 'eyebrows_1',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4055,7 +4055,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Thickness',
                         name = 'eyebrows_2',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4063,7 +4063,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Color',
                         name = 'eyebrows_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4099,7 +4099,7 @@ Config.Stores = {
                     {
                         label = 'Hair Style',
                         name = 'hair_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -4107,7 +4107,7 @@ Config.Stores = {
                     {
                         label = 'Hair Texture',
                         name = 'hair_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4115,7 +4115,7 @@ Config.Stores = {
                     {
                         label = 'Hair Color',
                         name = 'hair_color_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4123,7 +4123,7 @@ Config.Stores = {
                     {
                         label = 'Hair Highlights',
                         name = 'hair_color_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4131,7 +4131,7 @@ Config.Stores = {
                     {
                         label = 'Beard Style',
                         name = 'beard_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4139,7 +4139,7 @@ Config.Stores = {
                     {
                         label = 'Beard Thickness',
                         name = 'beard_2',
-                        from = 0,
+                        from = -1,
                         to = 10,
                         current = 10,
                         price = 10,
@@ -4147,7 +4147,7 @@ Config.Stores = {
                     {
                         label = 'Beard Color',
                         name = 'beard_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4155,7 +4155,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Style',
                         name = 'eyebrows_1',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4163,7 +4163,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Thickness',
                         name = 'eyebrows_2',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4171,7 +4171,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Color',
                         name = 'eyebrows_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4207,7 +4207,7 @@ Config.Stores = {
                     {
                         label = 'Hair Style',
                         name = 'hair_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -4215,7 +4215,7 @@ Config.Stores = {
                     {
                         label = 'Hair Texture',
                         name = 'hair_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4223,7 +4223,7 @@ Config.Stores = {
                     {
                         label = 'Hair Color',
                         name = 'hair_color_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4231,7 +4231,7 @@ Config.Stores = {
                     {
                         label = 'Hair Highlights',
                         name = 'hair_color_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4239,7 +4239,7 @@ Config.Stores = {
                     {
                         label = 'Beard Style',
                         name = 'beard_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4247,7 +4247,7 @@ Config.Stores = {
                     {
                         label = 'Beard Thickness',
                         name = 'beard_2',
-                        from = 0,
+                        from = -1,
                         to = 10,
                         current = 10,
                         price = 10,
@@ -4255,7 +4255,7 @@ Config.Stores = {
                     {
                         label = 'Beard Color',
                         name = 'beard_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4263,7 +4263,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Style',
                         name = 'eyebrows_1',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4271,7 +4271,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Thickness',
                         name = 'eyebrows_2',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4279,7 +4279,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Color',
                         name = 'eyebrows_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4315,7 +4315,7 @@ Config.Stores = {
                     {
                         label = 'Hair Style',
                         name = 'hair_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -4323,7 +4323,7 @@ Config.Stores = {
                     {
                         label = 'Hair Texture',
                         name = 'hair_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4331,7 +4331,7 @@ Config.Stores = {
                     {
                         label = 'Hair Color',
                         name = 'hair_color_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4339,7 +4339,7 @@ Config.Stores = {
                     {
                         label = 'Hair Highlights',
                         name = 'hair_color_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4347,7 +4347,7 @@ Config.Stores = {
                     {
                         label = 'Beard Style',
                         name = 'beard_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4355,7 +4355,7 @@ Config.Stores = {
                     {
                         label = 'Beard Thickness',
                         name = 'beard_2',
-                        from = 0,
+                        from = -1,
                         to = 10,
                         current = 10,
                         price = 10,
@@ -4363,7 +4363,7 @@ Config.Stores = {
                     {
                         label = 'Beard Color',
                         name = 'beard_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4371,7 +4371,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Style',
                         name = 'eyebrows_1',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4379,7 +4379,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Thickness',
                         name = 'eyebrows_2',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4387,7 +4387,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Color',
                         name = 'eyebrows_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4423,7 +4423,7 @@ Config.Stores = {
                     {
                         label = 'Hair Style',
                         name = 'hair_1',
-                        from = 0,
+                        from = -1,
                         to = 160,
                         current = 0,
                         price = 120,
@@ -4431,7 +4431,7 @@ Config.Stores = {
                     {
                         label = 'Hair Texture',
                         name = 'hair_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4439,7 +4439,7 @@ Config.Stores = {
                     {
                         label = 'Hair Color',
                         name = 'hair_color_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4447,7 +4447,7 @@ Config.Stores = {
                     {
                         label = 'Hair Highlights',
                         name = 'hair_color_2',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4455,7 +4455,7 @@ Config.Stores = {
                     {
                         label = 'Beard Style',
                         name = 'beard_1',
-                        from = 0,
+                        from = -1,
                         to = 20,
                         current = 0,
                         price = 10,
@@ -4463,7 +4463,7 @@ Config.Stores = {
                     {
                         label = 'Beard Thickness',
                         name = 'beard_2',
-                        from = 0,
+                        from = -1,
                         to = 10,
                         current = 10,
                         price = 10,
@@ -4471,7 +4471,7 @@ Config.Stores = {
                     {
                         label = 'Beard Color',
                         name = 'beard_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4479,7 +4479,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Style',
                         name = 'eyebrows_1',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4487,7 +4487,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Thickness',
                         name = 'eyebrows_2',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,
@@ -4495,7 +4495,7 @@ Config.Stores = {
                     {
                         label = 'Eyebrows Color',
                         name = 'eyebrows_3',
-                        from = 0,
+                        from = -1,
                         to = 200,
                         current = 0,
                         price = 10,

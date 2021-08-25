@@ -246,3 +246,16 @@ AddEventHandler('show:fingerprint', function(TargetID)
         end
     end)
 end)
+
+ESX.RegisterServerCallback('show:fingerprint', function(source, cb, TargetID)
+    local xTarget = ESX.GetPlayerFromId(TargetID)
+	local name = xTarget.getName()
+
+	MySQL.Async.fetchAll('SELECT `dateofbirth` FROM `users` WHERE `identifier` = @identifier', {
+        ['@identifier'] = xTarget.identifier,
+    }, function(result)
+        if result then
+			cb(name, result[1].dateofbirth)
+        end
+    end)
+end)

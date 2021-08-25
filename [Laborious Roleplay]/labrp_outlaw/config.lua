@@ -14,14 +14,14 @@ Config.PhoneNumber = true
 Config.Default911 = false
 
 -- enable alerts when cops break the law and print to console
-Config.Debug = false
+Config.Debug = true
 
 -- sets report chance to 100%
 Config.DebugChance = false
 
 -- enable default alerts
-Config.Enable.Speeding = false
-Config.Enable.Shooting = false
+Config.Enable.Speeding = true
+Config.Enable.Shooting = true
 Config.Enable.Autotheft = true
 Config.Enable.Melee = false
 Config.Enable.PlayerDowned = true
