@@ -26,7 +26,8 @@ BossMenuLocations = {
 	{coords = vector3(108.0264, -750.5011, 242.1436), job = "fbi", label = "FBI"},  
 	{coords = vector3(390.9758, 270.0791, 94.97729), job = "galaxy", label = "Galaxy Nightclub"},  --376.9055, -823.9517, 29.29675
 	{coords = vector3(-172.4308, 923.0505, 239.9363), job = "sonora", label = "Sonora Cartel"},
-	{coords = vector3(-1007.855, -262.8132, 44.78174), job = "record", label = "Rockford Record"}
+	{coords = vector3(-1007.855, -262.8132, 44.78174), job = "record", label = "Rockford Record"},
+	{coords = vector3(948.0132, -1462.048, 33.61023), job = "notolerance", label = "No Tolerance"}
 
 },
 
@@ -54,7 +55,8 @@ BossMenuUsers = {
 	['jefe'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['owner'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
 	['ceo'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
-	['cfo'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true}
+	['cfo'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true},
+	['ntleader'] = {canWithdraw = true, canDeposit = true, canHire = true, canRank = true, canFire = true, canBonus = true}
 
 },
 

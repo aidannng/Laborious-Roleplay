@@ -78,6 +78,7 @@ Config.ChangePoint = {
         vector3(-280.4044, -722.0703, 125.4586), -- Steve's Penthouse daddy plasmas room
         vector3(-103.6088, -1782.462, 32.21167), -- Ballas Mech Shop
         vector3(124.2462, -1959.31, 15.21021), -- Ballas HQ 
+        vector3(931.1736, -1461.059, 33.61023), -- NT Warehouse
     }
 }
 Config.Stores = {
