@@ -187,6 +187,18 @@ AddEventHandler('pdvehicle:menu', function()
                     price = 40000
 				}
 			}
+		},
+        {
+			id = 11,
+			header = "Suzuki Dirt Bike (INTERCEPTOR)",
+			txt = "$30,000",
+			params = {
+				event = "pdvehicle:buycar",
+				args = {
+					id = 11,
+                    price = 30000
+				}
+			}
 		}
 	})
 end)
@@ -217,6 +229,8 @@ AddEventHandler('pdvehicle:buycar', function(data)
                 hash = GetHashKey("caddyum")
             elseif id == 10 then
                 hash = GetHashKey("tundra")
+            elseif id == 11 then
+                hash = GetHashKey("leobike")
             end
             print(hash)
             print(data.price)

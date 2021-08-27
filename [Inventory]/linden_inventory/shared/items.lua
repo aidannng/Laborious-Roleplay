@@ -954,7 +954,28 @@ Items = {
 
 	['gunhandle'] = {
 		label = 'Weapon Handle',
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	['gunstock'] = {
+		label = 'Weapon Stock',
 		weight = 800,
+		stack = true,
+		close = true,
+	},
+
+	['gunbarrel'] = {
+		label = 'Weapon Barrel',
+		weight = 1000,
+		stack = true,
+		close = true,
+	},
+
+	['gunmag'] = {
+		label = 'Weapon Magazine',
+		weight = 400,
 		stack = true,
 		close = true,
 	},
@@ -1022,6 +1043,42 @@ Items = {
 			consume = 0,
 			usetime = 0,
 			event = 'labrp-chairs:UseChair2'
+		}
+	},
+
+	['rifle_ammobox'] = {
+		label = 'Rifle Ammo Box',
+		weight = 2500,
+		stack = true,
+		close = false,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'ammobox:rifle'
+		}
+	},
+
+	['9mm_ammobox'] = {
+		label = '9mm Ammo Box',
+		weight = 2500,
+		stack = true,
+		close = false,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'ammobox:9mm'
+		}
+	},
+
+	['45_ammobox'] = {
+		label = '.45 ACP Ammo Box',
+		weight = 2500,
+		stack = true,
+		close = false,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'ammobox:45'
 		}
 	},
 
