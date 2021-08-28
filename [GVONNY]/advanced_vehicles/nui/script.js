@@ -45,6 +45,7 @@ window.addEventListener('message', function (event) {
             if(item.vehicleData.upgradesNUI[k]) {
                 installed = Lang[lang]['installed']
             }
+
             upgrade[item.upgrade[k].interface.index] = {name: item.upgrade[k].interface.name, idname: k, installed: installed, color: item.upgrade[k].interface.icon_color, img: item.upgrade[k].interface.icon, description: item.upgrade[k].interface.description}
         }
         
@@ -362,7 +363,6 @@ function renderUnits() {
 
 function makeAction(event) {
     let element = event.currentTarget
-
     let action = element.dataset.action
     let idname = element.dataset.idname
     let name = element.dataset.name

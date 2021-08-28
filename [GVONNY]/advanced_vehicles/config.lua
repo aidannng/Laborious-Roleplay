@@ -38,7 +38,7 @@ Config.oil = "oil"								-- Oil index configured in Config.maintenance
 Config.maintenance = {
 	['default'] = { -- Default means if you dont have a config for the specific vehicle, it will get the default one
 		['oil'] = {								-- Index
-			['lifespan'] = 3000,				-- Amount of KMs until the car requires service
+			['lifespan'] = 1500,				-- Amount of KMs until the car requires service
 			['damage'] = {
 				['type'] = 'engine',			-- Type of damage: this will damage the vehicle engine
 				['amount_per_km'] = 0.0001,		-- This is the base amount (in percentage) the car will take damage for each km he run [Max health in engine is 1000 so, 0.0001 of 1000 is 0.1 | Max value for handling is get from vehicle handling.meta file]
@@ -61,7 +61,7 @@ Config.maintenance = {
 			}
 		},
 		['tires'] = {
-			['lifespan'] = 5000,
+			['lifespan'] = 2500,
 			['damage'] = {
 				['type'] = 'CHandlingData',			-- This will damage the vehicle handling (handling.meta)
 				['handId'] = 'fTractionCurveMax',	-- handling.meta entry
@@ -84,7 +84,7 @@ Config.maintenance = {
 			}
 		},
 		['brake_pads'] = {
-			['lifespan'] = 4000,
+			['lifespan'] = 2000,
 			['damage'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fBrakeForce',
@@ -107,7 +107,7 @@ Config.maintenance = {
 			}
 		},
 		['transmission_oil'] = {
-			['lifespan'] = 7500,
+			['lifespan'] = 3000,
 			['damage'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveMaxFlatVel',
@@ -130,7 +130,7 @@ Config.maintenance = {
 			}
 		},
 		['shock_absorber'] = {
-			['lifespan'] = 6000,
+			['lifespan'] = 3000,
 			['damage'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fSuspensionForce',
@@ -153,7 +153,7 @@ Config.maintenance = {
 			}
 		},
 		['clutch'] = {
-			['lifespan'] = 10000,
+			['lifespan'] = 5000,
 			['damage'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fClutchChangeRateScaleUpShift',
@@ -176,7 +176,7 @@ Config.maintenance = {
 			}
 		},
 		['air_filter'] = {
-			['lifespan'] = 5000,
+			['lifespan'] = 2500,
 			['damage'] = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.001,
@@ -199,7 +199,7 @@ Config.maintenance = {
 			}
 		},
 		['fuel_filter'] = {
-			['lifespan'] = 3000,
+			['lifespan'] = 1500,
 			['damage'] = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.001,
@@ -222,7 +222,7 @@ Config.maintenance = {
 			}
 		},
 		['spark_plugs'] = {
-			['lifespan'] = 7500,
+			['lifespan'] = 3000,
 			['damage'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
@@ -245,7 +245,7 @@ Config.maintenance = {
 			}
 		},
 		['serpentine_belt'] = {
-			['lifespan'] = 7000,
+			['lifespan'] = 3500,
 			['damage'] = {
 				['type'] = 'engine',
 				['amount_per_km'] = 0.001,
@@ -361,7 +361,7 @@ Config.upgrades = {
 			},
 			['class'] = 'suspension'
 		},
-		['lifted_coil_overs'] = {
+		--[[ ['lifted_coil_overs'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fSuspensionRaise',
@@ -381,8 +381,8 @@ Config.upgrades = {
 				['index'] = 3
 			},
 			['class'] = 'suspension'
-		},
-		['lifted_coil_overs2'] = {
+		}, ]]
+		--[['lifted_coil_overs2'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fSuspensionRaise',
@@ -402,13 +402,184 @@ Config.upgrades = {
 				['index'] = 4
 			},
 			['class'] = 'suspension'
+		},]]
+		['nitrous'] = {
+			['improvements'] = {
+				['type'] = 'nitrous'	-- Nitro type
+			},
+			['item'] = {
+				['name'] = 'nitrous',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Nitrous',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/nitrous.png',
+				['description'] = 'Nitro increases the amount of oxygen entering the engines cylinders. Its as if, for a few seconds, he expands the engine volume to generate power',
+				['index'] = 6
+			},
+			['class'] = 'nitro'
 		},
-
-		--[['single_turbo'] = {
+		['2jz'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.5,
+				['value'] = 0.08,
+				['sound'] = 'toysupmk4',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = '2jzengine',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = '2JZ',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/2jzengine.png',
+				['description'] = 'Toyota 2JZ engine swap',
+				['index'] = 7
+			},
+			['class'] = 'engine'
+		},
+		['k20a'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.04,
+				['sound'] = 'k20a',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'k20a',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'K20',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/k20a.png',
+				['description'] = 'Honda K20 engine swap',
+				['index'] = 8
+			},
+			['class'] = 'engine'
+		},
+		['rb26'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.06,
+				['sound'] = 'rb26dett',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'rb26',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'RB26',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/rb26.png',
+				['description'] = 'Nissan RB26 engine swap',
+				['index'] = 9
+			},
+			['class'] = 'engine'
+		},
+		['rotary7'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.05,
+				['sound'] = 'rotary7',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'rotary7',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'Rotary',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/rotary7.png',
+				['description'] = 'Rotary engine swap',
+				['index'] = 10
+			},
+			['class'] = 'engine'
+		},
+		['amgv8'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.11,
+				['sound'] = 'brabus850',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'amgv8',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'AMG v8',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/amgv8.png',
+				['description'] = 'AMG v8 engine swap',
+				['index'] = 11
+			},
+			['class'] = 'engine'
+		},
+		['chevylt5'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.12,
+				['sound'] = 'predatorv8',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'chevylt5',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'Chevy v8',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/chevylt5.png',
+				['description'] = 'Chevy v8 engine swap',
+				['index'] = 12
+			},
+			['class'] = 'engine'
+		},
+		['lambov10'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.15,
+				['sound'] = 'lambov10',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'lambov10',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'Lambo v10',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/lambov10.png',
+				['description'] = 'Lambo v10 engine swap',
+				['index'] = 13
+			},
+			['class'] = 'engine'
+		},
+		['single_turbo'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.03,
 				['turbo'] = true,
 				['fixed_value'] = false
 			},
@@ -422,121 +593,122 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 5
+				['index'] = 14
 			},
 			['class'] = 'turbo'
-		}, ]]
-		['nitrous'] = {
-			['improvements'] = {
-				['type'] = 'nitrous'	-- Nitro type
-			},
-			['item'] = {
-				['name'] = 'nitrous',
-				['amount'] = 1,
-				['time'] = 10
-			},
-			['interface'] = {
-				['name'] = 'Nitro',
-				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/nitrous.png',
-				['description'] = 'Nitro increases the amount of oxygen entering the engines cylinders. Its as if, for a few seconds, he expands the engine volume to generate power',
-				['index'] = 6
-			},
-			['class'] = 'nitro'
 		},
-		--[[ ['AWD'] = {
+		['big_single_turbo'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
-				['handId'] = 'fDriveBiasFront',
-				['value'] = 0.5,
-				['powered_wheels'] = {0,1,2,3},	-- If the upgrade changes the drive bias, the vehicle powered wheels must be changed too
-				['fixed_value'] = true
-			},
-			['item'] = {
-				['name'] = 'AWD',
-				['amount'] = 1,
-				['time'] = 10
-			},
-			['interface'] = {
-				['name'] = 'AWD swap',
-				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/awd.png',
-				['description'] = 'An AWD transmission means the engine turns all 4 wheels of your vehicle',
-				['index'] = 7
-			},
-			['class'] = 'differential'
-		},
-		['RWD'] = {
-			['improvements'] = {
-				['type'] = 'CHandlingData',
-				['handId'] = 'fDriveBiasFront',
-				['value'] = 0.0,
-				['powered_wheels'] = {2,3},
-				['fixed_value'] = true
-			},
-			['item'] = {
-				['name'] = 'RWD',
-				['amount'] = 1,
-				['time'] = 10
-			},
-			['interface'] = {
-				['name'] = 'RWD swap',
-				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/rwd.png',
-				['description'] = 'An RWD transmission means the engine turns the 2 rear wheels of your vehicle',
-				['index'] = 8
-			},
-			['class'] = 'differential'
-		},
-		['FWD'] = {
-			['improvements'] = {
-				['type'] = 'CHandlingData',
-				['handId'] = 'fDriveBiasFront',
-				['value'] = 1.0,
-				['powered_wheels'] = {0,1},
-				['fixed_value'] = true
-			},
-			['item'] = {
-				['name'] = 'FWD',
-				['amount'] = 1,
-				['time'] = 10
-			},
-			['interface'] = {
-				['name'] = 'FWD swap',
-				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/fwd.png',
-				['description'] = 'A FWD transmission means the engine turns the 2 front wheels of your vehicle',
-				['index'] = 9
-			},
-			['class'] = 'differential'
-		},
-
-		['semislick'] = {
-			['improvements'] = {
-				['type'] = 'CHandlingData',
-				['handId'] = 'fTractionCurveMax',
-				['value'] = 0.4,
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.06,
+				['turbo'] = true,
 				['fixed_value'] = false
 			},
 			['item'] = {
-				['name'] = 'semislick',
+				['name'] = 'big_single_turbo',
 				['amount'] = 1,
 				['time'] = 10
 			},
 			['interface'] = {
-				['name'] = 'Semi Slick tires',
+				['name'] = 'Big Single Turbo',
 				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/semislick.png',
-				['description'] = 'The semi-slick tire is a street homologated tire used to fully exploit the performance of vehicles',
-				['index'] = 10
+				['icon'] = 'images/upgrades/big_single_turbo.png',
+				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
+				['index'] = 15
 			},
-			['class'] = 'tires'
+			['class'] = 'turbo'
 		},
-		['slick'] = {
+		['twin_turbo'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.10,
+				['turbo'] = true,
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'twin_turbo',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Twin Turbos',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/twin_turbo.png',
+				['description'] = 'Install a double turbines to generate more pressure and admit more cold air into the engine intake, generating more power',
+				['index'] = 16
+			},
+			['class'] = 'turbo'
+		},
+		['brembo_brakes'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fBrakeForce',
+				['value'] = 1.0,
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'brembo_brakes',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Brembo Brakes',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/brembo_brakes.png',
+				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
+				['index'] = 17
+			},
+			['class'] = 'brakes'
+		},
+		['wilwood_brakes'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fBrakeForce',
+				['value'] = 2.0,
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'wilwood_brakes',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Wilwood Brakes',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/wilwood_brakes.png',
+				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
+				['index'] = 18
+			},
+			['class'] = 'brakes'
+		},
+		['michelin'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fTractionCurveMax',
-				['value'] = 0.8,
+				['value'] = 0.2,
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'michelin_tires',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Michelin Tires',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/michelin_tires.png',
+				['description'] = '',
+				['index'] = 19
+			},
+			['class'] = 'tires'
+		},
+		['pirelli'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fTractionCurveMax',
+				['value'] = 0.3,
 				['fixed_value'] = false
 			},
 			['item'] = {
@@ -545,35 +717,36 @@ Config.upgrades = {
 				['time'] = 10
 			},
 			['interface'] = {
-				['name'] = 'Slick tires',
+				['name'] = 'Pirelli Tires',
 				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/slick.png',
-				['description'] = 'Slick tires, as they are smooth, have a greater area of ​​contact with the ground, thus ensuring better performance',
-				['index'] = 11
+				['icon'] = 'images/upgrades/pirelli_tires.png',
+				['description'] = '',
+				['index'] = 20
 			},
 			['class'] = 'tires'
 		},
-
-		['race_brakes'] = {
+		--[[ ['nitto'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
-				['handId'] = 'fBrakeForce',
-				['value'] = 2.0,
+				['handId'] = 'fTractionCurveMax',
+				['handId2'] = 'fLowSpeedTractionLossMult',
+				['value'] = 1.0,
+				['value2'] = 2.0,
 				['fixed_value'] = false
 			},
 			['item'] = {
-				['name'] = 'race_brakes',
+				['name'] = 'nitto_tires',
 				['amount'] = 1,
-				['time'] = 10
+				['time'] = 1
 			},
 			['interface'] = {
-				['name'] = 'Brembo brakes',
+				['name'] = 'Nitto Tires',
 				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/race_brakes.png',
-				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 12
+				['icon'] = 'images/upgrades/nitto_tires.png',
+				['description'] = '',
+				['index'] = 21
 			},
-			['class'] = 'brakes'
+			['class'] = 'tires'
 		}, ]]
 	}
 }

@@ -230,7 +230,9 @@ RegisterNetEvent('advanced_vehicles:upgradeCar')
 AddEventHandler('advanced_vehicles:upgradeCar', function(upgrade,idname)
 	if upgrade.type == "CHandlingData" then
 		local handFloat = 0
-		if not vehiclesHandlingsOriginal[vehicleDataAction.name] then vehiclesHandlingsOriginal[vehicleDataAction.name] = {} end
+		if not vehiclesHandlingsOriginal[vehicleDataAction.name] then 
+			vehiclesHandlingsOriginal[vehicleDataAction.name] = {} 
+		end
 		if vehiclesHandlingsOriginal[vehicleDataAction.name] and vehiclesHandlingsOriginal[vehicleDataAction.name][upgrade.handId] then
 			handFloat = vehiclesHandlingsOriginal[vehicleDataAction.name][upgrade.handId]
 		else
@@ -242,8 +244,21 @@ AddEventHandler('advanced_vehicles:upgradeCar', function(upgrade,idname)
 		if upgrade.fixed_value then
 			handFloat = 0
 		end
+
+		print(handFloat)
+		print(handFloat + upgrade.value)
+
 		vehiclesHandlingsDamagedAction[vehicleDataAction.name][upgrade.handId] = (handFloat + upgrade.value)
+
 		SetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId, vehiclesHandlingsDamagedAction[vehicleDataAction.name][upgrade.handId])
+
+		if(upgrade.value2 ~= nil) then
+			local value = GetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId2)
+			print(value)
+			SetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId2, value + upgrade.value2)
+			value = GetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId2)
+			print(value)
+		end
 		
 		applyVehicleMods(vehicleDataAction.veh,vehicleDataAction.name,{[idname] = true})
 	end
@@ -252,9 +267,13 @@ end)
 
 RegisterNetEvent('advanced_vehicles:removeUpgrade')
 AddEventHandler('advanced_vehicles:removeUpgrade', function(upgrade)
+	print(json.encode(upgrade))
 	if upgrade.type == "CHandlingData" then
 		local handFloat = 0
-		if not vehiclesHandlingsOriginal[vehicleDataAction.name] then vehiclesHandlingsOriginal[vehicleDataAction.name] = {} end
+		if not vehiclesHandlingsOriginal[vehicleDataAction.name] then 
+			vehiclesHandlingsOriginal[vehicleDataAction.name] = {} 
+		end
+
 		if vehiclesHandlingsOriginal[vehicleDataAction.name] and vehiclesHandlingsOriginal[vehicleDataAction.name][upgrade.handId] then
 			handFloat = vehiclesHandlingsOriginal[vehicleDataAction.name][upgrade.handId]
 		else
@@ -262,7 +281,7 @@ AddEventHandler('advanced_vehicles:removeUpgrade', function(upgrade)
 			vehiclesHandlingsOriginal[vehicleDataAction.name][upgrade.handId] = handFloat
 			TriggerServerEvent('advanced_vehicles:setGlobalVehicleHandling',vehicleDataAction.name,vehiclesHandlingsOriginal[vehicleDataAction.name])
 		end
-
+		
 		vehiclesHandlingsDamagedAction[vehicleDataAction.name][upgrade.handId] = nil
 		SetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId, handFloat)
 		
@@ -280,6 +299,10 @@ AddEventHandler('advanced_vehicles:removeUpgrade', function(upgrade)
 	elseif upgrade.type == "nitrous" then
 		vehicleDataAction.nitroAmount = 0
 		vehicleDataAction.nitroRecharges = 0
+	end
+
+	if upgrade.sound ~= nil then
+		ForceVehicleEngineAudio(vehicleDataAction.veh, GetDisplayNameFromVehicleModel(GetEntityModel(vehicleDataAction.veh)))
 	end
 
 	TriggerServerEvent('advanced_vehicles:setVehicleData',vehicleDataAction,vehiclesHandlingsDamagedAction[vehicleDataAction.name] or {})
@@ -349,6 +372,11 @@ function applyVehicleMods(veh,name,upgrades)
 					TriggerEvent('advanced_vehicles:startNitroRecharge')
 				end
 			end
+
+			if(arr[k].class == 'engine' and arr[k].improvements.sound ~= 'default') then
+				--veh = NetworkGetEntityFromNetworkId(veh)
+				ForceVehicleEngineAudio(veh, arr[k].improvements.sound)
+			end
 		end
 	end
 end
@@ -363,7 +391,6 @@ end)
 
 RegisterNetEvent('advanced_vehicles:showStatusUI')
 AddEventHandler('advanced_vehicles:showStatusUI', function()
-	print(vehicleData.loaded)
 	if vehicleData ~= nil and vehicleData ~={} and vehicleData.loaded == true then
 		local ped = PlayerPedId()
 		local veh = GetVehiclePedIsIn(ped)
@@ -471,7 +498,6 @@ end
 
 RegisterNetEvent("repair:tires")
 AddEventHandler("repair:tires", function()
-    print(vehicle)
     SetVehicleTyreFixed(vehicle,0)
     SetVehicleTyreFixed(vehicle,1)
     SetVehicleTyreFixed(vehicle,2)

@@ -39,15 +39,20 @@ end)
 
 RegisterNetEvent("sonora:signonoff")
 AddEventHandler("sonora:signonoff", function()
-    TriggerServerEvent("jobsignonoff", "bigdogs")
+    TriggerServerEvent("jobsignonoff", "sonora")
 end)
 
-exports['labrp_Eye']:AddBoxZone("BallasDesk", vector3(122.7824, -1945.833, 16.12012), 2.00, 0.50, {
+RegisterNetEvent("notolerance:signonoff")
+AddEventHandler("notolerance:signonoff", function()
+    TriggerServerEvent("jobsignonoff", "notolerance")
+end)
+
+exports['labrp_Eye']:AddBoxZone("BallasDesk", vector3(126.4615, -1955.222, 20.2821), 2.00, 0.50, {
     name="BallasDesk",
     debugPoly=false,
     heading=233.0,
-    minZ=15.0,
-    maxZ=15.2
+    minZ=20.0,
+    maxZ=21.2
 }, 
 {
     options = {
@@ -129,6 +134,44 @@ exports['labrp_Eye']:AddBoxZone("SonoraDesk", vector3(-163.7802, 902.1495, 233.9
     options = {
         {
             event = "sonora:signonoff",
+            icon = "fas fa-tools",
+            label = "Sign On/Off",
+        },
+    },
+    job = {"all"},
+    distance = 1.6
+})
+
+exports['labrp_Eye']:AddBoxZone("SonoraDesk", vector3(-163.7802, 902.1495, 233.9714), 2.00, 0.50, {
+    name="SonoraDesk",
+    debugPoly=false,
+    heading=136.0,
+    minZ=232.8,
+    maxZ=233.9
+}, 
+{
+    options = {
+        {
+            event = "sonora:signonoff",
+            icon = "fas fa-tools",
+            label = "Sign On/Off",
+        },
+    },
+    job = {"all"},
+    distance = 1.6
+})
+
+exports['labrp_Eye']:AddBoxZone("NotoriousDesk", vector3(939.6132, -1489.635, 30.20654), 2.00, 0.50, {
+    name="NotoriousDesk",
+    debugPoly=false,
+    heading=95.0,
+    minZ=28.8,
+    maxZ=31.9
+}, 
+{
+    options = {
+        {
+            event = "notolerance:signonoff",
             icon = "fas fa-tools",
             label = "Sign On/Off",
         },

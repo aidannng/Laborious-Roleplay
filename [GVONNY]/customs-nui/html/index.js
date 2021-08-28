@@ -57,10 +57,10 @@ $(function () {
     });
 
 
-    $("#buyScrap").click(function () {
-        var part = 'scrapmetal';
-        var price = 5;
-        var amount = $('#scrapCount').val();
+    $("#buyIron").click(function () {
+        var part = 'iron';
+        var price = $(this).data('price');
+        var amount = $('#ironCount').val();
         $.post('http://customs-nui/buymaterial', JSON.stringify({
             part:part,
             price:price,
@@ -72,7 +72,7 @@ $(function () {
 
     $("#buyAluminum").click(function () {
         var part = 'aluminum';
-        var price = 10;
+        var price = $(this).data('price');
         var amount = $('#aluminumCount').val();
         $.post('http://customs-nui/buymaterial', JSON.stringify({
             part:part,
@@ -85,7 +85,7 @@ $(function () {
 
     $("#buyRubber").click(function () {
         var part = 'rubber';
-        var price = 5;
+        var price = $(this).data('price');
         var amount = $('#rubberCount').val();
         $.post('http://customs-nui/buymaterial', JSON.stringify({
             part:part,
