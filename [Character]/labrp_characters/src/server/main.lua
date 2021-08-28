@@ -61,7 +61,7 @@ ESX.RegisterServerCallback("Multichar:DeleteCharacter",function(source,callback,
 
   local other_tables = {    
     --{table = 'user_accounts',               column = 'identifier'},
-    --{table = 'owned_vehicles',              column = 'owner'},
+    {table = 'owned_vehicles',              column = 'owner'},
   }
 
   MySQL.Async.execute("DELETE FROM users WHERE identifier=@identifier",{
