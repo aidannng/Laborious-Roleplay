@@ -1,4 +1,4 @@
-ESX 					= nil
+ESX = nil
 TriggerEvent(Config.ESX.ESXSHAREDOBJECT, function(obj) ESX = obj end)
 
 function SendWebhookMessage(webhook,message)
@@ -140,7 +140,7 @@ AddEventHandler('advanced_vehicles:makeAction', function(vehicleData,data,firstS
 								MySQL.Sync.execute(sql, {['@user_id'] = owner_id, ['@vehicle'] = vehicleData.name, ['@plate'] = vehicleData.plate, ['@item'] = data.idname, ['@km'] = math.floor(vehicleData.km/1000), ['@value'] = 100, ['@timer'] = os.time()});
 
 								TriggerClientEvent('advanced_vehicles:useTheJackFunction',source,data,firstStep)
-								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['service_done'], style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['service_done'], style = { ['border-right-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
 								TriggerClientEvent('repair:tires', source)
 
 								--TriggerClientEvent("advanced_vehicles:Notify",source,"sucesso",Lang[Config.lang]['service_done'])
@@ -230,7 +230,7 @@ AddEventHandler('advanced_vehicles:makeAction', function(vehicleData,data,firstS
 								TriggerClientEvent('advanced_vehicles:useTheJackFunction',source,data,firstStep)
 								--TriggerClientEvent("advanced_vehicles:Notify",source,"sucesso",Lang[Config.lang]['upgrade_done'])
 
-								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['upgrade_done'], style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['upgrade_done'], style = { ['border-right-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
 
 								SendWebhookMessage(Config.webhook,Lang[Config.lang]['upgrade_action']:format(data.idname,vehicleData.name,math.floor(vehicleData.km/1000),owner_id,user_id..os.date("\n["..Lang[Config.lang]['logs_date'].."]: %d/%m/%Y ["..Lang[Config.lang]['logs_hour'].."]: %H:%M:%S")))
 							else
@@ -289,7 +289,7 @@ AddEventHandler('advanced_vehicles:makeAction', function(vehicleData,data,firstS
 									xPlayer.addInventoryItem(upgrades.item.name, upgrades.item.amount)
 									TriggerClientEvent('advanced_vehicles:useTheJackFunction',source,data,firstStep)
 									--TriggerClientEvent("advanced_vehicles:Notify",source,"sucesso",Lang[Config.lang]['downgrade_done'])
-									TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['downgrade_done'], style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+									TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['downgrade_done'], style = { ['border-right-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
 
 									SendWebhookMessage(Config.webhook,Lang[Config.lang]['downgrade_action']:format(data.idname,vehicleData.name,math.floor(vehicleData.km/1000),owner_id,user_id..os.date("\n["..Lang[Config.lang]['logs_date'].."]: %d/%m/%Y ["..Lang[Config.lang]['logs_hour'].."]: %H:%M:%S")))
 								else
