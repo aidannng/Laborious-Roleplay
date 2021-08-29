@@ -48,5 +48,29 @@ Citizen.CreateThread(function()
     AddTextEntry('nspeedo', 'Speedo Hybrid')
     AddTextEntry('VAPID', 'Vapid')
 
+    AddTextEntry('code3fpis', 'Taurus Police')
+    AddTextEntry('ford', 'Ford')
+
+    AddTextEntry('code314tahoe', '2014 Tahoe Police')
+    AddTextEntry('chevy', 'Chevrolet')
+
+    AddTextEntry('code3ram', 'RAM Police')
+    AddTextEntry('dodge', 'Dodge')
+
+    AddTextEntry('code3bmw', 'Police Bike')
+    AddTextEntry('bmw', 'BMW')
+
+    AddTextEntry('code318charg', '2018 Charger')
+    AddTextEntry('dodge', 'Dodge')
+
+    AddTextEntry('tundra', 'Tundra TRD Police')
+    AddTextEntry('toyota', 'Toyota')
+
+    AddTextEntry('jeep', 'Trackhawk Police')
+    AddTextEntry('jeep', 'Jeep')
+
+    AddTextEntry('caddyum', 'CTS Police')
+    AddTextEntry('cadillac', 'Cadillac')
+
 
 end)

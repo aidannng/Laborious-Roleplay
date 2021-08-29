@@ -281,6 +281,8 @@ AddEventHandler('advanced_vehicles:removeUpgrade', function(upgrade)
 			vehiclesHandlingsOriginal[vehicleDataAction.name][upgrade.handId] = handFloat
 			TriggerServerEvent('advanced_vehicles:setGlobalVehicleHandling',vehicleDataAction.name,vehiclesHandlingsOriginal[vehicleDataAction.name])
 		end
+
+		print(handFloat)
 		
 		vehiclesHandlingsDamagedAction[vehicleDataAction.name][upgrade.handId] = nil
 		SetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId, handFloat)
@@ -301,8 +303,9 @@ AddEventHandler('advanced_vehicles:removeUpgrade', function(upgrade)
 		vehicleDataAction.nitroRecharges = 0
 	end
 
-	if upgrade.sound ~= nil then
-		ForceVehicleEngineAudio(vehicleDataAction.veh, GetDisplayNameFromVehicleModel(GetEntityModel(vehicleDataAction.veh)))
+	if upgrade.sound ~= 'default' then
+		local veh = NetworkGetNetworkIdFromEntity(vehicleDataAction.veh)
+		ForceVehicleEngineAudio(veh, GetDisplayNameFromVehicleModel(GetEntityModel(vehicleDataAction.veh)))
 	end
 
 	TriggerServerEvent('advanced_vehicles:setVehicleData',vehicleDataAction,vehiclesHandlingsDamagedAction[vehicleDataAction.name] or {})
@@ -374,8 +377,8 @@ function applyVehicleMods(veh,name,upgrades)
 			end
 
 			if(arr[k].class == 'engine' and arr[k].improvements.sound ~= 'default') then
-				--veh = NetworkGetEntityFromNetworkId(veh)
-				ForceVehicleEngineAudio(veh, arr[k].improvements.sound)
+				local vehicle = NetworkGetEntityFromNetworkId(veh)
+				ForceVehicleEngineAudio(vehicle, arr[k].improvements.sound)
 			end
 		end
 	end
