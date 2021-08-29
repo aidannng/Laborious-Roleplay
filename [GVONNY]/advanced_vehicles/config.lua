@@ -425,7 +425,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.08,
+				['value'] = 0.075,
 				['sound'] = 'toysupmk4',
 				['fixed_value'] = false
 			},
@@ -513,7 +513,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.11,
+				['value'] = 0.08,
 				['sound'] = 'brabus850',
 				['fixed_value'] = false
 			},
@@ -535,7 +535,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.12,
+				['value'] = 0.085,
 				['sound'] = 'predatorv8',
 				['fixed_value'] = false
 			},
@@ -553,11 +553,33 @@ Config.upgrades = {
 			},
 			['class'] = 'engine'
 		},
+		['gt3flat6'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.065,
+				['sound'] = 'gt3flat6',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'gt3flat6',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'Porsche GT3 Flat 6',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/gt3flat6.png',
+				['description'] = 'Chevy v8 engine swap',
+				['index'] = 12
+			},
+			['class'] = 'engine'
+		},
 		['lambov10'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.15,
+				['value'] = 0.10,
 				['sound'] = 'lambov10',
 				['fixed_value'] = false
 			},
@@ -623,7 +645,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.10,
+				['value'] = 0.085,
 				['turbo'] = true,
 				['fixed_value'] = false
 			},
@@ -712,7 +734,7 @@ Config.upgrades = {
 				['fixed_value'] = false
 			},
 			['item'] = {
-				['name'] = 'slick',
+				['name'] = 'pirelli_tires',
 				['amount'] = 1,
 				['time'] = 10
 			},
@@ -722,6 +744,27 @@ Config.upgrades = {
 				['icon'] = 'images/upgrades/pirelli_tires.png',
 				['description'] = '',
 				['index'] = 20
+			},
+			['class'] = 'tires'
+		},
+		['falken'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fTractionCurveMax',
+				['value'] = 0.4,
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'falken_tires',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Falken Tires',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/falken_tires.png',
+				['description'] = '',
+				['index'] = 21
 			},
 			['class'] = 'tires'
 		},

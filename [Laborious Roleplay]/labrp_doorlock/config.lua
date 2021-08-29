@@ -3602,3 +3602,79 @@ table.insert(Config.DoorList, {
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 	-- autoLock = 1000
 })
+
+-- NH Garage
+table.insert(Config.DoorList, {
+	authorizedJobs = { ['zerohes']=0 },
+	maxDistance = 6.0,
+	slides = 6.0,
+	fixText = false,
+	objCoords = vector3(58.24935, -2567.089, 7.343883),
+	objHeading = 179.99998474121,
+	lockpick = false,
+	objHash = 1939484582,
+	audioRemote = false,
+	garage = true,
+	locked = true,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- NH Door
+table.insert(Config.DoorList, {
+	authorizedJobs = { ['zerohes']=0 },
+	maxDistance = 2.0,
+	slides = false,
+	fixText = false,
+	objCoords = vector3(51.94278, -2571.946, 6.349079),
+	objHeading = 179.99998474121,
+	lockpick = false,
+	objHash = 486670049,
+	audioRemote = false,
+	garage = false,
+	locked = true,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- nh door 2
+table.insert(Config.DoorList, {
+	authorizedJobs = { ['zerohes']=0 },
+	maxDistance = 2.0,
+	slides = false,
+	fixText = false,
+	objCoords = vector3(55.18478, -2568.596, 6.345777),
+	objHeading = 270.00003051758,
+	lockpick = false,
+	objHash = 993120320,
+	audioRemote = false,
+	garage = false,
+	locked = true,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- nh door 3
+table.insert(Config.DoorList, {
+	authorizedJobs = { ['zerohes']=0 },
+	maxDistance = 2.0,
+	slides = false,
+	fixText = false,
+	objCoords = vector3(41.77607, -2578.194, 6.345184),
+	objHeading = 270.00003051758,
+	lockpick = false,
+	objHash = 757543979,
+	audioRemote = false,
+	garage = false,
+	locked = true,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
