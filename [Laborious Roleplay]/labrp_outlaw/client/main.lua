@@ -172,6 +172,8 @@ AddEventHandler('wf-alerts:clNotify', function(pData)
 			SendNUIMessage({action = 'display', info = pData, job = ESX.PlayerData.job.name, length = pData.length})
 			if pData.dispatchCode == 'officerdown' then
 				TriggerEvent("InteractSound_CL:PlayOnOne", "10-1314", 0.6)
+			elseif pData.dispatchCode == 'officerpanic' then
+				TriggerEvent("InteractSound_CL:PlayOnOne", "10-1314", 0.6)
 			else
 				TriggerEvent("InteractSound_CL:PlayOnOne", "10-1315", 0.6)
 			end
@@ -300,7 +302,7 @@ AddEventHandler('alert_pddead', function()
 		local title = ('%s %s'):format(rank, lastname)
 		refreshPlayerWhitelisted()
 		if isPlayerWhitelisted then
-			Citizen.Wait(2000)
+			Citizen.Wait(600)
 			data = {dispatchCode = 'officerdown', caller = name, coords = playerCoords, netId = netId, info = title, length = 10000}
 			TriggerServerEvent('wf-alerts:svNotify', data)
 			Citizen.Wait(20000)
@@ -315,8 +317,46 @@ AddEventHandler('alert_pddead', function()
 	end
 end, false)
 
+local canSendPaninc  = true
+RegisterNetEvent('alert_panicButton')
+AddEventHandler('alert_panicButton', function()
+	if canSendPaninc then
+		canSendPaninc = true
+		local netId = NetworkGetNetworkIdFromEntity(playerPed)
+		local name = ('%s %s'):format(firstname, lastname)
+		local title = ('%s %s'):format(rank, lastname)
+		refreshPlayerWhitelisted()
+		if isPlayerWhitelisted then
+			ESX.TriggerServerCallback('outlaw:server:hasitem', function(data)
+				if data then
+					exports['mythic_notify']:SendAlert('inform', 'Units have been notified') 
+					Citizen.Wait(600)
+					data = {dispatchCode = 'officerpanic', caller = name, coords = playerCoords, netId = netId, info = title, length = 10000}
+					TriggerServerEvent('wf-alerts:svNotify', data)
+					Citizen.Wait(10000)
+					canSendPaninc = true
+				else
+					exports['mythic_notify']:SendAlert('error', 'You do not have your radio on you to press your panic button') 
+				end
+			end, "radio")
+		end
+	end
+end, false)
+
 
 RegisterKeyMapping('alert_dead', 'Send distress signal to Police/EMS', 'keyboard', 'G')
+RegisterNetEvent('alert_distress')
+AddEventHandler('alert_distress', function()
+	if playerIsDead then
+		local netId = NetworkGetNetworkIdFromEntity(playerPed)
+		local name = ('%s %s'):format(firstname, lastname)
+		local title = ('%s %s'):format(rank, lastname)
+		Citizen.Wait(2000)
+		data = {dispatchCode = 'persondown', _U('caller_local'), coords = playerCoords, netId = netId, length = 8000}
+		TriggerServerEvent('wf-alerts:svNotify', data)
+		Citizen.Wait(20000)
+	end
+end, false)
 
 RegisterCommand('911', function(playerId, args, rawCommand)
 	if not args[1] then exports['mythic_notify']:SendAlert('error', 'You must include a message with your 911 call') return end
@@ -337,3 +377,11 @@ RegisterCommand('911a', function(playerId, args, rawCommand)
 	end
 	exports['mythic_notify']:SendAlert('success', 'Your message has been sent to the authorities')
 end, false)
+
+
+--[[ RegisterCommand("outlaw", function()
+	local data = {displayCode = '211', description = 'Robbery', isImportant = 0, recipientList = {'police'}, length = '10000', infoM = 'fa-info-circle', info = 'Vangelico Jewelry Store'}
+	local dispatchData = {dispatchData = data, caller = 'Alarm', coords = vector3(-633.9, -241.7, 38.1)}
+	TriggerEvent('wf-alerts:svNotify', dispatchData)
+end)
+ ]]

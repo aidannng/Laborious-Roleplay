@@ -584,7 +584,7 @@ RegisterCommand("heal", function(source, args, rawCommand)    -- /heal        he
 			local xTarget = ESX.GetPlayerFromId(targetId)
 			if tarPlayer ~= nil then
 				tarPlayer.triggerEvent('esx_basicneeds:healPlayer')
-				TriggerServerEvent("stress:remove", 1000000)
+				TriggerEvent("stress:remove", 1000000)
 
 				TriggerClientEvent('chat:addMessage', xTarget.source, {
 					template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0} </div>',  

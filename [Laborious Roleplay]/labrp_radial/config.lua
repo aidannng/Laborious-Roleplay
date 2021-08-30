@@ -241,7 +241,7 @@ rootMenuConfig =  {
                 return true
             end
         end,
-        subMenus = {"police:mdt"}
+        subMenus = {"police:mdt", "police:panic"}
     },
     {
         id = "vehicle",
@@ -415,7 +415,7 @@ rootMenuConfig =  {
         id = "policeDead",
         displayName = "Send Distress",
         icon = "#police-dead",
-        functionName = "panicButton",
+        functionName = "DistressSIgnal",
         enableMenu = function()
         local ped = PlayerPedId()
             PlayerData = ESX.GetPlayerData()
@@ -797,6 +797,11 @@ newSubMenus = {
         icon = "#judge-licenses-grant-business",
         functionName = "openmdt"
     },
+    ['police:panic'] = {
+        title = "Panic Button",
+        icon = "#judge-licenses-grant-business",
+        functionName = "alert_panicButton"
+    },
     ['police:cuff'] = {
         title = "Cuff",
         icon = "#cuffs-cuff",
@@ -1177,7 +1182,6 @@ AddEventHandler('openmdt', function()
     ExecuteCommand('mdt')
 end)--TriggerServerEvent('esx_policejob:drag', GetPlayerServerId(closestPlayer))
 
-
 RegisterNetEvent('police:seat')
 AddEventHandler('police:seat', function()
     local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
@@ -1216,7 +1220,12 @@ end)
 
 RegisterNetEvent("panicButton")
 AddEventHandler("panicButton", function()
-    TriggerEvent('alert_pddead')
+    TriggerEvent('alert_pddead') 
+end)
+
+RegisterNetEvent("DistressSIgnal")
+AddEventHandler("DistressSIgnal", function()
+    TriggerEvent('alert_distress')
 end)
 
 RegisterNetEvent("police:menuimpound")

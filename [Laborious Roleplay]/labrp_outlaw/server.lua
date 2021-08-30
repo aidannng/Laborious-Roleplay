@@ -52,6 +52,9 @@ local dispatchCodes = {
 	officerdown = {displayCode = '10-13A', description = _U('officerdown'), isImportant = 1, recipientList = {'police', 'ambulance', 'fbi'},
 	blipSprite = 653, blipColour = 84, blipScale = 1.5, infoM = 'fa-portrait'},
 
+	officerpanic = {displayCode = 'CODE 99', description = _U('officerpanic'), isImportant = 1, recipientList = {'police', 'fbi'},
+	blipSprite = 653, blipColour = 84, blipScale = 1.5, infoM = 'fa-portrait'},
+
 	persondown = {displayCode = '10-52', description = _U('persondown'), isImportant = 0, recipientList = {'police', 'ambulance', 'fbi'},
 	blipSprite = 153, blipColour = 84, blipScale = 1.5, infoM = 'fa-portrait'},
 
@@ -98,6 +101,9 @@ AddEventHandler('wf-alerts:svNotify', function(pData)
 	if not Blacklisted(source) then
 		local dispatchData
 		if pData.dispatchCode == 'officerdown' then
+			pData.info = getTitle(source)
+		end
+		if pData.dispatchCode == 'officerpanic' then
 			pData.info = getTitle(source)
 		end
 		if pData.dispatchCode == 'persondown' then
@@ -152,6 +158,16 @@ AddEventHandler('wf-alerts:svNotify911', function(message, caller, coords)
 		TriggerClientEvent('wf-alerts:clNotify', -1, pData) -- Send to all clients then check auth clientside?
 		TriggerEvent('mdt:newCall', message, caller, vector3(coords.x, coords.y, coords.z), false)
 	end
+end)
+
+ESX.RegisterServerCallback('outlaw:server:hasitem', function(source, cb, item)
+    local ply = ESX.GetPlayerFromId(source)
+    itemcount = ply.getInventoryItem(item).count
+    if itemcount > 0 then
+        cb(true)
+    else
+        cb(false)
+    end
 end)
 
 -- VERSION CHECK

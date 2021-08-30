@@ -120,6 +120,7 @@ exports['labrp_Eye']:Player({
 	distance = 3.0
 })
 
+
 AddEventHandler('labrp_police:requestrevive', function(data)
 	exports['mythic_progbar']:Progress({
 		name = "unique_action_name",
