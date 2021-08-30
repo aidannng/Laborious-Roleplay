@@ -20,6 +20,7 @@ files {
     'client/html/sounds/demo.ogg',
     'client/html/sounds/10-1315.ogg',
     'client/html/sounds/10-1314.ogg',
+    'client/html/sound/10-99.ogg',
     'client/html/sounds/doorbell.ogg',
     'client/html/sounds/doorknock.ogg',
     'client/html/sounds/robberydraw.ogg',

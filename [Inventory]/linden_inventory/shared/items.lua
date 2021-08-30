@@ -1093,6 +1093,34 @@ Items = {
 			event = 'use:stopsign'
 		}
 	},
+
+	['cocaleaves'] = {
+		label = 'Cocaine Leaf',
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	['packedcocaine'] = {
+		label = 'Packaged Cocaine',
+		weight = 900,
+		stack = true,
+		close = true,
+	},
+
+	['soakedcocaleaves'] = {
+		label = 'Soaked Coca Leaves',
+		weight = 625,
+		stack = true,
+		close = true,
+	},
+
+	['unpackedcocaine'] = {
+		label = 'Unpackaged Cocaine',
+		weight = 500,
+		stack = true,
+		close = true,
+	},
 	
 }
 -- 

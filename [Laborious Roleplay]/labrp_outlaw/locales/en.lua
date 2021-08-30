@@ -30,4 +30,5 @@ Locales['en'] = {
     ['officerdown'] = "Officer is down",
     ['persondown'] = "Person is injured",--officerinjured
     ['officerinjured'] = "Officer is injured",
+    ['officerpanic'] = "OFFICER PANIC BUTTON",
 }
