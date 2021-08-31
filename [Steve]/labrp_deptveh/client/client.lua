@@ -94,68 +94,68 @@ AddEventHandler('pdvehicle:menu', function()
 		},
 		{
 			id = 3,
-			header = "Ford Taurus",
-			txt = "$25,000",
+			header = "2018 Dodge Charger",
+			txt = "$40,000",
 			params = {
 				event = "pdvehicle:buycar",
 				args = {
 					id = 3,
-                    price = 25000
+                    price = 40000
 				}
 			}
 		},
 		{
 			id = 4,
-			header = "2014 Tahoe",
-			txt = "$30,000 (Off-Road)",
+			header = "2020 Ford Explorer",
+			txt = "$32,500 (Off-Road)",
 			params = {
 				event = "pdvehicle:buycar",
 				args = {
 					id = 4,
-                    price = 30000
+                    price = 32500
 				}
 			}
 		},
         {
 			id = 5,
-			header = "Dodge RAM",
-			txt = "$35,000 (Off-Road)",
+			header = "2018 Tahoe",
+			txt = "$38,500 (Off-Road)",
 			params = {
 				event = "pdvehicle:buycar",
 				args = {
 					id = 5,
-                    price = 35000
+                    price = 38500
 				}
 			}
 		},
         {
 			id = 6,
-			header = "BMW Motorcycle",
-			txt = "$25,000 (Motor)",
+			header = "Harley Motorbike",
+			txt = "$20,000 (Motor)",
 			params = {
 				event = "pdvehicle:buycar",
 				args = {
 					id = 6,
-                    price = 25000
+                    price = 20000
 				}
 			}
 		},
         {
 			id = 7,
-			header = "2018 Charger",
-			txt = "$50,000",
+			header = "Suzuki Motorbike",
+			txt = "$25,000 (Motor)",
 			params = {
 				event = "pdvehicle:buycar",
 				args = {
 					id = 7,
-                    price = 50000
+                    price = 25000
 				}
 			}
 		},
         {
 			id = 8,
-			header = "Jeep Trackhawk",
-			txt = "$65,000",
+			header = "Ford Mustang",
+			txt = "$65,000 (Interceptor)",
 			params = {
 				event = "pdvehicle:buycar",
 				args = {
@@ -164,42 +164,6 @@ AddEventHandler('pdvehicle:menu', function()
 				}
 			}
 		},
-        {
-			id = 9,
-			header = "Cadillac CTS",
-			txt = "$72,500",
-			params = {
-				event = "pdvehicle:buycar",
-				args = {
-					id = 9,
-                    price = 72500
-				}
-			}
-		},
-        {
-			id = 10,
-			header = "Toyota Tundra",
-			txt = "$40,000",
-			params = {
-				event = "pdvehicle:buycar",
-				args = {
-					id = 10,
-                    price = 40000
-				}
-			}
-		},
-        {
-			id = 11,
-			header = "Suzuki Dirt Bike (INTERCEPTOR)",
-			txt = "$30,000",
-			params = {
-				event = "pdvehicle:buycar",
-				args = {
-					id = 11,
-                    price = 30000
-				}
-			}
-		}
 	})
 end)
 
@@ -214,23 +178,17 @@ AddEventHandler('pdvehicle:buycar', function(data)
             if id == 2 then
                 hash = GetHashKey("code3cvpi")
             elseif id == 3 then
-                hash = GetHashKey("code3fpis")
-            elseif id == 4 then
-                hash = GetHashKey("code314tahoe")
-            elseif id == 5 then
-                hash = GetHashKey("code3ram")
-            elseif id == 6 then
-                hash = GetHashKey("code3bmw")
-            elseif id == 7 then
                 hash = GetHashKey("code318charg")
-            elseif id == 8 then
-                hash = GetHashKey("jeep")
-            elseif id == 9 then
-                hash = GetHashKey("caddyum")
-            elseif id == 10 then
-                hash = GetHashKey("tundra")
-            elseif id == 11 then
+            elseif id == 4 then
+                hash = GetHashKey("code320exp")
+            elseif id == 5 then
+                hash = GetHashKey("code318tahoe")
+            elseif id == 6 then
+                hash = GetHashKey("code3harley")
+            elseif id == 7 then
                 hash = GetHashKey("leobike")
+            elseif id == 8 then
+                hash = GetHashKey("code3mustang")
             end
             print(hash)
             print(data.price)

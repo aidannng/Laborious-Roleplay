@@ -78,7 +78,7 @@ Config.Tech = {
 		colour = 27,
 		scale = 0.8
 	}, inventory = {
-		{ name = 'phone', price = 6500 },
+		{ name = 'phone', price = 650 },
 	}
 }
 

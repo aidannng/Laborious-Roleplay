@@ -59,8 +59,26 @@ ESX.RegisterServerCallback("Multichar:DeleteCharacter",function(source,callback,
   local identifier = Multichar.GetIdentifier(source)
   local u_id = string.format("%i:%s",slot,identifier)
 
-  local other_tables = {    
-    --{table = 'user_accounts',               column = 'identifier'},
+  local other_tables = {
+    {table = 'advanced_vehicles',              column = 'user_id'},    
+    {table = 'advanced_vehicles_inspection',              column = 'user_id'},
+    {table = 'advanced_vehicles_services',              column = 'user_id'},
+    {table = 'advanced_vehicles_upgrades',              column = 'user_id'},
+    {table = 'bbanking_cards',              column = 'holder'},
+    {table = 'bbvehicles',              column = 'identifier'},
+    {table = 'billing',              column = 'identifier'},
+    {table = 'datastore_data',              column = 'owner'},
+    {table = 'linden_inventory',              column = 'owner'},
+    {table = 'loaf_keys',              column = 'identifier'},
+    {table = 'loaf_motel',              column = 'identifier'},
+    {table = 'luke_truckerjob',              column = 'identifier'},
+    {table = 'multi_job',              column = 'identifier'},
+    {table = 'phone_contacts',              column = 'identifier'},
+    {table = 'phone_information',              column = 'identifier'},
+    {table = 'phone_twitter_accounts',              column = 'identifier'},
+    {table = 'phone_twitter_messages',              column = 'identifier'},
+    {table = 'user_licenses',              column = 'owner'},
+    {table = 'user_accounts',               column = 'identifier'},
     {table = 'owned_vehicles',              column = 'owner'},
   }
 

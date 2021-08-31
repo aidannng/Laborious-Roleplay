@@ -249,17 +249,8 @@ AddEventHandler('advanced_vehicles:upgradeCar', function(upgrade,idname)
 		print(handFloat + upgrade.value)
 
 		vehiclesHandlingsDamagedAction[vehicleDataAction.name][upgrade.handId] = (handFloat + upgrade.value)
-
 		SetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId, vehiclesHandlingsDamagedAction[vehicleDataAction.name][upgrade.handId])
 
-		if(upgrade.value2 ~= nil) then
-			local value = GetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId2)
-			print(value)
-			SetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId2, value + upgrade.value2)
-			value = GetVehicleHandlingFloat(vehicleDataAction.veh, "CHandlingData", upgrade.handId2)
-			print(value)
-		end
-		
 		applyVehicleMods(vehicleDataAction.veh,vehicleDataAction.name,{[idname] = true})
 	end
 	TriggerServerEvent('advanced_vehicles:setVehicleData',vehicleDataAction,vehiclesHandlingsDamagedAction[vehicleDataAction.name] or {})
@@ -304,8 +295,8 @@ AddEventHandler('advanced_vehicles:removeUpgrade', function(upgrade)
 	end
 
 	if upgrade.sound ~= 'default' then
-		local veh = NetworkGetNetworkIdFromEntity(vehicleDataAction.veh)
-		ForceVehicleEngineAudio(veh, GetDisplayNameFromVehicleModel(GetEntityModel(vehicleDataAction.veh)))
+		local vehicle = VehToNet(vehicleDataAction.veh)
+		TriggerServerEvent("advanced_vehicles:updateEngineSound", vehicle, GetDisplayNameFromVehicleModel(GetEntityModel(vehicleDataAction.veh)))
 	end
 
 	TriggerServerEvent('advanced_vehicles:setVehicleData',vehicleDataAction,vehiclesHandlingsDamagedAction[vehicleDataAction.name] or {})
@@ -377,12 +368,18 @@ function applyVehicleMods(veh,name,upgrades)
 			end
 
 			if(arr[k].class == 'engine' and arr[k].improvements.sound ~= 'default') then
-				local vehicle = NetworkGetEntityFromNetworkId(veh)
-				ForceVehicleEngineAudio(vehicle, arr[k].improvements.sound)
+				local vehicle = VehToNet(veh)
+				TriggerServerEvent("advanced_vehicles:updateEngineSound", vehicle, arr[k].improvements.sound)
 			end
 		end
 	end
 end
+
+RegisterNetEvent("advanced_vehicles:updateEngineSound")
+AddEventHandler("advanced_vehicles:updateEngineSound", function(veh, sound)
+	local vehicle = NetToVeh(veh)
+	ForceVehicleEngineAudio(vehicle, sound)
+end)
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- OPEN MENU

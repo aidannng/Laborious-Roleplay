@@ -3735,3 +3735,41 @@ table.insert(Config.DoorList, {
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 	-- autoLock = 1000
 })
+
+-- kk door 1
+table.insert(Config.DoorList, {
+	maxDistance = 2.0,
+	objHash = -538477509,
+	slides = false,
+	audioRemote = false,
+	locked = true,
+	authorizedJobs = { ['kronickush']=0 },
+	objHeading = 180.00003051758,
+	lockpick = false,
+	fixText = false,
+	objCoords = vector3(381.4216, -825.1628, 29.45322),
+	garage = false,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- kk back door harvest
+table.insert(Config.DoorList, {
+	maxDistance = 2.0,
+	objHash = -311575617,
+	slides = false,
+	audioRemote = false,
+	locked = true,
+	authorizedJobs = { ['kronickush']=1 },
+	objHeading = 180.00001525879,
+	lockpick = false,
+	fixText = false,
+	objCoords = vector3(375.8304, -821.0286, 29.44885),
+	garage = false,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
