@@ -56,16 +56,30 @@ Citizen.CreateThread(function()
 end)
 
 ------------------------------------------------------------------------------------------------- AI DENSITY -----------------------------------------------------------------------------------------------
-DensityMultiplier = 0.3
 Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        SetVehicleDensityMultiplierThisFrame(DensityMultiplier)
-        SetPedDensityMultiplierThisFrame(DensityMultiplier)
-        SetRandomVehicleDensityMultiplierThisFrame(DensityMultiplier)
-        SetParkedVehicleDensityMultiplierThisFrame(DensityMultiplier)
-        SetScenarioPedDensityMultiplierThisFrame(DensityMultiplier, DensityMultiplier)
-    end
+	local densityMultiplier = 0.3
+	while true do
+		ClearAreaOfCops(GetEntityCoords(PlayerPedId()), 1000.0)
+		SetVehicleDensityMultiplierThisFrame(densityMultiplier)
+		SetPedDensityMultiplierThisFrame(densityMultiplier)
+		SetRandomVehicleDensityMultiplierThisFrame(densityMultiplier)
+		SetParkedVehicleDensityMultiplierThisFrame(densityMultiplier)
+		SetScenarioPedDensityMultiplierThisFrame(densityMultiplier, densityMultiplier)
+		SetRandomBoats(true)
+		SetGarbageTrucks(true)
+
+		HideHudComponentThisFrame(6)
+		HideHudComponentThisFrame(7)
+		HideHudComponentThisFrame(8)
+		HideHudComponentThisFrame(9)
+		HideHudComponentThisFrame(3)
+		HideHudComponentThisFrame(4)
+		HideHudComponentThisFrame(13)
+		Citizen.Wait(1000)
+	end
+
+    ExpandWorldLimits(-9000.0, -11000.0, 30.0)
+    ExpandWorldLimits(10000.0, 12000.0, 30.0)
 end)
 
 ------------------------------------------------------------------------------------------------- OTHER SCRIPT -----------------------------------------------------------------------------------------------
