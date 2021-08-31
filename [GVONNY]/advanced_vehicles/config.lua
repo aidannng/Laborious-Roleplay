@@ -575,7 +575,7 @@ Config.upgrades = {
 			},
 			['class'] = 'engine'
 		},
-		['musv8'] = {
+		--[[ ['musv8'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
@@ -596,7 +596,7 @@ Config.upgrades = {
 				['index'] = 14
 			},
 			['class'] = 'engine'
-		},
+		}, ]]
 		['lambov10'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
