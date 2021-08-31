@@ -12,6 +12,24 @@ Citizen.CreateThread(function()
     AddTextEntry('code3cvpi', "Crown Victoria")
     AddTextEntry('Ford', "Ford")
 
+    AddTextEntry('code3harley', "Motorbike")
+    AddTextEntry('harley', "Harley")
+
+    AddTextEntry('code3mustang', "Mustang")
+    AddTextEntry('Ford', "Ford")
+
+    AddTextEntry('code318tahoe', "2018 Tahoe")
+    AddTextEntry('chevy', "Chevrolet")
+
+    AddTextEntry('code320exp', "2020 Explorer")
+    AddTextEntry('Ford', "Ford")
+
+    AddTextEntry('leobike', "Motorbike")
+    AddTextEntry('suzuki', "Suzuki")
+
+    AddTextEntry('swat1', 'Gurkha')
+    AddTextEntry('gtf', 'GTF')
+
     AddTextEntry('ccss16', 'Camero')
     AddTextEntry('chevy', 'Chevrolet')
 

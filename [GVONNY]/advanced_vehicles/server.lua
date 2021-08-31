@@ -71,10 +71,16 @@ end)
 
 local vehiclesHandlingsOriginal = {}
 
+RegisterServerEvent('advanced_vehicles:updateEngineSound')
+AddEventHandler('advanced_vehicles:updateEngineSound', function(veh, sound)
+	TriggerClientEvent("advanced_vehicles:updateEngineSound", -1, veh, sound)
+end)
+
 RegisterServerEvent('advanced_vehicles:getVehicleData')
 AddEventHandler('advanced_vehicles:getVehicleData', function(vehicleDataClient)
 	local source = source
-	MySQL.Async.fetchAll("SELECT owner as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = vehicleDataClient.plate}, function(vehiclequery)
+	local plate = all_trim(vehicleDataClient.plate)
+	MySQL.Async.fetchAll("SELECT owner as user_id FROM owned_vehicles WHERE plate = @vehicle_plate", {['@vehicle_plate'] = plate}, function(vehiclequery)
 		if vehiclequery[1] then
 			local owner_id = vehiclequery[1].user_id
 			local vehicleData = getVehicleData(vehicleDataClient,owner_id)
@@ -84,6 +90,10 @@ AddEventHandler('advanced_vehicles:getVehicleData', function(vehicleDataClient)
 		end
 	end)
 end)
+
+function all_trim(s)
+    return s:match( "^%s*(.-)%s*$" )
+end
 
 RegisterServerEvent('advanced_vehicles:setVehicleData')
 AddEventHandler('advanced_vehicles:setVehicleData', function(vehicleData,vehicleHandling)

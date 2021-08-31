@@ -66,6 +66,11 @@ exports['labrp_Eye']:AddBoxZone("KronicKushBuyStock", vector3(375.5, -827.3, 29.
         label = "Shop Announcement",
         job = "kronickush",
       },
+      {
+        event = "kush:toggle",
+        icon = "fas fa-tools",
+        label = "Sign On/Off",
+      },
       --[[{
         event = "kk:hire",
         icon = "fas fa-bullhorn",
@@ -231,6 +236,10 @@ AddEventHandler("dispensary:buyrollingpaper", function()
   TriggerServerEvent('kk:purchase', 'rolling_paper')
 end)
 
+RegisterNetEvent("kush:toggle")
+AddEventHandler("kush:toggle", function()
+    TriggerServerEvent("jobsignonoff", "kronickush")
+end)
 
 
 

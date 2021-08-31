@@ -714,6 +714,27 @@ AddEventHandler('craft:k20', function()
     end
 end)
 
+RegisterServerEvent('craft:musv8')
+AddEventHandler('craft:musv8', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('engine_block').count
+    local headCount = xPlayer.getInventoryItem('head').count
+
+    if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        xPlayer.removeInventoryItem('piston', 8)
+        xPlayer.removeInventoryItem('crankshaft', 1)
+        xPlayer.removeInventoryItem('engine_block', 1)
+        xPlayer.removeInventoryItem('head', 2)
+        xPlayer.addInventoryItem('musv8', 1)
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+
 
 --############################
 --##       SUSPENSION       ##

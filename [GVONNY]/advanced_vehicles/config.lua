@@ -432,7 +432,7 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = '2jzengine',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = '2JZ',
@@ -454,7 +454,7 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = 'k20a',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = 'K20',
@@ -476,7 +476,7 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = 'rb26',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = 'RB26',
@@ -498,7 +498,7 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = 'rotary7',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = 'Rotary',
@@ -520,7 +520,7 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = 'amgv8',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = 'AMG v8',
@@ -542,7 +542,7 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = 'chevylt5',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = 'Chevy v8',
@@ -564,14 +564,36 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = 'gt3flat6',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = 'Porsche GT3 Flat 6',
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/gt3flat6.png',
-				['description'] = 'Chevy v8 engine swap',
-				['index'] = 12
+				['description'] = 'Porsche GT3 engine swap',
+				['index'] = 13
+			},
+			['class'] = 'engine'
+		},
+		['musv8'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.08,
+				['sound'] = 'musv8',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'musv8',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'LS V8',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/musv8.png',
+				['description'] = 'LS v8 engine swap',
+				['index'] = 14
 			},
 			['class'] = 'engine'
 		},
@@ -586,14 +608,14 @@ Config.upgrades = {
 			['item'] = {
 				['name'] = 'lambov10',
 				['amount'] = 1,
-				['time'] = 1
+				['time'] = 10
 			},
 			['interface'] = {
 				['name'] = 'Lambo v10',
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/lambov10.png',
 				['description'] = 'Lambo v10 engine swap',
-				['index'] = 13
+				['index'] = 15
 			},
 			['class'] = 'engine'
 		},
@@ -615,7 +637,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 14
+				['index'] = 16
 			},
 			['class'] = 'turbo'
 		},
@@ -637,7 +659,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/big_single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 15
+				['index'] = 17
 			},
 			['class'] = 'turbo'
 		},
@@ -659,7 +681,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/twin_turbo.png',
 				['description'] = 'Install a double turbines to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 16
+				['index'] = 18
 			},
 			['class'] = 'turbo'
 		},
@@ -680,7 +702,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/brembo_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 17
+				['index'] = 19
 			},
 			['class'] = 'brakes'
 		},
@@ -701,7 +723,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/wilwood_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 18
+				['index'] = 20
 			},
 			['class'] = 'brakes'
 		},
@@ -722,7 +744,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/michelin_tires.png',
 				['description'] = '',
-				['index'] = 19
+				['index'] = 21
 			},
 			['class'] = 'tires'
 		},
@@ -743,7 +765,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/pirelli_tires.png',
 				['description'] = '',
-				['index'] = 20
+				['index'] = 22
 			},
 			['class'] = 'tires'
 		},
@@ -764,7 +786,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/falken_tires.png',
 				['description'] = '',
-				['index'] = 21
+				['index'] = 23
 			},
 			['class'] = 'tires'
 		},
