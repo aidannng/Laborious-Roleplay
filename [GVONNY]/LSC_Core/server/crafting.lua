@@ -703,7 +703,7 @@ AddEventHandler('craft:k20', function()
     local blockCount = xPlayer.getInventoryItem('engine_block').count
     local headCount = xPlayer.getInventoryItem('high_flow_head').count
 
-    if (pistonCount > 3 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+    if (pistonCount > 3 and crankshaftCount > 0 and blockCount > 0 and headCount > 0) then
         xPlayer.removeInventoryItem('piston', 4)
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('aluminum_engine_block', 1)

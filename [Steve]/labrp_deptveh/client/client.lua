@@ -188,7 +188,7 @@ AddEventHandler('pdvehicle:buycar', function(data)
             elseif id == 7 then
                 hash = GetHashKey("leobike")
             elseif id == 8 then
-                hash = GetHashKey("code3mustang")
+                hash = GetHashKey("fbim4")
             end
             print(hash)
             print(data.price)
