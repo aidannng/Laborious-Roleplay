@@ -8,6 +8,9 @@ Citizen.CreateThread(function()
 
     AddTextEntry('urus', "URUS")
     AddTextEntry('LAMBORGHINI', "Lamborghini")
+    
+    AddTextEntry('fbim4', "Aidan's Car")
+    AddTextEntry('fbim4', "BMW")
 
     AddTextEntry('code3cvpi', "Crown Victoria")
     AddTextEntry('Ford', "Ford")
