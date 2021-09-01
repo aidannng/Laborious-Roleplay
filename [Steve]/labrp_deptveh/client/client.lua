@@ -152,18 +152,6 @@ AddEventHandler('pdvehicle:menu', function()
 				}
 			}
 		},
-        {
-			id = 8,
-			header = "Ford Mustang",
-			txt = "$65,000 (Interceptor)",
-			params = {
-				event = "pdvehicle:buycar",
-				args = {
-					id = 8,
-                    price = 65000
-				}
-			}
-		},
 	})
 end)
 
@@ -187,8 +175,6 @@ AddEventHandler('pdvehicle:buycar', function(data)
                 hash = GetHashKey("code3harley")
             elseif id == 7 then
                 hash = GetHashKey("leobike")
-            elseif id == 8 then
-                hash = GetHashKey("fbim4")
             end
             print(hash)
             print(data.price)
