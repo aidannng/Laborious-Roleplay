@@ -20,8 +20,8 @@ end)
 RegisterServerEvent("chargerepair")
 AddEventHandler("chargerepair", function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local money = 550
-	xPlayer.removeAccountMoney('bank', 550)
+	local money = 100
+	xPlayer.removeAccountMoney('bank', 100)
 end)
 
 RegisterServerEvent("LSC:finished")

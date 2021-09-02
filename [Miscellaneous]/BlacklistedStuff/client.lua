@@ -75,7 +75,7 @@ Citizen.CreateThread(function()
 		HideHudComponentThisFrame(3)
 		HideHudComponentThisFrame(4)
 		HideHudComponentThisFrame(13)
-		Citizen.Wait(1000)
+		Citizen.Wait(0)
 	end
 
     ExpandWorldLimits(-9000.0, -11000.0, 30.0)

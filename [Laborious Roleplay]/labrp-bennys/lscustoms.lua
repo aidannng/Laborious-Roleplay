@@ -1324,7 +1324,7 @@ AddEventHandler('openpdextras', function()
 		{
             id = 2,
             header = "Repair Vehicle",
-            txt = "Repair your vehicle - $550",
+            txt = "Repair your vehicle - $100",
             params = {
                 event = "repairvehicle",
                 args = {
@@ -1499,7 +1499,7 @@ AddEventHandler('repairvehicle',function()
 	local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
 	exports['mythic_progbar']:Progress({
 		name = "unique_action_name",
-		duration = 6000,
+		duration = 5000,
 		label = 'Repairing Vehicle',
 		useWhileDead = true,
 		canCancel = false,
@@ -1510,8 +1510,9 @@ AddEventHandler('repairvehicle',function()
 			disableCombat = true,
 		},
 	})
-	Citizen.Wait(6000)
+	Citizen.Wait(5000)
 	TriggerServerEvent('chargerepair')
 	SetVehicleFixed(vehicle)
 	TriggerEvent('InteractSound_CL:PlayOnOne', 'impactdrill', 0.1)
+	exports['mythic_notify']:SendAlert('inform', 'You have repaired your vehicle and have been charged $100 to your bank!') 
 end)

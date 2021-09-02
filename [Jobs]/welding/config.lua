@@ -88,7 +88,7 @@ Config.Zones = {
 	ItemRequires = "pay_welding",
 	ItemRequires_name = "Pay Slip",
 	ItemDrop = 100,
-	ItemPrice  = 300,
+	ItemPrice  = 650,
 	hint = 'Press ~INPUT_CONTEXT~ to cash your Pay Slips',
   },
 

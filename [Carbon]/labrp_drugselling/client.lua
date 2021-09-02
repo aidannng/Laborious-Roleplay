@@ -92,7 +92,6 @@ AddEventHandler('gl-drugselling:notifyPolice',function()
     exports['core_dispatch']:addCall('10-17', "Suspicious Activity", {
         {icon="fa-cannabis", info="Possible Drug Sales"}
         }, {coords.x, coords.y, coords.z}, "police", 10000, 514, 1)
-    print('send alert')
 end)
 
 -- Functions for things
@@ -121,7 +120,6 @@ end
 RegisterNetEvent('gl-drugselling:checksellcops')
 AddEventHandler('gl-drugselling:checksellcops',function()
     TriggerServerEvent('checksellcops')
-    print('check cops')
 end)
 
 RegisterNetEvent('gl-drugselling:checkBallaSell')
@@ -138,8 +136,8 @@ local alreadySold = tableHasKey(soldto,pedID)
 if alreadySold then
 exports['mythic_notify']:SendAlert('error', "Im not intrested.", 8500) 
 else
-    local CallDaPolice = math.random(1, 6)
-    if CallDaPolice == 6 then
+    local CallDaPolice = math.random(1, 8)
+    if CallDaPolice == 8 then
         TriggerEvent('gl-drugselling:notifyPolice')
     end
     if not IsPedDeadOrDying(ped) then
