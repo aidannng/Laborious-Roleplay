@@ -421,11 +421,33 @@ Config.upgrades = {
 			},
 			['class'] = 'nitro'
 		},
+		['full_bolt_on'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.04,
+				['sound'] = 'toysupmk4',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'full_bolt_on_engine',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Full bolt on kit',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/full_bolt_on_engine.png',
+				['description'] = 'Full bolt on kit',
+				['index'] = 7
+			},
+			['class'] = 'engine'
+		},
 		['2jz'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.075,
+				['value'] = 0.035,
 				['sound'] = 'toysupmk4',
 				['fixed_value'] = false
 			},
@@ -439,7 +461,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/2jzengine.png',
 				['description'] = 'Toyota 2JZ engine swap',
-				['index'] = 7
+				['index'] = 8
 			},
 			['class'] = 'engine'
 		},
@@ -447,7 +469,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.04,
+				['value'] = 0.025,
 				['sound'] = 'k20a',
 				['fixed_value'] = false
 			},
@@ -461,7 +483,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/k20a.png',
 				['description'] = 'Honda K20 engine swap',
-				['index'] = 8
+				['index'] = 9
 			},
 			['class'] = 'engine'
 		},
@@ -469,7 +491,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.06,
+				['value'] = 0.03,
 				['sound'] = 'rb26dett',
 				['fixed_value'] = false
 			},
@@ -483,7 +505,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/rb26.png',
 				['description'] = 'Nissan RB26 engine swap',
-				['index'] = 9
+				['index'] = 10
 			},
 			['class'] = 'engine'
 		},
@@ -491,7 +513,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.05,
+				['value'] = 0.02,
 				['sound'] = 'rotary7',
 				['fixed_value'] = false
 			},
@@ -505,7 +527,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/rotary7.png',
 				['description'] = 'Rotary engine swap',
-				['index'] = 10
+				['index'] = 11
 			},
 			['class'] = 'engine'
 		},
@@ -513,7 +535,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.08,
+				['value'] = 0.03,
 				['sound'] = 'brabus850',
 				['fixed_value'] = false
 			},
@@ -527,15 +549,15 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/amgv8.png',
 				['description'] = 'AMG v8 engine swap',
-				['index'] = 11
-			},
+				['index'] = 12
+			}
 			['class'] = 'engine'
 		},
 		['chevylt5'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.085,
+				['value'] = 0.03,
 				['sound'] = 'predatorv8',
 				['fixed_value'] = false
 			},
@@ -549,7 +571,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/chevylt5.png',
 				['description'] = 'Chevy v8 engine swap',
-				['index'] = 12
+				['index'] = 13
 			},
 			['class'] = 'engine'
 		},
@@ -557,7 +579,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.065,
+				['value'] = 0.045,
 				['sound'] = 'gt3flat6',
 				['fixed_value'] = false
 			},
@@ -571,7 +593,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/gt3flat6.png',
 				['description'] = 'Porsche GT3 engine swap',
-				['index'] = 13
+				['index'] = 14
 			},
 			['class'] = 'engine'
 		},
@@ -579,7 +601,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.08,
+				['value'] = 0.04,
 				['sound'] = 'musv8',
 				['fixed_value'] = false
 			},
@@ -593,7 +615,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/musv8.png',
 				['description'] = 'LS v8 engine swap',
-				['index'] = 14
+				['index'] = 15
 			},
 			['class'] = 'engine'
 		},
@@ -601,7 +623,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.10,
+				['value'] = 0.05,
 				['sound'] = 'lambov10',
 				['fixed_value'] = false
 			},
@@ -615,7 +637,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/lambov10.png',
 				['description'] = 'Lambo v10 engine swap',
-				['index'] = 15
+				['index'] = 16
 			},
 			['class'] = 'engine'
 		},
@@ -623,7 +645,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.03,
+				['value'] = 0.01,
 				['turbo'] = true,
 				['fixed_value'] = false
 			},
@@ -637,7 +659,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 16
+				['index'] = 17
 			},
 			['class'] = 'turbo'
 		},
@@ -645,7 +667,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.06,
+				['value'] = 0.015,
 				['turbo'] = true,
 				['fixed_value'] = false
 			},
@@ -659,7 +681,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/big_single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 17
+				['index'] = 18
 			},
 			['class'] = 'turbo'
 		},
@@ -667,7 +689,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.085,
+				['value'] = 0.025,
 				['turbo'] = true,
 				['fixed_value'] = false
 			},
@@ -681,7 +703,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/twin_turbo.png',
 				['description'] = 'Install a double turbines to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 18
+				['index'] = 19
 			},
 			['class'] = 'turbo'
 		},
@@ -702,7 +724,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/brembo_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 19
+				['index'] = 20
 			},
 			['class'] = 'brakes'
 		},
@@ -723,7 +745,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/wilwood_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 20
+				['index'] = 21
 			},
 			['class'] = 'brakes'
 		},
@@ -744,7 +766,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/michelin_tires.png',
 				['description'] = '',
-				['index'] = 21
+				['index'] = 22
 			},
 			['class'] = 'tires'
 		},
@@ -765,7 +787,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/pirelli_tires.png',
 				['description'] = '',
-				['index'] = 22
+				['index'] = 23
 			},
 			['class'] = 'tires'
 		},
@@ -786,7 +808,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/falken_tires.png',
 				['description'] = '',
-				['index'] = 23
+				['index'] = 24
 			},
 			['class'] = 'tires'
 		},
