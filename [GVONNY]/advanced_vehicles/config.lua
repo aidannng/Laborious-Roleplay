@@ -426,7 +426,7 @@ Config.upgrades = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
 				['value'] = 0.04,
-				['sound'] = 'toysupmk4',
+				['sound'] = 'default',
 				['fixed_value'] = false
 			},
 			['item'] = {
@@ -550,7 +550,7 @@ Config.upgrades = {
 				['icon'] = 'images/upgrades/amgv8.png',
 				['description'] = 'AMG v8 engine swap',
 				['index'] = 12
-			}
+			},
 			['class'] = 'engine'
 		},
 		['chevylt5'] = {
