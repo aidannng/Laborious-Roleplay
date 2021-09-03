@@ -397,7 +397,3 @@ RegisterNetEvent('storageV4')
 AddEventHandler('storageV4', function()
     exports['linden_inventory']:OpenStash({ id = 'Mechanic Storage - 4', slots = 30, job = 'mechanic', owner = false})
 end)
-
-RegisterCommand("downgradeVehicles", function(source, args)
-    TriggerServerEvent("downgradeVehicles")
-end)
