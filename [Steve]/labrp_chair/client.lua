@@ -70,18 +70,20 @@ end)
 
 function greenchair()
 	if not haschairalready then
-		haschairalready = true
-	local coords = GetEntityCoords(GetPlayerPed(-1))
-	local animDict = "timetable@ron@ig_3_couch"
-	local animation = "base"
---	SetEntityCoords(PlayerPedId(),coords.x,coords.y,coords.z - 0.68) -- Temporary Freezing Entity for proper placement of chair (Not Required)
---	FreezeEntityPosition(PlayerPedId(),true) -- Entity Froze (Secondary Check)
-	attachAProp("prop_skid_chair_01", 0, 0, 0.0, -0.22, 3.4, 0.4, 180.0, 0.0, false, false, false, false, 2, true)
-	loadAnimDict(animDict)
-	local animLength = GetAnimDuration(animDict, animation)
-	TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0, animLength, 1, 0, 0, 0, 0)
+		if IsPedInAnyVehicle(PlayerPedId(-1)) then
+			exports['mythic_notify']:SendAlert('error', 'Unable to use item in Vehicle!') 
+		else
+			haschairalready = true
+			local coords = GetEntityCoords(GetPlayerPed(-1))
+			local animDict = "timetable@ron@ig_3_couch"
+			local animation = "base"
+			attachAProp("prop_skid_chair_01", 0, 0, 0.0, -0.22, 3.4, 0.4, 180.0, 0.0, false, false, false, false, 2, true)
+			loadAnimDict(animDict)
+			local animLength = GetAnimDuration(animDict, animation)
+			TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0, animLength, 1, 0, 0, 0, 0)
+		end
 	else
-		haschairalready = falsew
+		haschairalready = false
 		FreezeEntityPosition(PlayerPedId(),false)
 		removeAttachedProp()
 		removeAttachedProp2()
@@ -91,18 +93,20 @@ end
 
 function pladchair()
 	if not haschairalready then
-		haschairalready = true
-	local coords = GetEntityCoords(GetPlayerPed(-1))
-	local animDict = "timetable@ron@ig_3_couch"
-	local animation = "base"
---	SetEntityCoords(PlayerPedId(),coords.x,coords.y,coords.z - 0.68) -- Temporary Freezing Entity for proper placement of chair (Not Required)
---	FreezeEntityPosition(PlayerPedId(),true) -- Entity Froze (Secondary Check)
-	attachAProp("hei_prop_hei_skid_chair", 0, 0, 0.0, -0.22, 3.4, 0.4, 180.0, 0.0, false, false, false, false, 2, true)
-	loadAnimDict(animDict)
-	local animLength = GetAnimDuration(animDict, animation)
-	TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0, animLength, 1, 0, 0, 0, 0)
+		if IsPedInAnyVehicle(PlayerPedId(-1)) then
+			exports['mythic_notify']:SendAlert('error', 'Unable to use item in Vehicle!') 
+		else
+			haschairalready = true
+			local coords = GetEntityCoords(GetPlayerPed(-1))
+			local animDict = "timetable@ron@ig_3_couch"
+			local animation = "base"
+			attachAProp("hei_prop_hei_skid_chair", 0, 0, 0.0, -0.22, 3.4, 0.4, 180.0, 0.0, false, false, false, false, 2, true)
+			loadAnimDict(animDict)
+			local animLength = GetAnimDuration(animDict, animation)
+			TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0, animLength, 1, 0, 0, 0, 0)
+		end
 	else
-		haschairalready = falsew
+		haschairalready = false
 		FreezeEntityPosition(PlayerPedId(),false)
 		removeAttachedProp()
 		removeAttachedProp2()
@@ -125,16 +129,18 @@ end)
 
 function stopsign()
 	if not hasstopsign then
-		hasstopsign = true
-		local coords = GetEntityCoords(GetPlayerPed(-1))
-		local animDict = "random@hitch_lift"
-		local animation = "idle_f"
---	SetEntityCoords(PlayerPedId(),coords.x,coords.y,coords.z - 0.68) -- Temporary Freezing Entity for proper placement of chair (Not Required)
---	FreezeEntityPosition(PlayerPedId(),true) -- Entity Froze (Secondary Check)
-		local stopsignprop = attachAProp("prop_sign_road_01a", 28422, 0, -1.2, 0.0, 15.0, 90.0, 90.0, 0.0, false, false, false, false, 2, true)
-		loadAnimDict(animDict)
-		local animLength = GetAnimDuration(animDict, animation)
-		TaskPlayAnim(GetPlayerPed(-1), animDict, animation, 2.0, 2.0, animLength, 51, 0, false, false, false)
+		if IsPedInAnyVehicle(PlayerPedId(-1)) then
+			exports['mythic_notify']:SendAlert('error', 'Unable to use item in Vehicle!') 
+		else
+			hasstopsign = true
+			local coords = GetEntityCoords(GetPlayerPed(-1))
+			local animDict = "random@hitch_lift"
+			local animation = "idle_f"
+			local stopsignprop = attachAProp("prop_sign_road_01a", 28422, 0, -1.2, 0.0, 15.0, 90.0, 90.0, 0.0, false, false, false, false, 2, true)
+			loadAnimDict(animDict)
+			local animLength = GetAnimDuration(animDict, animation)
+			TaskPlayAnim(GetPlayerPed(-1), animDict, animation, 2.0, 2.0, animLength, 51, 0, false, false, false)
+		end
 	else
 		hasstopsign = false
 		ClearPedTasks(PlayerPedId())

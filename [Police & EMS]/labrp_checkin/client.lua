@@ -64,30 +64,6 @@ Citizen.CreateThread(function()
 end)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 RegisterNetEvent('checkinEye') 
 AddEventHandler('checkinEye', function()
 	if not InProgress then
@@ -124,9 +100,6 @@ AddEventHandler('checkinEye', function()
 	end
 end)
 
-
-
--- Main Event
 RegisterNetEvent('esx_checkin:checkIn')
 AddEventHandler('esx_checkin:checkIn', function()
 	local ped = GetPlayerPed(-1)
@@ -140,7 +113,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 
 	-- Bed 1
 	if chance == 1 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -164,7 +136,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 	end
 	-- Bed 2
 	if chance == 2 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -189,7 +160,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 	end
 	-- Bed 3
 	if chance == 3 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -214,7 +184,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 	end
 	-- Bed 4 
 	if chance == 4 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -239,7 +208,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 	end
 	-- Bed 5
 	if chance == 5 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -264,7 +232,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 	end
 	-- Bed 6 
 	if chance == 6 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -290,7 +257,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 	end
 	-- Bed 7 
 	if chance == 7 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -315,7 +281,6 @@ AddEventHandler('esx_checkin:checkIn', function()
 	end
 	-- Bed 8
 	if chance == 8 then
-		print(chance)
 		DoScreenFadeOut(500)
 		Citizen.Wait(550)
 		TriggerEvent('esx_ambulancejob:revive')
@@ -337,73 +302,5 @@ AddEventHandler('esx_checkin:checkIn', function()
 				break
 			end
 		end
-	end
-end)
-
-
-
-local knockedOut = false
-local wait = 5
-local count = 60
-
-
-Citizen.CreateThread(function()
-	while true do
-		Wait(1)
-        local myPed = GetPlayerPed(-1)
-        -- With melee weapon or unarmed only
-        if IsPedInMeleeCombat(myPed) then
-            -- Without any kind of weapon {UNARMED ONLY}
-            if (HasPedBeenDamagedByWeapon(myPed, GetHashKey("WEAPON_UNARMED"), 0) )then
-                -- Health to be knocked out
-                if GetEntityHealth(myPed) < 145 then
-                    SetPlayerInvincible(PlayerId(), false)
-                    -- Position taken by your Ped
-					SetPedToRagdoll(myPed, 1000, 1000, 0, 0, 0, 0)
-					--  Effect 
-					ShakeGameplayCam('LARGE_EXPLOSION_SHAKE', 2.5)
-					-- Time to wait
-                    wait = 15
-                    --** Add progress Bar here if you want **--
-					knockedOut = true
-					-- Health after knockout preferably dont make it more than 150 (50 %) because people will abuse with it {No need to go to hospital or so}
-					SetEntityHealth(myPed, 140)
-				end
-			end
-		end
-		
-		if knockedOut == true then		
-			--Your ped is able to die
-			SetPlayerInvincible(PlayerId(), false)
-			DisablePlayerFiring(PlayerId(), true)
-			SetPedToRagdoll(myPed, 1000, 1000, 0, 0, 0, 0)
-			ResetPedRagdollTimer(myPed)
-			-- Red Cam
-			SetTimecycleModifier("REDMIST")
-			-- Cam vibration
-			ShakeGameplayCam("VIBRATE_SHAKE", 1.0)
-			if wait >= 0 then
-				count = count - 1
-                if count == 0 then
-                    
-					count = 60
-					wait = wait - 1
-					--- in case bark
-                    if GetEntityHealth(myPed) <= 50 then
-                        -- Ped healing 
-						SetEntityHealth(myPed, GetEntityHealth(myPed)+2)
-						
-					end
-				end
-            else
-                -- Remove red cam
-				SetTimecycleModifier("")
-                SetTransitionTimecycleModifier("")		
-                -- Ped Able to die again
-				SetPlayerInvincible(PlayerId(), false)
-				knockedOut = false
-			end
-		end
-
 	end
 end)

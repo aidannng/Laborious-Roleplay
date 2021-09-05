@@ -117,8 +117,6 @@ function OnPlayerDeath()
 
 	StartDeathTimer()
     Playdeadanim = true
-
-
 end
 
 Citizen.CreateThread(function()
@@ -126,26 +124,23 @@ Citizen.CreateThread(function()
         Citizen.Wait(500)
         local playerPed = PlayerPedId()
         if isDead then
-			if IsPedInAnyVehicle(GetPlayerPed(-1)) then
-			else
-            	Playdeadanim = true
-            	ClearPedTasks(playerPed)
-            	SetEntityInvincible(playerPed, true)
-            	Citizen.Wait(200)
-            	SetEntityHealth(playerPed, GetPedMaxHealth(playerPed))
-				Citizen.Wait(450)
-            	ClearPedTasksImmediately(playerPed)
-            	while isDead do
-                	if Playdeadanim then
-                    	ESX.Streaming.RequestAnimDict('dead', function()
-                        	TaskPlayAnim(playerPed, 'dead', 'dead_a', 8.0, 8.0, -1, 33, 0, 0, 0, 0)
-                    	end)
-                    	Citizen.Wait(5000)
-                	elseif Playdeadanim then
-                    	ClearPedTasksImmediately(playerPed)
-                    	Citizen.Wait(0)
-                	end
-				end
+            Playdeadanim = true
+            ClearPedTasks(playerPed)
+            SetEntityInvincible(playerPed, true)
+            Citizen.Wait(200)
+            SetEntityHealth(playerPed, GetPedMaxHealth(playerPed))
+            ClearPedTasksImmediately(playerPed)
+            Citizen.Wait(1000)
+            while isDead do
+                if not IsEntityPlayingAnim(playerPed, 'dead', 'dead_a', 3) and Playdeadanim then
+                    ESX.Streaming.RequestAnimDict('dead', function()
+                        TaskPlayAnim(playerPed, 'dead', 'dead_a', 8.0, 8.0, -1, 33, 0, 0, 0, 0)
+                    end)
+                    Citizen.Wait(3000)
+                elseif Playdeadanim then
+                    ClearPedTasks(playerPed)
+                    Citizen.Wait(0)
+                end
                 Citizen.Wait(0)
             end
         end
@@ -540,7 +535,6 @@ exports['labrp_Eye']:AddBoxZone("EMSGarage", vector3(336.4, -589.7, 28.7), 0.5, 
 				job = "ambulance",
 				canInteract = function(entity)
 					if not hasVehicleOut then
-						hasChecked = true
 						return true
 					end
 				end
@@ -598,6 +592,7 @@ AddEventHandler('labrp_ems:getcar', function(data)
     local plate = GetVehicleNumberPlateText(vehicle)
     exports["labrp_vehiclelock"]:givePlayerKeys(plate)
 	hasVehicleOut = true
+	print(hasVehicleOut)
 end)
 
 RegisterNetEvent('labrp_ems:returnAmbulance')
