@@ -247,7 +247,7 @@ function addBlipForCall(sprite, color, coords, text)
     end
 end
 
-function addBlipsForUnits()
+--[[function addBlipsForUnits()
     ESX.TriggerServerCallback("core_dispatch:getUnits", function(units)
         local id = GetPlayerServerId(PlayerId())
 
@@ -294,7 +294,7 @@ function addBlipsForUnits()
             end
         end
     end)
-end
+end]]
 
 function openDispatch()
     if Config.JobOne.job == job or Config.JobTwo.job == job or Config.JobThree.job == job then

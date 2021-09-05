@@ -596,7 +596,7 @@ AddEventHandler('craft:amgv8', function()
     local headCount = xPlayer.getInventoryItem('high_flow_head').count
 
     if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        if(xPlayer.job.grade > 2) 
+        if(xPlayer.job.grade > 2) then
             xPlayer.removeInventoryItem('piston', 8)
             xPlayer.removeInventoryItem('crankshaft', 1)
             xPlayer.removeInventoryItem('engine_block', 1)
@@ -688,7 +688,7 @@ AddEventHandler('craft:chevylt5', function()
     local headCount = xPlayer.getInventoryItem('head').count
 
     if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        if(xPlayer.job.grade > 2) 
+        if(xPlayer.job.grade > 2) then
             xPlayer.removeInventoryItem('piston', 8)
             xPlayer.removeInventoryItem('crankshaft', 1)
             xPlayer.removeInventoryItem('engine_block', 1)
