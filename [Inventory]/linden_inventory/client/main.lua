@@ -186,25 +186,30 @@ RobTargetInventory = function(target)
 		end
 		if targetPlayer ~= -1 and targetDistance <= 1.5 then
 			if CanOpenTarget(GetPlayerPed(targetPlayer)) then
-				exports['mythic_progbar']:Progress({
-					name = "unique_action_name",
-					duration = 15000,
-					label = 'Robbing Person',
-					useWhileDead = true,
-					canCancel = false,
-					controlDisables = {
-						disableMovement = true,
-						disableCarMovement = true,
-						disableMouse = false,
-						disableCombat = true,
-					},
-					animation = {
-						animDict = "random@shop_robbery",
-						anim = "robbery_intro_loop_b",
-					},
-				})
-				Citizen.Wait(15500)
-				TriggerServerEvent('linden_inventory:openTargetInventory', GetPlayerServerId(targetPlayer))
+				ESX.TriggerServerCallback('linden_inventory:getinventoryweight', function(weight)
+					print(weight)
+					wait = weight + 500
+					exports['mythic_progbar']:Progress({
+						name = "unique_action_name",
+						duration = weight,
+						label = 'Robbing Person',
+						useWhileDead = true,
+						canCancel = false,
+						controlDisables = {
+							disableMovement = true,
+							disableCarMovement = true,
+							disableMouse = false,
+							disableCombat = true,
+						},
+						animation = {
+							animDict = "random@shop_robbery",
+							anim = "robbery_intro_loop_b",
+						},
+					})
+					print(wait)
+					Citizen.Wait(wait)
+					TriggerServerEvent('linden_inventory:openTargetInventory', GetPlayerServerId(targetPlayer))
+				end, GetPlayerServerId(targetPlayer))
 			else
 				TriggerEvent('mythic_notify:client:SendAlert', {type = 'error', text = _U('inventory_cannot_open_other'), length = 2500})
 			end

@@ -44,7 +44,7 @@ RegisterNetEvent('labrp_fish:sell')
 AddEventHandler('labrp_fish:sell', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local Fish = xPlayer.getInventoryItem('Fish').count
-    local FishMoney = math.random(30, 90)
+    local FishMoney = math.random(100, 250)
 
     if Fish >= 1 then
         xPlayer.removeInventoryItem('Fish', Fish)

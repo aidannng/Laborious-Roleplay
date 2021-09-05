@@ -52,6 +52,10 @@ AddEventHandler('advanced_vehicles:setGlobalVehicleHandling', function(name,hand
 	vehiclesHandlingsOriginal[name] = handlings
 end)
 
+function all_trim(s)
+    return s:match( "^%s*(.-)%s*$" )
+end
+
 Citizen.CreateThread(function()
 	local timer = 3000
 	while true do
@@ -69,7 +73,7 @@ Citizen.CreateThread(function()
 				timer = 1000
 				
 				vehicleData = {}
-				vehicleData.plate = GetVehicleNumberPlateText(veh)
+				vehicleData.plate = all_trim(GetVehicleNumberPlateText(veh))
 				vehicleData.model = GetEntityModel(veh)
 				vehicleData.name = string.lower(GetDisplayNameFromVehicleModel(vehicleData.model))
 				vehicleData.veh = veh

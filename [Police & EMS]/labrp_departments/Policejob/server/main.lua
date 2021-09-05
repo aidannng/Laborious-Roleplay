@@ -173,3 +173,21 @@ RegisterNetEvent('esx_policejob:OutVehicle')
 AddEventHandler('esx_policejob:OutVehicle', function(target)
 	TriggerClientEvent('esx_policejob:OutVehicle', target)
 end)
+
+ESX.RegisterServerCallback('labrp_police:getpdblip', function(source, cb, LEOCoords)
+	local generated = {}
+	local xPlayer = ESX.GetPlayerFromId(source)
+    local xPlayers = ESX.GetExtendedPlayers()
+
+
+	if xPlayer.job.name == 'police' or xPlayer.job.name == 'ambulance' or xPlayer.job.name == 'fbi'then
+
+		for _, xPlayer in pairs(xPlayers) do
+			if xPlayer.job.name == 'police' or xPlayer.job.name == 'ambulance' or xPlayer.job.name == 'fbi'then
+				generated[_] = {netId = GetEntityCoords(GetPlayerPed(xPlayer.source)), name = xPlayer.name, job = xPlayer.job.name}
+			end
+		end
+		cb(generated)
+	end
+end)
+

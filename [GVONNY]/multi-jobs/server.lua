@@ -18,14 +18,14 @@ AddEventHandler("jobsignonoff", function(name)
     if(job == name) then
         xPlayer.setJob("unemployed", 0)
         MySQL.Async.execute("UPDATE users SET job = 'unemployed', job_grade = 0 WHERE identifier = @identifier", {['@identifier'] = identifier})
-        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'You are now off duty', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+        TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'You are now off duty'})
     else
         MySQL.Async.fetchAll("SELECT job, job_grade FROM multi_job WHERE job = @job AND identifier = @identifier", {['@job'] = name, ['@identifier'] = xPlayer.identifier}, function(multi)
             if(multi and #multi>0) then
                 local job_grade = multi[1].job_grade
                 xPlayer.setJob(name, job_grade)
                 MySQL.Async.execute("UPDATE users SET job = @job, job_grade = @grade WHERE identifier = @identifier", {['@job'] = name, ['@grade'] = job_grade, ['@identifier'] = identifier})
-                TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'You are now on duty', style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+                TriggerClientEvent('mythic_notify:client:SendAlert', src, { type = 'inform', text = 'You are now on duty'})
             else
                 TriggerClientEvent("mythic_notify:client:SendAlert", src, { type = 'error', text = "You can not an member of this organization", })
             end
