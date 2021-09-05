@@ -508,10 +508,14 @@ AddEventHandler('craft:stockengine', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('head', 1)
-        xPlayer.addInventoryItem('stock_engine', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('stock_engine', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
-    end
+        end
 end)
 
 RegisterServerEvent('craft:fullboltonengine')
@@ -528,7 +532,11 @@ AddEventHandler('craft:fullboltonengine', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('head', 2)
-        xPlayer.addInventoryItem('full_bolt_on_engine', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('full_bolt_on_engine', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -568,7 +576,11 @@ AddEventHandler('craft:2jz', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('high_flow_head', 1)
-        xPlayer.addInventoryItem('2jzengine', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('2jzengine', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -588,7 +600,11 @@ AddEventHandler('craft:amgv8', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('high_flow_head', 2)
-        xPlayer.addInventoryItem('amgv8', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('amgv8', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -608,7 +624,11 @@ AddEventHandler('craft:lambov10', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('high_flow_head', 2)
-        xPlayer.addInventoryItem('lambov10', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('lambov10', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -648,7 +668,11 @@ AddEventHandler('craft:rb26', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('head', 1)
-        xPlayer.addInventoryItem('rb26', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('rb26', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -668,7 +692,11 @@ AddEventHandler('craft:chevylt5', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('head', 2)
-        xPlayer.addInventoryItem('chevylt5', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('chevylt5', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -688,7 +716,11 @@ AddEventHandler('craft:gt3flat6', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('aluminum_engine_block', 1)
         xPlayer.removeInventoryItem('high_flow_head', 2)
-        xPlayer.addInventoryItem('gt3flat6', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('gt3flat6', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -708,7 +740,11 @@ AddEventHandler('craft:k20', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('aluminum_engine_block', 1)
         xPlayer.removeInventoryItem('high_flow_head', 1)
-        xPlayer.addInventoryItem('k20a', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('k20a', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
@@ -728,7 +764,11 @@ AddEventHandler('craft:musv8', function()
         xPlayer.removeInventoryItem('crankshaft', 1)
         xPlayer.removeInventoryItem('engine_block', 1)
         xPlayer.removeInventoryItem('head', 2)
-        xPlayer.addInventoryItem('musv8', 1)
+        if(xPlayer.job.grade > 2) then
+            xPlayer.addInventoryItem('musv8', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end

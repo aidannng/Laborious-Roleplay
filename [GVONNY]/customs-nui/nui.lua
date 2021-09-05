@@ -278,7 +278,7 @@ exports['labrp_Eye']:AddBoxZone("ToggleDuty", vector3(-341.4521, -162.978, 45.68
 {
     options = {
         {
-            event = "`:signonoff",
+            event = "mechanic:signonoff",
             icon = "fas fa-tools",
             label = "Sign On/Off",
         },
