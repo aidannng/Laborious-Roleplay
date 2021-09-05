@@ -10,7 +10,7 @@ end
 
 
 -- Create blips
-Citizen.CreateThread(function()
+CreateThread(function()
 	for k,v in pairs(Config.PoliceStations) do
 		local blip = AddBlipForCoord(v.Blip.Coords)
 
@@ -27,7 +27,7 @@ Citizen.CreateThread(function()
 end)
 
 -- Create blips FBI BLIP
-Citizen.CreateThread(function()
+CreateThread(function()
 	local blip = AddBlipForCoord(vector3(103.0549, -744.1319, 45.74219))
 	SetBlipAsShortRange(blip, true)
 	SetBlipColour(blip, 43)
@@ -90,25 +90,38 @@ exports['labrp_Eye']:Player({
 			event = 'qrp_police:requestCuffPed',
 			icon = 'fas fa-handshake',
 			label = 'Handcuff/Uncuff',
-			job = "police",
+			required_item = 'handcuffs',
+			job = {
+				["police"] = 0,
+				["fbi"] = 0,
+			}
 		},
 		{
 			event = 'searchsuspect',
 			icon = 'fas fa-search',
 			label = 'Search',
-			job = "police",
+			job = {
+				["police"] = 0,
+				["fbi"] = 0,
+			}
 		},
 		{
 			event = 'labrp_police:gsr',
 			icon = 'fas fa-search',
 			label = 'GSR Test',
-			job = "police",
+			job = {
+				["police"] = 0,
+				["fbi"] = 0,
+			}
 		},
 		{
 			event = 'labrp_police:checkfingerprint',
 			icon = 'fas fa-fingerprint',
 			label = 'Check Fingerprint',
-			job = "police",
+			job = {
+				["police"] = 0,
+				["fbi"] = 0,
+			}
 		},
 		{
 			event = 'labrp_police:requestrevive',
@@ -213,12 +226,11 @@ AddEventHandler('qrp_police:getCuffed',function(sourceNetID)
 	exports['mythic_notify']:SendAlert('inform', 'You were cuffed!')
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		if cuffState then
 			DisableAllControlActions(0)
 			EnableControlAction(0, 1, true)
-			EnableControlAction(0, 2, true)
 			EnableControlAction(0, 2, true)
 			EnableControlAction(0, 245, true)
 			EnableControlAction(0, 249, true)
@@ -227,7 +239,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		if cuffState then
 			LoadAnimDict('mp_arresting')
@@ -356,7 +368,7 @@ AddEventHandler('labrp_police:drag', function(copId)
 	dragStatus.CopId = copId
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	local playerPed
 	local targetPed
 	while true do
@@ -396,5 +408,49 @@ exports['labrp_Eye']:AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0
 
         },
         distance = 1.5
-    })
+})
+
+
+CreateThread(function()
+	while true do
+		Citizen.Wait(750)
+		ESX.TriggerServerCallback("labrp_police:getpdblip", function(units)
+			local id = GetPlayerServerId(PlayerId())
+
+			for k, v in pairs(units) do
+				local new_blip = AddBlipForCoord(v.netId)
+
+				if v.job == "police" then
+					title = "PD"
+				elseif v.job == "ambulance" then
+					title = "EMS"
+				elseif v.job == "fbi" then
+					title = "FBI"
+				end
+
+				SetBlipSprite(new_blip, 1)
+				ShowHeadingIndicatorOnBlip(new_blip, true)
+				HideNumberOnBlip(new_blip)
+				SetBlipCategory(new_blip, 7)
+				SetBlipScale(new_blip, 0.8)
+				if v.job == "police" then	
+					SetBlipColour(new_blip, 3)
+				elseif v.job == "ambulance" then
+					SetBlipColour(new_blip, 8)
+				elseif v.job == "fbi" then
+					SetBlipColour(new_blip, 40)
+				end
+				SetBlipAsShortRange(new_blip, true)
+				BeginTextCommandSetBlipName("STRING")
+                AddTextComponentString("(" .. title .. ") "..v.name.."")
+                EndTextCommandSetBlipName(new_blip)
+
+				Citizen.Wait(750)
+				RemoveBlip(new_blip)
+			end
+		end)
+	end
+end)
+
+
 

@@ -538,7 +538,7 @@ Items = {
 
 	['joint'] = {
 		label = 'Weed Joint',
-		weight = 950,
+		weight = 100,
 		close = true,
 		stack = true,
 		client = {
@@ -550,7 +550,7 @@ Items = {
 
 	['packagedweed'] = {
 		label = 'Packaged Weed',
-		weight = 950,
+		weight = 200,
 		close = true,
 		stack = true,
 	},
@@ -1118,6 +1118,13 @@ Items = {
 	['unpackedcocaine'] = {
 		label = 'Unpackaged Cocaine',
 		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	['handcuffs'] = {
+		label = 'Handcuffs',
+		weight = 150,
 		stack = true,
 		close = true,
 	},

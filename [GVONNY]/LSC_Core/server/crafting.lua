@@ -528,11 +528,11 @@ AddEventHandler('craft:fullboltonengine', function()
     local headCount = xPlayer.getInventoryItem('head').count
 
     if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        xPlayer.removeInventoryItem('piston', 6)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('engine_block', 1)
-        xPlayer.removeInventoryItem('head', 2)
         if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 6)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('head', 2)
             xPlayer.addInventoryItem('full_bolt_on_engine', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -572,11 +572,11 @@ AddEventHandler('craft:2jz', function()
     local headCount = xPlayer.getInventoryItem('high_flow_head').count
 
     if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 0) then
-        xPlayer.removeInventoryItem('piston', 6)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('engine_block', 1)
-        xPlayer.removeInventoryItem('high_flow_head', 1)
         if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 6)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 1)
             xPlayer.addInventoryItem('2jzengine', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -596,11 +596,11 @@ AddEventHandler('craft:amgv8', function()
     local headCount = xPlayer.getInventoryItem('high_flow_head').count
 
     if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        xPlayer.removeInventoryItem('piston', 8)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('engine_block', 1)
-        xPlayer.removeInventoryItem('high_flow_head', 2)
-        if(xPlayer.job.grade > 2) then
+        if(xPlayer.job.grade > 2) 
+            xPlayer.removeInventoryItem('piston', 8)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
             xPlayer.addInventoryItem('amgv8', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -620,11 +620,11 @@ AddEventHandler('craft:lambov10', function()
     local headCount = xPlayer.getInventoryItem('high_flow_head').count
 
     if (pistonCount > 9 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        xPlayer.removeInventoryItem('piston', 10)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('engine_block', 1)
-        xPlayer.removeInventoryItem('high_flow_head', 2)
         if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 10)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
             xPlayer.addInventoryItem('lambov10', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -664,11 +664,11 @@ AddEventHandler('craft:rb26', function()
     local headCount = xPlayer.getInventoryItem('head').count
 
     if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 0) then
-        xPlayer.removeInventoryItem('piston', 6)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('engine_block', 1)
-        xPlayer.removeInventoryItem('head', 1)
         if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 6)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('head', 1)
             xPlayer.addInventoryItem('rb26', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -688,11 +688,11 @@ AddEventHandler('craft:chevylt5', function()
     local headCount = xPlayer.getInventoryItem('head').count
 
     if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        xPlayer.removeInventoryItem('piston', 8)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('engine_block', 1)
-        xPlayer.removeInventoryItem('head', 2)
-        if(xPlayer.job.grade > 2) then
+        if(xPlayer.job.grade > 2) 
+            xPlayer.removeInventoryItem('piston', 8)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('head', 2)
             xPlayer.addInventoryItem('chevylt5', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -712,11 +712,11 @@ AddEventHandler('craft:gt3flat6', function()
     local headCount = xPlayer.getInventoryItem('high_flow_head').count
 
     if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        xPlayer.removeInventoryItem('piston', 6)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('aluminum_engine_block', 1)
-        xPlayer.removeInventoryItem('high_flow_head', 2)
         if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 6)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
             xPlayer.addInventoryItem('gt3flat6', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -736,11 +736,11 @@ AddEventHandler('craft:k20', function()
     local headCount = xPlayer.getInventoryItem('high_flow_head').count
 
     if (pistonCount > 3 and crankshaftCount > 0 and blockCount > 0 and headCount > 0) then
-        xPlayer.removeInventoryItem('piston', 4)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('aluminum_engine_block', 1)
-        xPlayer.removeInventoryItem('high_flow_head', 1)
         if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 4)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 1)
             xPlayer.addInventoryItem('k20a', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
@@ -760,11 +760,11 @@ AddEventHandler('craft:musv8', function()
     local headCount = xPlayer.getInventoryItem('head').count
 
     if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        xPlayer.removeInventoryItem('piston', 8)
-        xPlayer.removeInventoryItem('crankshaft', 1)
-        xPlayer.removeInventoryItem('engine_block', 1)
-        xPlayer.removeInventoryItem('head', 2)
         if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 8)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('head', 2)
             xPlayer.addInventoryItem('musv8', 1)
         else
             TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })

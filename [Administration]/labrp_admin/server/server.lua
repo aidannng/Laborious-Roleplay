@@ -742,6 +742,19 @@ RegisterCommand("setcoords", function(source, args, rawCommand)	-- /noclip     e
 	end
 end, false)
 
+RegisterCommand("stateannounce", function(source, args, rawCommand)	-- /tpm		teleport to waypoint
+	if source ~= 0 then
+		local xPlayer = ESX.GetPlayerFromId(source)
+		if havePermission(xPlayer, {'staff'}) then
+			local message = string.sub(rawCommand, 15)
+			TriggerClientEvent('chat:addMessage', xPlayer.source, {
+				template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0} </div>',
+				args = { "^*^4State Announcement^0 » " .. message }
+			});
+		end
+	end
+end, false)
+
 ------------------------------------------------------------------------------------------------------------------------------------------------
 ESX.RegisterServerCallback('labrp_admin:CheckForPerms', function(source, cb)
     local xPlayer = ESX.GetPlayerFromId(source)

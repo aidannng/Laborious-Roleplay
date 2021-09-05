@@ -88,7 +88,7 @@ AddEventHandler('labrp_fish:usebait', function()
             local catchRarity = math.random(1, 100)
 
             if catchRarity >= 80 then
-                local finished = exports["reload-skillbar"]:taskBar(400,math.random(2,15))
+                local finished = exports["reload-skillbar"]:taskBar(500,math.random(2,15))
                 if finished ~= 100 then
                     exports['mythic_notify']:SendAlert('error', 'The Shark broke the line!')
                     baitUsed = false
@@ -97,7 +97,7 @@ AddEventHandler('labrp_fish:usebait', function()
                     baitUsed = false
                 end
             elseif catchRarity >= 60 and catchRarity < 80 then
-                local finished = exports["reload-skillbar"]:taskBar(600,math.random(2,15))
+                local finished = exports["reload-skillbar"]:taskBar(750,math.random(2,15))
                 if finished ~= 100 then
                     exports['mythic_notify']:SendAlert('error', 'The Turtle broke the line!')
                     baitUsed = false
@@ -106,7 +106,7 @@ AddEventHandler('labrp_fish:usebait', function()
                     baitUsed = false
                 end
             elseif catchRarity < 60 then
-                local finished = exports["reload-skillbar"]:taskBar(1000,math.random(2,15))
+                local finished = exports["reload-skillbar"]:taskBar(1200,math.random(2,15))
                 if finished ~= 100 then
                     exports['mythic_notify']:SendAlert('error', 'The fish broke the line!')
                     baitUsed = false
@@ -173,6 +173,7 @@ deliveryBlip = AddBlipForCoord(-3277.793, 969.9165, 8.335571)
 SetBlipScale(deliveryBlip, 0.8)
 SetBlipColour(deliveryBlip, 5)
 SetBlipSprite(deliveryBlip, 356)
+SetBlipAsShortRange(deliveryBlip, true)
 BeginTextCommandSetBlipName("STRING")
 AddTextComponentString('Sell Fish')
 EndTextCommandSetBlipName(deliveryBlip)

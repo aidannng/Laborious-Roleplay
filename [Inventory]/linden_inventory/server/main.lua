@@ -1208,3 +1208,9 @@ AddEventHandler('linden_inventory:vendingmachine', function(item, price)
 		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You're too poor", })
     end
 end)
+
+ESX.RegisterServerCallback('linden_inventory:getinventoryweight', function(source, cb, target)
+	local xTarget = ESX.GetPlayerFromId(target)
+    weight = xTarget.getWeight()
+	cb(weight)
+end)

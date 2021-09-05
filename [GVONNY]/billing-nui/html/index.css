@@ -7,7 +7,7 @@ body {
     padding: 10px;
     color: rgb(217,227,251);
     position: fixed;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgb(84, 96, 125);
@@ -16,6 +16,7 @@ body {
     border-radius: 7px;
     display:none;
 
+    height:1000px!important;
 }
 
 th{
@@ -183,4 +184,23 @@ img {
 .image-caption h6 {
     font-size:12px;
     margin-bottom:3px;
+}
+
+.scroll-bar::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+.scroll-bar::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+.scroll-bar::-webkit-scrollbar-thumb
+{
+  background-color: lightskyblue;
+}
+
+.bills{
+    height:750px!important;
 }
