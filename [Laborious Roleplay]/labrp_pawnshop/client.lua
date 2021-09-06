@@ -32,7 +32,7 @@ AddEventHandler('openpawnshop', function()
 		{
             id = 2,
             header = "Jewellery",
-            txt = "Rings | Chain's | Watch's",
+            txt = "Rings | Watch's",
             params = {
                 event = "pawnshop:jewellery",
                 args = {
@@ -96,66 +96,6 @@ AddEventHandler('pawnshop:jewellery',function()
 				args = {
 					number = 2,
 					id = 3
-				}
-			}
-		},
-		{
-			id = 4,
-			header = "2CT Chain",
-			txt = "$70 - $95",
-			params = {
-				event = "sell2chain",
-				args = {
-					number = 3,
-					id = 4
-				}
-			}
-		},
-        {
-			id = 5,
-			header = "5CT Chain",
-			txt = "$200 - $250",
-			params = {
-				event = "sell5chain",
-				args = {
-					number = 4,
-					id = 5
-				}
-			}
-		},
-        {
-			id = 6,
-			header = "8CT Chain",
-			txt = "$275 - $350",
-			params = {
-				event = "sell8chain",
-				args = {
-					number = 5,
-					id = 6
-				}
-			}
-		},
-        {
-			id = 7,
-			header = "10CT Chain",
-			txt = "$400 - $650",
-			params = {
-				event = "sell10chain",
-				args = {
-					number = 6,
-					id = 7
-				}
-			}
-		},
-        {
-			id = 8,
-			header = "Rolex",
-			txt = "$700 - $2000",
-			params = {
-				event = "sellrolex",
-				args = {
-					number = 7,
-					id = 8
 				}
 			}
 		},

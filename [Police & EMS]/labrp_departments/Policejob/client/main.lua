@@ -16,7 +16,7 @@ CreateThread(function()
 
 		SetBlipSprite (blip, v.Blip.Sprite)
 		SetBlipDisplay(blip, v.Blip.Display)
-		SetBlipScale  (blip, v.Blip.Scale)
+		SetBlipScale  (blip, 0.8)
 		SetBlipColour (blip, v.Blip.Colour)
 		SetBlipAsShortRange(blip, true)
 
@@ -32,7 +32,7 @@ CreateThread(function()
 	SetBlipAsShortRange(blip, true)
 	SetBlipColour(blip, 43)
 	SetBlipDisplay(blip, 4)
-	SetBlipScale(blip, 1.2)
+	SetBlipScale(blip, 0.8)
 	SetBlipSprite(blip, 60)
 	
 	BeginTextCommandSetBlipName('STRING')
@@ -261,7 +261,7 @@ AddEventHandler('qrp_police:getUncuffed',function()
 	cuffState = false
 end)
 
--- Function to load anim dicts
+
 function LoadAnimDict(dict)
     if not HasAnimDictLoaded(dict) then
         RequestAnimDict(dict)
@@ -377,7 +377,7 @@ CreateThread(function()
 		if dragStatus.isDragged then
 			targetPed = GetPlayerPed(GetPlayerFromServerId(dragStatus.CopId))
 			if not IsPedSittingInAnyVehicle(targetPed) then
-				AttachEntityToEntity(playerPed, targetPed, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, true, false, 2, true)
+				AttachEntityToEntity(playerPed, targetPed, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
 			else
 				dragStatus.isDragged = false
 				DetachEntity(playerPed, true, false)
@@ -438,7 +438,7 @@ CreateThread(function()
 				elseif v.job == "ambulance" then
 					SetBlipColour(new_blip, 8)
 				elseif v.job == "fbi" then
-					SetBlipColour(new_blip, 40)
+					SetBlipColour(new_blip, 66)
 				end
 				SetBlipAsShortRange(new_blip, true)
 				BeginTextCommandSetBlipName("STRING")

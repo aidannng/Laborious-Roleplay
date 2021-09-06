@@ -333,9 +333,9 @@ AddEventHandler("doHack", function()
         for id,v in pairs(StoreRobberies) do
             if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) <= 2.5 then
                 TriggerEvent('storecooldown')
-                exports['core_dispatch']:addCall('10-68', "Store Robbery", {
-                    {icon="fa-store", info="24/7 Robbery"}
-                    }, {coords.x, coords.y, coords.z}, "police", 10000, 59, 1)
+                local data = {displayCode = '10-68', description = 'Store Robbery', isImportant = 0, recipientList = {'police'}, length = '10000', infoM = 'fa-store', info = '24/7 Robbery'}
+                local dispatchData = {dispatchData = data, caller = 'Alarm', coords = vector3(-43.13406, -1750.523, 29.41467)}
+                TriggerEvent('wf-alerts:svNotify', dispatchData)
                 exports['mythic_progbar']:Progress({
                     name = "unique_action_name",
                     duration = 35000,
@@ -349,7 +349,7 @@ AddEventHandler("doHack", function()
                         disableCombat = true,
                     },
                     animation = {
-                        animDict = "amb@medic@standing@kneel@idle_a",--amb@medic@standing@kneel@idle_a idle_a
+                        animDict = "amb@medic@standing@kneel@idle_a",
                         anim = "idle_a",
                     },
                 })

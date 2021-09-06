@@ -1128,6 +1128,13 @@ Items = {
 		stack = true,
 		close = true,
 	},
+
+	['tv'] = {
+		label = 'TV',
+		weight = 2500,
+		stack = false,
+		close = true,
+	},
 	
 }
 -- 

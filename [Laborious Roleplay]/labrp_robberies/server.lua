@@ -115,23 +115,6 @@ AddEventHandler('checkstorecops', function()
     end
 end)
 
-RegisterServerEvent('checkhousecops')
-AddEventHandler('checkhousecops', function()
-    local xPlayers = ESX.GetExtendedPlayers()
-    local cops = 0
-    for _, xPlayer in pairs(xPlayers) do
-        if xPlayer.job.name == 'police' then
-            cops = cops + 1
-        end
-    end
-
-    if cops >= 2 then
-        TriggerClientEvent('house:attempt', source)
-    end
-end)
-
-
-
 
 ESX.RegisterServerCallback('labrp:store:haslockpick', function(source, callback)
     local xPlayer = ESX.GetPlayerFromId(source)
