@@ -186,6 +186,16 @@ Config.Garages = {
             {x = 437.3802, y = -996.9363, z = 24.6908, h = 90.00},
         }
     },
+    FBI = {
+        Display = "FBI",
+        GarageType = 'car',
+        PedCoords = {x = 139.4769, y = -700.2066, z = 33.12158, h = 0.37},
+        Zone = {display = 'FBI', name = 'FBI', x = 442.5231, y = -986.5978, z = 24.6908, l = 28.2, w = 27.2, h = 0, minZ = 24.69, maxZ = 28.69},
+        Spawns = {
+            {x = 144.1055, y = -698.4923, z = 33.12158, h = 270.00},
+            {x = 145.4637, y = -694.8527, z = 33.12158, h = 270.00}, 
+        }
+    },
     PDM = {
         Display = "PDM",
         GarageType = 'car',

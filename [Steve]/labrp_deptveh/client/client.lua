@@ -59,16 +59,20 @@ local lastnames = {
 
 local policedealership = {
     `s_m_y_cop_01`,
-    }   
+    }
+
 exports["labrp_Eye"]:AddTargetModel(policedealership, {
     options = {
-    {
-        event = "pdvehicle:menu",
-        icon = "fas fa-car", 
-        label = "Police Dealership",
+        {
+            event = "pdvehicle:menu",
+            icon = "fas fa-car", 
+            label = "Police Dealership",
+            job = {
+                ["police"] = 0,
+                ["fbi"] = 0,
+            }
+        },
     },
-    },
-    job = {"police"},
     distance = 2.5
 })
 
@@ -222,8 +226,11 @@ exports['labrp_Eye']:AddTargetBone({"platelight"}, {
             event = "labrp_pdvehicles:checkvin",
             icon = "fas fa-newspaper",
             label = "Check VIN",
-            job = "police",
-        },
+			job = {
+				["police"] = 0,
+				["fbi"] = 0,
+			}
+		},
     },
     distance = 1.0,
 })
@@ -237,7 +244,7 @@ AddEventHandler('labrp_pdvehicles:checkvin', function(data)
         if fullname == 'unknown' then
             TriggerEvent('chat:addMessage', {
                 template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0}</div>',
-                args = { "^*^4Name^0 : "..firstnames[math.random(1, #firstnames)].name.." "..lastnames[math.random(1, #lastnames)].name.." | ^4Plate^0 : "..plate}
+                args = { "^*^4VIN ^0: No Match Found for Plate : "..plate}
             });
         else
             TriggerEvent('chat:addMessage', {

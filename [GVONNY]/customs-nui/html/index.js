@@ -67,7 +67,7 @@ $(function () {
             amount:amount,
         }));
         
-        var amount = $('#scrapCount').val('');
+        $('#ironCount').val('');
     });
 
     $("#buyAluminum").click(function () {
@@ -79,7 +79,7 @@ $(function () {
             price:price,
             amount:amount,
         }));
-        var amount = $('#aluminumCount').val('');
+        $('#aluminumCount').val('');
     });
 
 
@@ -92,7 +92,7 @@ $(function () {
             price:price,
             amount:amount,
         }));
-        var amount = $('#rubberCount').val('');
+        $('#rubberCount').val('');
     });
 
     $('.employee').on('click', '.promote', function(){
