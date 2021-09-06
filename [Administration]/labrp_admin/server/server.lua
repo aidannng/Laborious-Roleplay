@@ -57,7 +57,7 @@ RegisterCommand("openinv", function(source, args, rawCommand)    -- /openinv    
 	if source ~= 0 then
 		print(dump(args))
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			local tarPlayer = ESX.GetPlayerFromId(args[1])
 			local targetId = tonumber(args[1])
 			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -117,7 +117,7 @@ end, false)
 RegisterCommand("tpm", function(source, args, rawCommand)	-- /tpm		teleport to waypoint
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			TriggerClientEvent("labrp_admin:tpm", xPlayer.source)
 		end
 	end
@@ -140,7 +140,7 @@ RegisterCommand("announce", function(source, args, rawCommand)	-- /announce		cre
 		if args[1] then
 			local message = string.sub(rawCommand, 10)
 			if xPlayer then
-				if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+				if havePermission(xPlayer) then
 					TriggerClientEvent('chat:addMessage',-1 , {
 						template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(255,0,0,0.5); border-radius: 3px;">{0} <br> {1} </div>',
 						args = { "^*[^4LABORIOUS ROLEPLAY^0] ANNOUNCEMENT^0 ", "» " .. message}
@@ -162,7 +162,7 @@ end, false)
 RegisterCommand("bring", function(source, args, rawCommand)	-- /bring		brings player to admin
 	if source ~= 0 then
 	  	local xPlayer = ESX.GetPlayerFromId(source)
-	  	if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
 	    	if args[1] and tonumber(args[1]) then
 	      		local targetId = tonumber(args[1])
 	      		local xTarget = ESX.GetPlayerFromId(targetId)
@@ -208,7 +208,7 @@ end, false)
 RegisterCommand("bringback", function(source, args, rawCommand)	-- /bringback [ID] will teleport player back where he was before /bring
 	if source ~= 0 then
   		local xPlayer = ESX.GetPlayerFromId(source)
-  		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
     		if args[1] and tonumber(args[1]) then
       			local targetId = tonumber(args[1])
       			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -254,7 +254,7 @@ end, false)
 RegisterCommand("goto", function(source, args, rawCommand)	-- /goto		teleport admin to player
 	if source ~= 0 then
   		local xPlayer = ESX.GetPlayerFromId(source)
-  		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
     		if args[1] and tonumber(args[1]) then
       			local targetId = tonumber(args[1])
       			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -298,7 +298,7 @@ end, false)
 RegisterCommand("goback", function(source, args, rawCommand)	-- /goback    will teleport you back where you was befor /goto
 	if source ~= 0 then
 	  	local xPlayer = ESX.GetPlayerFromId(source)
-	  	if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
 			PerformHttpRequest(discord_webhook.url, 
 			function(err, text, header) end, 
 			'POST', 
@@ -326,7 +326,7 @@ end, false)
 RegisterCommand("noclip", function(source, args, rawCommand)	-- /noclip     enables/disables no clip
 	if source ~= 0 then
 	  	local xPlayer = ESX.GetPlayerFromId(source)
-	  	if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
 	    	TriggerClientEvent("labrp_admin:noclip", xPlayer.source)
 	  	end
 	end
@@ -336,7 +336,7 @@ end, false)
 RegisterCommand("kill", function(source, args, rawCommand)	-- /kill [ID]
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			if args[1] and tonumber(args[1]) then
 				local targetId = tonumber(args[1])
       			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -363,7 +363,7 @@ end, false)
 RegisterCommand("freeze", function(source, args, rawCommand)	-- /freeze [ID]
 	if source ~= 0 then
   		local xPlayer = ESX.GetPlayerFromId(source)
-  		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
     		if args[1] and tonumber(args[1]) then
       			local targetId = tonumber(args[1])
       			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -390,7 +390,7 @@ end, false)
 RegisterCommand("unfreeze", function(source, args, rawCommand)	-- /unfreeze [ID]
 	if source ~= 0 then
   		local xPlayer = ESX.GetPlayerFromId(source)
-  		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
     		if args[1] and tonumber(args[1]) then
       			local targetId = tonumber(args[1])
       			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -420,7 +420,7 @@ RegisterCommand("reviveall", function(source, args, rawCommand)	-- reviveall (ca
 		canRevive = true
 	else
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			canRevive = true
 			PerformHttpRequest(discord_webhook.url, 
 			function(err, text, header) end, 
@@ -440,7 +440,7 @@ end, false)
 RegisterCommand("clearall", function(source, args, rawCommand)	-- /clearall		clears everyones chat
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			TriggerClientEvent('chat:client:ClearChat', -1)
 			PerformHttpRequest(discord_webhook.url, 
 			function(err, text, header) end, 
@@ -454,7 +454,7 @@ end, false)
 RegisterCommand("saveall", function(source, args, rawCommand)	-- /saveall		saves all characters
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			ESX.SavePlayers(cb)
 			PerformHttpRequest(discord_webhook.url, 
 			function(err, text, header) end, 
@@ -470,7 +470,7 @@ end, false)
  RegisterCommand("car", function(source, args, rawCommand)    -- /car        spawns a vehicle
 	 if source ~= 0 then
 		 local xPlayer = ESX.GetPlayerFromId(source)
-		 if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		 if havePermission(xPlayer, {'staff'}) then
 			xPlayer.triggerEvent('esx:spawnVehicle', args[1])
 			PerformHttpRequest(discord_webhook.url, 
 			function(err, text, header) end, 
@@ -486,7 +486,7 @@ end, false)
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
 		local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
-		if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			xPlayer.triggerEvent("vehiclekeys:client:SetOwner", plate, vehicle) 
 			TriggerClientEvent('vehiclekeys:client:ToggleEngine', source)
 			
@@ -502,7 +502,7 @@ end, false)
  RegisterCommand("dv", function(source, args, rawCommand)    -- /dv        deletes a vehicle
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper'}) then
+		if havePermission(xPlayer) then
 			xPlayer.triggerEvent('esx:deleteVehicle', args[1])
 		end
 	end
@@ -512,7 +512,7 @@ end, false)
 RegisterCommand("setgroup", function(source, args, rawCommand)    -- /setgroup        sets user group
     if source ~= 0 then
         local xPlayer = ESX.GetPlayerFromId(source)
-        if havePermission(xPlayer, {'developer', 'headadmin', 'senioradmin', 'generaladmin', 'junioradmin', 'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+        if havePermission(xPlayer, {'admin', 'staff'}) then
             local tarPlayer = ESX.GetPlayerFromId(args[1])
 			local targetId = tonumber(args[1])
 			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -540,7 +540,7 @@ end, false)
 RegisterCommand("setjob", function(source, args, rawCommand)    -- /setjob        sets user job
     if source ~= 0 then
         local xPlayer = ESX.GetPlayerFromId(source)
-        if havePermission(xPlayer, {'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
         	if ESX.DoesJobExist(args[2], args[3]) then
             	local tarPlayer = ESX.GetPlayerFromId(args[1])
            	 if tarPlayer ~= nil then
@@ -560,7 +560,7 @@ end, false)
 RegisterCommand("revive", function(source, args, rawCommand)    -- /revive        revives a player
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			local tarPlayer = ESX.GetPlayerFromId(args[1])
 			if tarPlayer ~= nil then
 				tarPlayer.triggerEvent('esx_ambulancejob:revive')
@@ -578,7 +578,7 @@ end, false)
 RegisterCommand("heal", function(source, args, rawCommand)    -- /heal        heals a player
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			local tarPlayer = ESX.GetPlayerFromId(args[1])
 			local targetId = tonumber(args[1])
 			local xTarget = ESX.GetPlayerFromId(targetId)
@@ -610,7 +610,7 @@ end, false)
 RegisterCommand("clearinventory", function(source, args, rawCommand)    -- /clearinventory       clears inventory
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'junioradmin', 'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			local tarPlayer = ESX.GetPlayerFromId(args[1])
 			if tarPlayer ~= nil then
 				TriggerEvent('linden_inventory:clearPlayerInventory', args[1])
@@ -633,7 +633,7 @@ RegisterCommand("giveitem", function(source, args, rawCommand)    -- /giveitem  
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
 
-		if havePermission(xPlayer, {'junioradmin', 'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
 			local tarPlayer = ESX.GetPlayerFromId(args[1])
 
 			if tarPlayer then
@@ -652,7 +652,7 @@ RegisterCommand("setmoney", function(source, args, rawCommand)    -- /setmoney  
     if source ~= 0 then
         local xPlayer = ESX.GetPlayerFromId(source)
 
-        if havePermission(xPlayer, {'generaladmin', 'junioradmin', 'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
             local tarPlayer = ESX.GetPlayerFromId(args[1])
 
             if tarPlayer then
@@ -680,7 +680,7 @@ RegisterCommand("removemoney", function(source, args, rawCommand)    -- /removem
     if source ~= 0 then
         local xPlayer = ESX.GetPlayerFromId(source)
 
-        if havePermission(xPlayer, {'generaladmin', 'junioradmin', 'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
             local tarPlayer = ESX.GetPlayerFromId(args[1])
 
             if tarPlayer then
@@ -708,7 +708,7 @@ RegisterCommand("addmoney", function(source, args, rawCommand)    -- /addmoney  
     if source ~= 0 then
         local xPlayer = ESX.GetPlayerFromId(source)
 
-        if havePermission(xPlayer, {'generaladmin', 'junioradmin', 'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		if havePermission(xPlayer, {'staff'}) then
             local tarPlayer = ESX.GetPlayerFromId(args[1])
 
             if tarPlayer then
@@ -736,7 +736,7 @@ end, false)
 RegisterCommand("setcoords", function(source, args, rawCommand)	-- /noclip     enables/disables no clip
 	if source ~= 0 then
 	  	local xPlayer = ESX.GetPlayerFromId(source)
-		  if havePermission(xPlayer, {'headadmin', 'senioradmin', 'generaladmin', 'junioradmin', 'generalmoderator', 'juniormoderator', 'communityhelper', 'staff'}) then
+		  if havePermission(xPlayer, {'staff'}) then
 			xPlayer.setCoords({x = tonumber(args[1]), y = tonumber(args[2]), z = tonumber(args[3])})
 	  	end
 	end
@@ -745,7 +745,7 @@ end, false)
 RegisterCommand("stateannounce", function(source, args, rawCommand)	-- /tpm		teleport to waypoint
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		if havePermission(xPlayer, {'staff'}) then
+		if havePermission(xPlayer) then
 			local message = string.sub(rawCommand, 15)
 			TriggerClientEvent('chat:addMessage', xPlayer.source, {
 				template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(55, 69, 95, 0.5); border-radius: 3px;">{0} </div>',

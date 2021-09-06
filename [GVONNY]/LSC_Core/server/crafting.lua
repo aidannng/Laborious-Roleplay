@@ -528,15 +528,11 @@ AddEventHandler('craft:fullboltonengine', function()
     local headCount = xPlayer.getInventoryItem('head').count
 
     if (pistonCount > 5 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
-        if(xPlayer.job.grade > 2) then
-            xPlayer.removeInventoryItem('piston', 6)
-            xPlayer.removeInventoryItem('crankshaft', 1)
-            xPlayer.removeInventoryItem('engine_block', 1)
-            xPlayer.removeInventoryItem('head', 2)
-            xPlayer.addInventoryItem('full_bolt_on_engine', 1)
-        else
-            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
-        end
+        xPlayer.removeInventoryItem('piston', 6)
+        xPlayer.removeInventoryItem('crankshaft', 1)
+        xPlayer.removeInventoryItem('engine_block', 1)
+        xPlayer.removeInventoryItem('head', 2)
+        xPlayer.addInventoryItem('full_bolt_on_engine', 1)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
     end
