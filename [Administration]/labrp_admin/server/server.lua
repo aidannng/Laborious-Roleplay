@@ -37,8 +37,8 @@ local onTimer       = {}
 local savedCoords   = {}
 local warnedPlayers = {}
 local deadPlayers   = {}
-local discord_webhook = {url = "https://discord.com/api/webhooks/861474902493495317/oTnEfRLpSViVKPOTQQ8Rsas9dCUTKrgGrzJ7s7w3rnTAbc42wVQKrVUyf43ap71_WKvf",image = "https://i.iodine.gg/i5fba.png"}
-local staff_chat_webhook = {url = "https://discord.com/api/webhooks/861483050163241000/EbZLmO0D_mkSSdJ4y03B5xkpnUKr1spXdo8P45Me5-zEiWd1c_RWumolxBLGIVG6nURJ",image = "https://i.iodine.gg/i5fba.png"}
+local discord_webhook = {url = "",image = "https://i.iodine.gg/i5fba.png"}
+local staff_chat_webhook = {url = "",image = "https://i.iodine.gg/i5fba.png"}
 ------------------------------------------------------------------------------------------------------------------------------------------------
 function dump(o)
     if type(o) == 'table' then

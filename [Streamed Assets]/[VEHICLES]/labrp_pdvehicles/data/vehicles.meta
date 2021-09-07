@@ -8,7 +8,7 @@
       <txdName>code318charg</txdName>
       <handlingId>codechar</handlingId>
       <gameName>code318charg</gameName>
-      <vehicleMakeName />
+      <vehicleMakeName>Dodge</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
@@ -145,7 +145,7 @@
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>WINDSOR</audioNameHash>
+      <audioNameHash>chino2</audioNameHash>
       <layout>LAYOUT_STANDARD</layout>
       <coverBoundOffsets>SHERIFF_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -268,7 +268,7 @@
       <txdName>code318tahoe</txdName>
       <handlingId>codetah</handlingId>
       <gameName>code318tahoe</gameName>
-      <vehicleMakeName />
+      <vehicleMakeName>Chevrolet</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
@@ -403,7 +403,7 @@
       <txdName>code320exp</txdName>
       <handlingId>codefpiu</handlingId>
       <gameName>code320exp</gameName>
-      <vehicleMakeName />
+      <vehicleMakeName>Ford</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
@@ -536,14 +536,14 @@
       <txdName>code3mustang</txdName>
       <handlingId>codestang</handlingId>
       <gameName>code3mustang</gameName>
-      <vehicleMakeName />
+      <vehicleMakeName>Ford</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
       <animConvRoofName>null</animConvRoofName>
       <animConvRoofWindowsAffected />
       <ptfxAssetName>null</ptfxAssetName>
-      <audioNameHash>musv8</audioNameHash>
+      <audioNameHash>MONSTER</audioNameHash>
       <layout>LAYOUT_STANDARD</layout>
       <coverBoundOffsets>SHERIFF_COVER_OFFSET_INFO</coverBoundOffsets>
       <explosionInfo>EXPLOSION_INFO_DEFAULT</explosionInfo>
@@ -666,7 +666,7 @@
       <txdName>code3harley</txdName>
       <handlingId>code3harley</handlingId>
       <gameName>code3harley</gameName>
-      <vehicleMakeName />
+      <vehicleMakeName>Harley</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
@@ -1036,7 +1036,7 @@
       <txdName>LEOBIKE</txdName>
       <handlingId>LEOBIKE</handlingId>
       <gameName>LEOBIKE</gameName>
-      <vehicleMakeName>MAIBATSU</vehicleMakeName>
+      <vehicleMakeName>Suzuki</vehicleMakeName>
       <expressionDictName>null</expressionDictName>
       <expressionName>null</expressionName>
       <animConvRoofDictName>null</animConvRoofDictName>
