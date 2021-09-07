@@ -665,7 +665,7 @@ exports['labrp_Eye']:AddTargetModel(RegisterModel, {
     distance = 1.5,
 })
 
-AddEventHandler('labrp:store:rob', function(data)
+--[[AddEventHandler('labrp:store:rob', function(data)
     local health = GetEntityHealth(data.entity)
     print(health)
     if health >= 1000 then

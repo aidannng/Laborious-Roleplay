@@ -75,11 +75,21 @@ Citizen.CreateThread(function()
                                     event = "labrp-robbery:jobSelect",
                                     icon = "fas fa-house-user",
                                     label = "Get a Job",
+                                    canInteract = function(entity)
+                                        if GetClockHours() <= 7 and GetGameTimer() > 20 then
+                                            return true
+                                        end
+                                    end,
                                 },
                                 {
                                     event = "labrp-robbery:abandon",
                                     icon = "fas fa-ban",
                                     label = "Cancel Job",
+                                    canInteract = function(entity)
+                                        if GetClockHours() <= 7 and GetGameTimer() > 20 then
+                                            return true
+                                        end
+                                    end,
                                 },
 
                             },
@@ -130,8 +140,6 @@ Citizen.CreateThread(function()
 end)
 
 
-
--- Spawn the actual NPC
 RegisterNetEvent('labrp-robbery:spawnSeller')
 AddEventHandler('labrp-robbery:spawnSeller',function(coords, heading)
   local hash = GetHashKey('u_m_m_jewelthief')
@@ -145,7 +153,6 @@ AddEventHandler('labrp-robbery:spawnSeller',function(coords, heading)
   sellPed = CreatePed(5, hash, coords, heading, false, false)
   FreezeEntityPosition(sellPed, true)
   SetEntityInvincible(sellPed, true)
-  SetEntityHeading(jobPed, 140)
   SetBlockingOfNonTemporaryEvents(sellPed, true)
   SetModelAsNoLongerNeeded(hash)
 end)
@@ -164,7 +171,6 @@ AddEventHandler('labrp-robbery:spawnJobPed',function(coords, heading)
   jobPed = CreatePed(5, hash, coords, heading, false, false)
   FreezeEntityPosition(jobPed, true)
   SetEntityInvincible(jobPed, true)
-  SetEntityHeading(jobPed, 11)
   SetBlockingOfNonTemporaryEvents(jobPed, true)
   SetModelAsNoLongerNeeded(hash)
 end)
@@ -219,7 +225,7 @@ end
 RegisterNetEvent('labrp-robbery:jobSelect')
 AddEventHandler('labrp-robbery:jobSelect', function(mission)
 
-    if GetClockHours() <= 7 and GetGameTimer() > 23   then
+    if GetClockHours() <= 7 and GetGameTimer() > 20   then
     local num = math.random(1,#Config.Houses)
     local numy = 0
     while Config.Houses[num].hasJob and numy < 100 do
@@ -277,7 +283,7 @@ AddEventHandler('labrp-robbery:pickDoor', function(xPlayer)
       --local dist   = GetDistanceBetweenCoords(v.pos.x, v.pos.y, v.pos.z, coords.x, coords.y, coords.z, false)
       local housecoords = vector3(v.pos.x, v.pos.y,v.pos.z)
       local dist = #(housecoords - coords)
-        if GetClockHours() <= 7 and GetGameTimer() > 23 then
+        if GetClockHours() <= 7 and GetGameTimer() > 20 then
           if dist <= 1.2  then
             if v.hasJob then                 
                 local skillcheck = exports["reload-skillbar"]:taskBar(2500,math.random(5,15))

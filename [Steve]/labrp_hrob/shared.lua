@@ -4,7 +4,7 @@ Config.Loot = {'rolex','2ct_gold_chain','advancedlockpick','diamond','gold','tv'
 Config.PoliceName = 'police'
 
 Config.SellerLocation = vector3(414.75,344.5,101.42) -- Location of the NPC to sell to
-Config.startLocation = vector3(-586.3912, -1645.873, 18.5575) -- Location of NPC to start Job
+Config.startLocation = vector3(205.99,-1852.24,26.47) -- Location of NPC to start Job
 
 
 Config.PropChance = 1 

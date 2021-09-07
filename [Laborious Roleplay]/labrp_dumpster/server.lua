@@ -22,7 +22,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     [15] = {chance = 4, id = 'steel', name = 'Steel', quantity = 1}, -- rare
     [16] = {chance = 2, id = 'scrap_metal', name = 'Scrap Metal', quantity = 1}, -- rare
     [17] = {chance = 2, id = 'rubber', name = 'Rubber', quantity = 1}, -- rare
-    [18] = {chance = 2, id = 'rolling_paper', name = 'Rolling Paper', quantity = 1}, -- rare
+    [18] = {chance = 2, id = 'plastic', name = 'Plastic', quantity = 1}, -- rare
     [19] = {chance = 3, id = 'glass', name = 'Glass', quantity = 1}, -- rare
     [20] = {chance = 5, id = 'battery', name = 'Battery', quantity = 1}, -- rare
     [21] = {chance = 7, id = 'white_pearl', name = 'White Pearl (P)', quantity = 1}, -- rare
