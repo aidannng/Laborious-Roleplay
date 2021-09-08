@@ -1,57 +1,127 @@
-local isHandsup = false
-local isCrouched = false
 
-Citizen.CreateThread(function()
-  RequestAnimDict('missminuteman_1ig_2')
-    while not HasAnimDictLoaded('missminuteman_1ig_2') do
-        Citizen.Wait(50)
+Crouched = false
+CrouchedForce = false
+Aimed = false
+LastCam = 0
+Cooldown = false
+
+CoolDownTime = 500 -- in ms
+
+NormalWalk = function() 
+	local Player = PlayerPedId()
+	SetPedMaxMoveBlendRatio(Player, 1.0)
+	ResetPedMovementClipset(Player, 0.55)
+	ResetPedStrafeClipset(Player)
+	SetPedCanPlayAmbientAnims(Player, true)
+	SetPedCanPlayAmbientBaseAnims(Player, true)
+	ResetPedWeaponMovementClipset(Player)
+	Crouched = false
+end
+
+SetupCrouch = function()
+	while not HasAnimSetLoaded('move_ped_crouched') do
+		Citizen.Wait(5)
+		RequestAnimSet('move_ped_crouched')
+	end
+end
+
+CanCrouch = function()
+	local PlayerPed = PlayerPedId()
+	if IsPedOnFoot(PlayerPed) and not IsPedJumping(PlayerPed) and not IsPedFalling(PlayerPed) and not IsPedDeadOrDying(PlayerPed) then
+		return true
+	else
+		return false
+	end
+end
+
+CrouchPlayer = function()
+	local Player = PlayerPedId()
+	SetPedUsingActionMode(Player, false, -1, "DEFAULT_ACTION")
+	SetPedMovementClipset(Player, 'move_ped_crouched', 0.55)
+	SetPedStrafeClipset(Player, 'move_ped_crouched_strafing') -- it force be on third person if not player will freeze but this func make player can shoot with good anim on crouch if someone know how to fix this make request :D
+	SetWeaponAnimationOverride(Player, "Ballistic")
+	Crouched = true
+	Aimed = false
+end
+
+SetPlayerAimSpeed = function()
+	local Player = PlayerPedId()
+	SetPedMaxMoveBlendRatio(Player, 0.2)
+	Aimed = true
+end
+
+IsPlayerFreeAimed = function()
+	local Player = PlayerPedId()
+	local PlayerID = GetPlayerIndex()
+	if IsPlayerFreeAiming(PlayerID) or IsAimCamActive() or IsAimCamThirdPersonActive() then
+		return true
+	else
+		return false
+	end
+end
+
+Citizen.CreateThread( function()
+	SetupCrouch()
+    while true do 
+        DisableControlAction(0, 36, true) -- DISABLE DUCK and this make 0.01 and some time 0.02 but always left control will disable
+		-- SetPedStealthMovement(PlayerPedId(), false, "DEFAULT_ACTION") -- DISABLE DUCK But make script idle 0.02
+		
+		if CrouchedForce then
+			local CanDo = CanCrouch()
+			if CanDo and Crouched and IsPlayerFreeAimed() then
+				SetPlayerAimSpeed()
+			elseif CanDo and (not Crouched or Aimed) then
+				CrouchPlayer()
+			elseif not CanDo and Crouched then
+				CrouchedForce = false
+				NormalWalk()
+			end
+			local NowCam = GetFollowPedCamViewMode()
+			if CanDo and Crouched and NowCam == 4 then
+				SetFollowPedCamViewMode(LastCam)
+			elseif CanDo and Crouched and NowCam ~= 4 then
+				LastCam = NowCam
+			end
+		elseif Crouched then
+			NormalWalk()
+		end
+		
+        Citizen.Wait(5)
     end
- while true do
-    Citizen.Wait(10)
-  end
-end)
-
-Citizen.CreateThread(function()
-  RequestAnimSet('move_ped_crouched')
-  while not HasAnimSetLoaded('move_ped_crouched') do
-    Citizen.Wait(50)
-  end
-
-  while true do
-    Citizen.Wait(10)
-    DisableControlAction(0, 36, true)
-  end
-end)
-
-RegisterCommand('handsup', function()
-  if isDead then
-    exports['mythic_notify']:SendAlert('error', "You're dead m8!")
-  else
-    if isHandsup then
-      ClearPedTasks(PlayerPedId())
-      isHandsup = false
-    else
-      if not IsInAnimation then
-        isHandsup = true
-        TaskPlayAnim(PlayerPedId(), "missminuteman_1ig_2", "handsup_enter", 8.0, 8.0, -1, 50, 0, false, false, false)
-      else
-        EmoteCancel()
-      end
-    end
-  end
 end)
 
 RegisterCommand('crouch', function()
-  if not IsPauseMenuActive() and not IsEntityDead(PlayerPedId()) and not IsPedInAnyVehicle(PlayerPedId(), true) then
-    if isCrouched then
-      ResetPedMovementClipset(PlayerPedId(), 0)
-      isCrouched = false
-    else
-      SetPedMovementClipset(PlayerPedId(), 'move_ped_crouched', 0.25)
-      isCrouched = true
-    end
+	if not Cooldown then
+		CrouchedForce = not CrouchedForce
+		Cooldown = true
+		SetTimeout(CoolDownTime, function()
+			Cooldown = false
+		end)
+	end
+end, false)
+
+RegisterKeyMapping('crouch', 'Crouch', 'keyboard', 'LCONTROL')
+
+
+
+Citizen.CreateThread(function()
+  local dict = "missminuteman_1ig_2"
+  
+RequestAnimDict(dict)
+while not HasAnimDictLoaded(dict) do
+  Citizen.Wait(100)
+end
+  local handsup = false
+while true do
+  Citizen.Wait(0)
+  if IsControlJustPressed(1, 323) then --Start holding X
+          if not handsup then
+              TaskPlayAnim(GetPlayerPed(-1), dict, "handsup_enter", 8.0, 8.0, -1, 50, 0, false, false, false)
+              handsup = true
+          else
+              handsup = false
+              ClearPedTasks(GetPlayerPed(-1))
+          end
+      end
   end
 end)
-
-RegisterKeyMapping('handsup', 'Put Your Hands Up', 'keyboard', 'X')
-RegisterKeyMapping('crouch', 'Toggle Crouch', 'keyboard', 'C')

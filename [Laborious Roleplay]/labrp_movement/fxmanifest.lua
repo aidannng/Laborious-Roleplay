@@ -9,6 +9,7 @@ client_scripts {
 	'client/main.lua',
 	'client/aidan.lua',
 	'client/point.lua',
+	'client/news.lua',
 }
 
 server_scripts {
