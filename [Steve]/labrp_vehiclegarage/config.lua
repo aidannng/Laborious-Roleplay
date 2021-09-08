@@ -85,7 +85,7 @@ Config.Impounds = {
 }
 
 Config.Garages = {
-    LSC = {
+    LSCGarage = {
         Display = "LSC Garage",
         GarageType = 'car', -- car, boat or aircraft
         PedCoords = {x = -349.5956, y = -148.9714, z = 38.0022, h = 293.0}, -- The Ped MUST be inside the PolyZone
@@ -97,7 +97,7 @@ Config.Garages = {
             {x = -340.378, y = -161.3143, z = 39.0022, h = 288.00},
         }
     },
-    LSCTow = {
+    LSCTowGarage = {
         Display = "LSC Tow Garage",
         GarageType = 'car', -- car, boat or aircraft
         PedCoords = {x = -369.4418, y = -80.03077, z = 38.0022, h = 220.0}, -- The Ped MUST be inside the PolyZone
@@ -106,7 +106,7 @@ Config.Garages = {
             {x = -366.1319, y = -85.51648, z = 39.0022, h = 250.47},
         }
     },
-    Legion = {
+    LegionGarage = {
         Display = "Legion Square",
         GarageType = 'car', -- car, boat or aircraft
         PedCoords = {x = 215.90, y = -808.87, z = 29.74, h = 248.0}, -- The Ped MUST be inside the PolyZone
@@ -122,7 +122,7 @@ Config.Garages = {
             {x = 212.52, y = -783.46, z = 30.89, h = 248.63},
         }
     },
-    Americano = {
+    AmericanoWayGarage = {
         Display = "Americano Way",
         GarageType = 'car',
         PedCoords = {x = -1651.83, y = 63.90, z = 61.86, h = 338.03},
@@ -195,7 +195,7 @@ Config.Garages = {
             {x = -45.53407, y = -1083.059, z = 25.71863, h = 70.00},
         }
     },
-    Alta = {
+    ALTAAPT = {
         Display = "Alta Street",
         GarageType = 'car',
         PedCoords = {x = -293.5385, y = -986.8615, z = 30.06592, h = 70.00},
