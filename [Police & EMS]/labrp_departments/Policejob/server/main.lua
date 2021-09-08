@@ -191,3 +191,14 @@ ESX.RegisterServerCallback('labrp_police:getpdblip', function(source, cb, LEOCoo
         end
     end
 end)
+
+ESX.RegisterServerCallback('labrp_police:impoundvehicle', function(source, cb, plate)
+    local xPlayer = ESX.GetPlayerFromId(source)
+
+	MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = @garage WHERE `plate` = @plate', {
+        ['@stored'] = 1,
+        ['@plate'] = plate,
+        ['@garage'] = "Impound"
+    }, function(rowsChanged)
+    end)
+end)

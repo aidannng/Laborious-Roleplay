@@ -91,10 +91,6 @@ exports['labrp_Eye']:Player({
 			icon = 'fas fa-handshake',
 			label = 'Handcuff/Uncuff',
 			required_item = 'handcuffs',
-			job = {
-				["police"] = 0,
-				["fbi"] = 0,
-			}
 		},
 		{
 			event = 'searchsuspect',
@@ -298,10 +294,27 @@ exports['labrp_Eye']:Vehicle({
 				end
 			end,
 		},
+		--[[{
+			event = "labrp_police:impoundvehicle",
+			icon = "fas fa-exclamation-triangle",
+			label = "Impound Vehicle",
+			job = {
+				["police"] = 0,
+				["mechanic"] = 0,
+			}
+		},]]
 	},
 	distance = 3.0
 })
 
+AddEventHandler('labrp_police:impoundvehicle', function(target)
+	plate = GetVehicleNumberPlateText(target.entity)
+	local vehicle = target.entity
+	
+	ESX.TriggerServerCallback("labrp_police:impoundvehicle", function()
+		ESX.Game.DeleteVehicle(vehicle)
+	end, plate)
+end)
 
 AddEventHandler('labrp_police:putinveh', function()
 	local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
@@ -413,7 +426,7 @@ exports['labrp_Eye']:AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0
 
 CreateThread(function()
 	while true do
-		Citizen.Wait(750)
+		Citizen.Wait(1000)
 		ESX.TriggerServerCallback("labrp_police:getpdblip", function(units)
 			local id = GetPlayerServerId(PlayerId())
 
@@ -445,7 +458,7 @@ CreateThread(function()
                 AddTextComponentString("(" .. title .. ") "..v.name.."")
                 EndTextCommandSetBlipName(new_blip)
 
-				Citizen.Wait(750)
+				Citizen.Wait(1000)
 				RemoveBlip(new_blip)
 			end
 		end)

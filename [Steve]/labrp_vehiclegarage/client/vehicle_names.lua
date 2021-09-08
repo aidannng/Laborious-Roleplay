@@ -6,32 +6,32 @@ Citizen.CreateThread(function()
     -- AddTextEntry('gtr', "Skyline GTR '17") -- For the car name itself
     -- AddTextEntry('Nissan', 'Nissan') -- For the make name (in vehicles.meta -> <vehicleMakeName>)
 
-    AddTextEntry('urus', "URUS")
-    AddTextEntry('LAMBORGHINI', "Lamborghini")
-    
     AddTextEntry('fbim4', "Aidan's Car")
     AddTextEntry('fbim4', "BMW")
 
     AddTextEntry('code3cvpi', "Crown Victoria")
     AddTextEntry('Ford', "Ford")
 
-    AddTextEntry('code3harley', "Motorbike")
-    AddTextEntry('harley', "Harley")
-
-    AddTextEntry('code3mustang', "Mustang")
+    AddTextEntry('code3mustang', "Mustang Interceptor")
     AddTextEntry('Ford', "Ford")
 
+    AddTextEntry('code3harley', "Motorbike")
+    AddTextEntry('Harley', "Harley")
+
     AddTextEntry('code318tahoe', "2018 Tahoe")
-    AddTextEntry('chevy', "Chevrolet")
+    AddTextEntry('Chevrolet', "Chevrolet")
 
     AddTextEntry('code320exp', "2020 Explorer")
     AddTextEntry('Ford', "Ford")
 
-    AddTextEntry('leobike', "Motorbike")
-    AddTextEntry('suzuki', "Suzuki")
+    AddTextEntry('code318charg', '2018 Charger')
+    AddTextEntry('Dodge', 'Dodge')
+
+    AddTextEntry('leobike', "Motorbike Interceptor")
+    AddTextEntry('Suzuki', "Suzuki")
 
     AddTextEntry('swat1', 'Gurkha')
-    AddTextEntry('gtf', 'GTF')
+    AddTextEntry('GTF', 'GTF')
 
     AddTextEntry('ccss16', 'Camero')
     AddTextEntry('chevy', 'Chevrolet')
@@ -46,52 +46,30 @@ Citizen.CreateThread(function()
     AddTextEntry('lexus', 'Lexus')
 
     AddTextEntry('na6', 'Miata')
-    AddTextEntry('mazda', 'Mazda')
+    AddTextEntry('Mazda', 'Mazda')
 
     AddTextEntry('models', 'Model S')
-    AddTextEntry('tesla', 'Tesla')
+    AddTextEntry('Tesla', 'Tesla')
     
     AddTextEntry('mgt', 'Mustang GT')
     AddTextEntry('Ford', 'Ford')
 
     AddTextEntry('s2k', 'S2000')
-    AddTextEntry('honda', 'Honda')
+    AddTextEntry('Honda', 'Honda')
 
     AddTextEntry('subwrx', 'WRX STI')
-    AddTextEntry('subaru', 'Subaru')
+    AddTextEntry('Subaru', 'Subaru')
 
     AddTextEntry('fk8', 'Type R')
-    AddTextEntry('honda', 'Honda')
+    AddTextEntry('Honda', 'Honda')
     
     AddTextEntry('urus', 'Urus')
-    AddTextEntry('lambo', 'Lamborghini')
+    AddTextEntry('Lamborghini', 'Lamborghini')
 
     AddTextEntry('nspeedo', 'Speedo Hybrid')
     AddTextEntry('VAPID', 'Vapid')
 
-    AddTextEntry('code3fpis', 'Taurus Police')
-    AddTextEntry('ford', 'Ford')
-
-    AddTextEntry('code314tahoe', '2014 Tahoe Police')
-    AddTextEntry('chevy', 'Chevrolet')
-
-    AddTextEntry('code3ram', 'RAM Police')
-    AddTextEntry('dodge', 'Dodge')
-
-    AddTextEntry('code3bmw', 'Police Bike')
-    AddTextEntry('bmw', 'BMW')
-
-    AddTextEntry('code318charg', '2018 Charger')
-    AddTextEntry('dodge', 'Dodge')
-
-    AddTextEntry('tundra', 'Tundra TRD Police')
-    AddTextEntry('toyota', 'Toyota')
-
-    AddTextEntry('jeep', 'Trackhawk Police')
-    AddTextEntry('jeep', 'Jeep')
-
     AddTextEntry('caddyum', 'CTS Police')
-    AddTextEntry('cadillac', 'Cadillac')
-
+    AddTextEntry('Cadillac', 'Cadillac')
 
 end)
