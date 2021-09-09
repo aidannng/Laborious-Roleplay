@@ -43,7 +43,6 @@ function toggleLock(vehicle)
     local plate = GetVehicleNumberPlateText(veh)
     local lockStatus = GetVehicleDoorLockStatus(veh)
     if hasKeys(plate) and not lockDisable then
-        print('lock status: ' .. lockStatus)
         if lockStatus == 1 then
             SetVehicleDoorsLocked(veh, 2)
             SetVehicleDoorsLockedForAllPlayers(veh, true)
@@ -86,7 +85,6 @@ Citizen.CreateThread(function()
         local wait = 750
         local pos = GetEntityCoords(GetPlayerPed(-1))
         if IsControlJustReleased(0, 182) then
-            print('lock')
             if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
                 local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
                 toggleLock(veh)
@@ -117,7 +115,6 @@ Citizen.CreateThread(function()
             local driver = GetPedInVehicleSeat(veh, -1)
             local plate = GetVehicleNumberPlateText(veh)
             if driver == ped then
-                print(not hasKeys(plate) and not isHotwiring and not isSearching)
                 if not hasKeys(plate) and not isHotwiring and not isSearching then
                     local pos = GetEntityCoords(ped)
                     if hasBeenSearched(plate) then
@@ -384,7 +381,6 @@ RegisterNetEvent('vehiclelock:givekeys')
 AddEventHandler('vehiclelock:givekeys', function(data)
     local vehicle = ESX.Game.GetVehicleInDirection()
     checkplate = GetVehicleNumberPlateText(vehicle)
-    print(checkplate)
     local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
     if hasKeys(checkplate) then
         if closestplayer ~= -1 and closestPlayerDistance  <= 3.0 then

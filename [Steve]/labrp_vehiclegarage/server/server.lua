@@ -5,6 +5,7 @@ Citizen.CreateThread(function()
     end
 
     TriggerEvent("labrp_garage:resetVehicles")
+    TriggerEvent("labrp_garage:SeizedVehicleTimer")
 end)
 
 ESX.RegisterServerCallback('luke_vehiclegarage:GetVehicles', function(source, callback, type, garage)
@@ -13,7 +14,7 @@ ESX.RegisterServerCallback('luke_vehiclegarage:GetVehicles', function(source, ca
     local job = xPlayer.job.name
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage AND `seized` IS NULL', {
         ['@identifier'] = identifier,
         ['@type'] = type,
         ['@garage'] = garage,
@@ -37,7 +38,7 @@ ESX.RegisterServerCallback('luke_vehiclegarage:GetJobVehicles', function(source,
     local job = xPlayer.job.name
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage AND `seized` IS NULL', {
         ['@identifier'] = job,
         ['@type'] = type,
         ['@garage'] = garage
@@ -55,12 +56,54 @@ ESX.RegisterServerCallback('luke_vehiclegarage:GetJobVehicles', function(source,
     end)
 end)
 
+ESX.RegisterServerCallback('luke_vehiclegarage:GetSeized', function(source, callback)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local identifier = xPlayer.getIdentifier()
+    local job = xPlayer.job.name
+    local vehicles = {}
+
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `seized` IS NOT NULL', {
+        ['@identifier'] = identifier,
+    }, function(result)
+        if result[1] ~= nil then
+            for k, v in pairs(result) do
+                local veh = json.decode(v.vehicle)
+                local health = json.decode(v.health)
+                table.insert(vehicles, {plate = v.plate, vehicle = veh, seized = v.seized, health = health})
+            end
+            callback(vehicles, job)
+        else
+            callback(nil)
+        end
+    end)
+end)
+
+ESX.RegisterServerCallback('luke_vehiclegarage:GetPoliceSeized', function(source, callback)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local identifier = xPlayer.getIdentifier()
+    local job = xPlayer.job.name
+    local vehicles = {}
+
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `seized` IS NOT NULL', {}, function(result)
+        if result[1] ~= nil then
+            for k, v in pairs(result) do
+                local veh = json.decode(v.vehicle)
+                local health = json.decode(v.health)
+                table.insert(vehicles, {plate = v.plate, vehicle = veh, seized = v.seized, health = health})
+            end
+            callback(vehicles)
+        else
+            callback(nil)
+        end
+    end)
+end)
+
 ESX.RegisterServerCallback('luke_vehiclegarage:GetImpound', function(source, callback, type)
     local xPlayer = ESX.GetPlayerFromId(source)
     local identifier = xPlayer.getIdentifier()
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `type` = @type AND `garage` = @garage AND `seized` IS NULL', {
         ['@identifier'] = identifier,
         ['@type'] = type,
         ['@garage'] = "Impound",
@@ -84,7 +127,7 @@ ESX.RegisterServerCallback('luke_vehiclegarage:GetJobImpound', function(source, 
     local job = xPlayer.job.name
     local vehicles = {}
 
-    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @job AND `type` = @type AND `garage` = @garage', {
+    MySQL.Async.fetchAll('SELECT * FROM `owned_vehicles` WHERE `owner` = @job AND `type` = @type AND `garage` = @garage AND `seized` IS NULL', {
         ['@job'] = job,
         ['@type'] = type,
         ['@garage'] = "Impound",
@@ -147,7 +190,7 @@ AddEventHandler('luke_vehiclegarage:ChangeStored', function(plate, stored, garag
     
     local plate = ESX.Math.Trim(plate)
 
-    if(stored) then
+    if stored then
         MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = @garage WHERE `plate` = @plate', {
             ['@stored'] = stored,
             ['@plate'] = plate,
@@ -178,6 +221,21 @@ AddEventHandler('labrp_garage:resetVehicles', function()
         ['@garage'] = "Impound",
         ['@stored'] = true,
     })
+end)
+
+RegisterNetEvent('labrp_garage:SeizedVehicleTimer')
+AddEventHandler('labrp_garage:SeizedVehicleTimer', function()
+    MySQL.Async.fetchAll('SELECT plate, seized FROM `owned_vehicles` WHERE `seized` IS NOT NULL AND `seized` > 0', {}, function(result)
+        if result[1] ~= nil then
+            for x=1, #result, 1 do
+                local seized = result[x].seized - 8
+                MySQL.Async.execute('UPDATE `owned_vehicles` SET `seized` = @seized WHERE `plate` = @plate', {
+                  ['@plate'] = result[x].plate,
+                  ['@seized'] = seized
+                })
+            end
+        end
+    end)
 end)
 
 RegisterNetEvent('luke_vehiclegarage:PayImpound')
@@ -263,18 +321,18 @@ ESX.RegisterServerCallback('luke_vehiclegarage:SpawnVehicle', function(source, c
     end)
 end)
 
---[[RegisterNetEvent('vehiclegarage:checkvin')
-AddEventHandler('vehiclegarage:checkvin', function(plate)
+RegisterNetEvent('luke_vehiclegarage:SetFreeSeize')
+AddEventHandler('luke_vehiclegarage:SetFreeSeize', function(plate)
     local xPlayer = ESX.GetPlayerFromId(source)
     local identifier = xPlayer.identifier
-    local plate = plate
-    MySQL.Async.fetchAll('SELECT `owner` FROM `owned_vehicles` WHERE `plate` = @plate', {
+
+    MySQL.Async.execute('UPDATE `owned_vehicles` SET `seized` = NULL, `garage` = @garage, `stored` = @stored WHERE `plate` = @plate', {
+        ['@identifier'] = identifier,
         ['@plate'] = plate,
-    }, function(result)
-        if result then
-            print('Plate : ' ..plate)
-        else
-            print('Vehicle Not Owned')
-        end
-    end)
-end)]]
+        ['@garage'] = "Impound",
+        ['@stored'] = 1,
+        ['@seized'] = 0
+    })
+end)
+
+

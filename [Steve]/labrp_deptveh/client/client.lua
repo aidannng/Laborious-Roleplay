@@ -217,6 +217,23 @@ exports['labrp_Eye']:AddTargetBone({"platelight"}, {
 				["fbi"] = 0,
 			}
 		},
+        {
+			event = "labrp_police:impoundvehicle",
+			icon = "fas fa-exclamation-triangle",
+			label = "Impound Vehicle",
+			job = {
+				["police"] = 0,
+				["mechanic"] = 0,
+			}
+		},
+		{
+			event = "labrp_police:seizevehicle",
+			icon = "fas fa-exclamation-triangle",
+			label = "Seize Vehicle",
+			job = {
+				["police"] = 0,
+			}
+		},
     },
     distance = 1.0,
 })

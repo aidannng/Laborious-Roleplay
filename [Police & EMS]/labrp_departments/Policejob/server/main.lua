@@ -202,3 +202,13 @@ ESX.RegisterServerCallback('labrp_police:impoundvehicle', function(source, cb, p
     })
 	cb(true)
 end)
+
+RegisterNetEvent('labrp_police:seizevehicle')
+AddEventHandler('labrp_police:seizevehicle', function(plate, time)
+	MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = @garage, `seized` = @seized WHERE `plate` = @plate', {
+        ['@stored'] = 1,
+        ['@plate'] = plate,
+        ['@garage'] = "Impound",
+		['@seized'] = time * 24,
+    })
+end)

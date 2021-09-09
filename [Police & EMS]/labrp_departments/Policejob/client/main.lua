@@ -294,18 +294,53 @@ exports['labrp_Eye']:Vehicle({
 				end
 			end,
 		},
-		{
-			event = "labrp_police:impoundvehicle",
-			icon = "fas fa-exclamation-triangle",
-			label = "Impound Vehicle",
-			job = {
-				["police"] = 0,
-				["mechanic"] = 0,
-			}
-		},
 	},
 	distance = 3.0
 })
+
+AddEventHandler('labrp_police:seizevehicle', function(target)
+	plate = GetVehicleNumberPlateText(target.entity)
+	local entity = target.entity
+
+	local keyboard = exports["nh-keyboard"]:KeyboardInput({
+		header = "Seize Vehicle", 
+		rows = {
+			{
+				id = 0, 
+				txt = "Amount of Days"
+			}
+		}
+	})
+	if keyboard ~= nil then
+		print('this working')
+		print(keyboard[1].input)
+		exports['mythic_progbar']:Progress({
+            name = "unique_action_name",
+            duration = 10000,
+            label = 'Impounding Vehicle',
+            useWhileDead = false,
+            canCancel = false,
+            controlDisables = {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+			},
+			animation = {
+				animDict = "missfam4",
+				anim = "base",
+			},
+			prop = {
+				model = "p_amb_clipboard_01",
+			}
+        })
+		Citizen.Wait(10000)
+		NetworkRequestControlOfEntity(entity)
+		ESX.Game.DeleteVehicle(entity)
+		ClearPedTasks(PlayerPedId())
+		TriggerServerEvent('labrp_police:seizevehicle', plate, keyboard[1].input)
+	end
+end)
 
 AddEventHandler('labrp_police:impoundvehicle', function(target)
 	plate = GetVehicleNumberPlateText(target.entity)
