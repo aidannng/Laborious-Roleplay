@@ -333,9 +333,9 @@ AddEventHandler("doHack", function()
         for id,v in pairs(StoreRobberies) do
             if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) <= 2.5 then
                 TriggerEvent('storecooldown')
-                local data = {displayCode = '10-68', description = 'Store Robbery', isImportant = 0, recipientList = {'police'}, length = '10000', infoM = 'fa-store', info = '24/7 Robbery'}
-                local dispatchData = {dispatchData = data, caller = 'Alarm', coords = vector3(-43.13406, -1750.523, 29.41467)}
-                TriggerEvent('wf-alerts:svNotify', dispatchData)
+                exports['core_dispatch']:addCall('10-68', "Store Robbery", {
+                {icon="fa-store", info="LTD Robbery in Progress"}
+                }, {coords.x, coords.y, coords.z}, "police", 10000, 628, 1)
                 exports['mythic_progbar']:Progress({
                     name = "unique_action_name",
                     duration = 35000,
@@ -644,74 +644,74 @@ end)
 	})
 
 
-local RegisterModel = {
-    -354930144,
-    303280717,
-    534367705,
-    892543765,
-}
+--     local RegisterModel = {
+--         -354930144,
+--         303280717,
+--         534367705,
+--         892543765,
+--     }
 
-exports['labrp_Eye']:AddTargetModel(RegisterModel, {
-    options = {
-        {
-            event = "labrp:store:rob",
-            icon = "fas fa-hammer",
-            label = "Smash Register",
-            canInteract = function(entity)
-                return true
-            end
-        },
-    },
-    distance = 1.5,
-})
+--     exports['labrp_Eye']:AddTargetModel(RegisterModel, {
+--         options = {
+--             {
+--                 event = "labrp:store:rob",
+--                 icon = "fas fa-hammer",
+--                 label = "Smash Register",
+--                 canInteract = function(entity)
+--                     return true
+--                 end
+--             },
+--         },
+--         distance = 1.5,
+--     })
 
---[[AddEventHandler('labrp:store:rob', function(data)
-    local health = GetEntityHealth(data.entity)
-    print(health)
-    if health >= 1000 then
-        exports['mythic_notify']:SendAlert('error', "This hasn't been smashed yet!")
-    else
-        exports['mythic_notify']:SendAlert('inform', "Robbing!")
-        ESX.TriggerServerCallback('labrp:store:haslockpick', function(hasEnough)
-            if hasEnough then
-                local finished = exports["reload-skillbar"]:taskBar(30000,math.random(5,15))
-                if finished ~= 100 then
-                    exports['mythic_notify']:SendAlert('error', "Lockpick bent out of shape!")
-                else
-                    local finished2 = exports["reload-skillbar"]:taskBar(1500,math.random(5,15))
-                    if finished2 ~= 100 then
-                        exports['mythic_notify']:SendAlert('error', "Lockpick bent out of shape!")
-                    else
-                        local finished3 = exports["reload-skillbar"]:taskBar(25000,math.random(5,15))
-                        if finished3 ~= 100 then
-                            exports['mythic_notify']:SendAlert('error', "Lockpick bent out of shape!")
-                        else
-                            exports['mythic_progbar']:Progress({
-                                name = "unique_action_name",
-                                duration = 10000,
-                                label = 'Robbing Store',
-                                useWhileDead = true,
-                                canCancel = false,
-                                controlDisables = {
-                                    disableMovement = true,
-                                    disableCarMovement = true,
-                                    disableMouse = false,
-                                    disableCombat = true,
-                                },
-                                animation = {
-                                    animDict = "random@shop_robbery",
-                                    anim = "robbery_intro_loop_b",
-                                },
-                            })
-                            Citize.Wait(10000)
-                            ClearPedTasks(PlayerPedId(-1))
-                            TriggerServerEvent('labrp:store:payout')
-                        end
-                    end
-                end
-            else
-                exports['mythic_notify']:SendAlert('error', "You don't have a lockpick!")
-            end
-        end)
-    end
-end)
+--     AddEventHandler('labrp:store:rob', function(data)
+--     local health = GetEntityHealth(data.entity)
+--     print(health)
+--     if health >= 1000 then
+--         exports['mythic_notify']:SendAlert('error', "This hasn't been smashed yet!")
+--     else
+--         exports['mythic_notify']:SendAlert('inform', "Robbing!")
+--         ESX.TriggerServerCallback('labrp:store:haslockpick', function(hasEnough)
+--             if hasEnough then
+--                 local finished = exports["reload-skillbar"]:taskBar(30000,math.random(5,15))
+--                 if finished ~= 100 then
+--                     exports['mythic_notify']:SendAlert('error', "Lockpick bent out of shape!")
+--                 else
+--                     local finished2 = exports["reload-skillbar"]:taskBar(1500,math.random(5,15))
+--                     if finished2 ~= 100 then
+--                         exports['mythic_notify']:SendAlert('error', "Lockpick bent out of shape!")
+--                     else
+--                         local finished3 = exports["reload-skillbar"]:taskBar(25000,math.random(5,15))
+--                         if finished3 ~= 100 then
+--                             exports['mythic_notify']:SendAlert('error', "Lockpick bent out of shape!")
+--                         else
+--                             exports['mythic_progbar']:Progress({
+--                                 name = "unique_action_name",
+--                                 duration = 10000,
+--                                 label = 'Robbing Store',
+--                                 useWhileDead = true,
+--                                 canCancel = false,
+--                                 controlDisables = {
+--                                     disableMovement = true,
+--                                     disableCarMovement = true,
+--                                     disableMouse = false,
+--                                     disableCombat = true,
+--                                 },
+--                                 animation = {
+--                                     animDict = "random@shop_robbery",
+--                                     anim = "robbery_intro_loop_b",
+--                                 },
+--                             })
+--                             Citize.Wait(10000)
+--                             ClearPedTasks(PlayerPedId(-1))
+--                             TriggerServerEvent('labrp:store:payout')
+--                         end
+--                     end
+--                 end
+--             else
+--                 exports['mythic_notify']:SendAlert('error', "You don't have a lockpick!")
+--             end
+--         end)
+--     end
+-- end)

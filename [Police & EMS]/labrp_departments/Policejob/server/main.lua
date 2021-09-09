@@ -199,6 +199,6 @@ ESX.RegisterServerCallback('labrp_police:impoundvehicle', function(source, cb, p
         ['@stored'] = 1,
         ['@plate'] = plate,
         ['@garage'] = "Impound"
-    }, function(rowsChanged)
-    end)
+    })
+	cb(true)
 end)

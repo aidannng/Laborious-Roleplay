@@ -117,6 +117,7 @@ Citizen.CreateThread(function()
             local driver = GetPedInVehicleSeat(veh, -1)
             local plate = GetVehicleNumberPlateText(veh)
             if driver == ped then
+                print(not hasKeys(plate) and not isHotwiring and not isSearching)
                 if not hasKeys(plate) and not isHotwiring and not isSearching then
                     local pos = GetEntityCoords(ped)
                     if hasBeenSearched(plate) then

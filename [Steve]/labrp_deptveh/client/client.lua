@@ -144,6 +144,18 @@ AddEventHandler('pdvehicle:menu', function()
 				}
 			}
 		},
+        {
+			id = 7,
+			header = "ignore this",
+			txt = "$999,999 (DO NOT PURCHASE)",
+			params = {
+				event = "pdvehicle:buycar",
+				args = {
+					id = 7,
+                    price = 999999
+				}
+			}
+		},
 	})
 end)
 
@@ -165,6 +177,8 @@ AddEventHandler('pdvehicle:buycar', function(data)
                 hash = GetHashKey("code318tahoe")
             elseif id == 6 then
                 hash = GetHashKey("code3harley")
+            elseif id == 7 then
+                hash = GetHashKey("caddyum")
             end
             print(hash)
             print(data.price)

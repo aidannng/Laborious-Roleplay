@@ -29,11 +29,7 @@ Citizen.CreateThread(function()
         garages[k]:onPlayerInOut(function(isPointInside, point)
             local model = Config.GaragePed
             if isPointInside then
-        
-                --[[RequestModel(model)
-                while not HasModelLoaded(model) do
-                    Citizen.Wait(0)
-                end--]]
+
 
                 ESX.Streaming.RequestModel(model)
 
@@ -507,7 +503,7 @@ local Status = ''
 RegisterNetEvent('luke_vehiclegarage:VehicleMenu')
 AddEventHandler('luke_vehiclegarage:VehicleMenu', function(data)
     local Carmenu = {}
-    print(data.plate)
+    --print(data.plate)
 
     table.insert(Carmenu, {
         id = 0,
@@ -526,6 +522,7 @@ AddEventHandler('luke_vehiclegarage:VehicleMenu', function(data)
             args = {
                 vehicle = data.vehicle,
                 health = data.health,
+                plate = data.plate,
                 type = 'garage'
             }
         }
@@ -587,23 +584,24 @@ AddEventHandler('luke_vehiclegarage:SpawnVehicle', function(data)
 
     for i = 1, #spawn do
         if ESX.Game.IsSpawnPointClear(vector3(spawn[i].x, spawn[i].y, spawn[i].z), 1.0) then
+            ESX.TriggerServerCallback('luke_vehiclegarage:SpawnVehicle', function(veh)
+                vehicle = NetToVeh(veh)
 
-            local spawnedVehicle = CreateVehicle(model, vector3(spawn[i].x, spawn[i].y, spawn[i].z), spawn[i].h, 1, 1)
-            SetEntityAsMissionEntity(spawnedVehicle)
-            ESX.Game.SetVehicleProperties(spawnedVehicle, data.vehicle)
-            SetVehicleInteriorColor(spawnedVehicle, tonumber(data.vehicle.modTrimA))
-            SetVehicleLivery(spawnedVehicle, tonumber(data.vehicle.modLivery))
-            TriggerServerEvent('luke_vehiclegarage:ChangeStored', GetVehicleNumberPlateText(spawnedVehicle), false, currentGarage)
+                ESX.Game.SetVehicleProperties(vehicle, data.vehicle)
+                SetVehicleInteriorColor(vehicle, tonumber(data.vehicle.modTrimA))
+                SetVehicleLivery(vehicle, tonumber(data.vehicle.modLivery))
+                TriggerServerEvent('luke_vehiclegarage:ChangeStored', GetVehicleNumberPlateText(vehicle), false, currentGarage)
 
-            if data.type == 'impound' then
-                TriggerServerEvent('luke_vehiclegarage:PayImpound', data.price)
-            end
+                if data.type == 'impound' then
+                    TriggerServerEvent('luke_vehiclegarage:PayImpound', data.price)
+                end
 
-            DoVehicleDamage(spawnedVehicle, data.health)
+                DoVehicleDamage(vehicle, data.health)
 
-            local spawnedplate = GetVehicleNumberPlateText(spawnedVehicle)
-            exports["labrp_vehiclelock"]:givePlayerKeys(spawnedplate)
+                local spawnedplate = GetVehicleNumberPlateText(vehicle)
+                exports["labrp_vehiclelock"]:givePlayerKeys(spawnedplate)
 
+            end, data.vehicle.model, vector3(spawn[i].x, spawn[i].y, spawn[i].z-1), spawn[i].h)
             break
         end
         if i == #spawn then

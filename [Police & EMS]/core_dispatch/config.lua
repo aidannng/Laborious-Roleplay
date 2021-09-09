@@ -62,7 +62,7 @@ Config = {
 	AddCallBlips = true, -- Adds blips for calls that disappear over time
 	CallBlipDisappearInterval = 500, -- The higher value longer they will stay on the map
 
-	EnableShootingAlerts = true, -- Alerts when citizens shoot in shooting zones
+	EnableShootingAlerts = false, -- Alerts when citizens shoot in shooting zones
 	ShootingZones = { -- Zones where citizens shooting gives police an alert
 		{coords = vector3(-20.188398361206,6629.5073242188,30.817811965942), radius = 200.0},
 		{coords = vector3(-73.95164, -826.8923, 40.56921), radius = 10000.0},

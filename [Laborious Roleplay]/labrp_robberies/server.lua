@@ -108,7 +108,7 @@ AddEventHandler('checkstorecops', function()
         end
     end
 
-    if cops >= 1 then
+    if cops >= 3 then
         TriggerClientEvent('doHack', source)
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'System Currently Down!'})
