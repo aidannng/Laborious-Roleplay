@@ -154,7 +154,6 @@ exports['labrp_Eye']:Vehicle({
 
 RegisterNetEvent('luke_vehiclegarage:OwnedVehicleMenu')
 AddEventHandler('luke_vehiclegarage:OwnedVehicleMenu', function(target)
-    print(currentGarage)
     TriggerEvent('nh-context:sendMenu', {
         {
             id = 1,
@@ -190,6 +189,7 @@ end)
 
 RegisterNetEvent('luke_vehiclegarage:GetImpoundedMenu')
 AddEventHandler('luke_vehiclegarage:GetImpoundedMenu', function(target)
+    local menu = {}
     TriggerEvent('nh-context:sendMenu', {
         {
             id = 1,
@@ -220,12 +220,144 @@ AddEventHandler('luke_vehiclegarage:GetImpoundedMenu', function(target)
                 }
             }
         },
+        {
+            id = 4,
+            header = "Seized Vehicles",
+            txt = "List of Seized Vehicles",
+            params = {
+                event = "luke_vehiclegarage:GetSeizedVehicles",
+            }
+        },
     })
+    if ESX.PlayerData.job.name == "police" then
+        table.insert(menu, {
+            id = 5,
+            header = "Police Seizures",
+            txt = 'Manage all seized vehicles',
+            params = {
+                event = 'luke_vehiclegarage:GetSeizedPoliceVehicles'
+            }
+        })
+        TriggerEvent('nh-context:sendMenu', menu)
+    else
+        print('you aint police')
+    end
 end)
 
 RegisterNetEvent('luke_vehiclegarage:StoreBothVehicle')
 AddEventHandler('luke_vehiclegarage:StoreBothVehicle', function(target)
     TriggerEvent('luke_vehiclegarage:StoreVehicle', target)
+end)
+
+RegisterNetEvent('luke_vehiclegarage:GetSeizedPoliceVehicles')
+AddEventHandler('luke_vehiclegarage:GetSeizedPoliceVehicles', function()
+    ESX.TriggerServerCallback('luke_vehiclegarage:GetPoliceSeized', function(vehicles, job)
+        local menu = {}
+
+
+        TriggerEvent('nh-context:sendMenu', {
+            {
+                id = 0,
+                header = 'Seized Vehicles',
+                txt = ''
+            },
+        })
+
+        if vehicles ~= nil then
+            for k, v in pairs(vehicles) do
+                if v.seized >= 0 then
+                    local vehicle = v.vehicle.model
+                    local vehMake = GetLabelText(GetMakeNameFromVehicleModel(vehicle))
+                    local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(vehicle))
+                    local vehTitle = vehMake .. ' ' .. vehicleName
+
+                    table.insert(menu, {
+                        id = k,
+                        header = vehTitle,
+                        txt = 'Plate: ' .. v.plate .. ' <br> Days Left : ' .. v.seized//24,
+                        params = {
+                            event = 'luke_vehiclegarage:VehicleSeizedInfo',
+                            args = {name = vehTitle, plate = v.plate, model = vehicle, vehicle = v.vehicle, seized = v.seized}
+                        }
+                    })
+                end
+            end
+            if #menu ~= 0 then
+                TriggerEvent('nh-context:sendMenu', menu)
+            else
+                TriggerEvent('nh-context:sendMenu', {
+                    {
+                        id = 1,
+                        header = 'No vehicles are seized',
+                        txt = ''
+                    }
+                })
+            end
+        else
+            TriggerEvent('nh-context:sendMenu', {
+                {
+                    id = 1,
+                    header = 'No vehicles are seized',
+                    txt = ''
+                }
+            })
+        end
+    end)
+end)
+
+RegisterNetEvent('luke_vehiclegarage:GetSeizedVehicles')
+AddEventHandler('luke_vehiclegarage:GetSeizedVehicles', function()
+    ESX.TriggerServerCallback('luke_vehiclegarage:GetSeized', function(vehicles, job)
+        local menu = {}
+
+
+        TriggerEvent('nh-context:sendMenu', {
+            {
+                id = 0,
+                header = 'Seized Vehicles',
+                txt = ''
+            },
+        })
+
+        if vehicles ~= nil then
+            for k, v in pairs(vehicles) do
+                if v.seized >= 0 then
+                    local vehicle = v.vehicle.model
+                    local vehMake = GetLabelText(GetMakeNameFromVehicleModel(vehicle))
+                    local vehicleName = GetLabelText(GetDisplayNameFromVehicleModel(vehicle))
+                    local vehTitle = vehMake .. ' ' .. vehicleName
+
+                    table.insert(menu, {
+                        id = k,
+                        header = vehTitle,
+                        txt = 'Plate: ' .. v.plate .. ' <br> Days Left : ' .. v.seized//24,
+                        params = {
+                            event = '',
+                        }
+                    })
+                end
+            end
+            if #menu ~= 0 then
+                TriggerEvent('nh-context:sendMenu', menu)
+            else
+                TriggerEvent('nh-context:sendMenu', {
+                    {
+                        id = 1,
+                        header = 'No vehicles are seized',
+                        txt = ''
+                    }
+                })
+            end
+        else
+            TriggerEvent('nh-context:sendMenu', {
+                {
+                    id = 1,
+                    header = 'No vehicles are seized',
+                    txt = ''
+                }
+            })
+        end
+    end)
 end)
 
 RegisterNetEvent('luke_vehiclegarage:GetImpoundedVehicles')
@@ -498,12 +630,47 @@ AddEventHandler('luke_vehiclegarage:ImpoundVehicleMenu', function(data)
     })
 end)
 
+RegisterNetEvent('luke_vehiclegarage:VehicleSeizedInfo')
+AddEventHandler('luke_vehiclegarage:VehicleSeizedInfo', function(data)
+    TriggerEvent('nh-context:sendMenu', {
+        {
+            id = 0,
+            header = '< Go Back',
+            txt = '',
+            params = {
+                event = '',
+            }
+        },
+        {
+            id = 1,
+            header = "Release Vehicle",
+            txt = 'Car: ' .. data.name .. ' <br> Plate: ' .. data.plate.. ' <br> Days Left : ' .. data.seized//24,
+            params = {
+                event = 'luke_vehiclegarage:FreeFromSeize',
+                args = {
+                    plate = data.plate,
+                    time = data.seized
+                }
+            }
+        }
+    })
+end)
+
+AddEventHandler('luke_vehiclegarage:FreeFromSeize', function(plate)
+    timeleft = plate.time
+    if timeleft == 0 then
+        TriggerServerEvent("luke_vehiclegarage:SetFreeSeize", plate.plate)
+        exports['mythic_notify']:SendAlert('inform', "Vehicle Released!")
+    else
+        exports['mythic_notify']:SendAlert('error', "You can't release this vehicle yet!")
+    end
+end)
+
 local Status = ''
 
 RegisterNetEvent('luke_vehiclegarage:VehicleMenu')
 AddEventHandler('luke_vehiclegarage:VehicleMenu', function(data)
     local Carmenu = {}
-    --print(data.plate)
 
     table.insert(Carmenu, {
         id = 0,
@@ -552,7 +719,6 @@ AddEventHandler('luke_vehiclegarage:TransferVehicle', function(plate)
             }
         }
     })
-    print(keyboard[1].input)
 
 end)
 
