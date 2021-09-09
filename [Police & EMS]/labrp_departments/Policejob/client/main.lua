@@ -169,7 +169,7 @@ end)
 
 RegisterNetEvent('qrp_police:requestCuffPed')
 AddEventHandler('qrp_police:requestCuffPed', function(data)
-    if GetEntityType(data.entity) == 1 and ESX.PlayerData.job.name == 'police' then 
+    if GetEntityType(data.entity) == 1 then 
         local target = data.entity
         if IsPedAPlayer(target) then 
             -- The target is a Player
@@ -294,7 +294,7 @@ exports['labrp_Eye']:Vehicle({
 				end
 			end,
 		},
-		--[[{
+		{
 			event = "labrp_police:impoundvehicle",
 			icon = "fas fa-exclamation-triangle",
 			label = "Impound Vehicle",
@@ -302,17 +302,40 @@ exports['labrp_Eye']:Vehicle({
 				["police"] = 0,
 				["mechanic"] = 0,
 			}
-		},]]
+		},
 	},
 	distance = 3.0
 })
 
 AddEventHandler('labrp_police:impoundvehicle', function(target)
 	plate = GetVehicleNumberPlateText(target.entity)
-	local vehicle = target.entity
+	local entity = target.entity
 	
-	ESX.TriggerServerCallback("labrp_police:impoundvehicle", function()
-		ESX.Game.DeleteVehicle(vehicle)
+	ESX.TriggerServerCallback("labrp_police:impoundvehicle", function(Impound)
+		exports['mythic_progbar']:Progress({
+            name = "unique_action_name",
+            duration = 10000,
+            label = 'Impounding Vehicle',
+            useWhileDead = false,
+            canCancel = false,
+            controlDisables = {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+			},
+			animation = {
+				animDict = "missfam4",
+				anim = "base",
+			},
+			prop = {
+				model = "p_amb_clipboard_01",
+			}
+        })
+		Citizen.Wait(10000)
+		ClearPedTasks(PlayerPedId())
+		NetworkRequestControlOfEntity(entity)
+		ESX.Game.DeleteVehicle(entity)
 	end, plate)
 end)
 
