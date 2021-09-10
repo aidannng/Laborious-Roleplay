@@ -95,10 +95,30 @@ files {
   'sfx/dlc_p60b40/p60b40.awc',
   'sfx/dlc_p60b40/p60b40_npc.awc',
 
+  'audioconfig/ferrarif12_game.dat151.rel',
+  'audioconfig/ferrarif12_sounds.dat54.rel',
+  'sfx/dlc_ferrarif12/ferrarif12.awc',
+  'sfx/dlc_ferrarif12/ferrarif12_npc.awc',
+
   'audioconfig/488sound_game.dat151.rel',
   'audioconfig/488sound_sounds.dat54.rel',
   'sfx/dlc_488sound/488sound.awc',
   'sfx/dlc_488sound/488sound_npc.awc',
+  
+  'audioconfig/viperv10_game.dat151.rel',
+  'audioconfig/viperv10_sounds.dat54.rel',
+  'sfx/dlc_viperv10/viperv10.awc',
+  'sfx/dlc_viperv10/viperv10_npc.awc',
+
+  'audioconfig/urusv8_game.dat151.rel',
+  'audioconfig/urusv8_sounds.dat54.rel',
+  'sfx/dlc_urusv8/urusv8.awc',
+  'sfx/dlc_urusv8/urusv8_npc.awc',
+  
+  'audioconfig/murciev12_game.dat151.rel',
+  'audioconfig/murciev12_sounds.dat54.rel',
+  'sfx/dlc_murciev12/murciev12.awc',
+  'sfx/dlc_murciev12/murciev12_npc.awc',
 }
 
 data_file 'AUDIO_GAMEDATA' 'audioconfig/lambov10_game.dat'
@@ -163,3 +183,19 @@ data_file 'AUDIO_WAVEPACK' 'sfx/dlc_p60b40'
 data_file 'AUDIO_GAMEDATA' 'audioconfig/488sound_game.dat'
 data_file 'AUDIO_SOUNDDATA' 'audioconfig/488sound_sounds.dat'
 data_file 'AUDIO_WAVEPACK' 'sfx/dlc_488sound'
+
+data_file 'AUDIO_GAMEDATA' 'audioconfig/ferrarif12_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/ferrarif12_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_ferrarif12'
+
+data_file 'AUDIO_GAMEDATA' 'audioconfig/viperv10_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/viperv10_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_viperv10'
+
+data_file 'AUDIO_GAMEDATA' 'audioconfig/urusv8_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/urusv8_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_urusv8'
+
+data_file 'AUDIO_GAMEDATA' 'audioconfig/murciev12_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/murciev12_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_murciev12'

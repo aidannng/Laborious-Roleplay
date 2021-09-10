@@ -18,6 +18,24 @@ Weapons = {
 		ammoname = 'ammo-45'
 	},
 
+	['WEAPON_BROWNING'] = {
+		label = 'Browning Hi-Power Pistol',
+		weight = 1220,
+		stack = false,
+		close = false,
+		durability = 0.5,
+		ammoname = 'ammo-45'
+	},
+
+	['WEAPON_DP9'] = {
+		label = 'Browning Hi-Power Pistol',
+		weight = 1220,
+		stack = false,
+		close = false,
+		durability = 0.5,
+		ammoname = 'ammo-45'
+	},
+
 	['WEAPON_ASSAULTRIFLE'] = {
 		label = 'Assault Rifle',
 		weight = 3470,
@@ -678,7 +696,7 @@ Weapons = {
 		durability = 1.0,
 	},
 
-	['WEAPON_STUNGUN'] = {
+	['WEAPON_TASER'] = {
 		label = 'PD Taser',
 		weight = 227,
 		stack = false,

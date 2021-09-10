@@ -770,7 +770,51 @@ AddEventHandler('craft:musv8', function()
     end
 end)
 
+RegisterServerEvent('craft:ferrariv8')
+AddEventHandler('craft:ferrariv8', function()
 
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('aluminum_engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 8)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
+            xPlayer.addInventoryItem('ferrariv8', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:rotary7')
+AddEventHandler('craft:rotary7', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local blockCount = xPlayer.getInventoryItem('engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 3 and blockCount > 0 and headCount > 0) then
+        if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 4)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 1)
+            xPlayer.addInventoryItem('rotary7', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
 
 --############################
 --##       SUSPENSION       ##

@@ -11,7 +11,7 @@ Config.General = {
 		{ name = 'cola', price = 3 },
 		{ name = 'bandage', price = 20 },
 		{ name = 'zippo', price = 12 },
-		{ name = 'donut', price = 10 },
+		{ name = 'donut', price = 20 },
 		{ name = 'energydrink', price = 20 },
 		{ name = 'wine', price = 15 },
 		{ name = 'vodka', price = 25 },
@@ -48,7 +48,7 @@ Config.YouTool = {
 		{ name = 'campchair2', price = 120 },
 		{ name = 'stopsign', price = 200 },
 		{ name = 'paperbag', price = 450 },
-		{ name = 'fishbait', price = 75},
+		{ name = 'fishbait', price = 50},
 		{ name = 'fishingrod', price = 225 },
 	}
 }

@@ -17,6 +17,17 @@ $(function () {
         $('#purchasePrice').val(price);
     })
 
+    $('#purchasePrice').change(function(){
+        if($(this).val() == '')
+        {
+            price = 0;
+        }
+        else
+        {
+            price = parseInt($(this).val());
+        }
+    });
+
 
     $('#create-bill').click(function(){
         var luckyNumber = $('#luckyNumber').val();
@@ -270,6 +281,8 @@ $(function () {
 
     function resetUI()
     {
+        price = 0;
+
         $('.accordion-button').each(function(){
             $(this).addClass('collapsed').attr('area-expanded', false)
         });

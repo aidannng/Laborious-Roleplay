@@ -614,8 +614,30 @@ Config.upgrades = {
 				['name'] = 'Ferrari V8',
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/ferrariv8.png',
-				['description'] = 'Ferrari V8',
+				['description'] = 'Ferrari V8 engine swap',
 				['index'] = 15
+			},
+			['class'] = 'engine'
+		},
+		['lambov8'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.045,
+				['sound'] = 'urusv8',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'lambov8',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'Lambo V8',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/lambov8.png',
+				['description'] = 'Lambo V8 engine swap',
+				['index'] = 16
 			},
 			['class'] = 'engine'
 		},
@@ -658,8 +680,74 @@ Config.upgrades = {
 				['name'] = 'Lambo v10',
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/lambov10.png',
-				['description'] = 'Lambo v10 engine swap',
+				['description'] = 'Lambo V10 engine swap',
 				['index'] = 18
+			},
+			['class'] = 'engine'
+		},
+		['viperv10'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.06,
+				['sound'] = 'viperv10',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'viperv10',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Viper V10',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/viperv10.png',
+				['description'] = 'Viper V10 engine swap',
+				['index'] = 19
+			},
+			['class'] = 'engine'
+		},
+		['lambov12'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.06,
+				['sound'] = 'murciev12',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'lambov12',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Lambo V12',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/lambov12.png',
+				['description'] = 'Lambo V12 engine swap',
+				['index'] = 20
+			},
+			['class'] = 'engine'
+		},
+		['ferrariv12'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.06,
+				['sound'] = 'ferrarif12',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'ferrariv12',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'Ferrari V12',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/ferrariv12.png',
+				['description'] = 'Ferrari V12 engine swap',
+				['index'] = 21
 			},
 			['class'] = 'engine'
 		},
@@ -681,7 +769,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 19
+				['index'] = 22
 			},
 			['class'] = 'turbo'
 		},
@@ -703,7 +791,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/big_single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 20
+				['index'] = 23
 			},
 			['class'] = 'turbo'
 		},
@@ -725,7 +813,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/twin_turbo.png',
 				['description'] = 'Install a double turbines to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 21
+				['index'] = 24
 			},
 			['class'] = 'turbo'
 		},
@@ -746,7 +834,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/brembo_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 22
+				['index'] = 25
 			},
 			['class'] = 'brakes'
 		},
@@ -767,7 +855,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/wilwood_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 23
+				['index'] = 26
 			},
 			['class'] = 'brakes'
 		},
@@ -788,7 +876,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/michelin_tires.png',
 				['description'] = '',
-				['index'] = 24
+				['index'] = 27
 			},
 			['class'] = 'tires'
 		},
@@ -809,7 +897,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/pirelli_tires.png',
 				['description'] = '',
-				['index'] = 25
+				['index'] = 28
 			},
 			['class'] = 'tires'
 		},
@@ -830,7 +918,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/falken_tires.png',
 				['description'] = '',
-				['index'] = 26
+				['index'] = 29
 			},
 			['class'] = 'tires'
 		},

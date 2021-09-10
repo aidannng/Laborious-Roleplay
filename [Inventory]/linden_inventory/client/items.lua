@@ -16,8 +16,16 @@ AddEventHandler('linden_inventory:sandwich', function(item, wait, cb)
 	end)
 end)
 
+
+
 AddEventHandler('linden_inventory:donut', function(item, wait, cb)
 	cb(true)
+	SetPedMoveRateOverride(PlayerId(),10.0)
+	SetRunSprintMultiplierForPlayer(PlayerId(),1.20)
+	exports['mythic_notify']:SendAlert('inform', 'Enjoy the sugar rush!')
+	Citizen.Wait(10000)
+	SetPedMoveRateOverride(PlayerId(),1.0)
+	SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
 	SetTimeout(wait, function()
 		if not cancelled then
 			TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You ate a donut', length = 2500})
@@ -55,6 +63,12 @@ end)
 
 AddEventHandler('linden_inventory:energydrink', function(item, wait, cb)
 	cb(true)
+	SetPedMoveRateOverride(PlayerId(),10.0)
+	SetRunSprintMultiplierForPlayer(PlayerId(),1.20)
+	exports['mythic_notify']:SendAlert('inform', 'Enjoy the energy rush!')
+	Citizen.Wait(10000)
+	SetPedMoveRateOverride(PlayerId(),1.0)
+	SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
 	SetTimeout(wait, function()
 		if not cancelled then
 			TriggerEvent('mythic_notify:client:SendAlert', {type = 'inform', text = 'You drank an energy drink', length = 2500})
@@ -140,6 +154,51 @@ AddEventHandler('linden_inventory:armour', function(item, wait, cb)
 	local currenthealth = GetPedArmour(ESX.PlayerData.ped)
 
 	SetPedArmour(ESX.PlayerData.ped, 100)
+end)
+
+AddEventHandler('use:copium', function(item, wait, cb)
+	cb(true)
+
+	local playerPed = GetPlayerPed(-1)
+  	local playerPed = PlayerPedId()
+
+	RequestAnimSet("MOVE_M@QUICK") 
+    while not HasAnimSetLoaded("MOVE_M@QUICK") do
+      Citizen.Wait(0)
+    end 
+    TriggerEvent("mythic_progbar:client:progress", {
+        name = "unique_action_name",
+        duration = 7500,
+        label = "Sniffing Copium",
+        useWhileDead = false,
+        canCancel = true,
+        controlDisables = {
+            disableMovement = false,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        },
+		animation = {
+			animDict = "gestures@miss@fbi_5", --gestures@miss@fbi_5 fbi5_gesture_sniff
+			anim = "fbi5_gesture_sniff",
+		},
+    }, function(status)
+        if not status then
+            -- Do Something If Event Wasn't Cancelled
+        end
+    end)
+	Citizen.Wait(7500)
+	ClearPedTasksImmediately(playerPed)
+	SetPedMoveRateOverride(PlayerId(),10.0)
+	SetRunSprintMultiplierForPlayer(PlayerId(),1.25)
+	AnimpostfxPlay("DrugsMichaelAliensFight", 14000, true)
+	exports['mythic_notify']:SendAlert('inform', 'Copium!')
+	Citizen.Wait(13500)
+	SetPedMoveRateOverride(PlayerId(),1.0)
+	SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
+	ResetPedMovementClipset(GetPlayerPed(-1))
+	AnimpostfxStopAll()
+	exports['mythic_notify']:SendAlert('inform', 'Failure!')
 end)
 
 AddEventHandler('linden_inventory:ifak', function(item, wait, cb)
