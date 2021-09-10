@@ -87,6 +87,14 @@ Weapons = {
 		durability = 1.0,
 	},
 
+	['WEAPON_SLEDGEHAMMER'] = {
+		label = 'Sledge Hammer',
+		weight = 1500,
+		stack = false,
+		close = false,
+		durability = 1.0,
+	},
+
 	['WEAPON_BATTLEAXE'] = {
 		label = 'Battle Axe',
 		weight = 1200,
@@ -696,7 +704,7 @@ Weapons = {
 		durability = 1.0,
 	},
 
-	['WEAPON_TASER'] = {
+	['WEAPON_STUNGUN'] = {
 		label = 'PD Taser',
 		weight = 227,
 		stack = false,
