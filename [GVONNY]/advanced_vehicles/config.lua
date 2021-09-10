@@ -575,6 +575,50 @@ Config.upgrades = {
 			},
 			['class'] = 'engine'
 		},
+		['musv8'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.04,
+				['sound'] = 'musv8',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'musv8',
+				['amount'] = 1,
+				['time'] = 10
+			},
+			['interface'] = {
+				['name'] = 'LS V8',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/musv8.png',
+				['description'] = 'LS V8 engine swap',
+				['index'] = 14
+			},
+			['class'] = 'engine'
+		},
+		['ferrariv8'] = {
+			['improvements'] = {
+				['type'] = 'CHandlingData',
+				['handId'] = 'fInitialDriveForce',
+				['value'] = 0.045,
+				['sound'] = '488sound',
+				['fixed_value'] = false
+			},
+			['item'] = {
+				['name'] = 'ferrariv8',
+				['amount'] = 1,
+				['time'] = 1
+			},
+			['interface'] = {
+				['name'] = 'Ferrari V8',
+				['icon_color'] = '#ffffff00',
+				['icon'] = 'images/upgrades/ferrariv8.png',
+				['description'] = 'Ferrari V8',
+				['index'] = 15
+			},
+			['class'] = 'engine'
+		},
 		['gt3flat6'] = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
@@ -593,29 +637,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/gt3flat6.png',
 				['description'] = 'Porsche GT3 engine swap',
-				['index'] = 14
-			},
-			['class'] = 'engine'
-		},
-		['musv8'] = {
-			['improvements'] = {
-				['type'] = 'CHandlingData',
-				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.04,
-				['sound'] = 'musv8',
-				['fixed_value'] = false
-			},
-			['item'] = {
-				['name'] = 'musv8',
-				['amount'] = 1,
-				['time'] = 10
-			},
-			['interface'] = {
-				['name'] = 'LS V8',
-				['icon_color'] = '#ffffff00',
-				['icon'] = 'images/upgrades/musv8.png',
-				['description'] = 'LS v8 engine swap',
-				['index'] = 15
+				['index'] = 17
 			},
 			['class'] = 'engine'
 		},
@@ -637,7 +659,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/lambov10.png',
 				['description'] = 'Lambo v10 engine swap',
-				['index'] = 16
+				['index'] = 18
 			},
 			['class'] = 'engine'
 		},
@@ -659,7 +681,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 17
+				['index'] = 19
 			},
 			['class'] = 'turbo'
 		},
@@ -681,7 +703,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/big_single_turbo.png',
 				['description'] = 'Install a larger turbine to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 18
+				['index'] = 20
 			},
 			['class'] = 'turbo'
 		},
@@ -703,7 +725,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/twin_turbo.png',
 				['description'] = 'Install a double turbines to generate more pressure and admit more cold air into the engine intake, generating more power',
-				['index'] = 19
+				['index'] = 21
 			},
 			['class'] = 'turbo'
 		},
@@ -724,7 +746,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/brembo_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 20
+				['index'] = 22
 			},
 			['class'] = 'brakes'
 		},
@@ -745,7 +767,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/wilwood_brakes.png',
 				['description'] = 'Racing brakes have a much greater braking power and dont overheat like regular brakes',
-				['index'] = 21
+				['index'] = 23
 			},
 			['class'] = 'brakes'
 		},
@@ -766,7 +788,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/michelin_tires.png',
 				['description'] = '',
-				['index'] = 22
+				['index'] = 24
 			},
 			['class'] = 'tires'
 		},
@@ -787,7 +809,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/pirelli_tires.png',
 				['description'] = '',
-				['index'] = 23
+				['index'] = 25
 			},
 			['class'] = 'tires'
 		},
@@ -808,7 +830,7 @@ Config.upgrades = {
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/falken_tires.png',
 				['description'] = '',
-				['index'] = 24
+				['index'] = 26
 			},
 			['class'] = 'tires'
 		},

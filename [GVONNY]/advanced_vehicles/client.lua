@@ -372,6 +372,7 @@ function applyVehicleMods(veh,name,upgrades)
 			end
 
 			if(arr[k].class == 'engine' and arr[k].improvements.sound ~= 'default') then
+				print(arr[k].improvements.sound)
 				local vehicle = VehToNet(veh)
 				TriggerServerEvent("advanced_vehicles:updateEngineSound", vehicle, arr[k].improvements.sound)
 			end

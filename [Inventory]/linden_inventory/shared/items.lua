@@ -7,7 +7,7 @@ Items = {
 		close = true,
 		client = {
 			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
-			prop = { model = 'prop_rolled_sock_02', pos = { x = -0.13999999999998, y = -0.13999999999998, y = -0.080000000000012}, rot = { x = -50.0, y = -50.0, y = 0.0} },
+			prop = { model = 'prop_ld_health_pack', pos = { x = -0.13999999999998, y = -0.13999999999998, y = -0.080000000000012}, rot = { x = -50.0, y = -50.0, y = 0.0} },
 			disable = { move = true, car = true, combat = true },
 			usetime = 2500,
 			event = true,
@@ -64,7 +64,7 @@ Items = {
 		client = {
 			status = { hunger = 200000 },
 			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-			prop = { model = 'prop_cs_burger_01', pos = { x = 0.020000000000004, y = 0.020000000000004, y = -0.020000000000004}, rot = { x = 0.0, y = 0.0, y = 0.0} },
+			prop = { model = 'prop_amb_donut', pos = { x = 0.020000000000004, y = 0.020000000000004, y = -0.020000000000004}, rot = { x = 0.0, y = 0.0, y = 0.0} },
 			usetime = 2500,
 			event = true,
 		}
@@ -78,7 +78,7 @@ Items = {
 		client = {
 			status = { hunger = 200000 },
 			anim = { dict = 'mp_player_inteat@burger', clip = 'mp_player_int_eat_burger_fp' },
-			prop = { model = 'prop_cs_burger_01', pos = { x = 0.020000000000004, y = 0.020000000000004, y = -0.020000000000004}, rot = { x = 0.0, y = 0.0, y = 0.0} },
+			prop = { model = 'prop_sandwich_01', pos = { x = 0.020000000000004, y = 0.020000000000004, y = -0.020000000000004}, rot = { x = 0.0, y = 0.0, y = 0.0} },
 			usetime = 2500,
 			event = true,
 		}
@@ -202,7 +202,7 @@ Items = {
 		client = {
 			status = { stress = -25000 },
 			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = 'prop_cs_panties_02', pos = { x = 0.03, y = 0.0, z = 0.02 }, rot = { x = 0.0, y = -13.5, z = -1.5 } },
+			prop = { model = 'prop_sh_cigar_01', pos = { x = 0.03, y = 0.0, z = 0.02 }, rot = { x = 0.0, y = -13.5, z = -1.5 } },
 			usetime = 2500,
 			consume = 0
 		}
@@ -232,7 +232,7 @@ Items = {
 			disable = { move = false, car = false, combat = true },
 			consume = 0,
 			usetime = 0,
-			event = 'd-phone:client:openphone'
+			event = 'labrp-phone:open'
 		}
 	},
 
@@ -360,7 +360,7 @@ Items = {
 
 	['fishbait'] = {
 		label = 'Fish Bait',
-		weight = 1000,
+		weight = 50,
 		stack = true,
 		close = true,
 		client = {
@@ -1134,6 +1134,42 @@ Items = {
 		weight = 2500,
 		stack = false,
 		close = true,
+	},
+
+	['newscam'] = {
+		label = 'Film Camera',
+		weight = 1500,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'Cam:ToggleCam'
+		}
+	},
+
+	['boomarm'] = {
+		label = 'Boom Mic',
+		weight = 1000,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'Mic:ToggleBMic'
+		}
+	},
+
+	['microphone'] = {
+		label = 'Microphone',
+		weight = 300,
+		stack = false,
+		close = true,
+		client = {
+			consume = 0,
+			usetime = 0,
+			event = 'Mic:ToggleMic'
+		}
 	},
 	
 }
