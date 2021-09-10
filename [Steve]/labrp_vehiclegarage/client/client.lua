@@ -750,24 +750,25 @@ AddEventHandler('luke_vehiclegarage:SpawnVehicle', function(data)
 
     for i = 1, #spawn do
         if ESX.Game.IsSpawnPointClear(vector3(spawn[i].x, spawn[i].y, spawn[i].z), 1.0) then
-            ESX.TriggerServerCallback('luke_vehiclegarage:SpawnVehicle', function(veh)
-                vehicle = NetToVeh(veh)
+            --[[ ESX.TriggerServerCallback('luke_vehiclegarage:SpawnVehicle', function(veh)
+                vehicle = NetToVeh(veh) ]]
 
-                ESX.Game.SetVehicleProperties(vehicle, data.vehicle)
-                SetVehicleInteriorColor(vehicle, tonumber(data.vehicle.modTrimA))
-                SetVehicleLivery(vehicle, tonumber(data.vehicle.modLivery))
-                TriggerServerEvent('luke_vehiclegarage:ChangeStored', GetVehicleNumberPlateText(vehicle), false, currentGarage)
+            local spawnedVehicle = CreateVehicle(model, vector3(spawn[i].x, spawn[i].y, spawn[i].z), spawn[i].h, 1, 1)
+            ESX.Game.SetVehicleProperties(spawnedVehicle, data.vehicle)
+            SetVehicleInteriorColor(spawnedVehicle, tonumber(data.vehicle.modTrimA))
+            SetVehicleLivery(spawnedVehicle, tonumber(data.vehicle.modLivery))
+            TriggerServerEvent('luke_vehiclegarage:ChangeStored', GetVehicleNumberPlateText(spawnedVehicle), false, currentGarage)
 
-                if data.type == 'impound' then
-                    TriggerServerEvent('luke_vehiclegarage:PayImpound', data.price)
-                end
+            if data.type == 'impound' then
+                TriggerServerEvent('luke_vehiclegarage:PayImpound', data.price)
+            end
 
-                DoVehicleDamage(vehicle, data.health)
+            DoVehicleDamage(spawnedVehicle, data.health)
 
-                local spawnedplate = GetVehicleNumberPlateText(vehicle)
-                exports["labrp_vehiclelock"]:givePlayerKeys(spawnedplate)
+            local spawnedplate = GetVehicleNumberPlateText(spawnedVehicle)
+            exports["labrp_vehiclelock"]:givePlayerKeys(spawnedplate)
 
-            end, data.vehicle.model, vector3(spawn[i].x, spawn[i].y, spawn[i].z-1), spawn[i].h)
+            --[[ end, data.vehicle.model, vector3(spawn[i].x, spawn[i].y, spawn[i].z-1), spawn[i].h) ]]
             break
         end
         if i == #spawn then
@@ -963,7 +964,7 @@ end
 
 
 
---[[RegisterCommand('ownvehicle', function()
+RegisterCommand('ownvehicle', function()
     if IsPedInAnyVehicle(PlayerPedId(), false) then
         local vehicleBuy = GetVehiclePedIsIn(PlayerPedId(), false)
         local plate = GetVehicleNumberPlateText(vehicleBuy)
@@ -978,7 +979,7 @@ end
     else
         exports['mythic_notify']:SendAlert('error', "You're not in a vehicle")
     end
-end, false)]]
+end, false)
 
 --[[RegisterCommand('getkeys', function()
     if IsPedInAnyVehicle(PlayerPedId(), false) then
