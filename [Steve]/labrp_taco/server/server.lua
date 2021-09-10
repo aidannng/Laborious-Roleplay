@@ -32,6 +32,6 @@ AddEventHandler('labrp_taco:givereward', function()
             percent = math.random(lowpercent, highpercent)
         end
 
-        xPlayer.addMoney(dirty*(percent/100))
+        xPlayer.addMoney(500*(percent/100))
     end
 end)
