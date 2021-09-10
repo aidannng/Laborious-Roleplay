@@ -7,13 +7,13 @@ AddEventHandler('labrp_taco:givereward', function()
     xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.addMoney(math.random(250, 500))
     local dirty = xPlayer.getInventoryItem('black_money').count
-    local packed = xPlayergetInventoryItem('packagedweed').count
+    local packed = xPlayer.getInventoryItem('packagedweed').count
     local percent = math.random(75, 100)
 
     if(packed > 4) then
         xPlayer.removeInventoryItem('packagedweed', 5)
         xPlayer.addInventoryItem('black_money', 1000)
-    else if(dirty > 499) then
+    elseif dirty > 499 then
         xPlayer.removeInventoryItem("black_money", 500)
 
         local lowten = math.random(5, 7)
