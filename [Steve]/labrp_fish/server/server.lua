@@ -23,8 +23,8 @@ AddEventHandler('labrp_fish:sellillegal', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local Shark = xPlayer.getInventoryItem('Shark').count
     local Turtle = xPlayer.getInventoryItem('Turtle').count
-    local sharkmoney = math.random(200, 400)
-    local turtlemoney = math.random(100, 250)
+    local sharkmoney = math.random(500, 750)
+    local turtlemoney = math.random(750, 1000)
 
     if Shark >= 1 then
         xPlayer.removeInventoryItem('Shark', Shark)
@@ -44,7 +44,7 @@ RegisterNetEvent('labrp_fish:sell')
 AddEventHandler('labrp_fish:sell', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local Fish = xPlayer.getInventoryItem('Fish').count
-    local FishMoney = math.random(100, 250)
+    local FishMoney = math.random(200, 400)
 
     if Fish >= 1 then
         xPlayer.removeInventoryItem('Fish', Fish)
