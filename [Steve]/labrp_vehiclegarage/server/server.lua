@@ -197,7 +197,7 @@ AddEventHandler('luke_vehiclegarage:ChangeStored', function(plate, stored, garag
             ['@garage'] = garage
         })
     else
-        MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = NULL WHERE `plate` = @plate', {
+        MySQL.Async.execute('UPDATE `owned_vehicles` SET `stored` = @stored, `garage` = "Impound" WHERE `plate` = @plate', {
             ['@stored'] = stored,
             ['@plate'] = plate
         })
@@ -315,7 +315,7 @@ ESX.RegisterServerCallback('luke_vehiclegarage:SpawnVehicle', function(source, c
     if type(model) == 'string' then model = GetHashKey(model) end
     Citizen.CreateThread(function()
         entity = CreateVehicle(model, coords, heading, true, true)
-        while not DoesEntityExist(entity) do Wait(20) end
+        while not DoesEntityExist(entity) do Wait(10) end
         netid = NetworkGetNetworkIdFromEntity(entity)
         callback(netid)
     end)
