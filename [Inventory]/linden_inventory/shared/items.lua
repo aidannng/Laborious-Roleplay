@@ -8,7 +8,7 @@ Items = {
 		client = {
 			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
 			prop = { model = 'prop_ld_health_pack', pos = { x = -0.13999999999998, y = -0.13999999999998, y = -0.080000000000012}, rot = { x = -50.0, y = -50.0, y = 0.0} },
-			disable = { move = true, car = true, combat = true },
+			disable = { move = false, car = true, combat = true },
 			usetime = 2500,
 			event = true,
 		}
@@ -170,6 +170,18 @@ Items = {
 			consume = 0,
 			usetime = 0,
 			event = 'show:identification'
+		}
+	},
+
+	['copium'] = {
+		label = 'Copium',
+		weight = 3500,
+		stack = false,
+		close = true,
+		client = {
+			consume = 1,
+			usetime = 0,
+			event = 'use:copium'
 		}
 	},
 
@@ -379,14 +391,14 @@ Items = {
 
 	['Turtle'] = {
 		label = 'Sea Turtle',
-		weight = 3000,
+		weight = 1500,
 		stack = true,
 		close = false,
 	},
 
 	['Shark'] = {
 		label = 'Shark',
-		weight = 7000,
+		weight = 3500,
 		stack = true,
 		close = false,
 	},
@@ -615,6 +627,9 @@ Items = {
 		close = true,
 		stack = true,
 		client = {
+			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
+			prop = { model = 'prop_ld_health_pack', pos = { x = -0.13999999999998, y = -0.13999999999998, y = -0.080000000000012}, rot = { x = -50.0, y = -50.0, y = 0.0} },
+			disable = { move = false, car = true, combat = true },
 			consume = 0,
 			usetime = 0,
 			event = 'linden_inventory:ifak'

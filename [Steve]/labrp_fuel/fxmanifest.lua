@@ -2,7 +2,7 @@ fx_version 'adamant'
 
 game 'gta5'
 
-version '1.0.3'
+version '1.2.0'
 
 
 server_scripts {
@@ -10,8 +10,8 @@ server_scripts {
 }
 
 client_scripts {
-    'config.lua',
 	'client/client.lua',
+	'config.lua',
 	'@PolyZone/client.lua',
     '@PolyZone/BoxZone.lua',
     '@PolyZone/CircleZone.lua',

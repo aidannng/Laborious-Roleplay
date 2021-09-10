@@ -71,7 +71,7 @@ AddEventHandler('labrp_fish:usebait', function()
             TriggerServerEvent('labrp_fish:removebait')
             exports['mythic_progbar']:Progress({
                 name = "unique_action_name",
-                duration = 10000,
+                duration = 5000,
                 label = 'Using Bait',
                 useWhileDead = true,
                 canCancel = false,
@@ -82,13 +82,13 @@ AddEventHandler('labrp_fish:usebait', function()
                     disableCombat = true,
                 },
             })
-            Citizen.Wait(10000)
+            Citizen.Wait(5000)
             baitUsed = true
-            Citizen.Wait(500)
+            Citizen.Wait(math.random(2000, 5000))
             local catchRarity = math.random(1, 100)
 
-            if catchRarity >= 95 then
-                local finished = exports["reload-skillbar"]:taskBar(500,math.random(2,7))
+            if catchRarity >= 92 then
+                local finished = exports["reload-skillbar"]:taskBar(1000,math.random(8,15))
                 if finished ~= 100 then
                     exports['mythic_notify']:SendAlert('error', 'The Shark broke the line!')
                     baitUsed = false
@@ -96,8 +96,8 @@ AddEventHandler('labrp_fish:usebait', function()
                     TriggerServerEvent('labrp_fish:getreward', 'Shark')
                     baitUsed = false
                 end
-            elseif catchRarity >= 92 and catchRarity < 95 then
-                local finished = exports["reload-skillbar"]:taskBar(750,math.random(2,10))
+            elseif catchRarity >= 85 and catchRarity < 92 then
+                local finished = exports["reload-skillbar"]:taskBar(1200,math.random(10,15))
                 if finished ~= 100 then
                     exports['mythic_notify']:SendAlert('error', 'The Turtle broke the line!')
                     baitUsed = false
@@ -105,8 +105,8 @@ AddEventHandler('labrp_fish:usebait', function()
                     TriggerServerEvent('labrp_fish:getreward', 'Turtle')
                     baitUsed = false
                 end
-            elseif catchRarity > 10 and catchRarity < 92 then
-                local finished = exports["reload-skillbar"]:taskBar(1200,math.random(2,15))
+            elseif catchRarity > 10 and catchRarity < 85 then
+                local finished = exports["reload-skillbar"]:taskBar(1500,math.random(5,15))
                 if finished ~= 100 then
                     exports['mythic_notify']:SendAlert('error', 'The fish broke the line!')
                     baitUsed = false
@@ -115,7 +115,7 @@ AddEventHandler('labrp_fish:usebait', function()
                     baitUsed = false
                 end
             elseif catchRarity <= 10 then
-                local finished = exports["reload-skillbar"]:taskBar(1200,math.random(2,15))
+                local finished = exports["reload-skillbar"]:taskBar(1500,math.random(5,15))
                 if finished ~= 100 then
                     exports['mythic_notify']:SendAlert('error', 'The line snapped!')
                     baitUsed = false
