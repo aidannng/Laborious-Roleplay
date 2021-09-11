@@ -372,6 +372,10 @@ AddEventHandler('labrp_store:robRegister', function(data)
     local register = data.entity
     ESX.TriggerServerCallback('labrp_store:checkRegister', function(canRob)
         if canRob then
+            local data = {displayCode = '10-68', description = 'Store Robbery', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000',blipSprite = 618, blipColour = 11, blipScale = 1.2, infoM = 'fas fa-cash-register', info = 'Store Robbery'} --
+            local dispatchData = {dispatchData = data, caller = 'Security System', coords = playerCoords}
+            TriggerServerEvent('wf-alerts:svNotify', dispatchData)
+            
             TriggerServerEvent('labrp_store:TableInsertRegister', register)
             local skillcheck = exports["reload-skillbar"]:taskBar(25000,math.random(5,15))
             if skillcheck == 100 then
