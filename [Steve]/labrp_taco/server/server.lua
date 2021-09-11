@@ -12,7 +12,7 @@ AddEventHandler('labrp_taco:givereward', function()
 
     if(packed > 4) then
         xPlayer.removeInventoryItem('packagedweed', 5)
-        xPlayer.addInventoryItem('black_money', 3250)
+        xPlayer.addInventoryItem('black_money', math.random(1000, 1750))
     elseif dirty > 499 then
         xPlayer.removeInventoryItem("black_money", 500)
 
