@@ -13,8 +13,8 @@ icfg = {}
 icfg.Timer = 300
 icfg.LaundryMaxMoneyWash = 5250
 icfg.LaundryMinMoneyWash = 2500
-icfg.MaxWashingTime = 480
-icfg.MinWashingTime = 300
+icfg.MaxWashingTime = 360
+icfg.MinWashingTime = 240
 icfg.WashingTax = 0.70
 icfg.DropWorkPermitChance = 99
 

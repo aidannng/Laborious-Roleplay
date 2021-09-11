@@ -129,7 +129,7 @@ Citizen.CreateThread(function()
                                         OpenLaundryMenu()
                                     end
                                 elseif WashingTime > 0 then
-                                    DrawText3Ds(icfg.LaundryPlaces.Laundry1.Pos.x, icfg.LaundryPlaces.Laundry1.Pos.y, icfg.LaundryPlaces.Laundry1.Pos.z + 0.5, "Washing Black Money: ~r~" ..BlackMoneyAmount.. "$~s~")
+                                    DrawText3Ds(icfg.LaundryPlaces.Laundry1.Pos.x, icfg.LaundryPlaces.Laundry1.Pos.y, icfg.LaundryPlaces.Laundry1.Pos.z + 0.5, "Washing Black Money: ~r~$" ..BlackMoneyAmount.. "~s~")
                                     DrawText3Ds(icfg.LaundryPlaces.Laundry1.Pos.x, icfg.LaundryPlaces.Laundry1.Pos.y, icfg.LaundryPlaces.Laundry1.Pos.z + 0.35, "Remaining time: ~g~" ..WashingTime.. " sec~s~")
                                 end
                             end

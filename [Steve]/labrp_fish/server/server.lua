@@ -31,15 +31,15 @@ AddEventHandler('labrp_fish:sellillegal', function()
     local Shark = xPlayer.getInventoryItem('Shark').count
     local Turtle = xPlayer.getInventoryItem('Turtle').count
     local sharkmoney = math.random(250, 400)
-    local turtlemoney = math.random(500, 650)
+    local turtlemoney = math.random(350, 650)
 
     if Shark >= 1 then
-        xPlayer.removeInventoryItem('Shark', Shark)
-        xPlayer.addInventoryItem('black_money', sharkmoney * Shark)
+        xPlayer.removeInventoryItem('Shark', 1)
+        xPlayer.addInventoryItem('black_money', sharkmoney)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Shark..' Sharks for $'..sharkmoney * Shark, })
     elseif Turtle >= 1 then
-        xPlayer.removeInventoryItem('Turtle', Turtle)
-        xPlayer.addInventoryItem('black_money', turtlemoney * Turtle)
+        xPlayer.removeInventoryItem('Turtle', 1)
+        xPlayer.addInventoryItem('black_money', turtlemoney)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Turtle..' Turtles for $'..turtlemoney * Turtle, })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You have nothing to sell!', })
@@ -53,9 +53,9 @@ AddEventHandler('labrp_fish:sell', function()
     local Fish = xPlayer.getInventoryItem('Fish').count
     local FishMoney = math.random(40, 120)
 
-    if Fish >= 1 then
-        xPlayer.removeInventoryItem('Fish', Fish)
-        xPlayer.addInventoryItem('money', FishMoney * Fish)
+    if Fish >= 5 then
+        xPlayer.removeInventoryItem('Fish', 5)
+        xPlayer.addInventoryItem('money', FishMoney * 5)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Fish..' Fish for $'..FishMoney * Fish, })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You have nothing to sell!', })
