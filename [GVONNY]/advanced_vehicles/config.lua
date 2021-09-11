@@ -513,7 +513,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.02,
+				['value'] = 0.03,
 				['sound'] = 'rotary7',
 				['fixed_value'] = false
 			},
@@ -535,7 +535,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.03,
+				['value'] = 0.042,
 				['sound'] = 'brabus850',
 				['fixed_value'] = false
 			},
@@ -557,7 +557,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.03,
+				['value'] = 0.038,
 				['sound'] = 'predatorv8',
 				['fixed_value'] = false
 			},
@@ -601,7 +601,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.045,
+				['value'] = 0.044,
 				['sound'] = '488sound',
 				['fixed_value'] = false
 			},
@@ -623,7 +623,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.045,
+				['value'] = 0.048,
 				['sound'] = 'urusv8',
 				['fixed_value'] = false
 			},
@@ -667,7 +667,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.05,
+				['value'] = 0.055,
 				['sound'] = 'lambov10',
 				['fixed_value'] = false
 			},
@@ -689,7 +689,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.06,
+				['value'] = 0.05,
 				['sound'] = 'viperv10',
 				['fixed_value'] = false
 			},
@@ -711,7 +711,7 @@ Config.upgrades = {
 			['improvements'] = {
 				['type'] = 'CHandlingData',
 				['handId'] = 'fInitialDriveForce',
-				['value'] = 0.06,
+				['value'] = 0.055,
 				['sound'] = 'murciev12',
 				['fixed_value'] = false
 			},
