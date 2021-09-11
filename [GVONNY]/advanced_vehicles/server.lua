@@ -150,7 +150,7 @@ AddEventHandler('advanced_vehicles:makeAction', function(vehicleData,data,firstS
 								MySQL.Sync.execute(sql, {['@user_id'] = owner_id, ['@vehicle'] = vehicleData.name, ['@plate'] = vehicleData.plate, ['@item'] = data.idname, ['@km'] = math.floor(vehicleData.km/1000), ['@value'] = 100, ['@timer'] = os.time()});
 
 								TriggerClientEvent('advanced_vehicles:useTheJackFunction',source,data,firstStep)
-								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['service_done'], style = { ['border-right-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['service_done'], style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
 								TriggerClientEvent('repair:tires', source)
 
 								--TriggerClientEvent("advanced_vehicles:Notify",source,"sucesso",Lang[Config.lang]['service_done'])
@@ -195,7 +195,7 @@ AddEventHandler('advanced_vehicles:makeAction', function(vehicleData,data,firstS
 								MySQL.Sync.execute(sql, {['@user_id'] = owner_id, ['@vehicle'] = vehicleData.name, ['@plate'] = vehicleData.plate, ['@item'] = data.idname, ['@km'] = math.floor(vehicleData.km/1000), ['@value'] = percentage, ['@timer'] = os.time()});
 
 								TriggerClientEvent('advanced_vehicles:useTheJackFunction',source,data,firstStep)
-								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['inpect_done'], style = { ['background-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+								TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Lang[Config.lang]['inpect_done'], style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
 
 								--TriggerClientEvent("advanced_vehicles:Notify",source,"sucesso",Lang[Config.lang]['inpect_done'])
 							else

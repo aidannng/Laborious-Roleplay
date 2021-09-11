@@ -545,7 +545,7 @@ Config.upgrades = {
 				['time'] = 10
 			},
 			['interface'] = {
-				['name'] = 'AMG v8',
+				['name'] = 'AMG V8',
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/amgv8.png',
 				['description'] = 'AMG v8 engine swap',
@@ -567,7 +567,7 @@ Config.upgrades = {
 				['time'] = 10
 			},
 			['interface'] = {
-				['name'] = 'Chevy v8',
+				['name'] = 'Chevy V8',
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/chevylt5.png',
 				['description'] = 'Chevy v8 engine swap',
@@ -677,7 +677,7 @@ Config.upgrades = {
 				['time'] = 10
 			},
 			['interface'] = {
-				['name'] = 'Lambo v10',
+				['name'] = 'Lambo V10',
 				['icon_color'] = '#ffffff00',
 				['icon'] = 'images/upgrades/lambov10.png',
 				['description'] = 'Lambo V10 engine swap',
