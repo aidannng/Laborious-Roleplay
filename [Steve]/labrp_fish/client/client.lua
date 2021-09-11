@@ -121,7 +121,7 @@ AddEventHandler('labrp_fish:usebait', function()
                     baitUsed = false
                 else
                     if catchRarity == 1 or catchRarity == 2 then 
-                        TriggerServerEvent('labrp_fish:getreward', 'scrap_metal')
+                        TriggerServerEvent('labrp_fish:getreward', 'scrapmetal')
                     elseif catchRarity == 3 or catchRarity == 4 then
                         TriggerServerEvent('labrp_fish:getreward', '2ct_gold_chain')
                     elseif catchRarity == 5 or catchRarity == 6 then
