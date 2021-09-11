@@ -9,7 +9,7 @@ AddEventHandler('labrp_fish:getreward', function(fish)
     local quantity = math.random(1, 6)
     if quantity == 1 or quantity == 2 or quantity == 3 then
         quantity = 1
-    else if quantity == 4 or quantity == 5 then
+    elseif quantity == 4 or quantity == 5 then
         quantity = 2
     else
         quantity = 3
