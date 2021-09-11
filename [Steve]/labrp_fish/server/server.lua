@@ -6,16 +6,20 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 RegisterNetEvent('labrp_fish:getreward')
 AddEventHandler('labrp_fish:getreward', function(fish)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local quantity = math.random(1, 30)
-    if(quantity > 0 and quantity < 23) then
-        quantity = 1
-    elseif(quantity >= 23 and quantity < 30) then
-        quantity = 2
+    if xPlayer.getWeight() <= 30000 then
+        local quantity = math.random(1, 30)
+        if(quantity > 0 and quantity < 23) then
+            quantity = 1
+        elseif(quantity >= 23 and quantity < 30) then
+            quantity = 2
+        else
+            quantity = 3
+        end
+        xPlayer.addInventoryItem(fish, quantity)
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have caught '..quantity..' '..fish, })
     else
-        quantity = 3
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You pockets are too full', })
     end
-    xPlayer.addInventoryItem(fish, quantity)
-    TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have caught '..quantity..' '..fish, })
 end)
 
 RegisterNetEvent('labrp_fish:removebait')
@@ -36,11 +40,11 @@ AddEventHandler('labrp_fish:sellillegal', function()
     if Shark >= 1 then
         xPlayer.removeInventoryItem('Shark', 1)
         xPlayer.addInventoryItem('black_money', sharkmoney)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Shark..' Sharks for $'..sharkmoney * Shark, })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Shark..' Sharks for $'..sharkmoney, })
     elseif Turtle >= 1 then
         xPlayer.removeInventoryItem('Turtle', 1)
         xPlayer.addInventoryItem('black_money', turtlemoney)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Turtle..' Turtles for $'..turtlemoney * Turtle, })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Turtle..' Turtles for $'..turtlemoney, })
     else
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You have nothing to sell!', })
     end
@@ -56,8 +60,8 @@ AddEventHandler('labrp_fish:sell', function()
     if Fish >= 5 then
         xPlayer.removeInventoryItem('Fish', 5)
         xPlayer.addInventoryItem('money', FishMoney * 5)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Fish..' Fish for $'..FishMoney * Fish, })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have sold '..Fish..' Fish for $'..FishMoney * 5, })
     else
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You have nothing to sell!', })
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = 'You do not have enough to sell!', })
     end
 end)

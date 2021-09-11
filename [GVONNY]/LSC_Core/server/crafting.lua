@@ -816,6 +816,102 @@ AddEventHandler('craft:rotary7', function()
     end
 end)
 
+RegisterServerEvent('craft:lambov8')
+AddEventHandler('craft:lambov8', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('aluminum_engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 7 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 8)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
+            xPlayer.addInventoryItem('lambov8', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:viperv10')
+AddEventHandler('craft:viperv10', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('aluminum_engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 9 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 10)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
+            xPlayer.addInventoryItem('viperv10', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:lambov12')
+AddEventHandler('craft:lambov12', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('aluminum_engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 11 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 12)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
+            xPlayer.addInventoryItem('lambov12', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
+RegisterServerEvent('craft:ferrariv12')
+AddEventHandler('craft:ferrariv12', function()
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local pistonCount = xPlayer.getInventoryItem('piston').count
+    local crankshaftCount = xPlayer.getInventoryItem('crankshaft').count
+    local blockCount = xPlayer.getInventoryItem('aluminum_engine_block').count
+    local headCount = xPlayer.getInventoryItem('high_flow_head').count
+
+    if (pistonCount > 11 and crankshaftCount > 0 and blockCount > 0 and headCount > 1) then
+        if(xPlayer.job.grade > 2) then
+            xPlayer.removeInventoryItem('piston', 12)
+            xPlayer.removeInventoryItem('crankshaft', 1)
+            xPlayer.removeInventoryItem('aluminum_engine_block', 1)
+            xPlayer.removeInventoryItem('high_flow_head', 2)
+            xPlayer.addInventoryItem('ferrariv12', 1)
+        else
+            TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You can not craft this item", })
+        end
+    else
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = "You do not have all the parts to craft this item", })
+    end
+end)
+
 --############################
 --##       SUSPENSION       ##
 --############################
