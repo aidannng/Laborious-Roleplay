@@ -7,9 +7,9 @@ RegisterNetEvent('labrp_fish:getreward')
 AddEventHandler('labrp_fish:getreward', function(fish)
     local xPlayer = ESX.GetPlayerFromId(source)
     local quantity = math.random(1, 6)
-    if quantity = 1 or quantity = 2 or quantity = 3 then
+    if quantity == 1 or quantity == 2 or quantity == 3 then
         quantity = 1
-    else if quantity = 4 or quantity = 5 then
+    else if quantity == 4 or quantity == 5 then
         quantity = 2
     else
         quantity = 3
