@@ -7,13 +7,14 @@ RegisterNetEvent('labrp_fish:getreward')
 AddEventHandler('labrp_fish:getreward', function(fish)
     local xPlayer = ESX.GetPlayerFromId(source)
     local quantity = math.random(1, 15)
-    if quantity > 0 and quantity < 10 then
+    if(quantity > 0 and quantity < 10) then
         quantity = 1
-    elseif quantity => 10 and quantity < 15 then
+    elseif(quantity >= 10 and quantity < 15) then
         quantity = 2
     else
         quantity = 3
     end
+    print(quantity)
     xPlayer.addInventoryItem(fish, quantity)
     TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You have caught '..quantity..' '..fish, })
 end)
