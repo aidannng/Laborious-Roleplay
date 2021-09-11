@@ -34,11 +34,11 @@ ESX.RegisterServerCallback('inside-moneywash:LoadBlackMoney', function(source, c
 
     if BlackMoney > icfg.LaundryMaxMoneyWash then
         amount = math.random(icfg.LaundryMinMoneyWash, icfg.LaundryMaxMoneyWash)
-        xPlayer.removeAccountMoney('black_money', amount)
+        xPlayer.removeInventoryItem('black_money', amount)
 		cb(amount)
 		WashedMoney = amount
 	elseif BlackMoney < icfg.LaundryMaxMoneyWash then
-		xPlayer.removeAccountMoney('black_money', BlackMoney)
+		xPlayer.removeInventoryItem('black_money', BlackMoney)
 		cb(BlackMoney)
 		WashedMoney = BlackMoney
 	elseif BlackMoney <= 0 then
@@ -49,17 +49,17 @@ end)
 RegisterServerEvent('inside-moneywash:GetWashedMoney')
 AddEventHandler('inside-moneywash:GetWashedMoney', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local MoneyAfterTax = WashedMoney * icfg.WashingTax
+	local MoneyAfterTax = WashedMoney * math.random(70,95)/100
 
 	chance = math.random(0,100)
 	if chance > icfg.DropWorkPermitChance then
 		xPlayer.addInventoryItem('workpermit', 1)
-		xPlayer.addMoney(MoneyAfterTax)
-		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You Laundered " ..WashedMoney.. " Black Money. You got " ..MoneyAfterTax.. " Clean Money from it."})
+		xPlayer.addInventoryItem('money', math.floor(MoneyAfterTax))
+		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You Laundered " ..WashedMoney.. " Black Money. You got " ..math.floor(MoneyAfterTax).. " Clean Money from it."})
 		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You found a Work Permit in a Washing Machine. There is some information on it, Check it out!"})
 	else
-		xPlayer.addMoney(MoneyAfterTax)
-		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You Laundered " ..WashedMoney.. " Black Money. You got " ..MoneyAfterTax.. " Clean Money from it."})
+		xPlayer.addInventoryItem('money', math.floor(MoneyAfterTax))
+		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "You Laundered " ..WashedMoney.. " Black Money. You got " ..math.floor(MoneyAfterTax).. " Clean Money from it."})
 	end
 end)
 

@@ -6,10 +6,10 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 RegisterNetEvent('labrp_fish:getreward')
 AddEventHandler('labrp_fish:getreward', function(fish)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local quantity = math.random(1, 9)
-    if quantity == 1 or quantity == 2 or quantity == 3 OR quantity == 4 or quantity == 5 then
+    local quantity = math.random(1, 15)
+    if quantity > 0 and quantity < 10 then
         quantity = 1
-    elseif quantity == 6 or quantity == 7 or quantity == 8 then
+    elseif quantity => 10 and quantity < 15 then
         quantity = 2
     else
         quantity = 3
@@ -30,8 +30,8 @@ AddEventHandler('labrp_fish:sellillegal', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local Shark = xPlayer.getInventoryItem('Shark').count
     local Turtle = xPlayer.getInventoryItem('Turtle').count
-    local sharkmoney = math.random(500, 750)
-    local turtlemoney = math.random(750, 1000)
+    local sharkmoney = math.random(250, 400)
+    local turtlemoney = math.random(500, 650)
 
     if Shark >= 1 then
         xPlayer.removeInventoryItem('Shark', Shark)
@@ -51,7 +51,7 @@ RegisterNetEvent('labrp_fish:sell')
 AddEventHandler('labrp_fish:sell', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local Fish = xPlayer.getInventoryItem('Fish').count
-    local FishMoney = math.random(200, 400)
+    local FishMoney = math.random(40, 120)
 
     if Fish >= 1 then
         xPlayer.removeInventoryItem('Fish', Fish)

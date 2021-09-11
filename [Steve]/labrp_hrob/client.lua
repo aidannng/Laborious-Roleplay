@@ -193,22 +193,7 @@ end)
 
 
 
--- Police Notification
-RegisterNetEvent('labrp-robbery:notifyPolice')
-AddEventHandler('labrp-robbery:notifyPolice',function(playerCoords,currentStreetName)
-    if PlayerJob.name == Config.PoliceName then
-    exports['mythic_notify']:SendAlert('error', 'Dispatch: An alarm has gone off on '  .. currentStreetName , 10000) 
-    RemoveBlip(blipRobbery)
-    blipRobbery = AddBlipForCoord(playerCoords)
-    SetBlipSprite(blipRobbery , 161)
-    SetBlipScale(blipRobbery , 2.0)
-    SetBlipColour(blipRobbery, 3)
-    PulseBlip(blipRobbery)
-    Wait(60000)
-    RemoveBlip(blipRobbery)
-    
-    end
-end)
+-- Police Notificatio
 
 -- Functions for things
 function GetCurrentStreetName()
@@ -294,9 +279,10 @@ AddEventHandler('labrp-robbery:pickDoor', function(xPlayer)
                         v.hasJob = false
                     else
                         TriggerServerEvent('labrp-robbery:removeItem', 'lockpick')
-                        local data = {displayCode = '10-68', description = 'Residential Disturbance', isImportant = 0, recipientList = {'police','fbi'}, length = '10000', infoM = 'fas fa-home', info = 'House Robbery'}
-                        local dispatchData = {dispatchData = data, caller = 'Alarm', coords = GetEntityCoords(PlayerPedId(-1))}
-                        TriggerEvent('wf-alerts:svNotify', dispatchData)
+
+                        local data = {displayCode = '10-68', description = 'Residential Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000',blipSprite = 40, blipColour = 84, blipScale = 1.2, infoM = 'fas fa-home', info = 'House Robbery'}
+                        local dispatchData = {dispatchData = data, caller = 'Alarm', coords = playerCoords}
+                        TriggerServerEvent('wf-alerts:svNotify', dispatchData)
                     end
                 end
             end
@@ -358,9 +344,9 @@ Citizen.CreateThread(function()
             local playerCoords = GetEntityCoords(PlayerPedId(-1))
             local currentStreetName = GetCurrentStreetName()
 
-            local data = {displayCode = '10-68', description = 'Residential Disturbance', isImportant = 0, recipientList = {'police','fbi'}, length = '10000', infoM = 'fas fa-home', info = 'House Robbery'}
-            local dispatchData = {dispatchData = data, caller = 'Alarm', coords = GetEntityCoords(PlayerPedId(-1))}
-            TriggerEvent('wf-alerts:svNotify', dispatchData)
+            local data = {displayCode = '10-68', description = 'Residential Disturbance', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000',blipSprite = 40, blipColour = 84, blipScale = 1.2, infoM = 'fas fa-home', info = 'House Robbery'}
+            local dispatchData = {dispatchData = data, caller = 'Alarm', coords = playerCoords}
+            TriggerServerEvent('wf-alerts:svNotify', dispatchData)
         end
     end
 end)

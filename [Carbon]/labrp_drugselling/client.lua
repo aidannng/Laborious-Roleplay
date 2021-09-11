@@ -62,7 +62,6 @@ Citizen.CreateThread(function()
             },
 
         },
-        job = {"all"},
         distance = 2.5
     })
 end)
@@ -88,10 +87,10 @@ end)
 -- Notify the police of a drug sale
 RegisterNetEvent('gl-drugselling:notifyPolice')
 AddEventHandler('gl-drugselling:notifyPolice',function()
-    local coords = GetEntityCoords(PlayerPedId())
-    exports['core_dispatch']:addCall('10-17', "Suspicious Activity", {
-        {icon="fa-cannabis", info="Possible Drug Sales"}
-        }, {coords.x, coords.y, coords.z}, "police", 10000, 514, 1)
+    playerCoords = GetEntityCoords(PlayerPedId(-1))
+    local data = {displayCode = '10-17', description = 'Suspicious Activity', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000',blipSprite = 514, blipColour = 84, blipScale = 1.2, infoM = 'fa-cannabis', info = 'Potential Drug Sales'}
+    local dispatchData = {dispatchData = data, caller = 'Alarm', coords = playerCoords}
+    TriggerServerEvent('wf-alerts:svNotify', dispatchData)
 end)
 
 -- Functions for things
@@ -137,7 +136,7 @@ if alreadySold then
 exports['mythic_notify']:SendAlert('error', "Im not intrested.", 8500) 
 else
     local CallDaPolice = math.random(1, 8)
-    if CallDaPolice == 8 then
+    if CallDaPolice >= 6 then
         TriggerEvent('gl-drugselling:notifyPolice')
     end
     if not IsPedDeadOrDying(ped) then
@@ -215,3 +214,5 @@ else
 TriggerServerEvent('gl-drugselling:removeReputation',GetPlayerServerId(closestPlayer))
 end
 ]]
+
+
