@@ -6,10 +6,10 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 RegisterNetEvent('labrp_fish:getreward')
 AddEventHandler('labrp_fish:getreward', function(fish)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local quantity = math.random(1, 6)
-    if quantity == 1 or quantity == 2 or quantity == 3 then
+    local quantity = math.random(1, 9)
+    if quantity == 1 or quantity == 2 or quantity == 3 OR quantity == 4 or quantity == 5 then
         quantity = 1
-    elseif quantity == 4 or quantity == 5 then
+    elseif quantity == 6 or quantity == 7 or quantity == 8 then
         quantity = 2
     else
         quantity = 3
