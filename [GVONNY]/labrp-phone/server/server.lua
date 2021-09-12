@@ -609,7 +609,14 @@ AddEventHandler("labrp-phone:add:tweet", function(tweet)
             ['@text'] = tweet,
         })
 
-        TriggerClientEvent('mythic_notify:client:SendAlert', -1, { type = 'inform', text = 'New tweet', style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+        local xPlayers = ESX.GetPlayers()
+        for i=1, #xPlayers, 1 do
+            local target = ESX.GetPlayerFromId(xPlayers[i])
+            local phone = ESX.getInventoryItem('phone').count
+            if(phone > 0) then
+                TriggerClientEvent('mythic_notify:client:SendAlert', target.source, { type = 'inform', text = 'New tweet', style = { ['border-left-color'] = '#18b70b', ['color'] = '#FFFFFF' } })
+            end
+        end
     end)
 end)
 
