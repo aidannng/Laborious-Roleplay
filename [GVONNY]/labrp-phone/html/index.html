@@ -1,0 +1,628 @@
+<html>
+<head>
+    <link rel="stylesheet" href="reset.css" type="text/css">
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="all.css" type="text/css">
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script src="jquery-3.4.1.min.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="./index.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="mobile">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="screen">
+            <div class="apps d-flex">
+                <div id="home-screen" class="flex-row flex-wrap max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <img id="phone" class="icon icon-left" src="img/phone-icon.png" data-app="phone" />
+                    <img id="messages" class="icon" src="img/messages-icon.png" data-app="messages" />
+                    <img id="vehicles" class="icon" src="img/garage-icon.png" data-app="vehicles" />
+                    <img id="contacts" class="icon" src="img/contacts-icon.png" data-app="contacts" />
+                
+                    <img id="info" class="icon icon-left" src="img/info-icon.png" data-app="info" />
+                    <img id="twitter" class="icon" src="img/twitter-icon.png" data-app="twitter" />
+                    <img id="multi-job" class="icon" src="img/multijob-icon.png" data-app="multi-job" />
+                    <img id="ping" class="icon" src="img/ping-icon.png" data-app="ping" />
+                
+                    <img class="icon icon-left" src="img/settings-icon.png" data-app="coming-soon" />
+                    <img id="yellow-pages" class="icon" src="img/yellowpages-icon.png" data-app="yellow-pages" />
+                    <img id="notes" class="icon" src="img/notes-icon.png" data-app="notes" />
+                </div>
+            </div>
+
+            <div class="lockscreen app transparent-background">
+                <div class="flex-row flex-wrap max-width">
+                    <div class="status-bar">
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h1 class="center time margin-top-15px">Coming Soon</h1>
+                    </div>
+                    <div class="margin-top-35px">
+                        <nav>
+                            <div class="nav nav-tabs justify-content-center border-none" id="nav-tab" role="tablist">
+                            </div>
+                        </nav>
+                        <div class="tab-content " id="nav-tabContent">
+                        </div>
+                    </div>
+                    <div class="bottom-bar-phone center border-none height-25px">
+                        <div>
+                            <span>Press home to unlock</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coming-soon app">
+                <div class="flex-row flex-wrap max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Coming Soon</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Phone</h3>
+                        <div class="phone-call-number center"></div>
+                    </div>
+                    <div class="margin-top-10px center">
+                        <div class="circle-button phone-keypad-button">1</div>
+                        <div class="circle-button phone-keypad-button margin-left-10px">2</div>
+                        <div class="circle-button phone-keypad-button margin-left-10px">3</div>
+                    </div>
+                    <div class="margin-top-10px center">
+                        <div class="circle-button phone-keypad-button">4</div>
+                        <div class="circle-button phone-keypad-button margin-left-10px">5</div>
+                        <div class="circle-button phone-keypad-button margin-left-10px">6</div>
+                    </div>
+                    <div class="margin-top-10px center">
+                        <div class="circle-button phone-keypad-button">7</div>
+                        <div class="circle-button phone-keypad-button margin-left-10px">8</div>
+                        <div class="circle-button phone-keypad-button margin-left-10px">9</div>
+                    </div>
+                    <div class="margin-top-10px center">
+                        <div class="circle-button phone-keypad-call-button call-number" data-app="phone-calling"><i class="fa fa-phone padding-top-15px"></i></div>
+                        <div class="circle-button phone-keypad-button margin-left-10px">0</div>
+                        <div class="circle-button margin-left-10px phone-keypad-clear-button"><i class="fa fa-times padding-top-12px"></i></div>
+                    </div>
+                    <div class="bottom-bar center">
+                        <div>
+                            <i class="fa fa-history bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px margin-right-15px" data-app="call-history"></i>
+                            <i class="fas fa-th bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px fa-active"></i>
+                            <i class="fas fa-star bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px margin-left-15px" data-app="contact-favorites"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="call-history app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">History</h3>
+                    </div>
+                    <div id="call-history-list" class="overflow-auto scroll-bar app-content-bottom-bar"></div>
+                </div>
+                <div class="bottom-bar center">
+                    <div>
+                        <i class="fa fa-history bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px margin-right-15px fa-active"></i>
+                        <i class="fas fa-th bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px" data-app="phone"></i>
+                        <i class="fas fa-star bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px margin-left-15px" data-app="contact-favorites"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-favorites app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Favorites</h3>
+                    </div>
+                    <div id="contact-favorite-list" class="overflow-auto scroll-bar app-content-bottom-bar"></div>
+                </div>
+                <div class="bottom-bar center">
+                    <div>
+                        <i class="fa fa-history bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px margin-right-15px" data-app="call-history"></i>
+                        <i class="fas fa-th bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px" data-app="phone"></i>
+                        <i class="fas fa-star bottom-bar-tab font-size-24 padding-left-10px padding-right-10px padding-top-10px margin-left-15px fa-active"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-calling app transparent-background">
+                <div class="flex-row max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title calling">Calling.</h3>
+                        <div class="phone-call-number center"></div>
+                    </div>
+                    <div class="bottom-bar-phone height-75px center">
+                        <div class="circle-button phone-keypad-clear-button phone-end-call-button"><i class="fa fa-phone padding-top-12px"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="incoming-call app transparent-background">
+                <div class="flex-row max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title incoming">Incoming Call.</h3>
+                        <div class="phone-call-number center"></div>
+                    </div>
+                    <div class="bottom-bar-phone height-75px center">
+                        <div class="circle-button phone-accept-call-button margin-right-10px" data-app="call-connected"><i class="fa fa-phone padding-top-12px"></i></div>
+                        <div class="circle-button margin-left-10px phone-end-call-button margin-left-40px"><i class="fa fa-times padding-top-12px"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="call-connected app transparent-background">
+                <div class="flex-row max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Connected</h3>
+                        <div class="phone-call-number center"></div>
+                    </div>
+                    <div class="bottom-bar-phone height-75px center">
+                        <div class="circle-button phone-keypad-clear-button phone-end-call-button"><i class="fa fa-phone padding-top-12px"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messages app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Messages</h3>
+                    </div>
+                    <div id="message-list" class="overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-texts app allow-highlight">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 id="message-contact" class="center nav-title"></h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-chevron-left navigation-back-button" data-app="messages"></i>
+                    </div>
+                    <div>
+                        <i id="missing-contact" class="fa fa-user-plus navigation-create-button visibility-none" data-app="create-contact"></i>
+                    </div>
+                    <div id="message-text-list" class="overflow-auto scroll-bar">
+                    </div>
+                    <div class="bottom-bar">
+                        <input type="text" id="new-message-text" class="mobile-input margin-left-10px margin-bottom-5px" placeholder="message"/>
+                        <span class="margin-left-10px margin-top-15px"><i id="send-text-message" class="fa fa-paper-plane padding-top-12px"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicles app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Vehicles</h3>
+                    </div>
+                    <div id="vehicle-list" class="overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings app">
+                <p>Settings</p>
+            </div>
+
+            <div class="stocks app">
+                <p>Stocks</p>
+            </div>
+
+            <div class="twitter app">
+                <div class="flex-row max-width">
+                        <table class="max-width status-bar twitter-background-color">
+                            <tr>
+                                <td>
+                                    <span class="float-left margin-left-5px time display-block"></span>
+                                    <span class="float-right margin-right-15px margin-top-5px display-block"><i class="fa fa-signal"></i></span>
+                                </td>
+                            </tr>
+                        </table>
+                    <div>
+                        <h3 class="center nav-title twitter-background-color status-bar">Twitter</h3>
+                    </div>
+                    <div>
+                        <i class="fas fa-redo-alt navigation-refresh-button twitter-background-color" data-app="twitter"></i>
+                    </div>
+                    <div>
+                        <i class="fab fa-twitter navigation-create-button twitter-background-color font-size-24 margin-right-5px padding-bottom-5px color-white" data-app="new-tweet"></i>
+                    </div>
+                    <div id="tweet-list" class="overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-tweet app">
+                <div class="flex-row max-width">
+                        <table class="max-width status-bar twitter-background-color">
+                            <tr>
+                                <td>
+                                    <span class="float-left margin-left-5px time display-block"></span>
+                                    <span class="float-right margin-right-15px margin-top-5px display-block"><i class="fa fa-signal"></i></span>
+                                </td>
+                            </tr>
+                        </table>
+                    <div>
+                        <h3 class="center nav-title twitter-background-color status-bar">New Tweet</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-chevron-left navigation-back-button twitter-background-color status-bar" data-app="twitter"></i>
+                    </div>
+                    <div class="center">
+                        <textarea id="new-tweet" maxlength="150" cols="38" rows="5" placeholder="What's happening?"></textarea>
+                    </div>
+                    <div class="margin-top-5px">
+                        <span id="tweet-character-count" class="margin-left-5px">150</span>
+                        <button id="tweet-add" class="btn form-button float-right margin-right-5px color-white" data-app="twitter">Tweet</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mail app">
+                <p>Email</p>
+            </div>
+
+            <div class="ping app transparent-background">
+                <div class="flex-row flex-wrap max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title border-bottom-grey">Share Location</h3>
+                    </div>
+                    
+                    <div class="center margin-top-15px margin-bottom-5px">
+                        <input type="text" id="ping-number" class="mobile-input color-white border-bottom-grey" placeholder="ID"/>
+                    </div>
+                    
+                    <div class="center margin-top-15px">
+                        <button id="ping-player" class="btn form-button" data-app="contacts">Ping</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contacts app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Contacts</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-plus navigation-create-button" data-app="create-contact"></i>
+                    </div>
+                    <div id="contact-list" class="overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="create-contact app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Contacts</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-chevron-left navigation-back-button" data-app="contacts"></i>
+                    </div>
+                    <div>
+                        <span class="margin-left-10px"><strong>Add Contact</strong></span>
+                    </div>
+                    <div class="center">
+                        <input type="text" id="new-contact-name" class="mobile-input" placeholder="Name"/>
+                    </div>
+                    <br>
+                    <div class="center">
+                        <input type="text" id="new-contact-number" class="mobile-input margin-top-10px" placeholder="Number"/>
+                    </div>
+                    <br>
+                    <div class="center">
+                        <button id="new-contact-add" class="btn form-button" data-app="contacts">Add Contact</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info app allow-highlight">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title">Contact</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-chevron-left navigation-back-button" data-app="contacts"></i>
+                    </div>
+                    <div id="contact-info">
+                    </div>
+                </div>
+            </div>
+
+            <div class="info app transparent-background">
+                <div class="flex-row max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div >
+                        <h3 class="center nav-title border-bottom-grey">Info</h3>
+                    </div>
+                    <div class="overflow-auto scroll-bar app-content">
+                        <div id="personal-info">
+                            <div class="app-list-item margin-top-8px">
+                                <strong><i class="fa fa-phone"></i> Number</strong><span class="float-right margin-right-5px allow-highlight" id="personal-phone-number"></span>
+                            </div>
+                            <div>
+                                <h4 class="margin-left-5px margin-top-5px">Licenses</h4>
+                                <div id="personal-licenses" class="font-size-16 border-bottom-grey">
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="margin-left-5px margin-top-5px">Bank Accounts</h4>
+                                <div id="personal-bank-accounts" class="font-size-16 border-bottom-grey">
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="margin-left-5px margin-top-5px">Paycheck</h4>
+                                <div id="paycheck-amount" class="font-size-16 border-bottom-grey padding-left-10px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="yellow-pages app">
+                <div class="flex-row max-width">
+                        <table class="max-width status-bar-dark yellow-pages-background-color">
+                            <tr>
+                                <td>
+                                    <span class="float-left margin-left-5px time display-block"></span>
+                                    <span class="float-right margin-right-15px margin-top-5px display-block"><i class="fa fa-signal"></i></span>
+                                </td>
+                            </tr>
+                        </table>
+                    <div>
+                        <h3 class="center nav-title yellow-pages-background-color status-bar-dark">Yellow Pages</h3>
+                    </div>
+                    <div>
+                        <i class="fas fa-redo-alt navigation-refresh-button yellow-pages-background-color" data-app="yellow-pages"></i>
+                    </div>
+                    <div>
+                        <i class="fa fa-plus navigation-create-button yellow-pages-background-color" data-app="new-yellow-page"></i>
+                    </div>
+                    <div id="yellow-pages-ad-list" class="overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-yellow-page app">
+                <div class="flex-row max-width">
+                    <table class="max-width status-bar-dark yellow-pages-background-color">
+                        <tr>
+                            <td>
+                                <span class="float-left margin-left-5px time display-block"></span>
+                                <span class="float-right margin-right-15px margin-top-5px display-block"><i class="fa fa-signal"></i></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div>
+                        <h3 class="center nav-title yellow-pages-background-color status-bar-dark">Create Ad</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-chevron-left navigation-back-button yellow-pages-background-color status-bar-dark" data-app="yellow-pages"></i>
+                    </div>
+                    <div class="center">
+                        <textarea id="new-yellow-page-ad" maxlength="150" cols="38" rows="5" placeholder="Create your ad.."></textarea>
+                    </div>
+                    <div class="margin-top-5px">
+                        <span id="yellow-pages-character-count" class="margin-left-5px">150</span>
+                        <button id="yellow-pages-add" class="btn form-button float-right margin-right-5px color-white yellow-pages-background-color" data-app="yellow-pages">Post</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="boss-menu app transparent-background">
+                <div class="flex-row max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title border-bottom-grey">Boss Menu</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-plus navigation-create-button transparent" data-app="boss-menu-hire"></i>
+                    </div>
+                    <div id="employee-list" class="overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="boss-menu-hire app transparent-background">
+                <div class="flex-row max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title border-bottom-grey">Hire</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-chevron-left navigation-back-button status-bar transparent" data-app="boss-menu"></i>
+                    </div>
+                    <div class="center margin-top-15px margin-bottom-5px">
+                        <input type="text" id="hire-number" class="mobile-input color-white border-bottom-grey" placeholder="ID"/>
+                    </div>
+                    
+                    <div class="center margin-top-15px">
+                        <button id="hire-player" class="btn form-button" data-app="boss-menu">Hire</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="multi-job app transparent-background">
+                <div class="flex-row max-width">
+                    <div class="status-bar">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title border-bottom-grey">My Jobs</h3>
+                    </div>
+                    <div id="multi-job-list" class="hint overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="notes app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title border-bottom-grey">Notes</h3>
+                    </div>
+                    <div>
+                        <i class="fa fa-plus navigation-create-button transparent" data-app="new-note"></i>
+                    </div>
+                    <div id="notes-list" class="overflow-auto scroll-bar app-content">
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-note app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 class="center nav-title border-bottom-grey">New Note</h3>
+                    </div>
+                    <div>
+                        <i id="new-note-back-button" class="fa fa-chevron-left navigation-back-button transparent padding-left-5px max-width"></i>
+                    </div>
+                    <div class="center margin-top-5px">
+                        <div class="center">
+                            <input type="text" id="new-note-title" class="mobile-input" placeholder="Title"/>
+                        </div>
+                        <textarea id="new-note-text" class="margin-top-10px scroll-bar" cols="38" rows="15"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edit-note app">
+                <div class="flex-row max-width">
+                    <div class="status-bar-dark">
+                        <span class="float-left margin-left-5px time"></span>
+                        <span class="float-right margin-right-5px margin-top-5px"><i class="fa fa-signal"></i></span>
+                    </div>
+                    <br />
+                    <div>
+                        <h3 id="edit-note-title" class="center nav-title border-bottom-grey"></h3>
+                    </div>
+                    <div>
+                        <i id="delete-note" class="fa fa-trash navigation-create-button transparent" data-app="notes"></i>
+                    </div>
+                    <div>
+                        <i id="edit-note-back-button" class="fa fa-chevron-left navigation-back-button transparent padding-left-5px max-width" data-app="notes"></i>
+                    </div>
+                    <br>
+                    <div class="center margin-top-5px">
+                        <textarea id="edit-note-text" cols="38" rows="17"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
