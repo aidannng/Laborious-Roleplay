@@ -36,6 +36,15 @@ Weapons = {
 		ammoname = 'ammo-45'
 	},
 
+	['WEAPON_LTL'] = {
+		label = 'Browning Hi-Power Pistol',
+		weight = 1220,
+		stack = false,
+		close = false,
+		durability = 0.5,
+		ammoname = 'ammo-45'
+	},
+
 	['WEAPON_ASSAULTRIFLE'] = {
 		label = 'Assault Rifle',
 		weight = 3470,
@@ -87,7 +96,7 @@ Weapons = {
 		durability = 1.0,
 	},
 
-	['WEAPON_SLEDGEHAMMER'] = {
+	['WEAPON_SLEDGEHAM'] = {
 		label = 'Sledge Hammer',
 		weight = 1500,
 		stack = false,
@@ -385,7 +394,7 @@ Weapons = {
 
 	['WEAPON_KNUCKLE'] = {
 		label = 'Knuckle Dusters',
-		weight = 300,
+		weight = 450,
 		stack = false,
 		close = false,
 		durability = 1.0,
@@ -394,6 +403,14 @@ Weapons = {
 	['WEAPON_MACHETE'] = {
 		label = 'Machete',
 		weight = 1000,
+		stack = false,
+		close = false,
+		durability = 1.0,
+	},
+
+	['WEAPON_KATANA'] = {
+		label = 'Katana',
+		weight = 1500,
 		stack = false,
 		close = false,
 		durability = 1.0,
@@ -531,6 +548,51 @@ Weapons = {
 		close = false,
 		durability = 0.8,
 		ammoname = 'ammo-50'
+	},
+	
+	['WEAPON_ASSAULTRIFLE2'] = {
+		label = 'Assault Rifle 2',
+		weight = 2000,
+		stack = false,
+		close = false,
+		durability = 0.8,
+		ammoname = 'ammo-rifle'
+	},
+
+	['WEAPON_M4'] = {
+		label = 'PD M4 Rifle',
+		weight = 2000,
+		stack = false,
+		close = false,
+		durability = 0.8,
+		ammoname = 'ammo-rifle'
+	},
+
+	['WEAPON_MICROSMG2'] = {
+		label = 'Mirco Uzi',
+		weight = 2000,
+		stack = false,
+		close = false,
+		durability = 0.8,
+		ammoname = 'ammo-45'
+	},
+
+	['WEAPON_MICROSMG3'] = {
+		label = 'Mac 10',
+		weight = 2000,
+		stack = false,
+		close = false,
+		durability = 0.8,
+		ammoname = 'ammo-45'
+	},
+
+	['WEAPON_GLOCK'] = {
+		label = 'PD Glock',
+		weight = 2000,
+		stack = false,
+		close = false,
+		durability = 0.8,
+		ammoname = 'ammo-9'
 	},
 
 	['WEAPON_PISTOL_MK2'] = {
@@ -704,7 +766,7 @@ Weapons = {
 		durability = 1.0,
 	},
 
-	['WEAPON_STUNGUN'] = {
+	['WEAPON_TASER'] = {
 		label = 'PD Taser',
 		weight = 227,
 		stack = false,

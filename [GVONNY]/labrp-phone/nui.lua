@@ -112,17 +112,17 @@ RegisterNUICallback("set-phone-active", function()
 end)
 
 local isActive = false
-local lockscreenTimer = 10000
+local lockscreenTimer = 15000
 RegisterNetEvent("labrp-phone:lockscreen-timer")
 AddEventHandler("labrp-phone:lockscreen-timer", function(bool)
     isActive = bool
     if(isActive) then
-        lockscreenTimer = 10000
+        lockscreenTimer = 15000
     end
     while isActive do
         lockscreenTimer = lockscreenTimer - 100
         if(lockscreenTimer == 0) then
-            lockscreenTimer = 10000
+            lockscreenTimer = 15000
             isActive = false
 
             if(display) then
@@ -362,7 +362,7 @@ end)
 --##########################
 
 local isCalling = false
-local callTimer = 10000
+local callTimer = 15000
 RegisterNetEvent("labrp-phone:update:change-calling")
 AddEventHandler("labrp-phone:update:change-calling", function(bool)
     isCalling = bool
@@ -371,7 +371,7 @@ AddEventHandler("labrp-phone:update:change-calling", function(bool)
         if(callTimer == 0) then
             TriggerEvent("labrp-phone:update:caller-unavailable")
             isCalling = false
-            callTimer = 10000
+            callTimer = 15000
 
             ESX.TriggerServerCallback("labrp-phone:get:user-phone-number", function(phone)
                 if phone and #phone>0 then
