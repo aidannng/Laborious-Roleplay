@@ -50,6 +50,7 @@ Config.YouTool = {
 		{ name = 'paperbag', price = 450 },
 		{ name = 'fishbait', price = 50},
 		{ name = 'fishingrod', price = 225 },
+		{ name = 'car_clean', price = 125 },
 	}
 }
 
@@ -101,11 +102,12 @@ Config.Hunting = {
 Config.PoliceArmoury = {
 	name = 'Police Armoury',
 	inventory = {
-		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL', components = {'flashlight'} }, grade = 0},
-		{ name = 'WEAPON_CARBINERIFLE', price = 750, metadata = { registered = true, serial = 'POL', components = {'flashlight','scope'} }, grade = 0},
-		{ name = 'WEAPON_STUNGUN', price = 100, metadata = { registered = true, serial = 'POL'} },
+		{ name = 'WEAPON_GLOCK', price = 125, metadata = { registered = true, serial = 'POL', components = {'flashlight'} }, grade = 0},
+		{ name = 'WEAPON_M4', price = 750, metadata = { registered = true, serial = 'POL', components = {'flashlight','scope'} }, grade = 0},
+		{ name = 'WEAPON_TASER', price = 100, metadata = { registered = true, serial = 'POL'} },
 		{ name = 'ammo-9', price = 1, },
 		{ name = 'ammo-rifle', price = 10, },
+		{ name = 'ammo-cart', price = 25, },
 		{ name = 'WEAPON_FLASHLIGHT', price = 50 },
 		{ name = 'WEAPON_NIGHTSTICK', price = 50 },
 		{ name = 'WEAPON_FIREEXTINGUISHER', price = 50 },

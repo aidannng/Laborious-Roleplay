@@ -582,18 +582,18 @@ Items = {
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = ''--anim:cuff
+			event = ''
 		}
-	}, --houseRobberies:attempt
+	},
 
 	['greenlaptop'] = {
 		label = 'Green Laptop',
-		weight = 3000,
+		weight = 1500,
 		close = true,
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'FleecaRobberies:attempt'
+			event = 'labrp_bank:startRob'
 		}
 	},
 
@@ -1151,41 +1151,25 @@ Items = {
 		close = true,
 	},
 
-	['newscam'] = {
-		label = 'Film Camera',
-		weight = 1500,
+	['money_bag'] = {
+		label = 'Inked Money Bag',
+		weight = 2500,
 		stack = false,
 		close = true,
 		client = {
 			consume = 0,
 			usetime = 0,
-			event = 'Cam:ToggleCam'
+			event = 'labrp_bank:useInkedBag'
 		}
 	},
 
-	['boomarm'] = {
-		label = 'Boom Mic',
-		weight = 1000,
+	['car_clean'] = {
+		label = 'Car Cleaner',
+		weight = 200,
 		stack = false,
 		close = true,
-		client = {
-			consume = 0,
-			usetime = 0,
-			event = 'Mic:ToggleBMic'
-		}
 	},
 
-	['microphone'] = {
-		label = 'Microphone',
-		weight = 300,
-		stack = false,
-		close = true,
-		client = {
-			consume = 0,
-			usetime = 0,
-			event = 'Mic:ToggleMic'
-		}
-	},
 	
 }
 -- 
