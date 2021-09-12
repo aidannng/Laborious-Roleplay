@@ -131,7 +131,7 @@ AddEventHandler('labrp_fish:usebait', function()
                     elseif catchRarity == 8 then
                         TriggerServerEvent('labrp_fish:getreward', '10ct_gold_chain')
                     elseif catchRarity == 9 then
-                        TriggerServerEvent('labrp_fish:getreward', 'apple_iphone')
+                        TriggerServerEvent('labrp_fish:getreward', 'nokia_iphone')
                     elseif catchRarity == 10 then
                         TriggerServerEvent('labrp_fish:getreward', 'packagedweed')
                     end
