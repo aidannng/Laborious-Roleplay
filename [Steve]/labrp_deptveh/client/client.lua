@@ -257,3 +257,36 @@ AddEventHandler('labrp_pdvehicles:checkvin', function(data)
         end
 	end, plate)
 end)
+
+exports['labrp_Eye']:Vehicle({
+    options = {
+        {
+            event = "labrp_vehicle:cleanVehicle",
+            icon = "fas fa-hand-sparkles",
+            label = "Clean Vehicle",
+            required_item = "car_clean"
+        },
+    },
+    distance = 1.6
+})
+
+AddEventHandler('labrp_vehicle:cleanVehicle', function(data)
+    local vehicle = data.entity
+    TaskStartScenarioInPlace(PlayerPedId(), 'WORLD_HUMAN_MAID_CLEAN', 0, true)
+    TriggerEvent("mythic_progbar:client:progress", {
+        name = "unique_action_name",
+        duration = 20000,
+        label = "Cleaning Vehicle",
+        useWhileDead = false,
+        canCancel = true,
+        controlDisables = {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        },
+    })
+    Wait(20000)
+    ClearPedTasks(PlayerPedId())
+    SetVehicleDirtLevel(vehicle, 0.0)
+end)
