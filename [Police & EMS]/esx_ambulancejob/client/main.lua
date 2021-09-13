@@ -73,41 +73,6 @@ end)
 
 
 
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		if isDead and isSearched then
-			local playerPed = PlayerPedId()
-			local ped = GetPlayerPed(GetPlayerFromServerId(medic))
-			isSearched = false
-
-			AttachEntityToEntity(playerPed, ped, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
-			Citizen.Wait(1000)
-			DetachEntity(playerPed, true, false)
-			ClearPedTasksImmediately(playerPed)
-		end
-	end
-end)
-
-RegisterNetEvent('esx_ambulancejob:clsearch')
-AddEventHandler('esx_ambulancejob:clsearch', function(medicId)
-	local playerPed = PlayerPedId()
-
-	if isDead then
-		local coords = GetEntityCoords(playerPed)
-		local playersInArea = ESX.Game.GetPlayersInArea(coords, 50.0)
-
-		for i=1, #playersInArea, 1 do
-			local player = playersInArea[i]
-			if player == GetPlayerFromServerId(medicId) then
-				medic = tonumber(medicId)
-				isSearched = true
-				break
-			end
-		end
-	end
-end)
-
 local Playdeadanim = false
 
 function OnPlayerDeath()
@@ -164,54 +129,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('esx_ambulancejob:useItem')
-AddEventHandler('esx_ambulancejob:useItem', function(itemName)
-	ESX.UI.Menu.CloseAll()
-
-	if itemName == 'medikit' then
-		local lib, anim = 'anim@heists@narcotics@funding@gang_idle', 'gang_chatting_idle01' -- TODO better animations
-		local playerPed = PlayerPedId()
-
-		ESX.Streaming.RequestAnimDict(lib, function()
-			TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0, false, false, false)
-
-			Citizen.Wait(500)
-			while IsEntityPlayingAnim(playerPed, lib, anim, 3) do
-				Citizen.Wait(0)
-				DisableAllControlActions(0)
-			end
-
-			TriggerEvent('esx_ambulancejob:heal', 'big', true)
-			ESX.ShowNotification(_U('used_medikit'))
-		end)
-
-	elseif itemName == 'bandage' then
-		local lib, anim = 'anim@heists@narcotics@funding@gang_idle', 'gang_chatting_idle01' -- TODO better animations
-		local playerPed = PlayerPedId()
-
-		ESX.Streaming.RequestAnimDict(lib, function()
-			TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0, false, false, false)
-
-			Citizen.Wait(500)
-			while IsEntityPlayingAnim(playerPed, lib, anim, 3) do
-				Citizen.Wait(0)
-				DisableAllControlActions(0)
-			end
-
-			TriggerEvent('esx_ambulancejob:heal', 'small', true)
-			ESX.ShowNotification(_U('used_bandage'))
-		end)
-	end
-end)
-
-
-function SendDistressSignal()
-	local playerPed = PlayerPedId()
-	local coords = GetEntityCoords(playerPed)
-
-	ESX.ShowNotification(_U('distress_sent'))
-	TriggerServerEvent('esx_ambulancejob:onPlayerDistress')
-end
 
 function DrawGenericTextThisFrame()
 	SetTextFont(4)
@@ -483,7 +400,7 @@ exports['labrp_Eye']:AddBoxZone("EMSDuty", vector3(310.23, -597.56, 43.29), 0.25
 				label = "EMS Duty",
 			},
 		},
-		distance = 1.49
+		distance = 1.5
 })
 
 
@@ -504,7 +421,7 @@ AddEventHandler('labrp_ems:grandmas', function()
 				if finished ~= 100 then
 					exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 				else
-					local finished = exports["reload-skillbar"]:taskBar(250,math.random(5,15))
+					local finished = exports["reload-skillbar"]:taskBar(500,math.random(5,15))
 					if finished ~= 100 then
 						exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 					else
@@ -516,92 +433,4 @@ AddEventHandler('labrp_ems:grandmas', function()
 	else
 		exports['mythic_notify']:SendAlert('error', 'Revive Failed!')
 	end
-end)
-
-local hasVehicleOut = false
-
-exports['labrp_Eye']:AddBoxZone("EMSGarage", vector3(336.4, -589.7, 28.7), 0.5, 0.5, {
-	name="EMSGarage",
-	heading=0,
-	debugPoly=false,
-	minZ=26.26,
-	maxZ=29.31
-	}, {
-		options = {
-			{
-				event = "labrp_ems:selectvehicle",
-				icon = "fas fa-ambulance",
-				label = "EMS Garage",
-				job = "ambulance",
-				canInteract = function(entity)
-					if not hasVehicleOut then
-						return true
-					end
-				end
-			},
-			{
-				event = "labrp_ems:returnAmbulance",
-				icon = "fas fa-undo-alt",
-				label = "Return Ambulance",
-				job = "ambulance",
-				canInteract = function(entity)
-					if hasVehicleOut then
-						return true
-					end
-				end
-			},
-		},
-	distance = 1.5
-})
-
-RegisterNetEvent('labrp_ems:selectvehicle')
-AddEventHandler('labrp_ems:selectvehicle', function()
-	TriggerEvent('nh-context:sendMenu', {
-        {
-            id = 1,
-            header = "EMS Garage",
-            txt = ""
-        },
-        {
-            id = 2,
-            header = "EMS Speedo Van",
-            txt = "Classic Box Ambulance",
-            params = {
-                event = "labrp_ems:getcar",
-                args = {
-                    vehicle = 'emsnspeedo'
-                }
-            }
-        },
-    })
-end)
-
-RegisterNetEvent('labrp_ems:getcar')
-AddEventHandler('labrp_ems:getcar', function(data)
-	hash = data.vehicle      
-    if not HasModelLoaded(hash) then
-        RequestModel(hash)
-        while not HasModelLoaded(hash) do
-            Citizen.Wait(10)
-        end
-    end
-    vehicleBuy = CreateVehicle(hash, 333.0066, -590.2022, 28.79126, 340.0, 1, 1)
-    SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
-    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-    Citizen.Wait(1000)
-    local plate = GetVehicleNumberPlateText(vehicle)
-    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-	hasVehicleOut = true
-	print(hasVehicleOut)
-end)
-
-RegisterNetEvent('labrp_ems:returnAmbulance')
-AddEventHandler('labrp_ems:returnAmbulance', function()
-	if DoesEntityExist(vehicleBuy) then
-		DeleteEntity(vehicleBuy)
-		hasVehicleOut = false
-	else
-		hasVehicleOut = false
-	end
-	exports['mythic_notify']:SendAlert('inform', 'Vehicle Returned!')
 end)

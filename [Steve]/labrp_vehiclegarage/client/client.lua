@@ -10,7 +10,7 @@ local impoundType = nil
 Citizen.CreateThread(function()
     for k, v in pairs(Config.Garages) do
 
-        GarageBlips(vector3(v.PedCoords.x, v.PedCoords.y, v.PedCoords.z), firstToUpper(v.GarageType))
+        GarageBlips(vector3(v.PedCoords.x, v.PedCoords.y, v.PedCoords.z), firstToUpper(v.GarageType), v.Show)
 
         garages[k] = BoxZone:Create(
             vector3(v.Zone.x, v.Zone.y, v.Zone.z),
@@ -932,23 +932,25 @@ function ImpoundBlips(coords, type)
     EndTextCommandSetBlipName(blip)
 end
 
-function GarageBlips(coords, type)
-    local blip = AddBlipForCoord(coords)
-    SetBlipSprite(blip, 357)
-    SetBlipScale(blip, 0.8)
+function GarageBlips(coords, type, show)
+    if show then
+        local blip = AddBlipForCoord(coords)
+        SetBlipSprite(blip, 357)
+        SetBlipScale(blip, 0.8)
 
-    if type == 'Car' then
-        SetBlipColour(blip, Config.BlipColors.Car)
-    elseif type == 'Boat' then
-        SetBlipColour(blip, Config.BlipColors.Boat)
-    elseif type == 'Aircraft' then
-        SetBlipColour(blip, Config.BlipColors.Aircraft)
+        if type == 'Car' then
+            SetBlipColour(blip, Config.BlipColors.Car)
+        elseif type == 'Boat' then
+            SetBlipColour(blip, Config.BlipColors.Boat)
+        elseif type == 'Aircraft' then
+            SetBlipColour(blip, Config.BlipColors.Aircraft)
+        end
+
+        SetBlipAsShortRange(blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(type .. ' Garage')
+        EndTextCommandSetBlipName(blip)
     end
-
-    SetBlipAsShortRange(blip, true)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(type .. ' Garage')
-    EndTextCommandSetBlipName(blip)
 end
 
 function firstToUpper(str)

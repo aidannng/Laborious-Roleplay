@@ -963,6 +963,8 @@ AddEventHandler('helispawn', function()
     end
     local vehicleBuy = CreateVehicle(hash, 449.3143, -981.1252, 43.6864, 90.0, 1, 1)
     SetPedIntoVehicle(PlayerPedId(), vehicleBuy, -1)
+    local spawnedplate = GetVehicleNumberPlateText(vehicleBuy)
+    exports["labrp_vehiclelock"]:givePlayerKeys(spawnedplate)
 end)
 
 -- LSC CUSTOMS TOW TRUCK RENTAL --

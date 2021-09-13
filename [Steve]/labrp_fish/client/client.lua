@@ -45,19 +45,21 @@ AddEventHandler('labrp_fish:start', function()
                 if not isFishing then
                     exports['mythic_notify']:SendAlert('inform', "You've started fishing, Use bait to catch a fish") 
                     TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_FISHING", 0, true)
+                    FreezeEntityPosition(PlayerPedId(), true)
                     FishingRod = true
                     isFishing = true
-                else
-                    isFishing = false
-                    FishingRod = false
-                    baitUsed = false
-                    DeleteRod()
-                    exports['mythic_notify']:SendAlert('error', "You've stopped fishing") 
                 end
             else
                 exports['mythic_notify']:SendAlert('error', 'You have to decide, whether you want to swim or fish') 
             end
         end
+    elseif isFishing then
+        isFishing = false
+        FishingRod = false
+        baitUsed = false
+        DeleteRod()
+        exports['mythic_notify']:SendAlert('error', "You've stopped fishing")
+        FreezeEntityPosition(PlayerPedId(), false)
     else
         exports['mythic_notify']:SendAlert('error', 'I can´t fish here...') 
     end
@@ -131,7 +133,7 @@ AddEventHandler('labrp_fish:usebait', function()
                     elseif catchRarity == 8 then
                         TriggerServerEvent('labrp_fish:getreward', '10ct_gold_chain')
                     elseif catchRarity == 9 then
-                        TriggerServerEvent('labrp_fish:getreward', 'nokia_iphone')
+                        TriggerServerEvent('labrp_fish:getreward', 'nokia_phone')
                     elseif catchRarity == 10 then
                         TriggerServerEvent('labrp_fish:getreward', 'packagedweed')
                     end

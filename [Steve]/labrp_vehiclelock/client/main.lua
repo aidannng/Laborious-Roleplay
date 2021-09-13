@@ -79,28 +79,7 @@ function toggleLock(vehicle)
     end
 end
 
--- Locking vehicles
-Citizen.CreateThread(function()
-    while true do
-        local wait = 750
-        local pos = GetEntityCoords(GetPlayerPed(-1))
-        if IsControlJustReleased(0, 182) then
-            if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
-                local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
-                toggleLock(veh)
-            else
-                local pdvehicle = GetVehiclePedIsIn(GetPlayerPed(-1), true)
-                local vehicle = GetClosestVehicle(pos.x, pos.y, pos.z, 3.0, 0, 70)
-                if DoesEntityExist(vehicle) then
-                    toggleLock(vehicle)
-                elseif pdvehicle then
-                    toggleLock(pdvehicle)
-                end
-            end
-        end
-        Citizen.Wait(1)
-    end
-end)
+-- Locking vehicle
 
 local isSearching = false
 local isHotwiring = false
@@ -399,3 +378,30 @@ AddEventHandler('vehiclelock:setkeys', function(plate)
 end)
 
 
+
+RegisterCommand('togglelock', function()
+	local pos = GetEntityCoords(PlayerPedId())
+    if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
+        local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+        toggleLock(veh)
+    else
+        local vehicle = GetClosestVehicle(pos.x, pos.y, pos.z, 3.0, 0, 127)
+        local VehCoords = GetEntityCoords(vehicle)
+        local dist = GetDistanceBetweenCoords(pos, VehCoords, true)
+        if dist <= 3.0 then
+            toggleLock(vehicle)
+        end
+    end
+end)
+
+TriggerEvent("chat:removeSuggestion", "/togglelock")
+
+
+RegisterKeyMapping('togglelock', 'Lock/Unlock Vehicles', 'keyboard', 'l')
+
+
+RegisterCommand("getKeys", function(source, args, rawCommand)
+    local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
+    local plate = GetVehicleNumberPlateText(veh)
+    exports["labrp_vehiclelock"]:givePlayerKeys(plate)
+end)
