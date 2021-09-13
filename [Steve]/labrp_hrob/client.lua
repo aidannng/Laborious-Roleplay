@@ -270,7 +270,8 @@ AddEventHandler('labrp-robbery:pickDoor', function(xPlayer)
       local dist = #(housecoords - coords)
         if GetClockHours() <= 7 and GetGameTimer() > 20 then
           if dist <= 1.2  then
-            if v.hasJob then                 
+            if v.hasJob then
+                TriggerServerEvent('labrp_hrob:SendLog')             
                 local skillcheck = exports["reload-skillbar"]:taskBar(2500,math.random(5,15))
                 if skillcheck == 100 then
                     local skillcheck2 = exports["reload-skillbar"]:taskBar(1500,math.random(5,8))

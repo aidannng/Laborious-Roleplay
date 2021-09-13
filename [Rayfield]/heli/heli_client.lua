@@ -23,7 +23,7 @@ local spotlight_state = false
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Citizen.Wait(15)
         if IsPlayerIneheli() then
             local lPed = GetPlayerPed(-1)
             local heli = GetVehiclePedIsIn(lPed)
@@ -390,7 +390,7 @@ Citizen.CreateThread(function()
                 end
             end
         end
-        Citizen.Wait(0)
+        Citizen.Wait(5)
     end
 end)
 

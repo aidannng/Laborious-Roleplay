@@ -88,6 +88,7 @@ Config.Garages = {
     LSCGarage = {
         Display = "LSC Garage",
         GarageType = 'car', -- car, boat or aircraft
+        Show = true,
         PedCoords = {x = -349.5956, y = -148.9714, z = 38.0022, h = 293.0}, -- The Ped MUST be inside the PolyZone
         Zone = {display = 'LSC Garage', name = 'lsc', x = -345.5472, y = -150.778, z = 39.0022, l = 52.4, w = 39.6, h = 340, minZ = 38.00, maxZ = 40.00},
         Spawns = {
@@ -100,6 +101,7 @@ Config.Garages = {
     LSCTowGarage = {
         Display = "LSC Tow Garage",
         GarageType = 'car', -- car, boat or aircraft
+        Show = false,
         PedCoords = {x = -369.4418, y = -80.03077, z = 38.0022, h = 220.0}, -- The Ped MUST be inside the PolyZone
         Zone = {display = 'LSC Tow Garage', name = 'lsctow', x = -366.1319, y = -85.51648, z = 39.0022, l = 52.4, w = 39.6, h = 340, minZ = 38.00, maxZ = 40.00},
         Spawns = {
@@ -109,6 +111,7 @@ Config.Garages = {
     LegionGarage = {
         Display = "Legion Square",
         GarageType = 'car', -- car, boat or aircraft
+        Show = true,
         PedCoords = {x = 215.90, y = -808.87, z = 29.74, h = 248.0}, -- The Ped MUST be inside the PolyZone
         Zone = {display = 'Legion Square', name = 'legion', x = 228.68, y = -789.15, z = 30.59, l = 52.4, w = 39.6, h = 340, minZ = 28.99, maxZ = 32.99},
         Spawns = {
@@ -125,6 +128,7 @@ Config.Garages = {
     AmericanoWayGarage = {
         Display = "Americano Way",
         GarageType = 'car',
+        Show = true,
         PedCoords = {x = -1651.83, y = 63.90, z = 61.86, h = 338.03},
         Zone = {name = 'americano', x = -1682.74, y = 60.93, z = 63.5, l = 59.6, w = 60.6, h = 329, minZ = 61.15, maxZ = 68.35},
         Spawns = {
@@ -139,6 +143,7 @@ Config.Garages = {
     Route68 = {
         Display = "Route 68",
         GarageType = 'car',
+        Show = true,
         PedCoords = {x = 587.23, y = 2723.50, z = 41.13, h = 7.85},
         Zone = {display = 'Route 68', name = 'route68', x = 573.19, y = 2727.17, z = 42.06, l = 22.4, w = 51.2, h = 4, minZ = 41.08, maxZ = 45.08},
         Spawns = {
@@ -156,6 +161,7 @@ Config.Garages = {
     Paleto = {
         Display = "Paleto",
         GarageType = 'car',
+        Show = true,
         PedCoords = {x = 140.62, y = 6613.02, z = 31.06, h = 183.37},
         Zone = {display = 'Paleto', name = 'paleto', x = 152.63, y = 6600.21, z = 30.84, l = 28.2, w = 27.2, h = 0, minZ = 30.84, maxZ = 34.84},
         Spawns = {
@@ -170,6 +176,7 @@ Config.Garages = {
     MRPD = {
         Display = "MRPD",
         GarageType = 'car',
+        Show = false,
         PedCoords = {x = 441.4418, y = -984.8571, z = 24.6908, h = 0.37},
         Zone = {display = 'MRPD', name = 'MRPD', x = 442.5231, y = -986.5978, z = 24.6908, l = 28.2, w = 27.2, h = 0, minZ = 24.69, maxZ = 28.69},
         Spawns = {
@@ -189,6 +196,7 @@ Config.Garages = {
     PDM = {
         Display = "PDM",
         GarageType = 'car',
+        Show = false,
         PedCoords = {x = -50.76923, y = -1082.796, z = 25.87036, h = 340.00},
         Zone = {display = 'PDM', name = 'pdm', x = -47.59121, y = -1078.325, z = 25.87036, l = 20.0, w = 25.0, h = 340.0, minZ = 25.87036, maxZ = 27.73547},
         Spawns = {
@@ -198,6 +206,7 @@ Config.Garages = {
     ALTAAPT = {
         Display = "Alta Street",
         GarageType = 'car',
+        Show = true,
         PedCoords = {x = -293.5385, y = -986.8615, z = 30.06592, h = 70.00},
         Zone = {display = 'Alta Street', name = 'Alta Street', x = -318.1714, y = -976.1934, z = 30.06592, l = 60.4, w = 20.6, h = 70, minZ = 29.0, maxZ = 35.0},
         Spawns = {
@@ -214,35 +223,18 @@ Config.Garages = {
             {x = -329.1297, y = -979.3846, z = 30.06592, h = 340.00},
         }
     },
-    --[[HighwayPier = {
-        GarageType = 'boat',
-        PedCoords = {x = -3428.27, y = 967.34, z = 7.35, h = 269.47},
-        Zone = {name = 'pier', x = -3426.48, y =  968.89, z = 8.35, l = 31.2, w = 39.2, h = 0, minZ = nil, maxZ = nil},
+    EMSPillbox = {
+        Display = "Pillbox Garage",
+        GarageType = 'car',
+        Show = false,
+        PedCoords = {x = 336.4088, y = -589.7538, z = 27.79126, h = 0.0},
+        Zone = {display = 'Pillbox Garage', name = 'Pillbox Garage', x = 328.444, y = -578.0308, z = 28.79126, l = 25.4, w = 25.6, h = 0, minZ = 26.00, maxZ = 32.00},
         Spawns = {
-            {x = -3444.37, y = 952.64, z = 1.02, h = 98.70}, 
-            {x = -3441.02, y = 965.30, z = 0.17, h = 87.18},
+            {x = 333.0066, y = -590.2022, z = 28.79126, h = 340.0},
+            {x = 329.6835, y = -590.2022, z = 28.79126, h = 340.0},
+            {x = 326.3736, y = -590.2022, z = 28.79126, h = 340.0},
+            {x = 323.1956, y = -590.2022, z = 28.79126, h = 340.0},
+            {x = 319.8857, y = -590.2022, z = 28.79126, h = 340.0},
         }
     },
-    LSIA = {
-        GarageType = 'aircraft',
-        PedCoords = {x = -941.43, y = -2954.87, z = 12.95, h = 151.00},
-        Zone = {name = 'lsia', x = -968.31, y = -2992.47, z = 13.95, l = 94.4, w = 84.6, h = 330, minZ = nil, maxZ = nil},
-        Spawns = {
-            {x = -958.57, y = -2987.20, z = 13.95, h = 58.19},
-            {x = -971.89, y = -3008.83, z = 13.95, h = 59.47},
-            {x = -984.30, y = -3025.04, z = 13.95, h = 58.52}, 
-        }
-    },
-    
-        TEMPLATE:
-        SomeName = {
-            GarageType = 'car', - can be 'car', 'boat' or 'aircraft',
-            PedCoords = {x = X, y = X, z = X, h = X}, -- Ped MUST be inside the create zone
-            Zone = {name = 'somename', x = X, y = X, z = X, l = X, w = X, h = X, minZ = X, maxZ = x}, -- l is length of the box zone, w is width, h is heading, take all walues from generated zone from /pzcreate
-            Spawns = { -- You can have as many as you'd like
-                {x = X, y = X, z = X, h = X},
-                {x = X, y = X, z = X, h = X}
-            }
-        },
-    ]]
 }
