@@ -32,10 +32,10 @@ AddEventHandler('craft:machete', function()
 
     if scrapQuantity >= 5 then
         if steelQuantity >= 10 then
-            if rubberQuantity >= 10 then
+            if rubberQuantity >= 5 then
                 xPlayer.addInventoryItem('WEAPON_MACHETE', 1)
                 xPlayer.removeInventoryItem('scrapmetal', 5)
-                xPlayer.removeInventoryItem('rubber', 3)
+                xPlayer.removeInventoryItem('rubber', 5)
                 xPlayer.removeInventoryItem('steel', 10)
         
             else
@@ -53,8 +53,8 @@ AddEventHandler('craft:blade', function()
     local rubberQuantity = xPlayer.getInventoryItem('rubber').count
 
     if scrapQuantity >= 5 then
-        if steelQuantity >= 10 then
-            if rubberQuantity >= 10 then
+        if steelQuantity >= 5 then
+            if rubberQuantity >= 2 then
                 xPlayer.addInventoryItem('WEAPON_SWITCHBLADE', 1)
                 xPlayer.removeInventoryItem('scrapmetal', 5)
                 xPlayer.removeInventoryItem('rubber', 2)

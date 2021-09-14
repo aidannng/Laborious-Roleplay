@@ -336,3 +336,13 @@ AddEventHandler('luke_vehiclegarage:SetFreeSeize', function(plate)
 end)
 
 
+
+
+ESX.RegisterServerCallback('luke_vehiclegarage:CheckJob', function(source, callback)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local job = xPlayer.job.name
+
+    if job == "police" then
+        callback(true)
+    end
+end)

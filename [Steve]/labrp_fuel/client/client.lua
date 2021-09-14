@@ -47,7 +47,7 @@ function loadAnimDict(dict)
   end
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("CaptialBul", vector3(265.0286, -1260.422, 29.27991), 28.0, 22.0, {
+	exports["PolyZone"]:AddBoxZone("CaptialBul", vector3(265.0286, -1260.422, 29.27991), 28.0, 22.0, {
 		name="CaptialBul",
 		heading=90,
 		minz=28.2,
@@ -57,7 +57,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("GroveSt", vector3(-70.589, -1761.218, 29.65051), 28.0, 22.0, {
+	exports["PolyZone"]:AddBoxZone("GroveSt", vector3(-70.589, -1761.218, 29.65051), 28.0, 22.0, {
 		name="GroveSt",
 		heading=70,
 		minz=28.2,
@@ -67,7 +67,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("R68W", vector3(49.5033, 2778.818, 58.04248), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("R68W", vector3(49.5033, 2778.818, 58.04248), 15.0, 15.0, {
 		name="R68W",
 		heading=50,
 		minz=57.2,
@@ -77,7 +77,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("R68", vector3(263.894, 2606.463, 44.983), 10.0, 10.0, {
+	exports["PolyZone"]:AddBoxZone("R68", vector3(263.894, 2606.463, 44.983), 10.0, 10.0, {
 		name="R68",
 		heading=280,
 		minz=43.2,
@@ -87,7 +87,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("R682", vector3(1039.958, 2671.134, 39.550), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("R682", vector3(1039.958, 2671.134, 39.550), 15.0, 15.0, {
 		name="R682",
 		heading=0,
 		minz=38.2,
@@ -97,7 +97,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("R682", vector3(1039.958, 2671.134, 39.550), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("R682", vector3(1039.958, 2671.134, 39.550), 15.0, 15.0, {
 		name="R682",
 		heading=0,
 		minz=38.2,
@@ -108,7 +108,7 @@ end)
 
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("R681", vector3(1207.260, 2660.175, 37.899), 10.0, 10.0, {
+	exports["PolyZone"]:AddBoxZone("R681", vector3(1207.260, 2660.175, 37.899), 10.0, 10.0, {
 		name="R681",
 		heading=40,
 		minz=36.2,
@@ -118,7 +118,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("WindFarm", vector3(2536.259, 2593.622, 37.94067), 10.0, 10.0, {
+	exports["PolyZone"]:AddBoxZone("WindFarm", vector3(2536.259, 2593.622, 37.94067), 10.0, 10.0, {
 		name="WindFarm",
 		heading=20,
 		minz=36.2,
@@ -128,7 +128,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("UTool", vector3(2679.858, 3263.946, 55.240), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("UTool", vector3(2679.858, 3263.946, 55.240), 15.0, 15.0, {
 		name="UTool",
 		heading=150,
 		minz=54.2,
@@ -138,7 +138,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Sandy", vector3(2005.055, 3773.887, 32.403), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("Sandy", vector3(2005.055, 3773.887, 32.403), 15.0, 15.0, {
 		name="Sandy",
 		heading=300,
 		minz=31.2,
@@ -148,7 +148,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Grapeseed", vector3(1687.156, 4929.392, 42.078), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("Grapeseed", vector3(1687.156, 4929.392, 42.078), 15.0, 15.0, {
 		name="Grapeseed",
 		heading=320,
 		minz=31.2,
@@ -158,7 +158,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("PltHwy", vector3(1701.314, 6416.028, 32.763), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("PltHwy", vector3(1701.314, 6416.028, 32.763), 15.0, 15.0, {
 		name="PltHwy",
 		heading=330,
 		minz=31.2,
@@ -168,7 +168,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Plt", vector3(179.857, 6602.839, 31.868), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("Plt", vector3(179.857, 6602.839, 31.868), 25.0, 25.0, {
 		name="Plt",
 		heading=180,
 		minz=31.2,
@@ -178,7 +178,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Plt2", vector3(-94.4619, 6419.594, 31.489), 15.0, 15.0, {
+	exports["PolyZone"]:AddBoxZone("Plt2", vector3(-94.4619, 6419.594, 31.489), 15.0, 15.0, {
 		name="Plt2",
 		heading=310,
 		minz=31.2,
@@ -188,7 +188,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("MilBase", vector3(-2554.996, 2334.40, 33.078), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("MilBase", vector3(-2554.996, 2334.40, 33.078), 25.0, 25.0, {
 		name="MilBase",
 		heading=270,
 		minz=31.2,
@@ -198,7 +198,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("NorthRock", vector3(-1800.375, 803.661, 138.651), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("NorthRock", vector3(-1800.375, 803.661, 138.651), 25.0, 25.0, {
 		name="NorthRock",
 		heading=220,
 		minz=31.2,
@@ -208,7 +208,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("SouthRock", vector3(-1437.622, -276.747, 46.207), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("SouthRock", vector3(-1437.622, -276.747, 46.207), 25.0, 25.0, {
 		name="SouthRock",
 		heading=220,
 		minz=31.2,
@@ -218,7 +218,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("DelPerro", vector3(-2096.243, -320.286, 13.168), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("DelPerro", vector3(-2096.243, -320.286, 13.168), 25.0, 25.0, {
 		name="DelPerro",
 		heading=0,
 		minz=31.2,
@@ -228,7 +228,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("LilSeoul", vector3(-724.619, -935.1631, 19.213), 28.0, 28.0, {
+	exports["PolyZone"]:AddBoxZone("LilSeoul", vector3(-724.619, -935.1631, 19.213), 28.0, 28.0, {
 		name="LilSeoul",
 		heading=0,
 		minz=31.2,
@@ -238,7 +238,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Calais", vector3(-526.019, -1211.003, 18.184), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("Calais", vector3(-526.019, -1211.003, 18.184), 25.0, 25.0, {
 		name="Calais",
 		heading=70,
 		minz=31.2,
@@ -248,7 +248,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Popular", vector3(819.653, -1028.846, 26.403), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("Popular", vector3(819.653, -1028.846, 26.403), 25.0, 25.0, {
 		name="Popular",
 		heading=0,
 		minz=31.2,
@@ -258,7 +258,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("CapBlv", vector3(1208.951, -1402.567,35.224), 20.0, 20.0, {
+	exports["PolyZone"]:AddBoxZone("CapBlv", vector3(1208.951, -1402.567,35.224), 20.0, 20.0, {
 		name="CapBlv",
 		heading=130,
 		minz=31.2,
@@ -268,7 +268,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("MirrorPk", vector3(1181.381, -330.847, 69.316), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("MirrorPk", vector3(1181.381, -330.847, 69.316), 25.0, 25.0, {
 		name="MirrorPk",
 		heading=100,
 		minz=31.2,
@@ -278,7 +278,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Clinton", vector3(620.843, 269.100, 103.089), 28.0, 28.0, {
+	exports["PolyZone"]:AddBoxZone("Clinton", vector3(620.843, 269.100, 103.089), 28.0, 28.0, {
 		name="Clinton",
 		heading=0,
 		minz=31.2,
@@ -288,7 +288,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Palomino", vector3(2581.321, 362.039, 108.468), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("Palomino", vector3(2581.321, 362.039, 108.468), 25.0, 25.0, {
 		name="Palomino",
 		heading=0,
 		minz=31.2,
@@ -298,7 +298,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Davis", vector3(176.631, -1562.025, 29.263), 20.0, 20.0, {
+	exports["PolyZone"]:AddBoxZone("Davis", vector3(176.631, -1562.025, 29.263), 20.0, 20.0, {
 		name="Davis",
 		heading=310,
 		minz=31.2,
@@ -308,7 +308,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Alta", vector3(-319.292, -1471.715, 30.549), 25.0, 25.0, {
+	exports["PolyZone"]:AddBoxZone("Alta", vector3(-319.292, -1471.715, 30.549), 25.0, 25.0, {
 		name="Alta",
 		heading=30,
 		minz=31.2,
@@ -318,7 +318,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports["bt-polyzone"]:AddBoxZone("Flywheel", vector3(1785.771, 3330.58, 41.37805), 10.0, 10.0, {
+	exports["PolyZone"]:AddBoxZone("Flywheel", vector3(1785.771, 3330.58, 41.37805), 10.0, 10.0, {
 		name="Flywheel",
 		heading=30,
 		minz=31.2,
@@ -477,3 +477,32 @@ AddEventHandler('fuel:buyjerrycan', function()
 		end
 	end)
 end)
+
+
+function ManageFuelUsage(vehicle)
+	if IsVehicleEngineOn(vehicle) then
+		SetFuel(vehicle, GetVehicleFuelLevel(vehicle) - Fuel.FuelUsage[Round(GetVehicleCurrentRpm(vehicle), 1)] * (Fuel.Classes[GetVehicleClass(vehicle)] or 1.0) / 10)
+	end
+end
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(1000)
+
+		local ped = PlayerPedId()
+
+		if IsPedInAnyVehicle(ped) then
+			local vehicle = GetVehiclePedIsIn(ped)
+
+			if not inBlacklisted and GetPedInVehicleSeat(vehicle, -1) == ped then
+				ManageFuelUsage(vehicle)
+			end
+		end
+	end
+end)
+
+function SetFuel(vehicle, fuel)
+	if type(fuel) == 'number' and fuel >= 0 and fuel <= 100 then
+		SetVehicleFuelLevel(vehicle, fuel + 0.0)
+	end
+end

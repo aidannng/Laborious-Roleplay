@@ -110,11 +110,6 @@ AddEventHandler('bt-polyzone:exit', function(name)
 end)
 
 
---[[if IsPedInAnyVehicle(PlayerPedId(), false) and bennysMenuEnable == true then
-			exports['cd_drawtextui']:ShowInteraction('show', 'SteelBlue', "Benny's")
-		else
-			exports['cd_drawtextui']:HideInteraction()
-		end]]
 Citizen.CreateThread(function()  ---32.61098, -1053.244, 28.38684
 	while true do
 		local ped = GetPlayerPed(-1)
@@ -144,6 +139,7 @@ function enterLocation(locationsPos)
     SetEntityHeading(plyVeh, bennyHeading)
     FreezeEntityPosition(plyVeh, true)
     SetEntityCollision(plyVeh, false, true)
+	fuel = GetVehicleFuelLevel(plyVeh)
 end
 
 
@@ -197,6 +193,7 @@ end
 
 function myveh.repair()
 	SetVehicleFixed(myveh.vehicle)
+	SetVehicleFuelLevel(myveh.vehicle, fuel)
 end
 
 local function round(num, idp)
@@ -549,6 +546,10 @@ local function DriveInGarage()
 						for n, w in pairs(LSC_Config.prices.highendwheels) do
 							local btn = hughendw:addPurchase(w.name,w.price)btn.wtype = w.wtype btn.modtype = 23 btn.mod = w.mod
 						end
+					streetw = wtype:addSubMenu("STREET WHEELS", "Street", nil,true)
+					for n, w in pairs(LSC_Config.prices.streetwheels) do
+						local btn = streetw:addPurchase(w.name,w.price)btn.wtype = w.wtype btn.modtype = 23 btn.mod = w.mod
+					end
 				end
 					
 		--[[ m = LSCMenu.categories.Wheels:addSubMenu("WHEEL COLOR", "Wheel color", "Custom wheel colors.",true)
@@ -605,50 +606,6 @@ RegisterNetEvent('openBennysMenu')
 AddEventHandler('openBennysMenu', function()
 	enterLocation(bennyLocation)
 	DriveInGarage(6)
-end)
-
-
-
-Citizen.CreateThread(function()
-	while true do
-		local playerPed = GetPlayerPed(-1)
-		local sleep = 200
-
-		if IsPedInAnyVehicle(playerPed, false) then
-			local plyPos = GetEntityCoords(playerPed)
-
-			nearDefault = #(plyPos - bennyLocation)
-	        nearImport = #(plyPos - bennyLocationImport)
-	        nearTuner = #(plyPos - bennyLocationTuner)
-			nearPDM = #(plyPos - bennyLocationPDM)
-
-			if nearDefault <= 2 then
-			    if IsControlJustReleased(0, 38) then
-			    end
-			    sleep = 5
-			end
-			 
-			if nearTuner <= 2 then
-			    if IsControlJustReleased(0, 8) then
-			    end
-			    sleep = 5
-			end
-
-			if nearImport <= 2 then
-			    if IsControlJustReleased(0, 8) then
-			    end
-			    sleep = 5
-			end
-
-			if nearImport <= 2 then
-			    if IsControlJustReleased(0, 8) then
-			    end
-			    sleep = 5
-			end
-			            
-		end	
-		Citizen.Wait(sleep)
-	end
 end)
 
 

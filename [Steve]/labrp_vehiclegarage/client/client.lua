@@ -229,19 +229,19 @@ AddEventHandler('luke_vehiclegarage:GetImpoundedMenu', function(target)
             }
         },
     })
-    if ESX.PlayerData.job.name == "police" then
-        table.insert(menu, {
-            id = 5,
-            header = "Police Seizures",
-            txt = 'Manage all seized vehicles',
-            params = {
-                event = 'luke_vehiclegarage:GetSeizedPoliceVehicles'
-            }
-        })
-        TriggerEvent('nh-context:sendMenu', menu)
-    else
-        print('you aint police')
-    end
+    ESX.TriggerServerCallback('luke_vehiclegarage:CheckJob', function(data)
+        if data then
+            table.insert(menu, {
+                id = 5,
+                header = "Police Seizures",
+                txt = 'Manage all seized vehicles',
+                params = {
+                    event = 'luke_vehiclegarage:GetSeizedPoliceVehicles'
+                }
+            })
+            TriggerEvent('nh-context:sendMenu', menu)
+        end
+    end)
 end)
 
 RegisterNetEvent('luke_vehiclegarage:StoreBothVehicle')
@@ -966,7 +966,7 @@ end
 
 
 
-RegisterCommand('ownvehicle', function()
+--[[ RegisterCommand('ownvehicle', function()
     if IsPedInAnyVehicle(PlayerPedId(), false) then
         local vehicleBuy = GetVehiclePedIsIn(PlayerPedId(), false)
         local plate = GetVehicleNumberPlateText(vehicleBuy)
@@ -981,7 +981,7 @@ RegisterCommand('ownvehicle', function()
     else
         exports['mythic_notify']:SendAlert('error', "You're not in a vehicle")
     end
-end, false)
+end, false) ]]
 
 --[[RegisterCommand('getkeys', function()
     if IsPedInAnyVehicle(PlayerPedId(), false) then

@@ -55,7 +55,6 @@ function StopTheoryTest(success)
 		exports['mythic_notify']:SendAlert('inform', 'You passed your test, congratulations!')
 		Citizen.Wait(1000)
 		exports['mythic_notify']:SendAlert('inform', 'Go back to the circle to start your practical test!')
-		exports['mythic_notify']:SendAlert('inform', 'Go back to the circle to start your practical test!')
 	else
 		exports['mythic_notify']:SendAlert('inform', 'You failed the drivers test')
 	end
@@ -79,6 +78,9 @@ function StartDriveTest(type)
 		SetVehicleFuelLevel(vehicle, 100.0)
 		DecorSetFloat(vehicle, "_FUEL_LEVEL", GetVehicleFuelLevel(vehicle))
 	end)
+	local spawnedVehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+	local spawnedplate = GetVehicleNumberPlateText(spawnedVehicle)
+	exports["labrp_vehiclelock"]:givePlayerKeys(spawnedplate)
 end
 
 function StopDriveTest(success)
