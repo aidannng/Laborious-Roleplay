@@ -1,25 +1,21 @@
 local isInRagdoll = false
 
-Citizen.CreateThread(function()
- while true do
-    Citizen.Wait(10)
-    if isInRagdoll then
-      SetPedToRagdoll(GetPlayerPed(-1), 1000, 1000, 0, 0, 0, 0)
+
+RegisterCommand('ragdoll', function()
+    if not isInRagdoll and IsPedOnFoot(PlayerPedId()) then
+      isInRagdoll = true
+      repeat
+        SetPedToRagdoll(GetPlayerPed(-1), 1000, 1000, 0, 0, 0, 0)
+        Citizen.Wait(10)
+      until not isInRagdoll
+    else
+      isInRagdoll = false
     end
-  end
+    
 end)
 
-Citizen.CreateThread(function()
-    while true do
-    Citizen.Wait(0)
-    if IsControlJustPressed(2, Config.RagdollKeybind) and Config.RagdollEnabled and IsPedOnFoot(PlayerPedId()) then
-        if isInRagdoll then
-            isInRagdoll = false
-        else
-            isInRagdoll = true
-            Wait(500)
-        end
-    end
-  end
-end)
+TriggerEvent("chat:removeSuggestion", "/ragdoll")
+
+-- Keybind
+RegisterKeyMapping('ragdoll', 'Ragdoll Player', 'keyboard', 'u')
 

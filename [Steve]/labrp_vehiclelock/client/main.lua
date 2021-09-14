@@ -400,8 +400,8 @@ TriggerEvent("chat:removeSuggestion", "/togglelock")
 RegisterKeyMapping('togglelock', 'Lock/Unlock Vehicles', 'keyboard', 'l')
 
 
-RegisterCommand("getKeys", function(source, args, rawCommand)
+--[[RegisterCommand("getKeys", function(source, args, rawCommand)
     local veh = GetVehiclePedIsIn(GetPlayerPed(-1), false)
     local plate = GetVehicleNumberPlateText(veh)
     exports["labrp_vehiclelock"]:givePlayerKeys(plate)
-end)
+end)]]

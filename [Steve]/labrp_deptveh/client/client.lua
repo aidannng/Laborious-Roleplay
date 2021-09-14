@@ -290,3 +290,4 @@ AddEventHandler('labrp_vehicle:cleanVehicle', function(data)
     ClearPedTasks(PlayerPedId())
     SetVehicleDirtLevel(vehicle, 0.0)
 end)
+

@@ -45,17 +45,16 @@ AddEventHandler('labrp_store:givereward', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local moneypayout = math.random(12500, 18500)
     local jewels = math.random(1, 10)
-    local jewelsamount = math.random(1, 4)
     local g6chance = math.random(1, 10)
 
     if jewels >= 8 then
-        xPlayer.addInventoryItem('10ct_gold_chain', 1)
+        xPlayer.addInventoryItem('gold', 5)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got a 10 CT Gold Chain', length = 4500,})
     elseif jewels >= 6 and jewels <= 7 then --jewelsamount
-        xPlayer.addInventoryItem('5ct_gold_chain', jewelsamount)
+        xPlayer.addInventoryItem('gold', 3)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got '..jewelsamount..'x 5 CT Gold Chains', length = 4500,})
     else
-        xPlayer.addInventoryItem('2ct_gold_chain', jewelsamount)
+        xPlayer.addInventoryItem('gold', 1)
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got '..jewelsamount..'x 2 CT Gold Chains', length = 4500,})
     end
 

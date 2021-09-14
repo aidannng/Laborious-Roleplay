@@ -175,7 +175,7 @@ AddEventHandler('esx_policejob:OutVehicle', function(target)
 end)
 
 ESX.RegisterServerCallback('labrp_police:getpdblip', function(source, cb, LEOCoords)
-    local xPlayer = ESX.GetPlayerFromId(source)
+    local xPlayer = ESX.GetPlayerFromId(source) 
     local xPlayers = ESX.GetExtendedPlayers()
     local generated = {}
 
@@ -211,4 +211,20 @@ AddEventHandler('labrp_police:seizevehicle', function(plate, time)
         ['@garage'] = "Impound",
 		['@seized'] = time * 24,
     })
+end)
+
+ESX.RegisterServerCallback('labrp_police:getOnlinePlayers', function(source, cb)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local xPlayers = ESX.GetExtendedPlayers()
+	local generated = {}
+
+	if xPlayer then
+        if xPlayer.job.name == 'police' or xPlayer.job.name == 'ambulance' or xPlayer.job.name == 'fbi'then
+
+            for _, xPlayer in pairs(xPlayers) do
+				generated[_] = {netId = xPlayer.source, name = xPlayer.name, job = xPlayer.job.name}
+            end
+			cb(generated)
+        end
+    end
 end)

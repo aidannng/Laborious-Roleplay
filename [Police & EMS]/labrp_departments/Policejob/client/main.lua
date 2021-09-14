@@ -485,7 +485,7 @@ exports['labrp_Eye']:AddBoxZone("PoliceDuty", vector3(441.79, -982.07, 30.69), 0
 CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
-		ESX.TriggerServerCallback("labrp_police:getpdblip", function(units)
+		--[[ESX.TriggerServerCallback("labrp_police:getpdblip", function(units)
 			local id = GetPlayerServerId(PlayerId())
 
 			for k, v in pairs(units) do
@@ -519,9 +519,54 @@ CreateThread(function()
 				Citizen.Wait(1000)
 				RemoveBlip(new_blip)
 			end
-		end)
+		end)]]
+		TriggerEvent('esx_policejob:updateBlip')
 	end
 end)
 
 
+
+
+
+function createBlip(id)
+	local ped = GetPlayerPed(id)
+	local blip = GetBlipFromEntity(ped)
+
+	if not DoesBlipExist(blip) then -- Add blip and create head display on player
+		blip = AddBlipForEntity(ped)
+		SetBlipSprite(blip, 1)
+		ShowHeadingIndicatorOnBlip(blip, true) -- Player Blip indicator
+		SetBlipRotation(blip, math.ceil(GetEntityHeading(ped))) -- update rotation
+		SetBlipNameToPlayerName(blip, id) -- update blip name
+		SetBlipScale(blip, 0.85) -- set scale
+		SetBlipAsShortRange(blip, true)
+
+		table.insert(blipsCops, blip) -- add blip to array so we can remove it later
+	end
+end
+
+RegisterNetEvent('esx_policejob:updateBlip')
+AddEventHandler('esx_policejob:updateBlip', function()
+
+	-- Refresh all blips
+	for k, existingBlip in pairs(blipsCops) do
+		RemoveBlip(existingBlip)
+	end
+
+	-- Clean the blip table
+	blipsCops = {}
+
+	-- Is the player a cop? In that case show all the blips for other cops
+	if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then
+		ESX.TriggerServerCallback('labrp_police:getOnlinePlayers', function(players)
+			for k, v in pairs(players) do
+
+				if v.job == 'police' then
+					local id = GetPlayerFromServerId(v.netId)
+					createBlip(id)
+				end
+			end
+		end)
+	end
+end)
 

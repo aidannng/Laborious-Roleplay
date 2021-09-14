@@ -41,6 +41,10 @@ $(function () {
         }));
     }
 
+    $('.carousel').carousel({
+        interval: 5000
+    })
+
     $('.navigation-back-button').click(function(){
         if($(this).data('app') != undefined)
         {
@@ -136,6 +140,11 @@ $(function () {
     })
 
     $('#home-screen').on('click', '.icon', function () {
+        hideAppsHelper();
+        showAppHelper($(this).data('app'));
+    });
+
+    $('#home-screen').on('click', '.custom-icon', function () {
         hideAppsHelper();
         showAppHelper($(this).data('app'));
     });
@@ -296,6 +305,13 @@ $(function () {
         {
             $('#contact-favorite-list').empty();
             $.post('http://labrp-phone/get-favorite-contacts', JSON.stringify({}));
+            showContent(app);
+        }
+        else if(app == "lsc")
+        {
+            $('.carousel').carousel({
+                interval: 5000
+            })
             showContent(app);
         }
         else
@@ -1243,6 +1259,10 @@ $(function () {
         {
             var appCount = 0
             $('.icon').each(function(){
+                appCount++;
+            })
+
+            $('.custom-icon').each(function(){
                 appCount++;
             })
             

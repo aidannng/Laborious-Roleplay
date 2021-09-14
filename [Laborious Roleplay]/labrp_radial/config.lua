@@ -356,20 +356,6 @@ rootMenuConfig =  {
          end,
     },
     {
-        id = "carradio",
-        displayName = "Car Radio",
-        icon = "#car",
-        functionName = "car:radio",
-        enableMenu = function()
-        local ped = PlayerPedId()
-            PlayerData = ESX.GetPlayerData()
-            fuck = exports["esx_ambulancejob"]:GetDeath()
-             if IsPedInAnyVehicle(ped, false) and not fuck then
-                 return true
-             end
-         end,
-    },
-    {
         id = "returntowtruck",
         displayName = "Return Tow Truck",
         icon = "#return-tow",
