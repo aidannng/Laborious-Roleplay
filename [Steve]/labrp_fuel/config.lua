@@ -1,5 +1,5 @@
 Fuel = {}
-Fuel.Explode = false
+Fuel.Explode = true
 
 Fuel.Classes = {
 	[0] = 1.0, -- Compacts

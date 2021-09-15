@@ -1170,7 +1170,26 @@ Items = {
 		close = true,
 	},
 
-	
+	['c6v8'] = {
+		label = 'C6 Corvette V8',
+		weight = 10000,
+		stack = false,
+		close = false,
+	},
+
+	['lfav10'] = {
+		label = 'LFA V10',
+		weight = 10000,
+		stack = false,
+		close = false,
+	},
+
+	['nsxv6'] = {
+		label = 'Honda C30A V6',
+		weight = 10000,
+		stack = false,
+		close = false,
+	},
 }
 -- 
 

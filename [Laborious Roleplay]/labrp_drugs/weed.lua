@@ -240,7 +240,7 @@ end)
 
 RegisterNetEvent("plasma:weedpack")
 AddEventHandler("plasma:weedpack", function()
-    ESX.TriggerServerCallback("Aidan:server:CheckItem", function(data)
+    ESX.TriggerServerCallback("Aidan:server:CheckItem2", function(data)
         if data then
             exports['mythic_progbar']:Progress({
                 name = "unique_action_name",
@@ -263,7 +263,19 @@ end)
 
 RegisterNetEvent("plasma:weedcheck")
 AddEventHandler("plasma:weedcheck", function()
-    ESX.TriggerServerCallback("Aidan:server:CheckItem3", function(data)
+    ESX.TriggerServerCallback("Aidan:server:CheckItem", function(data)
+        if data then
+            TriggerEvent("plasma:bagcheck")
+        else
+            exports['mythic_notify']:SendAlert('error', 'You do not have any baggies.')
+        end
+    end, "bags")
+
+end)
+
+RegisterNetEvent("plasma:bagcheck")
+AddEventHandler("plasma:weedcheck", function()
+    ESX.TriggerServerCallback("Aidan:server:CheckItem2", function(data)
         if data then
             TriggerEvent("plasma:weedpack")
         else
