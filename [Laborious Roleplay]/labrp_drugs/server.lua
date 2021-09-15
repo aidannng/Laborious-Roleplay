@@ -32,6 +32,16 @@ ESX.RegisterServerCallback('Aidan:server:CheckItem', function(source, cb, item)
     end
 end)
 
+ESX.RegisterServerCallback('Aidan:server:CheckItem2', function(source, cb, item)
+    local ply = ESX.GetPlayerFromId(source)
+    itemcount = ply.getInventoryItem(item).count
+    if itemcount >= 2 then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
 RegisterServerEvent('plasma1')
 AddEventHandler('plasma1', function()
     local xPlayer = ESX.GetPlayerFromId(source)

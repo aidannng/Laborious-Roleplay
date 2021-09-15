@@ -356,11 +356,33 @@ exports['labrp_Eye']:AddTargetBone({"wheel_lr"}, {
                 end
             end
         },
+		{
+            event = "fuel:useJerryCan",
+            icon = "fas fa-gas-pump",
+            label = "Use Jerry Can",
+            canInteract = function(entity)
+				if GetSelectedPedWeapon(PlayerPedId()) == GetHashKey("weapon_petrolcan") then
+                	return true
+				end
+            end
+        },
     },
     distance = 1.0,
 })
 
-local time = 10000
+local currentWeapon = nil
+
+RegisterNetEvent('linden_inventory:currentWeapon')
+AddEventHandler('linden_inventory:currentWeapon', function(data)
+	currentWeapon = data
+end)
+
+AddEventHandler('fuel:useJerryCan', function()
+	currentWeapon.metadata.durability = 30
+	TriggerServerEvent('linden_inventory:updateWeapon', currentWeapon)
+end)
+
+local time = 30000
 
 AddEventHandler('fuel:startfuel', function(data)
 	print(data.entity)
@@ -370,13 +392,11 @@ AddEventHandler('fuel:startfuel', function(data)
 				if Fuel.Explode then
 					TaskTurnPedToFaceEntity(ped, data.entity, 1000)
 					Citizen.Wait(1000)
-					loadAnimDict("timetable@gardener@filling_can")
-					TaskPlayAnim(ped, "timetable@gardener@filling_can", "gar_ig_5_filling_can", 2.0, 8.0, -1, 50, 0, 0, 0, 0)
 					exports['mythic_progbar']:Progress({
 						name = "unique_action_name",
 						duration = time,
 						label = 'Fueling Vehicle',
-						useWhileDead = true,
+						useWhileDead = false,
 						canCancel = false,
 						controlDisables = {
 							disableMovement = true,
@@ -384,10 +404,16 @@ AddEventHandler('fuel:startfuel', function(data)
 							disableMouse = false,
 							disableCombat = true,
 						},
+						animation = {
+							animDict = "timetable@gardener@filling_can",
+							anim = "gar_ig_5_filling_can",
+						},
+						prop = {
+							model = "prop_paper_bag_small",
+						}
 					})
 					Citizen.Wait(5000)
 					ClearPedTasks(ped)
-					RemoveAnimDict("timetable@gardener@filling_can")
 					local vehicleCoords = GetEntityCoords(data.entity)
 					AddExplosion(vehicleCoords, 5, 50.0, true, false, true)
 				else
@@ -407,13 +433,11 @@ function StartFuel(vehicle)
 	print(fuel)
 	TaskTurnPedToFaceEntity(ped, vehicle, 1000)
 	Citizen.Wait(1000)
-	loadAnimDict("timetable@gardener@filling_can")
-	TaskPlayAnim(ped, "timetable@gardener@filling_can", "gar_ig_5_filling_can", 2.0, 8.0, -1, 50, 0, 0, 0, 0)
 	exports['mythic_progbar']:Progress({
 		name = "unique_action_name",
 		duration = time,
 		label = 'Fueling Vehicle',
-		useWhileDead = true,
+		useWhileDead = false,
 		canCancel = false,
 		controlDisables = {
 			disableMovement = true,
@@ -421,11 +445,17 @@ function StartFuel(vehicle)
 			disableMouse = false,
 			disableCombat = true,
 		},
+		animation = {
+			animDict = "timetable@gardener@filling_can",
+			anim = "gar_ig_5_filling_can",
+		},
+		prop = {
+			model = "prop_paper_bag_small",
+		}
 	})
 	Citizen.Wait(time)
 	SetVehicleFuelLevel(vehicle, 99.0)
 	ClearPedTasks(ped)
-	RemoveAnimDict("timetable@gardener@filling_can")
 	print(fuel)
 	TriggerServerEvent('labrp_fuel:takemoney')
 end

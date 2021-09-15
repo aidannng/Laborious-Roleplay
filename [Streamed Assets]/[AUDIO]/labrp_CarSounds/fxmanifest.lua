@@ -119,6 +119,22 @@ files {
   'audioconfig/murciev12_sounds.dat54.rel',
   'sfx/dlc_murciev12/murciev12.awc',
   'sfx/dlc_murciev12/murciev12_npc.awc',
+
+  'audioconfig/c6v8sound_game.dat151.rel',
+  'audioconfig/c6v8sound_sounds.dat54.rel',
+  'sfx/dlc_c6v8sound/c6v8sound.awc',
+  'sfx/dlc_c6v8sound/c6v8sound_npc.awc',
+
+  'audioconfig/lfasound_game.dat151.rel',
+	'audioconfig/lfasound_sounds.dat54.rel',
+	'sfx/dlc_lfasound/lfasound.awc',
+	'sfx/dlc_lfasound/lfasound_npc.awc',
+
+  'audioconfig/c30a_amp.dat10.rel',
+	'audioconfig/c30a_game.dat151.rel',
+	'audioconfig/c30a_sounds.dat54.rel',
+	'sfx/dlc_c30a/c30a.awc',
+	'sfx/dlc_c30a/c30a_npc.awc',
 }
 
 data_file 'AUDIO_GAMEDATA' 'audioconfig/lambov10_game.dat'
@@ -199,3 +215,16 @@ data_file 'AUDIO_WAVEPACK' 'sfx/dlc_urusv8'
 data_file 'AUDIO_GAMEDATA' 'audioconfig/murciev12_game.dat'
 data_file 'AUDIO_SOUNDDATA' 'audioconfig/murciev12_sounds.dat'
 data_file 'AUDIO_WAVEPACK' 'sfx/dlc_murciev12'
+
+data_file 'AUDIO_GAMEDATA' 'audioconfig/c6v8sound_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/c6v8sound_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_c6v8sound'
+
+data_file 'AUDIO_GAMEDATA' 'audioconfig/lfasound_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/lfasound_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_lfasound'
+
+data_file 'AUDIO_SYNTHDATA' 'audioconfig/c30a_amp.dat'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/c30a_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/c30a_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_c30a'
