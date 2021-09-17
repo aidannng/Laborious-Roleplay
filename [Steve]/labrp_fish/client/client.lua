@@ -125,13 +125,13 @@ AddEventHandler('labrp_fish:usebait', function()
                     if catchRarity == 1 or catchRarity == 2 then 
                         TriggerServerEvent('labrp_fish:getreward', 'scrapmetal')
                     elseif catchRarity == 3 or catchRarity == 4 then
-                        TriggerServerEvent('labrp_fish:getreward', '2ct_gold_chain')
+                        TriggerServerEvent('labrp_fish:getreward', 'crushedbottle')
                     elseif catchRarity == 5 or catchRarity == 6 then
-                        TriggerServerEvent('labrp_fish:getreward', '5ct_gold_chain')
+                        TriggerServerEvent('labrp_fish:getreward', 'oldcan')
                     elseif catchRarity == 7 then
-                        TriggerServerEvent('labrp_fish:getreward', '8ct_gold_chain')
+                        TriggerServerEvent('labrp_fish:getreward', 'beerbottle')
                     elseif catchRarity == 8 then
-                        TriggerServerEvent('labrp_fish:getreward', '10ct_gold_chain')
+                        TriggerServerEvent('labrp_fish:getreward', 'tire')
                     elseif catchRarity == 9 then
                         TriggerServerEvent('labrp_fish:getreward', 'nokia_phone')
                     elseif catchRarity == 10 then
