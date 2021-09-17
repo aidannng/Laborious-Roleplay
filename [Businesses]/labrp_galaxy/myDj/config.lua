@@ -79,7 +79,7 @@ Config.DJPositions = {
 
     {
         name = 'rockford3',
-        pos = vector3(-1009.305, -290.8352, 44.78174),
+        pos = vector3(-1009.305, -290.8352, 44.781741),
         requiredJob = nil, 
         range = 8.0, 
         volume = 1.0 --[[ do not touch the volume! --]]

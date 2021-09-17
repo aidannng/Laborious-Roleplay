@@ -375,7 +375,7 @@ Citizen.CreateThread(function()
             distance = 2.5
         })
 
-    exports['labrp_Eye']:AddBoxZone("recordsdj3", vector3(-1002.62, -281.156, 45.77588), 1.5, 1.5, {
+    exports['labrp_Eye']:AddBoxZone("recordsdj3", vector3(-1002.632, -281.156, 45.77588), 1.5, 1.5, {
         name="recordsdj3",
         heading=50,
         debugPoly=false,
