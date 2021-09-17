@@ -28,6 +28,13 @@ Items = {
 		close = true,
 	},
 
+	['watch'] = {
+		label = 'Watch',
+		weight = 200,
+		stack = false,
+		close = false,
+	},
+
 	['burger'] = {
 		label = 'Burger',
 		weight = 350,

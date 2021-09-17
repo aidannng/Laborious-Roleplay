@@ -102,7 +102,7 @@ Config.Hunting = {
 Config.PoliceArmoury = {
 	name = 'Police Armoury',
 	inventory = {
-		{ name = 'WEAPON_GLOCK', price = 125, metadata = { registered = true, serial = 'POL'}},
+		{ name = 'WEAPON_COMBATPISTOL', price = 125, metadata = { registered = true, serial = 'POL'}},
 		{ name = 'WEAPON_M4', price = 750, metadata = { registered = true, serial = 'POL'}},
 		{ name = 'WEAPON_TASER', price = 100, metadata = { registered = true, serial = 'POL'} },
 		{ name = 'ammo-9', price = 1, },
