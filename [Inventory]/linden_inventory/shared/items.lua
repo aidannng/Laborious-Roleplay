@@ -1190,6 +1190,61 @@ Items = {
 		stack = false,
 		close = false,
 	},
+
+	['mask'] = {
+		label = 'Mask',
+		weight = 125,
+		stack = false,
+		close = true,
+		client = {
+			usetime = 0,
+			event = 'clothes:mask'
+		}
+	},
+	['glasses'] = {
+		label = 'Glasses',
+		weight = 125,
+		stack = false,
+		close = true,
+		client = {
+			usetime = 0,
+			event = 'clothes:glasses'
+		}
+	},
+	['helmet'] = {
+		label = 'Hat',
+		weight = 125,
+		stack = false,
+		close = true,
+		client = {
+			usetime = 0,
+			event = 'clothes:helmet'
+		}
+	},
+	['oldcan'] = {
+		label = 'Old Can',
+		weight = 250,
+		stack = true,
+		close = false,
+	},
+	['crushedbottle'] = {
+		label = 'Crushed Water Bottle',
+		weight = 250,
+		stack = true,
+		close = false,
+	},
+	['beerbottle'] = {
+		label = 'Old Beer Bottle',
+		weight = 350,
+		stack = true,
+		close = false,
+	},
+	['tire'] = {
+		label = 'Old Tire',
+		weight = 1000,
+		stack = true,
+		close = false,
+	},
 }
 -- 
 

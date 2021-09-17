@@ -14,20 +14,17 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     [7] = {chance = 8, id = '10ct_gold_chain', name = '10CT Gold Chain (P)', quantity = 1}, -- rare
     [8] = {chance = 8, id = 'advancedlockpick', name = 'Advanced Lockpick', quantity = 1}, -- rare
     [9] = {chance = 3, id = 'sunglasses', name = 'Oakley Sunglasses (P)', quantity = 1}, -- rare
-    [10] = {chance = 4, id = 'gameboy', name = 'Gameboy (P)', quantity = 1}, -- rare
+    [10] = {chance = 3, id = 'gameboy', name = 'Gameboy (P)', quantity = 1}, -- rare
     [11] = {chance = 3, id = 'casio_watch', name = 'Casio Watch (P)', quantity = 1}, -- rare
     [12] = {chance = 3, id = 'nokia_phone', name = 'Nokia Phone (P)', quantity = 1}, -- rare
     [13] = {chance = 5, id = 'samsung_s8', name = 'Samsung S8 (P)', quantity = 1}, -- rare
     [14] = {chance = 5, id = 'apple_iphone', name = 'Apple iPhone (P)', quantity = 1}, -- rare
-    [15] = {chance = 4, id = 'steel', name = 'Steel', quantity = 1}, -- rare
-    [16] = {chance = 2, id = 'scrap_metal', name = 'Scrap Metal', quantity = 1}, -- rare
-    [17] = {chance = 2, id = 'rubber', name = 'Rubber', quantity = 1}, -- rare
-    [18] = {chance = 2, id = 'plastic', name = 'Plastic', quantity = 1}, -- rare
-    [19] = {chance = 3, id = 'glass', name = 'Glass', quantity = 1}, -- rare
-    [20] = {chance = 5, id = 'battery', name = 'Battery', quantity = 1}, -- rare
-    [21] = {chance = 7, id = 'white_pearl', name = 'White Pearl (P)', quantity = 1}, -- rare
-    [22] = {chance = 8, id = 'electronics', name = 'Electronics (P)', quantity = 1}, -- rare
-}
+    [15] = {chance = 2, id = 'oldcan', name = 'Old Can', quantity = 1}, -- rare
+    [16] = {chance = 3, id = 'scrap_metal', name = 'Scrap Metal', quantity = 1}, -- rare
+    [17] = {chance = 2, id = 'tire', name = 'Old Tire', quantity = 1}, -- rare
+    [18] = {chance = 2, id = 'crushedbottle', name = 'Crushed Bottle', quantity = 1}, -- rare
+    [19] = {chance = 2, id = 'beerbottle', name = 'Beer Bottle', quantity = 1}, -- rare
+    [20] = {chance = 5, id = 'battery', name = 'Battery', quantity = 1}} -- rare
 
 
 RegisterServerEvent('dumpster:givereward')
