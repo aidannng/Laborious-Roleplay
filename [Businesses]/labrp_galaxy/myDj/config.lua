@@ -59,6 +59,30 @@ Config.DJPositions = {
         requiredJob = nil, 
         range = 35.0, 
         volume = 1.0 --[[ do not touch the volume! --]]
+    },
+
+    {
+        name = 'rockford1',
+        pos = vector3(-1004.598, -250.4308, 39.45715),
+        requiredJob = nil, 
+        range = 15.0, 
+        volume = 1.0 --[[ do not touch the volume! --]]
+    },
+
+    {
+        name = 'rockford2',
+        pos = vector3(-1001.644, -281.6044, 44.78174),
+        requiredJob = nil, 
+        range = 5.0, 
+        volume = 1.0 --[[ do not touch the volume! --]]
+    },
+
+    {
+        name = 'rockford3',
+        pos = vector3(-1009.305, -290.8352, 44.781741),
+        requiredJob = nil, 
+        range = 8.0, 
+        volume = 1.0 --[[ do not touch the volume! --]]
     }
     --{name = 'bahama', pos = vector3(-1381.01, -616.17, 31.5), requiredJob = 'DJ', range = 25.0}
 }
