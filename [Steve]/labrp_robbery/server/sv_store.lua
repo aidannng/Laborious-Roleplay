@@ -1,6 +1,6 @@
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-local discord_webhook = {url = "https://discord.com/api/webhooks/861474902493495317/oTnEfRLpSViVKPOTQQ8Rsas9dCUTKrgGrzJ7s7w3rnTAbc42wVQKrVUyf43ap71_WKvf",image = "https://i.iodine.gg/i5fba.png"}
+local discord_webhook = {url = "https://discord.com/api/webhooks/865718213193891871/vnDi-Sy9-FCuyutnb2DbF-DZYHE1eluEebOHaL1u9ihbuqk6nkqXzhi1jim7uftMh9OZ",image = "https://i.iodine.gg/i5fba.png"}
 local cooldown = false
 
 ESX.RegisterServerCallback('labrp_store:checkrequired', function(source, cb)

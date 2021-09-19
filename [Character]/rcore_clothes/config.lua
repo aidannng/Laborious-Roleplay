@@ -79,7 +79,8 @@ Config.ChangePoint = {
         vector3(-103.6088, -1782.462, 32.21167), -- Ballas Mech Shop
         vector3(124.2462, -1959.31, 15.21021), -- Ballas HQ 
         vector3(931.1736, -1461.059, 33.61023), -- NT Warehouse
-        vector3(44.71649, -2573.868, 6.296753), -- NH HQ
+        vector3(44.71649, -2573.868, 6.296753), -- NH HQ 
+        vector3(298.7473, -597.7846, 43.2821),
     }
 }
 Config.Stores = {

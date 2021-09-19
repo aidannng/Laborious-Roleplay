@@ -1683,7 +1683,7 @@ table.insert(Config.DoorList, {
 	objHash = 854291622,
 	maxDistance = 2.0,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },		
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -1702,7 +1702,7 @@ table.insert(Config.DoorList, {
 	objHash = 854291622,
 	maxDistance = 2.0,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },		
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -1721,7 +1721,7 @@ table.insert(Config.DoorList, {
 	objHash = 854291622,
 	maxDistance = 2.0,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },		
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },	
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -1740,7 +1740,7 @@ table.insert(Config.DoorList, {
 	objHash = 854291622,
 	maxDistance = 2.0,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },		
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -1759,7 +1759,7 @@ table.insert(Config.DoorList, {
 	objHash = 854291622,
 	maxDistance = 2.0,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },		
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -1778,7 +1778,7 @@ table.insert(Config.DoorList, {
 	objHash = 854291622,
 	maxDistance = 2.0,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },		
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -1796,7 +1796,7 @@ table.insert(Config.DoorList, {
 	locked = true,
 	maxDistance = 2.5,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },		
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
@@ -1809,7 +1809,7 @@ table.insert(Config.DoorList, {
 	maxDistance = 2.5,
 	slides = false,
 	lockpick = false,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	doors = {
 		{objHash = -434783486, objHeading = 340.00003051758, objCoords = vector3(323.2375, -575.4294, 43.43391)},
 		{objHash = -1700911976, objHeading = 340.00003051758, objCoords = vector3(325.6565, -576.3099, 43.43391)}
@@ -1827,7 +1827,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	doors = {
 		{objHash = -1700911976, objHeading = 340.00003051758, objCoords = vector3(320.2615, -574.3463, 43.43391)},
 		{objHash = -434783486, objHeading = 340.00003051758, objCoords = vector3(317.8426, -573.4659, 43.43391)}
@@ -1845,7 +1845,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	doors = {
 		{objHash = -434783486, objHeading = 340.00003051758, objCoords = vector3(312.0051, -571.3412, 43.43391)},
 		{objHash = -1700911976, objHeading = 340.00003051758, objCoords = vector3(314.4241, -572.2216, 43.43391)}
@@ -1863,7 +1863,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	garage = false,
 	maxDistance = 2.0,
 	objHash = 854291622,
@@ -1882,7 +1882,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	garage = false,
 	maxDistance = 2.0,
 	objHash = 854291622,
@@ -1901,7 +1901,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	doors = {
 		{objHash = -1700911976, objHeading = 70.006050109863, objCoords = vector3(339.3266, -587.6345, 28.94709)},
 		{objHash = -434783486, objHeading = 70.006050109863, objCoords = vector3(338.4467, -590.053, 28.94709)}
@@ -1919,7 +1919,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	garage = true,
 	maxDistance = 6.0,
 	objHash = -820650556,
@@ -1938,7 +1938,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	garage = false,
 	maxDistance = 2.0,
 	objHash = -820650556,
@@ -1957,7 +1957,7 @@ table.insert(Config.DoorList, {
 table.insert(Config.DoorList, {
 	lockpick = false,
 	locked = true,
-	authorizedJobs = { ['ambulance']=0 },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },
 	doors = {
 		{objHash = -1421582160, objHeading = 25.005989074707, objCoords = vector3(321.0148, -559.9127, 28.94724)},
 		{objHash = 1248599813, objHeading = 205.0061340332, objCoords = vector3(318.6656, -561.0086, 28.94724)}
@@ -3768,6 +3768,42 @@ table.insert(Config.DoorList, {
 	fixText = false,
 	objCoords = vector3(375.8304, -821.0286, 29.44885),
 	garage = false,		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- pillbox front
+table.insert(Config.DoorList, {
+	maxDistance = 6.0,
+	audioRemote = false,
+	slides = true,
+	lockpick = false,
+	locked = false,
+	doors = {
+		{objHash = 661758796, objHeading = 250.04852294922, objCoords = vector3(300.0308, -583.7263, 42.28401)},
+		{objHash = -487908756, objHeading = 250.10284423828, objCoords = vector3(299.2278, -585.9323, 42.28401)}
+ },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
+	-- oldMethod = true,
+	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+	-- autoLock = 1000
+})
+
+-- pillbox bottom
+table.insert(Config.DoorList, {
+	maxDistance = 6.0,
+	audioRemote = false,
+	slides = true,
+	lockpick = false,
+	locked = false,
+	doors = {
+		{objHash = -487908756, objHeading = 69.784461975098, objCoords = vector3(357.3348, -589.3868, 27.79682)},
+		{objHash = 661758796, objHeading = 70.006050109863, objCoords = vector3(356.5311, -591.5957, 27.79682)}
+ },
+	authorizedJobs = { ['ambulance']=0, ['police']=0, ['fbi']=0 },		
 	-- oldMethod = true,
 	-- audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
 	-- audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
