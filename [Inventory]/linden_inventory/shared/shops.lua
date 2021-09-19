@@ -118,6 +118,7 @@ Config.PoliceArmoury = {
 		{ name = 'spikestrips', price = 150 },
 		{ name = 'paperbag', price = 125 },
 		{ name = 'handcuffs', price = 50 },
+		{ name = 'donut', price = 5 },
 	}
 }
 
