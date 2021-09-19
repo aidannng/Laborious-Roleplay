@@ -24,11 +24,12 @@ BossMenuLocations = {
 	{coords = vector3(123.5077, -1944.738, 15.21021), job = "ballas", label = "East Side Ballas"},
 	{coords = vector3(376.9055, -823.9517, 29.29675), job = "kronickush", label = "Kronic Kush Dispensary"},
 	{coords = vector3(108.0264, -750.5011, 242.1436), job = "fbi", label = "FBI"},  
-	{coords = vector3(390.9758, 270.0791, 94.97729), job = "galaxy", label = "Galaxy Nightclub"},  --376.9055, -823.9517, 29.29675
+	{coords = vector3(390.9758, 270.0791, 94.97729), job = "galaxy", label = "Galaxy Nightclub"},
 	{coords = vector3(-172.4308, 923.0505, 239.9363), job = "sonora", label = "Sonora Cartel"},
 	{coords = vector3(-1007.855, -262.8132, 44.78174), job = "record", label = "Rockford Record"},
 	{coords = vector3(948.0132, -1462.048, 33.61023), job = "notolerance", label = "No Tolerance"},
-	{coords = vector3(53.6044, -2573.024, 6.263062), job = "zerohes", label = "Zero Hesitation"}
+	{coords = vector3(53.6044, -2573.024, 6.263062), job = "zerohes", label = "Zero Hesitation"},
+	{coords = vector3(334.8264, -594.4088, 43.2821), job = "ambulance", label = "SAFR"}
 
 },
 
