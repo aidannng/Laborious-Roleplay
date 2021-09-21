@@ -39,33 +39,26 @@ AddEventHandler('labrp_store:cooldown', function()
     end
 end)
 
+
 RegisterServerEvent('labrp_store:givereward')
 AddEventHandler('labrp_store:givereward', function()
+    local xPlayer =  ESX.GetPlayerFromId(source)
+    local gold = xPlayer.getInventoryItem('gold').count
+    local g6card = xPlayer.getInventoryItem('g6card').count
+    local count = math.random(1,100)
 
-    local xPlayer = ESX.GetPlayerFromId(source)
-    local moneypayout = math.random(12500, 18500)
-    local jewels = math.random(1, 10)
-    local g6chance = math.random(1, 10)
-
-    if jewels >= 8 then
+    if count >= 70 then
+        xPlayer.addInventoryItem('black_money', math.random(35000,42500))
         xPlayer.addInventoryItem('gold', 5)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got a 10 CT Gold Chain', length = 4500,})
-    elseif jewels >= 6 and jewels <= 7 then --jewelsamount
-        xPlayer.addInventoryItem('gold', 3)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got '..jewelsamount..'x 5 CT Gold Chains', length = 4500,})
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You recieved 5 gold bars and dirty money!', length = 4500,})
     else
-        xPlayer.addInventoryItem('gold', 1)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got '..jewelsamount..'x 2 CT Gold Chains', length = 4500,})
-    end
-
-    if g6chance >= 8 then 
+        xPlayer.addInventoryItem('black_money', math.random(35000,42500))
         xPlayer.addInventoryItem('g6card', 1)
-        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got a Gruppe 6 Card', length = 4500,})
+        xPlayer.addInventoryItem('gold', 5)
+        TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You found a Groupe 6 Card, Gold Bars and Dirty Money!', length = 4500,})
     end
-
-    xPlayer.addInventoryItem('black_money', moneypayout)
-    TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = 'You got $'..moneypayout, length = 4500,})
 end)
+
 
 RegisterServerEvent('labrp_store:removeLockpick')
 AddEventHandler('labrp_store:removeLockpick', function()

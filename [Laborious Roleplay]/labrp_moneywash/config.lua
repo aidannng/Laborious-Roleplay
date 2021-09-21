@@ -10,12 +10,12 @@ Keys = {
 }
 
 icfg = {}
-icfg.Timer = 300
-icfg.LaundryMaxMoneyWash = 5250
-icfg.LaundryMinMoneyWash = 3500
-icfg.MaxWashingTime = 360
-icfg.MinWashingTime = 240
-icfg.WashingTax = 0.70
+icfg.Timer = 120
+icfg.LaundryMaxMoneyWash = 10000
+icfg.LaundryMinMoneyWash = 7500
+icfg.MaxWashingTime = 60
+icfg.MinWashingTime = 40
+icfg.WashingTax = 0.85
 icfg.DropWorkPermitChance = 99
 
 icfg.LaundryPlaces = {

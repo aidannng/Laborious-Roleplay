@@ -73,49 +73,49 @@ Config.DeliveryPoints = {
     {
         label = 'Oil Fields Delivery',
         desc = 'Job Payout: $%d | Required Level: %d ',
-        pay = 750,
+        pay = 1250,
         level = 1,
         zone = {x = 1512.13, y = -2098.36, z = 76.85, length = 3.8, width = 11.4, heading = 0, minZ = 75.85, maxZ = 79.85, markerHeading = 0},
     },
     {
         label = "Popular Street - Darnell", 
         desc = "Job Payout: $%d | Required Level: %d ", 
-        pay = 1050,
+        pay = 1550,
         level = 1,
         zone = {x = 715.94, y = -874.59, z = 24.11, length = 2.8, width = 12.9, heading = 0, minZ = 22.81, maxZ = 26.81, markerHeading = 0} 
     },
     {
         label = 'YouTool Delivery',
         desc = 'Job Payout $%d | Required Level: %d ',
-        pay = 1650,
+        pay = 2250,
         level = 2,
         zone = {x = 2702.77, y = 3453.39, z = 55.8, length = 7.4, width = 2.6, heading = 336, minZ = 54.8, maxZ = 58.8, markerHeading = 158.16}
     },
     {
         label = 'Sandy Delivery',
         desc = 'Job Payout $%d | Required Level: %d ',
-        pay = 2000,
+        pay = 2650,
         level = 3,
         zone = {x = 1965.85, y = 3756.83, z = 32.27, length = 7.8, width = 2.4, heading = 31, minZ = 31.27, maxZ = 35.27, markerHeading = 211.02}
     },
     {
         label = 'Vinery Delivery',
         desc = 'Job Payout $%d | Required Level: %d ',
-        pay = 2850,
+        pay = 3250,
         level = 5,
         zone = {x = -1920.41, y = 2046.49, z = 140.74, length = 7.0, width = 2.6, heading = 77, minZ = 139.74, maxZ = 143.74, markerHeading = 258.52}
     },
     {
         label = 'Grapeseed Extragavanza',
         desc = 'Job Payout $%d | Required Level: %d ',
-        pay = 4000,
+        pay = 4800,
         level = 7,
         zone = {x = 1703.14, y = 4835.36, z = 41.95, length = 6.2, width = 2.4, heading = 277, minZ = 40.95, maxZ = 44.95, markerHeading = 97.64}
     },
     {
         label = 'Paleto Bay Journey',
         desc = 'Joy Payout $%d | Required Level: %d ',
-        pay = 5850,
+        pay = 7850,
         level = 10,
         zone = {x = 182.23, y = 6393.71, z = 31.38, length = 7.2, width = 2.8, heading = 297, minZ = 30.38, maxZ = 34.38, markerHeading = 297.31}
     }

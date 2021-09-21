@@ -52,6 +52,11 @@ AddEventHandler("zerohes:signonoff", function()
     TriggerServerEvent("jobsignonoff", "zerohes")
 end)
 
+RegisterNetEvent("ambulance:signonoff")
+AddEventHandler("ambulance:signonoff", function()
+    TriggerServerEvent("jobsignonoff", "ambulance")
+end)
+
 exports['labrp_Eye']:AddBoxZone("BallasDesk", vector3(126.4615, -1955.222, 20.2821), 2.00, 0.50, {
     name="BallasDesk",
     debugPoly=false,
@@ -196,6 +201,25 @@ exports['labrp_Eye']:AddBoxZone("ZeroHesBox", vector3(61.96484, -2566.47, 7.2402
     options = {
         {
             event = "zerohes:signonoff",
+            icon = "fas fa-tools",
+            label = "Sign On/Off",
+        },
+    },
+    job = {"all"},
+    distance = 1.6
+})
+
+exports['labrp_Eye']:AddBoxZone("ZeroHesBox", vector3(306.7912, -601.8329, 43.2821), 1.75, 1.5, {
+    name="ZeroHesBox",
+    debugPoly=true,
+    heading=70.0,
+    minZ=42.5,
+    maxZ=44.5
+}, 
+{
+    options = {
+        {
+            event = "ambulance:signonoff",
             icon = "fas fa-tools",
             label = "Sign On/Off",
         },

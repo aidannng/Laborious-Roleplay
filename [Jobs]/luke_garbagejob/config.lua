@@ -20,9 +20,9 @@ Config.LevelThree = 20 -- How much garbage do you need to collect to get to leve
 Config.PaymentInCash = false -- Set to false if you want the money to go to the bank
 
 -- How much the player is going to earn at the levels
-Config.LevelOneAmount = 80
-Config.LevelTwoAmount = 115
-Config.LevelMaxAmount = 150
+Config.LevelOneAmount = 140
+Config.LevelTwoAmount = 195
+Config.LevelMaxAmount = 260
 
 Config.Pickups = {
     Dumpsters = {
