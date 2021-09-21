@@ -57,7 +57,7 @@ end)
 
 ------------------------------------------------------------------------------------------------- AI DENSITY -----------------------------------------------------------------------------------------------
 Citizen.CreateThread(function()
-	local densityMultiplier = 0.4
+	local densityMultiplier = 0.0
 	while true do
 		ClearAreaOfCops(GetEntityCoords(PlayerPedId()), 1000.0)
 		SetVehicleDensityMultiplierThisFrame(densityMultiplier)

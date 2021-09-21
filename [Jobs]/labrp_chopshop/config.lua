@@ -14,4 +14,11 @@ Config.ChopCars = {
 	[10] = 'Emperor',
 	[11] = 'Banshee',
 	[12] = 'Patriot',
+	[14] = 'Sultan',
+	[15] = 'Zion',
+	[16] = 'Stalion',
+	[17] = 'Voodoo',
+	[18] = 'Asea',
+	[19] = 'Panto',
+	[20] = 'Oracle',
 }

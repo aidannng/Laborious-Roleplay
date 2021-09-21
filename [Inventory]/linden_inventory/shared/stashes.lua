@@ -6,7 +6,7 @@ Config.Stashes = {
 	--{ coords = vector3(474.2242, -990.7516, 26.2638), slots = 70, name = 'Police Evidence', job = 'police' }, --using command instead
 	{ coords = vector3(-1194.712, -891.7582, 13.98022), slots = 70, name = 'BurgerShot', owner = false, job = 'burgershote' },
 
-	{ coords = vector3(301.3054, -600.2374, 43.2821), slots = 70, name = 'Personal Locker', owner = true, job = 'ambulance'  },
+	{ coords = vector3(301.3054, -600.2374, 43.2821), slots = 70, name = 'EMS Personal Locker', owner = true, job = 'ambulance'  },
 
 	{ coords = vector3(-343.0813, -157.3582, 44.57947), slots = 25, name = 'Owner Stash', owner = false, job = 'mechanic' }, --LSC Owner Stash
 	--Gangs
@@ -28,5 +28,6 @@ Config.Stashes = {
 	{ coords = vector3(943.6088, -1476.132, 30.08862), slots = 400, name = "NT Warehouse", owner = false, job = 'notolerance' }, -- NT Warehouse
 	{ coords = vector3(461.9868, -999.6396, 30.67834), slots = 100, name = "LSPD Lockers", owner = true, job = 'police' }, -- LSPD Lockers
 	{ coords = vector3(43.67473, -2581.648, 6.263062), slots = 60, name = "Zero Hesitation Stash", owner = false, job = 'zerohes' }, -- Zero Hesitation Stash
+	{ coords = vector3(-12.48791, -1108.813, 26.78613), slots = 60, name = "PDM Stash", owner = false, job = 'cardealer' }, -- Zero Hesitation Stash
 
 }

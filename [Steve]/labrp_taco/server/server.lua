@@ -5,7 +5,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 RegisterServerEvent('labrp_taco:givereward')
 AddEventHandler('labrp_taco:givereward', function()
     xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.addMoney(math.random(250, 500))
+    xPlayer.addMoney(math.random(1150, 1900))
     local dirty = xPlayer.getInventoryItem('black_money').count
     local packed = xPlayer.getInventoryItem('packagedweed').count
     local percent = math.random(75, 100)

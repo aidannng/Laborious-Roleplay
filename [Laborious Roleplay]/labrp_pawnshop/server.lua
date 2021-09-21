@@ -7,7 +7,7 @@ RegisterServerEvent('pawnshop:sellcasio')
 AddEventHandler('pawnshop:sellcasio', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local CasioPrice = math.random(30, 70)
+    local CasioPrice = math.random(230, 370)
     local CasioQuantity = xPlayer.getInventoryItem('casiowatch').count
    
     if CasioQuantity >= 1 then
@@ -25,7 +25,7 @@ RegisterServerEvent('pawnshop:sellrubber')
 AddEventHandler('pawnshop:sellrubber', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(25, 35)
+    local RubberPrice = math.random(325, 335)
     local RubberQuantity = xPlayer.getInventoryItem('rubber').count
    
     if RubberQuantity >= 1 then
@@ -42,7 +42,7 @@ RegisterServerEvent('pawnshop:sellcopper')
 AddEventHandler('pawnshop:sellcopper', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(25, 35)
+    local RubberPrice = math.random(225, 235)
     local RubberQuantity = xPlayer.getInventoryItem('copper').count
    
     if RubberQuantity >= 1 then
@@ -59,7 +59,7 @@ RegisterServerEvent('pawnshop:sellwring')
 AddEventHandler('pawnshop:sellwring', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(150, 280)
+    local RubberPrice = math.random(450, 580)
     local RubberQuantity = xPlayer.getInventoryItem('weddingring').count
    
     if RubberQuantity >= 1 then
@@ -78,7 +78,7 @@ RegisterServerEvent('pawnshop:sellelectronics')
 AddEventHandler('pawnshop:sellelectronics', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(45, 60)
+    local RubberPrice = math.random(245, 360)
     local RubberQuantity = xPlayer.getInventoryItem('electronics').count
    
     if RubberQuantity >= 1 then
@@ -98,7 +98,7 @@ RegisterServerEvent('pawnshop:sellrolex')
 AddEventHandler('pawnshop:sellrolex', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(700, 1500)
+    local RubberPrice = math.random(2700, 3500)
     local RubberQuantity = xPlayer.getInventoryItem('rolex').count
    
     if RubberQuantity >= 1 then
@@ -116,7 +116,7 @@ RegisterServerEvent('pawnshop:sell2chain')
 AddEventHandler('pawnshop:sell2chain', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(70, 95)
+    local RubberPrice = math.random(170, 225)
     local RubberQuantity = xPlayer.getInventoryItem('2ct_gold_chain').count
    
     if RubberQuantity >= 1 then
@@ -150,7 +150,7 @@ RegisterServerEvent('pawnshop:sell8chain')
 AddEventHandler('pawnshop:sell8chain', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(275, 350)
+    local RubberPrice = math.random(375, 450)
     local RubberQuantity = xPlayer.getInventoryItem('8ct_gold_chain').count
    
     if RubberQuantity >= 1 then
@@ -167,7 +167,7 @@ RegisterServerEvent('pawnshop:sell10chain')
 AddEventHandler('pawnshop:sell10chain', function()
     math.randomseed(os.time())
     local xPlayer = ESX.GetPlayerFromId(source)
-    local RubberPrice = math.random(400, 650)
+    local RubberPrice = math.random(500, 750)
     local RubberQuantity = xPlayer.getInventoryItem('10ct_gold_chain').count
    
     if RubberQuantity >= 1 then
@@ -374,7 +374,7 @@ RegisterServerEvent('pawnshop:selliphone')
 AddEventHandler('pawnshop:selliphone', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local RubberQuantity = xPlayer.getInventoryItem('apple_iphone').count
-    local RubberPrice = math.random(175, 300)
+    local RubberPrice = math.random(275, 400)
     
     if RubberQuantity >= 1 then
         local quality = 1
@@ -390,7 +390,7 @@ RegisterServerEvent('pawnshop:sellnokia')
 AddEventHandler('pawnshop:sellnokia', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local RubberQuantity = xPlayer.getInventoryItem('nokia_phone').count
-    local RubberPrice = math.random(25, 40)
+    local RubberPrice = math.random(70, 140)
     
     if RubberQuantity >= 1 then
         local quality = 1
@@ -406,7 +406,7 @@ RegisterServerEvent('pawnshop:sellsamsung')
 AddEventHandler('pawnshop:sellsamsung', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local RubberQuantity = xPlayer.getInventoryItem('samsung_s8').count
-    local RubberPrice = math.random(150, 220)
+    local RubberPrice = math.random(250, 320)
     
     if RubberQuantity >= 1 then
         local quality = 1
@@ -422,7 +422,7 @@ RegisterServerEvent('pawnshop:sellelectronic')
 AddEventHandler('pawnshop:sellelectronic', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     local RubberQuantity = xPlayer.getInventoryItem('electronics').count
-    local RubberPrice = math.random(45, 70)
+    local RubberPrice = math.random(145, 170)
     
     if RubberQuantity >= 1 then
         local quality = 1

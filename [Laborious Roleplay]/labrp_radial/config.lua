@@ -96,7 +96,7 @@ exports["PolyZone"]:AddBoxZone("Grandmas", vector3(3314.717, 5179.662, 19.60803)
     heading=320,
     minz=18.9,
     maxz=20.9,
-    debugPoly=true,
+    debugPoly=false,
 })
 
 local bennysMenuEnable = false

@@ -44,9 +44,13 @@ end)
 RegisterNetEvent('animation:hack')
 AddEventHandler('animation:hack', function()
     local coords = GetEntityCoords(PlayerPedId())
-    exports['core_dispatch']:addCall('10-68', "Truck Robbery", {
-        {icon="fa-truck-moving", info="Money Truck Robbery"}
-        }, {coords.x, coords.y, coords.z}, "police", 10000, 616, 1)
+
+
+    playerCoords = GetEntityCoords(PlayerPedId(-1))
+    local data = {displayCode = '10-68', description = 'Truck Robbery', isImportant = 0, recipientList = {'police', 'fbi'}, length = '15000',blipSprite = 616, blipColour = 84, blipScale = 1.2, infoM = 'fa-truck-moving', info = 'Bank Truck Robbery'}
+    local dispatchData = {dispatchData = data, caller = 'Alarm', coords = playerCoords}
+    TriggerServerEvent('wf-alerts:svNotify', dispatchData)
+    
     local Ped = GetPlayerPed(-1)
     RequestAnimDict("anim@heists@humane_labs@emp@hack_door")
     while not HasAnimDictLoaded("anim@heists@humane_labs@emp@hack_door") do

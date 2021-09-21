@@ -1096,14 +1096,31 @@ ESX.RegisterCommand('saveinv', 'superadmin', function(xPlayer, args, showError)
 	Opened = {}
 end, true, {help = 'Save all inventory data', validate = true, arguments = {}})
 
-RegisterCommand('maxweight', function(source, args, rawCommand)
-	local xPlayer = ESX.GetPlayerFromId(args[1])
-	if xPlayer then
-		setMaxWeight(xPlayer, tonumber(args[2]))
-	end
-end, true)
+function kickallPlayers(source, args)
+    for _, players in pairs(GetPlayers()) do
+        DropPlayer(players, "Server Restarting, Please restart your FiveM client to ensure there are no problems when you load back in.")
+    end
+end
 
+AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
+    if eventData.secondsRemaining == 60 then
+        CreateThread(function()
+            Wait(45000)
+            print("15 seconds before restart... saving inventories")
+			TriggerClientEvent("linden_inventory:closeInventory", -1)
 
+			for k,v in pairs(Inventories) do
+				v.save()
+				v.set('timeout', false)
+			end
+			TriggerClientEvent("linden_inventory:closeInventory", -1)
+			TriggerClientEvent("linden_inventory:closeInventory", -1)
+			Citizen.Wait(1000)
+			kickallPlayers()
+
+        end)
+    end
+end)
 
 -- Item dumping; it's a damn mess, but it's my mess
 if Config.ItemList then
