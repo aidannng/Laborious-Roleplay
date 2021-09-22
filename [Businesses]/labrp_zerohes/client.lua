@@ -83,6 +83,78 @@ AddEventHandler('melee:menu1', function()
                 }
             }
         },
+        {
+            id = 5,
+            header = "Browning",
+            txt = "Only Leadership",
+            params = {
+                event = "craftbrowning",
+                args = {
+                    number = 4,
+                    id = 5
+                }
+            }
+        },
+        {
+            id = 6,
+            header = "Diamond Back 9",
+            txt = "Only Leadership",
+            params = {
+                event = "craftdp9",
+                args = {
+                    number = 5,
+                    id = 6
+                }
+            }
+        },
+        {
+            id = 7,
+            header = "Dessert Eagle",
+            txt = "Only Leadership",
+            params = {
+                event = "craftpistol50",
+                args = {
+                    number = 6,
+                    id = 7
+                }
+            }
+        },
+        {
+            id = 8,
+            header = "Mac 10",
+            txt = "Only Leadership",
+            params = {
+                event = "craftmac10",
+                args = {
+                    number = 7,
+                    id = 8
+                }
+            }
+        },
+        {
+            id = 9,
+            header = "Ammo-45",
+            txt = "Only Leadership",
+            params = {
+                event = "craftammo45",
+                args = {
+                    number = 8,
+                    id = 9
+                }
+            }
+        },
+        {
+            id = 10,
+            header = "Ammo-50",
+            txt = "Only Leadership",
+            params = {
+                event = "craftammo50",
+                args = {
+                    number = 9,
+                    id = 10
+                }
+            }
+        },
     })
 end)
 
@@ -141,6 +213,36 @@ AddEventHandler('craftmachete', function()
     })
     Citizen.Wait(60000)
     TriggerServerEvent('craft:machete')
+end)
+
+RegisterNetEvent('craftbrowning')
+AddEventHandler('craftbrowning', function()
+    TriggerServerEvent('craft:browning')
+end)
+
+RegisterNetEvent('craftdp9')
+AddEventHandler('craftdp9', function()
+    TriggerServerEvent('craft:dp9')
+end)
+
+RegisterNetEvent('craftpistol50')
+AddEventHandler('craftpistol50', function()
+    TriggerServerEvent('craft:pistol50')
+end)
+
+RegisterNetEvent('craftmac10')
+AddEventHandler('craftmac10', function()
+    TriggerServerEvent('craft:mac10')
+end)
+
+RegisterNetEvent('craftammo45')
+AddEventHandler('craftammo45', function()
+    TriggerServerEvent('craft:ammo45')
+end)
+
+RegisterNetEvent('craftammo50')
+AddEventHandler('craftammo50', function()
+    TriggerServerEvent('craft:ammo50')
 end)
 
 
